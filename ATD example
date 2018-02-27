@@ -1,0 +1,201 @@
+ATD1
+
+##################
+#
+# Demonstration procedural texture description file.
+# Comment lines begin with '#'.
+# All files MUST begin with "ATD1" on the very first line.
+#
+# By default, procedural textures have 
+# - bilinear filtering turned ON 
+# - mipmapping turned OFF
+# so try to make sure the texture
+# is never viewed from too far away.
+#
+##################
+
+####
+#
+# type      = animation
+# colortype = <1,2,3,4>       (luminance, lum-alpha, rgb, rgba)
+# width     = <2^n>           (output width, default=1)
+# height    = <2^n>           (output height, default=1)
+# bilinear  = <0|1>           (turn on or off bilinear filtering)
+#
+# !bitmap
+#   file    = <filename>
+#
+# !frame
+#   next    = <framenum>
+#   wait    = <seconds>
+#   x       = <offset>
+#   y       = <offset>
+#   bitmap  = <bitmapnum>
+#
+####
+
+type        = animation
+colortype   = 3
+width       = 64
+height      = 64
+bilinear    = 1
+
+#
+# here we list all the bitmaps we will reference
+#
+
+# 0
+!bitmap
+  file      = models\objects\anoxmetal_0.png
+
+# 1
+!bitmap
+  file      = models\objects\anoxmetal_1.png
+
+# 2
+!bitmap
+  file      = models\objects\anoxmetal_2.png
+
+# 3
+!bitmap
+  file      = models\objects\anoxmetal_3.png
+
+# 4
+!bitmap
+  file      = models\objects\anoxmetal_4.png
+
+# 5
+!bitmap
+  file      = models\objects\anoxmetal_5.png
+
+# 6
+!bitmap
+  file      = models\objects\anoxmetal_6.png
+
+# 7
+!bitmap
+  file      = models\objects\anoxmetal_7.png
+
+# 8
+!bitmap
+  file      = models\objects\anoxmetal_8.png
+
+# 9
+!bitmap
+  file      = models\objects\anoxmetal_9.png
+
+#
+# and now we define all animation frames
+#
+
+# 0
+!frame
+  next      = 1
+  wait      = 0.12
+  bitmap    = 0
+
+# 1
+!frame
+  next      = 2
+  wait      = 0.12
+  bitmap    = 1
+
+
+# 2
+!frame
+  next      = 3
+  wait      = 0.12
+  bitmap    = 2
+
+
+# 3
+!frame
+  next      = 4
+  wait      = 0.12
+  bitmap    = 3
+
+# 4
+!frame
+  next      = 5
+  wait      = 0.12
+  bitmap    = 4
+
+# 5
+!frame
+  next      = 6
+  wait      = 0.12
+  bitmap    = 5
+ 
+# 6
+!frame
+  next      = 7
+  wait      = 0.12
+  bitmap    = 6
+
+# 7
+!frame
+  next      = 8
+  wait      = 0.12
+  bitmap    = 7
+
+# 8
+!frame
+  next      = 9
+  wait      = 0.12
+  bitmap    = 8
+
+# 9
+!frame
+  next      = 10
+  wait      = 0.12
+  bitmap    = 9
+
+# 10
+!frame
+  next      = 11
+  wait      = 0.12
+  bitmap    = 8
+
+
+# 11
+!frame
+  next      = 12
+  wait      = 0.12
+  bitmap    = 7
+
+
+# 12
+!frame
+  next      = 13
+  wait      = 0.12
+  bitmap    = 6
+
+# 13
+!frame
+  next      = 14
+  wait      = 0.12
+  bitmap    = 5
+
+# 14
+!frame
+  next      = 15
+  wait      = 0.12
+  bitmap    = 4
+ 
+# 15
+!frame
+  next      = 16
+  wait      = 0.12
+  bitmap    = 3
+
+# 16
+!frame
+  next      = 17
+  wait      = 0.12
+  bitmap    = 2
+
+# 17
+!frame
+  next      = 0
+  wait      = 0.12
+  bitmap    = 1
