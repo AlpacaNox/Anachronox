@@ -1,0 +1,475 @@
+#window 25:105
+title "Fatima"
+body "Detta's Fortress is just around the corner. I hope you realize that once we break in, there's no going back, so you better be sure you're ready to do this."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  set fatimaStop = 1
+  extern AI_GrabEntity playerchar0 @bootshandle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 playerchar0
+  extern AI_WaitAndFace @bootshandle -1 fatima
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 25:0106
+
+#window 25:106
+title "Fatima"
+body "Are you sure you want to proceed to Detta's Fortress?"
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Yes." 25:120
+choice "No." 25:125
+
+#window 25:120
+title "Fatima"
+body "Then let's do it."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity @bootshandle
+  extern AI_DestroyEntity @fatima_handle
+  extern complete_quest "Enter the Fortress"
+  extern add_quest "Retrieve Keystone"
+  extern playscene onegate_scene92
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 25:125
+title "Fatima"
+body "Good idea. It can't hurt to be cautious."
+startswitch {
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+  extern cam_anoxmariomode 1
+  extern AI_WaitAndFace @fatima_handle -1 playerchar0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_DestroyEntity @fatima_handle
+  extern AI_SeekAndFace @bootshandle nodettayet
+  extern AI_SetCompletionCallback @bootshandle 25:0126
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 25:210
+title "PAX Guard"
+body "This ain't your neighborhood, citizen. Beat it."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 25:610
+title "Spituña Todd"
+body "Mistah Detta, ain't expectin' you. Scramoo."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 25:1055
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+if (func_charinparty[pal] == 3)
+  title "Pal"
+if (func_charinparty[rho] == 3)
+  title "Rho"
+if (func_charinparty[democratus] == 3)
+  title "Democratus"
+if (func_charinparty[stiletto] == 3)
+  title "Stiletto"
+if (func_charinparty[paco] == 3)
+  title "Paco"
+body "We really should be trying to get into Detta's."
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 25:1601
+title "Boots"
+body "Alright, girls. Two teams of three."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1605
+title "Boots"
+body "I'll lead one. Stiletto will lead the other."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1610
+title "Dr. Rho Bowman"
+body "Why her?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1615
+title "Stiletto"
+body "It's personal."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1620
+title "Boots"
+body "We're both settling old scores here tonight."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1625
+title "PAL-18"
+body "What about me, Mister Boots?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1630
+title "Boots"
+body "I need you for a special mission, PAL."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1635
+title "Boots"
+body "You gotta break into their security center and access the system."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1640
+title "Boots"
+body "Think you're up to it?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1645
+title "PAL-18"
+body "Hell, yeah."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1650
+title "Boots"
+body "Then let's put this baby to bed, folks."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1655
+title "Fatima"
+body "Sly...?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1660
+title "Boots"
+body "Yeah."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1665
+title "Fatima"
+body "I'm proud of you."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1667
+title "Fatima"
+body "I know you can do this."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1670
+title "Fatima"
+body "I'd give you a hug if I could."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1675
+title "Boots"
+body "Thanks."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1680
+title "Fatima"
+body "Don't look now. Woman scorned."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1685
+title "Stiletto"
+body "I get to kill him. Understand?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1690
+title "Boots"
+body "We're here for the stone."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1692
+title "Boots"
+body "Who says we're gonna kill him?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1695
+title "Stiletto"
+body "I do. If I kill him our lives can go on."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1700
+title "Stiletto"
+body "Both of ours."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 25:1705
+title "Fatima"
+body "Good luck."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 25:1
+console "forcecursormode 0"
+set CURRENT_PLANET = 1
+set CURRENT_BANK = 25
+extern applylevelconfiguration onegate
+extern loopambient ambi_onegate
+set anox_interface_active = 0
+extern playlevelmusic mp3/bricks/bricks_sad_2_0.mp3
+BattleMusicOverride$="mp3/bricks/bricks_combat_3_0.mp3" 
+goto 0:0
+
+#switch 25:101
+if (fatimaStop == 1)
+  goto 0:0
+extern is_quest_done "Enter the Fortress" @myballs
+if (@myballs == 1)
+  goto 25:0105
+
+#switch 25:100
+extern add_quest "Enter the Fortress"
+
+#switch 25:126
+extern ANIM_MakeSmart @bootshandle
+extern AI_ReleaseEntity @bootshandle
+extern cam_anoxmariomode 0
+set fatimaStop = 0
+goto 0:0
+
+#switch 25:201
+goto 25:0210
+
+#switch 25:301
+goto 25:0210
+
+#switch 25:401
+goto 25:0210
+
+#switch 25:501
+goto 25:0210
+
+#switch 25:601
+goto 25:0610
+
+#switch 25:1000
+if (Fortress_Parties_Formed < 1) {
+  target bigdoor2
+} else
+  goto 25:1050
+
+#switch 25:1050
+if (Fortress_Parties_Formed >= 1)
+  goto 25:1055
+
+#switch 25:9600
+extern is_quest_done "Get Keystone From Detta" @CanYouGoIntoFortress
+if (@CanYouGoIntoFortress >= 1) {
+  goto 25:9605
+} else
+  goto 25:9905
+
+#switch 25:9605
+if (@DettaPartiesAreChosen < 1)
+  goto 25:9915
+extern place_in_party boots @OneGateBootsPOS
+extern place_in_party stiletto @OneGateStilettoPOS
+if ((@OneGateBootsPOS > 0) || (@OneGateStilettoPOS > 0)) {
+  if (@OneGatePartiesGone >= 2)
+    console "map fortressgrounds"
+  extern move_party_to -3082 2719 -799
+}
+
+#switch 66:666
+extern add_quest "Enter the Fortress"

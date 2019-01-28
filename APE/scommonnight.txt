@@ -1,0 +1,2366 @@
+#window 41:8010
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "Too much beer. Too many burgers. No way my fat butt's squeezin' in there, bubba."
+if (func_charinparty[grumpos] == 3)
+  body "I might've been able to squeeze in there as a young man, but now... forget it!"
+if (func_charinparty[rho] == 3)
+  body "I could squeeze in there if I took off my backpack... but that's NOT gonna happen."
+if (func_charinparty[pal] == 3)
+  body "I bet those ducts lead to the museum. Too bad it's work hours."
+if (func_charinparty[democratus] == 3)
+  body "This planet will NOT squeeze in there and lose a continent."
+if (func_charinparty[stiletto] == 3)
+  body "Nice try. You're not getting me into ANY tight spaces."
+if (func_charinparty[paco] == 3)
+  body "Too tight."
+cam left from(PlayerChar0) to(41:8000) lift(55) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 41:8000
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 52:5200
+body "PAL-18 BOTOS 2.1\n\n\n\n\n"
+if (PALCount < 6)
+  body "W"
+if ((PALCount >= 6) && (PALCount < 12))
+  body "WA"
+if ((PALCount >= 12) && (PALCount < 18))
+  body "WAR"
+if ((PALCount >= 18) && (PALCount < 24))
+  body "WARN"
+if ((PALCount >= 24) && (PALCount < 30))
+  body "WARNI"
+if ((PALCount >= 30) && (PALCount < 36))
+  body "WARNIN"
+if (PALCount >= 36)
+  body "WARNING\n"
+if (PALCount >= 40)
+  body "HALLWAY    30 FT.\n\n"
+if (PALCount >= 55)
+  body "METALLIC SURFACE\n\n"
+if (PALCount >= 70)
+  body "DATABASE RESOLUTION: AIR DUCT\n"
+if (PALCount >= 85)
+  body "SIZE: NOMINAL FOR ENTRY\n"
+if (PALCount >= 100)
+  body "WORKING...\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+if ((PALCount >= 100) && (PALCount < 120))
+  body "SERVOS CHECK"
+if ((PALCount >= 120) && (PALCount < 140))
+  body "WHEEL ROTATION NOMINAL"
+if ((PALCount >= 140) && (PALCount < 160))
+  body "LEFT CLAW OKAY"
+if ((PALCount >= 160) && (PALCount < 180))
+  body "RIGHT CLAW OKAY"
+if ((PALCount >= 180) && (PALCount < 200))
+  body "SENSORS OVERLOADING"
+if ((PALCount >= 200) && (PALCount < 220))
+  body "LOOKING FOR MASTER"
+if ((PALCount >= 220) && (PALCount < 300))
+  body "MASTER NOT FOUND"
+startswitch {
+  set plastMS = func_GameTime
+  set pcurrentMS = plastMS
+  set PALCount = 0
+  goto 0:0
+}
+
+thinkswitch {
+  set pcurrentMS = func_GameTime
+  set pdelta = (pcurrentMS - plastMS)
+  if (pdelta < 8)
+    goto 0:0
+  set plastMS = pcurrentMS
+  set PALCount = (PALCount + 1)
+  if (PALCount > 300)
+    closewindow ApeMain%
+  goto 0:0
+}
+
+finishswitch {
+  goto 0:0
+}
+
+style "NULL"
+font "setse"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 640
+
+#window 99:105
+title "PAX Guard"
+body "You better get indoors. "
+if (func_charinparty[boots] == 3)
+  body "There's nothing prettier than a young punk with a fat lip."
+if (func_charinparty[grumpos] == 3)
+  body "Old men are fun to beat up. They cry harder than women."
+if (func_charinparty[pal] == 3)
+  body "I hate little beebots. I never got one as a kid."
+if (func_charinparty[rho] == 3)
+  body "My sister wore glasses. I hate my sister."
+if (func_charinparty[democratus] == 3)
+  body "You think you're better than me in that costume?"
+if (func_charinparty[stiletto] == 3)
+  body "Or I'll have to search your body for weapons."
+if (func_charinparty[paco] == 3)
+  body "At twice the size, I can hit you twice as much."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:110
+title "PAX Guard"
+body "You better get indoors. And here's somethin' ta play when you're inside."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0111
+
+#window 99:405
+title "Fatima"
+body "Have some faith in yourself, PAL. You don't need anyone's help with this, certainly not Boots."
+cam left from(playerchar0) to(fatima_spawn) restore zip
+startswitch {
+  target slounge_door
+  extern AI_GrabEntity PlayerChar0 palhandle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 playerchar0
+  extern AI_WaitAndFace @fatima_handle -1 playerchar0
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+  set @fatima_spoke = 1
+}
+
+style "NULL"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0406
+
+#window 99:406
+title "Fatima"
+body "I know you can do this. Show Boots you're the man, and get that TDD."
+cam left from(playerchar0) to(fatima_spawn) restore zip
+startswitch {
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+}
+
+style "NULL"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0407
+
+#window 99:407
+title "Fatima"
+body "I'll go into sleep mode and put the LifeCursor on autopilot if you want some privacy. I don't wanna give you performace anxiety. Good luck, hon."
+cam left from(playerchar0) to(fatima_spawn) restore zip
+startswitch {
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_DestroyEntity @fatima_handle
+  target slounge_door
+  console "forcecursormode 1"
+}
+
+style "NULL"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0408
+
+#window 99:410
+title "Fatima"
+body "I know you can do this. Show Boots you're the man, and get that TDD."
+cam left from(playerchar0) to(fatima_spawn) restore zip
+startswitch {
+  target slounge_door
+  extern AI_GrabEntity playerchar0 palhandle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 playerchar0
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_DestroyEntity @fatima_handle
+  target slounge_door
+  console "forcecursormode 1"
+}
+
+style "NULL"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0408
+
+#window 99:455
+title "Stiletto"
+body "I've learned some pretty cool tricks since last time I saw you, PAL."
+cam left from(1728 1360 245) to(1699 1324 200) fov(90) restore zip
+startswitch {
+  extern ANIM_PlayAnim hPlayer talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0460
+
+#window 99:460
+title "Stiletto"
+body "See that tiny switch up there in the corner? It opens a storage compartment where maintenance bots store their supplies."
+cam left from(1771 1392 167) to(1731 1378 119) fov(90) restore zip
+startswitch {
+  extern ANIM_PlayAnim hPlayer talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0465
+
+#window 99:465
+title "Stiletto"
+body "You'll notice them everywhere you go if you look hard enough. It's the standard all over the galaxy."
+cam left from(1771 1392 167) to(1731 1378 119) fov(90) restore zip
+startswitch {
+  extern ANIM_PlayAnim hPlayer talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0470
+
+#window 99:470
+title "Stiletto"
+body "I betcha I can hit it from here with a loonie coin. Watch...."
+cam left from(1550 988 51) to(1573 1045 66) fov(90) restore zip
+startswitch {
+  extern ANIM_PlayAnim hPlayer talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0473
+
+#window 99:510
+title "Ari Fedoro"
+body "I'm just tryin' ta hide in this corner, but I think there's somethin' hidin' in here with me."
+cam left lift(90) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 fedoro
+  extern AI_GrabEntity fedoro fedoro_handle
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0511
+
+#window 99:511
+title "Ari Fedoro"
+body "You see anythin' in the corner there?"
+cam left from(playerchar0) to(fedoro) restore zip
+finishswitch {
+  set punched_UM = 1
+  extern playscene scommonnight_fight
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:530
+title "Ari Fedoro"
+body "I'm just tryin' ta hide in this corner, but I think there's somethin' hidin' in here with me."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:605
+title "Detective Rukh"
+body "Wait a tickin' minute... Is that you, Sly?"
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0606
+
+#window 99:606
+title "Detective Rukh"
+body "Klaz almighty, I haven't seen you in, what... two, three years? What're you doing nosing around Sender Station? Weren't you running your outfit outta Anox North?"
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0607
+
+#window 99:607
+title "Detective Rukh"
+body "I guess you always were sticking your nose down here, weren't you? I'm surprised Detta never did a number on you after all the trouble you gave him back in the day."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0608
+
+#window 99:608
+title "Detective Rukh"
+body "I've been working outta Cordica mostly. I'm down here heading a PAX investigation."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0609
+
+#window 99:609
+title "Detective Rukh"
+body "Hey, don't wince at me, bub. I was already working this case on my own when PAX came along and offered to foot the bill. You wouldn't have run screaming either."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:610
+title "Detective Rukh"
+body "I'm tracking down a Terran con artist by the name of Ross Barata. He's been running grifts from here to Asagan Bay off and on for about five years now. I've been hot on his trail for two."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0611
+
+#window 99:611
+title "Detective Rukh"
+body "He's a slippery swindler. He's such a master of disguise... everyone's a suspect. Even my wife."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0612
+
+#window 99:612
+title "Detective Rukh"
+body "Looks like we might be adding murder to his charges."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:615
+title "Detective Rukh"
+body "Hey, you shouldn't pooh-pooh doing work on the side for PAX. You gotta keep your options open."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0616
+
+#window 99:616
+title "Detective Rukh"
+body "I've got access to their most innovative equipment. Take a look at this PAX Flashpak."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0617
+
+#window 99:617
+title "Detective Rukh"
+body "Strap it to your hand cannon of choice, aim it straight at enemy eyes and blind 'em for good."
+cam left restore zip
+talk npc amb_a stay
+finishswitch {
+  extern addnew_to_inventory "PAX Flashpak"
+  set timed_message = 20
+  got_object$="PAX Flashpak" 
+  gosub 1000:1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:618
+title "Detective Rukh"
+body "Here, you can have this one. But I wanna be the first to know if there's any street noise about this Barata character."
+cam left restore zip
+talk npc amb_a stay
+finishswitch {
+  extern addnew_to_inventory "PAX Flashpak"
+  set Rukh2 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:620
+title "Detective Rukh"
+body "Lemme know how that Flashpak works out. You should look me up more often, Sly. I can hook you up with some first-rate equipment in the future."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:625
+title "Detective Rukh"
+body "Watch this kid's back, huh? He can barely take care of himself."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:630
+title "Detective Rukh"
+body "Well, if it ain't the little iron man back in action."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:640
+title "Detective Rukh"
+body "Hahaha! I had a feeling I'd bump into you here."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0641
+
+#window 99:641
+title "Detective Rukh"
+body "Man, I can't believe it. Turns out that con artist I've been hounding was never even on Anachronox. He must have slipped me a bum lead while in disguise."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0642
+
+#window 99:642
+title "Detective Rukh"
+body "He loves toying with me. Now I'm back to square five."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0643
+
+#window 99:643
+title "Detective Rukh"
+body "He loves toying with me. Now I'm back to square five."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:645
+title "Detective Rukh"
+body "Keep outta trouble, huh?"
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:650
+title "Detective Rukh"
+body "Sly, what're you doing up here?"
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0651
+
+#window 99:651
+title "Detective Rukh"
+body "I'm glad you got outta that hellhole. I'm a little uncomfortable with the thought of Detta being the biggest fish in Anox. I was gonna tell you to skip town, but I knew you wouldn't listen."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0652
+
+#window 99:652
+title "Detective Rukh"
+body "Me? I'm up here following a PAXNet lead about a Tetra smuggler who blew into town with an unflawed specimen of Tetra."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0653
+
+#window 99:653
+title "Detective Rukh"
+body "The thing is, he was seen leaving the commons a while back, but hasn't shown up in the Red Light District to cut any black market deals. Given how hot unflawed Tetra is, everyone suspects the worst."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0654
+
+#window 99:654
+title "Detective Rukh"
+body "I'm poking around here to make sure he isn't hiding out in some local safe house."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0655
+
+#window 99:655
+title "Detective Rukh"
+body "My chief concern is that something happened to him in the Routubes on the way to Red Light. If that's the case, his body might be decaying in some dark corner even as we speak."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0656
+
+#window 99:656
+title "Detective Rukh"
+body "Unfortunately, PAX operating procedures require me to completely exhaust an area's possible clues before moving on."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0657
+
+#window 99:657
+title "Detective Rukh"
+body "You wanna partner up again and take a trip down the Routubes to see what's up? I mean, knowing you, you're probably passing through there anyways, huh?"
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0658
+
+#window 99:658
+title "Detective Rukh"
+body "Make sure you snap a picture of anything suspicious."
+cam left restore zip
+talk npc amb_a stay
+finishswitch {
+  set TETRA_TUBES = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:661
+title "Detective Rukh"
+body "How ya been, man? I'm just finishing up my investigation here."
+cam left restore zip
+talk npc amb_a stay
+finishswitch {
+  if (TETRA_TUBES == 1)
+    goto 99:0662
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:662
+title "Detective Rukh"
+body "That Tetra dealer hasn't come outta hiding. Guess he disappeared in the Routubes after all."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:665
+title "Detective Rukh"
+body "Wait a tickin' minute... Is that you, Sly?"
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0666
+
+#window 99:666
+title "Detective Rukh"
+body "Klaz almighty, I haven't seen you in, what... two, three years? What're you doing up here? Weren't you running your outfit outta Anox North?"
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0667
+
+#window 99:667
+title "Detective Rukh"
+body "I guess you always did have a weakness for the Red Light District."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0668
+
+#window 99:668
+title "Detective Rukh"
+body "Yeah, I've been working outta Cordica mostly. I'm here heading a PAX investigation at the moment."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0669
+
+#window 99:669
+title "Detective Rukh"
+body "Hey, don't wince at me, bub. I was already working this case on my own when PAX came along and offered to foot the bill."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0670
+
+#window 99:670
+title "Detective Rukh"
+body "You wouldn't have run screaming either. Besides, I think you'd get a kick outta this case."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0671
+
+#window 99:671
+title "Detective Rukh"
+body "There's a mystery man whacking heavy-hitter Tetra hustlers and running off with their merchandise. Dealers of a drug as hot as Tetra are always packing some serious heat, so this guy must be a major heavyweight."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0672
+
+#window 99:672
+title "Detective Rukh"
+body "There's a big market for hallucinogenic dreamstones. Clients get hooked, and want progressively less flawed crystals for more lucid dreams."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0673
+
+#window 99:673
+title "Detective Rukh"
+body "That's why my killer's always stealing the purest stuff around. He wants perfectly unflawed Tetra crystals."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:675
+title "Detective Rukh"
+body "Word of advice, Boots. There was a rash of nightmares at Sendormitory a few nights ago. You might wanna consider steering clear of the place if you're looking for a place to unwind."
+cam left restore zip
+talk npc amb_a stay
+finishswitch {
+  set NIGHTMARE_KNOW = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:680
+title "Detective Rukh"
+body "I'd be much obliged if you took a trip down the Routubes and snapped a picture of anything suspicious."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:686
+title "Detective Rukh"
+body "You didn't see anything, huh? No bodies? Nothing suspicious?"
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0687
+
+#window 99:687
+title "Detective Rukh"
+body "Hmm."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0688
+
+#window 99:688
+title "Detective Rukh"
+body "Guess he's holed up somewhere then."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:690
+title "Detective Rukh"
+body "Ouch. Yeah, that's the Tetra smuggler all right. Looks like he ran across more action than he could handle."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0691
+
+#window 99:691
+title "Detective Rukh"
+body "So the door's panel was shot up, is that right? Smells like an ambush to me."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0692
+
+#window 99:692
+title "Detective Rukh"
+body "But how could he miss that often with such a state of the art cannon at close quarters like that? Just doesn't make any sense."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0693
+
+#window 99:693
+title "Detective Rukh"
+body "Well, at least I can stop following up on safe house leads. Thanks a lot, man."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0694
+
+#window 99:695
+title "Detective Rukh"
+body "You always were into little gadgets, weren't you? Try out this state-of-the-art PAX Flashpak I got from the boys at the lab."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0617
+
+#window 99:696
+title "Detective Rukh"
+body "Thanks for staying on top of things, man. Reminds me of the old days. Listen, here's a little something to help you stay frosty. I've been using it instead of coffee to stay alert."
+cam left restore zip
+talk npc amb_a stay
+finishswitch {
+  extern addnew_to_inventory "Annulet of Alertness"
+  set timed_message = 20
+  got_object$="Annulet of Alertness" 
+  gosub 1000:1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:699
+title "Detective Rukh"
+body "Back to the grind, man. Time to sniff out some new leads."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:701
+title "Detective Rukh"
+body "Hey. Do your best to keep Sly outta trouble, huh?"
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:2001
+title "PAL-18"
+body "Man... Mister Boots was right."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 99:2005
+title "PAL-18"
+body "I'm just a cheap, dime store robot."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 99:2010
+title "PAL-18"
+body "I deserve to get kicked around."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 99:2015
+title "Stiletto"
+body "Hey, pal..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 99:2020
+title "Stiletto"
+body "              lookin' for this?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 99:2025
+title "PAL-18"
+body "Miss Sera? What're you doing here?!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 99:2030
+title "Stiletto"
+body "I wasn't about to let my favorite little bot go into hostile territory without some cover."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 99:2035
+title "Stiletto"
+body "Looks like you did just fine without me."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 99:2040
+title "PAL-18"
+body "Oh, boy, oh, boy! Wait until Mister Boots sees you!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 99:2045
+title "PAL-18"
+body "He's gonna flip a pancake!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 99:210
+title "Fatima"
+body "Shouldn't we regroup with the rest of the party at the Lounge of Commerce before we try going after the TDD?"
+cam left from(PlayeChar0) to(fatima) restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 @bootshandle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatima_spawn2
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 playerchar0
+  extern AI_WaitAndFace @bootshandle -1 fatima
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity @bootshandle
+  extern AI_DestroyEntity @fatima_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:301
+title "%s", PlayerChar0$
+if (func_charinparty[pal] == 3)
+  body "Man, this machine ain't got nothin' new to to tell me."
+if (func_charinparty[pal] != 3)
+  body "One of PAL's CompTalk ports."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 41:8500
+title "%s", PlayerChar0$
+if (func_charinparty[pal] == 3)
+  body "The user interface? How bee-boh-boring."
+if (func_charinparty[pal] != 3)
+  body "Nothing of interest."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:760
+title "Engineer Recator"
+body "What should I do? My home planet's gone missing!"
+cam left restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:765
+title "Engineer Recator"
+body "I was researching macro-architecture on Matrix-0 when word came in that the entire planet of Democratus had vanished."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0766
+
+#window 99:766
+title "Engineer Recator"
+body "No debris. No evidence of destruction. No trace whatsoever of anything. It's baffling."
+cam left restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:770
+title "Engineer Recator"
+body "I'm a large-scale defense engineer. I've created some of the most devastating and technologically advanced weapons of mass destruction ever designed."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0771
+
+#window 99:771
+title "Engineer Recator"
+body "Now my home, my work... are missing! And to think I had so many new ideas to share. Please help me find Democratus. I will make it worth your while."
+cam left restore zip
+talk npc gest_h stay
+finishswitch {
+  if (func_charinparty[democratus] != 2)
+    extern cam_restore
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:775
+title "Engineer Recator"
+body "I must be severely homesick. I'm hallucinating that Democratus is following you around."
+cam left restore zip
+talk npc gest_d stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:780
+title "Engineer Recator"
+body "I must be dreaming."
+cam left restore zip
+talk npc gest_d stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0781
+
+#window 99:781
+title "Democratus"
+body "Engineer Recator! This is Councilman Hagen and the rest of the High Council speaking."
+cam left restore zip
+talk npc amb_a stay
+style "style_fatbox"
+font "_anox10"
+background color1 = 000000ff color2 = 000000ff color3 = 000000ff color4 = 000000ff
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0782
+
+#window 99:782
+title "Engineer Recator"
+body "Sir? But the planet is only four feet tall!"
+cam left restore zip
+talk npc gest_d stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0783
+
+#window 99:783
+title "Engineer Recator"
+body "Oh, dear."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0784
+
+#window 99:784
+title "Engineer Recator"
+body "You didn't activate the secret compression device, did you? However did you all agree on it?"
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0785
+
+#window 99:785
+title "Democratus"
+body "We will debrief you soon enough. In the meantime, we require you to stand at the ready here."
+cam left restore zip
+talk npc amb_a stay
+style "style_fatbox"
+font "_anox10"
+background color1 = 000000ff color2 = 000000ff color3 = 000000ff color4 = 000000ff
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0786
+
+#window 99:786
+title "Democratus"
+body "We may need you for future projects."
+cam left restore zip
+talk npc amb_a stay
+style "style_fatbox"
+font "_anox10"
+background color1 = 000000ff color2 = 000000ff color3 = 000000ff color4 = 000000ff
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0787
+
+#window 99:787
+title "Engineer Recator"
+body "Will do. I am here to serve."
+cam left restore zip
+talk npc gest_e stay
+finishswitch {
+  set recator_knows_demo = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:790
+title "Engineer Recator"
+body "I am ready and willing to serve Democratus."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:800
+title "Engineer Recator"
+body "How may I serve Democratus?"
+cam left restore zip
+talk npc amb_a stay
+startswitch {
+  extern check_money @partycash
+  extern is_in_inventory "TractorHold Defense Plans" @plans1
+  extern is_in_inventory "Proximity Beam Defense Plans" @plans2
+  extern is_in_inventory "LaserArray Defense Plans" @plans3
+  extern is_in_inventory "Nuclear Arsenal Defense Plans" @plans4
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (@plans1)
+  choice "We wish to construct a TractorHold Defense system." 99:830
+if (@plans2)
+  choice "We wish to construct a Proximity Beam Defense system." 99:840
+if (@plans3)
+  choice "We wish to construct a LaserArray Defense system." 99:850
+if (@plans4)
+  choice "We wish to construct a Nuclear Arsenal Defense system." 99:860
+choice "Excuse us while we deliberate further." 0:0
+
+#window 99:830
+title "Engineer Recator"
+body "Excellent. This will allow us to hold enemies still, yes? I estimate that will cost, given your new scale... 1000 dollars."
+cam left restore zip
+talk npc gest_h stay
+startswitch {
+  set which_plans = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (@partycash >= 1000)
+  choice "Excellent. Proceed." 99:900
+if (@partycash >= 1000)
+  choice "We wish to think about it." 99:870
+if (@partycash < 1000)
+  choice "I'm afraid we cannot currently approve the funds." 99:890
+
+#window 99:840
+title "Engineer Recator"
+body "Excellent. Ah, grand, very damaging, perhaps stunning, yes. I estimate that will cost, given your new scale... 2000 dollars."
+cam left restore zip
+talk npc gest_h stay
+startswitch {
+  set which_plans = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (@partycash >= 2000)
+  choice "Excellent. Proceed." 99:900
+if (@partycash >= 2000)
+  choice "We wish to think about it." 99:870
+if (@partycash < 2000)
+  choice "I'm afraid we cannot currently approve the funds." 99:890
+
+#window 99:850
+title "Engineer Recator"
+body "Excellent. Yes, very destructive. I estimate that will cost, given your new scale... 4000 dollars."
+cam left restore zip
+talk npc gest_h stay
+startswitch {
+  set which_plans = 3
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (@partycash >= 4000)
+  choice "Excellent. Proceed." 99:900
+if (@partycash >= 4000)
+  choice "We wish to think about it." 99:870
+if (@partycash < 4000)
+  choice "I'm afraid we cannot currently approve the funds." 99:890
+
+#window 99:860
+title "Engineer Recator"
+body "Excellent. Very devastating to our enemies. I estimate that will cost, given your new scale... 8000 dollars."
+cam left restore zip
+talk npc gest_h stay
+startswitch {
+  set which_plans = 4
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (@partycash >= 8000)
+  choice "Excellent. Proceed." 99:900
+if (@partycash >= 8000)
+  choice "We wish to think about it." 99:870
+if (@partycash < 8000)
+  choice "I'm afraid we cannot currently approve the funds." 99:890
+
+#window 99:870
+title "Engineer Recator"
+body "Very well, I shall be here."
+cam left restore zip
+talk npc gest_e stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:890
+title "Engineer Recator"
+body "When you approve the funding, I'll be waiting here to do the work."
+cam left restore zip
+talk npc gest_e stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:900
+title "Engineer Recator"
+body "Splendid! This shouldn't take long at all."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 democratus_handle
+  extern AI_WaitAndFace democratus_handle -1 recator
+}
+
+finishswitch {
+  console "forcecursormode 1"
+  extern cam_anoxmariomode 1
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 3
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0910
+
+#window 99:910
+startswitch {
+  set @tstart = func_gametime
+  set @flashing = 0
+}
+
+thinkswitch {
+  set @t = (func_gametime - @tstart)
+  if ((@t > 4000) && (@flashing == 0)) {
+    extern FlashScreenf 0 0 0 1 0
+    extern FlashScreenf 0 0 0 0 3
+    set @flashing = 1
+  }
+  if (@t > 7000) {
+    gosub 99:0911
+    closewindow 99:0910
+  }
+}
+
+style "null"
+flags passive, TRUE
+
+#window 99:920
+title "Engineer Recator"
+body "Done! Let me know how that works out!"
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:0930
+
+#window 99:1005
+title "Dr. Brywelle"
+body "Not only was the disaster on Sunder the most devastating blow to science the universe has ever known..."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 99:1006
+
+#window 99:1006
+title "Dr. Brywelle"
+body "...it was also a catastrophic loss of life."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 99:1007
+
+#window 99:1007
+title "Dr. Brywelle"
+body "I would appreciate your help in finding any scientists who survived the destruction of Sunder."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 99:1030
+title "Dr. Brywelle"
+body "Dr. Rho Bowman...? You survived the destruction of Sunder?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 99:1035
+
+#window 99:1035
+title "Dr. Brywelle"
+body "What splendid news! I'm so relieved one of the most gifted theoretical scientists of our generation was saved."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 99:1040
+
+#window 99:1040
+title "Dr. Brywelle"
+body "I barely avoided death myself. How ever did you manage to survive?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 99:1045
+
+#window 99:1045
+title "Dr. Brywelle"
+body "Luckily, there are quite a number of survivors. In addition to the few who managed to escape the planet before the explosion, there were a great many others doing research off planet."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 99:1050
+
+#window 99:1050
+title "Dr. Brywelle"
+body "I'm considering forming a new Scientifica Association. We would have to call it something else, of course... but it would be formed with the same sense of purpose... love of knowledge, and the search for truth."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 99:1055
+
+#window 99:1055
+title "Dr. Brywelle"
+body "We would start from scratch. No politics. No hidden agendas. No heretics. It would be the way the Scientifica Association was before special interests groups perverted the original vision."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 99:1060
+
+#window 99:1060
+title "Dr. Brywelle"
+body "You, of course, have an open invitation to join our community. Well... if I ever get around to starting one. Whatever decision you make, please read my new thesis on Cultural Symbology."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 99:1065
+
+#window 99:1065
+title "Dr. Brywelle"
+body "Good luck, Dr. Bowman."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set cst = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 3000:10
+
+#window 99:1080
+title "Dr. Brywelle"
+body "Don't forget to read my Cultural Symbology Thesis!"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 99:1105
+title "Marijin"
+body "If Herbert and I had never met, he would've gone to Sunder and died in the tragedy."
+cam left restore zip
+talk npc amb_d stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 99:1106
+
+#window 99:1106
+title "Marijin"
+body "It must be fate that we're together."
+cam left restore zip
+talk npc amb_d stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 99:1205
+title "PAX Guard"
+body "You better get indoors. "
+if (func_charinparty[boots] == 3)
+  body "There's nothing prettier than a young punk with a fat lip."
+if (func_charinparty[grumpos] == 3)
+  body "Old men are fun to beat up. They cry harder than women."
+if (func_charinparty[pal] == 3)
+  body "I hate little beebots. I never got one as a kid."
+if (func_charinparty[rho] == 3)
+  body "My sister wore glasses. I hate my sister."
+if (func_charinparty[democratus] == 3)
+  body "You think you're better than me in that costume?"
+if (func_charinparty[stiletto] == 3)
+  body "Or I'll have to search your body for weapons."
+if (func_charinparty[paco] == 3)
+  body "At twice the size, I can hit you twice as much."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:1210
+title "PAX Guard"
+body "You better get indoors. And here's somethin' ta play when you're inside."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:1211
+
+#window 99:1305
+title "PAX Guard"
+body "You better get indoors. "
+if (func_charinparty[boots] == 3)
+  body "There's nothing prettier than a young punk with a fat lip."
+if (func_charinparty[grumpos] == 3)
+  body "Old men are fun to beat up. They cry harder than women."
+if (func_charinparty[pal] == 3)
+  body "I hate little beebots. I never got one as a kid."
+if (func_charinparty[rho] == 3)
+  body "My sister wore glasses. I hate my sister."
+if (func_charinparty[democratus] == 3)
+  body "You think you're better than me in that costume?"
+if (func_charinparty[stiletto] == 3)
+  body "Or I'll have to search your body for weapons."
+if (func_charinparty[paco] == 3)
+  body "At twice the size, I can hit you twice as much."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:1310
+title "PAX Guard"
+body "You better get indoors. And here's somethin' ta play when you're inside."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:1311
+
+#window 99:1405
+title "PAX Guard"
+body "You better get indoors. "
+if (func_charinparty[boots] == 3)
+  body "There's nothing prettier than a young punk with a fat lip."
+if (func_charinparty[grumpos] == 3)
+  body "Old men are fun to beat up. They cry harder than women."
+if (func_charinparty[pal] == 3)
+  body "I hate little beebots. I never got one as a kid."
+if (func_charinparty[rho] == 3)
+  body "My sister wore glasses. I hate my sister."
+if (func_charinparty[democratus] == 3)
+  body "You think you're better than me in that costume?"
+if (func_charinparty[stiletto] == 3)
+  body "Or I'll have to search your body for weapons."
+if (func_charinparty[paco] == 3)
+  body "At twice the size, I can hit you twice as much."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 99:1410
+title "PAX Guard"
+body "You better get indoors. And here's somethin' ta play when you're inside."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 99:1411
+
+#window 99:1605
+title "Major Domo"
+body "This is the Sender Station Gold Deluxe Palatial Royal Penthouse Suites. We're known throughout the galaxy for the luxury and majesty of our suites. It's doubtful you can afford a room here."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 99:1606
+
+#window 99:1606
+title "Major Domo"
+if (@gold_suite > 1)
+  body "Our cheapest suite costs %d loonies.", @gold_suite
+if (@gold_suite < 2)
+  body "Our cheapest suite costs more than you have."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "We'll take it." 99:1620
+choice "Bye, thanks." 0:0
+
+#window 99:1610
+title "Major Domo"
+body "This is the Sender Station Gold Deluxe Palatial Royal Penthouse Suites. You're not welcome here if you can't afford a room, sir. Our cheapest suite costs "
+if (@gold_suite > 1)
+  body "%d loonies.", @gold_suite
+if (@gold_suite < 2)
+  body "more than you have."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "We'll take it." 99:1620
+choice "Bye, thanks." 0:0
+
+#window 99:1615
+title "Major Domo"
+body "This is the Sender Station Gold Deluxe Palatial Royal Penthouse Suites. I think we've established your persona non grata here. You can't afford a suite. Our cheapest suite costs "
+if (@gold_suite > 1)
+  body "%d loonies.", @gold_suite
+if (@gold_suite < 2)
+  body "more than you have."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "We'll take it." 99:1620
+choice "Bye, thanks." 0:0
+
+#window 99:1625
+title "Major Domo"
+body "I'm afraid you're deficient in funds, "
+if ((((func_charinparty[boots] == 3) || (func_charinparty[grumpos] == 3)) || (func_charinparty[pal] == 3)) || (func_charinparty[paco] == 3))
+  body "sir. "
+if ((func_charinparty[rho] == 3) || (func_charinparty[stiletto] == 3))
+  body "ma'am. "
+body "Come back in a few years when you've won the lotto."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 99:1630
+title "Major Domo"
+body "I'm afraid you're deficient in funds, "
+if ((((func_charinparty[boots] == 3) || (func_charinparty[grumpos] == 3)) || (func_charinparty[pal] == 3)) || (func_charinparty[paco] == 3))
+  body "sir. "
+if ((func_charinparty[rho] == 3) || (func_charinparty[stiletto] == 3))
+  body "ma'am. "
+body "Come back in a few years when you've married into money."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 99:1635
+title "Major Domo"
+body "I'm afraid you're deficient in funds, "
+if ((((func_charinparty[boots] == 3) || (func_charinparty[grumpos] == 3)) || (func_charinparty[pal] == 3)) || (func_charinparty[paco] == 3))
+  body "sir. "
+if ((func_charinparty[rho] == 3) || (func_charinparty[stiletto] == 3))
+  body "ma'am. "
+body "Come back in a few years when you've inherited a fortune."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  set Domo1 = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 99:1640
+title "Major Domo"
+body "We don't allow major planetoids in our hotel, sir. You understand... insurance issues. I'm going to have to ask you to leave."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#switch 40:1
+set CURRENT_PLANET = 2
+set CURRENT_BANK = 99
+set ape_no_autosave = 0
+loadape "sendernet"
+gosub 500:1			                              
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .7 .7 1
+extern playlevelmusic mp3/sender/ssscaryfinal.mp3
+if (play_pal_stiletto_scene == 1) {
+  set play_pal_stiletto_scene = 0
+  extern add_npc_to_party stiletto
+  extern addnew_to_inventory "Vistin Double Blades"
+  extern set_party_leader stiletto
+  extern equip_item "Vistin Double Blades"
+  extern forceplayerlevel Stiletto 20
+  extern add_battle_skill "Pain Pirouette"
+  extern set_party_leader pal
+  set PAL_GOT_TDD = 1
+  set PLAY_GOT_TDD = 1
+  set POST_HIVE = 0
+  set POST_UNIVERSE = 1
+  set pal_is_so_very_alone = 0
+  extern complete_quest "PAL Get TDD"
+  extern add_quest "Return with TDD"
+  extern playscene scommonnight_pal_stiletto
+}
+goto 0:0
+
+#switch 41:8000
+if (PAL_GOT_TDD)
+  goto 41:8010		                               
+console "set storysave \"Pal-L3wT|Pal's Museum B&E\""
+extern playscene scommonnight_pal_intro
+goto 0:0
+
+#switch 99:5200
+goto 52:5200
+
+#switch 99:101
+if ((scommonnight_got_ox == 0) && (RANDOM > 80))
+  goto 99:0110
+goto 99:0105
+
+#switch 99:111
+set scommonnight_got_ox = 1
+extern addnew_to_inventory "OX Cartridge"
+got_object$="OX Cartridge" 
+set timed_message = 20
+gosub 1000:1
+goto 0:0
+
+#switch 99:401
+if (@FatimaStopsPAL == 1)
+  goto 0:0
+set @FatimaStopsPAL = 1
+extern is_quest_done "PAL Get TDD" @palgettindown
+if (@palgettindown == 1) {
+  if (@fatima_spoke == 1)
+    goto 99:0410
+  goto 99:0405
+}
+goto 0:0
+
+#switch 99:408
+extern cam_anoxmariomode 1
+extern AI_WaitAndFace palhandle -1 PAL_leave_LC
+extern AI_SeekAndFace palhandle PAL_leave_LC
+extern AI_SetCompletionCallback palhandle 99:0409
+
+#switch 99:409
+set @FatimaStopsPAL = 0
+extern cam_anoxmariomode 0
+console "forcecursormode 0"
+extern ANIM_MakeSmart palhandle
+extern AI_ReleaseEntity palhandle
+
+#switch 99:450
+extern is_quest_done "PAL Get TDD" @palgettindown
+if ((@palgettindown != 2) || stiletto_firstloonie)
+  goto 0:0
+set stiletto_firstloonie = 1
+extern set_party_leader stiletto
+extern AI_GrabEntity playerchar0 hPlayer
+extern AI_SeekAndFace hPlayer stiletto_skill_1
+extern AI_SetCompletionCallback hPlayer 99:0455
+
+#switch 99:473
+extern ANIM_MakeSmart hPlayer
+extern AI_ReleaseEntity hPlayer
+set timed_message = 22
+gosub 1000:1
+goto 0:0
+
+#switch 99:449
+extern add_quest "PAL Get TDD"
+extern complete_quest "PAL Get TDD"
+goto 0:0
+
+#switch 99:475
+if (stiletto_did_sn_loonie)
+  goto 99:0476
+WS_STAND$="stiletto_skill_1" 
+ws_scenename$="worldskills/loony_scommonnight_1" 
+set ws_bank = 99
+set ws_entry = 476
+gosub 4006:1
+goto 0:0
+
+#switch 99:476
+if (stiletto_did_sn_loonie)
+  target looniedoor
+set stiletto_did_sn_loonie = 1
+goto 0:0
+
+#switch 99:501
+if ((func_charinparty[boots] != 3) && (PUNCH_JUDY != 2))
+  goto 99:0530
+if (punched_UM == 1)
+  goto 99:0520
+goto 99:0510
+
+#switch 99:520
+set PUNCH_JUDY = 2
+extern AI_GrabEntity PlayerChar0 bootshandle
+extern ANIM_PlayAnim bootshandle grab_l 0 1 0
+goto 99:0521
+
+#switch 99:521
+extern EntKey fedoro_handle "sequence" ""
+extern addnew_to_inventory "Detta Credentials"
+set timed_message = 20
+got_object$="Detta Credentials" 
+gosub 1000:1
+extern AI_ReleaseEntity bootshandle
+
+#switch 99:600
+if (func_charinparty[pal] == 3)
+  goto 99:0630
+if (func_charinparty[grumpos] == 3)
+  goto 99:0625
+if (func_charinparty[boots] != 3)
+  goto 99:0701
+if ((MYSTECH_ACTIVE == 1) && (NIGHTMARE_KNOW == 0))
+  goto 99:0660		                                                                               
+if ((SEEN_SEWERS == 1) && (TETRA_TUBES > 0))
+  goto 99:0685				                                         
+if (TETRA_TUBES == 1)
+  goto 99:0680										                                            
+goto 99:0650															                                                             
+
+#switch 99:635
+set Rukh2 = (Rukh2 + 1)
+if (Rukh2 > 2)
+  goto 18:1845
+goto 99:0640
+
+#switch 99:660
+set sender_rukh1 = (sender_rukh1 + 1)
+if ((sender_rukh1 > 1) && (TETRA_TUBES == 0))
+  goto 99:0651	                       
+if (sender_rukh1 > 1)
+  goto 99:0675 
+if ((TETRA_APART == 0) && (TETRA_TUBES == 0))
+  goto 99:0665	                                                                              
+goto 99:0661
+
+#switch 99:685
+if (TETRA_TUBES == 2)
+  goto 99:0699						                       
+extern photo_findentity @pooperscooper sequence 55:1101
+if (@pooperscooper != 0)
+  set TETRA_TUBES = 2
+if (TETRA_TUBES == 2)
+  goto 99:0690
+goto 99:0686
+
+#switch 99:694
+set RUKH_REWARD = (RUKH_REWARD + 1)
+if (RUKH_REWARD > 1)
+  goto 99:0696
+goto 99:0695
+
+#switch 99:201
+extern is_quest_done "PAL Get TDD" @tdd_time
+if (@tdd_time >= 1)
+  goto 99:0205		                              
+goto 99:0210
+
+#switch 99:205
+if (@tdd_time == 2) {
+  target museumdoor
+  goto 0:0
+}
+extern assign E[0] -1 50 50 50 51 50 -1
+extern assign E[7] -1 40 40 30 40 60 -1
+extern assign E[14] -1 60 30 40 40 40 -1
+extern assign E[21] -1 40 40 40 30 40 -1
+extern assign E[28] -1 30 40 30 40 40 -1
+extern assign E[35] -1 40 40 40 40 60 -1
+extern assign E[42] -1 46 45 45 45 45 -1
+WS_STAND$="pal_skill_1" 
+ws_object$="museumdoor" 
+ws_scenename$="worldskills/comptalk_scommonnight_1" 
+gosub 4003:1
+goto 0:0
+
+#switch 99:755
+if ((func_charinparty[democratus] == 3) && recator_knows_demo)
+  goto 99:0800
+if ((func_charinparty[democratus] == 3) && (recator_knows_demo == 0))
+  goto 99:0780
+if (recator_knows_demo)
+  goto 99:0790
+set Recator1 = (Recator1 + 1)
+if ((func_charinparty[democratus] == 2) && (Recator1 > 2))
+  goto 99:0775
+if (Recator1 > 2)
+  goto 99:0770
+if (Recator1 > 1)
+  goto 99:0765
+goto 99:0760
+
+#switch 99:911
+if (which_plans == 1) {
+  extern remove_money 1000
+  extern remove_from_inventory "Tractorhold Defense Plans"
+  extern add_battle_skill "TractorHold"
+} else if (which_plans == 2) {
+  extern remove_money 2000
+  extern remove_from_inventory "Proximity Beam Defense Plans"
+  extern add_battle_skill "Stare Down"
+} else if (which_plans == 3) {
+  extern remove_money 4000
+  extern remove_from_inventory "LaserArray Defense Plans"
+  extern add_battle_skill "LaserArray"
+} else if (which_plans == 4) {
+  extern remove_money 8000
+  extern remove_from_inventory "Nuclear Arsenal Defense Plans"
+  extern add_battle_skill "Missile Barrage"
+}
+goto 99:0920
+
+#switch 99:930
+extern AI_ReleaseEntity democratus_handle
+console "forcecursormode 0"
+extern cam_anoxmariomode 0
+set timed_message = 20
+if (which_plans == 1)
+  got_object$="Tractorhold Battle Skill!" 
+if (which_plans == 2)
+  got_object$="StareDown Battle Skill!" 
+if (which_plans == 3)
+  got_object$="LaserArray Battle Skill!" 
+if (which_plans == 4)
+  got_object$="Missile Barrage Battle Skill!" 
+gosub 1000:1
+goto 0:0
+
+#switch 99:1001
+if ((func_charinparty[rho] == 3) && (cst == 1))
+  goto 99:1080
+if ((func_charinparty[rho] == 3) && (cst == 0))
+  goto 99:1030
+goto 99:1005
+
+#switch 99:1101
+set @NightMari1 = (@NightMari1 + 1)
+if (@NightMari1 > 1)
+  goto 99:1106
+goto 99:1105
+
+#switch 99:1201
+if ((scommonnight_got_ox == 0) && (RANDOM > 80))
+  goto 99:1210
+goto 99:1205
+
+#switch 99:1211
+set scommonnight_got_ox = 1
+extern addnew_to_inventory "OX Cartridge"
+got_object$="OX Cartridge" 
+set timed_message = 20
+gosub 1000:1
+goto 0:0
+
+#switch 99:1301
+if ((scommonnight_got_ox == 0) && (RANDOM > 80))
+  goto 99:1310
+goto 99:1305
+
+#switch 99:1311
+set scommonnight_got_ox = 1
+extern addnew_to_inventory "OX Cartridge"
+got_object$="OX Cartridge" 
+set timed_message = 20
+gosub 1000:1
+goto 0:0
+
+#switch 99:1401
+if ((scommonnight_got_ox == 0) && (RANDOM > 80))
+  goto 99:1410
+goto 99:1405
+
+#switch 99:1411
+set scommonnight_got_ox = 1
+extern addnew_to_inventory "OX Cartridge"
+got_object$="OX Cartridge" 
+set timed_message = 20
+gosub 1000:1
+goto 0:0
+
+#switch 99:1601
+set Domo1 = (Domo1 + 1)
+extern check_money @gold_suite
+if ((func_charinparty[democratus] == 2) || (func_charinparty[democratus] == 3))
+  goto 99:1640
+set @gold_suite = (@gold_suite + 1)
+if (Domo1 > 2)
+  goto 99:1615
+if (Domo1 > 1)
+  goto 99:1610
+goto 99:1605                                 
+
+#switch 99:1620
+if (Domo1 > 2)
+  goto 99:1635
+if (Domo1 > 1)
+  goto 99:1630
+goto 99:1625                                 
+
+#switch 66:6666
+extern add_quest "Need To Get TDD"
+extern add_quest "PAL Get TDD"
+
+#switch 66:6667
+extern complete_quest "PAL Get TDD"

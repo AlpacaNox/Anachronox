@@ -1,0 +1,87 @@
+#window 21:2000
+body "PLEASE remove this sequence number!"
+style "style_embrace"
+xpos 30
+ypos 30
+width 580
+
+#window 21:200
+title "Grumpos"
+body "What the hell is that?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 21:205
+title "Boots"
+body "Man, what a washout. I busted my knuckles for THIS?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 21:210
+title "Grumpos"
+body "It looks like it's made from mysterium... the same material MysTech is made from."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 21:215
+title "Grumpos"
+body "We've got to get this back to my lab immediately."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 21:1
+set CURRENT_PLANET = 1
+set CURRENT_BANK = 21
+extern loopambient ambi_mystech2
+extern remove_npc_from_party grumpos
+extern add_npc_to_party Grumpos
+extern set_party_leader grumpos
+extern remove_npc_from_party boots
+extern add_npc_to_party boots
+extern set_party_leader boots
+extern applylevelconfiguration mystech2
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .6 1 1
+BattleMusicOverride$="mp3/bricks/bricks_combat_2_0.mp3" 
+if (PLAY_MYSTECH2_INTRO) {
+  extern pauselevelmusic
+  extern playscene mystech2_intro
+} else
+  extern playlevelmusic mp3/bricks/bricks_normalug_2_0.mp3
+goto 0:0
+
+#switch 21:101
+if (INV_KEYSTONE)
+  goto 0:0
+set INV_KEYSTONE = 1
+extern addnew_to_inventory "Strange Stone"
+extern complete_quest "Explore The Tunnels"
+console "set storysave \"Detta's Stone|Detta and the Stone\""
+extern playscene mystech2_stone
+
+#switch 21:1000
+echo "LAUNCH A BOSS BATTLE!"
+BattleMusicOverride$="mp3/bricks/bricks_combat_5_0.mp3" 
+
+#switch 21:2001
+console "map mystech1 fromhole"

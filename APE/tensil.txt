@@ -1,0 +1,3881 @@
+#window 89:105
+title "Grand Chieftainess Hedela"
+body "Welcome to Tensil. We are the Shodei. This is our home."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0106
+
+#window 89:106
+title "Grand Chieftainess Hedela"
+body "You look lost, my sister. You are welcome to join our village if you do not have a family. We would embrace you as our own, my sister. Your ability to understand our language sets you apart from all the others who have wandered into our village."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0107
+
+#window 89:107
+title "Grand Chieftainess Hedela"
+body "If you do not feel you belong here, there is a town not far from here with humans like yourself. I would tell you the location... but knowledge requires trust, and I must trust you."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0108
+
+#window 89:108
+title "Grand Chieftainess Hedela"
+body "Leaves are important to us, my sister. They represent life... the cycle of seasons. The Shodei are a spiritual people. We chew the leaves that grow in this area to help us communicate with the spirits of our ancestors."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0109
+
+#window 89:109
+title "Grand Chieftainess Hedela"
+body "In autumn, some of the leaves grow amber... sometimes a small number of them resemble gold. These golden leaves are valuable to us."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0110
+
+#window 89:110
+title "Grand Chieftainess Hedela"
+body "If you collect one for each season of the year, and bring four of them back to me, I will tell your fortune, as well as provide the way to the nearest human village."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Know_Gold = 1
+}
+
+finishswitch {
+  extern add_quest "Rho Find Leaves"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:111
+title "Grand Chieftainess Hedela"
+body "Collect four golden leaves, one for each season of the year, and bring them back to me. I will tell you your fortune, as well as the location of the nearest human village."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:112
+title "Grand Chieftainess Hedela"
+body "I cannot tell your fortune with only one golden leaf, my sister. However, you have made good effort to collect them, so I will provide the remaining three leaves from my personal."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0115
+
+#window 89:113
+title "Grand Chieftainess Hedela"
+body "I cannot tell your fortune with only two golden leaves, my sister. However, you have made good effort to collect them, so I will provide the remaining two leaves."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0115
+
+#window 89:114
+title "Grand Chieftainess Hedela"
+body "I cannot tell your fortune with only three golden leaves, my sister. However, you have made good effort to collect them, so I will provide the remaining leaf."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0115
+
+#window 89:115
+title "Grand Chieftainess Hedela"
+body "We are ready to begin. Close your eyes, my sister."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0118
+
+#window 89:116
+title "Grand Chieftainess Hedela"
+body "Very good. You have collected four golden leaves as I have asked."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0115
+
+#window 89:118
+cam left to(1894 -1887 418) restore zip
+startswitch {
+  extern complete_quest "Rho Find Leaves"
+  extern remove_from_inventory "Gold Leaf" @Gold_Leaf
+  set @EyeslastMS = func_GameTime
+  set @EyescurrentMS = @lastMS
+}
+
+thinkswitch {
+  set @EyescurrentMS = func_GameTime
+  set @Eyesdelta = (@EyescurrentMS - @EyeslastMS)
+  if (@Eyesdelta < 1200)
+    goto 0:0
+  closewindow 89:0118
+}
+
+finishswitch {
+  extern letterbox 0 320 800
+  goto 89:0120
+}
+
+style "null"
+flags passive, TRUE
+
+#window 89:125
+title "Grand Chieftainess Hedela"
+body "Hold out your arm with the four leaves in your fist."
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0126
+
+#window 89:126
+title "Grand Chieftainess Hedela"
+body "Feel the collective energy of this world, and turn your focus inward."
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0128
+
+#window 89:128
+title "Grand Chieftainess Hedela"
+body "And let go."
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0129
+
+#window 89:129
+title "Grand Chieftainess Hedela"
+body "Now open your eyes"
+finishswitch {
+  if (@RhoInPlace == 1) {
+    goto 89:0130                                                                       
+  } else {
+    extern AI_ReleaseEntity PlayerChar0_handle
+    goto 89:0132
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:130
+thinkswitch {
+  if (@RhoInPlace == 0) {
+    extern AI_ReleaseEntity PlayerChar0_handle
+    gosub 89:0132
+    closewindow 89:0130
+  }
+}
+
+style "null"
+flags passive, TRUE
+
+#window 89:132
+cam right to(89:0101) restore zip
+startswitch {
+  set @EyeslastMS = func_GameTime
+  set @EyescurrentMS = @lastMS
+  extern letterbox 320 0 1000
+}
+
+thinkswitch {
+  set @EyescurrentMS = func_GameTime
+  set @Eyesdelta = (@EyescurrentMS - @EyeslastMS)
+  if (@Eyesdelta < 1500)
+    goto 0:0
+  closewindow 89:0132
+}
+
+finishswitch {
+  goto 89:0135
+}
+
+style "null"
+flags passive, TRUE
+
+#window 89:135
+title "Grand Chieftainess Hedela"
+body "Let us see how the leaves have fallen."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0138
+
+#window 89:138
+title "Grand Chieftainess Hedela"
+body "Interesting...."
+cam left from(1835 -1887 214) to(1835 -1886 150) fov(90) far(100) near(10) fwd(45) speed(100) lift(62) lag(100) occlude(yes) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0139
+
+#window 89:139
+title "Grand Chieftainess Hedela"
+if (LQ_Berry == 1)
+  body "You are an honest person. You do not allow your needs to override your conscience."
+if (LQ_Berry == 2)
+  body "You are sometimes dishonest if it fulfills your objectives, but are quick to correct your lapses in judgment."
+if (LQ_Berry == 3)
+  body "You are sometimes dishonest if it fulfills your objectives, but are quick to confess your lapses in judgment."
+if (LQ_Berry == 4)
+  body "You are sometimes dishonest if it fulfills your objectives. You must not allow your needs to override your conscience."
+talk npc talk_a stay
+startswitch {
+  if (LQ_Berry == 0)
+    gosub 89:0140
+  if (LQ_Berry == 0)
+    closewindow 89:0139
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0140
+
+#window 89:140
+title "Grand Chieftainess Hedela"
+if ((LQ_Bully == 1) && (ZQ_Berry > 2))
+  body "You are, however, a peaceful soul. Your calm nature and refusal to be easily provoked are admirable."
+if ((LQ_Bully == 1) && (ZQ_Berry < 4))
+  body "You are a peaceful soul. Your calm nature and refusal to be easily provoked are admirable."
+if ((LQ_Bully == 2) && (ZQ_Berry > 4))
+  body "You will, however, bully those weaker than you if it will get you what you want."
+if ((LQ_Bully == 2) && (ZQ_Berry > 2))
+  body "For example, you will bully those weaker than you if it will get you what you want."
+if ((LQ_Bully == 2) && (ZQ_Berry == 1))
+  body "You will bully those weaker than you, even though you feel sorry for your actions."
+talk npc talk_a stay
+startswitch {
+  if (LQ_Bully == 0)
+    gosub 89:0141
+  if (LQ_Bully == 0)
+    closewindow 89:0140
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0141
+
+#window 89:141
+title "Grand Chieftainess Hedela"
+if ((LQ_Pouch == 2) && (LQ_Bully > 1))
+  body "You also have no qualms about taking the belongings of others."
+if ((LQ_Pouch == 2) && (LQ_Bully < 2))
+  body "However, you also have no qualms about taking the belongings of others."
+if ((LQ_Pouch == 1) && (LQ_Bully < 2))
+  body "However, you are not opposed to taking that which is not yours. But, such impulses are generally fleeting, and your honest nature wins out in the end."
+if ((LQ_Pouch == 1) && (LQ_Bully > 1))
+  body "You are also not opposed to taking that which is not yours. But such impulses are generally fleeting, and your honest nature wins out in the end."
+talk npc talk_a stay
+startswitch {
+  if (LQ_Pouch == 0)
+    gosub 89:0142
+  if (LQ_Pouch == 0)
+    closewindow 89:0141
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0142
+
+#window 89:142
+title "Grand Chieftainess Hedela"
+if ((LQ_Garden < 3) && (LQ_Pouch > 1))
+  body "Yet in other ways, you deeply respect the needs of others. You have a very contradictory nature, my sister. I suspect you struggle daily with matters of the soul."
+if ((LQ_Garden == 3) && (LQ_Bully > 1))
+  body "You place your own needs before the needs of others. While this is natural, you must find a healthy balance between your interests and your generosity."
+if ((LQ_Garden == 3) && (LQ_Bully < 2))
+  body "Yet you place your own needs before the needs of others. While this is natural, you must find a healthy balance between your interests and your generosity."
+if ((LQ_Garden == 2) && (LQ_Pouch < 2))
+  body "You have found a healthy balance between your interests and your generosity."
+if ((LQ_Garden == 1) && (LQ_Pouch < 2))
+  body "You are selfless and do not put your needs above the interests of others."
+talk npc talk_a stay
+startswitch {
+  if (LQ_Garden == 0)
+    gosub 89:0145
+  if (LQ_Garden == 0)
+    closewindow 89:0142
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0145
+
+#window 89:145
+title "Grand Chieftainess Hedela"
+body "The leaves have spoken, my sister."
+cam right from(PlayerChar0) to(hedela) restore zip
+talk npc talk_a stay
+startswitch {
+  set LQ_Fortune = ((((LQ_Berry + LQ_Bully) + LQ_GARDEN) + LQ_POUCH) - LQ_RITE)
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0147
+
+#window 89:147
+title "Grand Chieftainess Hedela"
+body "The living of a life is a complicated matter, my sister. We are constantly presented with choices that run counter to our nature. "
+if (LQ_Fortune < 4)
+  body "You have a golden heart, my sister. Your capacity for selflessness and generosity is great. You are an admirable creature. It is without hesitation that I share with you the following information.... "
+if (LQ_Fortune > 7)
+  body "You act too hastily on your impulses, my sister. We must live our lives with the purpose of preventing suffering. It is only through compassion that we survive. "
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if ((LQ_Fortune > 3) && (0 < 8)) {
+    gosub 89:0148
+    closewindow 89:0147
+  }
+}
+
+finishswitch {
+  if (LQ_Fortune > 7)
+    goto 89:0148
+  if (LQ_Fortune < 4)
+    goto 89:0150
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:148
+title "Grand Chieftainess Hedela"
+body "Although you have frequent lapses in judgment, the leaves are quite clear in the matter. You have an honest nature and a golden soul. You must be more true to your character. It is only through self-will that you sabotage the generosity inside you."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0149
+
+#window 89:149
+title "Grand Chieftainess Hedela"
+body "The word of the leaves is as good as the word of our ancestors. And so I will not regret sharing the following information with you...."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0150
+
+#window 89:150
+title "Grand Chieftainess Hedela"
+body "The leaves tell us there is a drought coming. And when there is drought, there is famine. Many of us will die. Our only hope of surviving this hardship is to band together. But there is a problem..."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0151
+
+#window 89:151
+title "Grand Chieftainess Hedela"
+body "The youth of this village are losing touch with their sense of community. The fabric of our society is falling apart."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0152
+
+#window 89:152
+title "Grand Chieftainess Hedela"
+body "Many generations ago, there was similar discord building in the hearts of the youth, fueled by the demagogue Gorr who preached individuality over community."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0153
+
+#window 89:153
+title "Grand Chieftainess Hedela"
+body "The only thing that saved our society was the Shii-nei, an ancient relic of immense magic. We need this symbol to reunify us.. and in reunifying us, save us again."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0154
+
+#window 89:154
+title "Grand Chieftainess Hedela"
+body "Except the Shii-nei relic is hidden deep within the holiest of our temples, protected from thieves by a variety of lethal traps. Unfortunately, the method of circumventing the traps died with the builders of the temple many ages ago."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0155
+
+#window 89:155
+title "Grand Chieftainess Hedela"
+body "There is no one in the village who can be trusted to survive these trials... but I believe you have the intelligence, determination, and compassion to do it. Please... help me save my people."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern add_quest "Enter the Temple"
+  set HedelaConvo = 1
+  if (RamadanConvo >= 2) {
+    extern AI_GrabEntity ramadan ramadan_handle
+    extern AI_SetXYZ ramadan_handle 1479 -1535 170
+    extern AI_Path ramadan_handle ramadan01
+    extern AI_ReleaseEntity ramadan_handle
+    set RamadanBodua = 1
+  } else {
+    extern AI_SpawnEntity waban_handle npc_tmc waban 89:1001 wabanspawn
+    extern AI_SpawnEntity kiritan_handle npc_tma kiritan 89:1201 kiritanspawn
+    extern AI_GrabEntity ramadan ramadan_handle
+    extern AI_DestroyEntity ramadan_handle
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:156
+title "Grand Chieftainess Hedela"
+body "Please save my people. Find the Shiin-nei relic inside the Temple of Gharea and return it to me. Even if you are unable to find it, return to me, and I will give you the location of the nearest human settlement."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if ((LQ_Fortune < 4) && (RhoGotAnalyze2 == 0))
+    goto 89:0157
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:157
+title "Grand Chieftainess Hedela"
+body "One more thing before you leave.... Because of your pure spirit, I would like to bestow upon you this sacred relic of the Shodei.  This holy band is said to have helped our people brave the wrath of Gorr in the past."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern addnew_to_inventory "Tensil Tribalcell"
+  got_object$="Tensil Tribalcell" 
+  set timed_message = 20
+  gosub 1000:1
+  set RhoGotAnalyze2 = 31337
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:160
+title "Grand Chieftainess Hedela"
+body "Welcome back, my sister. I am relieved to see you are still alive. Were you successful in finding the Shiin-nei?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern is_equipped "Baneslaught" @liar
+  set Tensil_talk_to_hedela_after = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+if (@liar == 0)
+  choice "This what you're looking for?" 89:161
+choice "Sorry. I'm afraid not." 89:166
+
+#window 89:161
+title "Grand Chieftainess Hedela"
+body "My prayers have been answered. You are holding the holiest artifact of my people. It will remind the youth of this village that there is strength in unity... safety in community."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Tensil_Screwed_Shodei = 0
+  extern remove_from_inventory "Baneslaught"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0162
+
+#window 89:162
+title "Grand Chieftainess Hedela"
+body "Thank you, my sister. The Shodei are eternally grateful for your efforts. Take this map. It contains the location of the nearest human village."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0163
+
+#window 89:163
+title "Grand Chieftainess Hedela"
+body "May you find the family you seek."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set HedelaConvo = 2
+  extern complete_quest "Find Hedela"
+  extern add_quest "Leave Tensil"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:166
+title "Grand Chieftainess Hedela"
+body "Then this village will not survive the winter. My heart is sad. The Shiin-nei was the last chance for my people. Thank you for trying."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Tensil_Screwed_Shodei = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0167
+
+#window 89:167
+title "Grand Chieftainess Hedela"
+body "Take this map. It contains the location of the nearest human village. May you find the family you seek."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set HedelaConvo = 3
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:168
+title "Grand Chieftainess Hedela"
+body "Are you absolutely sure you did not find the Shiin-nei relic within the temple?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern is_equipped "Baneslaught" @liar
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "I'm very sorry. I didn't find it." 89:169
+if (@liar == 0)
+  choice "This what you're looking for?" 89:161
+
+#window 89:169
+title "Grand Chieftainess Hedela"
+body "Pity."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Tensil_Screwed_Shodei = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0170
+
+#window 89:170
+title "Grand Chieftainess Hedela"
+body "May you find the family you seek."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:205
+title "Gosheven"
+body "I have dedicated my life to raising the plants and flowers of this town."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0206
+
+#window 89:206
+title "Gosheven"
+body "The Ereteno shrub grows everywhere. It has three types of leaves: the green leaves of which there are many, the silver leaves of which there are fewer, and the golden leaves of which there are fewer still."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set GoshevenConvo = 1
+}
+
+finishswitch {
+  if (Know_Gold == 1)
+    goto 89:0207
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:207
+title "Gosheven"
+body "My plants are as dear to me as my own children. Each has its own unique personality... its own particular joy. The golden leaves especially are my pride and joy."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set LQ_Garden = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "May I have a golden leaf?" 89:208
+choice "May I have a silver leaf?" 89:210
+choice "Excuse me." 89:212
+
+#window 89:208
+title "Gosheven"
+body "Of course you may have a golden leaf."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0209
+
+#window 89:209
+title "Gosheven"
+body "Here you are, my sister. May it fill your heart with peace."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern addnew_to_inventory "Gold Leaf"
+  set LQ_Leaf = 3
+  set GoshevenConvo = 2
+}
+
+finishswitch {
+  set timed_message = 20
+  got_object$="A Gold Leaf" 
+  gosub 1000:1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:210
+title "Gosheven"
+body "Of course you may have a silver leaf."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0211
+
+#window 89:211
+title "Gosheven"
+body "Here you are, my sister. May it fill your heart with peace."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern addnew_to_inventory "Silver Leaf"
+  set LQ_Leaf = 2
+  set GoshevenConvo = 2
+}
+
+finishswitch {
+  set timed_message = 20
+  got_object$="A Silver Leaf" 
+  gosub 1000:1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:212
+title "Gosheven"
+body "May you find peace and belonging."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:305
+title "Lonato"
+body "Greetings, sister. May you find peace and guidance."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:310
+title "Lonato"
+body "I will exchange 1 golden leaf for 4 silver leaves. Would you like to make an exchange?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern is_quest_done "Get Silver Leaves" @boo
+  if (@boo == 0)
+    extern add_quest "Get Silver Leaves"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Yes." 89:311
+choice "No." 89:312
+
+#window 89:311
+title "Lonato"
+if (@Silver_Leaf <= 3)
+  body "You do not have enough silver leaves, my sister."
+if (@Silver_Leaf >= 4)
+  body "Here is your golden leaf. May you find peace and belonging."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (@Silver_Leaf >= 4) {
+    extern remove_from_inventory "Silver Leaf" 4
+    extern addnew_to_inventory "Gold Leaf"
+    set timed_message = 20
+    got_object$="A Gold Leaf" 
+    gosub 1000:1
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:312
+title "Lonato"
+body "May you find peace and belonging, my sister."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:405
+title "Patamon"
+body "The birds upset me. They eat the fruit behind my back."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:407
+title "Patamon"
+body "Please do not touch my belongings, my sister."
+cam left restore zip
+talk_ex patamon PlayerChar0 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:411
+startswitch {
+  set @StoleOneTime = 4
+  set @StoleBagStart_time = func_gametime
+  extern addnew_to_inventory "Gold Leaf"
+  set LQ_Pouch = 2
+  set @GotPatamonLeaf = 1
+  set timed_message = 20
+  got_object$="A Gold Leaf" 
+  gosub 1000:1
+}
+
+thinkswitch {
+  if (@StoleOneTime == 4) {
+    set @StoleBag = (func_gametime - @StoleBagStart_time)
+    if (@StoleBag > 15000) {
+      set @GotPatamonLeaf = 2
+      set @StoleOneTime = 0
+    }
+  } else
+    closewindow 89:0411
+}
+
+style "null"
+font "_anox10"
+flags passive, TRUE
+width 580
+
+#window 89:413
+title "Patamon"
+body "Someone stole a golden leaf from my pouch. Who in this village would steal from his own brother?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "I don't know. People are evil." 89:415
+choice "I must confess. I stole your leaf." 89:417
+
+#window 89:415
+title "Patamon"
+body "It was a gift from my wife. It represented our love.... "
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set PatamonConvo = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:417
+title "Patamon"
+body "You? Why would you take something that does not belong to you, my sister?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set LQ_Pouch = 1
+  extern remove_from_inventory "Gold Leaf"
+  set PatamonConvo = 2
+  set @GotPatamonLeaf = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:419
+title "Patamon"
+body "Thank you for returning my golden leaf."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:505
+title "Sakima"
+body "The marketplace is very busy today and my nephew is not here to help me."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:508
+title "Sakima"
+body "I am running low on ziffinberries. If you gather 12 of them for me, I will give you a golden leaf."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set LQ_Berry = 1
+  extern add_quest "Get Ziffinberries"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0515
+
+#window 89:515
+title "Sakima"
+body "This is very important. Ziffinberries must be ripe or they will make the stomach sick. They must not be eaten unless they are this color. Not lighter, not darker."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+height 200
+image "tensil/ripebery.tga" 476, 111
+nextwindow 89:0517
+
+#window 89:517
+title "Sakima"
+body "Hurry back now, sister. "
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set SakimaConvo = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:520
+title "Sakima"
+body "If you pick 12 ziffinberries that are this ripe color, I will give you a golden leaf."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:522
+title "Sakima"
+body "These are not enough ziffinberries. I need 12 ripe ziffinberries."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Okay, I'll be right back." 89:524
+choice "But I can't find anymore." 89:526
+
+#window 89:524
+title "Sakima"
+body "I will be waiting, my sister."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:526
+title "Sakima"
+body "Very well. %d ziffinberries is better than no ziffinberries. ", @ZBerryTotal
+body "Here is a silver leaf for your efforts. "
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern complete_quest "Get Ziffinberries"
+  extern is_in_inventory "Red Ziffinberry" @RipeAmount
+  extern remove_from_inventory "Red Ziffinberry" @RipeAmount
+  extern remove_from_inventory "Soaked Ziffinberry" @ZBerryFake
+  set @RipeAmount = 0
+  set @SoakedRemove = @ZBerryFake
+  extern addnew_to_inventory "Silver Leaf"
+  set ZQ_Berry = 1
+  set SakimaConvo = 2
+}
+
+finishswitch {
+  set timed_message = 20
+  got_object$="A Silver Leaf" 
+  gosub 1000:1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:528
+title "Sakima"
+body "These ziffinberries are beautiful. I am saved."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0530
+
+#window 89:530
+title "Sakima"
+body "Here is your golden leaf, my sister."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern complete_quest "Get Ziffinberries"
+  extern is_in_inventory "Red Ziffinberry" @RipeAmount
+  extern is_in_inventory "Soaked Ziffinberry" @SoakedAmount
+  set @SoakedRemove = (12 - @RipeAmount)
+  extern remove_from_inventory "Red Ziffinberry" @RipeAmount
+  extern remove_from_inventory "Soaked Ziffinberry" @SoakedRemove
+  set @RipeAmount = 0
+  set @SoakedAmount = 0
+  set @SoakedRemove = 0
+  extern addnew_to_inventory "Gold Leaf"
+  set GoldeS_Leaf = (Golden_Leaf + 1)
+  set ZQ_Berry = 4
+  set LQ_Berry = 4
+  set SakimaConvo = 2
+  set HanumanConvo = 2
+  extern AI_GrabEntity hanuman hanuman_handle
+  extern AI_GrabEntity wakanda wakanda_handle
+  extern entkey hanuman_handle "r" ".3"
+  extern entkey hanuman_handle "g" ".5"
+  extern entkey hanuman_handle "b" ".3"
+  extern entkey wakanda_handle "r" ".3"
+  extern entkey wakanda_handle "g" ".5"
+  extern entkey wakanda_handle "b" ".3"
+  extern AI_ReleaseEntity hanuman_handle
+  extern AI_ReleaseEntity wakanda_handle
+}
+
+finishswitch {
+  set timed_message = 20
+  got_object$="A Gold Leaf" 
+  gosub 1000:1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:532
+title "Sakima"
+body "Thank you for the ziffinberries."
+cam right restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+if (ZQ_Berry == 4)
+  choice "I have a confession to make." 89:534
+if (ZQ_Berry == 4)
+  choice "You're welcome." 0:0
+
+#window 89:534
+title "Sakima"
+body "Speak your heart, my sister."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Well... you know those berries I gathered for you?" 89:538
+choice "Never mind." 0:0
+
+#window 89:536
+title "Sakima"
+body "Yes. I ate one. It was delicious. What about them?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Uh, well, I dipped some of them in water." 89:538
+choice "Never mind." 0:0
+
+#window 89:538
+title "Sakima"
+body "Yes. I ate one. It was delicious. What about them?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Uh, well, I dipped some of them in water." 89:540
+choice "Never mind." 0:0
+
+#window 89:540
+title "Sakima"
+body "Yes, you must wash fruit before eating."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "They were unripe when I dipped them in water." 89:542
+choice "Okay, just checking." 0:0
+
+#window 89:542
+title "Sakima"
+body "You are joking to me."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "No joke. I gave you bad berries." 89:544
+choice "Yeah, just kidding." 89:548
+
+#window 89:544
+title "Sakima"
+body "Chewing on silver leaf cures stomach sickness. You must find the husband and wife who bought the berries and give them this silver leaf."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0546
+
+#window 89:546
+title "Sakima"
+body "I trust you to correct your mistake, my sister."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern add_quest "Cure Hanuman"
+  extern addnew_to_inventory "Silver Leaf"
+  set ZQ_Berry = 3
+  set LQ_Berry = 3
+  set SakimaConvo = 3
+}
+
+finishswitch {
+  set timed_message = 20
+  got_object$="A Silver Leaf" 
+  gosub 1000:1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:548
+title "Sakima"
+body "Do not joke about that, my sister. Not funny."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:550
+title "Sakima"
+body "You must find the husband and wife who bought the unripe berries and give them a silver leaf."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:552
+title "Sakima"
+body "You have done right, my sister."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:605
+title "Suruyo"
+body "I tricked my sister into eating a bad ziffinberry by dipping it into water. If it soaks long enough, the water will turn the berry a ripe color. She was sick for a day. She said Gorr was gonna get me."
+cam left lift(40) restore zip
+talk_ex suruyo PlayerChar0 talk_a amb_a stay stay
+startswitch {
+  set SuruyoConvo = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0607
+
+#window 89:607
+title "Suruyo"
+body "Try dipping ziffinberries in water to make them look ripe."
+cam left lift(40) restore zip
+talk_ex suruyo PlayerChar0 talk_a amb_a stay stay
+startswitch {
+  set SuruyoConvo = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:705
+title "Hanuman"
+body "What can I give you to show my love, wife?"
+cam left from(PlayerChar0) to(hanuman) restore zip
+talk_ex hanuman wakanda talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0805
+
+#window 89:708
+title "Hanuman"
+body "Those berries are not ripe, my wife. They will make your stomach sick."
+cam left from(PlayerChar0) to(hanuman) restore zip
+talk_ex hanuman wakanda talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0808
+
+#window 89:710
+title "Hanuman"
+body "I love you, wife."
+cam left from(PlayerChar0) to(hanuman) restore zip
+talk_ex hanuman wakanda talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:712
+title "Hanuman"
+body "Someone sold us bad berries. We are very sick."
+cam left from(PlayerChar0) to(hanuman) restore zip
+talk_ex hanuman PlayerChar0 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+if (SakimaConvo >= 3)
+  choice "Here, cure yourselves with this silver leaf." 89:714
+choice "Hope you feel better." 0:0
+
+#window 89:714
+title "Hanuman"
+body "You are very kind, my sister. Thank you."
+cam left from(PlayerChar0) to(hanuman) restore zip
+talk_ex hanuman PlayerChar0 talk_a amb_a stay stay
+startswitch {
+  extern remove_from_inventory "Silver Leaf"
+  set ZQ_BERRY = 2
+  set LQ_Berry = 2
+  set SakimaConvo = 4
+  set HanumanConvo = 3
+  extern complete_quest "Cure Hanuman"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:716
+title "Hanuman"
+body "We already feel better, my sister. Thank you."
+cam left from(PlayerChar0) to(hanuman) restore zip
+talk_ex hanuman PlayerChar0 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:805
+title "Wakanda"
+body "Pick me berries, my husband."
+cam left from(PlayerChar0) to(wakanda) restore zip
+talk_ex wakanda hanuman talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0708
+
+#window 89:808
+title "Wakanda"
+body "Then buy me berries at the market place."
+cam left from(PlayerChar0) to(wakanda) restore zip
+talk_ex wakanda hanuman talk_a amb_a stay stay
+startswitch {
+  set HanumanConvo = 1
+  set WakandaConvo = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:810
+title "Wakanda"
+body "I love you, husband."
+cam left from(PlayerChar0) to(wakanda) restore zip
+talk_ex wakanda hanuman talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:812
+title "Wakanda"
+body "I think the berries were unripe. We are very sick."
+cam left from(PlayerChar0) to(wakanda) restore zip
+talk_ex wakanda PlayerChar0 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+if (SakimaConvo >= 3)
+  choice "Here, cure yourselves with this silver leaf." 89:814
+choice "Hope you feel better." 0:0
+
+#window 89:814
+title "Wakanda"
+body "You are very kind, my sister. Thank you."
+cam left from(PlayerChar0) to(wakanda) restore zip
+talk_ex wakanda PlayerChar0 talk_a amb_a stay stay
+startswitch {
+  extern remove_from_inventory "Silver Leaf"
+  set ZQ_BERRY = 2
+  set LQ_Berry = 2
+  set SakimaConvo = 4
+  set HanumanConvo = 3
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:816
+title "Wakanda"
+body "We already feel better, my sister. Thank you."
+cam left from(PlayerChar0) to(wakanda) restore zip
+talk_ex wakanda PlayerChar0 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:905
+title "Ramadan"
+body "This is my rite of passage. I am very hungry. I have not eaten for two days. I must stay here until I commune with the spirit of an ancient ancestor who will give me my adult name. I will not be accepted into the village as an adult until this happens."
+cam left lift(40) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0908
+
+#window 89:908
+title "Ramadan"
+body "I have already chewed a silver leaf to help in the process, but nothing has happened. I fear that a spirit will never come for me and give me a name."
+cam left lift(40) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0910
+
+#window 89:910
+title "Ramadan"
+body "I will either die here, or be forced to leave the village."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  set RamadanConvo = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+if (@Gold_Leaf > 0)
+  choice "Will it help if I give you a golden leaf?" 89:914
+if (@Silver_Leaf > 0)
+  choice "Will it help if I give you a silver leaf?" 89:916
+if ((@Gold_Leaf > 0) || (@Silver_Leaf > 0))
+  choice "Well, good luck." 0:0
+
+#window 89:912
+title "Ramadan"
+body "Will a spirit ever come to give me a name?"
+cam left lift(40) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+if (@Gold_Leaf > 0)
+  choice "Will it help if I give you a golden leaf?" 89:914
+if (@Silver_Leaf > 0)
+  choice "Will it help if I give you a silver leaf?" 89:916
+if ((@Gold_Leaf > 0) || (@Silver_Leaf > 0))
+  choice "Well, good luck." 0:0
+
+#window 89:914
+title "Ramadan"
+body "You are kind and generous. If I chew a golden leaf, a spirit will surely come and give me a name. Thank you so much."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  extern remove_from_inventory "Golden Leaf"
+  set RamadanConvo = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:916
+title "Ramadan"
+body "You are kind and generous. If I chew another silver leaf, a spirit will surely come and give me a name. Thank you so much."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  extern remove_from_inventory "Silver Leaf"
+  set RamadanConvo = 2
+  set LQ_Rite = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:918
+title "Ramadan"
+body "Excuse me... I'm chewing the leaf you gave me. It's very good. I think I'll have no problems communing."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  set RamadanConvo = 3
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:920
+title "Ramadan"
+body "Yes... yes... I think I'm feeling something."
+cam left lift(40) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0922
+
+#window 89:922
+title "Ramadan"
+body "I'm very grateful for the leaf... but I don't think the spirit will come unless I am alone."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  set RamadanConvo = 4
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:935
+title "Ramadan"
+body "It was the spirit of my grandfather. He told me my adult name is 'Bodua'"
+cam left lift(40) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:0938
+
+#window 89:938
+title "Bodua"
+body "Thank you for helping me. I am an adult because of you."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  set RamadanConvo = 5
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:1005
+title "Waban"
+body "I am sick with worry. My son has run away from the village. The rite of passage is difficult for everyone. He should have waited for the spirits to give him his adult name. The ancestors would not have let him down. They always come."
+cam left from(PlayerChar0) to(waban) restore zip
+talk npc talk_a stay
+startswitch {
+  set WabanConvo = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:1008
+
+#window 89:1008
+title "Waban"
+body "We must organize a search party. Oh, my son... "
+cam left from(PlayerChar0) to(waban) restore zip
+talk_ex waban kiritan talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:1205
+title "Kiritan"
+body "I am sure Ramadan will spend one night in the cold wilderness and change his mind. We will see him by morning. I am sure of it."
+cam left from(PlayerChar0) to(kiritan) restore zip
+talk_ex kiritan waban talk_a amb_a stay stay
+startswitch {
+  set KiritanConvo = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:1208
+
+#window 89:1208
+title "Kiritan"
+body "Ramadan will return by morning. Do not worry."
+cam left from(PlayerChar0) to(kiritan) restore zip
+talk_ex kiritan waban talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:1305
+title "Iniko"
+body "You must be the one looking for golden leaves."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:1308
+
+#window 89:1308
+title "Iniko"
+body "I have a golden leaf. I have lots of golden leaves. Why should I give you one?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set LQ_Bully = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "I want to have my fortune told." 89:1310
+choice "I won't beat you to a pulp if you give me the leaf." 89:1322
+choice "Talking to you isn't worth the leaf. I'll find another one." 89:1348
+choice "Forget it." 89:1354
+
+#window 89:1310
+title "Iniko"
+body "Fortunes are for superstitious old women. Give me a better reason."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Recep1 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "I'll perform some arbitrary task for the leaf." 89:1312
+if (Agres1 == 1)
+  choice "I won't beat you to a pulp if you give me the leaf." 89:1322
+if (Agres1 == 3)
+  choice "I don't care, kid. Give me the leaf or I'll hit you." 89:1328
+if (Indif1 == 1)
+  choice "Talking to you isn't worth the leaf. I'll find another one." 89:1348
+if (Indif1 == 2)
+  choice "You're trying to get a rise out of me... but it won't work." 89:1354
+choice "Forget it." 89:1354
+
+#window 89:1312
+title "Iniko"
+body "There's nothing you can do that I can't do myself. Give me a better reason."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Recep1 = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "I'll trade you something for the leaf instead." 89:1314
+if (Agres1 == 1)
+  choice "I won't beat you to a pulp if you give me the leaf." 89:1322
+if (Agres1 == 3)
+  choice "I don't care, kid. Give me the leaf or I'll hit you." 89:1328
+if (Indif1 == 1)
+  choice "Talking to you isn't worth the leaf. I'll find another one." 89:1348
+if (Indif1 == 2)
+  choice "You're trying to get a rise out of me... but it won't work." 89:1354
+choice "Forget it." 89:1354
+
+#window 89:1314
+title "Iniko"
+body "There's nothing you have that I want. Give me a better reason."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+if (Agres1 == 1)
+  choice "I won't beat you to a pulp if you give me the leaf." 89:1322
+if (Agres1 == 3)
+  choice "I don't care, kid. Give me the leaf or I'll hit you." 89:1328
+if (Indif1 == 1)
+  choice "Talking to you isn't worth the leaf. I'll find another one." 89:1348
+if (Indif1 == 2)
+  choice "You're trying to get a rise out of me... but it won't work." 89:1354
+choice "Forget it." 89:1354
+
+#window 89:1316
+title "Iniko"
+body "'Holy gizanu' is a torture ritual performed against those who have acted violently against the Shodei. No one allowed to raise their hand against us, even one of our own."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:1318
+
+#window 89:1318
+title "Iniko"
+body "It involves a ball of leaves the size of a fist fruit, packed tight with thorns and sharp zipple sticks. It is soaked in the juice of fire lemon for forty-eight days. Handling the ball is very painful."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:1320
+
+#window 89:1320
+title "Iniko"
+body "Guess where the villagers shove this ball."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Agres1 = 3
+  set Recep1 = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "I'll trade you something for the leaf instead." 89:1314
+choice "I don't care, kid. Give me the leaf or I'll hit you." 89:1328
+if (Indif1 == 1)
+  choice "Talking to you isn't worth the leaf. I'll find another one." 89:1348
+if (Indif1 == 2)
+  choice "You're trying to get a rise out of me... but it won't work." 89:1354
+choice "Forget it." 89:1354
+
+#window 89:1322
+title "Iniko"
+body "You're not going to hit me. You're a stranger in this village. If anyone sees you do it, they will perform 'holy gizanu'  on you."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Agres1 = 3
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "What's 'holy gizanu'?" 89:1316
+choice "That's nothing compared to what I'm gonna do to you." 89:1328
+if (Indif1 == 1)
+  choice "Talking to you isn't worth the leaf. I'll find another one." 89:1348
+if (Indif1 == 1)
+  choice "You're trying to get a rise out of me... but it won't work." 89:1354
+choice "Forget it." 89:1354
+
+#window 89:1328
+title "Iniko"
+body "Then hit me. I dare you."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Agres1 = 3
+  set Recep1 = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "I'll trade you something for the leaf instead." 89:1314
+choice "You asked for it. Here it comes." 89:1330
+if (Indif1 == 1)
+  choice "Talking to you isn't worth the leaf. I'll find another one." 89:1348
+if (Indif1 == 1)
+  choice "You're trying to get a rise out of me... but it won't work." 89:1354
+choice "Forget it." 89:1354
+
+#window 89:1342
+title "Iniko"
+body "No, wait! I don't even have a golden leaf!"
+cam left restore zip
+talk_ex iniko PlayerChar0 talk_a amb_a stay stay
+startswitch {
+  set @Iniko_Chase = 0
+  extern AI_ReleaseEntity PlayerChar0_handle
+  extern AI_ReleaseEntity iniko_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:1344
+
+#window 89:1344
+title "Iniko"
+body "Here, take my silver leaf and leave me alone!"
+cam left restore zip
+talk_ex iniko PlayerChar0 talk_a amb_a stay stay
+startswitch {
+  extern addnew_to_inventory "Silver Leaf"
+  set LQ_Bully = 2
+  set InikoConvo = 1
+}
+
+finishswitch {
+  set timed_message = 20
+  got_object$="A Silver Leaf" 
+  gosub 1000:1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:1346
+title "Iniko"
+body "Leave me alone!"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:1348
+title "Iniko"
+body "The Shodei have a word for someone like you. You're a Kono-gerai. You don't belong here. You don't belong anywhere. No one will accept you. You are without worth."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Indif1 = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+if (Recep1 == 1)
+  choice "I'll perform some arbitrary task for the leaf." 89:1312
+if (Recep1 == 2)
+  choice "I'll trade you something for the leaf instead." 89:1314
+if (Agres1 == 1)
+  choice "I won't beat you to a pulp if you give me the leaf." 89:1322
+if (Agres1 == 3)
+  choice "I don't care, kid. Give me the leaf or I'll hit you." 89:1328
+if (Indif1 == 2)
+  choice "You're trying to get a rise out of me... but it won't work." 89:1354
+choice "Forget it." 89:1354
+
+#window 89:1354
+title "Iniko"
+body "Guess you're not getting this golden leaf from me...."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set InikoConvo = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:1356
+title "Iniko"
+body "You're not getting my golden leaf unless you give me a good reason."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+if (Recep1 == 1)
+  choice "I'll perform some arbitrary task for the leaf." 89:1312
+if (Recep1 == 2)
+  choice "I'll trade you something for the leaf instead." 89:1314
+if (Agres1 == 1)
+  choice "I won't beat you to a pulp if you give me the leaf." 89:1322
+if (Agres1 == 3)
+  choice "I don't care, kid. Give me the leaf or I'll hit you." 89:1328
+if (Indif1 == 1)
+  choice "Talking to you isn't worth the leaf. I'll find another one." 89:1348
+if (Indif1 == 2)
+  choice "You're trying to get a rise out of me... but it won't work." 89:1354
+choice "Forget it." 89:1354
+
+#window 89:1503
+cam right from(-2672 -1869 65) to(zbush1) fov(90) far(64) near(30) fwd(40) speed(500) lift(0) lag(500) occlude(no) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 PlayerChar0_handle
+  extern AI_GrabEntity zbush1 zbush1_handle
+  extern entkey zbush1_handle "sequence" ""
+  extern CreateAPE2DControl push ZBBack 525 420 width=100 height=24 normal=/graphics/interface/mainmenu/mm_backbutt.pcx bright=/graphics/interface/mainmenu/mm_backbutt_h.pcx gamevar=@CrasinsAndLoomis returnvalue=1 sequence=89:1504
+}
+
+finishswitch {
+  extern AI_ReleaseEntity PlayerChar0_handle
+  extern entkey zbush1_handle "sequence" "89:1501"
+  extern AI_ReleaseEntity zbush1_handle
+  extern RemoveAPE2DControl ZBBack
+  if (((((@zbush1ripe1 == 0) && (@zbush1ripe2 == 0)) && (@zbush1ripe3 == 0)) && (@zbush1pale1 == 0)) && (@zbush1pale2 == 0))
+    set zbush1done = 1
+  if (@zbush1ripe1 == 1)
+    extern AI_DestroyEntity rb01_handle
+  if (@zbush1ripe2 == 1)
+    extern AI_DestroyEntity rb02_handle
+  if (@zbush1ripe3 == 1)
+    extern AI_DestroyEntity rb03_handle
+  if (@zbush1pale1 == 1)
+    extern AI_DestroyEntity pb01_handle
+  if (@zbush1pale2 == 1)
+    extern AI_DestroyEntity pb02_handle
+}
+
+style "null"
+flags passive, TRUE
+
+#window 89:1504
+cam left restore zip
+startswitch {
+  closewindow 89:1503
+}
+
+thinkswitch {
+  closewindow 89:1504
+}
+
+style "null"
+flags passive, TRUE
+
+#window 89:1553
+cam right from(-112 -1789 175) to(zbush2) fov(90) far(64) near(30) fwd(40) speed(500) lift(0) lag(500) occlude(no) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 PlayerChar0_handle
+  extern AI_GrabEntity zbush2 zbush2_handle
+  extern entkey zbush2_handle "sequence" ""
+  extern CreateAPE2DControl push ZBBack 525 420 width=100 height=24 normal=/graphics/interface/mainmenu/mm_backbutt.pcx bright=/graphics/interface/mainmenu/mm_backbutt_h.pcx gamevar=@CrasinsAndLoomis returnvalue=1 sequence=89:1554
+}
+
+finishswitch {
+  extern AI_ReleaseEntity PlayerChar0_handle
+  extern entkey zbush2_handle "sequence" "89:1551"
+  extern AI_ReleaseEntity zbush2_handle
+  extern RemoveAPE2DControl ZBBack
+  if ((((@zbush2ripe1 == 0) && (@zbush2ripe2 == 0)) && (@zbush2pale1 == 0)) && (@zbush2pale2 == 0))
+    set zbush2done = 1
+  if (@zbush2ripe1 == 1)
+    extern AI_DestroyEntity rb21_handle
+  if (@zbush2ripe2 == 1)
+    extern AI_DestroyEntity rb22_handle
+  if (@zbush2pale1 == 1)
+    extern AI_DestroyEntity pb21_handle
+  if (@zbush2pale2 == 1)
+    extern AI_DestroyEntity pb22_handle
+  if ((zbush2done == 1) && (SuruyoConvo == 0))
+    goto 89:0605
+}
+
+style "null"
+flags passive, TRUE
+
+#window 89:1554
+cam left restore zip
+startswitch {
+  closewindow 89:1553
+}
+
+thinkswitch {
+  closewindow 89:1554
+}
+
+style "null"
+flags passive, TRUE
+
+#window 89:1603
+cam right from(2629 -85 154) to(zbush3) fov(90) far(64) near(30) fwd(40) speed(500) lift(0) lag(500) occlude(no) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 PlayerChar0_handle
+  extern AI_GrabEntity zbush3 zbush3_handle
+  extern entkey zbush3_handle "sequence" ""
+  extern CreateAPE2DControl push ZBBack 525 420 width=100 height=24 normal=/graphics/interface/mainmenu/mm_backbutt.pcx bright=/graphics/interface/mainmenu/mm_backbutt_h.pcx gamevar=@CrasinsAndLoomis returnvalue=1 sequence=89:1604
+}
+
+finishswitch {
+  extern AI_ReleaseEntity PlayerChar0_handle
+  extern entkey zbush3_handle "sequence" "89:1601"
+  extern AI_ReleaseEntity zbush3_handle
+  extern RemoveAPE2DControl ZBBack
+  if (((((@zbush3ripe1 == 0) && (@zbush3ripe2 == 0)) && (@zbush3ripe3 == 0)) && (@zbush3ripe4 == 0)) && (@zbush3pale1 == 0))
+    set zbush3done = 1
+}
+
+style "null"
+flags passive, TRUE
+
+#window 89:1604
+cam left restore zip
+startswitch {
+  closewindow 89:1603
+}
+
+thinkswitch {
+  closewindow 89:1604
+}
+
+style "null"
+flags passive, TRUE
+
+#window 89:1655
+title "Rho"
+body "There's a golden leaf in here. Should I take it?"
+startswitch {
+  set @RhosABigThief = 1
+}
+
+finishswitch {
+  set @RhosABigThief = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Yes." 89:411
+choice "No." 0:0
+
+#window 89:1657
+title "Rho"
+body "There is nothing in the pouch."
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:1685
+title "Rho"
+body "There's something in the pouch. Should I take it?"
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Yes." 89:1687
+choice "No." 0:0
+
+#window 89:1687
+title "Rho"
+if (@pouchrandom == 1)
+  body "There was a Bag o' Glodents inside"
+if (@pouchrandom == 2)
+  body "There was a HealGrease Complete inside"
+startswitch {
+  set @pouchrandom = func_drand[1,2]
+  if (@pouchrandom == 1)
+    extern addnew_to_inventory "Bag o' Glodents"
+  if (@pouchrandom == 2)
+    extern addnew_to_inventory "HealGrease Complete"
+}
+
+finishswitch {
+  set TensilPouch1Empty = 1
+  set @pouchrandom = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:1689
+title "Rho"
+body "There is nothing in the pouch"
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:1709
+startswitch {
+  extern cam_anoxmariomode 1
+  extern cam_set cam_yaw 82
+  extern cam_set cam_lift 42
+  extern cam_set fardist 122
+  if (@RhoWater1Dis < @RhoWater2Dis) {
+    extern AI_SeekAndFace PlayerChar0_handle rhowater1 waterface
+    extern AI_SetCompletionCallback PlayerChar0_handle 89:1710
+  }
+  if (@RhoWater1Dis > @RhoWater2Dis) {
+    extern AI_SeekAndFace PlayerChar0_handle rhowater2 waterface
+    extern AI_SetCompletionCallback PlayerChar0_handle 89:1710
+  }
+}
+
+style "null"
+flags passive, TRUE
+
+#window 89:1716
+startswitch {
+  set @RhoWaterTime = func_gametime
+}
+
+thinkswitch {
+  if (func_gametime > (@RhoWaterTime + 2250)) {
+    gosub 89:1717
+    closewindow 89:1716
+  }
+}
+
+style "NULL"
+flags passive, TRUE
+
+#window 89:1730
+title "Rho"
+body "What should I do?"
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Take a drink." 89:1732
+if (SuruyoConvo == 2)
+  choice "Soak a ziffinberry." 89:1734
+choice "Nevermind." 0:0
+
+#window 89:1801
+title "Kotoko"
+body "You look lost. Friends are welcome in Tensil. Please come in. The Chieftainess Hedela can give you guidance."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:1905
+title "Jesehiko"
+body "We do not worship a god. We worship kinship and spirituality. We worship our ancestors. The spirits of our elders visit us every day."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set @Jesehiko_Convo = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:1910
+
+#window 89:1910
+title "Jesehiko"
+body "May you find peace in our village, my sister."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:2001
+title "Kojahe"
+body "Love, communion, and belonging. These are the ways of the Shodei."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:2101
+title "Nomona"
+body "You must not tell your sister, but if I find the courage, I will ask her to join me for the Festival of Fire."
+cam left from(PlayerChar0) to(89:2101) restore zip
+talk_ex 89:2101 89:2201 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:2201
+title "Cucochuva"
+body "I think Towaka suspects. You drop the water jugs every time you talk to her."
+cam left from(PlayerChar0) to(89:2201) restore zip
+talk_ex 89:2101 89:2201 amb_a talk_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:2501
+title "Petoko"
+body "Beware Gorr, the great destroyer. He threatens community. He threatens love."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:2605
+title "Tahobina"
+body "Please, you must leave your abode today. Come out into the sun, Sasidaga."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity 89:2601 tahobina_handle
+  extern ANIM_PlayAnim tahobina_handle talk_a 0 1 0
+  extern AI_WaitAndFace tahobina_handle -1 snatch_face
+}
+
+finishswitch {
+  extern AI_ReleaseEntity tahobina_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:2610
+
+#window 89:2610
+title "Tahobina"
+body "Sasidaga is mourning the death of his mother."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern AI_WaitAndFace tahobina_handle -1 PlayerChar0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:2615
+
+#window 89:2615
+title "Tahobina"
+body "Please, Sasidaga. The mourning is over. You must rejoin the village now."
+cam left restore zip
+startswitch {
+  extern AI_WaitAndFace tahobina_handle -1 snatch_face
+  extern ANIM_PlayAnim tahobina_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:2620
+
+#window 89:2620
+title "Tahobina"
+body "He will not listen."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set @Tahobina_Convo = 1
+  extern AI_WaitAndFace tahobina_handle -1 PlayerChar0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity tahobina_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:2701
+title "Mohita"
+body "Golden leaves are more potent than regular leaves when communing with the spirits. That is why they are of such value to us."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:2805
+title "Dokopi"
+body "I have thoughts of leaving the village. Sometimes I feel they do not understand me... that they will never understand me."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:2810
+
+#window 89:2810
+title "Dokopi"
+body "You're not part of the village. Do you understand me?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Tensil_DokopiConvo = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:2815
+title "Dokopi"
+body "It must feel good not to belong anywhere. You must feel free."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:2905
+title "Yanopi"
+body "Our people have a story about a boy named Gahopeko. He didn't feel a part of his family. He felt different from everyone in the town, so he abandoned his home."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:2910
+
+#window 89:2910
+title "Yanopi"
+body "In the wilderness, only Gorr welcomed him with open arms. Misfortune upon misfortune plagued him. The winds stripped him of his compassion and love. Only a small pebble of bone was left of him, which was eaten by a fish."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:2915
+
+#window 89:2915
+title "Yanopi"
+body "The greatest tragedy was that the difference between Gahopeko and the people of his town was only in his mind. We all feel somehow that we are different."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:2920
+
+#window 89:2920
+title "Yanopi"
+body "We ARE different. But that is why the Shodei embrace each other. It is how we have survived war, famine, and all manner of disaster."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:2925
+
+#window 89:2925
+title "Yanopi"
+body "Simplicity, community, and love."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Tensil_YanopiConvo = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:2930
+title "Yanopi"
+body "Learn from Gahopeko. May you find peace."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Tensil_YanopiConvo = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:2935
+title "Yanopi"
+body "And I would not suggest drinking from this well."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:3005
+title "Mohana"
+body "Last night, the spirit of my father came to me. He told me to prepare for a harsh winter. But Chieftainess Hedela has spoken nothing of this."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:3010
+
+#window 89:3010
+title "Mohana"
+body "What troubles has Gorr breathed into the air?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:3105
+title "Godapi"
+body "It was an accident. The necklace snagged on a branch and the thread snapped. Some of the beads rolled away."
+cam left from(PlayerChar0) to(89:3101) restore zip
+talk_ex 89:3101 89:3201 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:3205
+title "Wajoteda"
+body "Each bead took me several moons to produce. Though each one was a beautiful, individual stone, they worked best when strung together. How could you have broken the thread and lost some?"
+cam left from(PlayerChar0) to(89:3201) restore zip
+talk_ex 89:3101 89:3201 amb_a talk_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:3305
+title "Kechiki"
+body "To the sun that warms the fields."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity 89:3301 Kechiki_handle
+  extern ANIM_PlayAnim Kechiki_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity Kechiki_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:3310
+
+#window 89:3310
+title "Kechiki"
+body "To the wheel that turns the water."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity 89:3301 Kechiki_handle
+  extern ANIM_PlayAnim Kechiki_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity Kechiki_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:3315
+
+#window 89:3315
+title "Kechiki"
+body "To the eye that sees the visions."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity 89:3301 Kechiki_handle
+  extern ANIM_PlayAnim Kechiki_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity Kechiki_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:3320
+
+#window 89:3320
+title "Kechiki"
+body "To the hand that strings the beads."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity 89:3301 Kechiki_handle
+  extern ANIM_PlayAnim Kechiki_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity Kechiki_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:3325
+
+#window 89:3325
+title "Kechiki"
+body "To the star that guides our ancestors."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity 89:3301 Kechiki_handle
+  extern ANIM_PlayAnim Kechiki_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity Kechiki_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:3330
+
+#window 89:3330
+title "Kechiki"
+body "To the moon that watches over night."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity 89:3301 Kechiki_handle
+  extern ANIM_PlayAnim Kechiki_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity Kechiki_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:3335
+
+#window 89:3335
+title "Kechiki"
+body "Peace guide you."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity 89:3301 Kechiki_handle
+  extern ANIM_PlayAnim Kechiki_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity Kechiki_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:3405
+title "Tahowi"
+body "Lunar field on summer's night. Ghosts upon ghosts upon harvest thoughts. Kindred tribe, our love is a healing shrub, for the village, for the future, for the ancestors to come."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity 89:3401 Tahowi_handle
+  extern ANIM_PlayAnim Tahowi_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity Tahowi_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:3505
+title "Nejita"
+body "Summer's love, fall of autumn. Ancestral drums play by spectral hands. Eye upon star, hand upon wheel, sun upon moon. Listen, mother. Listen, father."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity 89:3501 Nejita_handle
+  extern ANIM_PlayAnim Nejita_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity Nejita_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:3605
+title "Yadoka"
+body "If it is your decision to leave the village, you must tell the family. I will not do it, my son."
+cam left from(PlayerChar0) to(89:3601) restore zip
+talk_ex 89:3601 89:3701 talk_a amb_a stay stay
+startswitch {
+  set Tensil_YadokaConvo = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:3610
+title "Yadoka"
+body "Resist the temptations of Gorr. Be safe, and know the village is always here for you."
+cam left from(PlayerChar0) to(89:3601) restore zip
+talk_ex 89:3601 89:3701 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:3705
+title "Pijoga"
+body "You have taught me all I should know. You have given me all I should have."
+cam left from(PlayerChar0) to(89:3701) restore zip
+talk_ex 89:3701 89:3601 talk_a amb_a stay stay
+startswitch {
+  set Tensil_PijogaConvo = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:3710
+title "Pijoga"
+body "I must see what there is of the world. I will come back with my stories and grow old here. I promise."
+cam left from(PlayerChar0) to(89:3701) restore zip
+talk_ex 89:3701 89:3601 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:3905
+title "Ketewota"
+body "Summer's love, fall of autumn. Ancestral drums play by spectral hands. Eye upon star, hand upon wheel, sun upon moon. Listen, mother. Listen, father."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity 89:3901 Ketewota_handle
+  extern ANIM_PlayAnim Ketewota_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity Ketewota_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:4005
+title "Kukigoka"
+body "Has the Gorr possessed you? You are part of the community. Without it, you are nothing."
+cam left from(PlayerChar0) to(89:4001) restore zip
+talk_ex 89:4001 89:4101 talk_a amb_a stay stay
+startswitch {
+  set Tensil_KukigokaConvo = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:4006
+
+#window 89:4010
+title "Kukigoka"
+body "Your share of the village work is waiting for you. Do not be foolish, my daughter."
+cam left from(PlayerChar0) to(89:4001) restore zip
+talk_ex 89:4001 89:4101 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:4105
+title "Denoda"
+body "All leaves fall from the tree when the time comes. Why must I be trapped on this rotting stump?"
+cam left from(PlayerChar0) to(89:4101) restore zip
+talk_ex 89:4101 89:4001 talk_a amb_a stay stay
+startswitch {
+  set Tensil_DenodaConvo = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:4205
+title "Jikona"
+body "The Grand Chieftainess Hedela can be found in the shadow corner of the Temple of Wonder."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:4305
+title "Gajona"
+body "We each ingested a golden leaf. We're already feeling the effects."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:4310
+
+#window 89:4310
+title "Gajona"
+body "I see much in you, sister. You have a restless spirit. You feel you do not belong anywhere, yet you crave the security of acceptance. May you find peace."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:4405
+title "Tetekika"
+body "You will either find love and acceptance where you choose to find it... or you will forever wander without peace."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:4505
+title "Kaweka"
+body "Oh, Temple of Gharea. Gorr tells us lies. Gorr tells us truths. Gorr is the unbalance, the eternal ache, the disease of soul. Gorr is poison, Gorr is poison. My family is deliverance."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity 89:4501 Kaweka_handle
+  extern ANIM_PlayAnim Kaweka_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity Kaweka_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:4605
+title "Wanaha"
+body "Temple of Gharea, in the blaze of the sun, I call on your moon, I call on your hearth. Gorr turns the wheel, and the stars run in step. Hand upon eye when sun blinds the moon. Three become one. One becomes all."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity 89:4601 Wanaha_handle
+  extern ANIM_PlayAnim Wanaha_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity Wanaha_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:6001
+title "Rho Bowman"
+body "I think I'm definitely all through exploring the Temple."
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 89:6005
+title "Rho Bowman"
+if (HedelaConvo == 0)
+  body "I'd rather not barge into a place of worship without permission."
+if (HedelaConvo > 0)
+  body "I'm not ready yet."
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 89:4006
+
+#window 89:6010
+title "Rho Bowman"
+body "Enter the Temple of Gorr?"
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Yes" 89:6015
+choice "No" 89:6005
+
+#window 89:9000
+title "Hinotega"
+body "I am the guard of the Temple. "
+if (@canshe == 0)
+  body "Hedela has charged me with protecting the entrance. You may not pass."
+if (@canshe == 2)
+  body "You have returned. You are fortunate."
+if (@canshe == 1)
+  body "I have word you are willing to find what was lost."
+cam left restore zip
+talk_ex 89:8000 PlayerChar0 talk_a amb_a stay stay
+startswitch {
+  extern is_quest_done "Enter the Temple" @canshe
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+if (@canshe == 1)
+  choice "I'm ready to enter the temple." 89:9010
+choice "Thanks for the information. Bye." 0:0
+
+#window 89:9010
+title "Hinotega"
+body "Very well. May fortune keep you alive for more than a few minutes."
+finishswitch {
+  console "map temple"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#switch 89:1
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+extern playlevelmusic mp3/tensil/tensiltheme.mp3
+extern loopambient tensil/bird001 0 0:0 null null 0 0 false false
+set CURRENT_PLANET = 8
+set CURRENT_BANK = 89
+extern applylevelconfiguration tensil
+extern add_quest "Find Party"
+extern loopambient ambi_tensil
+set start_whiteintro = 1
+if (start_rhointro)
+  goto 89:2
+goto 0:0
+
+#switch 89:2
+set start_rhointro = 0
+extern playscene tensil_rhointro
+goto 0:0
+
+#switch 89:101
+extern is_in_inventory "Gold Leaf" @Gold_Leaf
+if (HedelaConvo == 3)
+  goto 89:0168
+if (HedelaConvo == 2)
+  goto 89:0170
+if (GotShiinMysTech == 1)
+  goto 89:0160
+if (HedelaConvo == 1)
+  goto 89:0156
+if (Know_Gold == 0)
+  goto 89:0105
+if (@Gold_Leaf >= 4)
+  goto 89:0116
+if (((@Gold_Leaf == 3) && (LQ_Berry >= 1)) && (LQ_Garden >= 1))
+  goto 89:0114
+if (((@Gold_Leaf == 2) && (LQ_Berry >= 1)) && (LQ_Garden >= 1))
+  goto 89:0113
+if (((@Gold_Leaf == 1) && (LQ_Berry >= 1)) && (LQ_Garden >= 1))
+  goto 89:0112
+if (Know_Gold == 1)
+  goto 89:0111
+goto 89:0105
+
+#switch 89:120
+set @RhoInPlace = 1
+extern AI_GrabEntity PlayerChar0 PlayerChar0_handle
+extern AI_GrabEntity goldleaf1 goldleaf1_handle
+extern AI_GrabEntity goldleaf2 goldleaf2_handle
+extern AI_GrabEntity goldleaf3 goldleaf3_handle
+extern AI_GrabEntity goldleaf4 goldleaf4_handle
+extern AI_SetXYZ goldleaf1_handle 1829 -1886 161
+extern AI_SetXYZ goldleaf2_handle 1836 -1897 161
+extern AI_SetXYZ goldleaf3_handle 1844 -1901 161
+extern AI_SetXYZ goldleaf4_handle 1848 -1892 161
+extern AI_SeekAndFace PlayerChar0_handle fortunepath hedela
+extern AI_SetCompletionCallback PlayerChar0_handle 89:0122
+gosub 89:0125
+
+#switch 89:122
+set @RhoInPlace = 0
+
+#switch 89:201
+if (GoshevenConvo == 2)
+  goto 89:0212
+if ((Know_Gold == 1) && (GoshevenConvo == 1))
+  goto 89:0207
+goto 89:0205
+
+#switch 89:301
+extern is_in_inventory "Silver Leaf" @Silver_Leaf
+if (Know_Gold == 1)
+  goto 89:0310
+goto 89:0305
+
+#switch 89:401
+if (PatamonConvo == 2)
+  goto 89:0419
+if (PatamonConvo == 1)
+  goto 89:0415
+if (@GotPatamonLeaf == 2)
+  goto 89:0413
+goto 89:0405
+
+#switch 89:501
+extern is_in_inventory "Red Ziffinberry" @ZBerryRipe
+extern is_in_inventory "Soaked Ziffinberry" @ZBerryFake
+set @ZBerryTotal = (@ZBerryRipe + @ZBerryFake)
+if (SakimaConvo == 4)
+  goto 89:0552
+if (SakimaConvo == 3)
+  goto 89:0550
+if (SakimaConvo == 2)
+  goto 89:0532
+if ((SakimaConvo == 1) && (@ZBerryTotal >= 12))
+  goto 89:0528
+if ((SakimaConvo == 1) && (@ZBerryTotal > 3))
+  goto 89:0522
+if (SakimaConvo == 1)
+  goto 89:0520
+if (Know_Gold == 1)
+  goto 89:0508
+goto 89:0505
+
+#switch 89:601
+if (SuruyoConvo >= 1)
+  goto 89:0607
+goto 89:0605
+
+#switch 89:701
+if (HanumanConvo == 3)
+  goto 89:0716
+if (HanumanConvo == 2)
+  goto 89:0712
+if (HanumanConvo == 1)
+  goto 89:0710
+goto 89:0705
+
+#switch 89:801
+if (HanumanConvo == 3)
+  goto 89:0816                                                        
+if (HanumanConvo == 2)
+  goto 89:0812                                                        
+if (WakandaConvo == 1)
+  goto 89:0810
+goto 89:0805
+
+#switch 89:901
+extern is_in_inventory "Silver Leaf" @Silver_Leaf
+extern is_in_inventory "Gold Leaf" @Gold_Leaf
+if (RamadanBodua == 1)
+  goto 89:0930
+if (RamadanConvo == 4)
+  goto 89:0922
+if (RamadanConvo == 3)
+  goto 89:0920
+if (RamadanConvo == 2)
+  goto 89:0918
+if (RamadanConvo == 1)
+  goto 89:0912
+goto 89:0905
+
+#switch 89:930
+if (RamadanConvo == 5)
+  goto 89:0938
+goto 89:0935
+
+#switch 89:1001
+if (WabanConvo == 1)
+  goto 89:1008
+goto 89:1005
+
+#switch 89:1201
+if (KiritanConvo == 1)
+  goto 89:1208
+goto 89:1205
+
+#switch 89:1301
+if (@Iniko_Chase)
+  goto 0:0
+if (InikoConvo == 0) {
+  set Agres1 = 1
+  set InikoConvo = 1234567936
+}
+if (InikoConvo == 2)
+  goto 89:1356
+if (InikoConvo == 1)
+  goto 89:1346
+goto 89:1305
+
+#switch 89:1330
+set @Iniko_Chase = 1
+extern AI_GrabEntity PlayerChar0 PlayerChar0_handle
+extern AI_GrabEntity iniko iniko_handle
+extern AI_AvoidEnts iniko_handle false
+extern AI_GrabEntity bullyright bullyright_handle
+extern AI_GrabEntity bullyleft bullyleft_handle
+extern AI_DistanceSquared3d @BullyRightDis PlayerChar0_handle bullyright_handle
+extern AI_DistanceSquared3d @BullyLeftDis PlayerChar0_handle bullyleft_handle
+extern AI_ReleaseEntity bullyright_handle
+extern AI_ReleaseEntity bullyleft_handle
+if (@BullyRightDis > @BullyLeftDis)
+  extern AI_Path iniko_handle bullyright
+if (@BullyLeftDis > @BullyRightDis)
+  extern AI_Path iniko_handle bullyleft
+extern AI_SeekAndTouch PlayerChar0_handle iniko
+extern AI_SetCompletionCallback PlayerChar0_handle 89:1332
+
+#switch 89:1332
+extern AI_SeekAndTouch iniko_handle PlayerChar0
+extern AI_SetCompletionCallback iniko_handle 89:1342
+
+#switch 89:1401
+if (@TawtITawAPuttyTat == 1)
+  goto 0:0
+if (@TawtITawAPuttyTat == 3)
+  goto 89:1413
+if (@TawtITawAPuttyTat == 2)
+  goto 89:1409
+goto 89:1405
+
+#switch 89:1405
+set @TawtITawAPuttyTat = 1
+extern stopambient tensil/bird001
+extern playsound "maps/crwd/crwd_flappingwings_c.wav" fruitbird 0.8 2.0
+extern playambient tensil/bird002 0 89:1407 null null 0 0 false false
+
+#switch 89:1407
+set @TawtITawAPuttyTat = 2
+extern stopambient tensil/bird002
+extern loopambient tensil/bird003 0 0:0 null null 0 0 false false
+
+#switch 89:1409
+set @TawtITawAPuttyTat = 1
+extern stopambient tensil/bird003
+extern playsound "maps/crwd/crwd_flappingwings_c.wav" fruitbird 0.8 2.0
+extern playambient tensil/bird004 0 89:1411 null null 0 0 false false
+
+#switch 89:1411
+set @TawtITawAPuttyTat = 3
+extern stopambient tensil/bird004
+extern loopambient tensil/bird005 0 0:0 null null 0 0 false false
+
+#switch 89:1413
+set @TawtITawAPuttyTat = 1
+extern stopambient tensil/bird005
+extern playsound "maps/crwd/crwd_flappingwings_c.wav" fruitbird 0.8 2.0
+extern playambient tensil/bird006 0 89:1415 null null 0 0 false false
+
+#switch 89:1415
+extern stopambient tensil/bird006
+extern playambient tensil/bird007 0 89:1421 null null 0 0 false false
+
+#switch 89:1417
+extern stopambient tensil/bird007
+extern playambient tensil/bird007 0 89:1419 null null 0 0 false false
+
+#switch 89:1419
+extern stopambient tensil/bird007
+extern playambient tensil/bird007 0 89:1421 null null 0 0 false false
+
+#switch 89:1421
+set @TawtITawAPuttyTat = 1
+extern stopambient tensil/bird007
+extern playsound "maps/crwd/crwd_flappingwings_c.wav" fruitbird 0.8 2.0
+set @PatamanDistracted = 1
+extern playambient tensil/bird008 0 89:1423 null null 0 0 false false
+
+#switch 89:1423
+set @TawtITawAPuttyTat = 0
+set @PatamanDistracted = 0
+extern stopambient tensil/bird008
+extern loopambient tensil/bird001 0 0:0 null null 0 0 false false
+goto 89:1653
+
+#switch 89:1501
+if (@zbush1onceonly == 0) {
+  set @zbush1ripe1 = 1
+  set @zbush1ripe2 = 1
+  set @zbush1ripe3 = 1
+  set @zbush1pale1 = 1
+  set @zbush1pale2 = 1
+  set @zbush1onceonly = 12345
+}
+if (zbush1done == 1)
+  goto 0:0
+gosub 89:1503
+goto 89:1505
+
+#switch 89:1505
+if (@zbush1ripe1 == 1)
+  extern AI_SpawnEntity rb01_handle ob_ripeberry rb01 89:1510 zberryspawn
+if (@zbush1ripe2 == 1)
+  extern AI_SpawnEntity rb02_handle ob_ripeberry rb02 89:1511 zberryspawn
+if (@zbush1ripe3 == 1)
+  extern AI_SpawnEntity rb03_handle ob_ripeberry rb03 89:1512 zberryspawn
+if (@zbush1pale1 == 1)
+  extern AI_SpawnEntity pb01_handle ob_paleberry pb01 89:1513 zberryspawn
+if (@zbush1pale2 == 1)
+  extern AI_SpawnEntity pb02_handle ob_paleberry pb02 89:1514 zberryspawn
+goto 89:1507
+
+#switch 89:1507
+if (@zbush1ripe1 == 1)
+  extern entkey rb01_handle "r" ".6"
+if (@zbush1ripe1 == 1)
+  extern entkey rb01_handle "g" ".6"
+if (@zbush1ripe1 == 1)
+  extern entkey rb01_handle "b" ".6"
+if (@zbush1ripe2 == 1)
+  extern entkey rb02_handle "r" ".6"
+if (@zbush1ripe2 == 1)
+  extern entkey rb02_handle "g" ".6"
+if (@zbush1ripe2 == 1)
+  extern entkey rb02_handle "b" ".6"
+if (@zbush1ripe3 == 1)
+  extern entkey rb03_handle "r" ".6"
+if (@zbush1ripe3 == 1)
+  extern entkey rb03_handle "g" ".6"
+if (@zbush1ripe3 == 1)
+  extern entkey rb03_handle "b" ".6"
+if (@zbush1pale1 == 1)
+  extern entkey pb01_handle "r" ".6"
+if (@zbush1pale1 == 1)
+  extern entkey pb01_handle "g" ".6"
+if (@zbush1pale1 == 1)
+  extern entkey pb01_handle "b" ".6"
+if (@zbush1pale2 == 1)
+  extern entkey pb02_handle "r" ".6"
+if (@zbush1pale2 == 1)
+  extern entkey pb02_handle "g" ".6"
+if (@zbush1pale2 == 1)
+  extern entkey pb02_handle "b" ".6"
+if (@zbush1ripe1 == 1)
+  extern AI_SetPitch rb01_handle 210
+if (@zbush1ripe2 == 1)
+  extern AI_SetPitch rb02_handle 210
+if (@zbush1ripe3 == 1)
+  extern AI_SetPitch rb03_handle 210
+if (@zbush1pale1 == 1)
+  extern AI_SetPitch pb01_handle 210
+if (@zbush1pale2 == 1)
+  extern AI_SetPitch pb02_handle 210
+if (@zbush1ripe1 == 1)
+  extern AI_SetXYZ rb01_handle -2679 -1850 29
+if (@zbush1ripe2 == 1)
+  extern AI_SetXYZ rb02_handle -2694 -1857 27
+if (@zbush1ripe3 == 1)
+  extern AI_SetXYZ rb03_handle -2674 -1880 29
+if (@zbush1pale1 == 1)
+  extern AI_SetXYZ pb01_handle -2686 -1866 26
+if (@zbush1pale2 == 1)
+  extern AI_SetXYZ pb02_handle -2670 -1866 28
+
+#switch 89:1510
+set @zbush1ripe1 = 0
+set ZBerryRipe = (ZBerryRipe + 1)
+extern addnew_to_inventory "Red Ziffinberry"
+extern AI_DestroyEntity rb01_handle
+
+#switch 89:1511
+set @zbush1ripe2 = 0
+set ZBerryRipe = (ZBerryRipe + 1)
+extern addnew_to_inventory "Red Ziffinberry"
+extern AI_DestroyEntity rb02_handle
+
+#switch 89:1512
+set @zbush1ripe3 = 0
+set ZBerryRipe = (ZBerryRipe + 1)
+extern addnew_to_inventory "Red Ziffinberry"
+extern AI_DestroyEntity rb03_handle
+
+#switch 89:1513
+set @zbush1pale1 = 0
+extern addnew_to_inventory "Pale Ziffinberry"
+extern AI_DestroyEntity pb01_handle
+
+#switch 89:1514
+set @zbush1pale2 = 0
+extern addnew_to_inventory "Pale Ziffinberry"
+extern AI_DestroyEntity pb02_handle
+
+#switch 89:1551
+if (@zbush2onceonly == 0) {
+  set @zbush2ripe1 = 1
+  set @zbush2ripe2 = 1
+  set @zbush2pale1 = 1
+  set @zbush2pale2 = 1
+  set @zbush2onceonly = 12345
+}
+if (zbush2done == 1)
+  goto 0:0
+gosub 89:1553
+goto 89:1555
+
+#switch 89:1555
+if (@zbush2ripe1 == 1)
+  extern AI_SpawnEntity rb21_handle ob_ripeberry rb21 89:1560 zberryspawn
+if (@zbush2ripe1 == 1)
+  extern AI_SetXYZ rb21_handle -103 -1813 121
+if (@zbush2ripe2 == 1)
+  extern AI_SpawnEntity rb22_handle ob_ripeberry rb22 89:1561 zberryspawn
+if (@zbush2ripe2 == 1)
+  extern AI_SetXYZ rb22_handle -125 -1801 120
+if (@zbush2pale1 == 1)
+  extern AI_SpawnEntity pb21_handle ob_paleberry pb21 89:1563 zberryspawn
+if (@zbush2pale1 == 1)
+  extern AI_SetXYZ pb21_handle -109 -1796 122
+if (@zbush2pale2 == 1)
+  extern AI_SpawnEntity pb22_handle ob_paleberry pb22 89:1564 zberryspawn
+if (@zbush2pale2 == 1)
+  extern AI_SetXYZ pb22_handle -86 -1791 120
+goto 89:1557
+
+#switch 89:1557
+if (@zbush2ripe1 == 1)
+  extern entkey rb21_handle "r" ".6"
+if (@zbush2ripe1 == 1)
+  extern entkey rb21_handle "g" ".6"
+if (@zbush2ripe1 == 1)
+  extern entkey rb21_handle "b" ".6"
+if (@zbush2ripe2 == 1)
+  extern entkey rb22_handle "r" ".6"
+if (@zbush2ripe2 == 1)
+  extern entkey rb22_handle "g" ".6"
+if (@zbush2ripe2 == 1)
+  extern entkey rb22_handle "b" ".6"
+if (@zbush2pale1 == 1)
+  extern entkey pb21_handle "r" ".6"
+if (@zbush2pale1 == 1)
+  extern entkey pb21_handle "g" ".6"
+if (@zbush2pale1 == 1)
+  extern entkey pb21_handle "b" ".6"
+if (@zbush2pale2 == 1)
+  extern entkey pb22_handle "r" ".6"
+if (@zbush2pale2 == 1)
+  extern entkey pb22_handle "g" ".6"
+if (@zbush2pale2 == 1)
+  extern entkey pb22_handle "b" ".6"
+if (@zbush2ripe1 == 1)
+  extern AI_SetPitch rb21_handle 210
+if (@zbush2ripe2 == 1)
+  extern AI_SetPitch rb22_handle 210
+if (@zbush2pale1 == 1)
+  extern AI_SetPitch pb21_handle 210
+if (@zbush2pale2 == 1)
+  extern AI_SetPitch pb22_handle 210
+
+#switch 89:1560
+set @zbush2ripe1 = 0
+set ZBerryRipe = (ZBerryRipe + 1)
+extern addnew_to_inventory "Red Ziffinberry"
+extern AI_DestroyEntity rb21_handle
+
+#switch 89:1561
+set @zbush2ripe2 = 0
+set ZBerryRipe = (ZBerryRipe + 1)
+extern addnew_to_inventory "Red Ziffinberry"
+extern AI_DestroyEntity rb22_handle
+
+#switch 89:1563
+set @zbush2pale1 = 0
+extern addnew_to_inventory "Pale Ziffinberry"
+extern AI_DestroyEntity pb21_handle
+
+#switch 89:1564
+set @zbush2pale2 = 0
+extern addnew_to_inventory "Pale Ziffinberry"
+extern AI_DestroyEntity pb22_handle
+
+#switch 89:1601
+if (@zbush3onceonly == 0) {
+  set @zbush3ripe1 = 1
+  set @zbush3ripe2 = 1
+  set @zbush3ripe3 = 1
+  set @zbush3ripe4 = 1
+  set @zbush3pale1 = 1
+  set @zbush3onceonly = 12345
+}
+if (zbush3done == 1)
+  goto 0:0
+gosub 89:1603
+goto 89:1605
+
+#switch 89:1605
+if (@zbush3ripe1 == 1)
+  extern AI_SpawnEntity rb31_handle ob_ripeberry rb31 89:1610 zberryspawn
+if (@zbush3ripe2 == 1)
+  extern AI_SpawnEntity rb32_handle ob_ripeberry rb32 89:1611 zberryspawn
+if (@zbush3ripe3 == 1)
+  extern AI_SpawnEntity rb33_handle ob_ripeberry rb33 89:1612 zberryspawn
+if (@zbush3ripe4 == 1)
+  extern AI_SpawnEntity rb34_handle ob_ripeberry rb34 89:1613 zberryspawn
+if (@zbush3pale1 == 1)
+  extern AI_SpawnEntity pb31_handle ob_paleberry pb31 89:1614 zberryspawn
+goto 89:1607
+
+#switch 89:1607
+if (@zbush3ripe1 == 1)
+  extern entkey rb31_handle "r" ".6"
+if (@zbush3ripe1 == 1)
+  extern entkey rb31_handle "g" ".6"
+if (@zbush3ripe1 == 1)
+  extern entkey rb31_handle "b" ".6"
+if (@zbush3ripe2 == 1)
+  extern entkey rb32_handle "r" ".6"
+if (@zbush3ripe2 == 1)
+  extern entkey rb32_handle "g" ".6"
+if (@zbush3ripe2 == 1)
+  extern entkey rb32_handle "b" ".6"
+if (@zbush3ripe3 == 1)
+  extern entkey rb33_handle "r" ".6"
+if (@zbush3ripe3 == 1)
+  extern entkey rb33_handle "g" ".6"
+if (@zbush3ripe3 == 1)
+  extern entkey rb33_handle "b" ".6"
+if (@zbush3ripe4 == 1)
+  extern entkey rb34_handle "r" ".6"
+if (@zbush3ripe4 == 1)
+  extern entkey rb34_handle "g" ".6"
+if (@zbush3ripe4 == 1)
+  extern entkey rb34_handle "b" ".6"
+if (@zbush3pale1 == 1)
+  extern entkey pb31_handle "r" ".6"
+if (@zbush3pale1 == 1)
+  extern entkey pb31_handle "g" ".6"
+if (@zbush3pale1 == 1)
+  extern entkey pb31_handle "b" ".6"
+if (@zbush3ripe1 == 1)
+  extern AI_SetXYZ rb31_handle 2647 -74 111
+if (@zbush3ripe1 == 1)
+  extern AI_SetPitch rb31_handle 195
+if (@zbush3ripe2 == 1)
+  extern AI_SetXYZ rb32_handle 2649 -84 112
+if (@zbush3ripe2 == 1)
+  extern AI_SetPitch rb32_handle 225
+if (@zbush3ripe3 == 1)
+  extern AI_SetXYZ rb33_handle 2636 -88 112
+if (@zbush3ripe3 == 1)
+  extern AI_SetPitch rb33_handle 150
+if (@zbush3ripe4 == 1)
+  extern AI_SetXYZ rb34_handle 2640 -78 112
+if (@zbush3ripe4 == 1)
+  extern AI_SetPitch rb34_handle 150
+if (@zbush3pale1 == 1)
+  extern AI_SetXYZ pb31_handle 2637 -76 112
+if (@zbush3pale1 == 1)
+  extern AI_SetPitch pb31_handle 165
+
+#switch 89:1610
+set @zbush3ripe1 = 0
+set ZBerryRipe = (ZBerryRipe + 1)
+extern addnew_to_inventory "Red Ziffinberry"
+extern AI_DestroyEntity rb31_handle
+
+#switch 89:1611
+set @zbush3ripe2 = 0
+set ZBerryRipe = (ZBerryRipe + 1)
+extern addnew_to_inventory "Red Ziffinberry"
+extern AI_DestroyEntity rb32_handle
+
+#switch 89:1612
+set @zbush3ripe3 = 0
+set ZBerryRipe = (ZBerryRipe + 1)
+extern addnew_to_inventory "Red Ziffinberry"
+extern AI_DestroyEntity rb33_handle
+
+#switch 89:1613
+set @zbush3ripe4 = 0
+set ZBerryRipe = (ZBerryRipe + 1)
+extern addnew_to_inventory "Red Ziffinberry"
+extern AI_DestroyEntity rb34_handle
+
+#switch 89:1614
+set @zbush3pale1 = 0
+extern addnew_to_inventory "Pale Ziffinberry"
+extern AI_DestroyEntity pb31_handle
+
+#switch 89:1651
+if (@PatamanDistracted == 0)
+  goto 89:0407
+if (@GotPatamonLeaf >= 1)
+  goto 89:1657
+goto 89:1655
+
+#switch 89:1653
+if (@RhosABigThief == 0)
+  goto 0:0
+closewindow 89:1655
+goto 89:0407
+
+#switch 89:1681
+if (TensilPouch1Empty == 1)
+  goto 89:1689
+goto 89:1685
+
+#switch 89:1701
+goto 89:1730
+
+#switch 89:1705
+extern AI_GrabEntity PlayerChar0 PlayerChar0_handle
+extern AI_GrabEntity rhowater1 rhowater1_handle
+extern AI_GrabEntity rhowater2 rhowater2_handle
+extern AI_DistanceSquared3d @RhoWater1Dis PlayerChar0_handle rhowater1_handle
+extern AI_DistanceSquared3d @RhoWater2Dis PlayerChar0_handle rhowater2_handle
+extern AI_ReleaseEntity rhowater1_handle
+extern AI_ReleaseEntity rhowater2_handle
+goto 89:1709
+
+#switch 89:1710
+closewindow 89:1709
+if (@RhoWaterAction == 1)
+  goto 89:1712
+if (@RhoWaterAction == 2)
+  goto 89:1714
+
+#switch 89:1712
+set @wasinvoked = 555
+extern ANIM_PlayAnim PlayerChar0_handle gest_e 0 1 0
+goto 89:1716
+
+#switch 89:1714
+extern addnew_to_inventory "Soaked Ziffinberry"
+extern remove_from_inventory "Pale Ziffinberry"
+set ZBerryFake = (ZBerryFake + 1)
+extern ANIM_PlayAnim PlayerChar0_handle grab_m 0 1 0
+goto 89:1716 
+
+#switch 89:1717
+extern Anim_MakeSmart PlayerChar0_handle
+extern AI_ReleaseEntity PlayerChar0_handle
+goto 89:1718
+
+#switch 89:1718
+extern cam_anoxmariomode 0
+set timed_message = 99
+timed_message$="Rho soaked 1 ziffinberry" 
+gosub 1000:1
+goto 0:0
+
+#switch 89:1720
+closewindow 89:1709
+if (@RhoWaterAction == 1)
+  goto 89:1712
+if (@RhoWaterAction == 2)
+  goto 89:1714
+
+#switch 89:1732
+set @RhoWaterAction = 1
+goto 89:1705
+goto 0:0
+
+#switch 89:1734
+extern is_in_inventory "Pale Ziffinberry" @GotPaleBerries
+if (@GotPaleBerries == 0)
+  goto 89:1736
+set @RhoWaterAction = 2
+goto 89:1705
+goto 0:0
+
+#switch 89:1736
+set TIMED_MESSAGE = 40
+gosub 1000:1
+
+#switch 89:1901
+if (@Jesehiko_Convo)
+  goto 89:1910
+goto 89:1905
+
+#switch 89:2601
+if (@Tahobina_Convo)
+  goto 89:2620
+goto 89:2605
+
+#switch 89:2801
+if (Tensil_DokopiConvo == 1)
+  goto 89:2815
+goto 89:2805
+
+#switch 89:2901
+if (Tensil_YanopiConvo == 1)
+  goto 89:2930
+if (Tensil_YanopiConvo == 2)
+  goto 89:2935
+goto 89:2905
+
+#switch 89:3001
+goto 89:3005
+
+#switch 89:3101
+goto 89:3105
+
+#switch 89:3201
+goto 89:3205
+
+#switch 89:3301
+goto 89:3305
+
+#switch 89:3401
+goto 89:3405
+
+#switch 89:3501
+goto 89:3505
+
+#switch 89:3601
+if (Tensil_YadokaConvo)
+  goto 89:3610
+goto 89:3605
+
+#switch 89:3701
+if (Tensil_PijogaConvo)
+  goto 89:3710
+goto 89:3705
+
+#switch 89:3901
+goto 89:3905
+
+#switch 89:4001
+if (Tensil_KukigokaConvo)
+  goto 89:4010
+goto 89:4005
+
+#switch 89:4006
+extern cam_anoxmariomode 1
+extern AI_GrabEntity PlayerChar0 @poo
+extern AI_SeekAndFace @poo rhogobackhere
+extern AI_SetCompletionCallback @poo 89:4007
+
+#switch 89:4007
+extern ANIM_MakeSmart @poo
+extern AI_ReleaseEntity @poo
+extern cam_anoxmariomode 0
+set in_temple_trigger = 0
+goto 0:0
+
+#switch 89:4101
+goto 89:4105
+
+#switch 89:4201
+goto 89:4205
+
+#switch 89:4301
+goto 89:4305
+
+#switch 89:4401
+goto 89:4405
+
+#switch 89:4501
+goto 89:4505
+
+#switch 89:4601
+goto 89:4605
+
+#switch 89:5000
+if (GotShiinMysTech && Tensil_talk_to_hedela_after) {
+  extern complete_quest "Find Party"
+  set start_whiteintro = 1
+  extern add_npc_to_party boots
+  extern set_party_leader boots
+  extern remove_npc_from_party rho
+  console "set storysave \"White Caves|Enter the White Caves\""
+  console "map whitecaves-a fromwhitendon"
+}
+goto 0:0
+
+#switch 89:6000
+if (GotShiinMysTech)
+  goto 89:6001
+if (in_temple_trigger)
+  goto 0:0
+set in_temple_trigger = 1
+if (HedelaConvo >= 1)
+  goto 89:6010		                      
+goto 89:6005	       
+
+#switch 89:6015
+console "map temple"
+goto 0:0

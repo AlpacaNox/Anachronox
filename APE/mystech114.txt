@@ -1,0 +1,59 @@
+#switch 20000:100
+if (anox_game_difficulty == 3) {
+  extern BATTLE_AffectNodeOccupant 146 "hp=2000"
+  extern BATTLE_AffectNodeOccupant 139 "hp=2000"
+  extern BATTLE_AffectNodeOccupant 144 "hp=2000"
+  extern BATTLE_AffectNodeOccupant 141 "hp=2000"
+  extern BATTLE_AffectNodeOccupant 155 "hp=2000"
+  extern BATTLE_AffectNodeOccupant 147 "hp=2000"
+  extern BATTLE_AffectNodeOccupant 148 "hp=2000"
+} else if (anox_game_difficulty == 1) {
+  extern BATTLE_AffectNodeOccupant 146 "hp=1000"
+  extern BATTLE_AffectNodeOccupant 139 "hp=1000"
+  extern BATTLE_AffectNodeOccupant 144 "hp=1000"
+  extern BATTLE_AffectNodeOccupant 141 "hp=1000"
+  extern BATTLE_AffectNodeOccupant 155 "hp=1000"
+  extern BATTLE_AffectNodeOccupant 147 "hp=1000"
+  extern BATTLE_AffectNodeOccupant 148 "hp=1000"
+} else {
+  extern BATTLE_AffectNodeOccupant 146 "hp=1500"
+  extern BATTLE_AffectNodeOccupant 139 "hp=1500"
+  extern BATTLE_AffectNodeOccupant 144 "hp=1500"
+  extern BATTLE_AffectNodeOccupant 141 "hp=1500"
+  extern BATTLE_AffectNodeOccupant 155 "hp=1500"
+  extern BATTLE_AffectNodeOccupant 147 "hp=1500"
+  extern BATTLE_AffectNodeOccupant 148 "hp=1500"
+}
+goto 0:0
+
+#switch 20000:200
+extern BATTLE_AffectNodeOccupant 146 "hp=9999"
+extern BATTLE_AffectNodeOccupant 139 "hp=9999"
+extern BATTLE_AffectNodeOccupant 144 "hp=9999"
+extern BATTLE_AffectNodeOccupant 141 "hp=9999"
+extern BATTLE_AffectNodeOccupant 155 "hp=9999"
+extern BATTLE_AffectNodeOccupant 147 "hp=9999"
+extern BATTLE_AffectNodeOccupant 148 "hp=9999"
+goto 0:0
+
+#switch 20000:300
+set @ultima = (@ultima + 1)
+set @remainder = func_mod[@ultima, 4]
+if (@remainder == 0)
+  set @remainder = 4
+goto 0:0
+
+#switch 20000:400
+extern BATTLE_StartTime
+
+#switch 20000:500
+extern BATTLE_StopTime
+extern playscene battle/monster_noxdoorlord/monster_noxdoorlord_atak0_none 0 20000:400
+
+#switch 20000:600
+extern BATTLE_StopTime
+extern playscene battle/monster_noxdoorlord/monster_noxdoorlord_atak2a_none 0 20000:400
+
+#switch 20000:700
+extern BATTLE_StopTime
+extern playscene battle/monster_noxdoorlord/monster_noxdoorlord_atakall_1 0 20000:400

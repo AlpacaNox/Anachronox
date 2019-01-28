@@ -1,0 +1,113 @@
+#window 88:105
+title "Fatima"
+body "Too late to turn back now, Boots. You better trudge on ahead before it gets any colder."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 @bootshandle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 playerchar0
+  extern AI_WaitAndFace @bootshandle -1 fatima
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_DestroyEntity @fatima_handle
+  goto 88:0106
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#switch 87:1
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .6 .8 1
+console "cl_footsteps 1"
+set CURRENT_PLANET = 8
+set CURRENT_BANK = 88
+extern applylevelconfiguration whitecaves-a
+extern add_quest "White Caves Find Child"
+extern playlevelmusic mp3/democratus/democDungeonFinal.mp3
+BattleMusicOverride$="mp3/democratus/democBattleLoop.mp3" 
+if (start_whiteintro == 1)
+  goto 87:4
+goto 0:0
+
+#switch 87:4
+set start_whiteintro = 0
+extern playscene whitecaves-a_intro
+goto 0:0
+
+#switch 88:101
+if (@FatimaStopsGuys == 1)
+  goto 0:0
+set @FatimaStopsGuys = 1
+goto 88:0105
+
+#switch 88:106
+extern cam_anoxmariomode 1
+extern AI_SeekAndFace @bootshandle StepBackYo
+extern AI_SetCompletionCallback @bootshandle 88:0107
+
+#switch 88:107
+set @FatimaStopsGuys = 0
+extern cam_anoxmariomode 0
+extern ANIM_MakeSmart @bootshandle
+extern AI_ReleaseEntity @bootshandle
+
+#switch 88:1000
+if (whitecavesa_area_1 > 0)
+  goto 0:0
+console "battlestart 0"
+echo "battle 0 triggered"
+goto 0:0
+
+#switch 88:1010
+if (whitecavesa_area_1 != 1)
+  goto 0:0
+console "battlestart 1"
+echo "battle 1 triggered"
+goto 0:0
+
+#switch 88:1020
+set whitecavesa_area_1 = 1
+if (whitecavesa_area_2 > 0)
+  goto 0:0
+console "battlestart 2"
+echo "battle 2 triggered"
+goto 0:0
+
+#switch 88:1030
+if (whitecavesa_area_2 != 1)
+  goto 0:0
+console "battlestart 3"
+echo "battle 3 triggered"
+goto 0:0
+
+#switch 88:1040
+set whitecavesa_area_2 = 1
+if (whitecavesa_area_3 > 0)
+  goto 0:0
+console "battlestart 4"
+echo "battle 4 triggered"
+goto 0:0
+
+#switch 88:1050
+if (whitecavesa_area_3 != 1)
+  goto 0:0
+console "battlestart 5"
+echo "battle 5 triggered"
+goto 0:0
+
+#switch 88:1060
+set whitecavesa_area_3 = 1
+console "battlestart 6"
+echo "battle 6 triggered"
+goto 0:0

@@ -1,0 +1,800 @@
+#window 108:105
+title "Aldrin Pinkgold"
+body "You're kidding me. Sly?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:0106
+
+#window 108:106
+title "Aldrin Pinkgold"
+body "Sly Boots?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:0107
+
+#window 108:107
+title "Aldrin Pinkgold"
+body "Where the hell have you been?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:0108
+
+#window 108:108
+title "Aldrin Pinkgold"
+body "We were gonna meet at Club Metron, but you never showed. That was, what... two years ago?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:0109
+
+#window 108:109
+title "Aldrin Pinkgold"
+body "I dropped by your office a few weeks later and it was being rented out to someone else."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:0110
+
+#window 108:110
+title "Aldrin Pinkgold"
+body "It was like you dropped off the face of the earth, man."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:0111
+
+#window 108:111
+title "Aldrin Pinkgold"
+body "I hope this wasn't over anything I said about Sera. I was always making jokes... but that's all they were. Jokes."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:0112
+
+#window 108:112
+title "Aldrin Pinkgold"
+body "Hey, we should hook up for some drinks some time this week. Catch up on old times."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:115
+title "Aldrin Pinkgold"
+body "Are you guys coming back from a costume party or something?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:120
+title "Aldrin Pinkgold"
+body "Hey, gimme a call at the office tomorrow. And stop being such a stranger."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:125
+title "Aldrin Pinkgold"
+body "I'm sure we don't know each other."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:205
+title "Deus Van Anomie"
+body "I'm working on slogans for the new Sucrosa ad campaign, but I've got writer's block."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:0206
+
+#window 108:206
+title "Deus Van Anomie"
+body "Since I couldn't think of anything good, the top brass is gonna go with Johnson's slogan. You wanna hear it? Get this..."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:0207
+
+#window 108:207
+title "Deus Van Anomie"
+body "\"Sucrosa... a beacon of taste for the children of tomorrow.\""
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:0208
+
+#window 108:208
+title "Deus Van Anomie"
+body "How highbrow. It's so highbrow it doesn't make sense."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:0209
+
+#window 108:209
+title "Deus Van Anomie"
+body "I prefer the old slogan... \"It's the most-a.\""
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:210
+title "Deus Van Anomie"
+body "\"Ain't it the fizz?\""
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:0211
+
+#window 108:211
+title "Deus Van Anomie"
+body "I love it."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:215
+title "Deus Van Anomie"
+body "\"Ain't it the fizz?\""
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:0216
+
+#window 108:216
+title "Deus Van Anomie"
+body "Just think about it."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:220
+title "Deus Van Anomie"
+body "Hey, you guys look like regular folks. Maybe I'll ask you..."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:0205
+
+#window 108:301
+title "Hull Stoneworth Sr."
+body "I live in Anachronox North so I wouldn't have to look at people like you."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:401
+title "Sibbis Thorn III"
+body "Please remove yourself from my view."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:501
+title "Sire Ethanion"
+body "Oh, brother."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:601
+title "Baron T. Tassody"
+body "My bags are over there. Oh, sorry."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:701
+title "Yeshiva Height"
+body "They enforce the vagrancy laws in this station, you know."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:801
+title "Herb Caloni"
+if (func_charinparty[grumpos] != 3)
+  body "Lose your way, ragamuffin? South Anachronox is that way."
+if (func_charinparty[grumpos] == 3)
+  body "Tough to wake up after twenty years, eh?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:901
+title "Herman Gera"
+body "I'd give you ten or twenty, but I don't have anything that small."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:1001
+title "Jenny Oak"
+if (func_charinparty[boots] == 3)
+  body "That style of trenchcoat hasn't been in vogue for twenty years. Shameful."
+if (func_charinparty[grumpos] == 3)
+  body "Good heavens, man. How long were you on the island? Any other survivors?"
+if (func_charinparty[pal] == 3)
+  body "An 18 model? You're obsolete, little man. Go back to the Discount Store."
+if (func_charinparty[rho] == 3)
+  body "You need a subscription to Foppery Monthly. Fluorescent fashion is a no-no."
+if (func_charinparty[democratus] == 3)
+  body "What a mess. Get your act together, ma'am."
+if (func_charinparty[stiletto] == 3)
+  body "There are no brothels in One Gate, madam. "
+if (func_charinparty[paco] == 3)
+  body "How gloriously tacky you are."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:1105
+title "Serge Veemonth"
+body "You shouldn't be out. There's a curfew, you know."
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:1106
+
+#window 108:1106
+title "Serge Veemonth"
+body "I don't know how I'm gonna make it home alive."
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:1110
+title "Serge Veemonth"
+body "I had an interview this afternoon at the prestigious Dolce & Surbok law firm. They grilled me for hours. It was savage. I don't think they liked me much."
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:1111
+
+#window 108:1111
+title "Serge Veemonth"
+body "The interview didn't let out until just now, way after the curfew."
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:1112
+
+#window 108:1112
+title "Serge Veemonth"
+body "I just wanna get back home to my wife in Anox West. But the way the city plates are arranged this evening, it could take me hours."
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:1115
+title "Serge Veemonth"
+body "You don't think..."
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:1116
+
+#window 108:1116
+title "Serge Veemonth"
+body "Hell, you don't think they kept the interview going past the curfew on purpose, do you? Maybe they think I deserve to die."
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:1120
+title "Serge Veemonth"
+body "Should I find some warm pipe to sleep under until morning...?"
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:1305
+title "Robattack"
+body "Halt. Beyond this gate is the OneGate Community."
+cam left restore zip
+talk npc atakamb_b stay
+startswitch {
+  set roboStop = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:1306
+
+#window 108:1306
+title "Robattack"
+body "Tsk tsk tsk."
+cam left restore zip
+talk npc atakamb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:1307
+
+#window 108:1307
+title "Robattack"
+body "I don't detect a resident transponder."
+cam left restore zip
+talk npc atakamb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 108:1308
+
+#window 108:1308
+title "Robattack"
+body "You better about-face before I leave skid marks on your pucker."
+cam left restore zip
+talk npc atakgest_a stay
+finishswitch {
+  extern cam_anoxmariomode 1
+  extern AI_GrabEntity playerchar0 bootshandle
+  extern AI_SeekAndFace bootshandle gobackhere
+  extern AI_SetCompletionCallback bootshandle 108:1309
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:1401
+title "Parvenute"
+body "I can't FATHOM that YOU could afford ANY of my wares, but I can LIST them OFF, I suppose."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Yes." 108:1410
+choice "No." 0:0
+
+#window 108:1420
+title "Parvenute"
+body "Oh, DO come back."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:8888
+title "Alpha Fluxis [TEMP]"
+body "Good day. Would you like to travel to Anachronox Tours?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Yes" 108:8889
+choice "No" 108:8890
+
+#window 108:8889
+title "Alpha Fluxis [TEMP]"
+body "Wonderful.  I believe the shuttle's arriving now."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  console "map tours2 fromdettas"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:8890
+title "Alpha Fluxis [TEMP]"
+body "I see. Let me know when I can assist you."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 108:5578
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "What the hell? That burns my hands!"
+if (func_charinparty[grumpos] == 3)
+  body "Dammit! Too hot! Too hot! Too hot!"
+if (func_charinparty[pal] == 3)
+  body "I ain't a-touchin' nothing that glows red!"
+if (func_charinparty[rho] == 3)
+  body "Um, that appears radioactive."
+if (func_charinparty[democratus] == 3)
+  body "We detect this is a highly dangerous substance."
+if (func_charinparty[stiletto] == 3)
+  body "Forget it. I don't pick up red-hot things."
+cam left from(PlayerChar0) to(pacogem4) lift(20) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 pacogem4
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 108:5579
+title "Paco \"El Puño\" Estrella"
+body "Ah... a Bloodstone."
+cam left from(PlayerChar0) to(pacogem4) lift(20) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 pacohandle
+  extern AI_WaitAndFace pacohandle -1 pacogem4
+  extern ANIM_PlayAnim pacohandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 108:5580
+
+#window 108:5580
+title "Paco \"El Puño\" Estrella"
+body "This rough ore can make a form of Kraptonite..."
+cam left from(PlayerChar0) to(pacogem4) lift(20) restore zip
+startswitch {
+  extern ANIM_PlayAnim pacohandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 108:5581
+
+#window 108:5581
+title "Paco \"El Puño\" Estrella"
+body "...but first I must irradiate it somewhere."
+cam left from(PlayerChar0) to(pacogem4) lift(20) restore zip
+startswitch {
+  extern ANIM_PlayAnim pacohandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity pacohandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 140
+width 580
+nextwindow 108:5582
+
+#switch 108:1
+set CURRENT_PLANET = 1
+set CURRENT_BANK = 108
+set anox_interface_active = 0
+extern is_quest_done "Get To North Platform" @boo
+if (@boo == 1)
+  extern complete_quest "Get To North Platform"
+extern playlevelmusic mp3/bricks/bricks_sad_2_0.mp3
+extern loopambient ambi_onegatestn
+if (PAX_TIX == 1)
+  set PAX_TIX = 2
+goto 0:0
+
+#switch 108:101
+if (func_charinparty[boots] == 3)
+  goto 108:0102
+goto 108:0125
+
+#switch 108:102
+set Aldrin1 = (Aldrin1 + 1)
+if (Aldrin1 > 2)
+  goto 108:0120
+if (Aldrin1 > 1)
+  goto 108:0115
+goto 108:0105
+
+#switch 108:201
+set Deus1 = (Deus1 + 1)
+if (Deus1 > 2)
+  goto 108:0215
+if (Deus1 > 1)
+  goto 108:0210
+goto 108:0220
+
+#switch 108:1101
+set Veemonth1 = (Veemonth1 + 1)
+if (Veemonth1 > 3)
+  goto 108:1120
+if (Veemonth1 > 2)
+  goto 108:1115
+if (Veemonth1 > 1)
+  goto 108:1110
+goto 108:1105
+
+#switch 108:1301
+if (roboStop == 1)
+  goto 0:0
+if ((PRE_DETTA == 0) && ((PAX_TIX == 3) || (PAX_TIX == 0)))
+  goto 108:1305					
+
+#switch 108:1309
+extern ANIM_MakeSmart bootshandle
+extern AI_ReleaseEntity bootshandle
+extern cam_anoxmariomode 0
+set roboStop = 0
+goto 0:0
+
+#switch 108:1410
+extern shop_create "Parvenute's Fancy Things"
+extern shop_set_active "Parvenute's Fancy Things"
+extern shop_add_object "Regenergy Round" 100
+if (PRE_DETTA)
+  extern shop_add_object "Glodent Colony" 100
+extern shop_add_object "HealGrease Complete" 100
+extern shop_add_object "TimeMinder Tear" 100
+if (PRE_DETTA) {
+  extern shop_add_object "Stargent HandCannon" 100
+  extern shop_add_object "Tesseract Impactor" 100
+  extern shop_add_object "Cordicorps Shockshot" 100
+  extern shop_add_object "FreezySlicer" 100
+  extern shop_add_object "NutsSlapshot" 100
+  extern shop_add_object "PoisonTempest" 100
+  extern shop_add_object "Dettacorp Personal Powercell" 100
+}
+extern shop_picture "snooty.png"
+extern shop_slogan "If you MUST know..."
+extern shop_start 108:1420
+goto 0:0
+
+#switch 108:7001
+if (ONEGATE_ENTER_SUBCAR_N == 1)
+  console "map tours2 fromonegate"
+goto 0:0
+
+#switch 108:7101
+if (ONEGATE_ENTER_SUBCAR_S == 1)
+  console "map tours2 fromonegate"
+goto 0:0
+
+#switch 108:5577
+extern AI_GrabEntity PlayerChar0 hPlayer
+extern AI_SeekAndFace hPlayer pacostand4
+extern AI_SetCompletionCallback hPlayer 108:5588
+
+#switch 108:5588
+extern ANIM_MakeSmart hPlayer
+extern AI_ReleaseEntity hPlayer
+extern is_in_inventory "Bloodstone" @bs
+extern is_in_inventory "Bloodfire Kraptonite" @bf
+extern is_in_inventory "FireFury" @ff
+if ((((func_charinparty[paco] == 3) && (@bs == 0)) && (@bf == 0)) && (@ff == 0))
+  goto 108:5579
+goto 108:5578
+
+#switch 108:5582
+extern AI_GetEdictNumber PlayerChar0 getter
+extern pickup_getitem getter 108:5577
+goto 0:0

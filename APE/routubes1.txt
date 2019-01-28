@@ -1,0 +1,711 @@
+#window 55:105
+title "Divadopher"
+body "Do you want the tickets or not? Then shut up and follow me."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 55:110
+title "Divadopher"
+body "How embarrassing. I would never have taken you here if I'd known you didn't have enough money."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 55:115
+title "Divadopher"
+body "The guy who can hook you up with the tickets is up ahead. Whatever you do, don't tick him off."
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  set divadopher_gone = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 55:205
+title "\"Slick\" Janomin"
+body "Sure, I got a ticket to Sunder. But it's a premium scores. $250 on the spot. You got the money?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (func_charinparty[boots] == 3)
+  choice "Yeah, I've got the dough." 55:210
+if (func_charinparty[boots] == 3)
+  choice "Uh, well, not with us. Can we come back with it?" 55:220
+if (func_charinparty[grumpos] == 3)
+  choice "Of course we've got the money." 55:210
+if (func_charinparty[grumpos] == 3)
+  choice "The money isn't currently in our possesion. Can we come back with it?" 55:220
+if (func_charinparty[pal] == 3)
+  choice "Whatya saying? We got TONS of cash, slick!" 55:210
+if (func_charinparty[pal] == 3)
+  choice "Not on me. But I could get it quick." 55:210
+
+#window 55:220
+title "\"Slick\" Janomin"
+body "I don't have all day. Be quick about it."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Divadopher2 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 55:225
+title "\"Slick\" Janomin"
+body "You got the money?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Yeah, I've got the dough." 55:210
+choice "Uh, well, not with me. Can I come back with it?" 55:220
+
+#window 55:240
+title "\"Slick\" Janomin"
+body "Good. Now I kill you and take the money."
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 55:0211
+
+#window 55:245
+title "\"Slick\" Janomin"
+body "Sorry, smart guys. I was wrong. Turns out I've only got one ticket to Sunder."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 55:0246
+
+#window 55:246
+title "\"Slick\" Janomin"
+body "Pleasure doing business, gents."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 55:301
+title "\"Brick\" Janomin"
+body "SsssSSSssss...."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 55:401
+title "\"Brick\" Janomin"
+body "SsssSSSssss...."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 55:502
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+if (func_charinparty[pal] == 3)
+  title "Pal"
+if (func_charinparty[rho] == 3)
+  title "Rho"
+if (func_charinparty[democratus] == 3)
+  title "Democratus"
+if (func_charinparty[stiletto] == 3)
+  title "Stiletto"
+if (func_charinparty[paco] == 3)
+  title "Paco"
+if ((func_charinparty[boots] == 3) && (TangSecret > 0))
+  body "Hey, that guy was right. Someone shot this panel apart. Idiot."
+if ((func_charinparty[boots] == 3) && (TangSecret < 1))
+  body "Some idiot shot this panel to pieces."
+if (func_charinparty[grumpos] == 3)
+  body "What kind of fool would take a gun to this panel?"
+if (func_charinparty[pal] == 3)
+  body "This panel is completely jacked!"
+if (func_charinparty[rho] == 3)
+  body "I'm pretty sure I could repair this panel if I had some more context...."
+if (func_charinparty[democratus] == 3)
+  body "That panel is undisputedly non-operational."
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 1 0 0
+}
+
+finishswitch {
+  extern ANIM_Stop bootshandle
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 55:602
+title "Rho Bowman"
+body "Okay... I believe I can fix and operate the panel now."
+cam to(PlayerChar0) restore zip
+startswitch {
+  if (Rtubes1_RhoCanFixPanel == 0)
+    set Rtubes1_RhoCanFixPanel = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 55:606
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+if (func_charinparty[pal] == 3)
+  title "Pal"
+if (func_charinparty[rho] == 3)
+  title "Rho"
+if (func_charinparty[democratus] == 3)
+  title "Democratus"
+if (func_charinparty[stiletto] == 3)
+  title "Stiletto"
+if (func_charinparty[paco] == 3)
+  title "Paco"
+if (func_charinparty[boots] == 3)
+  body "It's a schematic of the panel's interior. Someone must already be fixing it."
+if (func_charinparty[grumpos] == 3)
+  body "It's a diagram of the panel interior. I guess someone's trying to fix it."
+if (func_charinparty[pal] == 3)
+  body "This looks like the nuts and bolts of the panel. Someone must be doing a fixer-upper on it."
+if (func_charinparty[rho] == 3)
+  body "It's a detailed schematic of the panel's interior. Someone must be repairing it."
+if (func_charinparty[democratus] == 3)
+  body "This is a diagram of the panel's interior. The panel must be in mid-repair."
+cam left to(paper) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 1 0 0
+}
+
+finishswitch {
+  if (func_charinparty[boots] == 3)
+    set @LookedAtSchematicOnce1 = 1
+  if (func_charinparty[grumpos] == 3)
+    set @LookedAtSchematicOnce2 = 1
+  if (func_charinparty[pal] == 3)
+    set @LookedAtSchematicOnce3 = 1
+  if (func_charinparty[democratus] == 3)
+    set @LookedAtSchematicOnce4 = 1
+  if (func_charinparty[rho] == 3)
+    set @LookedAtSchematicRho = 1
+  extern ANIM_Stop bootshandle
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 55:1233
+title "%s", PlayerChar0$
+body "Someone fried the panel that opens this door."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 55:805
+title "Traderbot Rollo"
+body "I'm Traderbot Rollo. Buck or walk?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 7777:1
+
+#window 55:910
+title "\"Slick\" Janomin"
+body "Looking verily for flavored goods. Your eyes wide for consumption."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+if ((scalp_ticket == 0) && (MYSTECH_ACTIVE < 1))
+  choice "Tickets to Sunder? Fortune/unfortune. Only one. Purchase for mere 250 loonie." 55:915
+if (GET_DRUG == 1)
+  choice "Soporific Wander Dust. For sleepiness in drink? Purchase for mere $100 loonie." 55:920
+choice "Nothing at the moment." 55:930
+
+#window 55:916
+title "\"Slick\" Janomin"
+body "Sold. No refunden."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set scalp_ticket = 1
+  set INV_TICKET2SUNDER_B = 1
+  extern addnew_to_inventory "Sunder Shuttle Ticket"
+  set timed_message = 20
+  got_object$="Sunder Shuttle Ticket" 
+  gosub 1000:1
+  extern is_quest_done "Get One Ticket To Sunder" @poop
+  if (@poop == 1) {
+    extern complete_quest "Get One Ticket To Sunder"
+    extern add_quest "Get On Sunder Shuttle No Know"
+  } else {
+    extern is_quest_done "Get Two Tickets To Sunder" @poop
+    if (@poop == 1) {
+      extern complete_quest "Get Two Tickets To Sunder"
+      extern add_quest "Get One Ticket To Sunder"
+    }
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 55:921
+title "\"Slick\" Janomin"
+body "Excellent. Dissolven quickly in alcohol. No taste. No color. Brain will wander until sleeps."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set GET_DRUG = 2
+  extern addnew_to_inventory "Sleeping Draught"
+  set timed_message = 20
+  got_object$="Sleeping Draught" 
+  gosub 1000:1
+  goto 0:0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 55:925
+title "\"Slick\" Janomin"
+body "For pity! No cash, no clearance."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 55:930
+title "\"Slick\" Janomin"
+body "You don't know what you're missin' out on."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 55:1005
+title "Zeezvan"
+body "Are you mouths of Detta?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Detta's done with low-life lizards. Take these papers and walk." 55:1020
+choice "Damn straight, squat-pot. And he sent me to spit in your eye." 55:1010
+
+#window 55:1011
+title "Boots"
+body "Let's leave Detta's papers in plain sight for our \"message\" to be complete."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern remove_from_inventory "Detta Credentials"
+  set PUNCH_JUDY = 3
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 55:1020
+title "Zeezvan"
+body "Rudely message understood. Detta's drug trade are become history. Trade finished."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set PUNCH_JUDY = 3
+  extern remove_from_inventory "Detta Credentials"
+  set ticket_fight 0 = (1 + 0)
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 55:1030
+title "Zeezvan"
+body "Superior will know of rudely talk. Do not threaten action or disunion of your soul will pass. Move along to a space other."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 55:1040
+title "Zeezvan"
+body "Wrong place. Wrong time. Wrong contact. Withdraw before action threatens."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 55:1101
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "He's dead."
+if (func_charinparty[grumpos] == 3)
+  body "Stone dead."
+if (func_charinparty[pal] == 3)
+  body "That stiff's stiff."
+cam left lift(40) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 dead_boy
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#switch 55:1
+set CURRENT_PLANET = 2
+set CURRENT_BANK = 55
+set SEEN_SEWERS = 1
+if ((PRE_LIMBUS == 1) || (PRE_DETTA == 1)) {
+  extern applylevelconfiguration routubes1_third
+} else if (MYSTECH_ACTIVE == 1) {
+  extern applylevelconfiguration routubes1_second
+} else
+  extern applylevelconfiguration routubes1_first
+extern playlevelmusic mp3/sender/ssscaryfinal.mp3
+BattleMusicOverride$="mp3/sender/routubesbattle.mp3" 
+set routubes1_battle_area_1 = 0
+set routubes1_battle_area_2 = 0
+if (set_inside_routubes == 1) {
+  set inside_routubes = 1
+  set set_inside_routubes = 0
+}
+if (Rtubes1_paneldoor == 1)
+  target paneldoor
+if (Rtubes1_RhoCanFixPanel != 2)
+  target blue
+if (Rtubes1_RhoCanFixPanel == 2)
+  target red
+if (Rtubes1_RhoCanFixPanel == 2) {
+  extern AI_GrabEntity 55:0501 fixpanel_handle
+  extern EntKey fixpanel_handle "sequence" ""
+  extern AI_ReleaseEntity fixpanel_handle
+  extern AI_GrabEntity 55:0605 paneldoc_handle
+  extern AI_DestroyEntity paneldoc_handle
+}
+
+#switch 55:101
+if (Divadopher2 > 0)
+  goto 55:0110
+if (Divadopher3 > 0)
+  goto 55:0115
+goto 55:0105                                 
+
+#switch 55:201
+if (PUNCH_JUDY > 0)
+  goto 55:1001 
+goto 55:0901
+
+#switch 55:210
+if (INV_LABCOATS == 1)
+  goto 55:0245
+goto 55:0240
+
+#switch 55:211
+set INV_TICKET2SUNDER_B = 1
+extern addnew_to_inventory "Sunder Shuttle Ticket"
+extern is_quest_done "Get One Ticket To Sunder" @poop
+if (@poop == 1) {
+  extern complete_quest "Get One Ticket To Sunder"
+  extern add_quest "Get On Sunder Shuttle No Know"
+} else {
+  extern is_quest_done "Get Two Tickets To Sunder" @poop
+  if (@poop == 1) {
+    extern complete_quest "Get Two Tickets To Sunder"
+    extern add_quest "Get One Ticket To Sunder"
+  }
+}
+extern AI_GrabEntity divadopher divadopher_handle
+extern AI_DestroyEntity divadopher_handle
+set divadopher_gone = 0
+set TICKET_FIGHT = 0
+console "battlestart 3"
+goto 0:0
+
+#switch 55:701
+if (Rtubes1_paneldoor == 1) {
+  target paneldoor
+  goto 0:0
+}
+extern assign E[0] -1 50 50 51 50 50 -1
+extern assign E[7] -1 40 30 40 40 40 -1
+extern assign E[14] -1 60 40 40 40 40 -1
+extern assign E[21] -1 30 40 60 40 60 -1
+extern assign E[28] -1 40 40 30 40 40 -1
+extern assign E[35] -1 40 30 40 40 40 -1
+extern assign E[42] -1 46 45 45 45 45 -1
+WS_STAND$="pal_skill_1" 
+ws_object$="paneldoor" 
+set ws_bank = 55
+set ws_entry = 702
+ws_scenename$="worldskills/comptalk_routubes1_1" 
+gosub 4003:1
+goto 0:0
+
+#switch 55:702
+set Rtubes1_paneldoor = 1
+
+#switch 55:501
+if (Rtubes1_RhoCanFixPanel == 1) {
+  target rhodoor
+  target blue
+  target red
+  extern AI_GrabEntity 55:0501 fixpanel_handle
+  extern AI_GrabEntity 55:1231 @squib_handle
+  extern npkill @squib_handle
+  set Rtubes1_RhoCanFixPanel = 2
+}
+if (Rtubes1_RhoCanFixPanel == 0)
+  goto 55:0502
+
+#switch 55:505
+if (Rtubes1_RhoCanFixPanel == 2)
+  target rhodoor
+goto 0:0
+
+#switch 55:601
+if (Rtubes1_RhoCanFixPanel > 0)
+  goto 55:0602
+WS_STAND$="rho_skill_1" 
+ws_object$="rhopaper" 
+set ws_bank = 55
+set ws_entry = 602
+gosub 4004:1
+goto 0:0
+
+#switch 55:605
+if (((func_charinparty[boots] == 3) && (@LookedAtSchematicOnce1 == 0)) && (Rtubes1_RhoCanFixPanel == 0))
+  goto 55:0606
+if (((func_charinparty[grumpos] == 3) && (@LookedAtSchematicOnce2 == 0)) && (Rtubes1_RhoCanFixPanel == 0))
+  goto 55:0606
+if (((func_charinparty[pal] == 3) && (@LookedAtSchematicOnce3 == 0)) && (Rtubes1_RhoCanFixPanel == 0))
+  goto 55:0606
+if (((func_charinparty[democratus] == 3) && (@LookedAtSchematicOnce4 == 0)) && (Rtubes1_RhoCanFixPanel == 0))
+  goto 55:0606
+if (((func_charinparty[rho] == 3) && (@LookedAtSchematicRho == 0)) && (Rtubes1_RhoCanFixPanel == 0))
+  goto 55:0606
+goto 55:0601
+
+#switch 55:1232
+if (Rtubes1_RhoCanFixPanel != 2)
+  goto 55:1233
+target rhodoor
+
+#switch 55:801
+trader_name$="Rollo" 
+if (talk_tbot_rollo < 2)
+  set talk_tbot_rollo = (talk_tbot_rollo + 1)
+if (talk_tbot_rollo == 1)
+  goto 55:0805	                    
+goto 7777:1			                       
+
+#switch 55:901
+goto 55:0910
+
+#switch 55:915
+extern check_money partycash
+if (partycash < 250)
+  goto 55:0925
+extern remove_money 250
+goto 55:0916
+
+#switch 55:920
+extern check_money partycash
+if (partycash < 100)
+  goto 55:0925
+extern remove_money 100
+goto 55:0921
+
+#switch 55:1001
+if (PUNCH_JUDY == 3)
+  goto 55:1030
+if ((func_charinparty[boots] != 3) || (PUNCH_JUDY == 1))
+  goto 55:1040
+goto 55:1005
+
+#switch 55:1010
+console "battlestart 3"
+set PUNCH_JUDY = 3
+extern remove_from_inventory "Detta Credentials"
+set ticket_fight = 0
+
+#switch 55:2100
+goto 0:0
+
+#switch 55:8822
+echo "Resetting battles, trigger 2"
+extern resetbattle routubes10
+extern resetbattle routubes11
+extern resetbattle routubes12
+extern resetbattle routubes13
+extern resetbattle routubes14
+extern resetbattle routubes20
+extern resetbattle routubes21
+extern resetbattle routubes22
+extern resetbattle routubes23
+extern resetbattle mugpath2
+if (GOT_FTM) {
+  console "map scommonnight fromroutubes1"
+} else
+  console "map scommons fromroutubes1"
+goto 0:0
+
+#switch 55:5001
+if (routubes1_battle_area_1 == 1)
+  goto 0:0
+set routubes1_battle_area_1 = 1
+console "battlestart 1"
+goto 0:0
+
+#switch 55:5002
+if (routubes1_battle_area_1 == 1)
+  goto 0:0
+set routubes1_battle_area_1 = 1
+console "battlestart 2"
+goto 0:0
+
+#switch 55:5003
+if (routubes1_battle_area_2 == 1)
+  goto 0:0
+set routubes1_battle_area_2 = 1
+console "battlestart 3"
+goto 0:0
+
+#switch 55:5004
+if (routubes1_battle_area_2 == 1)
+  goto 0:0
+set routubes1_battle_area_2 = 1
+console "battlestart 4"
+goto 0:0
+
+#switch 55:8000
+echo "Resetting battles, trigger 1"
+extern resetbattle routubes10
+extern resetbattle routubes11
+extern resetbattle routubes12
+extern resetbattle routubes13
+extern resetbattle routubes14
+extern resetbattle routubes20
+extern resetbattle routubes21
+extern resetbattle routubes22
+extern resetbattle routubes23
+extern resetbattle mugpath2
+if (GOT_FTM == 0)
+  goto 55:8001
+console "map scommonnight fromroutubes1"
+goto 0:0
+
+#switch 55:8001
+console "map scommons fromroutubes1"
+goto 0:0

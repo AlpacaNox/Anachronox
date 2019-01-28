@@ -1,0 +1,1547 @@
+#window 41:101
+title "FEATURED ITEM"
+body "This battery and more are available today!"
+cam fov(90) from(-359 180 582) to(-421 168 579) far(100) near(30) fwd(40) speed(10000) lift(62) lag(10000) occlude(no) restore zip
+startswitch {
+  set @Vendomart_WinSequence1 = 101
+}
+
+finishswitch {
+  set @Vendomart_WinSequence1 = 0
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 140
+ypos 325
+width 450
+subwindow 41:105
+subwindow 41:125
+subwindow 41:110
+background "backdrop.bmp" stretch
+nextwindow 41:9000
+
+#window 41:105
+title " "
+body " "
+finishswitch {
+  if (@Vendomart_WinSequence1)
+    console "ui_closewindow 41:%d; invoke 41:9000", @Vendomart_WinSequence1
+}
+
+style "NULL"
+xpos 10
+ypos 325
+width 128
+height 128
+background "../graphics/interface/windows/vendo.png" 
+
+#window 41:110
+title "#1     CORDICOM TOY BATTERY, SIZE B!"
+body "Long-lasting energy for the most demanding of toys, Cordicom is the most popular brand of batteries the galaxy over!  Even if it were legal to make Cordicom-compatible batteries (which it isn't: Cordicom vs. Energenius, 2679), no one would come close the quality, dependability, and sheer pervasiveness of the Cordicom battery line.  If you want power, it's gotta be Cordicom!"
+finishswitch {
+  if (@Vendomart_WinSequence1)
+    console "ui_closewindow 41:%d; invoke 41:9000", @Vendomart_WinSequence1
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 20
+ypos 20
+width 580
+
+#window 41:125
+if (brebscroll == 1)
+  body "ABCDEF GH IJKL M NOP "
+if (brebscroll == 2)
+  body "BCDEF GH IJKL M NOP A"
+if (brebscroll == 3)
+  body "CDEF GH IJKL M NOP AB"
+if (brebscroll == 4)
+  body "DEF GH IJKL M NOP ABC"
+if (brebscroll == 5)
+  body "EF GH IJKL M NOP ABCD"
+if (brebscroll == 6)
+  body "F GH IJKL M NOP ABCDE"
+if (brebscroll == 7)
+  body " GH IJKL M NOP ABCDEF"
+if (brebscroll == 8)
+  body "GH IJKL M NOP ABCDEF "
+if (brebscroll == 9)
+  body "H IJKL M NOP ABCDEF G"
+if (brebscroll == 10)
+  body " IJKL M NOP ABCDEF GH"
+if (brebscroll == 11)
+  body "IJKL M NOP ABCDEF GH "
+if (brebscroll == 12)
+  body "JKL M NOP ABCDEF GH I"
+if (brebscroll == 13)
+  body "KL M NOP ABCDEF GH IJ"
+if (brebscroll == 14)
+  body "L M NOP ABCDEF GH IJK"
+if (brebscroll == 15)
+  body " M NOP ABCDEF GH IJKL"
+if (brebscroll == 16)
+  body "M NOP ABCDEF GH IJKL "
+if (brebscroll == 17)
+  body " NOP ABCDEF GH IJKL M"
+if (brebscroll == 18)
+  body "NOP ABCDEF GH IJKL M "
+if (brebscroll == 19)
+  body "OP ABCDEF GH IJKL M N"
+if (brebscroll == 20)
+  body "P ABCDEF GH IJKL M NO"
+if (brebscroll == 21)
+  body " ABCDEF GH IJKL M NOP"
+startswitch {
+  set brebscroll = 1
+  set lastMS = func_GameTime
+  set currentMS = lastMS
+  goto 0:0
+}
+
+thinkswitch {
+  set currentMS = func_GameTime
+  set delta = (currentMS - lastMS)
+  if (delta < 100)
+    goto 0:0
+  set lastMS = currentMS
+  set brebscroll = (brebscroll + 1)
+  if (brebscroll == 22)
+    set brebscroll = 1
+  goto 0:0
+}
+
+finishswitch {
+  if (@Vendomart_WinSequence1)
+    console "ui_closewindow 41:%d; invoke 41:9000", @Vendomart_WinSequence1
+  goto 0:0
+}
+
+style "NULL"
+font "brebulan"
+xpos 30
+ypos 275
+width 700
+
+#window 41:201
+title "FEATURED ITEM"
+body "Sorry, this item is temporarily unavailable."
+cam fov(90) from(-369 123 466) to(-395 66 454) far(100) near(30) fwd(40) speed(10000) lift(62) lag(10000) occlude(no) restore zip
+startswitch {
+  set @Vendomart_WinSequence1 = 201
+}
+
+finishswitch {
+  set @Vendomart_WinSequence1 = 0
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 140
+ypos 325
+width 450
+subwindow 41:105
+subwindow 41:125
+subwindow 41:210
+background "backdrop.bmp" stretch
+nextwindow 41:9000
+
+#window 41:210
+title "#2     MYSTERIAD BATTPACK!"
+body "The finest of NRG sources! If you're using Neutron-Radiated Glodents to power your home or personal device, look no further than the Mysteriad Battpack. Only we pluck the fresh glowing rodents from the air as they fly through their natural habitat, feed them, sanitize them, and pack them tightly into every battpack. NRGs never been better than this!"
+finishswitch {
+  if (@Vendomart_WinSequence1)
+    console "ui_closewindow 41:%d; invoke 41:9000", @Vendomart_WinSequence1
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 20
+ypos 20
+width 580
+
+#window 41:301
+title "FEATURED ITEM"
+body "Sorry, this item is temporarily unavailable."
+cam fov(90) from(-409 171 461) to(-471 167 447) far(100) near(30) fwd(40) speed(10000) lift(62) lag(10000) occlude(no) restore zip
+startswitch {
+  set @Vendomart_WinSequence1 = 301
+}
+
+finishswitch {
+  set @Vendomart_WinSequence1 = 0
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 140
+ypos 325
+width 450
+subwindow 41:105
+subwindow 41:125
+subwindow 41:310
+background "backdrop.bmp" stretch
+nextwindow 41:9000
+
+#window 41:310
+title "#3     CORDICOM DATASLAB!"
+body "Bringing a planet's worth of data in an easy to transport slab! The Dataslab is the foundation of the Galaxy-wide SlabNet, keeping all Sender-Associated systems up-to-date with information guaranteed not to be more than one day old! Find out about events at distant stars faster than the light from that star reaches you! We bring you the data... daily!"
+finishswitch {
+  if (@Vendomart_WinSequence1)
+    console "ui_closewindow 41:%d; invoke 41:9000", @Vendomart_WinSequence1
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 20
+ypos 20
+width 580
+
+#window 41:401
+title "FEATURED ITEM"
+body "This HealGrease and more are available today!"
+cam fov(90) from(-390 299 455) to(-445 330 443) far(100) near(30) fwd(40) speed(10000) lift(62) lag(10000) occlude(no) restore zip
+startswitch {
+  set @Vendomart_WinSequence1 = 401
+}
+
+finishswitch {
+  set @Vendomart_WinSequence1 = 0
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 140
+ypos 325
+width 450
+subwindow 41:105
+subwindow 41:125
+subwindow 41:410
+background "backdrop.bmp" stretch
+nextwindow 41:9000
+
+#window 41:410
+title "#4     DR. BLUES' HEALGREASE!"
+body "When you're down and wounded, hop back up with Dr. Blues' HealGrease! No energy blast or knife hole need disturb your productive day. Get better with Dr. Blues!"
+finishswitch {
+  if (@Vendomart_WinSequence1)
+    console "ui_closewindow 41:%d; invoke 41:9000", @Vendomart_WinSequence1
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 20
+ypos 20
+width 580
+
+#window 41:501
+title "FEATURED ITEM"
+body "Sorry, this item is temporarily unavailable."
+cam fov(90) from(-371 89 317) to(-406 36 314) far(100) near(30) fwd(40) speed(10000) lift(62) lag(10000) occlude(no) restore zip
+startswitch {
+  set @Vendomart_WinSequence1 = 501
+}
+
+finishswitch {
+  set @Vendomart_WinSequence1 = 0
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 140
+ypos 325
+width 450
+subwindow 41:105
+subwindow 41:125
+subwindow 41:515
+background "backdrop.bmp" stretch
+nextwindow 41:9000
+
+#window 41:515
+title "#5     HUGE MATERIA!"
+body "[Sold out.]"
+finishswitch {
+  if (@Vendomart_WinSequence1)
+    console "ui_closewindow 41:%d; invoke 41:9000", @Vendomart_WinSequence1
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 20
+ypos 20
+width 580
+
+#window 41:601
+title "FEATURED ITEM"
+if (mystech_active == 0)
+  body "These labcoats and more are available today!"
+if (mystech_active == 0)
+  body " Sorry, Scientifica Association credentials are necessary to make this purchase."
+if (mystech_active == 1)
+  body "Sorry, this item is temporarily unavailable."
+cam fov(90) from(-390 179 345) to(-453 166 343) far(100) near(30) fwd(40) speed(10000) lift(62) lag(10000) occlude(no) restore zip
+startswitch {
+  set @Vendomart_WinSequence1 = 601
+}
+
+finishswitch {
+  set @Vendomart_WinSequence1 = 0
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 140
+ypos 325
+width 450
+subwindow 41:105
+subwindow 41:125
+subwindow 41:610
+background "backdrop.bmp" stretch
+nextwindow 41:9000
+
+#window 41:610
+title "#6     SEAMTECH LABCOAT THREEPACK"
+if (mystech_active == 0)
+  body "Protect your person from photons, phototoxins, and particulates with our Seamtech LabCoat ThreePack! Produced with Phragmoplast-coated spunbond, these protective, permanent coats feature button-snap collars, picture-perfect side vents, and patch-pocket sleeve guards. Never pour poop on your pretty pants again! Sizes: XS (30-32), S (34-36), M (38-40), L (42-44), XL (46-48)."
+if (mystech_active == 1)
+  body "[Sold out.]"
+finishswitch {
+  if (@Vendomart_WinSequence1)
+    console "ui_closewindow 41:%d; invoke 41:9000", @Vendomart_WinSequence1
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 20
+ypos 20
+width 580
+
+#window 41:701
+title "FEATURED ITEM"
+body "This cell and more are available today!"
+cam fov(90) from(-365 281 356) to(-415 317 339) far(100) near(30) fwd(40) speed(10000) lift(62) lag(10000) occlude(no) restore zip
+startswitch {
+  set @Vendomart_WinSequence1 = 701
+}
+
+finishswitch {
+  set @Vendomart_WinSequence1 = 0
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 140
+ypos 325
+width 450
+subwindow 41:105
+subwindow 41:125
+subwindow 41:710
+background "backdrop.bmp" stretch
+nextwindow 41:9000
+
+#window 41:710
+title "#7     CORDICOM POWERBELT CELL!"
+body "This fine powercell will service any local NRG-based device. Just charge it up, slap it on your belt, and your power needs are handy as... hands! Also, look for our special edition Sender Standard ShieldCell, providing both power AND protection! SPECS: Output 100 nrg; Max	Shield, none."
+finishswitch {
+  if (@Vendomart_WinSequence1)
+    console "ui_closewindow 41:%d; invoke 41:9000", @Vendomart_WinSequence1
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 20
+ypos 20
+width 580
+
+#window 41:801
+title "FEATURED ITEM"
+body "This fine cell and more are available today!"
+cam fov(90) from(-343 91 198) to(-385 43 201) far(100) near(30) fwd(40) speed(10000) lift(62) lag(10000) occlude(no) restore zip
+startswitch {
+  set @Vendomart_WinSequence1 = 801
+}
+
+finishswitch {
+  set @Vendomart_WinSequence1 = 0
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 140
+ypos 325
+width 450
+subwindow 41:105
+subwindow 41:125
+subwindow 41:810
+background "backdrop.bmp" stretch
+nextwindow 41:9000
+
+#window 41:810
+title "#8     SENDER STANDARD SHIELDCELL!"
+body "This special-edition Cordicom shieldcell not only powers your NRG-based devices, it protects you in the process! Using the latest in phase-shield technology, you can save yourself from danger while making the world a better place. The finest Brebulan crafts-creatures worked hours on each shieldcell. Made to exacting specifications, you won't find a finer shieldcell in the galaxy. If you do, tell us who sells it, and we'll take care of it! SPECS: Output 200 nrg; Max Shield 100."
+finishswitch {
+  if (@Vendomart_WinSequence1)
+    console "ui_closewindow 41:%d; invoke 41:9000", @Vendomart_WinSequence1
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 20
+ypos 20
+width 580
+
+#window 41:901
+title "FEATURED ITEM"
+body "This fine gun and more are available today!"
+cam fov(90) from(-390 179 226) to(-453 179 204) far(100) near(30) fwd(40) speed(10000) lift(62) lag(10000) occlude(no) restore zip
+startswitch {
+  set @Vendomart_WinSequence1 = 901
+}
+
+finishswitch {
+  set @Vendomart_WinSequence1 = 0
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 140
+ypos 325
+width 450
+subwindow 41:105
+subwindow 41:125
+subwindow 41:910
+background "backdrop.bmp" stretch
+nextwindow 41:9000
+
+#window 41:910
+title "#9     VISTIN THREE-BEAM!"
+body "One of the Vistin Corporation's most popular models, the Vistin Three-Beam packs the power of three blasters into one economical package, priced to sell. Live life dangerously with the confidence of Vistin craftsmanship backing your bite!"
+finishswitch {
+  if (@Vendomart_WinSequence1)
+    console "ui_closewindow 41:%d; invoke 41:9000", @Vendomart_WinSequence1
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 20
+ypos 20
+width 580
+
+#window 41:1001
+title "FEATURED ITEM"
+body "This fine accesory and more are available today!"
+cam fov(90) from(-365 281 237) to(-415 317 200) far(100) near(30) fwd(40) speed(10000) lift(62) lag(10000) occlude(no) restore zip
+startswitch {
+  set @Vendomart_WinSequence1 = 1001
+}
+
+finishswitch {
+  set @Vendomart_WinSequence1 = 0
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 140
+ypos 325
+width 450
+subwindow 41:105
+subwindow 41:125
+subwindow 41:1010
+background "backdrop.bmp" stretch
+nextwindow 41:9000
+
+#window 41:1010
+title "#10    ELUDER BAND!"
+body "Do you have a proclivity to slink through the shadows? Always finding yourself on the run? Be sure to strap on an Eluder Band before things get out of hand! As featured on Infomercials Nightly, this strapping accessory is hand-woven from the patented ShiftSilk that is making such a splash on the Cordican fashion scene!"
+finishswitch {
+  if (@Vendomart_WinSequence1)
+    console "ui_closewindow 41:%d; invoke 41:9000", @Vendomart_WinSequence1
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 20
+ypos 20
+width 580
+
+#window 41:1101
+title "FEATURED ITEM"
+body "Sorry! Due to recent Bipidri population growth, this item is currently sold out. Sorry for the inconvenience."
+cam fov(90) from(-366 65 93) to(-407 26 64) far(100) near(30) fwd(40) speed(10000) lift(62) lag(10000) occlude(no) restore zip
+startswitch {
+  set @Vendomart_WinSequence1 = 1101
+}
+
+finishswitch {
+  set @Vendomart_WinSequence1 = 0
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 140
+ypos 325
+width 450
+subwindow 41:105
+subwindow 41:125
+subwindow 41:1110
+background "backdrop.bmp" stretch
+nextwindow 41:9000
+
+#window 41:1110
+title "#11     PET BIPIDRI ACTIVITY CAGE!"
+body "What household is complete without its very own, arduous Bipidri to fix things and clean up? But when the fixin's done and the house is clean, where do you put your little helper? Cordicom Industries is proud to release the Pet Bipidri Activity Cage! Its cozy living space houses up to Four Bipidri with minimal risk to their health! Includes a high power light bulb which fully illuminates the entire cage, and a Cordicom Durafoam mattress (removeable) is provided to encourage your Bipidri to sleep when not working. Durable polysteel water dish/feeding tray/latrine is included at no extra cost."
+finishswitch {
+  if (@Vendomart_WinSequence1)
+    console "ui_closewindow 41:%d; invoke 41:9000", @Vendomart_WinSequence1
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 20
+ypos 20
+width 580
+
+#window 41:1201
+title "FEATURED ITEM"
+body "This cute, differently-abled doll and more are available today!"
+cam fov(90) from(-379 292 86) to(-430 326 67) far(100) near(30) fwd(40) speed(10000) lift(62) lag(10000) occlude(no) restore zip
+startswitch {
+  set @Vendomart_WinSequence1 = 1201
+}
+
+finishswitch {
+  set @Vendomart_WinSequence1 = 0
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 140
+ypos 325
+width 450
+subwindow 41:105
+subwindow 41:125
+subwindow 41:1210
+background "backdrop.bmp" stretch
+nextwindow 41:9000
+
+#window 41:1210
+title "#12     MY LITTLE MEGALOCEPHALIC WENDY!"
+body "A definite must for any young girl, and a probable must for any young boy! Wendy's massive, Spherical Cranium ensures a cuteness far superior to most ordinary dolls, and she floats better too! Doll comes with 35 collectible containers, and says 9 separate phrases, including \"Let's go buy more containers!\" and \"Which container looks the prettiest?\" Have yourself an incredible evening tonight... and every night with Megalocephalic Wendy!"
+finishswitch {
+  if (@Vendomart_WinSequence1)
+    console "ui_closewindow 41:%d; invoke 41:9000", @Vendomart_WinSequence1
+}
+
+style "NULL"
+font "_anox12out"
+flags noscroll, TRUE
+xpos 20
+ypos 20
+width 580
+
+#window 41:1301
+title "Pay2Pray Bot"
+body "Welcome to Pay2Pray."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (Pay2Pray1 == 1)
+    goto 41:1305
+  goto 41:1302
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 41:1302
+title "Pay2Pray Bot"
+body "The relics of 3,600 different religions are housed here within our bank vault secure, bullet-proof, PrayPod ™."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Pay2Pray1 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 41:1303
+
+#window 41:1303
+title "Pay2Pray Bot"
+body "For only a reasonable fee of 50 loonies, you can be put in the presence of a holy relic from the religion of your choice."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 41:1304
+
+#window 41:1304
+title "Pay2Pray Bot"
+body "From a Gorite Glory Tether to a Brebulan Saint Spine, we guarantee a quality communion with an authentic relic no matter how obscure your faith."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 41:1305
+
+#window 41:1305
+title "Pay2Pray Bot"
+body "Would you like to purchase quality time with our PrayPod?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern is_in_inventory "Tetrahedral Prism" @has_prism1
+  extern is_in_inventory "Pentagonal Prism" @has_prism2
+  extern is_in_inventory "Hexagonal Prism" @has_prism3
+  extern is_in_inventory "Dodecahedral Prism" @has_prism4
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+if ((func_charinparty[grumpos] == 3) && (@has_prism1 == 1))
+  choice "I'll meditate with a Tetrahedral Prism." 41:1310
+if ((func_charinparty[grumpos] == 3) && (@has_prism2 == 1))
+  choice "I'll meditate with Pentagonal Prism." 41:1311
+if ((func_charinparty[grumpos] == 3) && (@has_prism3 == 1))
+  choice "I'll meditate with Hexagonal Prism." 41:1312
+if ((func_charinparty[grumpos] == 3) && (@has_prism4 == 1))
+  choice "I'll meditate with Dodecahedral Prism." 41:1313
+if ((func_charinparty[grumpos] == 3) && ((((@has_prism1 == 0) && (@has_prism2 == 0)) && (@has_prism3 == 0)) && (@has_prism4 == 0)))
+  choice "Yes." 41:1330
+if (func_charinparty[grumpos] != 3)
+  choice "Yes." 41:1330
+choice "No." 41:1325
+if (MYSTECH_ACTIVE)
+  choice "I'd like to buy MysTech." 41:1340
+
+#window 41:1310
+title "Pay2Pray Bot"
+body "What a dazzling prism. We graciously accept it as valid proof of your involvement with the School of Order."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern check_money @party_cash
+}
+
+finishswitch {
+  if (@party_cash < 50)
+    goto 41:1335
+  set @using_prism1 = 1
+  goto 41:1315
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 41:1311
+title "Pay2Pray Bot"
+body "What a dazzling prism. We graciously accept it as valid proof of your involvement with the School of Order."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern check_money @party_cash
+}
+
+finishswitch {
+  if (@party_cash < 50)
+    goto 41:1335
+  set @using_prism2 = 1
+  goto 41:1315
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 41:1312
+title "Pay2Pray Bot"
+body "What a dazzling prism. We graciously accept it as valid proof of your involvement with the School of Order."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern check_money @party_cash
+}
+
+finishswitch {
+  if (@party_cash < 50)
+    goto 41:1335
+  set @using_prism3 = 1
+  goto 41:1315
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 41:1313
+title "Pay2Pray Bot"
+body "What a dazzling prism. We graciously accept it as valid proof of your involvement with the School of Order."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern check_money @party_cash
+}
+
+finishswitch {
+  if (@party_cash < 50)
+    goto 41:1335
+  set @using_prism4 = 1
+  goto 41:1315
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 41:1315
+title "Pay2Pray Bot"
+body "Step up to the PrayPod. The Black Cube of Perfection will rotate into position shortly."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 41:1316
+
+#window 41:1316
+cam left from(-362 1553 -714) to(-422 1556 -691) lift(40) restore zip
+startswitch {
+  console "forcecursormode 1"
+  extern AI_GrabEntity PlayerChar0 @grumposhandle
+  extern AI_SnapMove @grumposhandle
+  extern AI_SetXYZ @grumposhandle -422 1432 -737
+  extern AI_SetYaw @grumposhandle 90
+  extern AI_SeekAndFace @grumposhandle praypath3
+  extern AI_SetCompletionCallback @grumposhandle 41:1317
+}
+
+style "NULL"
+flags passive, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 0
+ypos 0
+width 100
+height 100
+
+#window 41:1318
+startswitch {
+  set @tstart = func_gametime
+  set @flashing = 0
+}
+
+thinkswitch {
+  set @t = (func_gametime - @tstart)
+  if ((@t > 5000) && (@flashing == 0)) {
+    set @flashing = 1
+    gosub 41:1319
+    closewindow 41:1318
+  }
+}
+
+style "null"
+flags passive, TRUE
+
+#window 41:1319
+cam left from(-570 1551 -671) to(-633 1556 -674) fov(80) restore zip
+startswitch {
+  extern FlashScreenf 0 0 0 1 0
+  extern FlashScreenf 0 0 0 0 3
+  set @tstart = func_gametime
+  set @flashing = 0
+}
+
+thinkswitch {
+  set @t = (func_gametime - @tstart)
+  if ((@t > 3000) && (@flashing == 0)) {
+    extern FlashScreenf 0 0 0 0 0
+    extern FlashScreenf 0 0 0 1 3
+    set @flashing = 1
+  }
+  if (@t > 6000) {
+    extern cam_anoxmariomode 0
+    console "cam_restore"
+    gosub 41:1320
+    extern ANIM_PlayAnim @praypod_handle amb_a 0 1 1
+    closewindow 41:1319
+  }
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 100
+height 100
+
+#window 41:1320
+title "Grumpos"
+body "My meditations have proven fruitful!"
+cam left from(-362 1553 -714) to(-422 1556 -691) fov(90) lift(40) restore zip
+startswitch {
+  console "forcecursormode 0"
+  extern FlashScreenf 0 0 0 1 0
+  extern FlashScreenf 0 0 0 0 1
+  extern AI_WaitAndFace @grumposhandle -1 pay2pray
+  extern ANIM_PlayAnim @grumposhandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern ANIM_MakeSmart @grumposhandle
+  extern AI_ReleaseEntity @grumposhandle
+  extern AI_ReleaseEntity @praypod_handle
+  extern cam_anoxmariomode 0
+  if (@has_prism1 == 1) {
+    extern add_battle_skill "Yammer"
+    extern remove_from_inventory "Tetrahedral Prism"
+    extern playsound ui/gen/ui_gen_success.wav
+    set timed_message = 99
+    timed_message$="Grumpos learns Yammer" 
+    gosub 1000:1
+  } else if (@has_prism2 == 1) {
+    extern add_battle_skill "StaffSweep"
+    extern remove_from_inventory "Pentagonal Prism"
+    extern playsound ui/gen/ui_gen_success.wav
+    set timed_message = 99
+    timed_message$="Grumpos learns StaffSweep" 
+    gosub 1000:1
+  } else if (@has_prism3 == 1) {
+    extern add_battle_skill "HealField"
+    extern remove_from_inventory "Hexagonal Prism"
+    extern playsound ui/gen/ui_gen_success.wav
+    set timed_message = 99
+    timed_message$="Grumpos learns HealField" 
+    gosub 1000:1
+  } else if (@has_prism4 == 1) {
+    extern add_battle_skill "WhiteLight"
+    extern remove_from_inventory "Dodecahedral Prism"
+    extern playsound ui/gen/ui_gen_success.wav
+    set timed_message = 99
+    timed_message$="Grumpos learns WhiteLight" 
+    gosub 1000:1
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+
+#window 41:1325
+title "Pay2Pray Bot"
+body "Remember: money is transient, but your salvation is eternal."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 41:1330
+title "Pay2Pray Bot"
+body "It's against the rules to allow a non-worshiper near a holy relic. Return here when you can present proof of your faith."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 41:1331
+
+#window 41:1331
+title "Pay2Pray Bot"
+body "For example, a student of the School of Order might present a holy prism as evidence of his belief."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 41:1335
+title "Pay2Pray Bot"
+body "However, without the small 50 loonie contribution to the Pay2Pray Foundation, we cannot allow you access to your relic."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 41:1345
+title "PAY-2-PRAY BOT"
+body "Peace with with you."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 41:1405
+title "Lara Lala"
+body "Don't be fooled by the hype. Megalocephalic Wendy is nowhere near as good as Megalocephalic Fred."
+cam left restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 41:1410
+
+#window 41:1410
+title "Lara Lala"
+body "Not only does Fred come with forty collectible containers, but he also sings the special Megalocephalic family theme song in twelve languages. Pretty remarkable, wouldn't you say?"
+cam left restore zip
+talk npc talk_y stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "You are seriously disturbed." 41:1415
+choice "You need therapy." 41:1425
+
+#window 41:1415
+title "Lara Lala"
+body "Well, gosh... that's not a very friendly thing to say."
+talk npc talk_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 41:1420
+
+#window 41:1420
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+if (func_charinparty[pal] == 3)
+  title "PAL-18"
+if (func_charinparty[rho] == 3)
+  title "Rho"
+if (func_charinparty[democratus] == 3)
+  title "Democratus"
+if (func_charinparty[stiletto] == 3)
+  title "Stiletto"
+if (func_charinparty[paco] == 3)
+  title "Paco"
+if ((func_charinparty[boots] == 3) || (func_charinparty[pal] == 3))
+  body "Truth hurts, babe."
+if (func_charinparty[grumpos] == 3)
+  body "Truth hurts, freak."
+if (func_charinparty[pal] == 3)
+  body "Truth hurts, ma'am."
+if (func_charinparty[rho] == 3)
+  body "Truth hurts, lady."
+if (func_charinparty[democratus] == 3)
+  body "cTruth hurts, itizen."
+if (func_charinparty[stiletto] == 3)
+  body "Truth hurts, sweetheart."
+if (func_charinparty[paco] == 3)
+  body "Truth hurts, miss."
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+
+#window 41:1425
+title "Lara Lala"
+if (INV_WENDY == 0)
+  body "I need therapy?! You're the one who's thinking of buying Megalocephalic Wendy."
+if (INV_WENDY == 1)
+  body "I need therapy?! You're the one who bought Megalocephalic Wendy."
+cam left restore zip
+talk npc gest_d stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 41:1430
+title "Lara Lala"
+body "I don't talk to mean people. "
+if ((func_charinparty[boots] == 3) || (func_charinparty[pal] == 3))
+  body "Even cute ones."
+if (func_charinparty[grumpos] == 3)
+  body "Especially old ones."
+if (func_charinparty[democratus] == 3)
+  body "Or, uh, planets."
+if (func_charinparty[paco] == 3)
+  body "Even super heroes."
+cam left restore zip
+talk npc talk_n stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 41:1505
+title "PAL-18"
+body "I'm pretty sure I can override this baby with my CompTalk World Skill and lemon-pop those lab coats."
+talk player talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 41:1510
+body "#DataLink/Input ID3993539. SecurityOverride: /Vendo#6/ 'L.COATS-SEAMTECH' #SA-D5ORD"
+cam left restore zip
+style "NULL"
+font "_anox12out"
+xpos 35
+ypos 25
+width 450
+background "backdrop.bmp" stretch
+choice "%%AllowOverride" 41:1511
+choice "%%CancelSelection." 0:0
+
+#window 41:1515
+title "SSS DATALINK PARATOS/IP v5.5 (SSS.TFL=JJJ) [Temp window]"
+body "$$[BaseStatus /override] Administrator Authorization <Admin-ID:UID#54T69H43>. [granted 'Superuser privilege' n.gg_sa-cred='*']=(SA 'Draft Standard 7' ordinance)"
+cam left restore zip
+style "NULL"
+font "_anox12out"
+xpos 20
+ypos 20
+width 450
+nextwindow 41:1516
+
+#window 41:1520
+title "DATALINK PARATOS/IP v5.1 (VENDO.TFL=JJJ)"
+body "$$[BaseStatus /override] Administrator Authorization <Admin-ID:UID#20L83J88>. [granted 'Superuser privilege' n.gg_sa-cred='*']=(SA 'Draft Standard 5' ordinance)"
+style "NULL"
+font "_anox12out"
+xpos 20
+ypos 20
+width 450
+nextwindow 41:1525
+
+#window 41:1525
+title "PAL-18"
+body "I need to get Scientifica Association Credential Specs before I can ovveride this baby."
+startswitch {
+  set need_sa_2cred = 1
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 41:1530
+title "Boots"
+body "I can't access datalinks, but I paid big bucks to modify PAL-18 to hotwire these suckers."
+talk player gest_c stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 41:1535
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+if (func_charinparty[rho] == 3)
+  title "Rho"
+if (func_charinparty[stiletto] == 3)
+  title "Stiletto"
+body "I think that's a datalink for maintenance and diagnostic bots."
+talk player talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 41:1540
+title "Democratus"
+body "I believe the Personal Android Lackey has access to such datalinks."
+talk player talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 41:1545
+title "Paco"
+body "This datalink is for the little beebot... the PAL-18."
+talk player talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 41:1550
+title "PAL-18"
+body "I don't wanna port in again. We already got the lab coats."
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 41:1605
+title "PAL-18"
+body "Hey, this datalink's busted!"
+talk player talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 41:1630
+title "Boots"
+body "I can't access datalinks, but I paid big bucks to modify PAL-18 to hotwire these suckers."
+talk player gest_c stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 41:1805
+title "Fonn Togny"
+body "Everyone thinks I'm a pushover. Guards always pick on me. They beat me up and stick their finger in my lunch."
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  if (func_charinparty[grumpos] > 1)
+    goto 41:1810
+  extern cam_restore
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 41:1810
+title "Fonn Togny"
+body "I was trying to buy a HealGrease but this weird prism was jammed up in the delivery slot. Any idea what it is?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 41:1811
+
+#window 41:1811
+title "Grumpos"
+body "This is a Holy Prism from my School of Order. I can meditate with this at the Pay2Pray downstairs!"
+cam left restore zip
+talk npc amb_b stay
+finishswitch {
+  set got_hex_prism = 1
+  extern addnew_to_inventory "Hexagonal Prism"
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 41:1812
+
+#window 41:1815
+title "Fonn Togny"
+body "Yeah, thanks for takin' my prism, man."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 41:1905
+title "Traderbot Vince"
+body "Hey, I'm Trrrrrraderbot Vince! I got the best deals and I'm looking for quaaaaality items..."
+cam left lift(40) restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 7777:1
+
+#window 41:1701
+title "Boots"
+body "Tighten your belt, sunshine..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 41:1705
+title "Boots"
+body "                                  we got a bird to catch."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 41:1
+extern loopambient ambi_vendomart.s
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+set CURRENT_PLANET = 2
+set CURRENT_BANK = 41
+set anox_interface_active = 0
+extern playlevelmusic MP3/sender/sendertheme.mp3
+extern applylevelconfiguration vendomart
+goto 0:0
+
+#switch 41:115
+extern is_in_inventory "Cordicom Toy Battery Size B" @havebatt
+if (@havebatt)
+  set INV_BATTERY = 1
+extern cam_restore
+extern cam_zip
+
+#switch 41:620
+if (func_charinparty[pal] == 3)
+  extern addnew_to_inventory "Seamtech LabCoat ThreePack"
+
+#switch 41:1317
+closewindow 41:1316						       
+extern AI_WaitAndFace @grumposhandle -1 praypath1
+extern ANIM_PlayAnim @grumposhandle grab_m 0 0 1
+extern AI_GrabEntity praypod @praypod_handle
+extern ANIM_PlayAnim @praypod_handle gest_a 0 1 1
+extern FlashScreenf 0 0 0 0 0
+extern FlashScreenf 0 0 0 1 5
+goto 41:1318
+
+#switch 41:1340
+extern shop_create "Pay-2-Pray"
+extern shop_set_active "Pay-2-Pray"
+if (PRE_DETTA) {
+  extern is_in_inventory "Hexagonal Prism" @hexpris
+  extern is_skill_acquired "HealField" @healfield
+  extern is_in_inventory "Dodecahedral Prism" @dodecpris
+  extern is_skill_acquired "WhiteLight" @whitelight
+}
+extern shop_add_object "Glodent" 100
+if (elementor_active)
+  extern shop_add_object "Batt" 100
+if ((PRE_KRAPTON || PRE_LIMBUS) || PRE_DETTA)
+  extern shop_add_object "Bag o' Glodents" 100
+if (PRE_DETTA)
+  extern shop_add_object "Glodent Colony" 100
+if (MYSTECH_ACTIVE)
+  extern shop_add_object "FreezeZone" 100
+if ((PRE_KRAPTON || PRE_LIMBUS) || PRE_DETTA)
+  extern shop_add_object "FreezeCubist" 100
+if (MYSTECH_ACTIVE)
+  extern shop_add_object "PoisonSpin" 100
+if ((PRE_KRAPTON || PRE_LIMBUS) || PRE_DETTA)
+  extern shop_add_object "PoisonBeams" 100
+if (MYSTECH_ACTIVE)
+  extern shop_add_object "SlowStrike" 100
+if ((PRE_KRAPTON || PRE_LIMBUS) || PRE_DETTA)
+  extern shop_add_object "SlowMarch" 100
+if (PRE_DETTA) {
+  if ((@hexpris == 0) && (@healfield == 0))
+    extern shop_add_object "Hexagonal Prism" 1
+  if ((@dodecpris == 0) && (@whitelight == 0))
+    extern shop_add_object "Dodecahedral Prism" 1
+}
+extern shop_slogan "Ensure salvation with your donation"
+extern shop_start 41:1345
+goto 0:0
+
+#switch 41:1401
+set Lala1 = (Lala1 + 1)
+if (Lala1 > 1)
+  goto 41:1430
+goto 41:1405                                 
+
+#switch 41:1501
+if ((func_charinparty[pal] == 3) && ((BEEN_TO_SUNDER == 1) || (INV_LABCOATS == 1)))
+  goto 41:1550
+if ((func_charinparty[pal] == 3) && (need_sa_2cred == 1))
+  goto 41:1520
+if (func_charinparty[boots] == 3)
+  goto 41:1530
+if (((func_charinparty[grumpos] == 3) || (func_charinparty[rho] == 3)) || (func_charinparty[stiletto] == 3))
+  goto 41:1535
+if (func_charinparty[pal] == 3)
+  goto 41:1505
+
+#switch 41:1502
+if ((INV_LABCOATS || mystech_active) && (func_charinparty[pal] == 3))
+  goto 41:1550                                                                                       
+extern assign E[0] -1 50 50 50 50 51 -1
+extern assign E[7] -1 40 40 40 40 40 -1
+extern assign E[14] -1 60 40 40 40 40 -1
+extern assign E[21] -1 40 40 40 60 40 -1
+extern assign E[28] -1 30 40 40 40 60 -1
+extern assign E[35] -1 40 40 60 40 40 -1
+extern assign E[42] -1 46 45 45 45 45 -1
+WS_STAND$="vendport_path1" 
+set ws_bank = 41
+set ws_entry = 1516
+gosub 4003:1
+goto 0:0
+
+#switch 41:1511
+if (PAL_KNOWS_ALL_SCIENCE == 1)
+  goto 41:1515
+goto 41:1520
+
+#switch 41:1516
+extern addnew_to_inventory "Seamtech LabCoat ThreePack"
+set INV_LABCOATS = 1
+set PLAYLABCOATS = 1
+extern complete_quest "Look Like Scientists"
+console "set storysave \"Sender Station|Welcome to Sender Station\""
+extern playscene vendomart_labcoats1
+
+#switch 41:1601
+if (func_charinparty[boots] == 3)
+  goto 41:1630
+if (((func_charinparty[grumpos] == 3) || (func_charinparty[rho] == 3)) || (func_charinparty[stiletto] == 3))
+  goto 41:1535
+if (func_charinparty[pal] == 3)
+  goto 41:1605
+
+#switch 41:1602
+if (func_charinparty[pal] != 3) {
+  WS_STAND$="vendport_path2" 
+  gosub 4003:1
+  goto 0:0
+} else
+  goto 41:1605
+
+#switch 41:1801
+if (got_hex_prism == 1)
+  goto 41:1815
+goto 41:1805
+
+#switch 41:1812
+set timed_message = 20
+got_object$="Hexagonal Prism" 
+gosub 1000:1
+goto 0:0
+
+#switch 41:1901
+trader_name$="Vince" 
+if (talk_tbot_vince < 2)
+  set talk_tbot_vince = (talk_tbot_vince + 1)
+if (talk_tbot_vince == 1)
+  goto 41:1905	                    
+goto 7777:1			                       
+
+#switch 41:8000
+if (GOT_FTM == 0)
+  goto 41:8001
+console "map scommonnight fromvendomart"
+goto 0:0
+
+#switch 41:8001
+console "map scommons fromvendomart"
+goto 0:0
+
+#switch 41:9000
+extern cam_restore
+extern cam_zip
+extern shop_create "Vend-O-Mart"
+extern shop_set_active "Vend-O-Mart"
+extern shop_add_object "Vistin ThreeBeam" 100
+if (MYSTECH_ACTIVE)
+  extern shop_add_object "Vistin Octogun" 100
+if (PRE_KRAPTON || (PRE_LIMBUS || PRE_DETTA))
+  extern shop_add_object "Stargent Turboblaster" 100
+if (MYSTECH_ACTIVE)
+  extern shop_add_object "Cordicorps Shockclaw" 100
+if (PRE_KRAPTON || (PRE_LIMBUS || PRE_DETTA))
+  extern shop_add_object "Ballotine Crazyclaw" 100
+if (PRE_DETTA)
+  extern shop_add_object "Cordicorps Shockshot" 100
+if (MYSTECH_ACTIVE)
+  extern shop_add_object "Static Pulse Injector"
+if (PRE_KRAPTON || (PRE_LIMBUS || PRE_DETTA))
+  extern shop_add_object "Cubic Impactor" 100
+if (PRE_KRAPTON || (PRE_LIMBUS || PRE_DETTA))
+  extern shop_add_object "Resonance Crystal" 100
+if (PRE_KRAPTON || (PRE_LIMBUS || PRE_DETTA))
+  extern shop_add_object "Stargent Sleepshank" 100
+if (PRE_DETTA)
+  extern shop_add_object "Phantomfist" 100
+extern shop_add_object "Pre-owned Shieldcell" 100
+if (MYSTECH_ACTIVE)
+  extern shop_add_object "Cordicom Powerbelt Cell" 100
+if (PRE_KRAPTON || (PRE_LIMBUS || PRE_DETTA))
+  extern shop_add_object "Sender Standard Shieldcell" 100
+extern shop_add_object "HealGrease" 100
+if (MYSTECH_ACTIVE)
+  extern shop_add_object "HealGrease Plus" 100
+if (ELEMENTOR_ACTIVE)
+  extern shop_add_object "HealGrease Complete" 100
+extern shop_add_object "Megalocephalic Wendy" 100
+extern shop_add_object "Antiwinky Annulet" 100
+extern shop_add_object "Blood Filter Fascia" 100
+extern shop_add_object "Eluder Band" 100
+extern shop_add_object "TurboAlert Wristpincher" 100
+extern shop_add_object "Speedsure Circlet" 100
+if (RANDOM > 50)
+  extern shop_add_object "Bindlebag" 100
+goto 41:9005
+
+#switch 41:9005
+extern is_in_inventory "OX Cartridge" @ox
+extern is_in_inventory "Zong Cartridge" @zo
+extern is_in_inventory "Pooper Cartridge" @po
+if ((RANDOM > 95) && (@ox == 0))
+  extern shop_add_object "Ox Cartridge" 1
+if (((RANDOM > 95) && (wibble == 1)) && (@zo == 0))
+  extern shop_add_object "Zong Cartridge" 1
+if ((RANDOM > 95) && (@po == 0))
+  extern shop_add_object "Pooper Cartridge" 1
+if (RANDOM > 99)
+  extern shop_add_object "LifeCursor LifeLight" 1
+if (RANDOM > 99)
+  extern shop_add_object "LifeCursor InfoShow" 1
+goto 41:9010
+
+#switch 41:9010
+extern shop_picture "vendo.png"
+extern shop_slogan "When your buying needs to be impersonal"
+extern shop_start 41:0115
+goto 0:0
+
+#switch 41:1231
+if (vendomart_bootsdoor == 1) {
+  console "target bootsdoor"
+  goto 0:0
+}
+WS_STAND$="boots_skill_1" 
+ws_object$="bootsdoor" 
+set ws_bank = 41
+set ws_entry = 1232
+set ws_difficulty = 3
+set ws_countertime = 35
+gosub 4101:1
+goto 0:0
+
+#switch 41:1232
+set vendomart_bootsdoor = 1
+
+#switch 41:2001
+extern playscene vendomart_elev_down
+
+#switch 41:2011
+extern playscene vendomart_elev_up
+
+#switch 41:8822
+if (GOT_FTM) {
+  console "map scommonnight fromvendomart"
+} else
+  console "map scommons fromvendomart"
+goto 0:0
+
+#switch 66:6666
+extern add_npc_to_party grumpos
+extern set_party_leader grumpos
+extern addnew_to_inventory "Pentagonal Prism"
+extern add_money 1000
+set BOOTS_IN_PARTY = 1

@@ -1,0 +1,882 @@
+#window 112:101
+title "Elke"
+body "Honey, have the wombat sandwich, it's healthier."
+cam left from(PlayerChar0) to(elke) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_GrabEntity elke elke_handle
+  extern AI_WaitAndFace bootshandle -1 elke
+  extern ANIM_PlayAnim elke_handle talk_b 0 1 0
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+nextwindow 112:0105
+
+#window 112:105
+title "Walron"
+body "I remember they said that about the egret."
+cam left to(walron) restore zip
+startswitch {
+  extern AI_GrabEntity walron walron_handle
+  extern AI_WaitAndFace bootshandle -1 walron
+  extern ANIM_PlayAnim walron_handle gest_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity elke_handle
+  extern AI_ReleaseEntity walron_handle
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 112:305
+title "Vinigen Chatney"
+body "How amusing. Watching animals eat. What a primitive method of harvesting energy."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+nextwindow 112:0310
+
+#window 112:310
+title "Vinigen Chatney"
+body "I prefer my photosynthesis."
+cam left restore zip
+talk npc gest_h stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 112:315
+title "Vinigen Chatney"
+body "Oh, I've heard all the arguments. Yes, yes, food tastes good and I'm sure I don't know what I'm missing."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+nextwindow 112:0320
+
+#window 112:320
+title "Vinigen Chatney"
+body "But the only reason it tastes good is because your body needs it. Look at what you eat."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+nextwindow 112:0325
+
+#window 112:325
+title "Vinigen Chatney"
+body "Dirty tubers from the ground?"
+cam left restore zip
+talk npc gest_f stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+nextwindow 112:0330
+
+#window 112:330
+title "Vinigen Chatney"
+body "Killing animals? What a waste of energy. All I have to do is slurp my sugar water and lounge in the sun at least five hours a day."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+nextwindow 112:0335
+
+#window 112:335
+title "Shinmem Gimmel"
+body "You don't seem to have too much trouble busting a profit by exploiting our weakness."
+cam left from(PlayerChar0) to(shinmem) yaw(77) restore zip
+startswitch {
+  extern AI_GrabEntity shinmem shinmem_handle
+  extern AI_GrabEntity vinigen vinigen_handle
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 shinmem
+  extern AI_WaitAndFace vinigen_handle -1 shinmem
+  extern AI_WaitAndFace shinmem_handle -1 vinigen
+  extern ANIM_PlayAnim shinmem_handle gest_g 0 1 0
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+nextwindow 112:0340
+
+#window 112:340
+title "Vinigen Chatney"
+body "Hey, man's gotta eat."
+cam left from(PlayerChar0) to(vinigen) restore zip
+startswitch {
+  extern ANIM_PlayAnim vinigen_handle gest_a 0 1 0
+  extern AI_WaitAndFace bootshandle -1 vinigen
+}
+
+finishswitch {
+  extern AI_ReleaseEntity shinmem_handle
+  extern AI_ReleaseEntity vinigen_handle
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 112:501
+title "Shinmem Gimmel"
+body "My friend claims he bit into a Moon Burger triple grav-patty and found a half-cooked Bipidri arm in the meat."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+nextwindow 112:0505
+
+#window 112:505
+title "Shinmem Gimmel"
+body "Still hungry?"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 112:601
+title "Valentina"
+if (ratBREAK == 0)
+  body "That's just wrong."
+if (ratBREAK == 1)
+  body "He ate some poisoned cheese."
+cam left lift(40) restore zip
+talk npc talk_d stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 112:701
+title "Bess"
+body "Come on, let's go."
+cam left to(bess) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+nextwindow 112:0705
+
+#window 112:705
+title "Bess"
+body "What does it know?"
+cam left to(bess) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+nextwindow 112:0710
+
+#window 112:710
+title "Bess"
+body "This is crazy."
+cam left to(bess) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+nextwindow 112:0715
+
+#window 112:715
+title "Jax Maxwell"
+body "Just one more."
+cam left to(jax) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 112:901
+title "MYSTECH SEER FORTUNE MACHINE"
+body "Let the Mystech Seer guide you. Think of a yes/no question, then deposit one loonie for your fortune."
+cam left lift(40) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 seer2
+  extern check_money @pc
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+if (@pc == 0)
+  choice "Deposit loonie." 112:915
+if (@pc > 0)
+  choice "Deposit loonie." 112:910
+if (@pc > 0)
+  choice "Forget it!" 0:0
+
+#window 112:910
+cam left lift(40) restore zip
+startswitch {
+  set @start_time = func_gametime
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 seer2
+  extern ANIM_PlayAnim bootshandle grab_m 0 1 0
+}
+
+thinkswitch {
+  if ((func_gametime - @start_time) > 1000)
+    goto 112:0911
+  goto 0:0
+}
+
+style "NULL"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 0
+ypos 0
+width 100
+height 100
+
+#window 112:911
+title "%s", PlayerChar0$
+body "The Mystech Seer says:\n"
+if (@fortune == 1)
+  body "It is quite possible."
+if (@fortune == 2)
+  body "It has been decided in your favor."
+if (@fortune == 3)
+  body "You may never know."
+if (@fortune == 4)
+  body "If you move soon."
+if (@fortune == 5)
+  body "That makes a good deal of sense."
+if (@fortune == 6)
+  body "Try again."
+if (@fortune == 7)
+  body "There's no question about it."
+if (@fortune == 8)
+  body "Do you dare risk finding out?"
+if (@fortune == 9)
+  body "What do you think?"
+if (@fortune == 10)
+  body "Your chances are good."
+if (@fortune == 11)
+  body "It has already been taken care of."
+if (@fortune == 12)
+  body "If that's what you really want."
+if (@fortune == 13)
+  body "The answer to that is obvious."
+if (@fortune == 14)
+  body "That's up for you to find out."
+if (@fortune == 15)
+  body "It all depends upon your point of view."
+cam left restore zip
+startswitch {
+  closewindow 112:0910
+  set @fortune = func_drand[1,15]
+  extern remove_money 1
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_hephaestus"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 112:915
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "Sorry. We're flat broke."
+if (func_charinparty[grumpos] == 3)
+  body "Forget it. We're bust."
+if (func_charinparty[pal] == 3)
+  body "Hell, no! We're without a bean."
+if (func_charinparty[rho] == 3)
+  body "Nope. We're bankrupt."
+if (func_charinparty[democratus] == 3)
+  body "I'm afraid we're quite insolvent."
+if (func_charinparty[stiletto] == 3)
+  body "Not without a welfare check."
+if (func_charinparty[paco] == 3)
+  body "Penniless."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 112:1005
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "Too much beer. Too many burgers. No way my fat butt's squeezin' in there, bubba."
+if (func_charinparty[grumpos] == 3)
+  body "I might've been able to squeeze in there as a young man, but now... forget it!"
+if (func_charinparty[rho] == 3)
+  body "I could squeeze in there if I took off my backpack... but that's NOT gonna happen."
+if (func_charinparty[democratus] == 3)
+  body "This planet will NOT squeeze in there and lose a continent."
+if (func_charinparty[stiletto] == 3)
+  body "Nice try. You're not getting me into ANY tight spaces."
+if (func_charinparty[paco] == 3)
+  body "Too tight."
+cam left from(PlayerChar0) to(tube_eyeline) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 tube_eyeline
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 112:1010
+title "%s", PlayerChar0$
+body "Hey! I'm under the flag!"
+cam left from(PlayerChar0) to(tube_eyeline) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 tube_eyeline
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+nextwindow 112:1015
+
+#window 112:1015
+title "%s", PlayerChar0$
+body "Lemme know when we're uh-leavin'."
+cam left from(PlayerChar0) to(tube_eyeline) restore zip
+startswitch {
+  set Mburger_Pal_Played = (Mburger_Pal_Played + 1)
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+nextwindow 112:1050
+
+#window 112:1020
+title "%s", PlayerChar0$
+body "I'll be right back."
+cam left from(PlayerChar0) to(tube_eyeline) restore zip
+startswitch {
+  set Mburger_Pal_Played = (Mburger_Pal_Played + 1)
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 tube_eyeline
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+nextwindow 112:1050
+
+#window 112:1025
+title "%s", PlayerChar0$
+if (@variable2 <= 2)
+  body "That's alright. I was just in there."
+if ((@variable2 > 2) && (@variable2 <= 8))
+  body "That was fun, but I'm all pooped out."
+if ((@variable2 > 8) && (@variable2 <= 10))
+  body "Maybe in a couple of minutes."
+cam left from(PlayerChar0) to(tube_eyeline) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 tube_eyeline
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 112:1030
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "Aawww... look at him!"
+if (func_charinparty[grumpos] == 3)
+  body "Silly bot. What's he doing in there?"
+if (func_charinparty[rho] == 3)
+  body "PAL-18 seems to be enjoying himself."
+if (func_charinparty[democratus] == 3)
+  body "Only a self-aware bot would enjoy himself so heartily."
+if (func_charinparty[stiletto] == 3)
+  body "At least PAL knows how to have fun."
+if (func_charinparty[paco] == 3)
+  body "I remember play."
+cam left from(PlayerChar0) to(tube_eyeline) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 tube_eyeline
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+choice "Should I call PAL-18 outta there...?" 112:1070
+choice "Or should we let him play some more?" 0:0
+
+#window 112:1070
+startswitch {
+  extern AI_GrabEntity PlayerChar0 playerchar0_handle
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 .5
+  set @PAL_is_called = 1
+  set @PAL_TakePlace = 0
+  set @PALtransitionTime = (func_gametime + 550)
+}
+
+thinkswitch {
+  if (func_gametime >= @PALtransitionTime)
+    if (@PAL_TakePlace == 2) {
+      extern AI_ReleaseEntity playerchar0_handle
+      closewindow 112:1070
+    } else if (@PAL_TakePlace == 1) {
+      echo "||||| - - Fade In - - |||||"
+      extern FlashScreenf 0 0 0 1 0
+      extern FlashScreenf 0 0 0 0 .5
+      set @PAL_TakePlace = 2
+      set @PALtransitionTime = (func_gametime + 100)
+    } else if (@PAL_TakePlace == 0) {
+      extern stopambient mburger_Pal_loop.s
+      extern add_npc_to_party pal
+      set @PAL_TakePlace = 1
+      set @PALtransitionTime = (func_gametime + 100)
+    } else
+      echo "***|*|*| Illegal Value in PAL fade Sequence\n"
+}
+
+finishswitch {
+  set @Pal_Playing = 0
+  set @PAL_is_called = 0
+  gosub 112:1075
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 112:1090
+title "PAL-18"
+if (@Pal_Prizes_Found == 0)
+  body "Yeah, that was a lot of fun, but I didn't find bubkiss."
+if (@Pal_Prizes_Found == 1)
+  body "Yeah, that was a lot of fun, and look what I found while I was inside.\n\n"
+if ((@Pal_Prizes_Found == 1) && (mburger_prize_found1 == 1))
+  body "Ipangi Crystal\n"
+if ((@Pal_Prizes_Found == 1) && (mburger_prize_found2 == 1))
+  body "Vestrina Cube\n"
+if ((@Pal_Prizes_Found == 1) && (mburger_prize_found3 == 1))
+  body "Bolongo\n"
+if ((@Pal_Prizes_Found == 1) && (mburger_prize_found4 == 1))
+  body "Vial of Vunivella\n"
+if ((@Pal_Prizes_Found == 1) && (mburger_prize_found5 == 1))
+  body "HealGrease\n"
+if ((@Pal_Prizes_Found == 1) && (mburger_prize_found6 == 1))
+  body "HealGrease Plus\n"
+if ((@Pal_Prizes_Found == 1) && (mburger_prize_found7 == 1))
+  body "Cordican Diamond Discs\n"
+if ((@Pal_Prizes_Found == 1) && (mburger_prize_found8 == 1))
+  body "Brebulan Boogo Gems\n"
+if ((@Pal_Prizes_Found == 1) && (mburger_prize_found9 == 1))
+  body "HealGrease Complete\n"
+if ((@Pal_Prizes_Found == 1) && (mburger_prize_found10 == 1))
+  body "TimeMinder Tear\n"
+if ((@Pal_Prizes_Found == 1) && (mburger_prize_found11 == 1))
+  body "Cordicorps Saneslayer\n"
+if ((@Pal_Prizes_Found == 1) && (mburger_prize_found12 == 1))
+  body "Regenergy Round Plus\n"
+if ((@Pal_Prizes_Found == 1) && (mburger_prize_found13 == 1))
+  body "Shadow Bracers\n"
+cam left to(5003:1) restore zip
+talk_ex 5003:1 playerchar0 talk_a amb_a stay stay
+finishswitch {
+  if (mburger_prize_found1 == 1)
+    set mburger_prize_found1 = 2
+  if (mburger_prize_found2 == 1)
+    set mburger_prize_found1 = 2
+  if (mburger_prize_found3 == 1)
+    set mburger_prize_found1 = 2
+  if (mburger_prize_found4 == 1)
+    set mburger_prize_found1 = 2
+  if (mburger_prize_found5 == 1)
+    set mburger_prize_found1 = 2
+  if (mburger_prize_found6 == 1)
+    set mburger_prize_found1 = 2
+  if (mburger_prize_found7 == 1)
+    set mburger_prize_found1 = 2
+  if (mburger_prize_found8 == 1)
+    set mburger_prize_found1 = 2
+  if (mburger_prize_found9 == 1)
+    set mburger_prize_found1 = 2
+  if (mburger_prize_found10 == 1)
+    set mburger_prize_found1 = 2
+  if (mburger_prize_found11 == 1)
+    set mburger_prize_found1 = 2
+  if (mburger_prize_found12 == 1)
+    set mburger_prize_found1 = 2
+  if (mburger_prize_found13 == 1)
+    set mburger_prize_found1 = 2
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 112:1105
+title "Fatima"
+body "Aren't we forgetting someone?"
+cam left restore zip
+startswitch {
+  extern cam_anoxmariomode 1
+  set anox_interface_active = 1
+  extern AI_GrabEntity playerchar0 playerchar0_handle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatimaspawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 playerchar0
+  extern AI_WaitAndFace playerchar0_handle -1 fatima
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+  set FATIMA_VOTOWNE = 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 112:1110
+
+#window 112:1110
+title "Fatima"
+body "Get your butt back there and fetch PAL-18!"
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_SeekAndFace playerchar0_handle fatima_walk
+  extern AI_SetCompletionCallback playerchar0_handle 112:1120
+  extern AI_DestroyEntity @fatima_handle
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 112:1205
+title "Trouser McSalty"
+body "Hey, I can't always be \"on\". Gimme a break."
+cam left restore zip
+talk npc gest_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 112:1210
+title "Trouser McSalty"
+body "I've performed in the Cordica Opera House! I've studied under the auspices of the Brebula Thespia Association! NOW look at me."
+cam left restore zip
+talk npc talk_b stay
+startswitch {
+  set @Raton1 = 0
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#switch 71:1
+extern playlevelmusic mp3/hephaestus/moonburger.mp3
+extern loopambient ambi_mburger
+extern AI_GrabEntity seer1 seer1_handle
+extern AI_GrabEntity seer2 seer2_handle
+extern ANIM_PlayAnim seer1_handle amb_a 0 0 1
+extern ANIM_PlayAnim seer2_handle amb_a 0 0 1
+
+#switch 112:201
+goto 112:0101
+
+#switch 112:301
+set talk_chantey = (1 - talk_chantey)
+if (talk_chantey)
+  goto 112:0305
+goto 112:0315
+
+#switch 112:801
+goto 112:0701
+
+#switch 112:1001
+if ((func_charinparty[pal] == 3) && mburger_time_last_played) {
+  set @variable2 = (func_gametime - mburger_time_last_played)
+  set @variable2 = ((@variable2 / 1000) / 60)
+  if (@variable2 < 10)
+    goto 112:1025							                         
+}
+if (@PAL_is_called)
+  goto 0:0
+if (@Pal_Playing == 1)
+  goto 112:1030
+if ((func_charinparty[pal] == 3) && (Mburger_Pal_Played > 0))
+  goto 112:1020
+if (func_charinparty[pal] == 3)
+  goto 112:1010
+goto 112:1005
+
+#switch 112:1050
+set @Pal_Playing = 1
+gosub 980:1
+set @variable1 = func_gametime
+extern remove_npc_from_party pal 1
+extern loopambient mburger_Pal_loop.s
+
+#switch 112:1075
+set @Pal_Prizes_Found = 0
+set @variable1 = (func_gametime - @variable1)
+set @variable1 = ((@variable1 / 1000) / 60)
+set mburger_time_last_played = func_gametime
+if (@variable1 >= 2) {
+  set mburger_prize_found1 = 1
+  set @Pal_Prizes_Found = 1
+  extern addnew_to_inventory "Ipangi Crystal"
+}
+if (@variable1 >= 7) {
+  set mburger_prize_found2 = 1
+  set @Pal_Prizes_Found = 1
+  extern addnew_to_inventory "Vestrina Cube"
+}
+if (@variable1 >= 20) {
+  set mburger_prize_found3 = 1
+  set @Pal_Prizes_Found = 1
+  extern addnew_to_inventory "Bolongo"
+}
+if (@variable1 >= 45) {
+  set mburger_prize_found4 = 1
+  set @Pal_Prizes_Found = 1
+  extern addnew_to_inventory "Vial of Vunivella"
+}
+if (@variable1 >= 75) {
+  set mburger_prize_found5 = 1
+  set @Pal_Prizes_Found = 1
+  extern addnew_to_inventory "HealGrease"
+}
+if (@variable1 >= 95) {
+  set mburger_prize_found6 = 1
+  set @Pal_Prizes_Found = 1
+  extern addnew_to_inventory "HealGrease Plus"
+}
+goto 112:1080
+
+#switch 112:1080
+if (@variable1 >= 115) {
+  set mburger_prize_found7 = 1
+  set @Pal_Prizes_Found = 1
+  extern addnew_to_inventory "Cordican Diamond Discs"
+}
+if (@variable1 >= 140) {
+  set mburger_prize_found8 = 1
+  set @Pal_Prizes_Found = 1
+  extern addnew_to_inventory "Brebulan Boogo Gems"
+}
+if (@variable1 >= 160) {
+  set mburger_prize_found9 = 1
+  set @Pal_Prizes_Found = 1
+  extern addnew_to_inventory "HealGrease Complete"
+}
+if (@variable1 >= 190) {
+  set mburger_prize_found10 = 1
+  set @Pal_Prizes_Found = 1
+  extern addnew_to_inventory "TimeMinder Tear"
+}
+if ((((@variable1 >= 240) && (mburger_prize_found11 == 0)) && (@special_prize_allocated == 0)) && (PRE_DETTA == 1)) {
+  set @special_prize_allocated = 1
+  set mburger_prize_found11 = 1
+  set @Pal_Prizes_Found = 1
+  extern addnew_to_inventory "Cordicorps Saneslayer"
+}
+if (((@variable1 >= 240) && (mburger_prize_found12 == 0)) && (@special_prize_allocated == 0)) {
+  set @special_prize_allocated = 1
+  set mburger_prize_found12 = 1
+  set @Pal_Prizes_Found = 1
+  extern addnew_to_inventory "Regenergy Round Plus"
+}
+if (((@variable1 >= 420) && (mburger_prize_found13 == 0)) && (@special_prize_allocated == 0)) {
+  set @special_prize_allocated = 1
+  set mburger_prize_found13 = 1
+  set @Pal_Prizes_Found = 1
+  extern addnew_to_inventory "Shadow Bracers"
+}
+goto 112:1090
+
+#switch 112:1101
+if (ratBREAK == 0)
+  gosub 112:1125
+if (@Pal_Playing == 0)
+  goto 0:0
+if (@Fatima_Stopping == 1)
+  goto 0:0
+set @Fatima_Stopping = 1
+goto 112:1105
+
+#switch 112:1120
+extern cam_anoxmariomode 0
+set anox_interface_active = 0
+extern ANIM_MakeSmart PlayerChar0_handle
+extern AI_ReleaseEntity playerchar0_handle
+set @Fatima_Stopping = 0
+
+#switch 112:1125
+set ratBREAK = 1
+extern AI_GrabEntity rat_mascot mascot_handle
+extern AI_DestroyEntity mascot_handle
+extern AI_SpawnEntity @mascot_handle npc_heph-mascot rat_boy 112:1201 mascot_lean
+
+#switch 112:1201
+set @Raton1 = (@Raton1 + 1)
+if (@Raton1 > 1)
+  goto 112:1210
+goto 112:1205
+
+#switch 112:1301
+extern AI_GrabEntity rat_mascot ratonRATON
+extern ANIM_PlayAnim ratonRATON gest_c 0 1 0
+extern AI_ReleaseEntity ratonRATON

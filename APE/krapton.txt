@@ -1,0 +1,153 @@
+#window 80:301
+title "Boots"
+body "Uh... Hey there."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:305
+title "Boots"
+body "Boffo ship you got here."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:310
+title "Rictus"
+body "I shall kill you..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:315
+title "Rictus"
+body "                        with death."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:320
+title "Democratus"
+body "Did we win? Does this mean we're free?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:325
+title "Boots"
+body "You better believe it, mister."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:330
+title "Boots"
+body "We're in charge now. This ship is ours."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:335
+title "Boots"
+body "Not bad for a bunch of-"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:340
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "krapton/15suddenly.tga" 64, 332
+
+#window 80:345
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "krapton/16editor2.tga" 368, 432
+
+#switch 80:1
+set CURRENT_PLANET = 7
+set CURRENT_BANK = 80
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .5 .3 1
+extern applylevelconfiguration krapton
+extern playlevelmusic MP3/krapton/kraptontheme.mp3
+BattleMusicOverride$="mp3/krapton/kraptoncine.mp3" 
+goto 0:0
+
+#switch 80:101
+extern set_party_leader boots
+extern remove_npc_from_party democratus
+set DEMOCRATUS_IN_PARTY = 0
+if (func_charinparty[rho] == 2) {
+  extern remove_npc_from_party rho
+  set RHO_IN_PARTY = 0
+  set RHO_ON_DEMOCRATUS = 1
+}
+if (func_charinparty[pal] == 2) {
+  extern remove_npc_from_party pal
+  set PAL_IN_PARTY = 0
+  set PAL_ON_DEMOCRATUS = 1
+}
+if (func_charinparty[stiletto] == 2) {
+  extern remove_npc_from_party stiletto
+  set STILETTO_IN_PARTY = 0
+  set STILETTO_ON_DEMOCRATUS = 1
+}
+console "set storysave \"Super Slammer|Thrown in the Superhero Slammer\""
+console "map kraptonjail fromkrapton"
+
+#switch 80:201
+BattleMusicOverride$="mp3/krapton/kraptonrictustheme.mp3" 
+extern get_party_order @a$ @b$ @c$
+if ((@a$ != "Boots") && (@a$ != "Democratus"))
+  unset @PimpDaddy3$=@a$ 
+if ((@b$ != "Boots") && (@b$ != "Democratus"))
+  unset @PimpDaddy3$=@b$ 
+if ((@c$ != "Boots") && (@c$ != "Democratus"))
+  unset @PimpDaddy3$=@c$ 
+extern operate_on_party 0
+extern set_party_members 0 Boots Democratus @PimpDaddy3$
+console "battlestart 4"
+goto 0:0

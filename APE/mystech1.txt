@@ -1,0 +1,1072 @@
+#window 20:105
+body "Calling elevator."
+
+#window 20:3105
+title "%s", PlayerChar0$
+if ((func_charinparty[boots] == 3) || (func_charinparty[grumpos] == 3))
+  body "NO WAY."
+if ((func_charinparty[boots] != 3) && (func_charinparty[grumpos] != 3))
+  body "What an unsafe looking boat."
+startswitch {
+  set anox_interface_active = 1
+  extern AI_GrabEntity playerchar0 playerchar0_handle
+}
+
+finishswitch {
+  extern AI_SeekAndFace playerchar0_handle noboat
+  extern AI_SetCompletionCallback playerchar0_handle 20:3110
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+
+#window 20:1001
+title "Detta"
+body "Look, boys..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1005
+title "Detta"
+body "                   Losers."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1010
+title "Boots"
+body "Well, well, well. If it ain't my favorite butter and egg man."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1015
+title "Boots"
+body "Hey, Detta. Hear you're movin' up in the world."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1020
+title "Detta"
+body "You're charm on legs, Crash."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1025
+title "Detta"
+body "Too bad your mouth's smarter than the rest of you."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1030
+title "Detta"
+body "Now your stomach's smart too."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1035
+title "Boots"
+body "Thanks for the education."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1040
+title "Detta"
+body "I haven't seen you all year, Sylvester. Nice coat. Remind me why I'm keeping you alive."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1045
+title "Boots"
+body "Kill me and you'll never see the money."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1050
+title "Detta"
+body "Your debt? That's pocket change compared to my numbers now. Try again."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1055
+title "Boots"
+body "I'm drawing a blank here."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1120
+title "Detta"
+body "Nostalgia."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1125
+title "Detta"
+body "You bring to mind my humble beginnings. One must stay grounded despite one's success."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1130
+title "Detta"
+body "And you. Give me the stone."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1140
+title "Grumpos"
+body "Stone? What stone?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1145
+title "Boots"
+body "C'mon, Grumps - give it to him. You don't know who you're dealing with."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1150
+title "Grumpos"
+body "I know a two-bit thug in a fancy suit when I see one."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1160
+title "Grumpos"
+body "He'll have to kill me for it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1165
+title "Detta"
+body "Thanks much, Sylvester."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1170
+title "Detta"
+body "Whatever this is will look swank in my collection."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1180
+title "Detta"
+body "Poot!,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1182
+title "Detta"
+body "schedule a dinner with Mister Boots for the end of the week."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1184
+title "Detta"
+body "Someplace nice."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1185
+title "Boots"
+body "Not Brebulan. I hate Brebulan."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1190
+title "Detta"
+body "I may be a sentimental old fool, Sly... "
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1195
+title "Detta"
+body "but if the money isn't mine by dessert,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1200
+title "Detta"
+body "we'll break out the saws."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1205
+title "Detta"
+body "Bottle up and go, boys."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1210
+title "POOT!"
+body "Sunny Funny's, Friday at dusk hour. Don't forget."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1215
+title "K' Conrad"
+body "Honestly, Detective."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1220
+title "Grumpos"
+body "Moron!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1225
+title "Grumpos"
+body "I'm gonna kill you."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1230
+title "Grumpos"
+body "That stone was in my hands, and you rolled over for those goombahs without a thought."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1235
+title "Boots"
+body "Look, old man -- you hired me to keep you safe. Those guys were gonna dust you."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1240
+title "Grumpos"
+body "Rubbish. We could've taken those ruffians on easy. You cost me a stone."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1245
+title "Boots"
+body "Stones, bones-it's time to settle up, cupcake."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1250
+title "Grumpos"
+body "What? After that? Forget it!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1255
+title "Boots"
+body "Hey, you hired me to keep you safe. You didn't mention anything about that stone, so cough up the birds."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1260
+title "Grumpos"
+body "Ah, piss."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1265
+title "Boots"
+body "Yeah, very funny. Where's the rest?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1270
+title "Grumpos"
+body "What rest? That's your fee."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1275
+title "Boots"
+body "A hundred bucks?! This won't even pay my bar tab!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1280
+title "Grumpos"
+body "Well, then maybe next time you'll pay more attention to your fee up front. "
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1285
+title "Grumpos"
+body "I'm not a rich man, Mister Boots. Take it with a smile or walk."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1290
+title "Boots"
+body "Fine, fine, I'll take it"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1292
+title "Boots"
+body "                            - but no smile for you."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1295
+title "Grumpos"
+body "Wait a minute? You're going?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1300
+title "Boots"
+body "Of course I'm going! This case is closed."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1305
+title "Grumpos"
+body "Do you have any idea how much money you're walking away from?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1310
+title "Grumpos"
+body "There's energy dormant in every slag of MysTech."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1315
+title "Grumpos"
+body "If we figure out a way to activate it, we'll never have to worry about money again."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1320
+title "Boots"
+body "Whatta ya need me for? Weren't you mad at me a second ago?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1325
+title "Grumpos"
+body "Well, I don't need you in particular."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1330
+title "Grumpos"
+body "But you've got a flair for fighting, and everyone else I know is dead."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1335
+title "Grumpos"
+body "What you need is change of venue."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1340
+title "Grumpos"
+body "When we come back you'll have enough money to pay off your debt and start a new life."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1345
+title "Boots"
+body "I'm listening."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1350
+title "Grumpos"
+body "Planet Sunder."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1355
+title "Grumpos"
+body "There's a brilliant scientist there who's thinking along the same lines as I am."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1360
+title "Grumpos"
+body "If I knock heads with her, we might just pull this off and make a bundle."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1365
+title "Boots"
+body "Okay. I'll take the case as long as the egghead doesn't get a cut."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1370
+title "Grumpos"
+body "Sold!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1375
+title "Boots"
+body "And I want more than a hundred bucks."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1380
+title "Grumpos"
+body "You'll get plenty more."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1385
+title "Boots"
+body "And I'm in charge, you hear me? You're a danger to yourself."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1390
+title "Grumpos"
+body "Oh, piffle."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1395
+title "Boots"
+body "And stop hitting me with that thing, or I'm gonna belt you back."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1400
+title "Grumpos"
+body "Oh, you're all shish and no kabob."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 20:1405
+title "Boots"
+body "Ow! I mean it!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 20:1
+set CURRENT_PLANET = 1
+set CURRENT_BANK = 20
+if (PRE_DETTA) {
+  extern applylevelconfiguration mystech1_sixth
+} else if (PRE_LIMBUS) {
+  extern applylevelconfiguration mystech1_fifth
+} else if (PRE_KRAPTON) {
+  extern applylevelconfiguration mystech1_fourth
+} else if (MYSTECH_ACTIVE) {
+  extern applylevelconfiguration mystech1_third
+} else if (MET_DETTA) {
+  extern applylevelconfiguration mystech1_second
+} else
+  extern applylevelconfiguration mystech1_first
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .6 1 1
+extern loopambient ambi_mystech1
+extern loopambient ambi_mystech1_b
+if (MYSTECH_ACTIVE == 1)
+  gosub 20:9000
+if (PRE_KRAPTON == 1)
+  gosub 20:9010
+if (PRE_LIMBUS == 1)
+  gosub 20:9020
+if (PRE_DETTA == 1)
+  gosub 20:9030
+extern playlevelmusic mp3/bricks/bricks_normalug_1_0.mp3
+BattleMusicOverride$="mp3/bricks/bricks_combat_2_0.mp3" 
+if (DEMO_MODE_ENABLED) {
+  console "ui_chainscripts mystech1_scene1 mystech1_scene2"
+  console "ui_playscene mystech1_scene1"
+}
+gosub 20:2002			                                          
+extern AI_SpawnEntity @ob_clip_handle_1 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_1 -2405 -1610 -1234
+goto 0:0
+
+#switch 20:9000
+extern is_in_inventory "FreezeCubist" @freezecdoodle1
+extern is_equipped "FreezeCubist" @freezecdoodle2
+set @freezecdoodle = (@freezecdoodle1 + @freezecdoodle2)
+if (@freezecdoodle < 1) {
+  extern AI_SpawnEntity winkyvortex_handle get_mystech02 MysTech1_FreezeCubist
+  extern AI_SetXYZ winkyvortex_handle -2120 -2280 -1469
+  extern EntKey winkyvortex_handle "message" "FreezeCubist"
+  extern AI_ReleaseEntity winkyvortex_handle
+  extern AI_SpawnEntity winkyvortexpc1_handle path_corner winkyvortexpc1
+  extern AI_SetXYZ winkyvortexpc1_handle -2150 -2292 -1439
+  extern EntKey winkyvortexpc1_handle "target" "MysTech1_FreezeCubist"
+  extern AI_SpawnEntity winkyvortexpc2_handle path_corner winkyvortexpc2
+  extern AI_SetXYZ winkyvortexpc2_handle -2095 -2304 -1440
+  extern EntKey winkyvortexpc2_handle "target" "MysTech1_FreezeCubist"
+}
+extern is_in_inventory "NutsHammer" @nuthdoodle1
+extern is_equipped "NutsHammer" @nuthdoodle2
+set @nuthdoodle = (@nuthdoodle1 + @nuthdoodle2)
+if (@nuthdoodle < 1) {
+  extern AI_SpawnEntity nutshammer_handle get_mystech02 MysTech1_NutsHammer
+  extern AI_SetXYZ nutshammer_handle 32 -3997 -1214
+  extern EntKey nutshammer_handle "message" "NutsHammer"
+  extern AI_ReleaseEntity nutshammer_handle
+  extern AI_SpawnEntity nutshammerpc1_handle path_corner NutsHammerpc1
+  extern AI_SetXYZ nutshammerpc1_handle 49 -3976 -1182
+  extern EntKey nutshammerpc1_handle "target" "MysTech1_NutsHammer"
+}
+extern is_in_inventory "PoisonBeams" @winkyvdoodle1
+extern is_equipped "PoisonBeams" @poisonbdoodle2
+set @poisonbdoodle = (@poisonbdoodle1 + @poisonbdoodle2)
+if (@poisonbdoodle < 1) {
+  extern AI_SpawnEntity PoisonBeams_handle get_mystech02 MysTech1_PoisonBeams
+  extern AI_SetXYZ PoisonBeams_handle -2604 286 -1534
+  extern EntKey PoisonBeams_handle "message" "PoisonBeams"
+  extern AI_ReleaseEntity PoisonBeams_handle
+  extern AI_SpawnEntity PoisonBeamspc1_handle path_corner PoisonBeamspc1
+  extern AI_SetXYZ PoisonBeamspc1_handle -2635 312 -1505
+  extern EntKey PoisonBeamspc1_handle "target" "MysTech1_PoisonBeams"
+  extern AI_SpawnEntity PoisonBeamspc2_handle path_corner PoisonBeamspc2
+  extern AI_SetXYZ PoisonBeamspc2_handle -2636 258 -1506
+  extern EntKey PoisonBeamspc2_handle "target" "MysTech1_PoisonBeams"
+}
+goto 0:0
+
+#switch 20:9010
+extern is_in_inventory "WinkyTornado" @winkytdoodle1
+extern is_equipped "WinkyTornado" @winkytdoodle2
+set @winkytdoodle = (@winkytdoodle1 + @winkytdoodle2)
+if (@winkytdoodle < 1) {
+  extern AI_SpawnEntity WinkyTornado_handle get_mystech02 MysTech1_WinkyTornado
+  extern AI_SetXYZ WinkyTornado_handle -593 -2416 -1023
+  extern EntKey WinkyTornado_handle "message" "WinkyTornado"
+  extern AI_ReleaseEntity WinkyTornado_handle
+  extern AI_SpawnEntity WinkyTornadopc1_handle path_corner WinkyTornadopc1
+  extern AI_SetXYZ WinkyTornadopc1_handle -611 -2391 -989
+  extern EntKey WinkyTornadopc1_handle "target" "MysTech1_WinkyTornado"
+}
+extern is_in_inventory "Three-Function Host" @3fhdoodle1
+extern is_equipped "Three-Function Host" @3fhdoodle2
+set @3fhdoodle = (@3fhdoodle1 + @3fhdoodle2)
+if (@3fhdoodle < 2) {
+  extern AI_SpawnEntity ThreeFunctionHost_handle get_host MysTech1_ThreeFunctionHost
+  extern AI_SetXYZ ThreeFunctionHost_handle -2765 -2034 -1600
+  extern EntKey ThreeFunctionHost_handle "message" "Three-Function Host"
+  extern AI_ReleaseEntity ThreeFunctionHost_handle
+  extern AI_SpawnEntity ThreeFunctionHostpc1_handle path_corner ThreeFunctionHostpc1
+  extern AI_SetXYZ ThreeFunctionHostpc1_handle -2784 -2016 -1567
+  extern EntKey ThreeFunctionHostpc1_handle "target" "MysTech1_ThreeFunctionHost"
+}
+if (obsidian_happiness_spawned < 1) {
+  set obsidian_happiness_spawned = 1
+  extern AI_SpawnEntity ObsidianBeetle_handle get_obsidianbeetle MysTech1_ObsidianBeetle
+  extern AI_SetXYZ ObsidianBeetle_handle 162 -2158 -1054
+  extern EntKey ObsidianBeetle_handle "message" "ObsidianBeetle"
+  extern EntKey ObsidianBeetle_handle "count" "6"
+  extern AI_ReleaseEntity ObsidianBeetle_handle
+  extern AI_SpawnEntity ObsidianBeetlepc1_handle path_corner ObsidianBeetlepc1
+  extern AI_SetXYZ ObsidianBeetlepc1_handle 161 -2185 -1010
+  extern EntKey ObsidianBeetlepc1_handle "target" "MysTech1_ObsidianBeetle"
+}
+goto 0:0
+
+#switch 20:9020
+extern is_in_inventory "FreezySlicer" @freezysdoodle1
+extern is_equipped "FreezySlicer" @freezysdoodle2
+set @freezysdoodle = (@freezysdoodle1 + @freezysdoodle2)
+if (@freezysdoodle < 1) {
+  extern AI_SpawnEntity FreezySlicer_handle get_mystech02 MysTech1_FreezySlicer
+  extern AI_SetXYZ FreezySlicer_handle -425 542 -1278
+  extern EntKey FreezySlicer_handle "message" "FreezySlicer"
+  extern AI_ReleaseEntity FreezySlicer_handle
+  extern AI_SpawnEntity FreezySlicerpc1_handle path_corner FreezySlicerpc1
+  extern AI_SetXYZ FreezySlicerpc1_handle -403 522 -1251
+  extern EntKey FreezySlicerpc1_handle "target" "MysTech1_FreezySlicer"
+}
+extern is_in_inventory "SlowVicer" @slowvdoodle1
+extern is_equipped "SlowVicer" @slowvdoodle2
+set @slowvdoodle = (@slowvdoodle1 + @slowvdoodle2)
+if (@slowvdoodle < 1) {
+  extern AI_SpawnEntity SlowVicer_handle get_mystech02 MysTech1_SlowVicer
+  extern AI_SetXYZ SlowVicer_handle -1194 -2289 -1471
+  extern EntKey SlowVicer_handle "message" "SlowVicer"
+  extern AI_ReleaseEntity SlowVicer_handle
+  extern AI_SpawnEntity SlowVicerpc1_handle path_corner SlowVicerpc1
+  extern AI_SetXYZ SlowVicerpc1_handle -1222 -2273 -1443
+  extern EntKey SlowVicerpc1_handle "target" "MysTech1_SlowVicer"
+}
+extern is_in_inventory "BaneSlaught" @banesdoodle1
+extern is_equipped "BaneSlaught" @banesdoodle2
+set @banesdoodle = (@banesdoodle1 + @banesdoodle2)
+if (@banesdoodle < 1) {
+  extern AI_SpawnEntity BaneSlaught_handle get_mystech02 MysTech1_BaneSlaught
+  extern AI_SetXYZ BaneSlaught_handle 247 2640 -1295
+  extern EntKey BaneSlaught_handle "message" "BaneSlaught"
+  extern AI_ReleaseEntity BaneSlaught_handle
+  extern AI_SpawnEntity BaneSlaughtpc1_handle path_corner BaneSlaughtpc1
+  extern AI_SetXYZ BaneSlaughtpc1_handle 270 2655 -1253
+  extern EntKey BaneSlaughtpc1_handle "target" "MysTech1_BaneSlaught"
+}
+goto 0:0
+
+#switch 20:9030
+extern is_in_inventory "GEAS Noxcell" @GEASndoodle1
+extern is_equipped "GEAS Noxcell" @GEASndoodle2
+set @GEASndoodle = (@GEASndoodle1 + @GEASndoodle2)
+if (@GEASndoodle < 1) {
+  extern AI_SpawnEntity GEASNoxcell_handle get_shieldcell_l MysTech1_GEASNoxcell
+  extern AI_SetXYZ GEASNoxcell_handle -98 -3349 -1360
+  extern EntKey GEASNoxcell_handle "message" "GEAS Noxcell"
+  extern AI_ReleaseEntity GEASNoxcell_handle
+  extern AI_SpawnEntity GEASNoxcellpc1_handle path_corner GEASNoxcellpc1
+  extern AI_SetXYZ GEASNoxcellpc1_handle -80 -3333 -1318
+  extern EntKey GEASNoxcellpc1_handle "target" "MysTech1_GEASNoxcell"
+}
+goto 0:0
+
+#switch 20:101
+elev_dest$="MysTech Tunnels" 
+pathtarget corner2
+target trigger
+set elev_bank = -2.000000
+gosub 1:8			                             
+goto 0:0
+
+#switch 20:102
+elev_dest$="MysTech Tunnels" 
+set elev_bank = 20
+set elev_entry = 106
+gosub 1:8			                             
+goto 0:0
+
+#switch 20:106
+extern playscene mystech1_elev1_down
+
+#switch 20:103
+elev_dest$="Tenements Exit" 
+set elev_bank = 20
+set elev_entry = 107
+gosub 1:8			                             
+goto 0:0
+
+#switch 20:107
+extern playscene mystech1_elev1_up
+
+#switch 20:104
+elev_dest$="Tenements Exit" 
+pathtarget corner3
+target trigger
+set elev_bank = -2.000000
+gosub 1:8			                             
+goto 0:0
+
+#switch 20:2001
+echo "Please remove this trigger brush"
+goto 0:0
+
+#switch 20:2002
+extern is_in_inventory "Strange Stone" INV_KEYSTONE
+if (INV_KEYSTONE == 1)
+  goto 20:2005
+goto 0:0
+
+#switch 20:2005
+set INV_KEYSTONE = 0
+extern remove_from_inventory "Strange Stone"
+set MET_DETTA = 1
+set TOURS_YAMMER = 1
+set NEED_TO_GO_TO_SUNDER = 1
+extern add_quest "Find Rho Bowman"
+extern chainscripts mystech1_scene1 mystech1_scene2
+extern playscene mystech1_scene1
+
+#switch 20:3100
+if (@TriggerThisHereMofoOnlyOnce == 1)
+  goto 0:0
+set @TriggerThisHereMofoOnlyOnce = 1
+if (MET_DETTA)
+  goto 20:3105
+set play_sewagic = 1
+set PLAY_MYSTECH2_INTRO = 1
+extern stopambient ambi_mystech1
+extern set_party_leader boots
+extern remove_npc_from_party grumpos
+extern playscene mystech1_boatintro
+
+#switch 20:3110
+extern AI_ReleaseEntity playerchar0_handle
+set anox_interface_active = 0
+set @TriggerThisHereMofoOnlyOnce = 0
+goto 0:0
+
+#switch 20:9900
+extern playscene battle/intro/intro1
+
+#switch 20:1231
+WS_STAND$="demo_skill_1" 
+ws_object$="democratusitem" 
+set ws_bank = 20
+set ws_entry = 1233
+gosub 4005:1
+goto 0:0
+
+#switch 20:1233
+set mystech1_tractor = 1
+extern addnew_to_inventory "WinkyVortex"
+set timed_message = 20
+got_object$="WinkyVortex MysTech" 
+gosub 1000:1
+goto 0:0
+
+#switch 20:1232
+WS_STAND$="stiletto_skill_1" 
+ws_object$="loony1" 
+ws_scenename$="worldskills/loony_mystech1_1" 
+gosub 4106:1
+goto 0:0

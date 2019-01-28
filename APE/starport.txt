@@ -1,0 +1,5356 @@
+#window 59:2
+startswitch {
+  extern AI_GrabEntity lgguard02 lgguard02_handle
+  set @lastMS = func_GameTime
+  set @currentMS = @lastMS
+}
+
+thinkswitch {
+  set @currentMS = func_GameTime
+  set @delta = (@currentMS - @lastMS)
+  if (@delta < 1000)
+    goto 0:0
+  set @lastMS = @currentMS
+  set @delta = (@delta - 1000)
+  set @lastMS = (@currentMS - @delta)
+  if (lgsmashguard == 0) {
+    if (@lgsmashcounter > 20)
+      set @lgsmashcounter = 0
+    set @lgsmashcounter = (@lgsmashcounter + 1)
+    if (@lgsmashcounter == 20) {
+      extern ANIM_PlayAnim lgguard02_handle atak4_a 0 1 0
+      extern playsound "games/sunlaser/newssmash.wav" lgpaper 1.0 2.0
+    }
+  }
+}
+
+style "null"
+flags passive, TRUE
+
+#window 59:105
+title "Dr. Meziriac"
+body "Home sweet home!"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:110
+title "Dr. Meziriac"
+body "I'm assuming my luggage is going to come out of here at some point...?"
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  set Meziriac2 = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:115
+title "Dr. Meziriac"
+body "Everyone else got their luggage. Where's mine? Tsk, it's probably on Cordica."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  set Meziriac2 = (Meziriac2 + 1)
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:120
+title "Dr. Meziriac"
+body "This is ridiculous. I'm going to complain."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  set Meziriac2 = (Meziriac2 + 1)
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:130
+title "Dr. Meziriac"
+body "My fillings are tingling right now. Should I complain about that too?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:205
+title "Professor Bargo"
+body "I like how this vibrates my butt."
+cam left restore zip
+talk npc amb_h stay
+startswitch {
+  set Bargo1 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:210
+title "Professor Bargo"
+body "Give it a try. It feels great!"
+cam left restore zip
+talk npc amb_h stay
+startswitch {
+  set Bargo1 = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:215
+title "Professor Bargo"
+body "Weird. The vibrations just got stronger about a minute ago. I feel guilty about how GOOD this feels."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:305
+title "Dr. Batheny"
+body "I'm nervous. Can you tell?"
+cam left lift(40) restore zip
+talk npc amb_d stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:0310
+
+#window 59:310
+title "Dr. Batheny"
+body "I design advanced ion propulsion engines. I know space flight is safe. But look... my hands are shaking."
+cam left lift(40) restore zip
+talk npc amb_d stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:315
+title "Dr. Batheny"
+body "I need to relax. Someone told me I should try making fists with my toes...."
+cam left lift(40) restore zip
+talk npc amb_d stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:320
+title "Dr. Batheny"
+body "How weird. Some guy just asked me the time. When I told him I didn't know, he said, \"You're all the same!\" and ran off."
+cam left lift(40) restore zip
+talk npc amb_d stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:405
+title "Dr. Nicholson"
+body "Well, what are you waiting for?! Don't just stand there! Go find Dr. MacLauren!"
+cam left from(PlayerChar0) to(nicholson) restore zip
+talk_ex nicholson kveech talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:0406
+
+#window 59:406
+title "Dr. Kveech"
+body "Yessir! Right away, sir!"
+cam left from(PlayerChar0) to(kveech) restore zip
+talk_ex nicholson kveech amb_a gest_h stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:0407
+
+#window 59:410
+title "Dr. Nicholson"
+body "What do you want?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:415
+title "Dr. Nicholson"
+body "EyOo! You're all sweaty!"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:505
+title "Dr. Kveech"
+body "I must report these findings to Dr. MacLauren immediately!"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:510
+title "Dr. Kveech"
+body "Don't get in the way of science!"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:605
+title "Dr. Pyotr"
+body "When I was a child, I thought the reason you couldn't breathe in space was because of bad air. Can you believe that? Not NO air, but BAD air. I was such a stupid little kid."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:610
+title "Dr. Pyotr"
+body "Thinking back on how stupid I was, I can't believe I managed to survive into adulthood."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:701
+title "Dr. Rirvinjon"
+body "The Rainbow Sanctuary? That's where all the heretics are sequestered, isn't it?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:00702
+
+#window 59:702
+title "Dr. Rirvinjon"
+body "Yeah, you've gotta get past that security checkpoint over there to find it."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:805
+title "Dr. Snidey Gear"
+body "I don't need a laboratory. I'm a mathematician. All I need is my mind... and you're disturbing my THOUGHTS!"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:810
+title "Dr. Snidey Gear"
+body "What's wrong with you? Get away from me."
+cam left restore zip
+talk npc talk_n stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:815
+title "Dr. Snidey Gear"
+body "Shall I call starport security?"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:905
+title "Dr. Dot Jadub"
+body "Man, I can't believe it. I absolutely can't believe it...."
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:0910
+
+#window 59:910
+title "Dr. Dot Jadub"
+body "I was scheduled to document a rare conjunction of moons around Barnard III. It only occurs every one-hundred and thirty-seven years. Since the Barnies don't keep very accurate astronomical records, it was up to me to record the rare event."
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:0915
+
+#window 59:915
+title "Dr. Dot Jadub"
+body "If only my flight hadn't have been moved two hours... now I might miss the conjunction."
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:920
+title "Dr. Dot Jadub"
+body "Man, I can't believe it. I absolutely can't believe it...."
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:925
+title "Dr. Dot Jadub"
+body "And on top of that, that PAX guard over there, he questions me for no reason."
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:0930
+
+#window 59:930
+title "Dr. Dot Jadub"
+body "Yeah, that guard just yells in my face, \"Don't mess with Kenneth the Ace, 'cause the ACE don't like that, little man.\" "
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:0935
+
+#window 59:935
+title "Dr. Dot Jadub"
+body "I think \"The Ace\" should do less threatening and more guarding, if you asked me."
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:0940
+
+#window 59:940
+title "Dr. Dot Jadub"
+body "And eat less farfa beans from the smell of it."
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1005
+title "Dr. Grap"
+body "Everyone hails Sunder as a utopia of advanced thought, but it's just as prone to prejudice as any place."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1010
+title "Dr. Grap"
+body "Sunder is divided into different fields of research, almost like an academic caste system. The Scientifica Association perpetuates the system by bestowing bigger grants to astrophysicists and offering them cheaper housing rates over less prestigious fields, like, say... botany."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1015
+title "Dr. Grap"
+body "Remember when they discovered the cure to the braxilis virus? The key to the vaccine was discovered on a lonely stretch of scrub land on Tarlian II by a botanist classifying plants, not some astrophysicist with her head in the clouds."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1020
+title "Dr. Grap"
+body "And if your ideas run contrary to popular beliefs, you're branded a heretic and stripped of all prestige. It's awful how they raked Rho Bowman over the coals. I didn't even think her ideas were really all that radical."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1025
+title "Dr. Grap"
+body "Mark my words. I'm going to put this place through some changes."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1105
+title "Fatima"
+body "Alright, fellas. I did a SenderNet search for Dr. Rho Bowman and found out some stuff."
+cam left from(playerchar0) to(fatima_spawn) restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 bootshandle
+  extern AI_SpawnEntity fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace fatima_handle -1 playerchar0
+  extern AI_WaitAndFace bootshandle -1 fatima
+  extern ANIM_PlayAnim fatima_handle talk_a 0 0 0
+  set FATIMA_FIND_RHO = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 59:1106
+
+#window 59:1106
+title "Fatima"
+body "Boots, you remember when I went on that self-help kick after reading a book called \"MysTech Awakes!\" just a few months before I died? Well, the person we're looking for wrote it."
+cam left from(playerchar0) to(fatima_spawn) restore zip
+startswitch {
+  extern ANIM_PlayAnim fatima_handle talk_a 0 0 0
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 59:1107
+
+#window 59:1107
+title "Fatima"
+body "I can't find a listing in the Callosum Scientist Directory. The only reference I could find was in a six month-old shipping log which shows laboratory equipment for an \"R. Bowman\" shipped to a building called the \"Rainbow Sanctuary\"."
+cam left from(playerchar0) to(fatima_spawn) restore zip
+startswitch {
+  extern add_quest "Get to Rho"
+  extern ANIM_PlayAnim fatima_handle talk_a 0 0 0
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 59:1108
+
+#window 59:1108
+title "Fatima"
+body "All searches for \"Rainbow Sanctuary\" come up blank. I'm afraid you're on your own, boys."
+cam left from(playerchar0) to(fatima_spawn) restore zip
+startswitch {
+  extern ANIM_PlayAnim fatima_handle talk_a 0 0 0
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity bootshandle
+  extern AI_DestroyEntity fatima_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 59:1205
+title "Dr. Sleeps"
+body "Salutations. This is perhaps the last drink I will ever serve."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 59:1206
+
+#window 59:1206
+title "Dr. Sleeps"
+body "What alcoholic beverage may I serve you?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Sissy Beer  $2.00" 59:1207
+choice "Bubble Water  $2.00" 59:1207
+choice "Chugalug Chug  $3.00" 59:1208
+choice "Tequila Mockingbird  $4.00" 59:1209
+choice "Nothing, please." 59:1230
+
+#window 59:1211
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+body "Down the hatch."
+cam left restore zip
+talk_ex sleepy PlayerChar0 amb_a talk_c stay stay
+finishswitch {
+  set Sleeps1 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 59:1212
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+body "Hail Moscow."
+cam left restore zip
+talk_ex sleepy PlayerChar0 amb_a talk_c stay stay
+finishswitch {
+  set Sleeps1 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 59:1213
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+body "Cups up."
+cam left restore zip
+talk_ex sleepy PlayerChar0 amb_a talk_c stay stay
+finishswitch {
+  set Sleeps1 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 59:1214
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+body "Easy go."
+cam left restore zip
+talk_ex sleepy PlayerChar0 amb_a talk_c stay stay
+finishswitch {
+  set Sleeps1 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 59:1215
+title "Dr. Sleeps"
+body "Was it yummy? Did it warm your stomach?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 59:1216
+
+#window 59:1216
+title "Dr. Sleeps"
+body "Good. Because I'm done bartending forever."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set Sleepy1 = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 59:1220
+title "Dr. Sleeps"
+body "Well, I didn't say I was quitting... just that I was done bartending."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 59:1225
+title "Dr. Sleeps"
+body "Oh, please. Leave, little robot, before I have you thrown out."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 59:1230
+title "Dr. Sleeps"
+body "I see."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 59:1231
+
+#window 59:1231
+title "Dr. Sleeps"
+body "Very well."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 59:1235
+title "Dr. Sleeps"
+body "It seems you must have lost your wallet. You should try the lost & found 'bot near Gate 7."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 59:1302
+title "Numbo III"
+body "Welcome to the Starport Lounge. Would you care for some complimentary playing cards?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Sure, why not." 59:1304
+choice "No thanks." 59:1303
+
+#window 59:1303
+title "Numbo III"
+body "Very well. Please seat yourself. Service will come momentarily."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1304
+title "Numbo III"
+body "Here you go."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern addnew_to_inventory "Playing Cards"
+  extern complete_quest "Find Laser Blocker"
+  extern add_quest "Found Laser Blocker"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:1305
+
+#window 59:1305
+title "Numbo III"
+body "Please seat yourself. Service will come momentarily."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1306
+title "Numbo III"
+body "Hello, brother. In the Numbo Bot tradition, I share with my brother, and expect no recompense."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:1307
+
+#window 59:1307
+body "Got Cordicorps Shockclaw!"
+startswitch {
+  set anox_bskill_31 = 1
+  extern addnew_to_inventory "Cordicorps Shockclaw"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1308
+title "Numbo III"
+body "No, I am pleased to have shared. Pass the kindness on if you wish."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1405
+title "Dr. Mong Sr."
+body "I will return within two cycles, my son. Focus on your work while I am absent."
+cam left from(PlayerChar0) to(mongsr) restore zip
+talk_ex mongjr mongsr amb_c amb_i stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:1505
+
+#window 59:1410
+title "Dr. Mong Sr."
+body "Pay them no heed, my son. They will only interfere with your work."
+cam left from(PlayerChar0) to(mongsr) restore zip
+talk_ex mongjr mongsr amb_c amb_i stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1415
+title "Dr. Mong Sr."
+body "The experiment will not fail because I am not here, my son. The experiment will fail if you make a careless mistake."
+cam left from(PlayerChar0) to(mongsr) restore zip
+talk_ex mongjr mongsr amb_c amb_i stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1420
+title "Dr. Mong Sr."
+body "Now is not the appropriate time for this conversation, my son."
+cam left from(PlayerChar0) to(mongsr) restore zip
+talk_ex mongjr mongsr amb_c amb_i stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:1520
+
+#window 59:1425
+title "Dr. Mong Sr."
+body "Calm yourself, my son."
+cam left from(PlayerChar0) to(mongsr) restore zip
+talk_ex mongjr mongsr amb_c amb_i stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1430
+title "Dr. Mong Sr."
+body "Let us discuss this upon my return, my son."
+cam left from(PlayerChar0) to(mongsr) restore zip
+talk_ex mongjr mongsr amb_c amb_i stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:1530
+
+#window 59:1435
+title "Dr. Mong Sr."
+body "My son...."
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1440
+title "Dr. Mong Sr."
+body "Do you feel the earth itself shake with my grief? It is my heart breaking. Oh, my son...."
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1505
+title "Dr. Mong Jr."
+body "Father, I am experiencing feelings of sorrow."
+cam left from(PlayerChar0) to(mongjr) restore zip
+talk_ex mongjr mongsr gest_f amb_h stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:1410
+
+#window 59:1510
+title "Dr. Mong Jr."
+body "Father, what if the experiment fails because you are not here?"
+cam left from(PlayerChar0) to(mongjr) restore zip
+talk_ex mongjr mongsr gest_i amb_h stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:1415
+
+#window 59:1515
+title "Dr. Mong Jr."
+body "Father, who is my mother?"
+cam left from(PlayerChar0) to(mongjr) restore zip
+talk_ex mongjr mongsr gest_g amb_h stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:1420
+
+#window 59:1520
+title "Dr. Mong Jr."
+body "Is it Doctor Yusp? She has always treated me differently, father."
+cam left from(PlayerChar0) to(mongjr) restore zip
+talk_ex mongjr mongsr gest_g amb_h stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:1425
+
+#window 59:1525
+title "Dr. Mong Jr."
+body "Father, is it true you stole and took credit for a colleague's work at university?"
+cam left from(PlayerChar0) to(mongjr) restore zip
+talk_ex mongjr mongsr gest_g amb_h stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:1430
+
+#window 59:1535
+title "Dr. Mong Jr."
+body "You are not my father."
+cam left from(PlayerChar0) to(mongjr) restore zip
+talk_ex mongjr mongsr gest_i amb_h stay stay
+startswitch {
+  set mongjr_gone = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1540
+title "Dr. Mong Jr."
+body "My father is truly dead."
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  extern AI_TalkStop mongjr
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1602
+title "Dr. Mannberg"
+body "You always gotta chase down what you want. Chewing gum, on the edge, where you need to be."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1610
+title "Dr. Mannberg"
+body "I think that kid knows something. I think he's holding back. But he wants to tell me."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1705
+title "Dr. Dangwi"
+body "They want me to sign this non-disclosure agreement disavowing any knowledge of my work on the experiment. But I know what I saw. I can't walk away now."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1710
+title "Dr. Dangwi"
+body "They threatened to bar me from the Scientifica Association if I don't play ball. They're going to ruin my career. But how can I turn my back on this?"
+cam left restore zip
+talk npc amb_h stay
+startswitch {
+  extern AI_GrabEntity mannberg mannberg_handle
+  extern AI_Path mannberg_handle mannberg_path1
+  extern AI_ReleaseEntity mannberg_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:1715
+title "Dr. Dangwi"
+body "They've given me until tomorrow to sign this. I don't know what I'm going to do."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:1605
+
+#window 59:1605
+title "Dr. Mannberg"
+body "My name's Doctor Michael Mannberg from \"Popular Scientifica\" magazine. I'm editing an article on genetic cross-pollution, and your name was given to me as a reference. Would you be willing to go over the article with me? We'll pay a fee, of course."
+cam left from(PlayerChar0) to(mannberg) restore zip
+talk_ex dangwi mannberg amb_h gest_g stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:1720
+
+#window 59:1720
+title "Dr. Dangwi"
+body "No, I've got other things to worry about. Excuse me."
+cam left from(PlayerChar0) to(dangwi) restore zip
+talk_ex dangwi mannberg amb_h amb_a stay stay
+startswitch {
+  set Dangwi_talks = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:1721
+
+#window 59:1725
+title "Dr. Dangwi"
+body "Please, I need some time alone...."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:2005
+title "Dr. Jude"
+body "Don't look now, but I think the young lady sitting over there keeps looking over at me. Okay, look now. Wait, don't. She's looking. Okay, now, now!"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:2015
+title "Dr. Jude"
+body "Did you see her? She looks nervous. I've probably got her all flustered, poor thing. She's adorable, isn't she?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:2020
+title "Dr. Jude"
+body "She keeps squirming her toes. I bet she's afraid I'm going to walk over there and talk to her. She's probably very shy."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:2025
+title "Dr. Jude"
+body "You think I should go talk to her?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+if (func_charinparty[boots] == 3)
+  choice "Of course! Now's your chance. Go! GO!" 59:2030
+if (func_charinparty[boots] == 3)
+  choice "Not unless you like rejection." 59:2035
+if (func_charinparty[grumpos] == 3)
+  choice "Get your butt over their and talk to her, son." 59:2030
+if (func_charinparty[grumpos] == 3)
+  choice "Don't delude yourself, kid." 59:2035
+if (func_charinparty[pal] == 3)
+  choice "She's pretty sweet. Bust a move." 59:2030
+if (func_charinparty[pal] == 3)
+  choice "Don't bother. She looks like trouble." 59:2035
+
+#window 59:2030
+title "Dr. Jude"
+body "Deep breath. Okay. Here goes."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  set Jude_decides = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:2031
+
+#window 59:2035
+title "Dr. Jude"
+body "Yeah, it's just a fantasy in my mind, isn't it? Thanks, I might have made an ass of myself."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:2040
+title "Dr. Jude"
+body "Get away from me!"
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:2045
+title "Dr. Jude"
+body "She IS pretty cute though, isn't she?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:2050
+title "Dr. Jude"
+body "Wish me luck!"
+cam left restore zip
+talk npc gest_f stay
+finishswitch {
+  extern AI_TalkStop valesta
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:2105
+title "Dr. Aki"
+body "You're gonna be in an awful lot of trouble if the Scientifica Association gets wind of what you're up to, Doctor Engel."
+cam left from(PlayerChar0) to(aki) restore zip
+talk_ex aki engel talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:2205
+
+#window 59:2205
+title "Dr. Engel"
+body "They're too wrapped up in soliciting funds for their precious grants to take notice of my extracurricular activities. I can assure you that no one will be the wiser as long as--"
+cam left from(PlayerChar0) to(engel) restore zip
+talk_ex aki engel amb_a gest_g stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:2210
+
+#window 59:2210
+title "Dr. Engel"
+body "Would you mind!? This is a private conversation."
+cam left restore zip
+talk npc gest_e stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:2305
+title "Prof. Molo"
+body "This is an okay planet to live on except for the food. I wish they'd open a Moon Burger out here."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:2310
+title "Prof. Molo"
+body "My hands just got really clammy. Wanna feel?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:2405
+title "Professor Maguire"
+body "I've been fascinated by arachnids ever since I got bitten by a spider when I was a freshman at the International Institute of Technology."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:2410
+title "Professor Maguire"
+body "Did you know that the normal person swallows an average of eight spiders during the course of their life while they sleep?"
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:2415
+title "Professor Maguire"
+body "I didn't mean to gross you out."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:2420
+title "Professor Maguire"
+body "I've been tingling all week. Something bad's gonna happen."
+cam left restore zip
+talk npc gest_l stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:2505
+title "Professor Carniac"
+body "Hey, you! Try and grab me. C'mon, I dare ya. Be a sport. Just try."
+cam left lift(50) restore zip
+talk_ex 59:2501 PlayerChar0 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:2510
+
+#window 59:2510
+title "Professor Carniac"
+body "See? You can't touch me. Nothing can. I'm generating an impenetrable force field. It can't be detected by most hi-end optical-thermal scanners out on the market today. I built the prototype myself."
+cam left lift(50) restore zip
+talk_ex 59:2501 PlayerChar0 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:2515
+
+#window 59:2515
+title "Doctor Rubillex"
+body "Only problem is, the fool doesn't know how to shut it off!"
+cam left from(PlayerChar0) to(rubillex) lift(50) restore zip
+talk_ex rubillex carniac talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:2520
+
+#window 59:2520
+title "Professor Carniac"
+body "A minor matter. Some of the variables were giving me a little trouble, but I've just about worked out the calculations. Shouldn't take too long to figure out..."
+cam left from(PlayerChar0) to(carniac) lift(50) restore zip
+talk_ex carniac rubillex talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:2525
+title "Doctor Rubillex"
+body "You'd better put that ridiculous contraption away before you're banished with the rest of the heretics!"
+cam left from(PlayerChar0) to(rubillex) lift(50) restore zip
+talk_ex rubillex carniac talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:2530
+
+#window 59:2530
+title "Professor Carniac"
+body "Killjoy! Why do you always have to spoil my fun?"
+cam left from(PlayerChar0) to(carniac) lift(50) restore zip
+talk_ex carniac rubillex talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:2535
+title "Professor Carniac"
+body "Oh, dear... I've got to visit the restroom."
+cam left from(PlayerChar0) to(carniac) lift(50) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:2540
+title "Professor Carniac"
+body "Whatever happens, I'll be protected by my energy shield."
+cam left from(PlayerChar0) to(carniac) lift(50) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:2545
+
+#window 59:2545
+title "Doctor Rubillex"
+body "Is there room in there for two?"
+cam left from(PlayerChar0) to(rubillex) lift(50) restore zip
+talk_ex rubillex carniac talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:2605
+title "Doctor Rubillex"
+body "I'm not taking responsibility for any of this."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:2805
+startswitch {
+  set @BabyJesusTimer = func_gametime
+}
+
+thinkswitch {
+  if (func_gametime >= (@BabyJesusTimer + 300))
+    closewindow 59:2805
+}
+
+finishswitch {
+  goto 59:2807
+}
+
+style "null"
+flags passive, TRUE
+
+#window 59:3005
+title "Officer Perrot"
+body "HALT. Do you have Class C security clearance?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Class C security clearance?" 59:3006
+choice "Oh, never mind." 59:3045
+
+#window 59:3006
+title "Officer Perrot"
+body "Beyond this gate is the Rainbow Sanctuary. It's restricted. Heretics only."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+if (func_charinparty[boots] == 3)
+  choice "Can you lower the lasers for me? I'm new here and I wanna explore." 59:3040
+if (func_charinparty[grumpos] == 3)
+  choice "You think you could lower the security lasers for an old man?" 59:3040
+choice "Oh, never mind." 59:3045
+
+#window 59:3007
+title "Officer Perrot"
+body "No, please don't go. I'm a lonely man seeking an honest, sensitive friend who appreciates lively conversation. I'm somewhat earthy and sensual, eager to laugh, and positive about life. Would you like to make a connection?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set @perrotissassy = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "If you lower the lasers maybe we can be friends." 59:3040
+choice "Sorry, not interested." 59:3045
+
+#window 59:3008
+title "Officer Perrot"
+body "I'm afraid I couldn't lower the lasers even if I wanted to. The disabling frequencies are known by only three guards, and each one only knows one frequency each."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set perrotknowabout = 3
+  extern is_quest_done "Get Laser Frequencies" @boo
+  if (@boo < 1)
+    extern add_quest "Get Laser Frequencies"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "What if I cleverly distract you and lower them while you're not looking?" 59:3010
+choice "Oh, never mind." 59:3045
+
+#window 59:3009
+title "Officer Perrot"
+body "But I have long, naturally curly hair under this helmet. I enjoy nature, hiking, and I'm eager to laugh. Did I say that already?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set @perrotissassy = 4
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "What about lowering the lasers behind you?" 59:3040
+choice "Sorry, not interested." 59:3045
+
+#window 59:3010
+title "Officer Perrot"
+body "I guess in theory it would be possible to interrupt the flow of the lasers without a clearance keycard...."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set perrotknowabout = 5
+  extern add_quest "Find Laser Blocker"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Interrupt them how?" 59:3011
+choice "Oh, never mind." 59:3045
+
+#window 59:3011
+title "Officer Perrot"
+body "Well, there are three types of lasers running in high modulation behind me. If someone found the control panel for each one, and managed to get the disabling frequencies from the three guards, then they could switch the lasers to low modulation."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set perrotknowabout = 6
+}
+
+finishswitch {
+  extern AI_SpawnEntity lgguard01_handle monster_paxgad lgguard01 59:5601 lgg1spawn
+  extern AI_SetYaw lgguard01_handle 55
+  extern entkey lgguard01_handle "default_anim" "amb_a"
+  extern AI_ReleaseEntity lgguard01_handle
+  extern AI_SpawnEntity lgbcase01_handle ob_briefcase3 lgbcase01 59:6001 lgbcasespawn
+  extern AI_SetYaw lgbcase01_handle 310
+  extern AI_SetRoll lgbcase01_handle 270
+  extern entkey lgbcase01_handle "wsequence" "59:6001"
+  extern AI_ReleaseEntity lgbcase01_handle
+  extern AI_SpawnEntity lgpeon_handle npc_sma lgpeon 59:5601 lgpeonspawn
+  extern AI_SetYaw lgpeon_handle 240
+  extern entkey lgpeon_handle "default_anim" "amb_h"
+  extern ANIM_PlaySequence lgpeon_handle amb_h 1 1 0
+  extern AI_ReleaseEntity lgpeon_handle
+  extern AI_SpawnEntity lgguard02_handle monster_paxgad lgguard02 59:5701 lgg2spawn
+  extern AI_SetYaw lgguard01_handle 136
+  extern entkey lgguard03_handle "default_anim" "amb_a"
+  extern AI_ReleaseEntity lgguard02_handle
+  gosub 59:2
+  extern AI_GrabEntity lgpaper lgpaper_handle
+  extern entkey lgpaper_handle "sequence" "59:6050"
+  extern entkey lgpaper_handle "wsequence" "59:6050"
+  extern AI_ReleaseEntity lgpaper_handle
+  extern AI_SpawnEntity lgguard03_handle monster_paxgad lgguard03 59:3101 lgg3spawn
+  extern entkey lgguard03_handle "wsequence" "59:3130"
+  set knowaboutguards = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "And that would lower the gate?" 59:3012
+choice "Oh, never mind." 59:3045
+
+#window 59:3012
+title "Officer Perrot"
+body "Well, once the lasers are switched to low modulation, you still have to block the flow with something."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set perrotknowabout = 7
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Block them with what?" 59:3013
+
+#window 59:3013
+title "Officer Perrot"
+body "Well, I suppose you could block the lasers with anything thin enough to fit in the laser unit card slot."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set perrotknowabout = 8
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Card slot?" 59:3014
+
+#window 59:3014
+title "Officer Perrot"
+body "In the control panel."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Control panel?" 59:3015
+
+#window 59:3015
+title "Officer Perrot"
+body "Have you been listening to anything I've been telling you?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:3016
+
+#window 59:3016
+title "Officer Perrot"
+body "Like I said, if someone found the control panels for each type of laser and found out the secret frequency for them, they could switch the lasers to low modulation and block them with something thin enough to fit in the laser unit card slot."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set perrotknowabout = 11
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3017
+title "Officer Perrot"
+body "But I like to sip Brebulan wine under the stars. I also enjoy gardening, yoga, and blinking."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set @perrotissassy = 12
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "What about lowering the lasers behind you?" 59:3040
+choice "Sorry, not interested." 59:3045
+nextwindow 59:3026
+
+#window 59:3018
+title "Officer Perrot"
+body "But I like romantic, candle-lit dinners, I'm a championship level Gorian clap-dancer, I don't drink or smoke, and I'm not into head games."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set @perrotissassy = 13
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Yeah? Are you into lowering the lasers behind you?" 59:3040
+choice "Sorry, not interested." 59:3045
+
+#window 59:3019
+title "Officer Perrot"
+body "Oh, forget you then."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set @perrotissassy = 14
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3020
+title "Officer Perrot"
+body "I'm glad you're back. Are you ready to make a connection?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "No, but I'm ready to lower the lasers behind you." 59:3040
+choice "Sorry, not interested." 59:3021
+
+#window 59:3021
+title "Officer Perrot"
+body "You tease."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3025
+title "Officer Perrot"
+body "Your friend didn't seem very eager to make a connection with me. Are you interested in a fascinating, sensitive man who is eager to smile?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Yes. I'm even more interested in lowering those lasers." 59:3040
+choice "Sorry, not interested." 59:3018
+nextwindow 59:3026
+
+#window 59:3030
+title "Officer Perrot"
+body "Hey, you wouldn't happen to know anything about someone sabotaging the lasers with a deck of cards would you?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3035
+title "Officer Perrot"
+body "Sorry, little fella. I don't talk to baggage."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+height 140
+
+#window 59:3050
+title "Officer Perrot"
+body "If you love somebody... set them free."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:3051
+
+#window 59:3051
+title "Officer Perrot"
+body "So go."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:3052
+
+#window 59:3052
+title "Officer Perrot"
+body "You won't see me cry."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3105
+title "Officer Down"
+body "Can't you see I'm in the middle of something?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Can you tell me the frequency for the security laser?" 59:3110
+choice "Never mind." 59:3109
+
+#window 59:3109
+title "Officer Down"
+body "I've had a grueling day and I don't have time to talk to morons. Take a hike!"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3110
+title "Officer Down"
+body "I've had a grueling day and I don't have time to talk to morons. Take a hike!"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set GrumpyLaserGuard = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3111
+title "Officer Down"
+body "C'mon! I'm in the middle of something, you moron!"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+if (func_charinparty[boots] == 3)
+  choice "My name's Doctor Bucelli. I'm afraid your father is ill." 59:3112
+if (func_charinparty[grumpos] == 3)
+  choice "My name's Doctor Matavastros. I'm afraid your father is ill." 59:3112
+choice "Never mind." 0:0
+
+#window 59:3112
+title "Officer Down"
+body "My father's been dead for fifteen years, you jackass. "
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set GrumpyLaserGuard = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3113
+title "Officer Down"
+body "You deaf? I don't have time to talk to morons. Take a hike before I run the lot of you in."
+startswitch {
+  set PissedOffOfficerDown = (PissedOffOfficerDown + 1)
+  if (PissedOffOfficerDown >= 2) {
+    extern AI_GrabEntity PlayerChar0 PlayerChar0_handle
+    extern AI_GrabEntity lgguard03 lgguard03_handle
+  }
+}
+
+finishswitch {
+  if (PissedOffOfficerDown >= 2) {
+    extern AI_SeekAndTouch lgguard03_handle PlayerChar0
+    extern AI_SetCompletionCallback lgguard03_handle 59:3115
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+
+#window 59:3114
+startswitch {
+  if (func_charinparty[boots] == 3)
+    extern playsound battle/character_boots_com/character_boots_com_pain.wav
+  if (func_charinparty[grumpos] == 3)
+    extern playsound battle/character_grumpos_com/character_grumpos_com_pain.wav
+  if (func_charinparty[pal] == 3)
+    extern playsound battle/character_pal_com/character_pal_com_pain.wav
+  extern FlashScreenf 1 0 0 0 0
+  extern FlashScreenf 1 0 0 0.3 0.15
+  set @PainFlashTime = func_gametime
+}
+
+thinkswitch {
+  if (func_gametime > (@PainFlashTime + 150)) {
+    extern FlashScreenf 1 0 0 0.3 0
+    extern FlashScreenf 1 0 0 0 .15
+    closewindow 59:3114
+  }
+}
+
+style "null"
+flags passive, TRUE
+
+#window 59:3116
+startswitch {
+  set angryGuardTime = func_gametime
+}
+
+thinkswitch {
+  if (func_gametime > (angryGuardTime + 1000)) {
+    closewindow 59:3116
+    goto 59:3117
+  }
+}
+
+style "null"
+flags passive, TRUE
+
+#window 59:3132
+title "Grumpos"
+body "Well, I know most of you PAX monkeys are a bit slow on the uptake-I mean, you can't have too much dangling between the noodle if you get your kicks swinging the knuckle-duster over the skull of every Tom, Dick, and Henrik who gives you lip-so let me explain it to you clear, nice, easy, and slow."
+cam left restore zip
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:3131
+
+#window 59:3131
+title "Grumpos"
+body "I may look old to you, but under this glorious mane is a juvenescent soul. I think like a young man. I drink like a young man. I pitch woo like a young man. But my weakness is my memory. The years wear on like a paper dress and before you know it your memory is in tatters at the foot of the bed - not to mention your ability to compose a metaphor or simile or whatever the hell it was I just said."
+cam left restore zip
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:3133
+
+#window 59:3133
+title "Grumpos"
+body "Whatever the case, I forget things. I used to be a whistle punk back in the day. Know what that is? It was in the Cordican timber fields back when there was still a lumber industry to be had. Years ago, real hardwood was all the rage with the hausfraus... dressers, cellarets, little Brebulan-style davenports... the trend was burnished wood and Cordica had tons of it. Again, this was back in the day...."
+cam left restore zip
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:3134
+
+#window 59:3134
+title "Grumpos"
+body "So I found myself in the timber fields as a whistle punk. Now, you gotta understand the type of ramshackle operation the Cordicans were running. Some things never change, and all they were after was to make quick dime. Safety was a joke, and equipment consisted of leather gloves and a five year-old stridor saw."
+cam left restore zip
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:3135
+
+#window 59:3135
+title "Grumpos"
+body "Now, when those Cordican firs fall, they come sliding down the hill like a lead zeppelin. They take six hundred years to mature, and the big ones take three weeks to saw through. And although we weren't dealing with the mondo firs, even the crumbsnatchers are whoppers. That's why there's a whistle punk at the top of the slope to warn the lumberjacks down below that troubles uh-coming."
+cam left restore zip
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:3136
+
+#window 59:3136
+title "Grumpos"
+body "Anyway, it was during my timber years that the hernia developed. You know what that is, son? You get a rupture near your goose neck, and your intestines decide they want some air. Mine got strangulated. They made me wear an itchy truss for longer than I care to tell. I'd try working my magic with the ladies, but the moment they saw the support pad under my trousers they ran for the hills. What was even worse was -"
+cam left restore zip
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:3137
+
+#window 59:3137
+title "Officer Down"
+body "Enough! The frequency is 507 THz.  Don't ever say another word to me again."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:3138
+
+#window 59:3138
+title "Professor Carniac"
+body "And good luck with the hernia!"
+cam left from(PlayerChar0) to(carniac) restore zip
+talk npc talk_a stay
+finishswitch {
+  set lguard03frequency = 1
+  extern complete_quest "Get Red Laser Frequency"
+  extern add_quest "Disable Red Laser"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3140
+title "Officer Down"
+body "I said not another word!"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3145
+title "Officer Down"
+body "Someone get this hairspring outta my face!"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3205
+title "Prof. Drawmo"
+body "Darling, I think you know what it is that I want to ask you. And I will as soon as this guy stops breathing down my neck."
+cam left from(PlayerChar0) to(drawmo) restore zip
+talk_ex drawmo foxx amb_f amb_d stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3210
+title "Prof. Drawmo"
+body "Seriously, if this guy would please leave I could continue with this romantic moment."
+cam left from(PlayerChar0) to(drawmo) restore zip
+talk_ex drawmo foxx amb_f amb_d stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3215
+title "Prof. Drawmo"
+body "I guess I'll have to ask you later. Jerk. No, not you!"
+cam left from(PlayerChar0) to(drawmo) restore zip
+talk_ex drawmo foxx amb_f amb_d stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3220
+title "Prof. Drawmo"
+body "I'll just pretend he's not there."
+cam left from(PlayerChar0) to(drawmo) restore zip
+talk_ex drawmo foxx amb_f amb_d stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3305
+title "Dr. Foxx"
+body "Can't you see you're interrupting a beautiful moment?"
+cam left restore zip
+talk npc talk_d stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3310
+title "Dr. Foxx"
+if (func_charinparty[boots] == 3)
+  body "You're a rude young man."
+if (func_charinparty[grumpos] == 3)
+  body "You're a rude old man."
+if (func_charinparty[pal] == 3)
+  body "You're a rude, little lackey."
+cam left restore zip
+talk npc talk_d stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3505
+title "Elijah"
+body "My life's been pretty good so far. I feel pretty lucky. I'm smart. I got a scholarship to study on Sunder. I mean, what an opportunity."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3510
+title "Elijah"
+body "No one's come to pick me up. I was expecting to see someone holding a sign with my name on it."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3515
+title "Elijah"
+body "Maybe I should call someone. But maybe I should stay here."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3520
+title "Elijah"
+body "Common sense tells me to run. But what if someone comes to pick me up and I'm not here?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3705
+title "Prof. Bondo"
+body "All I know is I know nothing."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity bondo bondo_handle
+  extern ANIM_PlayAnim bondo_handle amb_h 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:3715
+
+#window 59:3715
+title "Dr. Heinzi"
+body "How very Socratic of you."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity heinzi heinzi_handle
+  extern ANIM_PlayAnim heinzi_handle amb_h 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity heinzi_handle
+  extern AI_ReleaseEntity bondo_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:3720
+title "Prof. Bondo"
+body "You feel that rumbling? Should we evacuate?"
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity bondo bondo_handle
+  extern ANIM_PlayAnim bondo_handle amb_h 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:3725
+
+#window 59:3725
+title "Dr. Heinzi"
+body "In our moment of triumph?"
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity heinzi heinzi_handle
+  extern ANIM_PlayAnim heinzi_handle amb_h 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity heinzi_handle
+  extern AI_ReleaseEntity bondo_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:4005
+title "Dr. Tess Winn"
+body "Boy, that was odd. I just bumped into the strangest-looking guy as I was leaving the bathroom. He couldn't have been a scientist... he was wearing red and black body armor. His face was evil."
+cam left lift(20) restore zip
+talk npc amb_c stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:4010
+title "Dr. Tess Winn"
+body "He didn't say anything. He just stared at me, then strode off. I got chills. Hell, I'm getting chills now. Look at my arm."
+cam left lift(20) restore zip
+talk npc amb_c stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:4015
+title "Dr. Tess Winn"
+body "The more moments that pass, the more it seems like I imagined him. That was truly bizarre."
+cam left lift(20) restore zip
+talk npc amb_c stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:4020
+title "Dr. Tess Winn"
+body "Should I report this to someone?"
+cam left lift(20) restore zip
+talk npc amb_c stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:4101
+title "Professor Lillian"
+if (MYSTECH_ACTIVE == 0)
+  body "I know it wasn't a very long flight, but my butt hurts."
+if (MYSTECH_ACTIVE == 1)
+  body "Does the floor feel like it's vibrating? What's going on?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:4201
+title "Jerry Rickshaw"
+if (MYSTECH_ACTIVE == 0)
+  body "You notice scientists all kinda look alike?"
+if (MYSTECH_ACTIVE == 1)
+  body "Does the world feel like it's gonna blow up? Don't worry... I'll make everything alright."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:4301
+title "Doctor Unat"
+if (MYSTECH_ACTIVE == 0)
+  body "My flight's been delayed for two hours. Are you responsible?"
+if (MYSTECH_ACTIVE == 1)
+  body "The floor is shaking... you feel that?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:4405
+title "Dr. Martin"
+if (MYSTECH_ACTIVE == 0)
+  body "Movies are too long these days. I usually prefer the shorter, edited, in-flight version over the original director's cut."
+if (MYSTECH_ACTIVE == 1)
+  body "You hear that low hum? What the hell is that?"
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  if (MYSTECH_ACTIVE == 1)
+    extern cam_restore
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:4410
+title "Dr. Martin"
+body "You know what else I hate? Those \"aren't-we-clever\" movies with obscure, self-referential humor no one except the writer gets. Those drive me up the wall."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:4415
+title "Dr. Martin"
+body "You know what else I hate?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:4416
+
+#window 59:4416
+title "Dr. Martin"
+body "Strangers assaulting me at the starport. Beat it before I call security."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:4605
+title "Professor Bialy"
+body "I'm ruined! My assistant ran off with my notes!"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:4606
+
+#window 59:4606
+title "Professor Bialy"
+body "I've got a speech to deliver in less than an hour to a delegation from the Scientifica Association. If I don't find my notes I'm gonna be the laughingstock of the conference!"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:4610
+title "Professor Bialy"
+body "When I get my hands on that twit, I'm gonna strangle him."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:4615
+title "Professor Bialy"
+body "I was even gonna open with a great Bipidri joke."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:4620
+title "Professor Bialy"
+body "You hear that infernal hum? What is that?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:4705
+title "Prof. Shog"
+body "What's nice about the Callosum Starport is not having to deal with Brebulans handing out leaflets about Klaz."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:4710
+title "Prof. Shog"
+body "Of course, no one dumb enough to believe in Klaz would even be on Sunder."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:4720
+title "Prof. Shog"
+body "What's that rumbling? Is that a shuttle taking off?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:4901
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+if (func_charinparty[pal] == 3)
+  title "PAL-18"
+if (func_charinparty[rho] == 3)
+  title "Rho"
+if (func_charinparty[democratus] == 3)
+  title "Democratus"
+if (func_charinparty[stiletto] == 3)
+  title "Stiletto"
+if (func_charinparty[paco] == 3)
+  title "Paco"
+body "We don't have a card key for this lock."
+cam left lift(20) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5010
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+if (func_charinparty[pal] == 3)
+  title "PAL-18"
+if (func_charinparty[rho] == 3)
+  title "Rho"
+if (func_charinparty[democratus] == 3)
+  title "Democratus"
+if (func_charinparty[stiletto] == 3)
+  title "Stiletto"
+if (func_charinparty[paco] == 3)
+  title "Paco"
+body "We don't have a card key for this lock."
+cam left lift(20) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5101
+title "Dr. Feelnor"
+body "I had a horrible nightmare last night. I don't remember it too well... but I think the world ended."
+cam left lift(40) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5201
+title "Prof. Stessho"
+body "Look, the hair on my arm's been standing on end the last couple of minutes. How weird."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5301
+title "Professor Pangkot"
+body "My left eyelid is twitching. Something bad is going to happen today."
+cam left restore zip
+talk npc gest_e stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5401
+title "Doctor Schlucker"
+body "Professor Claddin just called and said all the MysTech decorations in his office are glowing. That man needs a serious vacation."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5505
+title "Professor Rorjeh"
+body "You mean to tell me they don't serve \"mojitos\" here? And they call this a civilized joint?!"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5510
+title "Professor Rorje"
+body "Away with you!"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5555
+title "Officer Murphy"
+body "Move along people."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5605
+title "Dr. Simmons"
+body "So I told her to hand me a canister beside the Torzewski Emitter. The goggles work better when the subject is exposed to certain types of radiation."
+cam left from(PlayerChar0) to(lgpeon) restore zip
+talk_ex lgguard01 lgpeon amb_a talk_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5606
+
+#window 59:5606
+title "Officer Rather"
+body "What color were her scanties? Did the goggles work?"
+cam left from(PlayerChar0) to(lgguard01) restore zip
+talk_ex lgguard01 lgpeon talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5607
+
+#window 59:5607
+title "Dr. Simmons"
+body "That's the thing, my voluminous friend... she wasn't wearing any whatsoever. I nearly spilled my beaker."
+cam left from(PlayerChar0) to(lgpeon) restore zip
+talk_ex lgguard01 lgpeon amb_a talk_a stay stay
+finishswitch {
+  if (knowaboutguards == 1)
+    goto 59:5608
+  if (knowaboutguards != 1)
+    goto 59:5610
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5608
+title "Officer Rather"
+if (func_charinparty[boots] == 3)
+  body "Hey! Can't you see we're conversatin' here, you schlep."
+if (func_charinparty[grumpos] == 3)
+  body "Hey! Can't you see we're conversatin' here, you old stump."
+if (func_charinparty[pal] == 3)
+  body "Hey! Can't you see we're conversatin' here, little man."
+cam left restore zip
+talk_ex lgguard01 playerchar0 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Excuse me, but what's the frequency?" 59:5609
+choice "Never mind." 59:5610
+
+#window 59:5609
+title "Officer Rather"
+if ((func_charinparty[boots] == 3) || (func_charinparty[grumpos] == 3))
+  body "Frequency? For the security lasers? Listen, buddy... I got a morning ritual. I drink a Bellini, conversate with the locals, and munch a croissant before I open my briefcase and read my daily briefing. So get your face outta my routine before I club your brainpan."
+if (func_charinparty[pal] == 3)
+  body "Frequency? For the security lasers? Listen, buddy... I got a morning ritual. I drink a Bellini, conversate with the locals, and munch a croissant before I open my briefcase and read my daily briefing. So get your face outta my routine before I club your piston."
+cam left from(PlayerChar0) to(lgguard01) restore zip
+talk_ex lgguard01 playerchar0 talk_a amb_a stay stay
+startswitch {
+  set lgBCasePickNow = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5610
+
+#window 59:5610
+title "Officer Rather"
+body "Now tell me... are they as nice as I imagine?"
+cam left from(PlayerChar0) to(lgguard01) restore zip
+talk_ex lgguard01 lgpeon talk_a amb_a stay stay
+startswitch {
+  set lgguard01blab = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5611
+title "Dr. Simmons"
+body "I think she's starting to suspect. There's only so many times I can ask her to work near the Torzewski Emitter."
+cam left from(PlayerChar0) to(lgpeon) restore zip
+talk_ex lgguard01 lgpeon amb_a talk_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5612
+
+#window 59:5612
+title "Officer Rather"
+body "You've gotta hook me up with a pair of them goggles. Maybe you can modify my helmet gear?"
+cam left from(PlayerChar0) to(lgguard01) restore zip
+talk_ex lgguard01 lgpeon talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5613
+
+#window 59:5613
+title "Dr. Simmons"
+body "Well, perhaps if you can get me those Crystem samples you confiscated from Doctor Mawm we can work something out, no?"
+cam left from(PlayerChar0) to(lgpeon) restore zip
+talk_ex lgguard01 lgpeon amb_a talk_a stay stay
+finishswitch {
+  set lgguard01blab = 2
+  if (knowaboutguards == 1)
+    goto 59:5614
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5614
+title "Officer Rather"
+body "Hey! Can't you take a hint? Get the hell outta here."
+cam left restore zip
+talk_ex lgguard01 playerchar0 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+if (lgBCasePickNow == 0)
+  choice "Excuse me, but what's the frequency?" 59:5609
+if (lgBCasePickNow == 0)
+  choice "Never mind." 59:5610
+
+#window 59:5615
+title "Officer Rather"
+body "You're gonna make a bundle with those goggles."
+cam left from(PlayerChar0) to(lgguard01) restore zip
+talk_ex lgguard01 lgpeon talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5616
+
+#window 59:5616
+title "Dr. Simmons"
+body "If privacy laws permit."
+cam left from(PlayerChar0) to(lgpeon) restore zip
+talk_ex lgguard01 lgpeon amb_a talk_a stay stay
+finishswitch {
+  set lgguard01blab = 3
+  if (knowaboutguards == 1)
+    goto 59:5617
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5617
+title "Officer Rather"
+body "Hey! Beat it before I beat YOU."
+cam left restore zip
+talk_ex lgguard01 playerchar0 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5618
+title "Dr. Simmons"
+body "So what do you do when they resist?"
+cam left from(PlayerChar0) to(lgpeon) restore zip
+talk_ex lgguard01 lgpeon amb_a talk_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5619
+
+#window 59:5619
+title "Officer Rather"
+body "That's the best part... club time, heh."
+cam left from(PlayerChar0) to(lgguard01) restore zip
+talk_ex lgguard01 lgpeon talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5620
+
+#window 59:5620
+title "Dr. Simmons"
+body "Hah, sometimes I regret becoming a scientist..."
+cam left from(PlayerChar0) to(lgpeon) restore zip
+talk_ex lgguard01 lgpeon amb_a talk_a stay stay
+finishswitch {
+  set lgguard01blab = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5621
+
+#window 59:5621
+title "Officer Rather"
+body "Can't you see we're talking here??"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5625
+title "Kenneth"
+body "You know I thought about putting in a requisition for my own robot lackey."
+cam left to(lgguard01) restore zip
+talk_ex lgguard01 lgpeon talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5626
+
+#window 59:5626
+title "Dr. Simmons"
+body "Yes, they are great for taking out the trash or mixing hazardous materials."
+cam left to(lgpeon) restore zip
+talk_ex lgguard01 lgpeon amb_a talk_a stay stay
+finishswitch {
+  set lgguard01pal = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5627
+title "Kenneth"
+body "On second thought they are kind of annoying aren't they?"
+cam left to(lgguard01) restore zip
+talk_ex lgguard01 lgpeon talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5705
+title "Officer Rabia"
+body "Breathe. BREATHE!"
+cam left from(PlayerChar0) to(lgguard02) restore zip
+startswitch {
+  set lgsmashguard = 1
+  extern AI_WaitAndFace lgguard02_handle -1 lgpaper
+  extern ANIM_PlayAnim lgguard02_handle talk_a 0 1 0
+}
+
+finishswitch {
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+  extern AI_TalkStop lgguard02
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5706
+
+#window 59:5706
+title "Officer Rabia"
+body "I'm taking anger management courses. I'm supposed to tense my muscles and breathe in."
+cam left from(PlayerChar0) to(lgguard02) restore zip
+startswitch {
+  extern AI_WaitAndFace lgguard02_handle -1 PlayerChar0
+  extern ANIM_PlayAnim lgguard02_handle talk_a 0 1 0
+  set lgsmashguard = 1
+}
+
+finishswitch {
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+  extern AI_TalkStop lgguard02
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5707
+
+#window 59:5707
+title "Officer Rabia"
+body "BREATHE!!!"
+cam left from(PlayerChar0) to(lgguard02) restore zip
+startswitch {
+  extern AI_WaitAndFace lgguard02_handle -1 lgpaper
+  extern ANIM_PlayAnim lgguard02_handle talk_a 0 1 0
+  set lgsmashguard = 1
+}
+
+finishswitch {
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5708
+
+#window 59:5708
+title "Officer Rabia"
+body "The anger is draining out of me... the anger is draining out of me."
+cam left from(PlayerChar0) to(lgguard02) restore zip
+startswitch {
+  extern AI_WaitAndFace lgguard02_handle -1 lgpaper
+  extern ANIM_PlayAnim lgguard02_handle talk_a 0 1 0
+  set lgsmashguard = 1
+}
+
+finishswitch {
+  extern AI_ReleaseEntity lgguard02_handle
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5709
+
+#window 59:5709
+title "Officer Rabia"
+body "I'm going to leave the anger behind me. I'm going to step out of my-"
+cam left from(PlayerChar0) to(lgguard02) restore zip
+startswitch {
+  extern AI_WaitAndFace lgguard02_handle -1 lgpaper
+  extern ANIM_PlayAnim lgguard02_handle talk_a 0 1 0
+  set lgsmashguard = 1
+}
+
+finishswitch {
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5710
+
+#window 59:5710
+title "Officer Rabia"
+body "It took my MONEY!!!"
+cam left from(PlayerChar0) to(lgguard02) restore zip
+startswitch {
+  set lgsmashguard = 1
+  set @lgslastMS = func_GameTime
+  set @lgscurrentMS = @lgslastMS
+}
+
+thinkswitch {
+  set @lgscurrentMS = func_GameTime
+  set @lgsdelta = (@lgscurrentMS - @lgslastMS)
+  if (@lgsdelta < 250)
+    goto 0:0
+  set @lgslastMS = @lgscurrentMS
+  set @lgsdelta = (@lgsdelta - 250)
+  set @lgslastMS = (@lgscurrentMS - @lgsdelta)
+  set @WhakDatPaperCounter = (@WhakDatPaperCounter + 1)
+  if (@WhakDatPaperCounter == 1) {
+    extern ANIM_PlayAnim lgguard02_handle atak4_a 0 1 0
+    extern playsound "games/sunlaser/newssmash.wav" lgpaper 1.0 2.0
+  }
+  if (@WhakDatPaperCounter == 5) {
+    extern ANIM_PlayAnim lgguard02_handle atak4_a 0 1 0
+    extern playsound "games/sunlaser/newssmash.wav" lgpaper 1.0 2.0
+  }
+  if (@WhakDatPaperCounter == 9) {
+    extern ANIM_PlayAnim lgguard02_handle atak4_a 0 1 0
+    extern playsound "games/sunlaser/newssmash.wav" lgpaper 1.0 2.0
+  }
+  if (@WhakDatPaperCounter == 35) {
+    extern ANIM_PlayAnim lgguard02_handle atak4_a 0 1 0
+    extern playsound "games/sunlaser/newssmash.wav" lgpaper 1.0 2.0
+  }
+}
+
+finishswitch {
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+  set @WhakDatPaperCounter = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5711
+
+#window 59:5711
+title "Officer Rabia"
+body "Sshhh."
+cam left from(PlayerChar0) to(lgguard02) restore zip
+startswitch {
+  extern AI_WaitAndFace lgguard02_handle -1 lgpaper
+  extern ANIM_PlayAnim lgguard02_handle talk_a 0 1 0
+  set lgsmashguard = 1
+}
+
+finishswitch {
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5712
+
+#window 59:5712
+title "Officer Rabia"
+body "I'm okay."
+cam left from(PlayerChar0) to(lgguard02) restore zip
+startswitch {
+  extern AI_WaitAndFace lgguard02_handle -1 lgpaper
+  extern ANIM_PlayAnim lgguard02_handle talk_a 0 1 0
+  set lgsmashguard = 1
+}
+
+finishswitch {
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5713
+
+#window 59:5713
+title "Officer Rabia"
+body "Really."
+cam left from(PlayerChar0) to(lgguard02) restore zip
+startswitch {
+  extern AI_WaitAndFace lgguard02_handle -1 lgpaper
+  extern ANIM_PlayAnim lgguard02_handle talk_a 0 1 0
+  set lgsmashguard = 1
+}
+
+finishswitch {
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5714
+
+#window 59:5714
+title "Officer Rabia"
+body "I'm very centered."
+cam left from(PlayerChar0) to(lgguard02) restore zip
+startswitch {
+  extern AI_WaitAndFace lgguard02_handle -1 lgpaper
+  extern ANIM_PlayAnim lgguard02_handle talk_a 0 1 0
+  set lgsmashguard = 1
+}
+
+finishswitch {
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+  if (knowaboutguards != 0)
+    goto 59:5715
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5715
+title "Officer Rabia"
+body "The anger is draining out of me...."
+cam left from(PlayerChar0) to(lgguard02) restore zip
+startswitch {
+  extern AI_WaitAndFace lgguard02_handle -1 lgpaper
+  extern ANIM_PlayAnim lgguard02_handle talk_a 0 1 0
+  set lgsmashguard = 1
+}
+
+finishswitch {
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+  extern AI_TalkStop lgguard02
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "If I get that paper for you, will you give me the laser frequency?" 59:5716
+choice "Uh... never mind." 0:0
+
+#window 59:5716
+title "Officer Rabia"
+body "You got yourself a DEAL! It's not like you can do anything bad with it, right? It's worthless without the other frequencies."
+cam left from(PlayerChar0) to(lgguard02) restore zip
+startswitch {
+  extern AI_WaitAndFace lgguard02_handle -1 PlayerChar0
+  extern ANIM_PlayAnim lgguard02_handle talk_a 0 1 0
+  if (OriginalGhangstha == 0) {
+    if (func_charinparty[boots] == 3)
+      set OriginalGhangstha = 1
+    if (func_charinparty[grumpos] == 3)
+      set OriginalGhangstha = 2
+    if (func_charinparty[pal] == 3)
+      set OriginalGhangstha = 3
+  }
+  set lgsmashguard = 1
+}
+
+finishswitch {
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+  extern AI_TalkStop lgguard02
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5717
+
+#window 59:5717
+title "Officer Rabia"
+body "It's WORTHLESS!"
+cam left from(PlayerChar0) to(lgguard02) restore zip
+talk_ex lgguard02 lgpaper talk_a amb_a stay nostay
+startswitch {
+  set lgsmashguard = 1
+  extern AI_WaitAndFace lgguard02_handle -1 lgpaper
+}
+
+finishswitch {
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5718
+
+#window 59:5718
+title "Officer Rabia"
+if (func_charinparty[boots] == 3)
+  body "Besides, if you did anything bad with it... I'd spill your brains across the starport."
+if (func_charinparty[grumpos] == 3)
+  body "Besides, if you did anything bad with it... I'd spill your brains across the starport."
+if (func_charinparty[pal] == 3)
+  body "Besides, you're just a harmless little robot man."
+cam left from(PlayerChar0) to(lgguard02) restore zip
+startswitch {
+  extern AI_WaitAndFace lgguard02_handle -1 PlayerChar0
+  extern ANIM_PlayAnim lgguard02_handle talk_a 0 1 0
+  set lgsmashguard = 1
+}
+
+finishswitch {
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+  set lgguard02talked = 1
+  extern AI_TalkStop lgguard02
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5720
+title "Officer Rabia"
+if (func_charinparty[boots] == 3)
+  body "I know you're probably an important scientist, but I've got intelligence too... EMOTIONAL intelligence. I'm in touch with how I feel."
+if (func_charinparty[grumpos] == 3)
+  body "I know you're probably an important scientist, but I've got intelligence too... EMOTIONAL intelligence. I'm in touch with how I feel."
+if (func_charinparty[pal] == 3)
+  body "You're not blessed with feelings, little robot man. Feelings are important. Feelings are strong."
+cam left from(PlayerChar0) to(lgguard02) restore zip
+startswitch {
+  extern AI_WaitAndFace lgguard02_handle -1 PlayerChar0
+  extern ANIM_PlayAnim lgguard02_handle talk_a 0 1 0
+  set lgsmashguard = 1
+}
+
+finishswitch {
+  extern AI_TalkStop lgguard02
+  extern AI_WaitAndFace lgguard02_handle -1 lgpaper
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5721
+
+#window 59:5721
+title "Officer Rabia"
+body "I can EXPRESS my feelings."
+cam left from(PlayerChar0) to(lgguard02) restore zip
+startswitch {
+  extern AI_WaitAndFace lgguard02_handle -1 lgpaper
+  set lgsmashguard = 1
+}
+
+thinkswitch {
+  set @WhakDatPaperCounter = (@WhakDatPaperCounter + 1)
+  if (@WhakDatPaperCounter == 1) {
+    extern ANIM_PlayAnim lgguard02_handle atak4_a 0 1 0
+    extern playsound "games/sunlaser/newssmash.wav" lgpaper 1.0 2.0
+  }
+}
+
+finishswitch {
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+  set @WhakDatPaperCounter = 0
+  set lgguard02talked = 2
+  extern AI_TalkStop lgguard02
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5725
+title "Officer Rabia"
+body "Hey, aren't you gonna get me a paper?"
+cam left from(PlayerChar0) to(lgguard02) restore zip
+startswitch {
+  extern AI_WaitAndFace lgguard02_handle -1 PlayerChar0
+  extern ANIM_PlayAnim lgguard02_handle talk_a 0 1 0
+  set lgsmashguard = 1
+}
+
+finishswitch {
+  extern AI_TalkStop lgguard02
+  extern AI_WaitAndFace lgguard02_handle -1 lgpaper
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5730
+title "Officer Rabia"
+if (func_charinparty[boots] == 3)
+  body "Your friend said he could get me a paper outta the vendobot. But I don't think he's as smart as he looks. Or he's a liar."
+if (func_charinparty[grumpos] == 3)
+  body "Your friend said he could get me a paper outta the vendobot. But I don't think he's as smart as he looks. Or he's a liar."
+if (func_charinparty[pal] == 3)
+  body "Hey, little robot man. Your friend said he could get me a paper outta the vendobot. But I don't think he's as smart as he looks. Or he's a liar."
+cam left from(PlayerChar0) to(lgguard02) restore zip
+startswitch {
+  set lgsmashguard = 1
+  extern AI_WaitAndFace lgguard02_handle -1 PlayerChar0
+  extern ANIM_PlayAnim lgguard02_handle talk_a 0 1 0
+}
+
+finishswitch {
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+  extern AI_TalkStop lgguard02
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:5731
+
+#window 59:5731
+title "Officer Rabia"
+body "A BIG LIAR-FACE!"
+cam left from(PlayerChar0) to(lgguard02) restore zip
+startswitch {
+  set lgsmashguard = 1
+  extern AI_WaitAndFace lgguard02_handle -1 lgpaper
+  extern ANIM_PlayAnim lgguard02_handle atak4_a 0 1 0
+  extern playsound "games/sunlaser/newssmash.wav" lgpaper 1.0 2.0
+}
+
+finishswitch {
+  extern AI_TalkStop lgguard02
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5735
+title "Officer Rabia"
+body "Don't tell anyone I gave you guys that laser frequency."
+cam left from(PlayerChar0) to(lgguard02) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:6002
+title "PAX DAILY AGENDA 8/18/26"
+body "CONFIDENTIAL \n \n Regional Office/Sunder Division Precinct B \n 901 Hawking Ave. \n Callosum, Sunder PC-2202 \n Kenneth Rather, Badge #88687-10181 \n Callosum Starport, Sunder \n \n Maintenance Hatch #124-2212232 \n Luggage Carousel, Terminal B #183-11622OC \n\n Laser OPS RM/LCU-6 Grid 3565-B:\n LASER FREQUENCY: 493 Thz \n \n FOR OFFICIAL USE ONLY"
+startswitch {
+  extern AI_GrabEntity lgbcase01 lgbcase01_handle
+  extern ANIM_PlayAnim lgbcase01_handle gest_a 0 1 1
+  extern AI_ReleaseEntity lgbcase01_handle
+  if (Starport_casepicked == 0) {
+    extern complete_quest "Get Blue Laser Frequency"
+    extern add_quest "Disable Blue Laser"
+    set Starport_casepicked = 1
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+xpos 30
+ypos 30
+width 580
+nextwindow 59:6003
+
+#window 59:6003
+title "Dr. Simmons"
+body "I believe that gentleman is tampering with your briefcase."
+cam left from(PlayerChar0) to(lgpeon) restore zip
+talk_ex lgguard01 lgpeon amb_a talk_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:6004
+
+#window 59:6004
+title "Officer Rather"
+body "Hey! Keep your mitts off my stuff."
+cam left from(PlayerChar0) to(lgguard01) restore zip
+talk_ex lgguard01 playerchar0 talk_a talk_n stay stay
+startswitch {
+  extern AI_GrabEntity lgbcase01 lgbcase01_handle
+  extern ANIM_PlayAnim lgbcase01_handle gest_b 0 1 1
+  extern AI_ReleaseEntity lgbcase01_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:6010
+title "Boots"
+body "I'd need a good reason to think about picking this briefcase right in front of a Pax Guard."
+cam left restore zip
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:6052
+title "PAL-18"
+body "Hey, that vendobot's got an infrared CompTalk port. I haven't seen one of those in ages."
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+
+#window 59:6053
+title "Pal"
+body "I would need a good reason to CompTalk this paper bot with this Pax Guard here."
+cam left restore zip
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:6054
+title "VENDOBOT"
+body "01001000 01100101 01101100 01101100 01101111 \n"
+body "00101100 00100000 01010000 01000001 01001100 \n"
+body "00101101 00110001 00111000 00101110 01010100 \n"
+body "01100101 01101100 01101100 00100000 01110100 \n"
+body "01101000 01100001 01110100 00100000 01100011 \n"
+body "01101111 01101100 01101111 01110011 01110011 \n"
+body "01100001 01101100 01100001 01110011 01110011 \n"
+body "01101000 01101111 01101100 01100101 00100000 \n"
+body "01110100 01101111 00100000 01110011 01110100 \n"
+body "01101111 01110000 01101000 01101001 01110100 \n"
+body "01110100 01101001 01101110 01100111 00100000 \n"
+body "01101101 01100101 00100001 01001000 01100101 \n"
+body "01110010 01100101 00100111 01110011 00100000 \n"
+body "01100001 00100000 01110000 01100001 01110000 \n"
+body "01100101 01110010 00101110 \n"
+startswitch {
+  set GotNewsStandFrequency = 1
+}
+
+finishswitch {
+  extern playsound "games/sunlaser/newspaper.wav"
+}
+
+style "null"
+font "paltiny"
+flags noscroll, TRUE
+xpos 192
+ypos 176
+width 256
+height 256
+background "graphics/black50back.tga" 
+image "graphics/black50back.tga" 0, 128
+background "sunlaser/paledge.pcx" 
+nextwindow 59:6055
+
+#window 59:6055
+title "Officer Rabia"
+body "Hey, you got me a paper outta the vendobot without even touching it! How did you do that?"
+cam left restore zip
+startswitch {
+  extern AI_WaitAndFace lgguard02_handle -1 PlayerChar0
+  extern ANIM_PlayAnim lgguard02_handle talk_a 0 1 0
+  set lgsmashguard = 1
+}
+
+finishswitch {
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:6056
+
+#window 59:6056
+title "Officer Rabia"
+body "Thanks, little robot man. That's swell. Now I can line the bottom of my bipidri cage with fresh paper."
+cam left restore zip
+talk_ex lgguard02 PlayerChar0 talk_a amb_a stay stay
+startswitch {
+  extern AI_WaitAndFace lgguard02_handle -1 PlayerChar0
+  extern ANIM_PlayAnim lgguard02_handle talk_a 0 1 0
+  set lgsmashguard = 1
+}
+
+finishswitch {
+  if (lgsmashguardsolved != 1)
+    set lgsmashguard = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 59:6057
+
+#window 59:6057
+title "Officer Rabia"
+body "The laser frequency is 691 Thz."
+cam left restore zip
+startswitch {
+  set lgsmashguard = 1
+}
+
+finishswitch {
+  extern AI_TalkStop lgguard02
+  set lgsmashguardsolved = 1
+  extern AI_Path lgguard02_handle lgsmashpath01
+  extern AI_ReleaseEntity lgguard02_handle
+  extern AI_TalkStop lgguard02
+  extern complete_quest "Get Green Laser Frequency"
+  extern add_quest "Disable Green Laser"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 59:5901
+xyprintfx 135, 15, 1, 0.699999988079, 0.699999988079, 1, _anox12noshad, "Security Laser Control"
+startswitch {
+  gosub 59:5910
+  extern AI_GrabEntity playerchar0 lgmenugrab
+  set @LGlastMS = func_GameTime
+  set @LGcurrentMS = @LGlastMS
+  set @lasert = 1
+  set @laserl = 1
+  set lindex = 0
+  set langle = 0
+  set dot01x = 157
+  set @LMNumpad = 0
+  set @LMPressCount = 0
+  gosub 59:5908
+}
+
+thinkswitch {
+  if (laserfrequency01 == 0)
+    gosub 59:5905                                  
+  if (laserfrequency01 == 1)
+    gosub 59:5915                                  
+  if (laserfrequency01 >= 2)
+    gosub 59:5916                                      
+  set @LGcurrentMS = func_GameTime
+  set @LGdelta = (@LGcurrentMS - @LGlastMS)
+  if (@LGdelta < 50)
+    goto 0:0
+  set @LGlastMS = @LGcurrentMS
+  if (laserfrequency01 == 0) {
+    set lasercounter = (lasercounter + 1)
+    if (lasercounter > 2)
+      set lasercounter = 1
+    if (lasercounter == 1) {
+      set @lasert = 1
+      set @laserl = 1
+    }
+    if (lasercounter == 2) {
+      set @lasert = 2
+      set @laserl = 2
+    }
+  }
+  if (laserfrequency01 == 1) {
+    set @lasernum1 = 0
+    set @lasernum2 = 0
+    set lasercounter = (lasercounter + 1)
+    if (lasercounter > 2)
+      set lasercounter = 1
+    if (lasercounter == 1) {
+      set @lasert = 3
+      set @laserl = 3
+    }
+    if (lasercounter == 2) {
+      set @lasert = 4
+      set @laserl = 4
+    }
+  }
+  if (laserfrequency01 >= 2) {
+    set @laserl = 0
+    set lasercounter = (lasercounter + 1)
+    if (lasercounter > 2)
+      set lasercounter = 1
+    if (lasercounter == 1)
+      set @lasert = 3
+    if (lasercounter == 2)
+      set @lasert = 4
+  }
+}
+
+finishswitch {
+  extern AI_ReleaseEntity lgmenugrab
+  unset lastMS
+  unset currentMS
+  unset delta
+  unset lasercounter
+  unset langle
+  unset timesrun
+  unset langle
+  unset @JakesShiv
+  unset @currentEnteredDigit
+  gosub 59:5909
+}
+
+style "null"
+font "_anox12noshad"
+flags passive2d, TRUE
+xpos 64
+ypos 12
+width 512
+image "sunlaser/base5.pcx" 64, 0, 385, 64
+background "sunlaser/base3.pcx" 
+image "sunlaser/base4.pcx" 449, 0
+image "sunlaser/base1.pcx" 0, 49
+image "sunlaser/base2.pcx" 256, 49
+image "sunlaser/lasert$@lasert$.pcx" 39, 108
+image "sunlaser/laserl$@laserl$.pcx" 39, 193
+image "sunlaser/hzb$hzgraphic1$.tga" 391, 68
+image "sunlaser/dot1.tga" dot01x, dot01y
+image "sunlaser/dot2.tga" dot03x, dot03y
+image "sunlaser/dot3.tga" dot05x, dot05y
+image "sunlaser/dot4.tga" dot07x, dot07y
+image "sunlaser/dot5.tga" dot09x, dot09y
+image "sunlaser/dot6.tga" dot11x, dot11y
+image "sunlaser/dot7.tga" dot13x, dot13y
+image "sunlaser/dot8.tga" dot15x, dot15y
+image "sunlaser/dot9.tga" dot17x, dot17y
+image "sunlaser/dot10.tga" dot19x, dot19y
+if (n[1] != -1.000000)
+  image "sunlaser/b0$n[1]$.tga" 374, 123
+if (n[2] != -1.000000)
+  image "sunlaser/b0$n[2]$.tga" 406, 123
+if (n[3] != -1.000000)
+  image "sunlaser/b0$n[3]$.tga" 438, 123
+image "sunlaser/card$lgcard1$.tga" 47, 171
+
+#window 59:5936
+title "Boots"
+body "Let's see if one of these playing cards will work...."
+finishswitch {
+  set lgcard1 = 1
+  set laserfrequency01 = 2
+  gosub 59:5945
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 120
+ypos 360
+width 300
+
+#window 59:5937
+title "Grumpos"
+body "What can I jam in there? Let's see if one of these playing cards will work...."
+finishswitch {
+  set lgcard1 = 1
+  set laserfrequency01 = 2
+  gosub 59:5945
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 120
+ypos 360
+width 300
+
+#window 59:5938
+title "PAL-18"
+body "This playing card should substitution pretty good for the RM/LCU-6 Laser Card Unit used by laser repair personnel."
+finishswitch {
+  set lgcard1 = 1
+  set laserfrequency01 = 2
+  gosub 59:5945
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 120
+ypos 360
+width 300
+
+#window 59:5995
+title "RESTRICTED: SECURITY LASER OPS"
+body "This security laser is one of three protecting the restricted areas of Callossum Starport. "
+body "Maintenance personnel need to be aware of basic functionality before attempting to repair any of the lasers. \n\n"
+body "IMPORTANT FACTS\n"
+body "@ Lasers have two frequency settings: operational and standby. Do not attempt to block or repair the laser when they are at operational frequency.\n"
+body "@ For repair purposes, block the\nlaser through the small slot in\nthe panel with a RM/LCU-6 Laser \nCard Unit. \n"
+body "\n              @ MORE @"
+style "NULL"
+font "paltiny"
+xpos 192
+ypos 176
+width 256
+height 256
+background "graphics/black50back.tga" 
+image "graphics/black50back.tga" 0, 128
+background "sunlaser/paledge.pcx" 
+image "sunlaser/lbc02.tga" 183, 154
+nextwindow 59:5996
+
+#window 59:5996
+title "RESTRICTED: SECURITY LASER OPS"
+body "@ Enter frequency numbers on the keypad. Press Enter or Clear if you wish to start over.\n"
+body "@ Do not share frequency numbers with unauthorized personnel. This can only lead to pain. Most likely yours.\n\n"
+body "For more information, contact your Maintenance Supervisor."
+style "NULL"
+font "paltiny"
+xpos 192
+ypos 176
+width 256
+height 256
+background "graphics/black50back.tga" 
+image "graphics/black50back.tga" 0, 128
+background "sunlaser/paledge.pcx" 
+
+#window 59:5801
+xyprintfx 135, 15, 1, 0.699999988079, 0.699999988079, 1, _anox12noshad, "Security Laser Control"
+startswitch {
+  gosub 59:5810
+  extern AI_GrabEntity playerchar0 lgmenugrab
+  set @LGlastMS = func_GameTime
+  set @LGcurrentMS = @LGlastMS
+  set @lasert = 1
+  set @laserl = 1
+  set lindex = 0
+  set langle = 0
+  set dot01x = 157
+  set @LMNumpad = 0
+  set @LMPressCount = 0
+  gosub 59:5808
+}
+
+thinkswitch {
+  if (laserfrequency02 == 0)
+    gosub 59:5805                                  
+  if (laserfrequency02 == 1)
+    gosub 59:5815                                  
+  if (laserfrequency02 >= 2)
+    gosub 59:5816                                      
+  set @LGcurrentMS = func_GameTime
+  set @LGdelta = (@LGcurrentMS - @LGlastMS)
+  if (@LGdelta < 50)
+    goto 0:0
+  set @LGlastMS = @LGcurrentMS
+  if (laserfrequency02 == 0) {
+    set lasercounter = (lasercounter + 1)
+    if (lasercounter > 2)
+      set lasercounter = 1
+    if (lasercounter == 1) {
+      set @lasert = 1
+      set @laserl = 1
+    }
+    if (lasercounter == 2) {
+      set @lasert = 2
+      set @laserl = 2
+    }
+  }
+  if (laserfrequency02 == 1) {
+    set @lasernum1 = 0
+    set @lasernum2 = 0
+    set lasercounter = (lasercounter + 1)
+    if (lasercounter > 2)
+      set lasercounter = 1
+    if (lasercounter == 1) {
+      set @lasert = 3
+      set @laserl = 3
+    }
+    if (lasercounter == 2) {
+      set @lasert = 4
+      set @laserl = 4
+    }
+  }
+  if (laserfrequency02 >= 2) {
+    set @laserl = 0
+    set lasercounter = (lasercounter + 1)
+    if (lasercounter > 2)
+      set lasercounter = 1
+    if (lasercounter == 1)
+      set @lasert = 3
+    if (lasercounter == 2)
+      set @lasert = 4
+  }
+}
+
+finishswitch {
+  extern AI_ReleaseEntity lgmenugrab
+  unset lastMS
+  unset currentMS
+  unset delta
+  unset lasercounter
+  unset langle
+  unset timesrun
+  unset langle
+  unset @JakesShiv
+  unset @currentEnteredDigit
+  gosub 59:5809
+}
+
+style "null"
+font "_anox12noshad"
+flags passive2d, TRUE
+xpos 64
+ypos 12
+width 512
+image "sunlaser/base5.pcx" 64, 0, 385, 64
+background "sunlaser/base3.pcx" 
+image "sunlaser/base4.pcx" 449, 0
+image "sunlaser/base1.pcx" 0, 49
+image "sunlaser/base2.pcx" 256, 49
+image "sunlaser/lasertr$@lasert$.pcx" 39, 108
+image "sunlaser/laserlr$@laserl$.pcx" 39, 193
+image "sunlaser/hzr$hzgraphic2$.tga" 391, 68
+image "sunlaser/dot1.tga" dot01x, dot01y
+image "sunlaser/dot2.tga" dot03x, dot03y
+image "sunlaser/dot3.tga" dot05x, dot05y
+image "sunlaser/dot4.tga" dot07x, dot07y
+image "sunlaser/dot5.tga" dot09x, dot09y
+image "sunlaser/dot6.tga" dot11x, dot11y
+image "sunlaser/dot7.tga" dot13x, dot13y
+image "sunlaser/dot8.tga" dot15x, dot15y
+image "sunlaser/dot9.tga" dot17x, dot17y
+image "sunlaser/dot10.tga" dot19x, dot19y
+if (n[1] != -1.000000)
+  image "sunlaser/b0$n[1]$.tga" 374, 123
+if (n[2] != -1.000000)
+  image "sunlaser/b0$n[2]$.tga" 406, 123
+if (n[3] != -1.000000)
+  image "sunlaser/b0$n[3]$.tga" 438, 123
+image "sunlaser/card$lgcard2$.tga" 47, 171
+
+#window 59:5836
+title "Boots"
+body "Let's see if one of these playing cards will work...."
+finishswitch {
+  set lgcard2 = 1
+  set laserfrequency02 = 2
+  gosub 59:5945
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 120
+ypos 360
+width 300
+
+#window 59:5837
+title "Grumpos"
+body "What can I jam in there? Let's see if one of these playing cards will work...."
+finishswitch {
+  set lgcard2 = 1
+  set laserfrequency02 = 2
+  gosub 59:5945
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 120
+ypos 360
+width 300
+
+#window 59:5838
+title "PAL-18"
+body "This playing card should substitution pretty good for the RM/LCU-6 Laser Card Unit used by laser repair personnel."
+finishswitch {
+  set lgcard2 = 1
+  set laserfrequency02 = 2
+  gosub 59:5945
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 120
+ypos 360
+width 300
+
+#window 59:5851
+xyprintfx 135, 15, 1, 0.699999988079, 0.699999988079, 1, _anox12noshad, "Security Laser Control"
+startswitch {
+  gosub 59:5860
+  extern AI_GrabEntity playerchar0 lgmenugrab
+  set @LGlastMS = func_GameTime
+  set @LGcurrentMS = @LGlastMS
+  set @lasert = 1
+  set @laserl = 1
+  set lindex = 0
+  set langle = 0
+  set dot01x = 157
+  set @LMNumpad = 0
+  set @LMPressCount = 0
+  gosub 59:5858
+}
+
+thinkswitch {
+  if (laserfrequency03 == 0)
+    gosub 59:5855                                  
+  if (laserfrequency03 == 1)
+    gosub 59:5865                                  
+  if (laserfrequency03 >= 2)
+    gosub 59:5866                                      
+  set @LGcurrentMS = func_GameTime
+  set @LGdelta = (@LGcurrentMS - @LGlastMS)
+  if (@LGdelta < 50)
+    goto 0:0
+  set @LGlastMS = @LGcurrentMS
+  if (laserfrequency03 == 0) {
+    set lasercounter = (lasercounter + 1)
+    if (lasercounter > 2)
+      set lasercounter = 1
+    if (lasercounter == 1) {
+      set @lasert = 1
+      set @laserl = 1
+    }
+    if (lasercounter == 2) {
+      set @lasert = 2
+      set @laserl = 2
+    }
+  }
+  if (laserfrequency03 == 1) {
+    set @lasernum1 = 0
+    set @lasernum2 = 0
+    set lasercounter = (lasercounter + 1)
+    if (lasercounter > 2)
+      set lasercounter = 1
+    if (lasercounter == 1) {
+      set @lasert = 3
+      set @laserl = 3
+    }
+    if (lasercounter == 2) {
+      set @lasert = 4
+      set @laserl = 4
+    }
+  }
+  if (laserfrequency03 >= 2) {
+    set @laserl = 0
+    set lasercounter = (lasercounter + 1)
+    if (lasercounter > 2)
+      set lasercounter = 1
+    if (lasercounter == 1)
+      set @lasert = 3
+    if (lasercounter == 2)
+      set @lasert = 4
+  }
+}
+
+finishswitch {
+  extern AI_ReleaseEntity lgmenugrab
+  unset lastMS
+  unset currentMS
+  unset delta
+  unset lasercounter
+  unset langle
+  unset timesrun
+  unset langle
+  unset @JakesShiv
+  unset @currentEnteredDigit
+  gosub 59:5859
+}
+
+style "null"
+font "_anox12noshad"
+flags passive2d, TRUE
+xpos 64
+ypos 12
+width 512
+image "sunlaser/base5.pcx" 64, 0, 385, 64
+background "sunlaser/base3.pcx" 
+image "sunlaser/base4.pcx" 449, 0
+image "sunlaser/base1.pcx" 0, 49
+image "sunlaser/base2.pcx" 256, 49
+image "sunlaser/lasertg$@lasert$.pcx" 39, 108
+image "sunlaser/laserlg$@laserl$.pcx" 39, 193
+image "sunlaser/hzg$hzgraphic3$.tga" 391, 68
+image "sunlaser/dot1.tga" dot01x, dot01y
+image "sunlaser/dot2.tga" dot03x, dot03y
+image "sunlaser/dot3.tga" dot05x, dot05y
+image "sunlaser/dot4.tga" dot07x, dot07y
+image "sunlaser/dot5.tga" dot09x, dot09y
+image "sunlaser/dot6.tga" dot11x, dot11y
+image "sunlaser/dot7.tga" dot13x, dot13y
+image "sunlaser/dot8.tga" dot15x, dot15y
+image "sunlaser/dot9.tga" dot17x, dot17y
+image "sunlaser/dot10.tga" dot19x, dot19y
+if (n[1] != -1.000000)
+  image "sunlaser/b0$n[1]$.tga" 374, 123
+if (n[2] != -1.000000)
+  image "sunlaser/b0$n[2]$.tga" 406, 123
+if (n[3] != -1.000000)
+  image "sunlaser/b0$n[3]$.tga" 438, 123
+image "sunlaser/card$lgcard3$.tga" 47, 171
+
+#window 59:5876
+title "Boots"
+body "Let's see if one of these playing cards will work...."
+finishswitch {
+  set lgcard3 = 1
+  set laserfrequency03 = 2
+  gosub 59:5945
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 120
+ypos 360
+width 300
+
+#window 59:5877
+title "Grumpos"
+body "What can I jam in there? Let's see if one of these playing cards will work...."
+finishswitch {
+  set lgcard3 = 1
+  set laserfrequency03 = 2
+  gosub 59:5945
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 120
+ypos 360
+width 300
+
+#window 59:5878
+title "PAL-18"
+body "This playing card should substitution pretty good for the RM/LCU-6 Laser Card Unit used by laser repair personnel."
+finishswitch {
+  set lgcard3 = 1
+  set laserfrequency03 = 2
+  gosub 59:5945
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 120
+ypos 360
+width 300
+
+#window 59:7000
+title "%s", PlayerChar0$
+if (starport_got_hg == 0)
+  body "I found a HealGrease Plus!"
+if (starport_got_hg)
+  body "Just an indentation there."
+finishswitch {
+  if (starport_got_hg == 0) {
+    set starport_got_hg = 1
+    extern addnew_to_inventory "HealGrease Plus"
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 540
+
+#switch 59:1
+set CURRENT_PLANET = 3
+set CURRENT_BANK = 59
+extern applylevelconfiguration starport
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .7 .7 1
+extern loopambient ambi_starport
+extern loopambient ambi_starportb
+extern loopambient ambi_starportc
+loadape "countdownClock"
+if (timer_active)
+  goto 60:9300
+if (mystech_active) {
+  extern playlevelmusic mp3/sunder/sunderscary.mp3
+} else
+  extern playlevelmusic mp3/sunder/sunderamb.mp3
+gosub 59:3
+
+#switch 59:3
+
+#switch 59:101
+if (MYSTECH_ACTIVE > 0)
+  goto 59:0130
+if (Meziriac2 > 2)
+  goto 59:0120
+if (Meziriac2 > 1)
+  goto 59:0115
+if (at_baggage > 0)
+  goto 59:0110
+goto 59:0105                                 
+
+#switch 59:201
+if (MYSTECH_ACTIVE == 1)
+  goto 59:0215
+if (Bargo1 > 0)
+  goto 59:0210
+goto 59:0205                                 
+
+#switch 59:301
+set Batheny1 = (Batheny1 + 1)
+if (MYSTECH_ACTIVE == 1)
+  goto 59:0315
+if (Jude_rejected == 1)
+  goto 59:0320
+if (Batheny1 > 1)
+  goto 59:0315
+goto 59:0305                                 
+
+#switch 59:401
+set Nicholson1 = (Nicholson1 + 1)
+if ((MYSTECH_ACTIVE == 1) && ((func_charinparty[boots] == 3) || (func_charinparty[grumpos] == 3)))
+  goto 59:0415
+if (Nicholson1 > 1)
+  goto 59:0410
+goto 59:0405                                 
+
+#switch 59:407
+extern AI_GrabEntity kveech kveech_handle
+extern AI_Path kveech_handle beltway25
+extern AI_ReleaseEntity kveech_handle
+
+#switch 59:501
+set Nicholson1 = (Nicholson1 + 1)
+if (Nicholson1 > 1)
+  goto 59:0510
+if (Nicholson1 > 1)
+  goto 59:0505
+goto 59:0405                                 
+
+#switch 59:601
+set Pyotr1 = (Pyotr1 + 1)
+if (Pyotr1 > 1)
+  goto 59:0610
+goto 59:0605                                 
+
+#switch 59:801
+set Gear1 = (Gear1 + 1)
+if (Gear1 > 2)
+  goto 59:0815
+if (Gear1 > 1)
+  goto 59:0810
+goto 59:0805                                 
+
+#switch 59:901
+set Dot1 = (Dot1 + 1)
+if (Dot1 > 1)
+  goto 59:0920
+goto 59:0905                                 
+
+#switch 59:1001
+set Grap1 = (Grap1 + 1)
+if (Grap1 > 4)
+  goto 59:1025
+if (Grap1 > 3)
+  goto 59:1020
+if (Grap1 > 2)
+  goto 59:1015
+if (Grap1 > 1)
+  goto 59:1010
+goto 59:1005                                 
+
+#switch 59:1101
+if (FATIMA_FIND_RHO > 0)
+  goto 59:1105
+
+#switch 59:1201
+if (func_charinparty[pal] == 3)
+  goto 59:1225
+if (Sleeps1 > 1)
+  goto 59:1220
+if (Sleeps1 > 0)
+  goto 59:1215
+goto 59:1205
+
+#switch 59:1207
+extern check_money partycash
+if (partycash < 2)
+  goto 59:1235
+extern remove_money 2
+goto 59:1210
+
+#switch 59:1208
+extern check_money partycash
+if (partycash < 3)
+  goto 59:1235
+extern remove_money 3
+goto 59:1210
+
+#switch 59:1209
+extern check_money partycash
+if (partycash < 4)
+  goto 59:1235
+extern remove_money 4
+goto 59:1210
+
+#switch 59:1210
+if (random < 25)
+  goto 59:1211	             
+if (random < 33)
+  goto 59:1212	                                             
+if (random < 50)
+  goto 59:1213	                                             
+goto 59:1214				                                              
+
+#switch 59:1301
+extern is_in_inventory "Playing Cards" GotLGCards
+extern is_quest_done "Find Laser Blocker" @boo
+if (GotLGCards && (func_charinparty[pal] != 3)) {
+  goto 59:1305
+} else if ((GotLGCards && (func_charinparty[pal] == 3)) && (anox_bskill_31 == 0)) {
+  goto 59:1306
+} else if ((GotLGCards && (func_charinparty[pal] == 3)) && anox_bskill_31) {
+  goto 59:1308
+} else if (@boo == 0) {
+  goto 59:1305
+} else
+  goto 59:1302
+
+#switch 59:1401
+set Mong1 = (Mong1 + 1)
+if (MYSTECH_ACTIVE == 1)
+  goto 59:1440
+if (Mong1 > 4)
+  goto 59:1435
+if (Mong1 > 3)
+  goto 59:1525
+if (Mong1 > 2)
+  goto 59:1515
+if (Mong1 > 1)
+  goto 59:1510
+goto 59:1405                                 
+
+#switch 59:1501
+set Mong1 = (Mong1 + 1)
+if (Mong1 > 4)
+  goto 59:1540
+if (Mong1 > 3)
+  goto 59:1525
+if (Mong1 > 2)
+  goto 59:1515
+if (Mong1 > 1)
+  goto 59:1510
+goto 59:1405                                 
+
+#switch 59:1530
+extern AI_GrabEntity mongjr mongjr_handle
+extern AI_Path mongjr_handle mongjr_path
+extern AI_ReleaseEntity mongjr_handle
+goto 59:1535
+
+#switch 59:1601
+if (Dangwi_talks == 1)
+  goto 59:1610 
+goto 59:1602
+
+#switch 59:1701
+set Dangwi1 = (Dangwi1 + 1)
+if (Dangwi1 > 3)
+  goto 59:1725
+if (Dangwi1 > 2)
+  goto 59:1715
+if (Dangwi1 > 1)
+  goto 59:1710
+goto 59:1705                                 
+
+#switch 59:1721
+extern AI_GrabEntity mannberg mannberg_handle
+extern AI_Path mannberg_handle mannberg_path4
+extern AI_ReleaseEntity mannberg_handle
+
+#switch 59:2001
+set Jude1 = (Jude1 + 1)
+if (Jude_rejected == 1)
+  goto 59:2040
+if (Jude_decides == 1)
+  goto 59:2050
+if (Jude1 > 4)
+  goto 59:2045
+if (Jude1 > 3)
+  goto 59:2025
+if (Jude1 > 2)
+  goto 59:2020
+if (Jude1 > 1)
+  goto 59:2015
+goto 59:2005                                 
+
+#switch 59:2031
+extern AI_GrabEntity jude jude_handle
+extern AI_Path jude_handle jude_path1
+extern AI_ReleaseEntity jude_handle
+
+#switch 59:2101
+set AkiEngel1 = (AkiEngel1 + 1)
+if (AkiEngel1 > 1)
+  goto 59:2110
+goto 59:2105                                 
+
+#switch 59:2110
+console "rca 59:2101 gest_e"
+
+#switch 59:2201
+set AkiEngel1 = (AkiEngel1 + 1)
+if (AkiEngel1 > 1)
+  goto 59:2215
+goto 59:2105                                 
+
+#switch 59:2215
+console "rca 59:2201 gest_i"
+
+#switch 59:2301
+set Molo1 = (Molo1 + 1)
+if (MYSTECH_ACTIVE == 1)
+  goto 59:2310
+goto 59:2305                                 
+
+#switch 59:2401
+set Maguire1 = (Maguire1 + 1)
+if (Maguire1 > 3)
+  goto 59:2420
+if (Maguire1 > 2)
+  goto 59:2415
+if (Maguire1 > 1)
+  goto 59:2410
+goto 59:2405                                 
+
+#switch 59:2501
+set Carniac1 = (Carniac1 + 1)
+if (MYSTECH_ACTIVE == 1)
+  goto 59:2540
+if (Carniac1 > 2)
+  goto 59:2535
+if (Carniac1 > 1)
+  goto 59:2525
+goto 59:2505                                 
+
+#switch 59:2601
+set Carniac1 = (Carniac1 + 1)
+if (MYSTECH_ACTIVE == 1)
+  goto 59:2540
+if (Carniac1 > 3)
+  goto 59:2605
+if (Carniac1 > 2)
+  goto 59:2525
+if (Carniac1 > 1)
+  goto 59:2510
+goto 59:2505                                 
+
+#switch 59:2801
+closewindow 60:9300
+set boots_is_safe = 1
+set SPLIT_SUNDER 1 = (1 + 0)
+set START_SUNDERESCAPE 1 = (1 + 0)
+set START_CINEDEM_CINE 1 = (1 + 0)
+set Countdown_Clear_Dialog = 0
+goto 59:2805
+
+#switch 59:2807
+console "set storysave \"Sunder Breaks|Lifting off as Sunder crumbles\""
+console "map cine1 cinematic"
+
+#switch 59:3001
+if (MYSTECH_ACTIVE == 1)
+  goto 59:3030
+if (func_charinparty[pal] == 3)
+  goto 59:3035
+if (@STARPORT_GATES_DOWN == 1)
+  goto 59:3050
+goto 59:3005                                                    
+
+#switch 59:3040
+if (perrotknowabout == 3)
+  goto 59:3010
+if (perrotknowabout == 5)
+  goto 59:3011
+if (perrotknowabout == 6)
+  goto 59:3012
+if (perrotknowabout == 7)
+  goto 59:3013
+if (perrotknowabout == 8)
+  goto 59:3016
+if (perrotknowabout == 11) {
+  goto 59:3016
+} else
+  goto 59:3008
+
+#switch 59:3045
+if (@perrotissassy == 2)
+  goto 59:3009
+if (@perrotissassy == 4)
+  goto 59:3017
+if (@perrotissassy == 12)
+  goto 59:3018
+if (@perrotissassy == 13)
+  goto 59:3019
+if (@perrotissassy == 14) {
+  goto 59:3019
+} else
+  goto 59:3007
+
+#switch 59:3101
+if ((func_charinparty[grumpos] == 3) && (lguard03frequency == 1))
+  goto 59:3140
+if (func_charinparty[pal] == 3)
+  goto 59:3145
+if (GrumpyLaserGuard == 1)
+  goto 59:3111
+if (GrumpyLaserGuard == 2)
+  goto 59:3113
+goto 59:3105 
+
+#switch 59:3115
+extern ANIM_PlayAnim lgguard03_handle atak4_a 0 1 0
+gosub 59:3114
+extern ANIM_PlayAnim PlayerChar0_handle lookl_c 0 1 0
+if (GettingBeatByLaserGuard < 11) {
+  extern adjust_stat Boots "add_max_hp=-1"
+  set GettingBeatByLaserGuard = (GettingBeatByLaserGuard + 1)
+}
+goto 59:3116
+
+#switch 59:3117
+extern Anim_MakeSmart PlayerChar0_handle
+extern AI_ReleaseEntity PlayerChar0_handle
+extern AI_Wait lgguard03_handle 1
+extern AI_Path lgguard03_handle lgg3spawn
+extern AI_SetCompletionCallback lgguard03_handle 59:3118
+
+#switch 59:3118
+extern AI_SeekAndFace lgguard03_handle lgg3spawn carniac
+extern Anim_MakeSmart lgguard03_handle
+extern AI_ReleaseEntity lgguard03_handle
+
+#switch 59:3130
+if (lguard03frequency == 1)
+  goto 59:3140
+goto 59:3150
+
+#switch 59:3150
+set ws_time = 35
+set ws_difficulty = 1
+WS_STAND$="yammer_stand" 
+ws_object$="" 
+ws_yammeree$="" 
+ws_outofway$="" 
+ws_yammer1$="Well, I know most of you PAX monkeys are a bit slow on the uptake-I mean, you can't have too much dangling between the noodle if you get your kicks swinging the knuckle-duster over the skull of every Tom, Dick, and Henrik who gives you lip-so let me explain it to you clear, nice, easy, and slow." 
+ws_yammer2$="I may look old to you, but under this glorious mane is a juvenescent soul. I think like a young man. I drink like a young man. I pitch woo like a young man. But my weakness is my memory. The years wear on like a paper dress and before you know it your memory is in tatters at the foot of the bed - not to mention your ability to compose a metaphor or simile or whatever the hell it was I just said." 
+ws_yammer3$="Whatever the case, I forget things. I used to be a whistle punk back in the day. Know what that is? It was in the Cordican timber fields back when there was still a lumber industry to be had. Years ago, real hardwood was all the rage with the hausfraus... dressers, cellarets, little Brebulan-style davenports... the trend was burnished wood and Cordica had tons of it. Again, this was back in the day...." 
+ws_yammer4$="So I found myself in the timber fields as a whistle punk. Now, you gotta understand the type of ramshackle operation the Cordicans were running. Some things never change, and all they were after was to make quick dime. Safety was a joke, and equipment consisted of leather gloves and a five year-old stridor saw." 
+ws_yammer5$="Now, when those Cordican firs fall, they come sliding down the hill like a lead zeppelin. They take six hundred years to mature, and the big ones take three weeks to saw through. And although we weren't dealing with the mondo firs, even the crumbsnatchers are whoppers. That's why there's a whistle punk at the top of the slope to warn the lumberjacks down below that troubles uh-coming." 
+ws_yammer6$="Anyway, it was during my timber years that the hernia developed. You know what that is, son? You get a rupture near your goose neck, and your intestines decide they want some air. Mine got strangulated. They made me wear an itchy truss for longer than I care to tell. I'd try working my magic with the ladies, but the moment they saw the support pad under my trousers they ran for the hills. What was even worse was -" 
+ws_yammeredname$="Officer Down" 
+ws_yammer_response$="Enough! The frequency is 507 THz.  Don't ever say another word to me again." 
+set ws_bank = 59
+set ws_entry = 3138
+gosub 4002:1
+goto 0:0
+
+#switch 59:3201
+set Drawmo1 = (Drawmo1 + 1)
+if (Drawmo1 > 3)
+  goto 59:3220
+if (Drawmo1 > 2)
+  goto 59:3215
+if (Drawmo1 > 1)
+  goto 59:3210
+goto 59:3205                                 
+
+#switch 59:3301
+set Foxx1 = (Foxx1 + 1)
+if (Foxx1 > 1)
+  goto 59:3310
+goto 59:3305                                 
+
+#switch 59:3501
+set Elijah1 = (Elijah1 + 1)
+if (MYSTECH_ACTIVE == 1)
+  goto 59:3520
+if (Elijah1 > 2)
+  goto 59:3515
+if (Elijah1 > 1)
+  goto 59:3510
+goto 59:3505                                 
+
+#switch 59:3701
+if (MYSTECH_ACTIVE == 1)
+  goto 59:3720
+goto 59:3705
+
+#switch 59:3801
+if (MYSTECH_ACTIVE == 1)
+  goto 59:3720
+goto 59:3705
+
+#switch 59:4001
+set Winn1 = (Winn1 + 1)
+if (Winn1 > 3)
+  goto 59:4020
+if (Winn1 > 2)
+  goto 59:4015
+if (Winn1 > 1)
+  goto 59:4010
+goto 59:4005                                 
+
+#switch 59:4401
+set Martin1 = (Martin1 + 1)
+if (MYSTECH_ACTIVE == 1)
+  goto 59:4405
+if (Martin1 > 2)
+  goto 59:4415
+if (Martin1 > 1)
+  goto 59:4410
+goto 59:4405                                 
+
+#switch 59:4601
+set Bialy1 = (Bialy1 + 1)
+if (MYSTECH_ACTIVE == 1)
+  goto 59:4620
+if (Bialy1 > 2)
+  goto 59:4615
+if (Bialy1 > 1)
+  goto 59:4610
+goto 59:4605                                 
+
+#switch 59:4701
+set Shog1 = (Shog1 + 1)
+if (MYSTECH_ACTIVE == 1)
+  goto 59:4720
+if (Shog1 > 1)
+  goto 59:4710
+goto 59:4705                                 
+
+#switch 59:5001
+if (GOT_RHO_KEYCARD == 1)
+  goto 59:5005
+goto 59:5010
+
+#switch 59:5005
+extern complete_quest "Get To Starport Gate"
+target shuttle_door
+
+#switch 59:5501
+set Rorje1 = (Rorje1 + 1)
+if (Rorje1 > 1)
+  goto 59:5510
+goto 59:5505                                 
+
+#switch 59:5551
+goto 59:5555                                 
+
+#switch 59:5601
+if ((knowaboutguards == 1) && (resetguard01convo == 0)) {
+  set lgguard01blab = 0
+  set resetguard01convo = 1
+}
+if (lgguard01blab == 1)
+  goto 59:5611
+if (lgguard01blab == 2) {
+  goto 59:5615
+} else
+  goto 59:5605 
+
+#switch 59:5701
+if (lgsmashguardsolved == 1)
+  goto 59:5735
+if (OriginalGhangstha > 0) {
+  if ((func_charinparty[boots] == 3) && (OriginalGhangstha != 1))
+    goto 59:5730
+  if ((func_charinparty[grumpos] == 3) && (OriginalGhangstha != 2))
+    goto 59:5730
+  if ((func_charinparty[pal] == 3) && (OriginalGhangstha != 3))
+    goto 59:5730
+}
+if (lgguard02talked == 1)
+  goto 59:5720
+if (lgguard02talked == 2)
+  goto 59:5725
+goto 59:5705 
+
+#switch 59:6001
+if ((func_charinparty[boots] == 3) && (lgBCasePickNow == 0))
+  goto 59:6010
+if ((func_charinparty[boots] == 3) && (lgBCasePickNow == 1)) {
+  if (@Starport_BootsPickedBriefcase == 1)
+    goto 59:6002
+  set LPdifficulty = 3
+  set LPtime = 35
+  WS_STAND$="LG_boots_skill_1" 
+  set ws_bank = 59
+  set ws_entry = 6002
+  gosub 4001:1
+  goto 0:0
+} else {
+  WS_STAND$="LG_boots_skill_1" 
+  set ws_bank = 59
+  set ws_entry = 6002
+  gosub 4001:1
+  goto 0:0
+}
+goto 0:0
+
+#switch 59:6005
+set anox_worldskill_active = 0
+WS_STAND$="LG_boots_skill_1" 
+set ws_bank = 59
+set ws_entry = 6002
+gosub 4001:1
+goto 0:0
+
+#switch 59:6050
+if (((func_charinparty[pal] == 3) && (lgsmashguardsolved != 1)) && (OriginalGhangstha == 0))
+  goto 59:6053
+if (((func_charinparty[pal] == 3) && (lgsmashguardsolved != 1)) && (OriginalGhangstha >= 1)) {
+  extern assign E[0] -1 50 50 51 50 50 -1
+  extern assign E[7] -1 40 40 40 60 40 -1
+  extern assign E[14] -1 60 30 40 40 40 -1
+  extern assign E[21] -1 40 40 40 40 40 -1
+  extern assign E[28] -1 30 40 30 40 40 -1
+  extern assign E[35] -1 40 40 30 40 60 -1
+  extern assign E[42] -1 46 45 45 45 45 -1
+  WS_STAND$="LG_pal_skill_1" 
+  set ws_bank = 59
+  set ws_entry = 6054
+  gosub 4003:1
+  goto 0:0
+} else {
+  set anox_worldskill_active = 0
+  WS_STAND$="LG_pal_skill_1" 
+  set ws_bank = 59
+  set ws_entry = 6054
+  gosub 4003:1
+  goto 0:0
+}
+goto 0:0
+
+#switch 59:6060
+
+#switch 59:6065
+goto 59:6052
+
+#switch 59:5905
+gosub 59:5906                                                                                 
+set movedot = func_gametime
+set dot01x = (((220 / 3) * movedot) * 0.0010000000475)
+set dot01X = (func_mod[dot01X,220] + 117)
+set langle = (dot01x * 4)
+set dot01y = (170 + (106 * func_dcos[$langle$]))
+
+#switch 59:5906
+set dot19x = dot18x
+set dot18x = dot17x
+set dot17x = dot16x
+set dot16x = dot15x
+set dot15x = dot14x
+set dot14x = dot13x
+set dot13x = dot12x
+set dot12x = dot11x
+set dot11x = dot10x
+set dot10x = dot09x
+set dot09x = dot08x
+set dot08x = dot07x
+set dot07x = dot06x
+set dot06x = dot05x
+set dot05x = dot04x
+set dot04x = dot03x
+set dot03x = dot02x
+set dot02x = dot01x
+gosub 59:5907
+
+#switch 59:5907
+set dot19y = dot18y
+set dot18y = dot17y
+set dot17y = dot16y
+set dot16y = dot15y
+set dot15y = dot14y
+set dot14y = dot13y
+set dot13y = dot12y
+set dot12y = dot11y
+set dot11y = dot10y
+set dot10y = dot09y
+set dot09y = dot08y
+set dot08y = dot07y
+set dot07y = dot06y
+set dot06y = dot05y
+set dot05y = dot04y
+set dot04y = dot03y
+set dot03y = dot02y
+set dot02y = dot01y
+
+#switch 59:5908
+extern CreateAPE2DControl push numpad01 436 181 width=32 height=32 normal=/gameflow/sunlaser/01.pcx depressed=/gameflow/sunlaser/01i.pcx gamevar=@JakesShiv returnvalue=1 sequence=59:5911
+extern CreateAPE2DControl push numpad02 470 181 width=32 height=32 normal=/gameflow/sunlaser/02.pcx depressed=/gameflow/sunlaser/02i.pcx gamevar=@JakesShiv returnvalue=2 sequence=59:5911
+extern CreateAPE2DControl push numpad03 504 181 width=32 height=32 normal=/gameflow/sunlaser/03.pcx depressed=/gameflow/sunlaser/03i.pcx gamevar=@JakesShiv returnvalue=3 sequence=59:5911
+extern CreateAPE2DControl push numpad04 436 215 width=32 height=32 normal=/gameflow/sunlaser/04.pcx depressed=/gameflow/sunlaser/04i.pcx gamevar=@JakesShiv returnvalue=4 sequence=59:5911
+extern CreateAPE2DControl push numpad05 470 215 width=32 height=32 normal=/gameflow/sunlaser/05.pcx depressed=/gameflow/sunlaser/05i.pcx gamevar=@JakesShiv returnvalue=5 sequence=59:5911
+extern CreateAPE2DControl push numpad06 504 215 width=32 height=32 normal=/gameflow/sunlaser/06.pcx depressed=/gameflow/sunlaser/06i.pcx gamevar=@JakesShiv returnvalue=6 sequence=59:5911
+extern CreateAPE2DControl push numpad07 436 249 width=32 height=32 normal=/gameflow/sunlaser/07.pcx depressed=/gameflow/sunlaser/07i.pcx gamevar=@JakesShiv returnvalue=7 sequence=59:5911
+extern CreateAPE2DControl push numpad08 470 249 width=32 height=32 normal=/gameflow/sunlaser/08.pcx depressed=/gameflow/sunlaser/08i.pcx gamevar=@JakesShiv returnvalue=8 sequence=59:5911
+extern CreateAPE2DControl push numpad09 504 249 width=32 height=32 normal=/gameflow/sunlaser/09.pcx depressed=/gameflow/sunlaser/09i.pcx gamevar=@JakesShiv returnvalue=9 sequence=59:5911
+extern CreateAPE2DControl push numpad0B 436 283 width=32 height=32 normal=/gameflow/sunlaser/0B.pcx depressed=/gameflow/sunlaser/0Bi.pcx gamevar=@JakesShiv returnvalue=11 sequence=59:5911
+extern CreateAPE2DControl push numpad00 470 283 width=32 height=32 normal=/gameflow/sunlaser/00.pcx depressed=/gameflow/sunlaser/00i.pcx gamevar=@JakesShiv returnvalue=0 sequence=59:5911
+extern CreateAPE2DControl push numpad0R 504 283 width=32 height=32 normal=/gameflow/sunlaser/0R.pcx depressed=/gameflow/sunlaser/0Ri.pcx gamevar=@JakesShiv returnvalue=12 sequence=59:5911
+extern CreateAPE2DControl push slotmask01 65 140 width=25 height=86 nodrawflag=true sequence=59:5935
+extern CreateAPE2DControl push slotmask02 95 175 width=77 height=20 normal=/gameflow/sunlaser/empty.pcx bright=/gameflow/sunlaser/cardslot.tga holdfocusflag=false sequence=59:5935
+extern CreateAPE2DControl push quitLG 541 283 width=33 height=29 nodrawflag=true sequence=59:5940
+
+#switch 59:5909
+extern RemoveAPE2DControl numpad01
+extern RemoveAPE2DControl numpad02
+extern RemoveAPE2DControl numpad03
+extern RemoveAPE2DControl numpad04
+extern RemoveAPE2DControl numpad05
+extern RemoveAPE2DControl numpad06
+extern RemoveAPE2DControl numpad07
+extern RemoveAPE2DControl numpad08
+extern RemoveAPE2DControl numpad09
+extern RemoveAPE2DControl numpad00
+extern RemoveAPE2DControl numpad0B
+extern RemoveAPE2DControl numpad0R
+extern RemoveAPE2DControl slotmask01
+extern RemoveAPE2DControl slotmask02
+extern RemoveAPE2DControl quitLG
+
+#switch 59:5910
+set n[1] = -1.000000
+set n[2] = -1.000000
+set n[3] = -1.000000
+set t[1] = -1.000000
+set t[2] = -1.000000
+set t[3] = -1.000000
+set r[1] = 4
+set r[2] = 9
+set r[3] = 3
+goto 0:0
+
+#switch 59:5911
+if (@JakesShiv < 10) {
+  set @currentEnteredDigit = (@currentEnteredDigit + 1)
+  if (@currentEnteredDigit > 3) {
+    set @currentEnteredDigit = 3
+    goto 0:0
+  }
+  set t[$@currentEnteredDigit$] = @JakesShiv
+  set n[1] = n[2]
+  set n[2] = n[3]
+  set n[3] = @JakesShiv
+  extern playsound "ui/gen/button5.wav"
+}
+if (@JakesShiv == 11) {
+  if (@currentEnteredDigit == 0)
+    goto 0:0
+  set t[$@currentEnteredDigit$] = -1.000000
+  set n[3] = n[2]
+  set n[2] = n[1]
+  set n[1] = -1.000000
+  set @currentEnteredDigit = (@currentEnteredDigit - 1)
+  extern playsound "ui/gen/button5.wav"
+}
+if (@JakesShiv == 12)
+  if (((t[1] == r[1]) && (t[2] == r[2])) && (t[3] == r[3])) {
+    if (laserfrequency01)
+      goto 0:0
+    extern playsound "ui/gen/ui_gen_select.wav"
+    set @LMNumpad = 0
+    set laserfrequency01 = 1
+    set @lasernum4 = 8
+    set @lasernum3 = 7
+    set lasercounter = 0
+    set hzgraphic1 = 1
+  } else {
+    set n[1] = -1.000000
+    set n[2] = -1.000000
+    set n[3] = -1.000000
+    set t[1] = -1.000000
+    set t[2] = -1.000000
+    set t[3] = -1.000000
+    set @currentEnteredDigit = 0
+    extern playsound "ui/gen/ui_gen_last10secs.wav"
+  }
+
+#switch 59:5915
+gosub 59:5906                                                                                 
+set movedot = func_gametime
+set dot01x = (((220 / 6) * movedot) * 0.0010000000475)
+set dot01X = (func_mod[dot01X,220] + 117)
+set langle = (dot01x * 4)
+set dot01y = (170 + (50 * func_dcos[$langle$]))
+
+#switch 59:5916
+gosub 59:5906                                                                                 
+set movedot = func_gametime
+set dot01x = (((220 / 6) * movedot) * 0.0010000000475)
+set dot01X = (func_mod[dot01X,220] + 117)
+set langle = (dot01x * 4)
+set dot01y = 170
+
+#switch 59:5935
+extern is_in_inventory "Playing Cards" GotLGCards
+if (laserfrequency01 >= 2)
+  goto 0:0
+if ((laserfrequency01 == 0) && (GotLGCards == 0)) {
+  set timed_message = 16
+  gosub 1000:1
+}
+if ((laserfrequency01 == 0) && GotLGCards) {
+  set timed_message = 17
+  gosub 1000:1
+}
+if ((laserfrequency01 == 1) && (GotLGCards == 0)) {
+  set timed_message = 16
+  gosub 1000:1
+}
+if ((laserfrequency01 == 1) && GotLGCards) {
+  if (func_charinparty[boots] == 3)
+    goto 59:5936
+  if (func_charinparty[grumpos] == 3)
+    goto 59:5937
+  if (func_charinparty[pal] == 3)
+    goto 59:5938
+}
+
+#switch 59:5940
+extern playsound "ui/gen/ui_gen_backout.wav"
+closewindow 59:5901
+
+#switch 59:5991
+extern assign E[0] -1 50 50 51 50 50 -1
+extern assign E[7] -1 40 40 40 40 40 -1
+extern assign E[14] -1 60 40 30 40 40 -1
+extern assign E[21] -1 40 40 30 40 40 -1
+extern assign E[28] -1 40 30 40 40 40 -1
+extern assign E[35] -1 40 40 30 40 60 -1
+extern assign E[42] -1 46 45 45 45 45 -1
+WS_STAND$="laserdataport" 
+set ws_bank = 59
+set ws_entry = 5995
+gosub 4003:1
+goto 0:0
+
+#switch 59:5805
+gosub 59:5806                                                                                 
+set movedot = func_gametime
+set dot01x = (((220 / 3) * movedot) * 0.0010000000475)
+set dot01X = (func_mod[dot01X,220] + 117)
+set langle = (dot01x * 4)
+set dot01y = (170 + (106 * func_dcos[$langle$]))
+
+#switch 59:5806
+set dot19x = dot18x
+set dot18x = dot17x
+set dot17x = dot16x
+set dot16x = dot15x
+set dot15x = dot14x
+set dot14x = dot13x
+set dot13x = dot12x
+set dot12x = dot11x
+set dot11x = dot10x
+set dot10x = dot09x
+set dot09x = dot08x
+set dot08x = dot07x
+set dot07x = dot06x
+set dot06x = dot05x
+set dot05x = dot04x
+set dot04x = dot03x
+set dot03x = dot02x
+set dot02x = dot01x
+gosub 59:5807
+
+#switch 59:5807
+set dot19y = dot18y
+set dot18y = dot17y
+set dot17y = dot16y
+set dot16y = dot15y
+set dot15y = dot14y
+set dot14y = dot13y
+set dot13y = dot12y
+set dot12y = dot11y
+set dot11y = dot10y
+set dot10y = dot09y
+set dot09y = dot08y
+set dot08y = dot07y
+set dot07y = dot06y
+set dot06y = dot05y
+set dot05y = dot04y
+set dot04y = dot03y
+set dot03y = dot02y
+set dot02y = dot01y
+
+#switch 59:5808
+extern CreateAPE2DControl push numpad01 436 181 width=32 height=32 normal=/gameflow/sunlaser/01.pcx depressed=/gameflow/sunlaser/01i.pcx gamevar=@JakesShiv returnvalue=1 sequence=59:5811
+extern CreateAPE2DControl push numpad02 470 181 width=32 height=32 normal=/gameflow/sunlaser/02.pcx depressed=/gameflow/sunlaser/02i.pcx gamevar=@JakesShiv returnvalue=2 sequence=59:5811
+extern CreateAPE2DControl push numpad03 504 181 width=32 height=32 normal=/gameflow/sunlaser/03.pcx depressed=/gameflow/sunlaser/03i.pcx gamevar=@JakesShiv returnvalue=3 sequence=59:5811
+extern CreateAPE2DControl push numpad04 436 215 width=32 height=32 normal=/gameflow/sunlaser/04.pcx depressed=/gameflow/sunlaser/04i.pcx gamevar=@JakesShiv returnvalue=4 sequence=59:5811
+extern CreateAPE2DControl push numpad05 470 215 width=32 height=32 normal=/gameflow/sunlaser/05.pcx depressed=/gameflow/sunlaser/05i.pcx gamevar=@JakesShiv returnvalue=5 sequence=59:5811
+extern CreateAPE2DControl push numpad06 504 215 width=32 height=32 normal=/gameflow/sunlaser/06.pcx depressed=/gameflow/sunlaser/06i.pcx gamevar=@JakesShiv returnvalue=6 sequence=59:5811
+extern CreateAPE2DControl push numpad07 436 249 width=32 height=32 normal=/gameflow/sunlaser/07.pcx depressed=/gameflow/sunlaser/07i.pcx gamevar=@JakesShiv returnvalue=7 sequence=59:5811
+extern CreateAPE2DControl push numpad08 470 249 width=32 height=32 normal=/gameflow/sunlaser/08.pcx depressed=/gameflow/sunlaser/08i.pcx gamevar=@JakesShiv returnvalue=8 sequence=59:5811
+extern CreateAPE2DControl push numpad09 504 249 width=32 height=32 normal=/gameflow/sunlaser/09.pcx depressed=/gameflow/sunlaser/09i.pcx gamevar=@JakesShiv returnvalue=9 sequence=59:5811
+extern CreateAPE2DControl push numpad0B 436 283 width=32 height=32 normal=/gameflow/sunlaser/0B.pcx depressed=/gameflow/sunlaser/0Bi.pcx gamevar=@JakesShiv returnvalue=11 sequence=59:5811
+extern CreateAPE2DControl push numpad00 470 283 width=32 height=32 normal=/gameflow/sunlaser/00.pcx depressed=/gameflow/sunlaser/00i.pcx gamevar=@JakesShiv returnvalue=0 sequence=59:5811
+extern CreateAPE2DControl push numpad0R 504 283 width=32 height=32 normal=/gameflow/sunlaser/0R.pcx depressed=/gameflow/sunlaser/0Ri.pcx gamevar=@JakesShiv returnvalue=12 sequence=59:5811
+extern CreateAPE2DControl push slotmask01 65 140 width=25 height=86 nodrawflag=true sequence=59:5835
+extern CreateAPE2DControl push slotmask02 95 175 width=77 height=20 normal=/gameflow/sunlaser/empty.pcx bright=/gameflow/sunlaser/cardslot.tga holdfocusflag=false sequence=59:5835
+extern CreateAPE2DControl push quitLG 541 283 width=33 height=29 nodrawflag=true sequence=59:5840
+
+#switch 59:5809
+extern RemoveAPE2DControl numpad01
+extern RemoveAPE2DControl numpad02
+extern RemoveAPE2DControl numpad03
+extern RemoveAPE2DControl numpad04
+extern RemoveAPE2DControl numpad05
+extern RemoveAPE2DControl numpad06
+extern RemoveAPE2DControl numpad07
+extern RemoveAPE2DControl numpad08
+extern RemoveAPE2DControl numpad09
+extern RemoveAPE2DControl numpad00
+extern RemoveAPE2DControl numpad0B
+extern RemoveAPE2DControl numpad0R
+extern RemoveAPE2DControl slotmask01
+extern RemoveAPE2DControl slotmask02
+extern RemoveAPE2DControl quitLG
+
+#switch 59:5810
+set n[1] = -1.000000
+set n[2] = -1.000000
+set n[3] = -1.000000
+set t[1] = -1.000000
+set t[2] = -1.000000
+set t[3] = -1.000000
+set r[1] = 5
+set r[2] = 0
+set r[3] = 7
+goto 0:0
+
+#switch 59:5811
+if (@JakesShiv < 10) {
+  set @currentEnteredDigit = (@currentEnteredDigit + 1)
+  if (@currentEnteredDigit > 3) {
+    set @currentEnteredDigit = 3
+    goto 0:0
+  }
+  set t[$@currentEnteredDigit$] = @JakesShiv
+  set n[1] = n[2]
+  set n[2] = n[3]
+  set n[3] = @JakesShiv
+  extern playsound "ui/gen/button5.wav"
+}
+if (@JakesShiv == 11) {
+  if (@currentEnteredDigit == 0)
+    goto 0:0
+  set t[$@currentEnteredDigit$] = -1.000000
+  set n[3] = n[2]
+  set n[2] = n[1]
+  set n[1] = -1.000000
+  set @currentEnteredDigit = (@currentEnteredDigit - 1)
+  extern playsound "ui/gen/button5.wav"
+}
+if (@JakesShiv == 12)
+  if (((t[1] == r[1]) && (t[2] == r[2])) && (t[3] == r[3])) {
+    if (laserfrequency02)
+      goto 0:0
+    extern playsound "ui/gen/ui_gen_select.wav"
+    set @LMNumpad = 0
+    set laserfrequency02 = 1
+    set @lasernum4 = 8
+    set @lasernum3 = 7
+    set lasercounter = 0
+    set hzgraphic2 = 1
+  } else {
+    set n[1] = -1.000000
+    set n[2] = -1.000000
+    set n[3] = -1.000000
+    set t[1] = -1.000000
+    set t[2] = -1.000000
+    set t[3] = -1.000000
+    set @currentEnteredDigit = 0
+    extern playsound "ui/gen/ui_gen_last10secs.wav"
+  }
+
+#switch 59:5815
+gosub 59:5806                                                                                 
+set movedot = func_gametime
+set dot01x = (((220 / 6) * movedot) * 0.0010000000475)
+set dot01X = (func_mod[dot01X,220] + 117)
+set langle = (dot01x * 4)
+set dot01y = (170 + (50 * func_dcos[$langle$]))
+
+#switch 59:5816
+gosub 59:5806                                                                                 
+set movedot = func_gametime
+set dot01x = (((220 / 6) * movedot) * 0.0010000000475)
+set dot01X = (func_mod[dot01X,220] + 117)
+set langle = (dot01x * 4)
+set dot01y = 170
+
+#switch 59:5835
+extern is_in_inventory "Playing Cards" GotLGCards
+if (laserfrequency02 >= 2)
+  goto 0:0
+if ((laserfrequency02 == 0) && (GotLGCards == 0)) {
+  set timed_message = 16
+  gosub 1000:1
+}
+if ((laserfrequency02 == 0) && GotLGCards) {
+  set timed_message = 17
+  gosub 1000:1
+}
+if ((laserfrequency02 == 1) && (GotLGCards == 0)) {
+  set timed_message = 16
+  gosub 1000:1
+}
+if ((laserfrequency02 == 1) && GotLGCards) {
+  if (func_charinparty[boots] == 3)
+    goto 59:5836
+  if (func_charinparty[grumpos] == 3)
+    goto 59:5837
+  if (func_charinparty[pal] == 3)
+    goto 59:5838
+}
+
+#switch 59:5840
+extern playsound "ui/gen/ui_gen_backout.wav"
+closewindow 59:5801
+
+#switch 59:5855
+gosub 59:5856                                                                                 
+set movedot = func_gametime
+set dot01x = (((220 / 3) * movedot) * 0.0010000000475)
+set dot01X = (func_mod[dot01X,220] + 117)
+set langle = (dot01x * 4)
+set dot01y = (170 + (106 * func_dcos[$langle$]))
+
+#switch 59:5856
+set dot19x = dot18x
+set dot18x = dot17x
+set dot17x = dot16x
+set dot16x = dot15x
+set dot15x = dot14x
+set dot14x = dot13x
+set dot13x = dot12x
+set dot12x = dot11x
+set dot11x = dot10x
+set dot10x = dot09x
+set dot09x = dot08x
+set dot08x = dot07x
+set dot07x = dot06x
+set dot06x = dot05x
+set dot05x = dot04x
+set dot04x = dot03x
+set dot03x = dot02x
+set dot02x = dot01x
+gosub 59:5857
+
+#switch 59:5857
+set dot19y = dot18y
+set dot18y = dot17y
+set dot17y = dot16y
+set dot16y = dot15y
+set dot15y = dot14y
+set dot14y = dot13y
+set dot13y = dot12y
+set dot12y = dot11y
+set dot11y = dot10y
+set dot10y = dot09y
+set dot09y = dot08y
+set dot08y = dot07y
+set dot07y = dot06y
+set dot06y = dot05y
+set dot05y = dot04y
+set dot04y = dot03y
+set dot03y = dot02y
+set dot02y = dot01y
+
+#switch 59:5858
+extern CreateAPE2DControl push numpad01 436 181 width=32 height=32 normal=/gameflow/sunlaser/01.pcx depressed=/gameflow/sunlaser/01i.pcx gamevar=@JakesShiv returnvalue=1 sequence=59:5861
+extern CreateAPE2DControl push numpad02 470 181 width=32 height=32 normal=/gameflow/sunlaser/02.pcx depressed=/gameflow/sunlaser/02i.pcx gamevar=@JakesShiv returnvalue=2 sequence=59:5861
+extern CreateAPE2DControl push numpad03 504 181 width=32 height=32 normal=/gameflow/sunlaser/03.pcx depressed=/gameflow/sunlaser/03i.pcx gamevar=@JakesShiv returnvalue=3 sequence=59:5861
+extern CreateAPE2DControl push numpad04 436 215 width=32 height=32 normal=/gameflow/sunlaser/04.pcx depressed=/gameflow/sunlaser/04i.pcx gamevar=@JakesShiv returnvalue=4 sequence=59:5861
+extern CreateAPE2DControl push numpad05 470 215 width=32 height=32 normal=/gameflow/sunlaser/05.pcx depressed=/gameflow/sunlaser/05i.pcx gamevar=@JakesShiv returnvalue=5 sequence=59:5861
+extern CreateAPE2DControl push numpad06 504 215 width=32 height=32 normal=/gameflow/sunlaser/06.pcx depressed=/gameflow/sunlaser/06i.pcx gamevar=@JakesShiv returnvalue=6 sequence=59:5861
+extern CreateAPE2DControl push numpad07 436 249 width=32 height=32 normal=/gameflow/sunlaser/07.pcx depressed=/gameflow/sunlaser/07i.pcx gamevar=@JakesShiv returnvalue=7 sequence=59:5861
+extern CreateAPE2DControl push numpad08 470 249 width=32 height=32 normal=/gameflow/sunlaser/08.pcx depressed=/gameflow/sunlaser/08i.pcx gamevar=@JakesShiv returnvalue=8 sequence=59:5861
+extern CreateAPE2DControl push numpad09 504 249 width=32 height=32 normal=/gameflow/sunlaser/09.pcx depressed=/gameflow/sunlaser/09i.pcx gamevar=@JakesShiv returnvalue=9 sequence=59:5861
+extern CreateAPE2DControl push numpad0B 436 283 width=32 height=32 normal=/gameflow/sunlaser/0B.pcx depressed=/gameflow/sunlaser/0Bi.pcx gamevar=@JakesShiv returnvalue=11 sequence=59:5861
+extern CreateAPE2DControl push numpad00 470 283 width=32 height=32 normal=/gameflow/sunlaser/00.pcx depressed=/gameflow/sunlaser/00i.pcx gamevar=@JakesShiv returnvalue=0 sequence=59:5861
+extern CreateAPE2DControl push numpad0R 504 283 width=32 height=32 normal=/gameflow/sunlaser/0R.pcx depressed=/gameflow/sunlaser/0Ri.pcx gamevar=@JakesShiv returnvalue=12 sequence=59:5861
+extern CreateAPE2DControl push slotmask01 65 140 width=25 height=86 nodrawflag=true sequence=59:5875
+extern CreateAPE2DControl push slotmask02 95 175 width=77 height=20 normal=/gameflow/sunlaser/empty.pcx bright=/gameflow/sunlaser/cardslot.tga holdfocusflag=false sequence=59:5875
+extern CreateAPE2DControl push quitLG 541 283 width=33 height=29 nodrawflag=true sequence=59:5880
+
+#switch 59:5859
+extern RemoveAPE2DControl numpad01
+extern RemoveAPE2DControl numpad02
+extern RemoveAPE2DControl numpad03
+extern RemoveAPE2DControl numpad04
+extern RemoveAPE2DControl numpad05
+extern RemoveAPE2DControl numpad06
+extern RemoveAPE2DControl numpad07
+extern RemoveAPE2DControl numpad08
+extern RemoveAPE2DControl numpad09
+extern RemoveAPE2DControl numpad00
+extern RemoveAPE2DControl numpad0B
+extern RemoveAPE2DControl numpad0R
+extern RemoveAPE2DControl slotmask01
+extern RemoveAPE2DControl slotmask02
+extern RemoveAPE2DControl quitLG
+
+#switch 59:5860
+set n[1] = -1.000000
+set n[2] = -1.000000
+set n[3] = -1.000000
+set t[1] = -1.000000
+set t[2] = -1.000000
+set t[3] = -1.000000
+set r[1] = 6
+set r[2] = 9
+set r[3] = 1
+goto 0:0
+
+#switch 59:5861
+if (@JakesShiv < 10) {
+  set @currentEnteredDigit = (@currentEnteredDigit + 1)
+  if (@currentEnteredDigit > 3) {
+    set @currentEnteredDigit = 3
+    goto 0:0
+  }
+  set t[$@currentEnteredDigit$] = @JakesShiv
+  set n[1] = n[2]
+  set n[2] = n[3]
+  set n[3] = @JakesShiv
+  extern playsound "ui/gen/button5.wav"
+}
+if (@JakesShiv == 11) {
+  if (@currentEnteredDigit == 0)
+    goto 0:0
+  set t[$@currentEnteredDigit$] = -1.000000
+  set n[3] = n[2]
+  set n[2] = n[1]
+  set n[1] = -1.000000
+  set @currentEnteredDigit = (@currentEnteredDigit - 1)
+  extern playsound "ui/gen/button5.wav"
+}
+if (@JakesShiv == 12)
+  if (((t[1] == r[1]) && (t[2] == r[2])) && (t[3] == r[3])) {
+    if (laserfrequency03)
+      goto 0:0
+    extern playsound "ui/gen/ui_gen_select.wav"
+    set @LMNumpad = 0
+    set laserfrequency03 = 1
+    set @lasernum4 = 8
+    set @lasernum3 = 7
+    set lasercounter = 0
+    set hzgraphic3 = 1
+  } else {
+    set n[1] = -1.000000
+    set n[2] = -1.000000
+    set n[3] = -1.000000
+    set t[1] = -1.000000
+    set t[2] = -1.000000
+    set t[3] = -1.000000
+    set @currentEnteredDigit = 0
+    extern playsound "ui/gen/ui_gen_last10secs.wav"
+  }
+
+#switch 59:5865
+gosub 59:5856                                                                                 
+set movedot = func_gametime
+set dot01x = (((220 / 6) * movedot) * 0.0010000000475)
+set dot01X = (func_mod[dot01X,220] + 117)
+set langle = (dot01x * 4)
+set dot01y = (170 + (50 * func_dcos[$langle$]))
+
+#switch 59:5866
+gosub 59:5856                                                                                 
+set movedot = func_gametime
+set dot01x = (((220 / 6) * movedot) * 0.0010000000475)
+set dot01X = (func_mod[dot01X,220] + 117)
+set langle = (dot01x * 4)
+set dot01y = 170
+
+#switch 59:5875
+extern is_in_inventory "Playing Cards" GotLGCards
+if (laserfrequency03 >= 2)
+  goto 0:0
+if ((laserfrequency03 == 0) && (GotLGCards == 0)) {
+  set timed_message = 16
+  gosub 1000:1
+}
+if ((laserfrequency03 == 0) && GotLGCards) {
+  set timed_message = 17
+  gosub 1000:1
+}
+if ((laserfrequency03 == 1) && (GotLGCards == 0)) {
+  set timed_message = 16
+  gosub 1000:1
+}
+if ((laserfrequency03 == 1) && GotLGCards) {
+  if (func_charinparty[boots] == 3)
+    goto 59:5876
+  if (func_charinparty[grumpos] == 3)
+    goto 59:5877
+  if (func_charinparty[pal] == 3)
+    goto 59:5878
+}
+
+#switch 59:5880
+extern playsound "ui/gen/ui_gen_backout.wav"
+closewindow 59:5851
+
+#switch 59:5945
+if (laserfrequency01 == 2) {
+  extern AI_GrabEntity b_laser b_laser_handle
+  extern AI_DestroyEntity b_laser_handle
+  extern AI_GrabEntity b_laser b_laser_handle
+  extern AI_DestroyEntity b_laser_handle
+  set laserfrequency01 = 99
+  extern complete_quest "Disable Blue Laser"
+  extern is_quest_done "Disable Red Laser" @boo1
+  extern is_quest_done "Disable Green Laser" @boo2
+  if ((@boo1 == 2) && (@boo2 == 2)) {
+    extern complete_quest "Get Laser Frequencies"
+    extern complete_quest "Get to Rho"
+    extern add_quest "Starport Lasers Down"
+  }
+}
+if (laserfrequency02 == 2) {
+  extern AI_GrabEntity r_laser r_laser_handle
+  extern AI_DestroyEntity r_laser_handle
+  extern AI_GrabEntity r_laser r_laser_handle
+  extern AI_DestroyEntity r_laser_handle
+  set laserfrequency02 = 99
+  extern complete_quest "Disable Red Laser"
+  extern is_quest_done "Disable Blue Laser" @boo1
+  extern is_quest_done "Disable Green Laser" @boo2
+  if ((@boo1 == 2) && (@boo2 == 2)) {
+    extern complete_quest "Get Laser Frequencies"
+    extern complete_quest "Get to Rho"
+    extern add_quest "Starport Lasers Down"
+  }
+}
+if (laserfrequency03 == 2) {
+  extern AI_GrabEntity g_laser g_laser_handle
+  extern AI_DestroyEntity g_laser_handle
+  extern AI_GrabEntity g_laser g_laser_handle
+  extern AI_DestroyEntity g_laser_handle
+  set laserfrequency03 = 99
+  extern complete_quest "Disable Green Laser"
+  extern is_quest_done "Disable Red Laser" @boo1
+  extern is_quest_done "Disable Blue Laser" @boo2
+  if ((@boo1 == 2) && (@boo2 == 2)) {
+    extern complete_quest "Get Laser Frequencies"
+    extern complete_quest "Get to Rho"
+    extern add_quest "Starport Lasers Down"
+  }
+}
+if (((laserfrequency01 == 99) && (laserfrequency02 == 99)) && (laserfrequency03 == 99)) {
+  set @STARPORT_GATES_DOWN = 1
+  extern AI_GrabEntity lasergate_func1 lg1func_handle
+  extern AI_GrabEntity lasergate_func2 lg2func_handle
+  extern AI_DestroyEntity lg1func_handle
+  extern AI_DestroyEntity lg2func_handle
+}

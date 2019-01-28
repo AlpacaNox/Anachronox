@@ -1,0 +1,2030 @@
+#window 90:1005
+title "Rho Bowman"
+if (@showtext1 == 0)
+  body "It's a sequence of ancient glyphs."
+if (@showtext1)
+  body "It says:\n"
+if (@showtext1)
+  body "Face the stone, the next you learn\n"
+if (@showtext1)
+  body "Think backward six, or find first in turn.\n"
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+
+#window 90:1600
+title "Wheel Symbol"
+body "Press on it?"
+cam left from(PlayerChar0) to(90:1600) restore zip
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+choice "Yes" 90:1601
+choice "No" 0:0
+
+#window 90:1500
+title "Star Symbol"
+body "Press on it?"
+cam left from(PlayerChar0) to(90:1500) restore zip
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+choice "Yes" 90:1501
+choice "No" 0:0
+
+#window 90:1400
+title "Sun Symbol"
+body "Press on it?"
+cam left from(PlayerChar0) to(90:1400) restore zip
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+choice "Yes" 90:1401
+choice "No" 0:0
+
+#window 90:1300
+title "Eye Symbol"
+body "Press on it?"
+cam left from(PlayerChar0) to(90:1300) restore zip
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+choice "Yes" 90:1301
+choice "No" 0:0
+
+#window 90:1200
+title "Claw Symbol"
+body "Press on it?"
+cam left from(PlayerChar0) to(90:1200) restore zip
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+choice "Yes" 90:1201
+choice "No" 0:0
+
+#window 90:1100
+title "Moon Symbol"
+body "Press on it?"
+cam left from(PlayerChar0) to(90:1100) restore zip
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+choice "Yes" 90:1101
+choice "No" 0:0
+
+#window 90:1900
+title "POISON GAS FILLS THE ROOM!"
+body "Rho is toast.  (Shown in quick cine)\nCheck out that clue again."
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+
+#window 90:1665
+cam to(playerchar0) restore zip
+startswitch {
+  extern ANIM_PlayAnim @rhohandle grab_m 0 1 0
+  set @poo = func_gametime
+}
+
+thinkswitch {
+  if (func_gametime > (@poo + 1000)) {
+    gosub 90:1650	                                          
+    closewindow 90:1665
+  }
+}
+
+finishswitch {
+  goto 90:1666
+}
+
+style "NULL"
+flags passive, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 0
+ypos 0
+width 40
+height 40
+
+#window 90:2005
+title "Rho"
+if (@showtext2 == 0)
+  body "It's a sequence of ancient glyphs."
+if (@showtext2)
+  body "It says:\n"
+if (@showtext2)
+  body "Opposite and opposite, the pillars attend\n"
+if (@showtext2)
+  body "The other-block to other side must return again."
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+
+#window 90:2502
+startswitch {
+  set gt = func_gametime
+}
+
+thinkswitch {
+  set ct = func_gametime
+  extern AI_GetXYZ hGetBlock blockx blocky blockz
+  if (((blockx != hidex) && ((ct - gt) > 550)) && ((ct - gt) < 700))
+    extern AI_SetXYZ hGetBlock hidex hidey hidez
+  if ((ct - gt) < 3700)
+    goto 0:0
+  extern ANIM_MakeSmart rhohandle
+  extern AI_ReleaseEntity rhohandle
+  closewindow 90:2502
+}
+
+style "NULL"
+xpos 0
+ypos 0
+width 100
+height 50
+
+#window 90:2503
+startswitch {
+  set gt = func_gametime
+}
+
+thinkswitch {
+  set ct = func_gametime
+  extern AI_GetXYZ hPutBlock blockx blocky blockz
+  if ((blockx == hidex) && ((ct - gt) > 3300)) {
+    extern AI_GetXYZ hDestHole destx desty destz
+    extern AI_SetXYZ hPutBlock destx desty destz
+  }
+  if ((ct - gt) < 3700)
+    goto 0:0
+  extern ANIM_MakeSmart rhohandle
+  extern AI_ReleaseEntity rhohandle
+  closewindow 90:2503
+}
+
+finishswitch {
+  extern SetPlayerModel models/rho/rho.md2
+  if ((holeNumber == 13) && (r[13] == 6))
+    extern playsound ui/gen/ui_gen_goodmove.wav
+  if ((holeNumber == 13) && (r[13] != 6))
+    extern playsound ui/gen/ui_gen_badmove.wav
+  if ((holeNumber == 14) && (r[14] == 5))
+    extern playsound ui/gen/ui_gen_goodmove.wav
+  if ((holeNumber == 14) && (r[14] != 5))
+    extern playsound ui/gen/ui_gen_badmove.wav
+  if ((holeNumber == 15) && (r[15] == 10))
+    extern playsound ui/gen/ui_gen_goodmove.wav
+  if ((holeNumber == 15) && (r[15] != 10))
+    extern playsound ui/gen/ui_gen_badmove.wav
+  if ((holeNumber == 16) && (r[16] == 3))
+    extern playsound ui/gen/ui_gen_goodmove.wav
+  if ((holeNumber == 16) && (r[16] != 3))
+    extern playsound ui/gen/ui_gen_badmove.wav
+  if ((holeNumber == 17) && (r[17] == 8))
+    extern playsound ui/gen/ui_gen_goodmove.wav
+  if ((holeNumber == 17) && (r[17] != 8))
+    extern playsound ui/gen/ui_gen_badmove.wav
+  if ((holeNumber == 18) && (r[18] == 1))
+    extern playsound ui/gen/ui_gen_goodmove.wav
+  if ((holeNumber == 18) && (r[18] != 1))
+    extern playsound ui/gen/ui_gen_badmove.wav
+  if (holeNumber > 12)
+    gosub 90:2507		                      
+}
+
+style "NULL"
+xpos 0
+ypos 0
+width 100
+height 50
+
+#window 90:2995
+title "Rho"
+body "Looks like a block would fit in there."
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+
+#window 90:2998
+title "Rho"
+body "This trap is solved. Let's move on to the artifact."
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+
+#window 90:3005
+title "Rho"
+if (@showtext3 == 0)
+  body "It's a sequence of ancient glyphs."
+if (@showtext3)
+  body "It says:\n"
+if (@showtext3)
+  body "In the distance, the weakest enemy\n"
+if (@showtext3)
+  body "Walk not on the giant that you can see"
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+
+#window 90:3900
+title "Rho Bowman"
+body "I better get across these bridges quickly. I need clues to which tiles are bad and not step in any holes."
+cam left to(PlayerChar0) restore zip
+startswitch {
+  set temple_startedbridges = 1
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 88440040 color2 = 60300040 color3 = 60300040 color4 = 40200040
+xpos 30
+ypos 30
+width 580
+nextwindow 90:3130
+
+#window 90:7235
+title "Jemoni"
+body "...the bridges are unsafe..."
+cam left restore zip
+style "style_demo"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+background "../models/mystech/ghostly.atd" stretch
+nextwindow 90:7236
+
+#window 90:7236
+title "Jemoni"
+body "...you must cross them quickly..."
+cam left restore zip
+style "style_demo"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+background "../models/mystech/ghostly.atd" stretch
+nextwindow 90:3101
+
+#window 90:3101
+title "Jemoni"
+body "...to cross the bridges...you must quickly choose which side to step forward onto...the left or the right..."
+cam left restore zip
+startswitch {
+  extern cam_anoxmariomode 1
+  gosub 90:3300
+}
+
+style "style_demo"
+font "_anox10"
+flags noscroll, TRUE
+xpos 30
+ypos 30
+width 580
+background "../models/mystech/ghostly.atd" stretch
+nextwindow 90:3102
+
+#window 90:3102
+title "Jemoni"
+body "...the choice will be between one of six tiles: SUN, MOON, STAR, EYE, WHEEL, OR CLAW."
+startswitch {
+  extern cam_to leftpath11
+  extern cam_from bridgecam2
+}
+
+style "style_demo"
+font "_anox10"
+flags noscroll, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 264
+width 580
+height 200
+image "temple/tile_sun.tga" 110, 100
+image "temple/tile_moon.tga" 174, 100
+image "temple/tile_star.tga" 238, 100
+image "temple/tile_eye.tga" 302, 100
+image "temple/tile_wheel.tga" 366, 100
+image "temple/tile_claw.tga" 430, 100
+background "../models/mystech/ghostly.atd" stretch
+nextwindow 90:3103
+
+#window 90:3103
+title "Jemoni"
+body "...some of the tiles must be trapped...be observant for clues..."
+startswitch {
+  extern cam_to leftpath44
+  extern cam_from bridgecam4
+}
+
+style "style_demo"
+font "_anox10"
+flags noscroll, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+height 134
+image "temple/tile_empty.tga" 264, 66
+background "../models/mystech/ghostly.atd" stretch
+nextwindow 90:3104
+
+#window 90:3104
+title "Jemoni"
+body "...so choose good tiles...and don't choose drop-throughs or bad tiles...you only have a short time on each step...each tile will break a little, a lot, then BREAK!...move before it breaks...don't perish as i did..."
+cam left restore zip
+startswitch {
+  extern cam_to rho
+  extern cam_from bridgecam1
+}
+
+finishswitch {
+  extern cam_restore
+  extern cam_anoxmariomode 0
+  extern ANIM_MakeSmart bootshandle
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_demo"
+font "_anox10"
+flags noscroll, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+background "../models/mystech/ghostly.atd" stretch
+
+#window 90:3150
+startswitch {
+  extern set2dcursor shoecursor.pcx
+  set ahead = (where + 1)
+  if (do_not_count == 1)
+    set do_not_count = 0
+  if (n[$ahead$] == 0) {
+    extern CreateAPE2DControl push leftbutt 260 32 width=64 height=64 normal=/gameflow/temple/tile_empty.tga bright=/gameflow/temple/tile_empty_h.tga sequence=90:3170
+  } else if (n[$ahead$] == 1) {
+    extern CreateAPE2DControl push leftbutt 260 32 width=64 height=64 normal=/gameflow/temple/tile_sun.tga bright=/gameflow/temple/tile_sun_h.tga sequence=90:3170
+  } else if (n[$ahead$] == 2) {
+    extern CreateAPE2DControl push leftbutt 260 32 width=64 height=64 normal=/gameflow/temple/tile_moon.tga bright=/gameflow/temple/tile_moon_h.tga sequence=90:3170
+  } else if (n[$ahead$] == 3) {
+    extern CreateAPE2DControl push leftbutt 260 32 width=64 height=64 normal=/gameflow/temple/tile_claw.tga bright=/gameflow/temple/tile_claw_h.tga sequence=90:3170
+  } else if (n[$ahead$] == 4) {
+    extern CreateAPE2DControl push leftbutt 260 32 width=64 height=64 normal=/gameflow/temple/tile_star.tga bright=/gameflow/temple/tile_star_h.tga sequence=90:3170
+  } else if (n[$ahead$] == 5) {
+    extern CreateAPE2DControl push leftbutt 260 32 width=64 height=64 normal=/gameflow/temple/tile_eye.tga bright=/gameflow/temple/tile_eye_h.tga sequence=90:3170
+  } else if (n[$ahead$] == 6)
+    extern CreateAPE2DControl push leftbutt 260 32 width=64 height=64 normal=/gameflow/temple/tile_wheel.tga bright=/gameflow/temple/tile_wheel_h.tga sequence=90:3170
+  if (o[$ahead$] == 0) {
+    extern CreateAPE2DControl push rightbutt 348 32 width=64 height=64 normal=/gameflow/temple/tile_empty.tga bright=/gameflow/temple/tile_empty_h.tga sequence=90:3180
+  } else if (o[$ahead$] == 1) {
+    extern CreateAPE2DControl push rightbutt 348 32 width=64 height=64 normal=/gameflow/temple/tile_sun.tga bright=/gameflow/temple/tile_sun_h.tga sequence=90:3180
+  } else if (o[$ahead$] == 2) {
+    extern CreateAPE2DControl push rightbutt 348 32 width=64 height=64 normal=/gameflow/temple/tile_moon.tga bright=/gameflow/temple/tile_moon_h.tga sequence=90:3180
+  } else if (o[$ahead$] == 3) {
+    extern CreateAPE2DControl push rightbutt 348 32 width=64 height=64 normal=/gameflow/temple/tile_claw.tga bright=/gameflow/temple/tile_claw_h.tga sequence=90:3180
+  } else if (o[$ahead$] == 4) {
+    extern CreateAPE2DControl push rightbutt 348 32 width=64 height=64 normal=/gameflow/temple/tile_star.tga bright=/gameflow/temple/tile_star_h.tga sequence=90:3180
+  } else if (o[$ahead$] == 5) {
+    extern CreateAPE2DControl push rightbutt 348 32 width=64 height=64 normal=/gameflow/temple/tile_eye.tga bright=/gameflow/temple/tile_eye_h.tga sequence=90:3180
+  } else if (o[$ahead$] == 6)
+    extern CreateAPE2DControl push rightbutt 348 32 width=64 height=64 normal=/gameflow/temple/tile_wheel.tga bright=/gameflow/temple/tile_wheel_h.tga sequence=90:3180
+  set @blastMS = func_GameTime
+  set @bcurrentMS = @blastMS
+  if (where < 20) {
+    set tile_timer = 85
+  } else if ((where >= 20) && (where < 30)) {
+    set tile_timer = 75
+  } else if (where >= 30)
+    set tile_timer = 65
+}
+
+thinkswitch {
+  set @bcurrentMS = func_GameTime
+  set @bdelta = (@bcurrentMS - @blastMS)
+  if (@bdelta < 50)
+    goto 0:0
+  set @blastMS = @bcurrentMS
+  set @bdelta = (@bdelta - 50)
+  set @blastMS = (@bcurrentMS - @bdelta)
+  if (do_not_count == 0)
+    set tile_timer = (tile_timer - 1)
+  if (tile_timer == 40)
+    extern playsound games/temple/games_temple_littlecreak.wav
+  if (tile_timer == 20)
+    extern playsound games/temple/games_temple_bigcreak.wav
+  if (tile_timer == 0) {
+    extern playsound games/temple/games_temple_tilebreak.wav
+    goto 90:3190
+  }
+}
+
+finishswitch {
+  extern set2dcursor default
+}
+
+style "NULL"
+font "_anox10"
+flags passive2d, TRUE
+xpos 0
+ypos 0
+width 640
+height 200
+if ((tile_timer > 40) && (do_not_count == 0))
+  image "temple/br_green.pcx" 304, 100
+if (((tile_timer <= 40) && (tile_timer > 10)) && (do_not_count == 0))
+  image "temple/br_yellow.pcx" 304, 100
+if ((tile_timer <= 10) && (do_not_count == 0))
+  image "temple/br_red.pcx" 304, 100
+
+#window 90:3501
+title "Rho"
+body "I've already crossed that bridge. As it were."
+startswitch {
+  extern AI_GrabEntity playerchar0 rhohandle
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+nextwindow 90:3200
+
+#window 90:3502
+title "Rho"
+body "I'm not going back. I've gotta get that Shii-nei artifact."
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+
+#window 90:3200
+startswitch {
+  closewindow 90:3150
+  extern cam_anoxmariomode 1
+  extern AI_GetEdictNumber rhobackup hGoHere
+  extern AI_GetXYZ hGoHere @x @y @z
+  extern AI_SetXYZ rhohandle @x @y @z
+  set @bridgeMS = func_gametime
+}
+
+thinkswitch {
+  if (func_gametime > (@bridgeMS + 50))
+    closewindow 90:3200		                                 
+}
+
+finishswitch {
+  extern playsound ui/gen/ui_gen_goodmove.wav
+  extern cam_anoxmariomode 0
+  set temple_crossed_bridges = 1
+  extern ANIM_MakeSmart rhohandle
+  extern AI_ReleaseEntity rhohandle
+  set in_going_back = 0
+}
+
+style "NULL"
+font "_anox10"
+flags passive, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 100
+
+#window 90:7103
+startswitch {
+  set @poo = func_gametime
+}
+
+thinkswitch {
+  if (func_gametime > (@poo + 250))
+    closewindow 90:7103 
+}
+
+finishswitch {
+  extern playsound battle/character_rho_com/character_rho_com_pain.wav
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 80
+height 80
+
+#window 90:7105
+title "Rho"
+if (@showtext4 == 0)
+  body "It's a sequence of ancient glyphs."
+if (@showtext4)
+  body "It says:\n"
+if (@showtext4)
+  body "Setting sun's serenity\n"
+if (@showtext4)
+  body "Walking wisely sets you free."
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+
+#window 90:4005
+title "Rho"
+if (@showtext5 == 0)
+  body "It's a sequence of ancient glyphs."
+if (@showtext5)
+  body "It says:\n"
+if (@showtext5)
+  body "The easiest path is not the path\n"
+if (@showtext5)
+  body "Find the route to escape death's wrath."
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+
+#window 90:4100
+title "Rho Died"
+body "Chopped into many pretty pieces by blades!"
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+
+#window 90:5005
+title "Rho"
+if (@showtext6 == 0)
+  body "It's a sequence of ancient glyphs."
+if (@showtext6)
+  body "It says:\n"
+if (@showtext6)
+  body "In the dark you feel Gorr's anger\n"
+if (@showtext6)
+  body "See your feet, you see no danger."
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+
+#window 90:6005
+title "Rho"
+if (@showtext7 == 0)
+  body "It's a sequence of ancient glyphs."
+if (@showtext7)
+  body "It says:\n"
+if (@showtext7)
+  body "When the throne of Gorr you see\n"
+if (@showtext7)
+  body "Do not run to kiss his feet."
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+
+#window 90:6105
+title "Rho"
+body "Hmmm... I feel a chill."
+cam left restore zip
+startswitch {
+  extern playsound games/temple/games_temple_rumble.wav
+  set rho_is_cursed = 1
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 90:8600
+title "Rho Bowman"
+body "The artifact? I can't believe it..."
+cam left from(PlayerChar0) to(90:8600) lift(20) restore zip
+startswitch {
+  set GotShiinMysTech = 1
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+nextwindow 90:8601
+
+#window 90:8601
+title "Rho Bowman"
+body "It's MysTech."
+cam left from(PlayerChar0) to(90:8600) lift(20) restore zip
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+nextwindow 90:8602
+
+#window 90:8602
+title "Rho Bowman"
+body "I better get this back to the village."
+cam left from(PlayerChar0) to(90:8600) lift(20) restore zip
+finishswitch {
+  extern addnew_to_inventory "Baneslaught"
+  extern complete_quest "Enter the Temple"
+  extern add_quest "Find Hedela"
+  console "map tensil fromtemple"
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 402020a0 color2 = 201010a0 color3 = 000000a0 color4 = 201010a0
+xpos 30
+ypos 30
+width 580
+
+#window 90:7210
+title "Hetolo"
+body "...we offend gorr by entering his domain..."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 90:7210
+}
+
+style "style_demo"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+background "../models/mystech/ghostly.atd" stretch
+nextwindow 90:7211
+
+#window 90:7211
+title "Hetolo"
+body "...i died for this sin..."
+cam left restore zip
+style "style_demo"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+background "../models/mystech/ghostly.atd" stretch
+nextwindow 90:7212
+
+#window 90:7212
+title "Hetolo"
+body "...you may not..."
+cam left restore zip
+style "style_demo"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+background "../models/mystech/ghostly.atd" stretch
+nextwindow 90:7213
+
+#window 90:7213
+title "Hetolo"
+body "...if you see first..."
+cam left restore zip
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_demo"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+background "../models/mystech/ghostly.atd" stretch
+
+#window 90:7220
+title "Mebota"
+body "...my soul suffers here..."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 90:7220
+}
+
+style "style_demo"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+background "../models/mystech/ghostly.atd" stretch
+nextwindow 90:7221
+
+#window 90:7221
+title "Mebota"
+body "...yours shall too..."
+cam left restore zip
+style "style_demo"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+background "../models/mystech/ghostly.atd" stretch
+nextwindow 90:7222
+
+#window 90:7222
+title "Mebota"
+body "...i could not see the opposite for what they were..."
+cam left restore zip
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_demo"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+background "../models/mystech/ghostly.atd" stretch
+
+#window 90:7230
+title "Jemoni"
+body "...i died falling here..."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 90:7230
+}
+
+style "style_demo"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+background "../models/mystech/ghostly.atd" stretch
+nextwindow 90:7231
+
+#window 90:7231
+title "Jemoni"
+body "...i have studied the bridges..."
+cam left restore zip
+style "style_demo"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+background "../models/mystech/ghostly.atd" stretch
+nextwindow 90:7232
+
+#window 90:7232
+title "Jemoni"
+body "...i guess at their secret..."
+cam left restore zip
+style "style_demo"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+background "../models/mystech/ghostly.atd" stretch
+nextwindow 90:7235
+
+#window 90:7240
+title "Kotoko"
+body "...at least my spiritual form has no holes of the painful darts..."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 90:7240
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_demo"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+background "../models/mystech/ghostly.atd" stretch
+
+#window 90:7250
+title "Pupeno"
+body "...these blades took my soul in gorr's name..."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 90:7250
+}
+
+style "style_demo"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+background "../models/mystech/ghostly.atd" stretch
+nextwindow 90:7251
+
+#window 90:7251
+title "Pupeno"
+body "...if only i had explored..."
+cam left restore zip
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_demo"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+background "../models/mystech/ghostly.atd" stretch
+
+#window 90:7260
+title "Fapato"
+body "...i wandered into the darkness and was lost..."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 90:7260
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_demo"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+background "../models/mystech/ghostly.atd" stretch
+
+#window 90:7270
+title "Gupato"
+body "...the moon is not what it seems..."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 90:7270
+}
+
+style "style_demo"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+background "../models/mystech/ghostly.atd" stretch
+nextwindow 90:7271
+
+#window 90:7271
+title "Gupato"
+body "...but i tempted fate..."
+cam left restore zip
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_demo"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+background "../models/mystech/ghostly.atd" stretch
+
+#switch 90:1
+extern playlevelmusic mp3/democratus/democdungeonfinal.mp3
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+set CURRENT_PLANET = 8
+set CURRENT_BANK = 90
+extern applylevelconfiguration temple
+gosub 90:2100		                                
+goto 0:0
+
+#switch 90:1000
+if ((anox_worldskill_active == 0) || @showtext1)
+  goto 90:1005
+WS_STAND$="rho_glyph_1" 
+ws_object$="90:1000" 
+ws_analyze$="I think I've figured it out..." 
+gosub 4004:1
+set ws_bank = 90
+set ws_entry = 1002
+goto 0:0
+
+#switch 90:1002
+set @showtext1 = 1
+goto 90:1005
+
+#switch 90:1601
+set temple_just_pressed = 5
+rho_stand$="wheel-stand" 
+gosub 90:1660		                                
+goto 0:0
+
+#switch 90:1650
+if ((temple_press_sequence + 1) == temple_just_pressed) {
+  gosub 90:1655		                            
+  set temple_press_sequence = (temple_press_sequence + 1)
+  extern playsound games/temple/games_temple_small_stone_slide.wav
+  extern playsound games/temple/games_temple_goodpress.wav
+  if (temple_press_sequence == 6) {
+    extern playsound games/temple/games_temple_large_stone_slide.wav
+    target door-1
+    set temple_press_sequence = 0
+    pathtarget wheel-path-1
+    target wheel-elv
+    pathtarget star-path-1
+    target star-elv
+    pathtarget sun-path-1
+    target sun-elv
+    pathtarget eye-path-1
+    target eye-elv
+    pathtarget hand-path-1
+    target hand-elv
+    pathtarget moon-path-1
+    target moon-elv
+  }
+} else {
+  extern playsound games/temple/games_temple_badpress.wav
+  set temple_press_sequence = 0
+  pathtarget wheel-path-1
+  target wheel-elv
+  pathtarget star-path-1
+  target star-elv
+  pathtarget sun-path-1
+  target sun-elv
+  pathtarget eye-path-1
+  target eye-elv
+  pathtarget hand-path-1
+  target hand-elv
+  pathtarget moon-path-1
+  target moon-elv
+}
+goto 0:0
+
+#switch 90:1655
+if (temple_just_pressed == 1) {
+  pathtarget eye-path-2
+  target eye-elv
+} else if (temple_just_pressed == 2) {
+  pathtarget star-path-2
+  target star-elv
+}
+if (temple_just_pressed == 3) {
+  pathtarget hand-path-2
+  target hand-elv
+} else if (temple_just_pressed == 4) {
+  pathtarget sun-path-2
+  target sun-elv
+} else if (temple_just_pressed == 5) {
+  pathtarget wheel-path-2
+  target wheel-elv
+}
+goto 0:0
+
+#switch 90:1501
+set temple_just_pressed = 2
+rho_stand$="star-stand" 
+gosub 90:1660		                                
+goto 0:0
+
+#switch 90:1401
+set temple_just_pressed = 4
+rho_stand$="sun-stand" 
+gosub 90:1660		                                
+goto 0:0
+
+#switch 90:1301
+set temple_just_pressed = 1
+rho_stand$="eye-stand" 
+gosub 90:1660		                                
+goto 0:0
+
+#switch 90:1201
+set temple_just_pressed = 3
+rho_stand$="hand-stand" 
+gosub 90:1660		                                
+goto 0:0
+
+#switch 90:1101
+set temple_just_pressed = 6
+rho_stand$="moon-stand" 
+gosub 90:1660		                                
+goto 0:0
+
+#switch 90:1660
+extern cam_anoxmariomode 1
+extern AI_GrabEntity playerchar0 @rhohandle
+extern AI_SeekAndFace @rhohandle rho_stand$
+extern AI_SetCompletionCallback @rhohandle 90:1665
+
+#switch 90:1666
+extern ANIM_MakeSmart @rhohandle
+extern AI_ReleaseEntity @rhohandle
+extern cam_anoxmariomode 0
+goto 0:0
+
+#switch 90:2000
+if ((anox_worldskill_active == 0) || @showtext2)
+  goto 90:2005
+WS_STAND$="rho_glyph_2" 
+ws_object$="90:2000" 
+ws_analyze$="I think I've figured it out..." 
+gosub 4004:1
+set ws_bank = 90
+set ws_entry = 2002
+goto 0:0
+
+#switch 90:2002
+set @showtext2 = 1
+goto 90:2005
+
+#switch 90:2100
+if (block_room_set_up)
+  goto 0:0
+set r[1] = 11
+set r[2] = 3
+set r[3] = 0
+set r[4] = 6
+set r[5] = 9
+set r[6] = 0
+set r[7] = 10
+set r[8] = 8
+set r[9] = 5
+set r[10] = 7
+set r[11] = 0
+set r[12] = 1
+set r[13] = 0
+set r[14] = 2
+set r[15] = 12
+set r[16] = 0
+set r[17] = 0
+set r[18] = 4
+set holes_filled = 3
+set rho_block_is = 0
+gosub 90:2105			                                    
+set block_room_set_up = 1
+goto 0:0
+
+#switch 90:2105
+extern AI_GrabEntity 90:2950 s[1]
+set v[11] = s[1]
+extern AI_GrabEntity 90:2830 s[2]
+set v[3] = s[2]
+extern AI_GrabEntity 90:2860 s[4]
+set v[6] = s[4]
+extern AI_GrabEntity 90:2930 s[5]
+set v[9] = s[5]
+extern AI_GrabEntity 90:2940 s[7]
+set v[10] = s[7]
+extern AI_GrabEntity 90:2920 s[8]
+set v[BLOCK_CLAW_BAD] = s[8]
+extern AI_GrabEntity 90:2850 s[9]
+set v[5] = s[9]
+extern AI_GrabEntity 90:2910 s[10]
+set v[7] = s[10]
+extern AI_GrabEntity 90:2810 s[12]
+set v[1] = s[12]
+extern AI_GrabEntity 90:2820 s[14]
+set v[BLOCK_CLAW_GOOD] = s[14]
+extern AI_GrabEntity 90:2960 s[15]
+set v[12] = s[15]
+extern AI_GrabEntity 90:2840 s[18]
+set v[4] = s[18]
+extern AI_GrabEntity hidingplace hHideSpot
+extern AI_GetXYZ hHideSpot hidex hidey hidez
+gosub 90:2106		                                              
+goto 0:0
+
+#switch 90:2106
+extern AI_GrabEntity outer-put-1 t[1]
+extern AI_GrabEntity outer-put-2 t[2]
+extern AI_GrabEntity outer-put-3 t[3]
+extern AI_GrabEntity outer-put-4 t[4]
+extern AI_GrabEntity outer-put-5 t[5]
+extern AI_GrabEntity outer-put-6 t[6]
+extern AI_GrabEntity outer-put-7 t[7]
+extern AI_GrabEntity outer-put-8 t[8]
+extern AI_GrabEntity outer-put-9 t[9]
+extern AI_GrabEntity outer-put-10 t[10]
+extern AI_GrabEntity outer-put-11 t[11]
+extern AI_GrabEntity outer-put-12 t[12]
+extern AI_GrabEntity pillar-put-1 t[13]
+extern AI_GrabEntity pillar-put-2 t[14]
+extern AI_GrabEntity pillar-put-3 t[15]
+extern AI_GrabEntity pillar-put-4 t[16]
+extern AI_GrabEntity pillar-put-5 t[17]
+extern AI_GrabEntity pillar-put-6 t[18]
+goto 0:0
+
+#switch 90:2510
+set holeNumber = 1
+holeTarget$="outer-get-1" 
+goto 90:2509		                         
+
+#switch 90:2520
+set holeNumber = 2
+holeTarget$="outer-get-2" 
+goto 90:2509		                         
+
+#switch 90:2530
+set holeNumber = 3
+holeTarget$="outer-get-3" 
+goto 90:2509		                         
+
+#switch 90:2540
+set holeNumber = 4
+holeTarget$="outer-get-4" 
+goto 90:2509		                         
+
+#switch 90:2550
+set holeNumber = 5
+holeTarget$="outer-get-5" 
+goto 90:2509		                         
+
+#switch 90:2560
+set holeNumber = 6
+holeTarget$="outer-get-6" 
+goto 90:2509		                         
+
+#switch 90:2610
+set holeNumber = 7
+holeTarget$="outer-get-7" 
+goto 90:2509		                         
+
+#switch 90:2620
+set holeNumber = 8
+holeTarget$="outer-get-8" 
+goto 90:2509		                         
+
+#switch 90:2630
+set holeNumber = 9
+holeTarget$="outer-get-9" 
+goto 90:2509		                         
+
+#switch 90:2640
+set holeNumber = 10
+holeTarget$="outer-get-10" 
+goto 90:2509		                         
+
+#switch 90:2650
+set holeNumber = 11
+holeTarget$="outer-get-11" 
+goto 90:2509		                         
+
+#switch 90:2660
+set holeNumber = 12
+holeTarget$="outer-get-12" 
+goto 90:2509		                         
+
+#switch 90:2710
+set holeNumber = 13
+holeTarget$="pillar-get-1" 
+goto 90:2509		                         
+
+#switch 90:2720
+set holeNumber = 14
+holeTarget$="pillar-get-2" 
+goto 90:2509		                         
+
+#switch 90:2730
+set holeNumber = 15
+holeTarget$="pillar-get-3" 
+goto 90:2509		                         
+
+#switch 90:2740
+set holeNumber = 16
+holeTarget$="pillar-get-4" 
+goto 90:2509		                         
+
+#switch 90:2750
+set holeNumber = 17
+holeTarget$="pillar-get-5" 
+goto 90:2509		                         
+
+#switch 90:2760
+set holeNumber = 18
+holeTarget$="pillar-get-6" 
+goto 90:2509		                         
+
+#switch 90:2509
+if (block_room_solved == 1)
+  goto 90:2998		              
+if ((rho_block_is != 0) && (r[$holeNumber$] != 0)) {
+  goto 90:2990 
+} else if ((rho_block_is == 0) && (r[$holeNumber$] == 0)) {
+  goto 90:2995
+} else if ((rho_block_is == 0) && (r[$holeNumber$] != 0)) {
+  set rho_block_is = r[$holeNumber$]
+  set r[$holeNumber$] = 0
+  set rho_block_handle = s[$holeNumber$]
+  set hGetBlock = s[$holeNumber$]
+  if (hGetBlock == 0)
+    echo "!!!!!!!!!!!!!!! GETBLOCK IS ZERO!"
+  if (hGetBlock == -1.000000)
+    echo "!!!!!!!!!!!!!!! GETBLOCK IS -1!"
+  extern AI_GrabEntity PlayerChar0 rhohandle
+  extern AI_SeekAndFace rhohandle holeTarget$
+  extern AI_SetCompletionCallback rhohandle 90:2501
+} else if ((rho_block_is != 0) && (r[$holeNumber$] == 0)) {
+  set r[$holeNumber$] = rho_block_is
+  set rho_block_is = 0
+  set hPutBlock = rho_block_handle
+  set hDestHole = t[$holeNumber$]
+  set s[$holeNumber$] = rho_block_handle
+  extern AI_GrabEntity PlayerChar0 rhohandle
+  extern AI_SeekAndFace rhohandle holeTarget$
+  extern AI_SetCompletionCallback rhohandle 90:2504
+}
+goto 0:0
+
+#switch 90:2501
+gosub 90:2505			                                                               
+console "cl_forwardspeed 30; cl_sidespeed 30"
+extern ANIM_PlayAnim rhohandle gest_a 0 1
+goto 90:2502
+
+#switch 90:2504
+set rho_block_handle = 0
+console "cl_forwardspeed 80; cl_sidespeed 80"
+extern ANIM_PlayAnim rhohandle gest_b 0 1
+goto 90:2503
+
+#switch 90:2505
+if (rho_block_is == 1) {
+  extern SetPlayerModel models/rho/rho_eye_g.md2
+} else if (rho_block_is == 2) {
+  extern SetPlayerModel models/rho/rho_hand_g.md2
+} else if (rho_block_is == 3) {
+  extern SetPlayerModel models/rho/rho_moon_g.md2
+} else if (rho_block_is == 4) {
+  extern SetPlayerModel models/rho/rho_star_g.md2
+} else if (rho_block_is == 5) {
+  extern SetPlayerModel models/rho/rho_sun_g.md2
+} else if (rho_block_is == 6) {
+  extern SetPlayerModel models/rho/rho_wheel_g.md2
+} else if (rho_block_is == 7) {
+  extern SetPlayerModel models/rho/rho_eye_b.md2
+} else if (rho_block_is == 8) {
+  extern SetPlayerModel models/rho/rho_hand_b.md2
+} else if (rho_block_is == 9) {
+  extern SetPlayerModel models/rho/rho_moon_b.md2
+} else if (rho_block_is == 10) {
+  extern SetPlayerModel models/rho/rho_star_b.md2
+} else if (rho_block_is == 11) {
+  extern SetPlayerModel models/rho/rho_sun_b.md2
+} else if (rho_block_is == 12)
+  extern SetPlayerModel models/rho/rho_wheel_b.md2
+goto 0:0
+
+#switch 90:2507
+if (((((r[13] && r[14]) && r[15]) && r[16]) && r[17]) && r[18]) {
+  if (r[13] != 6)
+    goto 90:2999	        
+  if (r[14] != 5)
+    goto 90:2999
+  if (r[15] != 10)
+    goto 90:2999
+  if (r[16] != 3)
+    goto 90:2999
+  if (r[17] != 8)
+    goto 90:2999
+  if (r[18] != 1)
+    goto 90:2999
+  target ramp-1
+  set block_room_solved = 1
+  goto 90:2998			                                    
+}
+goto 0:0
+
+#switch 90:2810
+set blockNum = 1
+gosub 90:2970		                                          
+goto 90:2509
+
+#switch 90:2820
+set blockNum = 2
+gosub 90:2970		                                          
+goto 90:2509
+
+#switch 90:2830
+set blockNum = 3
+gosub 90:2970		                                          
+goto 90:2509
+
+#switch 90:2840
+set blockNum = 4
+gosub 90:2970		                                          
+goto 90:2509
+
+#switch 90:2850
+set blockNum = 5
+gosub 90:2970		                                          
+goto 90:2509
+
+#switch 90:2860
+set blockNum = 6
+gosub 90:2970		                                          
+goto 90:2509
+
+#switch 90:2910
+set blockNum = 7
+gosub 90:2970		                                          
+goto 90:2509
+
+#switch 90:2920
+set blockNum = 8
+gosub 90:2970		                                          
+goto 90:2509
+
+#switch 90:2930
+set blockNum = 9
+gosub 90:2970		                                          
+goto 90:2509
+
+#switch 90:2940
+set blockNum = 10
+gosub 90:2970		                                          
+goto 90:2509
+
+#switch 90:2950
+set blockNum = 11
+gosub 90:2970		                                          
+goto 90:2509
+
+#switch 90:2960
+set blockNum = 12
+gosub 90:2970		                                          
+goto 90:2509
+
+#switch 90:2970
+set poops = 1
+set holeNumber = 0
+while ((poops < 19) && (holeNumber == 0)) {
+  if (r[$poops$] == blockNum) {
+    set holeNumber = poops
+    gosub 90:2971		             
+  }
+  set poops = (poops + 1)
+}
+if (holeNumber == 0)
+  echo "ERROR! HOLENUMBER IS ZERO!"
+goto 0:0
+
+#switch 90:2971
+if (holeNumber == 1) {
+  holeTarget$="outer-get-1" 
+} else if (holeNumber == 2) {
+  holeTarget$="outer-get-2" 
+} else if (holeNumber == 3) {
+  holeTarget$="outer-get-3" 
+} else if (holeNumber == 4) {
+  holeTarget$="outer-get-4" 
+} else if (holeNumber == 5) {
+  holeTarget$="outer-get-5" 
+} else if (holeNumber == 6) {
+  holeTarget$="outer-get-6" 
+} else if (holeNumber == 7) {
+  holeTarget$="outer-get-7" 
+} else if (holeNumber == 8) {
+  holeTarget$="outer-get-8" 
+} else if (holeNumber == 9) {
+  holeTarget$="outer-get-9" 
+} else if (holeNumber == 10) {
+  holeTarget$="outer-get-10" 
+} else if (holeNumber == 11) {
+  holeTarget$="outer-get-11" 
+} else if (holeNumber == 12) {
+  holeTarget$="outer-get-12" 
+} else if (holeNumber == 13) {
+  holeTarget$="pillar-get-1" 
+} else if (holeNumber == 14) {
+  holeTarget$="pillar-get-2" 
+} else if (holeNumber == 15) {
+  holeTarget$="pillar-get-3" 
+} else if (holeNumber == 16) {
+  holeTarget$="pillar-get-4" 
+} else if (holeNumber == 17) {
+  holeTarget$="pillar-get-5" 
+} else if (holeNumber == 18)
+  holeTarget$="pillar-get-6" 
+goto 0:0
+
+#switch 90:2990
+set timed_message = 15
+gosub 1000:1
+goto 0:0
+
+#switch 90:2999
+extern playsound ui/gen/ui_gen_badmove.wav
+goto 0:0
+
+#switch 90:3000
+if ((anox_worldskill_active == 0) || @showtext3)
+  goto 90:3005
+WS_STAND$="rho_glyph_3" 
+ws_object$="90:3000" 
+ws_analyze$="I think I've figured it out..." 
+gosub 4004:1
+set ws_bank = 90
+set ws_entry = 3002
+goto 0:0
+
+#switch 90:3002
+set @showtext3 = 1
+goto 90:3005
+
+#switch 90:3100
+if (temple_startedbridges == 1)
+  goto 0:0
+goto 90:3900
+
+#switch 90:3130
+gosub 90:3160
+extern AI_GrabEntity PlayerChar0 rhoHandle
+extern AI_SeekAndFace rhoHandle before-bridge-1
+extern AI_SetCompletionCallback rhohandle 90:3150
+goto 0:0
+
+#switch 90:3160
+extern assign p[1] 1 0 1 0 0 2 0 0 1 1 1 0 1 1 2 1 0 1 0 0 1 2 0 1 1 1 1 1 0 0 3 1 0 0 1 1 1 0 3 1 0 0 0 0
+extern assign q[1] 1 1 0 1 1 0 1 1 0 1 0 1 0 1 2 0 1 0 1 1 1 0 1 0 0 1 0 0 1 1 3 0 1 1 0 1 1 1 3 0 1 1 1 2
+extern assign n[1] 3 1 5 0 1 5 5 0 4 2 1 5 1 1 2 5 1 4 0 1 4 3 3 4 1 2 4 1 3 0 4 2 1 1 4 5 3 1 1 5 0 3 0 3
+extern assign o[1] 2 6 0 2 6 0 2 1 5 1 5 3 0 6 1 1 6 0 2 6 5 0 2 0 3 1 0 0 2 1 5 0 6 6 0 3 2 6 6 3 1 2 1 2
+set where = 0
+set bridge = 1
+set cine = 0
+set do_not_count = 2
+set change = 0
+set side = 1
+extern cam_anoxmariomode 1
+gosub 90:3300			                    
+gosub 90:3400
+goto 0:0
+
+#switch 90:3170
+set do_not_count = 1
+extern RemoveAPE2DControl leftbutt
+extern RemoveAPE2DControl rightbutt
+set cine = 0
+set side = 1
+set oldwhere = where
+set oldbridge = bridge
+set where = (where + 1)
+if (p[$where$] == 0) {
+  extern playsound games/temple/games_temple_tilebreak.wav
+  goto 90:3190  	       
+} else if (p[$where$] == 2) {
+  set cine = 1
+  set bridge = (bridge + 1)
+  if (bridge > 4)
+    goto 90:3200	     
+  set change = (change + 1)
+  gosub 90:3300
+  set do_not_count = 2
+  if (bridge == 2) {
+    extern AI_SeekAndFace rhoHandle before-bridge-2
+  } else if (bridge == 3) {
+    extern AI_SeekAndFace rhoHandle before-bridge-3
+  } else if (bridge == 4)
+    extern AI_SeekAndFace rhoHandle before-bridge-4
+  gosub 90:3400
+  extern AI_SetCompletionCallback rhohandle 90:3150
+} else if (p[$where$] == 3) {
+  set change = (change + 1)
+  gosub 90:3300
+}
+gosub 90:3400
+if (bridge == oldbridge)
+  gosub 90:3600	                      
+goto 0:0
+
+#switch 90:3600
+if (where < 21) {
+  gosub 90:3620
+} else
+  gosub 90:3630
+extern AI_SetCompletionCallback rhohandle 90:3150
+goto 0:0
+
+#switch 90:3620
+if (where == 1) {
+  extern AI_SeekAndFace rhoHandle leftpath1
+} else if (where == 2) {
+  extern AI_SeekAndFace rhoHandle leftpath2
+} else if (where == 3) {
+  extern AI_SeekAndFace rhoHandle leftpath3
+} else if (where == 4) {
+  extern AI_SeekAndFace rhoHandle leftpath4
+} else if (where == 5) {
+  extern AI_SeekAndFace rhoHandle leftpath5
+} else if (where == 6) {
+  extern AI_SeekAndFace rhoHandle leftpath6
+} else if (where == 7) {
+  extern AI_SeekAndFace rhoHandle leftpath7
+} else if (where == 8) {
+  extern AI_SeekAndFace rhoHandle leftpath8
+} else if (where == 9) {
+  extern AI_SeekAndFace rhoHandle leftpath9
+} else if (where == 10) {
+  extern AI_SeekAndFace rhoHandle leftpath10
+} else if (where == 11) {
+  extern AI_SeekAndFace rhoHandle leftpath11
+} else if (where == 12) {
+  extern AI_SeekAndFace rhoHandle leftpath12
+} else if (where == 13) {
+  extern AI_SeekAndFace rhoHandle leftpath13
+} else if (where == 14) {
+  extern AI_SeekAndFace rhoHandle leftpath14
+} else if (where == 15) {
+  extern AI_SeekAndFace rhoHandle leftpath15
+} else if (where == 16) {
+  extern AI_SeekAndFace rhoHandle leftpath16
+} else if (where == 17) {
+  extern AI_SeekAndFace rhoHandle leftpath17
+} else if (where == 18) {
+  extern AI_SeekAndFace rhoHandle leftpath18
+} else if (where == 19) {
+  extern AI_SeekAndFace rhoHandle leftpath19
+} else if (where == 20)
+  extern AI_SeekAndFace rhoHandle leftpath20
+goto 0:0
+
+#switch 90:3630
+if (where == 21) {
+  extern AI_SeekAndFace rhoHandle leftpath21
+} else if (where == 22) {
+  extern AI_SeekAndFace rhoHandle leftpath22
+} else if (where == 23) {
+  extern AI_SeekAndFace rhoHandle leftpath23
+} else if (where == 24) {
+  extern AI_SeekAndFace rhoHandle leftpath24
+} else if (where == 25) {
+  extern AI_SeekAndFace rhoHandle leftpath25
+} else if (where == 26) {
+  extern AI_SeekAndFace rhoHandle leftpath26
+} else if (where == 27) {
+  extern AI_SeekAndFace rhoHandle leftpath27
+} else if (where == 28) {
+  extern AI_SeekAndFace rhoHandle leftpath28
+} else if (where == 29) {
+  extern AI_SeekAndFace rhoHandle leftpath29
+} else if (where == 30) {
+  extern AI_SeekAndFace rhoHandle leftpath30
+} else if (where == 31) {
+  extern AI_SeekAndFace rhoHandle leftpath31
+} else if (where == 32) {
+  extern AI_SeekAndFace rhoHandle leftpath32
+} else if (where == 33) {
+  extern AI_SeekAndFace rhoHandle leftpath33
+} else if (where == 34) {
+  extern AI_SeekAndFace rhoHandle leftpath34
+} else if (where == 35) {
+  extern AI_SeekAndFace rhoHandle leftpath35
+} else if (where == 36) {
+  extern AI_SeekAndFace rhoHandle leftpath36
+} else if (where == 37) {
+  extern AI_SeekAndFace rhoHandle leftpath37
+} else if (where == 38) {
+  extern AI_SeekAndFace rhoHandle leftpath38
+} else if (where == 39) {
+  extern AI_SeekAndFace rhoHandle leftpath39
+} else if (where == 40) {
+  extern AI_SeekAndFace rhoHandle leftpath40
+} else if (where == 41) {
+  extern AI_SeekAndFace rhoHandle leftpath41
+} else if (where == 42) {
+  extern AI_SeekAndFace rhoHandle leftpath42
+} else if (where == 43) {
+  extern AI_SeekAndFace rhoHandle leftpath43
+} else if (where == 44)
+  extern AI_SeekAndFace rhoHandle leftpath44
+goto 0:0
+
+#switch 90:3180
+set do_not_count = 1
+extern RemoveAPE2DControl leftbutt
+extern RemoveAPE2DControl rightbutt
+set cine = 0
+set side = 2
+set oldwhere = where
+set oldbridge = bridge
+set where = (where + 1)
+if (q[$where$] == 0) {
+  extern playsound games/temple/games_temple_tilebreak.wav
+  goto 90:3190  	       
+} else if (q[$where$] == 2) {
+  set cine = 1
+  set bridge = (bridge + 1)
+  if (bridge > 4)
+    goto 90:3200	     
+  set change = (change + 1)
+  set do_not_count = 2
+  gosub 90:3300	             
+  if (bridge == 2) {
+    extern AI_SeekAndFace rhoHandle before-bridge-2
+  } else if (bridge == 3) {
+    extern AI_SeekAndFace rhoHandle before-bridge-3
+  } else if (bridge == 4)
+    extern AI_SeekAndFace rhoHandle before-bridge-4
+  extern AI_SetCompletionCallback rhohandle 90:3150
+} else if (q[$where$] == 3) {
+  set change = (change + 1)
+  gosub 90:3300
+}
+gosub 90:3400
+if (bridge == oldbridge)
+  gosub 90:3610	                      
+goto 0:0
+
+#switch 90:3610
+if (where < 21) {
+  gosub 90:3640
+} else
+  gosub 90:3650
+extern AI_SetCompletionCallback rhohandle 90:3150
+goto 0:0
+
+#switch 90:3640
+if (where == 1) {
+  extern AI_SeekAndFace rhoHandle rightpath1
+} else if (where == 2) {
+  extern AI_SeekAndFace rhoHandle rightpath2
+} else if (where == 3) {
+  extern AI_SeekAndFace rhoHandle rightpath3
+} else if (where == 4) {
+  extern AI_SeekAndFace rhoHandle rightpath4
+} else if (where == 5) {
+  extern AI_SeekAndFace rhoHandle rightpath5
+} else if (where == 6) {
+  extern AI_SeekAndFace rhoHandle rightpath6
+} else if (where == 7) {
+  extern AI_SeekAndFace rhoHandle rightpath7
+} else if (where == 8) {
+  extern AI_SeekAndFace rhoHandle rightpath8
+} else if (where == 9) {
+  extern AI_SeekAndFace rhoHandle rightpath9
+} else if (where == 10) {
+  extern AI_SeekAndFace rhoHandle rightpath10
+} else if (where == 11) {
+  extern AI_SeekAndFace rhoHandle rightpath11
+} else if (where == 12) {
+  extern AI_SeekAndFace rhoHandle rightpath12
+} else if (where == 13) {
+  extern AI_SeekAndFace rhoHandle rightpath13
+} else if (where == 14) {
+  extern AI_SeekAndFace rhoHandle rightpath14
+} else if (where == 15) {
+  extern AI_SeekAndFace rhoHandle rightpath15
+} else if (where == 16) {
+  extern AI_SeekAndFace rhoHandle rightpath16
+} else if (where == 17) {
+  extern AI_SeekAndFace rhoHandle rightpath17
+} else if (where == 18) {
+  extern AI_SeekAndFace rhoHandle rightpath18
+} else if (where == 19) {
+  extern AI_SeekAndFace rhoHandle rightpath19
+} else if (where == 20)
+  extern AI_SeekAndFace rhoHandle rightpath20
+goto 0:0
+
+#switch 90:3650
+if (where == 21) {
+  extern AI_SeekAndFace rhoHandle rightpath21
+} else if (where == 22) {
+  extern AI_SeekAndFace rhoHandle rightpath22
+} else if (where == 23) {
+  extern AI_SeekAndFace rhoHandle rightpath23
+} else if (where == 24) {
+  extern AI_SeekAndFace rhoHandle rightpath24
+} else if (where == 25) {
+  extern AI_SeekAndFace rhoHandle rightpath25
+} else if (where == 26) {
+  extern AI_SeekAndFace rhoHandle rightpath26
+} else if (where == 27) {
+  extern AI_SeekAndFace rhoHandle rightpath27
+} else if (where == 28) {
+  extern AI_SeekAndFace rhoHandle rightpath28
+} else if (where == 29) {
+  extern AI_SeekAndFace rhoHandle rightpath29
+} else if (where == 30) {
+  extern AI_SeekAndFace rhoHandle rightpath30
+} else if (where == 31) {
+  extern AI_SeekAndFace rhoHandle rightpath31
+} else if (where == 32) {
+  extern AI_SeekAndFace rhoHandle rightpath32
+} else if (where == 33) {
+  extern AI_SeekAndFace rhoHandle rightpath33
+} else if (where == 34) {
+  extern AI_SeekAndFace rhoHandle rightpath34
+} else if (where == 35) {
+  extern AI_SeekAndFace rhoHandle rightpath35
+} else if (where == 36) {
+  extern AI_SeekAndFace rhoHandle rightpath36
+} else if (where == 37) {
+  extern AI_SeekAndFace rhoHandle rightpath37
+} else if (where == 38) {
+  extern AI_SeekAndFace rhoHandle rightpath38
+} else if (where == 39) {
+  extern AI_SeekAndFace rhoHandle rightpath39
+} else if (where == 40) {
+  extern AI_SeekAndFace rhoHandle rightpath40
+} else if (where == 41) {
+  extern AI_SeekAndFace rhoHandle rightpath41
+} else if (where == 42) {
+  extern AI_SeekAndFace rhoHandle rightpath42
+} else if (where == 43) {
+  extern AI_SeekAndFace rhoHandle rightpath43
+} else if (where == 44)
+  extern AI_SeekAndFace rhoHandle rightpath44
+goto 0:0
+
+#switch 90:3190
+closewindow 90:3150
+extern RemoveAPE2DControl leftbutt
+extern RemoveAPE2DControl rightbutt
+set temple_startedbridges = 0
+extern playscene temple_fall 0 90:3201
+goto 0:0
+
+#switch 90:3201
+extern AI_GrabEntity playerchar0 @hackhack
+extern AI_ReleaseEntity @hackhack
+set @hackhack = 0
+goto 0:0
+
+#switch 90:3500
+if (temple_crossed_bridges && (in_going_back == 0)) {
+  set in_going_back = 1
+  goto 90:3501
+}
+goto 0:0
+
+#switch 90:3300
+if (change == 1) {
+  set big_block = 7
+} else if (((change == 2) || (change == 0)) || (change == 4)) {
+  set big_block = 11
+} else if ((change == 3) || (change == 5))
+  set big_block = 8
+if (change == 0) {
+  extern cam_from -137 223 2073
+  extern cam_zip
+} else if (change == 1) {
+  extern cam_from "bridgecam2"
+} else if (change == 2) {
+  extern cam_from "bridgecam3"
+} else if (change == 3) {
+  extern cam_from "bridgecam4"
+} else if (change == 4) {
+  extern cam_from "bridgecam5"
+} else if (change == 5)
+  extern cam_from "bridgecam6"
+extern cam_to playerchar0
+if (big_block == 11) {
+  set bbyaw = 90
+} else if (big_block == 7) {
+  set bbyaw = 180
+} else if (big_block == 8)
+  set bbyaw = 270
+extern AI_GrabEntity big-box hBlock
+extern AI_SetYaw hBlock bbyaw
+extern AI_ReleaseEntity hBlock
+goto 0:0
+
+#switch 90:3400
+goto 0:0
+set aheadleft = (where + 1)
+if (n[$aheadleft$] == 0)
+  set left_tile = 0
+if (n[$aheadleft$] == 1)
+  set left_tile = 1
+if (n[$aheadleft$] == 2)
+  left$="a moon symbol" 
+if (n[$aheadleft$] == 3)
+  left$="a claw symbol" 
+if (n[$aheadleft$] == 4)
+  left$="a star symbol" 
+if (n[$aheadleft$] == 5)
+  left$="a eye symbol" 
+if (n[$aheadleft$] == 6)
+  left$="a wheel symbol" 
+set aheadright = (where + 1)
+if (o[$aheadright$] == 0)
+  right$="empty space" 
+if (o[$aheadright$] == 1)
+  right$="a sun symbol" 
+if (o[$aheadright$] == 2)
+  right$="a moon symbol" 
+if (o[$aheadright$] == 3)
+  right$="a claw symbol" 
+if (o[$aheadright$] == 4)
+  right$="a star symbol" 
+if (o[$aheadright$] == 5)
+  right$="a eye symbol" 
+if (o[$aheadright$] == 6)
+  right$="a wheel symbol" 
+goto 0:0
+
+#switch 90:7100
+goto 90:7001
+
+#switch 90:7001
+if ((anox_worldskill_active == 0) || @showtext4)
+  goto 90:7105
+WS_STAND$="rho_glyph_4" 
+ws_object$="90:7100" 
+ws_analyze$="I think I've figured it out..." 
+gosub 4004:1
+set ws_bank = 90
+set ws_entry = 7102
+goto 0:0
+
+#switch 90:7102
+set @showtext4 = 1
+goto 90:7105
+
+#switch 90:7000
+extern GetPlayerCurrentHP Rho @rhoHP
+if (@rhoHP > 20) {
+  set @rhoHP = (@rhoHP - 20)
+} else
+  set @rhoHP = 1
+extern SetPlayerCurrentHP Rho @rhoHP
+extern playsound games/temple/games_temple_dart.wav
+goto 90:7103
+
+#switch 90:4000
+if ((anox_worldskill_active == 0) || @showtext5)
+  goto 90:4005
+WS_STAND$="rho_glyph_5" 
+ws_object$="90:4000" 
+ws_analyze$="I think I've figured it out..." 
+gosub 4004:1
+set ws_bank = 90
+set ws_entry = 4002
+goto 0:0
+
+#switch 90:4002
+set @showtext5 = 1
+goto 90:4005
+
+#switch 90:4200
+goto 0:0
+
+#switch 90:4210
+goto 0:0
+
+#switch 90:5000
+if ((anox_worldskill_active == 0) || @showtext6)
+  goto 90:5005
+WS_STAND$="rho_glyph_6" 
+ws_analyze$="I think I've figured it out..." 
+gosub 4004:1
+set ws_bank = 90
+set ws_entry = 5002
+goto 0:0
+
+#switch 90:5002
+set @showtext6 = 1
+goto 90:5005
+
+#switch 90:5100
+if (func_gametime < (@dart_time + 2000))
+  goto 0:0
+set @dart_time = func_gametime
+extern GetPlayerCurrentHP Rho @rhoHP
+if (@rhoHP > 20) {
+  set @rhoHP = (@rhoHP - 20)
+} else
+  set @rhoHP = 1
+extern SetPlayerCurrentHP Rho @rhoHP
+extern playsound battle/character_rho_com/character_rho_com_pain.wav
+goto 0:0
+
+#switch 90:6000
+if ((anox_worldskill_active == 0) || @showtext7)
+  goto 90:6005
+WS_STAND$="rho_glyph_7" 
+ws_object$="90:6000" 
+ws_analyze$="I think I've figured it out..." 
+gosub 4004:1
+set ws_bank = 90
+set ws_entry = 6002
+goto 0:0
+
+#switch 90:6002
+set @showtext7 = 1
+goto 90:6005
+
+#switch 90:6100
+if (rho_is_cursed)
+  goto 0:0
+set rho_is_cursed = 1
+goto 90:6105
+
+#switch 90:8000
+if (@ladder1)
+  goto 0:0
+set @ladder1 = 1
+gosub 90:2100	               
+extern playscene temple_ladder1down 0 90:8001
+goto 0:0
+
+#switch 90:8001
+echo "AT BOTTOM OF FIRST LADDER"
+goto 0:0
+
+#switch 90:8010
+goto 90:3502
+
+#switch 90:8100
+extern playscene temple_ladder2down 0 90:8101
+goto 0:0
+
+#switch 90:8101
+echo "AT BOTTOM OF LADDER 2!"
+goto 0:0
+
+#switch 90:8110
+goto 90:3502
+
+#switch 90:8200
+extern playscene temple_ladder3down_b 0 90:8201
+
+#switch 90:8201
+echo "AT BOTTOM OF LADDER 3!"
+goto 0:0
+
+#switch 90:8202
+echo "MIDDLE OF LADDER 3!"
+goto 0:0
+
+#switch 90:8210
+extern playscene temple_ladder3up_b 0 90:8202
+
+#switch 90:8220
+extern playscene temple_ladder3up_a 0 90:8221
+
+#switch 90:8221
+echo "AT TOP OF BLADE LADDER"
+goto 0:0
+
+#switch 90:8230
+extern playscene temple_ladder3down_a 0 90:8202
+
+#switch 90:8500
+target ramp-1
+goto 0:0

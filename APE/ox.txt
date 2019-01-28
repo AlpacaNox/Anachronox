@@ -1,0 +1,846 @@
+#window 50000:1
+startswitch {
+  gosub 50000:7
+  extern AI_GrabEntity PlayerChar0 PlayerChar0_handle
+  extern cam_anoxmariomode 1
+  set anox_interface_active = 1
+  gosub 50000:101
+  gosub 50000:102
+  set lastMS = func_GameTime
+  set currentMS = lastMS
+  if (rowdys_ox_not_from_arcade == 1)
+    extern loopscene oxwait
+  set gameState = 2
+  set OXwaitTime = 40
+  goto 0:0
+}
+
+thinkswitch {
+  set currentMS = func_GameTime
+  set delta = (currentMS - lastMS)
+  if (delta < 50)
+    goto 0:0
+  set lastMS = currentMS
+  if (OXwaitTime) {
+    set OXwaitTime = (OXwaitTime - 1)
+    if (OXwaitTime == 0)
+      gosub 50000:6
+  }
+  gosub 50000:105
+  if ((((OXwaitTime == 0) && (gameState == 2)) || (gameState == 12)) || ((gameState == 11) && (cursorType != 0)))
+    gosub 50000:102
+  if (((gameState == 5) || (gameState == 6)) && (cursorType != 1)) {
+    extern set2dcursor ox_xcursor0.pcx ox_xcursor1.pcx ox_xcursor2.pcx ox_xcursor3.pcx 20
+    set cursorType = 1
+  }
+  if (((gameState == 8) || (gameState == 9)) && (cursorType != 2)) {
+    extern set2dcursor ox_ocursor0.pcx ox_ocursor1.pcx ox_ocursor2.pcx ox_ocursor3.pcx 20
+    set cursorType = 2
+  }
+  goto 0:0
+}
+
+finishswitch {
+  extern set2Dcursor default
+  gosub 50000:108		                            
+  extern RemoveAPE2DControl OXQuit
+  extern RemoveAPE2DControl OXBackground
+  extern RemoveAPE2DControl OXStart
+  gosub 50000:7
+  gosub 50000:8
+  gosub 50000:9
+  unset anox_interface_active
+  extern APE_ARCADE_ReturnFromGame
+  goto 0:0
+}
+
+style "null"
+font "_anox5shad"
+flags passive2d, TRUE
+xpos 0
+ypos 0
+width 640
+height 380
+if ((OXWaitTime == 0) && (rowdys_ox_not_from_arcade == 0))
+  image "ox/ox_table_upleft.tga" 43, 90
+if ((OXWaitTime == 0) && (rowdys_ox_not_from_arcade == 0))
+  image "ox/ox_table_upmiddle.tga" 299, 90
+if ((OXWaitTime == 0) && (rowdys_ox_not_from_arcade == 0))
+  image "ox/ox_table_upright.tga" 555, 90
+if ((OXWaitTime == 0) && (rowdys_ox_not_from_arcade == 0))
+  image "ox/ox_table_downleft.tga" 43, 346
+if ((OXWaitTime == 0) && (rowdys_ox_not_from_arcade == 0))
+  image "ox/ox_table_downmiddle.tga" 299, 346
+if ((OXWaitTime == 0) && (rowdys_ox_not_from_arcade == 0))
+  image "ox/ox_table_downright.tga" 555, 346
+if ((((OXwaitTime == 0) && (O[0] == 1)) && (gameState != 9)) && (gameState != 8))
+  image "ox/osleep$sleepFrame$.pcx" P[0], Q[0]
+if ((((OXwaitTime == 0) && (O[1] == 1)) && (gameState != 9)) && (gameState != 8))
+  image "ox/osleep$sleepFrame$.pcx" P[1], Q[1]
+if ((((OXwaitTime == 0) && (O[2] == 1)) && (gameState != 9)) && (gameState != 8))
+  image "ox/osleep$sleepFrame$.pcx" P[2], Q[2]
+if ((((OXwaitTime == 0) && (O[3] == 1)) && (gameState != 9)) && (gameState != 8))
+  image "ox/osleep$sleepFrame$.pcx" P[3], Q[3]
+if ((((OXwaitTime == 0) && (X[0] == 1)) && (gameState != 6)) && (gameState != 5))
+  image "ox/xsleep$sleepFrame$.pcx" Y[0], Z[0]
+if ((((OXwaitTime == 0) && (X[1] == 1)) && (gameState != 6)) && (gameState != 5))
+  image "ox/xsleep$sleepFrame$.pcx" Y[1], Z[1]
+if ((((OXwaitTime == 0) && (X[2] == 1)) && (gameState != 6)) && (gameState != 5))
+  image "ox/xsleep$sleepFrame$.pcx" Y[2], Z[2]
+if ((((OXwaitTime == 0) && (X[3] == 1)) && (gameState != 6)) && (gameState != 5))
+  image "ox/xsleep$sleepFrame$.pcx" Y[3], Z[3]
+if ((O[0] == 1) && ((gameState == 9) || (gameState == 8)))
+  image "ox/opiece.pcx" P[0], Q[0]
+if ((O[1] == 1) && ((gameState == 9) || (gameState == 8)))
+  image "ox/opiece.pcx" P[1], Q[1]
+if ((O[2] == 1) && ((gameState == 9) || (gameState == 8)))
+  image "ox/opiece.pcx" P[2], Q[2]
+if ((O[3] == 1) && ((gameState == 9) || (gameState == 8)))
+  image "ox/opiece.pcx" P[3], Q[3]
+if ((X[0] == 1) && ((gameState == 6) || (gameState == 5)))
+  image "ox/xpiece.pcx" Y[0], Z[0]
+if ((X[1] == 1) && ((gameState == 6) || (gameState == 5)))
+  image "ox/xpiece.pcx" Y[1], Z[1]
+if ((X[2] == 1) && ((gameState == 6) || (gameState == 5)))
+  image "ox/xpiece.pcx" Y[2], Z[2]
+if ((X[3] == 1) && ((gameState == 6) || (gameState == 5)))
+  image "ox/xpiece.pcx" Y[3], Z[3]
+if ((((OXwaitTime == 0) && (gameState == 2)) || (gameState == 12)) || (gameState == 11))
+  image "ox/oxcursor.pcx" cx, cy
+if ((gameState == 5) || (gameState == 6))
+  image "ox/xcursor$cursorFrame$.pcx" cx, cy
+if ((gameState == 8) || (gameState == 9))
+  image "ox/ocursor$cursorFrame$.pcx" cx, cy
+if ((((OXwaitTime == 0) && (gameState == 2)) || (gameState == 12)) || (gameState == 11))
+  image "ox/start.pcx" 304, 320
+if (OXwaitTime == 0)
+  image "ox/quit.pcx" 306, 350
+if ((OXwaitTime == 0) && (gameState == 2))
+  image "ox/welcome.pcx" 250, 200
+if ((gameState == 5) || (gamestate == 6))
+  image "ox/player1.pcx" 70, 360
+if ((gameState == 8) || (gamestate == 9))
+  image "ox/player2.pcx" 470, 100
+if (gameState == 5)
+  image "ox/slpiece1.pcx" 470, 368
+if (gameState == 6)
+  image "ox/popiece1.pcx" 470, 368
+if (gameState == 8)
+  image "ox/slpiece2.pcx" 70, 100
+if (gameState == 9)
+  image "ox/popiece2.pcx" 70, 100
+if ((gameState == 11) && (winPlayer == 1))
+  image "ox/win1.pcx" 290, 220
+if ((gameState == 11) && (winPlayer == 2))
+  image "ox/win2.pcx" 290, 220
+if ((OXwaitTime == 0) && (H[1] == 1))
+  image "ox/opos$cursorCounter$.pcx" E[1], F[1]
+if ((OXwaitTime == 0) && (H[2] == 1))
+  image "ox/opos$cursorCounter$.pcx" E[2], F[2]
+if ((OXwaitTime == 0) && (H[3] == 1))
+  image "ox/opos$cursorCounter$.pcx" E[3], F[3]
+if ((OXwaitTime == 0) && (H[4] == 1))
+  image "ox/opos$cursorCounter$.pcx" E[4], F[4]
+if ((OXwaitTime == 0) && (H[5] == 1))
+  image "ox/opos$cursorCounter$.pcx" E[5], F[5]
+if ((OXwaitTime == 0) && (H[6] == 1))
+  image "ox/opos$cursorCounter$.pcx" E[6], F[6]
+if ((OXwaitTime == 0) && (H[7] == 1))
+  image "ox/opos$cursorCounter$.pcx" E[7], F[7]
+if ((OXwaitTime == 0) && (H[8] == 1))
+  image "ox/opos$cursorCounter$.pcx" E[8], F[8]
+if ((OXwaitTime == 0) && (H[9] == 1))
+  image "ox/opos$cursorCounter$.pcx" E[9], F[9]
+if ((OXwaitTime == 0) && (H[10] == 1))
+  image "ox/opos$cursorCounter$.pcx" E[10], F[10]
+if ((OXwaitTime == 0) && (H[11] == 1))
+  image "ox/opos$cursorCounter$.pcx" E[11], F[11]
+if ((OXwaitTime == 0) && (H[12] == 1))
+  image "ox/opos$cursorCounter$.pcx" E[12], F[12]
+if ((OXwaitTime == 0) && (H[13] == 1))
+  image "ox/opos$cursorCounter$.pcx" E[13], F[13]
+if ((turnsLeft > 0) || (gameState == 12))
+  image "ox/turnleft.pcx" 56, 200
+if ((turnsLeft > 0) || (gameState == 12))
+  image "ox/sidenum$turnsLeft$.pcx" 66, 236
+if (gameState == 12)
+  image "ox/draw.pcx" 292, 230
+
+#window 50000:5
+title "ERROR!"
+if (errorNumber == UNDEFINEDEVENT%)
+  body "Got an Event ($eventNum$)! I don't understand!"
+
+#switch 50000:6
+extern CreateAPE2DControl push OXStart 304 320 nodrawflag=TRUE width=32 height=16 sequence=50000:109
+extern CreateAPE2DControl push OXQuit 306 350 nodrawflag=TRUE width=32 height=16 sequence=50000:4039
+goto 0:0
+
+#switch 50000:109
+extern RemoveAPE2DControl OXStart
+set gameState = 5
+set cx = 0
+set cy = 0
+set wayCursor = 0
+set c = 0
+while (c < 4) {
+  set O[$c$] = 1
+  set X[$c$] = 1
+  set c = (c + 1)
+}
+gosub 50000:100
+gosub 50000:106			                                
+set cursorCounter = 0
+set cursorFrame = 0
+set sleepCounter = 0
+set sleepFrame = 0
+set turnsLeft = 0
+goto 0:0
+
+#switch 50000:101
+set E[1] = (23 + 38)
+set F[1] = (111 + 5)
+set E[2] = (23 + 138)
+set F[2] = (111 + 108)
+set E[3] = (23 + 270)
+set F[3] = (111 + 54)
+set E[4] = (23 + 371)
+set F[4] = (111 + 51)
+set E[5] = (23 + 415)
+set F[5] = (111 + 85)
+set E[6] = (23 + 498)
+set F[6] = (111 + 39)
+set E[7] = (23 + 53)
+set F[7] = (111 + 212)
+set E[8] = (23 + 138)
+set F[8] = (111 + 139)
+set E[9] = (23 + 366)
+set F[9] = (111 + 194)
+set E[10] = (23 + 308)
+set F[10] = (111 + 107)
+set E[11] = (23 + 462)
+set F[11] = (111 + 140)
+set E[12] = (23 + 547)
+set F[12] = (111 + 73)
+set E[13] = (23 + 527)
+set F[13] = (111 + 225)
+goto 0:0
+
+#switch 50000:100
+set P[0] = E[1]
+set Q[0] = F[1]
+set R[0] = 1
+set P[1] = E[3]
+set Q[1] = F[3]
+set R[1] = 3
+set P[2] = E[4]
+set Q[2] = F[4]
+set R[2] = 4
+set P[3] = E[6]
+set Q[3] = F[6]
+set R[3] = 6
+set Y[0] = E[7]
+set Z[0] = F[7]
+set W[0] = 7
+set Y[1] = E[8]
+set Z[1] = F[8]
+set W[1] = 8
+set Y[2] = E[9]
+set Z[2] = F[9]
+set W[2] = 9
+set Y[3] = E[13]
+set Z[3] = F[13]
+set W[3] = 13
+goto 0:0
+
+#switch 50000:102
+extern set2dcursor ../gameflow/ox/oxCursor.pcx
+set cursorType = 0
+goto 0:0
+
+#switch 50000:106
+extern CreateAPE2DControl push OXButton1 E[1] F[1] nodrawflag=TRUE width=16 height=16 sequence=50000:4000 gamevar=space returnvalue=1
+extern CreateAPE2DControl push OXButton2 E[2] F[2] nodrawflag=TRUE width=16 height=16 sequence=50000:4000 gamevar=space returnvalue=2
+extern CreateAPE2DControl push OXButton3 E[3] F[3] nodrawflag=TRUE width=16 height=16 sequence=50000:4000 gamevar=space returnvalue=3
+extern CreateAPE2DControl push OXButton4 E[4] F[4] nodrawflag=TRUE width=16 height=16 sequence=50000:4000 gamevar=space returnvalue=4
+extern CreateAPE2DControl push OXButton5 E[5] F[5] nodrawflag=TRUE width=16 height=16 sequence=50000:4000 gamevar=space returnvalue=5
+extern CreateAPE2DControl push OXButton6 E[6] F[6] nodrawflag=TRUE width=16 height=16 sequence=50000:4000 gamevar=space returnvalue=6
+extern CreateAPE2DControl push OXButton7 E[7] F[7] nodrawflag=TRUE width=16 height=16 sequence=50000:4000 gamevar=space returnvalue=7
+extern CreateAPE2DControl push OXButton8 E[8] F[8] nodrawflag=TRUE width=16 height=16 sequence=50000:4000 gamevar=space returnvalue=8
+extern CreateAPE2DControl push OXButton9 E[9] F[9] nodrawflag=TRUE width=16 height=16 sequence=50000:4000 gamevar=space returnvalue=9
+extern CreateAPE2DControl push OXButton10 E[10] F[10] nodrawflag=TRUE width=16 height=16 sequence=50000:4000 gamevar=space returnvalue=10
+extern CreateAPE2DControl push OXButton11 E[11] F[11] nodrawflag=TRUE width=16 height=16 sequence=50000:4000 gamevar=space returnvalue=11
+extern CreateAPE2DControl push OXButton12 E[12] F[12] nodrawflag=TRUE width=16 height=16 sequence=50000:4000 gamevar=space returnvalue=12
+extern CreateAPE2DControl push OXButton13 E[13] F[13] nodrawflag=TRUE width=16 height=16 sequence=50000:4000 gamevar=space returnvalue=13
+goto 0:0
+
+#switch 50000:108
+extern RemoveAPE2DControl OXButton1
+extern RemoveAPE2DControl OXButton2
+extern RemoveAPE2DControl OXButton3
+extern RemoveAPE2DControl OXButton4
+extern RemoveAPE2DControl OXButton5
+extern RemoveAPE2DControl OXButton6
+extern RemoveAPE2DControl OXButton7
+extern RemoveAPE2DControl OXButton8
+extern RemoveAPE2DControl OXButton9
+extern RemoveAPE2DControl OXButton10
+extern RemoveAPE2DControl OXButton11
+extern RemoveAPE2DControl OXButton12
+extern RemoveAPE2DControl OXButton13
+goto 0:0
+
+#switch 50000:105
+set cx = func_mousex
+set cy = func_mousey
+set cursorCounter = (cursorCounter + 1)
+if (cursorCounter > 3) {
+  set cursorCounter = 0
+  set cursorFrame = (cursorFrame + 1)
+  if (cursorFrame > 3)
+    set cursorFrame = 0
+}
+set sleepCounter = (sleepCounter + 1)
+if (sleepCounter > 5) {
+  set sleepCounter = 0
+  set sleepFrame = (sleepFrame + 1)
+  if (sleepFrame > 3)
+    set sleepFrame = 0
+}
+if ((gameState == 7) || (gameState == 10))
+  gosub 50000:4030
+if (selCount > 0) {
+  set selCount = (selCount - 1)
+  if (selCount == 0)
+    gosub 50000:4018
+}
+if (gameState == 8)
+  gosub 50000:4016
+goto 0:0
+
+#switch 50000:4030
+if (gameState == 7) {
+  set Y[$which$] = I[$moveframe$]
+  set Z[$which$] = J[$moveframe$]
+  set moveframe = (moveframe + 1)
+  if (moveframe > 10) {
+    gosub 50000:4026
+    gosub 50000:4028
+    if (winPlayer > 0) {
+      set gameState = 11
+      extern playsound "GAMES/ox/GAMES_Ox_win.wav"
+      extern CreateAPE2DControl push OXStart 304 320 nodrawflag=TRUE width=32 height=16 sequence=50000:109
+    } else if (gameState != 12)
+      set gameState = 8
+    gosub 50000:4013
+  }
+} else {
+  set P[$bestPiece$] = I[$moveframe$]
+  set Q[$bestPiece$] = J[$moveframe$]
+  set moveframe = (moveframe + 1)
+  if (moveframe > 10) {
+    gosub 50000:4027
+    gosub 50000:4028
+    if (winPlayer > 0) {
+      set gameState = 11
+      extern playsound "GAMES/ox/GAMES_Ox_win.wav"
+      extern CreateAPE2DControl push OXStart 304 320 nodrawflag=TRUE width=32 height=16 sequence=50000:109
+    } else if (gameState != 12)
+      set gameState = 5
+    gosub 50000:4013
+    gosub 50000:106
+  }
+}
+goto 0:0
+
+#switch 50000:4039
+extern AI_ReleaseEntity PlayerChar0_handle
+extern cam_anoxmariomode 0
+set anox_interface_active = 0
+extern RemoveAPE2DControl OXQuit
+if (rowdys_ox_not_from_arcade == 1)
+  extern stopscene oxwait
+set rowdys_ox_not_from_arcade = 0
+closewindow 50000:1
+goto 0:0
+
+#switch 50000:8
+unset OXwaitTime
+unset ccp
+unset cms
+unset cx
+unset cy
+unset cf
+unset cmox
+unset temp
+unset space
+unset cmoo
+unset winPlayer
+unset turnsLeft
+unset gameState
+unset cursorCounter
+unset cursorFrame
+unset sleepCounter
+unset sleepFrame
+unset cursorType
+unset selCount
+unset moveframe
+goto 0:0
+
+#switch 50000:9
+unset p1source
+unset p2source
+unset p1dest
+unset winPlayer
+unset xPiecesLeft
+unset oPiecesLeft
+unset possibleMoves
+unset sourceSpace
+unset destSpace
+unset pathctr
+unset cwxcount
+unset cwocount
+unset xmtcount
+unset cmtcount
+unset bmocount
+unset bestSource
+unset bestDest
+unset bestRating
+unset bestPiece
+unset trySource
+unset tryDest
+unset bmscount
+unset newBest
+unset ascount
+unset bscount
+unset poop
+unset xHits
+unset oHits
+goto 0:0
+
+#switch 50000:7
+extern deassign O[0] 15
+extern deassign P[0] 15
+extern deassign Q[0] 15
+extern deassign R[0] 15
+extern deassign X[0] 15
+extern deassign Y[0] 15
+extern deassign Z[0] 15
+extern deassign W[0] 15
+extern deassign E[0] 15
+extern deassign F[0] 15
+extern deassign H[0] 15
+extern deassign I[0] 15
+extern deassign J[0] 15
+extern deassign K[0] 15
+extern deassign L[0] 15
+extern deassign M[0] 15
+goto 0:0
+
+#switch 50000:4014
+set gsc = 0
+set contents = 0
+while (gsc < 5) {
+  if (W[$gsc$] == space) {
+    set contents = 1
+    set gsc = 10
+  }
+  if (R[$gsc$] == space) {
+    set contents = 2
+    set gsc = 10
+  }
+  set gsc = (gsc + 1)
+}
+goto 0:0
+
+#switch 50000:4015
+set gameState = 6
+set p1source = space
+set p2source = -1.000000
+gosub 50000:4013
+gosub 50000:4019                           
+gosub 50000:4020                                       
+if (possibleMoves == 0) {
+  set gameState = 5
+  extern playsound "GAMES/ox/GAMES_Ox_badmove.wav"
+} else
+  extern playsound "GAMES/ox/GAMES_Ox_xpiece.wav"
+goto 0:0
+
+#switch 50000:4016
+set gameState = 9
+set p2source = -1.000000
+set p1source = -1.000000
+extern playsound "GAMES/ox/GAMES_Ox_opiece.wav"
+set selCount = 10
+gosub 50000:4013
+goto 0:0
+
+#switch 50000:4017
+set p1dest = space
+gosub 50000:4025
+set moveFrame = 1
+set W[$which$] = p1dest
+set gameState = 7
+gosub 50000:4029		                      
+goto 0:0
+
+#switch 50000:4018
+set moveFrame = 1
+gosub 50000:4032
+gosub 50000:4013		                    
+set gameState = 10
+set R[$bestPiece$] = bestDest
+gosub 50000:4029		                      
+goto 0:0
+
+#switch 50000:4025
+set c = 0
+set which = -1.000000
+while (c < 4) {
+  if (W[$c$] == p1source) {
+    set which = c
+    set c = 10
+  }
+  set c = (c + 1)
+}
+goto 0:0
+
+#switch 50000:4026
+set cx = 0
+while (cx < 5) {
+  if (R[$cx$] == W[$which$]) {
+    set R[$cx$] = 0
+    set P[$cx$] = 0
+    set Q[$cx$] = 0
+    set O[$cx$] = 0
+    if (sleepframe == 0) {
+      extern playsound "GAMES/ox/GAMES_Ox_cap0.wav"
+    } else if (sleepframe == 1) {
+      extern playsound "GAMES/ox/GAMES_Ox_cap1.wav"
+    } else if (sleepframe == 2) {
+      extern playsound "GAMES/ox/GAMES_Ox_cap2.wav"
+    } else if (sleepframe == 3)
+      extern playsound "GAMES/ox/GAMES_Ox_cap3.wav"
+    set cx = 10
+  }
+  set cx = (cx + 1)
+}
+if (cx < 10)
+  extern playsound "GAMES/ox/GAMES_Ox_move.wav"
+goto 0:0
+
+#switch 50000:4027
+set cf = 0
+while (cf < 5) {
+  if (W[$cf$] == R[$bestPiece$]) {
+    set W[$cf$] = 0
+    set Y[$cf$] = 0
+    set Z[$cf$] = 0
+    set X[$cf$] = 0
+    if (sleepframe == 0) {
+      extern playsound "GAMES/ox/GAMES_Ox_cap0.wav"
+    } else if (sleepframe == 1) {
+      extern playsound "GAMES/ox/GAMES_Ox_cap1.wav"
+    } else if (sleepframe == 2) {
+      extern playsound "GAMES/ox/GAMES_Ox_cap2.wav"
+    } else if (sleepframe == 3)
+      extern playsound "GAMES/ox/GAMES_Ox_cap3.wav"
+    set cf = 10
+  }
+  set cf = (cf + 1)
+}
+if (cf < 10)
+  extern playsound "GAMES/ox/GAMES_Ox_move.wav"
+goto 0:0
+
+#switch 50000:4028
+set winPlayer = 0
+gosub 50000:4031
+if (xPiecesLeft == 0)
+  set winPlayer = 2
+if (oPiecesLeft == 0)
+  set winPlayer = 1
+if (turnsLeft > 0) {
+  set turnsLeft = (turnsLeft - 1)
+  if (turnsLeft == 0) {
+    set gameState = 12
+    extern playsound "GAMES/ox/games_ox_badmove.wav"
+    extern CreateAPE2DControl push OXStart 304 320 nodrawflag=TRUE width=32 height=16 sequence=50000:109
+  }
+} else if (((xPiecesLeft == 1) && (oPiecesLeft == 1)) && (gameState != 12))
+  set turnsLeft = 9
+if ((winplayer > 0) || (gameState == 12))
+  gosub 50000:108
+goto 0:0
+
+#switch 50000:4031
+set xPiecesLeft = 0
+set oPiecesLeft = 0
+set ccp = 0
+while (ccp < 4) {
+  if (X[$ccp$] == 1)
+    set xPiecesLeft = (xPiecesLeft + 1)
+  if (O[$ccp$] == 1)
+    set oPiecesLeft = (oPiecesLeft + 1)
+  set ccp = (ccp + 1)
+}
+goto 0:0
+
+#switch 50000:4000
+if ((gameState < 11) && ((gameState == 6) || (gameState == 5)))
+  gosub 50000:108		                                  
+gosub 50000:4014
+if ((gameState == 5) && (contents == 1)) {
+  gosub 50000:4015
+} else if (((gameState == 6) && (contents != 1)) && (H[$space$] == 1))
+  gosub 50000:4017
+if ((gameState == 5) || (gameState == 6))
+  gosub 50000:106                                                      
+goto 0:0
+
+#switch 50000:4013
+set cms = 1
+while (cms < 14) {
+  set H[$cms$] = 0
+  set cms = (cms + 1)
+}
+goto 0:0
+
+#switch 50000:4020
+set possibleMoves = 0
+if (gamestate == 6) {
+  gosub 50000:4023
+} else
+  gosub 50000:4024
+goto 0:0
+
+#switch 50000:4023
+set cmox = 1
+while (cmox < 14) {
+  if (H[$cmox$] == 1) {
+    set temp = space
+    set space = cmox
+    gosub 50000:4014	                         
+    set space = temp
+    if (contents == 1)
+      set H[$cmox$] = 0
+  }
+  if (H[$cmox$] == 1)
+    set possibleMoves = (possibleMoves + 1)
+  set cmox = (cmox + 1)
+}
+goto 0:0
+
+#switch 50000:4024
+set cmoo = 1
+while (cmoo < 14) {
+  if (H[$cmoo$] == 1) {
+    set temp = space
+    set space = cmoo
+    gosub 50000:4014	                         
+    set space = temp
+    if (contents == 2)
+      set H[$cmoo$] = 0
+  }
+  if (H[$cmoo$] == 1)
+    set possibleMoves = (possibleMoves + 1)
+  set cmoo = (cmoo + 1)
+}
+goto 0:0
+
+#switch 50000:4019
+if (space == 1) {
+  set H[2] = 1
+} else if (space == 2) {
+  set H[1] = 1
+  set H[3] = 1
+  set H[8] = 1
+  set H[10] = 1
+} else if (space == 3) {
+  set H[2] = 1
+} else if (space == 4) {
+  set H[10] = 1
+  set H[5] = 1
+} else if (space == 5) {
+  set H[4] = 1
+  set H[6] = 1
+  set H[9] = 1
+} else if (space == 6) {
+  set H[5] = 1
+  set H[12] = 1
+} else if (space == 7) {
+  set H[8] = 1
+} else if (space == 8) {
+  set H[2] = 1
+  set H[7] = 1
+  set H[9] = 1
+} else if (space == 9) {
+  set H[5] = 1
+  set H[10] = 1
+  set H[8] = 1
+  set H[11] = 1
+} else if (space == 10) {
+  set H[2] = 1
+  set H[4] = 1
+  set H[9] = 1
+} else if (space == 11) {
+  set H[9] = 1
+  set H[12] = 1
+  set H[13] = 1
+} else if (space == 12) {
+  set H[6] = 1
+  set H[11] = 1
+} else if (space == 13)
+  set H[11] = 1
+goto 0:0
+
+#switch 50000:4029
+if (gameState == 7) {
+  set sourceSpace = p1source
+  set destSpace = p1dest
+} else if (gameState == 10) {
+  set sourceSpace = bestSource
+  set destSpace = bestDest
+}
+set deltaX = (E[$destSpace$] - E[$sourceSpace$])
+set deltaY = (F[$destSpace$] - F[$sourceSpace$])
+set deltaXstep = func_div[$deltaX$,10]
+set deltaYstep = func_div[$deltaY$,10]
+set pathctr = 1
+while (pathctr < 10) {
+  set I[$pathctr$] = (E[$sourceSpace$] + (deltaXstep * pathctr))
+  set J[$pathctr$] = (F[$sourceSpace$] + (deltaYstep * pathctr))
+  set pathctr = (pathctr + 1)
+}
+set I[10] = E[$destSpace$]
+set J[10] = F[$destSpace$]
+goto 0:0
+
+#switch 50000:4032
+gosub 50000:4033	                             
+gosub 50000:4034		           
+gosub 50000:4035
+gosub 50000:4036		                                    
+goto 0:0
+
+#switch 50000:4033
+set i = 0
+while (i < 14) {
+  set K[$i$] = 0
+  set L[$i$] = 0
+  set i = (i + 1)
+}
+goto 0:0
+
+#switch 50000:4034
+set cwxcount = 0
+while (cwxcount < 4) {
+  if (X[$cwxcount$] == 1) {
+    gosub 50000:4013	            
+    set space = W[$cwxcount$]
+    gosub 50000:4019	                        
+    set xmtcount = 1
+    while (xmtcount < 14) {
+      if (H[$xmtcount$] > 0)
+        set K[$xmtcount$] = (K[$xmtcount$] + 1)
+      set xmtcount = (xmtcount + 1)
+    }
+  }
+  set cwxcount = (cwxcount + 1)
+}
+goto 0:0
+
+#switch 50000:4035
+set cwocount = 0
+while (cwocount < 4) {
+  if (O[$cwocount$] == 1) {
+    gosub 50000:4013	            
+    set space = R[$cwocount$]
+    gosub 50000:4019	                        
+    set cmtcount = 1
+    while (cmtcount < 14) {
+      if (H[$cmtcount$] > 0)
+        set L[$cmtcount$] = (L[$cmtcount$] + 1)
+      set cmtcount = (cmtcount + 1)
+    }
+  }
+  set cwocount = (cwocount + 1)
+}
+goto 0:0
+
+#switch 50000:4036
+gosub 50000:4037
+set bmocount = 0
+set bestSource = 0
+set bestDest = 0
+set bestRating = -1.000000
+while (bmocount < 4) {
+  if (O[$bmocount$] == 1) {
+    gosub 50000:4013		                      
+    set space = R[$bmocount$]
+    gosub 50000:4019		                        
+    gosub 50000:4020		                     
+    set bmscount = 1
+    while ((bmscount < 14) && (possibleMoves > 0)) {
+      if (H[$bmscount$] > 0) {
+        set trySource = space
+        set tryDest = bmscount
+        gosub 50000:4038	                      
+        if (newBest > bestRating) {
+          set bestRating = newBest
+          set bestSource = trySource
+          set bestDest = tryDest
+          set bestPiece = bmoCount
+        }
+      }
+      set bmscount = (bmscount + 1)
+    }
+  }
+  set bmocount = (bmocount + 1)
+}
+goto 0:0
+
+#switch 50000:4037
+set ascount = 1
+while (ascount < 14) {
+  set M[$ascount$] = 0
+  set ascount = (ascount + 1)
+}
+set bscount = 0
+while (bscount < 4) {
+  if (X[$bscount$] == 1) {
+    set poop = W[$bscount$]
+    set M[$poop$] = 1
+  } else if (O[$bscount$] == 1) {
+    set poop = R[$bscount$]
+    set M[$poop$] = 2
+  }
+  set bscount = (bscount + 1)
+}
+goto 0:0
+
+#switch 50000:4038
+set newBest = -1.000000
+set xHits = K[$tryDest$]
+set oHits = L[$tryDest$]
+if (M[$tryDest$] == 1) {
+  if ((xHits == 0) && (oHits > 0)) {
+    set newBest = 10
+  } else if (xHits == 0) {
+    set newBest = 9
+  } else if ((xHits == 1) && (oHits >= 1)) {
+    set newBest = 8
+  } else if ((xHits >= 1) && (oHits == 1)) {
+    set newBest = 5
+  } else
+    set newBest = 4
+} else if (xHits == 0) {
+  set newBest = 7
+} else if (oHits > xHits) {
+  set newBest = 6
+} else if ((xHits > 0) && (oHits > 0)) {
+  set newBest = 3
+} else
+  set newBest = 2
+goto 0:0

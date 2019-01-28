@@ -1,0 +1,3343 @@
+#window 16:6
+title "PARTY HAS TWO CHARACTERS"
+body "Press TAB now to switch characters! "
+body "Any party member can be the leader and interact with the world. They all have unique abilities!"
+cam left restore zip
+startswitch {
+  console "pushbind"
+  console "unbindall"
+  console "bind TAB \"ui_closewindow 16:0006\""
+  extern set2dcursor invisiblecursor.pcx
+}
+
+finishswitch {
+  extern set2dcursor default
+  console "popbind"
+  goto 16:0007			          
+}
+
+style "style_fatbox"
+font "_anox10"
+flags passive2d, TRUE
+background color1 = 000000ff color2 = 000000ff color3 = 000000ff color4 = 000000ff
+xpos 30
+ypos 50
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:105
+title "NoxGuard"
+body "Where exactly do you think you're going?"
+cam left restore zip
+talk npc gest_a stay
+startswitch {
+  extern is_quest_done "Get Stuff to Grumpos" @talkBoutHELM
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+if ((MET_GRUMPOS > 0) && (@talkBoutHELM == 0))
+  choice "Hey, do you have a size-five helmet?" 16:110
+if (Nox_leak < 1)
+  choice "Sorry, I thought this would be a good place to take a leak." 16:115
+choice "I was just leaving." 16:120
+
+#window 16:110
+title "NoxGuard"
+body "Is that some sort of joke? That our heads are small because we have no brains? That's not funny, man. Even if I wasn't a NoxGuard, that wouldn't be funny. I've been issued a smaller-sized helmet before and it really hurts."
+talk npc gest_a stay
+startswitch {
+  set Noxer3 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:0111
+
+#window 16:111
+title "NoxGuard"
+body "In fact, they issued a guy from Platform Division a smaller helmet just this morning. Anyway, what were you asking?"
+talk npc gest_a stay
+startswitch {
+  set Know_Jimbo = 1
+}
+
+finishswitch {
+  extern is_quest_done "Clue To Helmet" @helmetica
+  if (@helmetica == 0)
+    extern add_quest "Clue To Helmet"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:115
+title "NoxGuard"
+body "Don't you see we're busy brutalizing someone here?"
+cam left restore zip
+talk npc gest_a stay
+startswitch {
+  set Nox_leak = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:120
+title "NoxGuard"
+if (func_charinparty[boots] == 3)
+  body "Don't be so stupid as to talk to a NoxGuard again, punk. You look like a good kid."
+if (func_charinparty[grumpos] == 3)
+  body "Don't be so stupid as to talk to a NoxGuard again, old man. Not even the aged are safe from us."
+if (func_charinparty[pal] == 3)
+  body "Don't be so stupid as to talk to a NoxGuard again, little man. We torture you little beebots for fun."
+if (func_charinparty[rho] == 3)
+  body "Don't be so stupid as to talk to a NoxGuard again, ma'am. We like calling people with glasses 'four eyes'."
+if (func_charinparty[democratus] == 3)
+  body "Don't be so stupid as to talk to a NoxGuard again, sir. We like kicking around, uh... planets."
+if (func_charinparty[stiletto] == 3)
+  body "Don't be so stupid as to talk to a NoxGuard again, ma'am. We like dressing in women's clothing."
+if (func_charinparty[paco] == 3)
+  body "Don't be so stupid as to dress up like Paco 'El Puño' again. We NoxGuards have a thing for him."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:125
+title "NoxGuard"
+body "Yeah, they're still working the punk over. Someone even suggested using some MysTech on him."
+cam left restore zip
+talk npc gest_a stay
+startswitch {
+  set Noxer2 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:4547
+title "NoxGuard"
+body "Please. No more stories. I beg of you."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:205
+title "Nox Guard"
+body "You remind me of a guy in my precinct...."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:0206
+
+#window 16:206
+title "Nox Guard"
+body "He's different from the rest of the NoxGuards. He wears a leather jacket over his uniform and a pair of jeans. He's got his own set of rules, testing the limits of the law with his own brand of street justice."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:0207
+
+#window 16:207
+title "Nox Guard"
+body "And I hate him. So get away from me before I take it out on your face."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:210
+title "Nox Guard"
+body "Get away from me before I take my hatred out on your face."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:215
+title "Nox Guard"
+body "Size-five helmet? It's funny you should ask...."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:0216
+
+#window 16:216
+title "Nox Guard"
+body "The guy who found out his wife was pregnant this morning was complaining about it in the locker room. I think he's patrolling the platform area today."
+cam left restore zip
+finishswitch {
+  extern is_quest_done "Clue To Helmet" @helmetica
+  if (@helmetica == 0)
+    extern add_quest "Clue To Helmet"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:220
+title "Nox Guard"
+body "Ain't you got brains? Detta's curfew is in full effect. Get indoors."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:301
+title "Megaero"
+body "Eddie knows."
+cam left restore zip
+talk npc amb_a stay
+finishswitch {
+  set Megaero1 = 1
+  set LEARN_EDDIE = 1
+  extern is_quest_done "Find More Info on Eddie" @poop
+  if (@poop == 0)
+    extern add_quest "Find More Info on Eddie"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:405
+title "Poloz N'ar"
+body "Please help me. I'm cold."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "brebulan"
+xpos 30
+ypos 50
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:410
+title "Poloz N'ar"
+body "You can understand me? Wonderful...."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:0411
+
+#window 16:411
+title "Poloz N'ar"
+body "Can you spare some change?"
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Sure, here's a loonie." 16:415
+choice "Sorry, I'm broke." 16:420
+
+#window 16:416
+title "Poloz N'ar"
+body "Klaz protect you."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern remove_money 1
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:417
+title "Poloz N'ar"
+body "But your wallet is empty. You are poorer than me."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:0418
+
+#window 16:418
+title "Poloz N'ar"
+body "Here, I will give YOU a loonie."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern add_money 1
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:0416
+
+#window 16:420
+title "Poloz N'ar"
+body "I'm so cold."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:425
+title "Poloz N'ar"
+body "It is easy to keep warm now."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:430
+title "Poloz N'ar"
+body "NoxGuards took my MysTech."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:501
+title "Poloz N'ar"
+body "Do not take my only possession."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "brebulan"
+xpos 30
+ypos 50
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:2305
+title "Cordicom Automap"
+body "Hey, you lost? For 1 loonie I'll lead you wherever you wanna go. But I don't wait for no slackers. You lose me, you lose out. Get me? So where's to, kid? "
+if ((MET_GRUMPOS == 0) || (MET_DEANAMO == 0))
+  body "(I can go other places, but the guards have 'em blocked off right now.)"
+cam left lift(5) restore zip
+startswitch {
+  extern playsound "ui/gen/button2.wav"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+height 420
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Casinox." 16:2326
+choice "Ghalla's Creature Repairs and Ferriplasty." 16:2331
+choice "Junkyard." 16:2336
+if (MET_GRUMPOS > 0)
+  choice "Platform Area." 16:2395
+if (MET_DEANAMO > 0)
+  choice "The Mystech Museum." 16:2341
+choice "The Mystech Tunnels." 16:2346
+choice "Rowdy's." 16:2351
+if (MET_GRUMPOS > 0)
+  choice "Anachronox Tours." 16:2356
+choice "Whackmaster's Temple of Beating." 16:2361
+if (MET_DEANAMO > 0)
+  choice "Zordo's Gun Palace." 16:2366
+choice "Frank's Flophouse." 16:2375
+choice "No thanks, jack." 16:2370
+
+#window 16:2327
+title "Cordicom Automap"
+body "Eager to throw away your money, huh? Figures. Follow me, chumpo."
+cam left lift(5) restore zip
+finishswitch {
+  extern remove_money 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:2325
+
+#window 16:2332
+title "Cordicom Automap"
+body "Need to get patched up, huh? Follow me, scrapper."
+cam left lift(5) restore zip
+finishswitch {
+  extern remove_money 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:2330
+
+#window 16:2337
+title "Cordicom Automap"
+body "You wanna get mugged, huh? Follow me, genius."
+cam left lift(5) restore zip
+finishswitch {
+  extern remove_money 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:2335
+
+#window 16:2342
+title "Cordicom Automap"
+body "Interested in antiques, huh? Follow me, bubba."
+cam left lift(5) restore zip
+finishswitch {
+  extern remove_money 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:2340
+
+#window 16:2347
+title "Cordicom Automap"
+body "That's off limits, but it ain't my business. Follow me."
+cam left lift(5) restore zip
+finishswitch {
+  extern remove_money 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:2345
+
+#window 16:2352
+title "Cordicom Automap"
+body "Lookin' ta get sloshed, huh? Follow me, lushie."
+cam left lift(5) restore zip
+finishswitch {
+  extern remove_money 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:2350
+
+#window 16:2357
+title "Cordicom Automap"
+body "Gonna take a trip, huh? Follow me, playtoy."
+cam left lift(5) restore zip
+finishswitch {
+  extern remove_money 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:2355
+
+#window 16:2362
+title "Cordicom Automap"
+body "Cruisin' for a fight, huh? Follow me, bruiser."
+cam left lift(5) restore zip
+finishswitch {
+  extern remove_money 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:2360
+
+#window 16:2367
+title "Cordicom Automap"
+body "Lookin' for trouble, huh? Follow me."
+cam left lift(5) restore zip
+finishswitch {
+  extern remove_money 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:2365
+
+#window 16:2370
+title "Cordicom Automap"
+body "Oh, well excuse ME."
+cam left lift(5) restore zip
+startswitch {
+  extern playsound "ui/gen/button4.wav"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:2376
+title "Cordicom Automap"
+body "Need to catch some shut-eye, huh?"
+cam left lift(5) restore zip
+finishswitch {
+  extern remove_money 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:2377
+
+#window 16:2377
+title "Cordicom Automap"
+body "Here we are. You're standing right next to it."
+cam left lift(5) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:2378
+
+#window 16:2378
+title "Cordicom Automap"
+body "Thanks for the loonie, sucker."
+cam left lift(5) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:2385
+title "Cordicom Automap"
+body "Not until you got some dough, chief."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:2397
+title "Cordicom Automap"
+body "Hope you got a ship waiting, braino."
+cam left lift(5) restore zip
+finishswitch {
+  extern remove_money 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:2396
+
+#window 16:1003
+title "Shamper"
+body "Good afternoon, Mister Matavastros. Hope this little critter ain't keeping you up at night. I know the walls are thin."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1005
+title "Shamper"
+body "I found this little critter half-dead near the reservoir pipes. I took it home and nursed it back to health. I just wish I knew what it was."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1010
+title "Shamper"
+body "It's been eating rats around my apartment. Seems to like the taste of meat."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1015
+title "Shamper"
+body "I wonder how big it'll get."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1020
+title "Shamper"
+body "He's gone! My little critter is gone!"
+cam left restore zip
+talk npc gest_a stay
+startswitch {
+  set Shamper = 4
+  set hovel_poopie = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:1025
+
+#window 16:1025
+title "Shamper"
+body "One second I was checking out a Jane walking by in a Medusa skirt... next thing I know, my little \"Poopie\" had vanished."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:1030
+
+#window 16:1030
+title "Shamper"
+body "I've looked everywhere for him! If you can find him for me, I'll give you a 500 loonie reward."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1035
+title "Shamper"
+body "If you can find my pet critter, I'll give you a 500 loonie reward."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1040
+title "Shamper"
+body "Oh, no!"
+cam left restore zip
+talk npc gest_a stay
+startswitch {
+  set Shamper1 = 5
+  set @shamper_sad = 1
+  extern remove_from_inventory "Poopie's Lifeless Husk"
+  set hovel_poopie = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:1045
+
+#window 16:1045
+title "Shamper"
+body "My poor \"poopie\"... what happened to you, sweetheart? Didn't I tell you this would happen if you ran off like that? You weren't ready for the world."
+cam left restore zip
+talk npc gest_a stay
+finishswitch {
+  extern add_money 500
+  set timed_message = 20
+  got_object$="$500" 
+  gosub 1000:1
+  goto 0:0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1050
+title "Shamper"
+body "Sniff."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:1055
+
+#window 16:1055
+title "Shamper"
+body "It's not right."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1060
+title "Shamper"
+body "A dog ran off with the body."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1202
+title "Ticket Girl"
+body "Look, if you're not going to buy a ticket you're going to have to leave."
+cam left from(PlayerChar0) to(ticket_girl) restore zip
+talk_ex ticket_girl sizzis talk_n amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:1203
+
+#window 16:1203
+title "Jack Sizzis"
+body "Free planet, baby. I know my rights."
+cam left from(PlayerChar0) to(sizzis) restore zip
+talk_ex ticket_girl sizzis amb_a gest_g stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1204
+title "Ticket Girl"
+body "This creep's been ogling me all afternoon."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity ticket_girl ticketgirl_handle
+  extern ANIM_PlayAnim ticketgirl_handle talk_n 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity ticketgirl_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1210
+title "Ticket Girl"
+body "That guy hasn't been back here."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity ticket_girl ticketgirl_handle
+  extern ANIM_PlayAnim ticketgirl_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:1211
+
+#window 16:1211
+title "Ticket Girl"
+body "I kinda miss him."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim ticketgirl_handle gest_c 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity ticketgirl_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1302
+title "Jack Sizzis"
+body "Girl like that shouldn't be working as a ticket girl, don't you think?"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1303
+title "Jack Sizzis"
+body "I'd destroy armies for a girl like that. Look at those eyes. That's the real deal."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1307
+title "Jack Sizzis"
+body "She looks a little like an old girlfriend I used to have. Same attitude."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1308
+title "Jack Sizzis"
+body "She's gettin' me all stirred up. Makes me wanna go home and get creative."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1309
+title "Jack Sizzis"
+body "I could stand here all day. Hey, I think I will."
+cam left restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1505
+title "Mary Kliz"
+body "Nice view, huh? If I was going to kill myself, this is where I'd jump from."
+cam left restore zip
+talk npc talk_y stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1510
+title "Mary Kliz"
+body "People take the one-way dive from up here all the time. It happens pretty often around here."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:1511
+
+#window 16:1511
+title "Mary Kliz"
+body "Really, the only thing stopping me from taking the plunge myself is the new Meatles album coming out next month. I gotta hear it."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1605
+title "Mephad'in DoorLord"
+body "I am a Mephad'in Doorlord."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:1606
+
+#window 16:1606
+title "Mephad'in DoorLord"
+body "I cannot allow you past this door."
+cam left restore zip
+talk npc talk_b stay
+finishswitch {
+  if (FatimaDoorLord == 1)
+    goto 16:1610		                                                                         
+  set MET_DOORLORD = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1610
+title "Fatima"
+body "Okay, fellas. I'd rather not see you eviscerated at just this moment."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 @bootshandle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatima_spawn2
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 playerchar0
+  extern AI_WaitAndFace @bootshandle -1 fatima
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:1611
+
+#window 16:1611
+title "Fatima"
+body "Provoking a Mephad'in DoorLord is not the answer here. We better fish up another way into the tunnels, because this guy's NOT gonna budge."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:1612
+
+#window 16:1612
+title "Fatima"
+body "Hey, what about this \"Eddie\" character I've heard so much about? He's becoming a real underground figure in The Bricks judging by all the \"Eddie Knows\" graffiti we see sprayed everywhere."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:1613
+
+#window 16:1613
+title "Fatima"
+body "Maybe he knows an alternate entrance to the MysTech Tunnels. Worth a try anyway. The worst that can happen is that we get a good contact for future cases, right?"
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:1614
+
+#window 16:1614
+title "Fatima"
+body "But where to find Eddie?"
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  set LEARN_EDDIE = 1
+  extern is_quest_done "Know about Conrad" @knowConrad
+  if (@knowConrad == 1)
+    extern complete_quest "Know about Conrad"
+  if (@knowConrad == 2)
+    extern complete_quest "Talk to Conrad"
+  extern is_quest_done "Find More Info on Eddie" @poop
+  if (@poop == 0)
+    extern add_quest "Find More Info on Eddie"
+  extern is_quest_done "Eddie Knows Tunnels" @poop
+  if (@poop == 0) {
+    extern add_quest "Eddie Knows Tunnels"
+    extern add_quest "How To Get Past Tunnel Guard"
+  }
+  extern add_quest "Conrad Might Know"
+  set FatimaDoorLord = 0
+  set Duela1 = 1
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:1615
+
+#window 16:1615
+title "Fatima"
+if (@knowConrad == 1)
+  body "Hey, do you remember that floater we bumped into outside of Rowdy's? Didn't he mention that his cousin was an informant? If he's on the ball, maybe K'Conrad Khk can point us to this Eddie character. Hell, he might even know how to get into the tunnels."
+if (@knowConrad == 2)
+  body "Hey, what about K'Conrad Khk, that \"information specialist\" we met at the Fountain Overlook? He seems to know his stuff. Maybe he can point us to this Eddie character. Hell, he might even know how to get into the tunnels."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:1616
+
+#window 16:1616
+title "Fatima"
+body "Just a thought. Or two."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity @bootshandle
+  extern AI_DestroyEntity @fatima_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:1630
+title "Mephad'in DoorLord"
+body "So you have knowledge of my brother."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:1631
+
+#window 16:1631
+title "Mephad'in DoorLord"
+body "I do not know how you came to know of him, but you put me in an awkward position...."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:1632
+
+#window 16:1632
+title "Mephad'in DoorLord"
+body "The knowledge you are blackmailing me with must not be exposed under any circumstances. However, I am genetically predisposed to guard this door."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:1633
+
+#window 16:1633
+title "Mephad'in DoorLord"
+body "So where does this put the both of us...?"
+talk_ex doorlord hoom amb_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:1634
+
+#window 16:1634
+title "Mephad'in DoorLord"
+body "Luckily, I have knowledge of an alternate entrance. Under this bridge there is a stream. It leads to a subterranean opening into the tunnels."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:1635
+
+#window 16:1635
+title "Mephad'in DoorLord"
+body "Now take this knowledge and never speak of my brother again."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:1636
+
+#window 16:1636
+title "Mephad'in DoorLord"
+body "Do you wish to enter the MysTech Tunnels?"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set DoorLord2 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+choice "Yes." 16:1640
+choice "No." 16:1645
+
+#window 16:1640
+title "Mephad'in DoorLord"
+body "I hope you enjoy a long, painful death."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern complete_quest "Get Into MysTech Tunnels"
+  extern add_quest "Explore The Tunnels"
+  extern playscene tenements_2_tunnels
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1645
+title "Mephad'in DoorLord"
+body "Then keep away from this door."
+cam left restore zip
+talk npc talk_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1650
+title "Mephad'in DoorLord"
+body "The proprietor of these tunnels has yet to discover the alternate entrance. Do you wish to enter the MysTech Tunnels now?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+choice "Yes." 16:1640
+choice "No." 16:1645
+
+#window 16:1705
+title "Kzak Kzak"
+body "I am small for my age. Want to see?"
+cam left restore zip
+style "style_embrace"
+font "alien"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1710
+title "Kzak Kzak"
+body "I am small for my age. Want to see?"
+cam left restore zip
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1715
+title "Kzak Kzak"
+body "I will grow big for the Joining. It will be my first time. Many hopes I find a mate!"
+cam left restore zip
+style "style_embrace"
+font "alien"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1720
+title "Kzak Kzak"
+body "I will grow big for the Joining. It will be my first time. Many hopes I find a mate!"
+cam left restore zip
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1805
+title "Hermerlian-Ya"
+body "Sir, I'm part of a lobby of concerned citizens. Can we talk for a moment?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:1810
+
+#window 16:1810
+title "Hermerlian-Ya"
+body "A growing number of citizens are concerned with the current state of affairs on Anachronox. We feel the best solution to the crime problem is to come under PAX protection."
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:1811
+
+#window 16:1811
+title "Hermerlian-Ya"
+body "I'm circulating a petition asking the city council to apply for limited PAX membership. Would you be interested in signing it?"
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+choice "Yes?" 16:1815
+choice "No." 16:1820
+
+#window 16:1815
+title "Hermerlian-Ya"
+body "Thank you, sir. I think we're on the right track to turning Anachronox around."
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  set HermerlianYES = 1
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+
+#window 16:1820
+title "Hermerlian-Ya"
+body "Thanks for your time."
+cam left restore zip
+talk npc gest_a stay
+finishswitch {
+  set HermerlianNO = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1825
+title "Hermerlian-Ya"
+body "As much as I'd like it, your signature on my petition wouldn't count."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1405
+title "Cecil DeCruz"
+body "Hope you didn't sign that petition."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:1410
+
+#window 16:1410
+title "Cecil DeCruz"
+body "Joining PAX would only hurt us. We barely have a working economy as it is. If one-fourth of that goes to PAX, it'll put a dent in our livelihood."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:1415
+
+#window 16:1415
+title "Cecil DeCruz"
+body "PAX just isn't cost effective. We'll deal with the crime problem around here on our own. Know what I mean?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:1420
+title "Cecil DeCruz"
+body "Poser."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:2205
+title "Hoom Pradja"
+body "I can't believe it. They've got a Mephad'in DoorLord guarding the entrance to the MysTech Tunnels over there."
+cam left restore zip
+talk npc gest_e stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:2206
+
+#window 16:2206
+title "Hoom Pradja"
+body "I never thought I'd ever see one, especially in a dump like The Bricks. Such a majestic creature. Take a look."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:2210
+title "Hoom Pradja"
+body "Thousands of years of natural selection have perfected a race of flawless guards."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:2211
+
+#window 16:2211
+title "Hoom Pradja"
+body "While they're still in the womb, they're taught to keep watch over their mother while she sleeps by listening through her stomach, and warning her of danger by kicking."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:2215
+
+#window 16:2215
+title "Hoom Pradja"
+body "Their word for door literally translates into \"protect\"."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:2216
+
+#window 16:2216
+title "Hoom Pradja"
+body "He is physically incapable of letting anyone past that door without sacrificing his own life in the process."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:2217
+
+#window 16:2217
+title "Hoom Pradja"
+body "Isn't that awesome? Makes you wonder what's in the tunnels. I mean, aside from MysTech."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:2220
+title "Hoom Pradja"
+body "Did you know that Detta collects MysTech? He's got a huge collection. Funny that a thug like that would be into antiques."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:2221
+
+#window 16:2221
+title "Hoom Pradja"
+body "He's been sending his boys in there with cardboard boxes."
+cam left restore zip
+talk npc gest_e stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:2222
+
+#window 16:2222
+title "Hoom Pradja"
+body "Some of 'em come back with MysTech."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:2223
+
+#window 16:2223
+title "Hoom Pradja"
+body "Some come back without their arms."
+cam left restore zip
+talk npc talk_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:2224
+
+#window 16:2224
+title "Hoom Pradja"
+body "Some don't come back at all."
+cam left restore zip
+talk npc gest_f stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:2225
+
+#window 16:2225
+title "Hoom Pradja"
+body "Now they're sending in work-for-hires. They come back empty-handed."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:2230
+title "Hoom Pradja"
+body "Should I go talk to him?"
+cam left restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:2235
+title "Hoom Pradja"
+body "Betcha Eddie would know how to get past him."
+cam left restore zip
+talk npc gest_b stay
+startswitch {
+  set LEARN_EDDIE = 1
+  set MET_DOORLORD = 1
+  extern is_quest_done "Find More Info on Eddie" @poop
+  if (@poop == 0)
+    extern add_quest "Find More Info on Eddie"
+  if (FatimaDoorLord == 1) {
+    extern is_quest_done "How To Get Past Tunnel Guard" @tacoDick
+    if (@tacoDick == 0)
+      extern add_quest "How To Get Past Tunnel Guard"
+    extern is_quest_done "Eddie Knows Tunnels" @tacoSlit
+    if (@tacoSlit == 0)
+      extern add_quest "Eddie Knows Tunnels"
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:2240
+title "Hoom Pradja"
+body "He waltzed into my life and now he's gone."
+cam left restore zip
+talk npc gest_f stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:2405
+title "Fatima"
+body "Okay, fellas. Since the entrance to the MysTech Tunnels is blocked by a Mephad'in DoorLord, we better fish up another way into the tunnels because he's NOT gonna budge."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 @bootshandle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 playerchar0
+  extern AI_WaitAndFace @bootshandle -1 fatima
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:2407
+
+#window 16:2407
+title "Fatima"
+body "Hey, what about this \"Eddie\" character I've heard so much about? He's becoming a real underground figure in The Bricks judging by all the \"Eddie Knows\" graffiti we see sprayed everywhere."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:2408
+
+#window 16:2408
+title "Fatima"
+body "Maybe he knows an alternate entrance to the MysTech Tunnels. Worth a try anyway. The worst that can happen is that we get a good contact for future cases, right?"
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:2409
+
+#window 16:2409
+title "Fatima"
+body "But where to find Eddie?"
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  set LEARN_EDDIE = 1
+  extern is_quest_done "Know about Conrad" @knowConrad
+  if (@knowConrad == 1)
+    extern complete_quest "Know about Conrad"
+  if (@knowConrad == 2)
+    extern complete_quest "Talk to Conrad"
+  extern is_quest_done "Find More Info on Eddie" @poop
+  if (@poop == 0)
+    extern add_quest "Find More Info on Eddie"
+  extern add_quest "How To Get Past Tunnel Guard"
+  extern add_quest "Eddie Knows Tunnels"
+  extern add_quest "Conrad Might Know"
+  set Duela1 = 1
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:2410
+
+#window 16:2410
+title "Fatima"
+if (@knowConrad == 1)
+  body "Hey, do you remember that floater we bumped into outside of Rowdy's? Didn't he mention that his cousin was an informant? If he's on the ball, maybe K'Conrad Khk can point us to this Eddie character. Hell, he might even know how to get into the tunnels."
+if (@knowConrad == 2)
+  body "Hey, what about K'Conrad Khk, that \"information specialist\" we met at the Fountain Overlook? He seems to know his stuff. Maybe he can point us to this Eddie character. Hell, he might even know how to get into the tunnels."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:2411
+
+#window 16:2411
+title "Fatima"
+body "Just a thought. Or two."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity @bootshandle
+  extern AI_DestroyEntity @fatima_handle
+  set FATIMA_TENEMENTS_HINT = 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:2415
+title "Fatima"
+body "Okay, so the MysTech Tunnels are right down this street. Just make a left at the fork, and follow the path down."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 @bootshandle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 playerchar0
+  extern AI_WaitAndFace @bootshandle -1 fatima
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:2416
+
+#window 16:2416
+title "Fatima"
+if (func_charinparty[boots] == 3)
+  body "Even YOU can't get lost, Boots... but good luck anyway."
+if (func_charinparty[grumpos] == 3)
+  body "Even Boots wouldn't get lost, but good luck anyway."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity @bootshandle
+  extern AI_DestroyEntity @fatima_handle
+  set FatimaDoorLord = 1
+  set FATIMA_TENEMENTS_HINT = 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:2505
+title "Henderson"
+body "I keep seeing these spray painted everywhere. Who the hell is Eddie?"
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  extern AI_GrabEntity PlayerChar0 playerhandle
+  extern AI_WaitAndFace playerhandle -1 eddie_knows
+  set LEARN_EDDIE = 1
+  extern is_quest_done "Find More Info on Eddie" @poop
+  if (@poop == 0)
+    extern add_quest "Find More Info on Eddie"
+}
+
+finishswitch {
+  extern AI_ReleaseEntity playerhandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:2510
+title "Henderson"
+body "MysTech Tunnels?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:2511
+
+#window 16:2511
+title "Henderson"
+body "Yeah, there's a DoorLord guarding the entrance to them just around the corner."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:3054
+body "Thank you for using Cordicom!"
+style "NULL"
+font "prochars"
+xpos 305
+ypos 340
+
+#window 16:3056
+body "CORDICOM CLASS 2."
+style "box3"
+font "brebulan"
+xpos 305
+ypos 360
+
+#window 16:3058
+body "Certified WSC-1009 compliant, inspection 7449L. Cordicom Inc. ID#2828225"
+style "NULL"
+font "procharl"
+xpos 325
+ypos 380
+
+#window 16:3005
+startswitch {
+  set tene_countertimer = func_timer
+}
+
+thinkswitch {
+  set tene_functimer = func_timer
+  if (tene_functimer > (tene_countertimer + 8000)) {
+    set tene_getonelev = 1
+    closewindow 16:3005
+  }
+}
+
+style "null"
+flags passive, TRUE
+
+#window 16:3008
+title "Cordicom Class 2, Model-512a"
+body "Please try to use the elevator again when it has arrived and come to a complete stop."
+style "null"
+font "_anox10"
+
+#window 16:3205
+title "Russ Plott"
+if (func_charinparty[paco] != 3)
+  body "Hey, you're really tall. Okay, not really, but I was trying to round up some guys to play FourHoop at the park. Interested?"
+if (func_charinparty[paco] == 3)
+  body "Holy COW, you gotta be on my team. I'm rounding up some guys to play FourHoop at the park. Interested?"
+cam left restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (func_charinparty[boots] == 3)
+  choice "You're on, Sally. I'll hoop-style straight in your FACE." 16:3210
+if (func_charinparty[grumpos] == 3)
+  choice "Don't let my height fool you. I'll hoop-style your FACE, son." 16:3210
+if (func_charinparty[paco] == 3)
+  choice "Yes." 16:3210
+if (func_charinparty[boots] == 3)
+  choice "Naw... FourHoop's for losers." 16:3215
+if (func_charinparty[grumpos] == 3)
+  choice "Forget it. FourHoop's for losers, little boy." 16:3215
+if (func_charinparty[paco] == 3)
+  choice "No." 16:3215
+
+#window 16:3210
+title "Russ Plott"
+body "Meet us at NoxPark Twelve around seven o'clock. Tell your friends. Oh, and bring a gun."
+cam left restore zip
+talk npc gest_b stay
+finishswitch {
+  set RussYES = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:3215
+title "Russ Plott"
+if ((func_charinparty[boots] == 3) || (func_charinparty[grumpos] == 3))
+  body "I know. That's why I asked you."
+if (func_charinparty[paco] == 3)
+  body "But you would hoop-style straight in everyone's FACE! Oh, well..."
+cam left restore zip
+talk npc gest_b stay
+finishswitch {
+  set RussNO = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:3220
+title "Russ Plott"
+body "Hey. Lemme talk to one of the boys."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:3225
+title "Russ Plott"
+body "Whatever, boytoy. You ain't got the straight arm for FourHoop."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:3305
+title "Tuan Emanji"
+body "Looking at that Bilifiga up there is giving me awful flashbacks."
+cam left restore zip
+talk npc gest_f stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:3310
+title "Tuan Emanji"
+body "The reproductive process of their species requires both the male and female to gestate half the egg..."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:3315
+
+#window 16:3315
+title "Tuan Emanji"
+body "They conjoin their infant by lining up their rather complicated, uh, plumbing in one of the most disgusting processes in the galaxy."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:3316
+
+#window 16:3316
+title "Tuan Emanji"
+body "I should know, I was a Syrup Mopper at a Bilifigan hospital for three months."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:3320
+title "Tuan Emanji"
+body "I couldn't hack it. I get sick just thinking about it."
+cam left restore zip
+talk npc gest_f stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:5205
+title "NoxGuard"
+body "Didn't I warn you about loitering in front of Joe's?"
+cam left from(PlayerChar0) to(noxema) restore zip
+talk_ex noxema joe talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:5206
+
+#window 16:5206
+title "Joe"
+body "Eat me. I own this place, you big penis."
+if (GOT_GRUMPOS)
+  xyprintfx 200, 100, 1, 0.300000011921, 0.899999976158, 1, anox7, "[LINGUINATOR ERROR: Unrecognized dialect.]"
+cam left from(PlayerChar0) to(joe) restore zip
+talk_ex noxema joe amb_a talk_a stay stay
+style "style_embrace"
+font "brebulan"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:5207
+
+#window 16:5207
+title "NoxGuard"
+body "Don't talk back to me, son. You do NOT wanna talk back to me. Remember what happened last time you talked back to me?"
+cam left from(PlayerChar0) to(noxema) restore zip
+talk_ex noxema joe talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:5208
+
+#window 16:5208
+title "Joe"
+body "I went out with your mother?"
+if (GOT_GRUMPOS)
+  xyprintfx 200, 100, 1, 0.300000011921, 0.899999976158, 1, anox7, "[LINGUINATOR ERROR: Unrecognized dialect.]"
+cam left from(PlayerChar0) to(joe) restore zip
+talk_ex noxema joe amb_a talk_a stay stay
+style "style_embrace"
+font "brebulan"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:5209
+
+#window 16:5209
+title "NoxGuard"
+body "HEY!"
+cam left from(PlayerChar0) to(noxema) restore zip
+talk_ex noxema joe talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:5210
+
+#window 16:5210
+title "NoxGuard"
+body "You better watch that mouth, or I'll hammer out all three-hundred of your teeth."
+cam left from(PlayerChar0) to(noxema) restore zip
+talk_ex noxema joe talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:5211
+
+#window 16:5211
+title "NoxGuard"
+body "Understand?"
+cam left from(PlayerChar0) to(noxema) restore zip
+talk_ex noxema joe talk_a amb_a stay stay
+finishswitch {
+  set Noxema1 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:5215
+title "NoxGuard"
+body "That's how you gotta handle these Brebulans. They're as stubborn as they are stupid."
+cam left from(PlayerChar0) to(noxema) restore zip
+startswitch {
+  extern AI_GrabEntity noxema noxema_handle
+  extern AI_WaitAndFace noxema_handle -1 PlayerChar0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:5216
+
+#window 16:5216
+title "Joe"
+body "Kiss my ass."
+if (GOT_GRUMPOS)
+  xyprintfx 200, 100, 1, 0.300000011921, 0.899999976158, 1, anox7, "[LINGUINATOR ERROR: Unrecognized dialect.]"
+cam left from(PlayerChar0) to(joe) restore zip
+style "style_embrace"
+font "brebulan"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:5217
+
+#window 16:5217
+title "NoxGuard"
+body "What did you say to me?!"
+cam left from(PlayerChar0) to(noxema) restore zip
+startswitch {
+  extern AI_WaitAndFace noxema_handle -1 joe
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:5218
+
+#window 16:5218
+title "Joe"
+body "Kiss my ass."
+if (GOT_GRUMPOS)
+  xyprintfx 200, 100, 1, 0.300000011921, 0.899999976158, 1, anox7, "[LINGUINATOR ERROR: Unrecognized dialect.]"
+cam left from(PlayerChar0) to(joe) restore zip
+talk_ex noxema joe amb_a talk_a stay stay
+style "style_embrace"
+font "brebulan"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:5219
+
+#window 16:5219
+title "NoxGuard"
+body "That's right. I didn't think so."
+cam left from(PlayerChar0) to(noxema) restore zip
+talk_ex noxema joe amb_a talk_a stay stay
+startswitch {
+  extern AI_ReleaseEntity noxema_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:5220
+title "NoxGuard"
+body "What're you still doing here? Didn't I warn you to beat it?"
+cam left from(PlayerChar0) to(noxema) restore zip
+talk_ex noxema joe talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:5221
+
+#window 16:5221
+title "Joe"
+if (@labbe == 0)
+  body "What are it gonna do? Do you strike me? Skin Brebulan is more durable than everything you can arrange on it."
+if (@labbe == 1)
+  body "What're you gonna do? Hit me? Brebulan skin is tougher than anything you can dish out."
+cam left from(PlayerChar0) to(joe) restore zip
+talk_ex noxema joe amb_a talk_a stay stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:5222
+
+#window 16:5222
+title "Joe"
+if (@labbe == 0)
+  body "Your blows will not hurt me that and you it knows. That is why you won't me strike if stranger watches."
+if (@labbe == 1)
+  body "Your blows won't hurt me and you know it. That's why you won't strike me in front of this stranger."
+cam left from(PlayerChar0) to(joe) restore zip
+talk_ex noxema joe amb_a talk_a stay stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:5223
+
+#window 16:5223
+title "NoxGuard"
+body "Then how about I run you into the station and hook you up to the ol' pseuponic combine?"
+cam left from(PlayerChar0) to(noxema) restore zip
+talk_ex noxema joe talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:5224
+
+#window 16:5224
+title "Joe"
+body "Oh, no! Not the tickle machine!"
+cam left from(PlayerChar0) to(joe) restore zip
+talk_ex noxema joe amb_a talk_a stay stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:5405
+title "Dr. Viehio Ashen"
+body "The scientific community MUST be given access to these tunnels."
+cam left from(PlayerChar0) to(viehio) restore zip
+talk_ex noxidental viehio amb_a talk_a stay stay
+startswitch {
+  extern AI_GrabEntity PlayerChar0 boots_handle
+  extern AI_WaitAndFace boots_handle -1 viehio
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:5406
+
+#window 16:5406
+title "Dr. Viehio Ashen"
+body "How can this Detta character just stake his claim on public property with a wave of his hand?"
+cam left from(PlayerChar0) to(viehio) restore zip
+talk_ex noxidental viehio amb_a talk_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:5407
+
+#window 16:5407
+title "NoxGuard"
+body "You just don't understand, do you?"
+cam left from(PlayerChar0) to(noxidental) restore zip
+talk_ex noxidental viehio talk_a amb_a stay stay
+startswitch {
+  extern AI_WaitAndFace boots_handle -1 noxidental
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:5408
+
+#window 16:5408
+title "Dr. Viehio Ashen"
+body "Why don't you make me understand, officer?"
+cam left from(PlayerChar0) to(viehio) restore zip
+talk_ex noxidental viehio amb_a talk_a stay stay
+startswitch {
+  extern AI_WaitAndFace boots_handle -1 viehio
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:5409
+
+#window 16:5409
+title "NoxGuard"
+body "I'd love to. As soon as this guy gets out of hearing range."
+cam left from(PlayerChar0) to(noxidental) restore zip
+talk_ex noxidental viehio talk_a amb_a stay stay
+startswitch {
+  extern AI_WaitAndFace boots_handle -1 noxidental
+}
+
+finishswitch {
+  extern AI_ReleaseEntity boots_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:5410
+title "NoxGuard"
+body "Beat it, butt steak. I'm about to get my evening exercise."
+cam left from(PlayerChar0) to(noxidental) restore zip
+startswitch {
+  extern AI_GrabEntity noxidental nox_handle
+  extern AI_WaitAndFace nox_handle -1 PlayerChar0
+  extern AI_GrabEntity PlayerChar0 boots_handle
+  extern AI_WaitAndFace boots_handle -1 noxidental
+}
+
+finishswitch {
+  extern AI_ReleaseEntity nox_handle
+  extern AI_ReleaseEntity boots_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:4002
+title "Follow Lucko?", PlayerChar0$
+body "Would you like to wait for Lucko to come out again?"
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Yes" 16:4004
+choice "No" 16:4003
+
+#window 16:6001
+title "Grumpos"
+body "%s", WTextW$
+startswitch {
+  set Gen_Bod = 5
+  gosub 100:10
+}
+
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 40
+ypos 410
+width 560
+
+#window 16:6005
+title "Grumpos"
+body "%s", WTextW$
+startswitch {
+  set Gen_Bod = 6
+  gosub 100:10
+}
+
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 40
+ypos 410
+width 560
+
+#window 16:6010
+title "Grumpos"
+body "%s", WTextW$
+startswitch {
+  set Gen_Bod = 7
+  gosub 100:10
+}
+
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 40
+ypos 410
+width 560
+
+#window 16:6015
+title "Grumpos"
+body "%s", WTextW$
+startswitch {
+  set Gen_Bod = 8
+  gosub 100:10
+}
+
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 40
+ypos 410
+width 560
+
+#window 16:6020
+title "Boots"
+body "%s", WTextW$
+startswitch {
+  set Gen_Bod = 9
+  gosub 100:10
+}
+
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 40
+ypos 410
+width 560
+
+#window 16:6030
+title "Grumpos"
+body "%s", WTextW$
+startswitch {
+  set Gen_Bod = 10
+  gosub 100:10
+}
+
+finishswitch {
+  set Lucko_Caught_Boots = 3
+  gosub 100:1
+}
+
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 40
+ypos 410
+width 560
+
+#window 16:6031
+title "Grumpos"
+body "Okay... there's the place."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 560
+
+#window 16:6035
+title "Grumpos"
+body "Don't follow him from too far a distance and lose him. But don't stick too close and get caught either."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 560
+
+#window 16:6040
+title "Grumpos"
+body "I already gave that Time Minder a quick pet for good luck as we passed it so we're ready to go."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 560
+
+#window 16:6045
+title "Grumpos"
+body "Don't let me down."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 560
+
+#window 16:6050
+title "Boots"
+body "This is what I do best, pops. Stay off my back, and I'll handle this lightly and politely."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 560
+
+#window 16:6055
+title "Grumpos"
+body "Quiet! Here he comes."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 560
+
+#window 16:5605
+title "K'Dekra"
+body "Kind regards and salutations."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:5606
+
+#window 16:5606
+title "K'Dekra"
+body "I have in my possession the greatest repetition in nature. That is to say, a homogenous solid of pure mesmerization. A prism of zero imperfection. I was rapt from the first."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 16:5607
+
+#window 16:5607
+title "K'Dekra"
+if ((tenements_gotdekra == 0) && (@partycash >= 3000))
+  body "I have a prism most perfect. Would you like to purchase it?"
+if (tenements_gotdekra)
+  body "I can offer you no more."
+if ((tenements_gotdekra == 0) && (@partycash < 3000))
+  body "Unfortunately, I do not talk to the indigent. Acquire currency, then return to me."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern check_money @partycash
+  set KDekra1 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if ((tenements_gotdekra == 0) && (@partycash >= 3000))
+  choice "You bet, horsefly." 16:5610
+if ((tenements_gotdekra == 0) && (@partycash >= 3000))
+  choice "Forget it." 16:5615
+
+#window 16:5610
+title "K'Dekra"
+body "It holds and shapes the purest of light. Quite helpful in meditation. Enjoy."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern addnew_to_inventory "Dodecahedral Prism"
+  extern remove_money 3000
+  set tenements_gotdekra = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:5615
+title "K'Dekra"
+body "You fear the brilliance. The knowledge. The understanding."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:5620
+title "K'Dekra"
+body "Do not befoul me with your presence."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+nextwindow 16:5621
+
+#window 16:5621
+title "K'Dekra"
+body "I will speak only with the student of the School of Order... the oldest among you."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 16:5625
+title "K'Dekra"
+body "I can offer you no more."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:5701
+title "Welcome to the Bricks' Finest Taxi Service"
+body "We provide the safest solution to your transition problems with fast, efficient service and the latest in plate calculation technology. Choose your destination:"
+cam left to(taximeter) lift(40) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Rowdy's" 16:5710
+choice "Anachronox Tours" 16:5711
+choice "Platform Area" 16:5713
+choice "No thanks." 0:0
+
+#window 16:5715
+title "Welcome to the Bricks' Finest Taxi Service"
+body "Initial charge $2 x 1/13 mile charge: $0.10 waiting time (every 45 seconds): $0.10. \nEstimated route charge: $4 \nTOTAL: $6"
+cam left to(taximeter) lift(40) restore zip
+startswitch {
+  extern check_money @party_cash
+}
+
+finishswitch {
+  if (@party_cash < 6)
+    goto 16:5725		                       
+  goto 16:5720
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 16:5725
+title "Welcome to the Bricks' Finest Taxi Service"
+body "Insufficient funds. Get a job, you bum."
+cam left to(taximeter) lift(40) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#switch 16:1
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .6 1 1
+set CURRENT_PLANET = 1
+set CURRENT_BANK = 16
+set anox_interface_active = 0
+extern resetbattle mystech10
+extern resetbattle mystech11
+extern resetbattle mystech12
+extern resetbattle mystech13
+extern resetbattle mystech14
+extern resetbattle mystech15
+extern resetbattle mystech16
+extern resetbattle mystech17
+extern resetbattle mystech18
+extern resetbattle mystech19
+extern resetbattle mystech110
+extern resetbattle mystech111
+extern resetbattle mystech112
+extern resetbattle mystech113
+extern resetbattle mystech115
+extern loopambient ambi_tenements_automap
+gosub 16:3005                                                              
+extern playlevelmusic mp3/bricks/bricks_normal_1_0.mp3
+if (got_museum_card == 0) {
+  extern is_in_inventory "MysTech Museum Member Card" @got_museum_card
+  if (@got_museum_card == 1)
+    set got_museum_card = 1
+}
+if ((TAXI_ACTIVE == 1) && (PRE_DETTA < 1)) {
+  extern AI_SpawnEntity @taxicab_handle ob_taxi taximeter 16:5701
+  extern AI_SetXYZ @taxicab_handle -1907 2716 -1597
+  extern AI_ReleaseEntity @taxicab_handle
+  if (TAXI_ON_ROUTE == 0)
+    extern loopambient tenements_taxi_ambi
+  gosub 16:0008
+}
+if (briefcase_follow_mode == 2)
+  gosub 100:1
+gosub 16:0003
+if (GOT_GRUMPOS && (ADDED_GRUMPOS == 0))
+  goto 16:0005                                                                                                                        
+
+#switch 16:3
+if (PRE_DETTA == 0)
+  extern loopambient ambi_tenements_plate
+if (PRE_DETTA == 1)
+  extern loopambient ambi_tenements_plate_detta
+if (PRE_DETTA) {
+  extern AI_GrabEntity 16:1201 @ticket_handle
+  extern entkey @ticket_handle "sequence" ""
+  extern AI_ReleaseEntity @ticket_handle
+}
+extern is_in_inventory "Recycler Shieldcell" @recycle_doodle1
+extern is_equipped "Recycler Shieldcell" @recycle_doodle2
+set @recycle_doodle = (@recycle_doodle1 + @recycle_doodle2)
+if (@recycle_doodle < 1)
+  extern resetbattle mystech114
+goto 0:0
+
+#switch 16:5
+set ADDED_GRUMPOS = 1
+extern add_npc_to_party Grumpos
+extern addnew_to_inventory "Vistin StaffCap"
+extern set_party_leader grumpos
+extern add_battle_skill "Yammer"
+extern forceplayerlevel Grumpos 3
+extern equip_item "Vistin Staffcap"
+extern set_party_leader boots
+extern add_quest "Get Into MysTech Tunnels"
+goto 16:0006
+
+#switch 16:7
+goto 980:1			               
+
+#switch 16:8
+if (TAXI_ON_ROUTE == 1) {
+  set TAXI_ON_ROUTE = 0
+  set TAXI_TO_BRICKSD = 0
+  set TAXI_TO_TENEMENTS = 0
+  set TAXI_TO_BRICKSB = 0
+  set TAXI_TO_TOURS = 0
+  extern playscene TENEMENTS_TAXI_LANDING 0 16:5735
+}
+
+#switch 16:101
+set Noxer1 = (Noxer1 + 1)
+if (Noxer2 == 1)
+  goto 16:0120
+if (MYSTECH_ACTIVE == 1)
+  goto 16:0125
+if (Noxer3 == 1)
+  goto 16:0120
+if (MET_GRUMPOS > 0)
+  goto 16:0105
+if (Noxer1 > 1)
+  goto 16:0120
+goto 16:0105                                 
+
+#switch 16:4545
+if (tenements_yammered_alleyguard)
+  goto 16:4547
+WS_STAND$="grumpos_skill_1" 
+ws_yammeree$="16:0101" 
+set ws_bank = 16
+set ws_entry = 4546
+ws_outofway$="" 
+ws_yammer1$="I was once like you. I was once a master of my profession. In my day, you did what you had to do. Me? I had to clean off Guttercars. Not the most pleasant work, but it beats the slimeshift on the honeywagons, ya know. No chocolate 'n' lemon juice detail for me. I'd be knee-deep in lunchchunks before my shift was over." 
+ws_yammer2$="Guttercars, as I'm sure you've read in the literature, are the means of travel of all gastropod races on Cordica, sort of a \"Little Tentac X\", if you will. All these races excrete a slimy substance from their underbellies, so as not to harm the soft flesh as they travel over coarse terrain." 
+ws_yammer3$="Well, they don't stop the exudation while racing through the Travel Gutters under the city, so when they step out of their vehicles, it's akin to piercing a balloon filled with mucus and old milk. Of course, as Guttercar Cleaner, I'm on my knees with a couple stiff towels and a ladle." 
+ws_yammer4$="I'd look up at the stars through the dripping sluicepipes, and dream of another world, another day, where I may one different choice and would've led a different life.  Where I could sit naked on a meadow, rubbing my rotund little belly, cleaning out the toejam from my hairy little feet with a stalk of grain." 
+ws_yammer5$="I'd relax, humming a tune I don't quite know, feelin' the breeze ticklin' mah goose. Overhead, flocks of delicate sleebirds would wing, calling each other, a graceful V in the skies, each eyeing the world at a grand whole... to them, a simple, natural life of flight and feeding, of grace and nourishment." 
+ws_yammer6$="But then I'd awaken from that world, look down at the my crust accumulated on my boots, cursing the thought that morning that that worn patch probably wouldn't wear through, the milky-clear juices making their way inside, squishing between my toes. I knew I'd feel THAT all day. Takes three washings just to put a SHINE on that stuff, much less get it off completely. Hah!" 
+ws_yammer7$="Yeah, I recall working four shifts in a row once. Very traumatic. I'd forgotten my kneepads that day, and my skin bloodied, then wore through, and my patellas came right off. You know, kneecaps are actually kinda cute when you get to look at 'em. Some nearby gutter rats were feeding on the exudate, so I caught a couple, and made little hats for them out of my patellas and some kneepad strips. Just DARling." 
+ws_yammer8$="I have some pictures if you'd--" 
+ws_yammeredname$="Nox Grumbleguard" 
+ws_yammer_response$="Klaz! SHUT UP! That's it, I'm gonna shove this bug in your damn mouth!" 
+gosub 4102:1
+goto 0:0
+
+#switch 16:4546
+extern getbug CobaltCrawler 7
+set tenements_yammered_alleyguard = 1
+set timed_message = 20
+got_object$="Cobalt Crawler" 
+gosub 1000:1
+goto 0:0
+
+#switch 16:201
+set Noxgarden1 = (Noxgarden1 + 1)
+extern is_quest_done "Get Stuff to Grumpos" @talkBoutHELM
+if (PRE_DETTA == 1)
+  goto 16:0220
+if ((MET_GRUMPOS > 0) && (@talkBoutHELM == 0))
+  goto 16:0215
+if (Noxgarden1 > 1)
+  goto 16:0210
+goto 16:0205                                 
+
+#switch 16:401
+if (PRE_DETTA > 0)
+  goto 16:0430
+if (MYSTECH_ONLY > 0)
+  goto 16:0425
+if (Poloz1 > 0)
+  goto 16:0420
+if (INV_LINGUINATOR > 0)
+  goto 16:0410
+goto 16:0405                                 
+
+#switch 16:415
+extern check_money money_poloz
+if (money_poloz < 1)
+  goto 16:0417
+goto 16:0416
+
+#switch 16:2301
+if ((((AM_2_bricksc == 1) || (AM_2_mystech == 1)) || (AM_2_hovel == 1)) || (AM_2_ghallas == 1))
+  goto 0:0
+goto 16:2305
+
+#switch 16:2325
+extern stopambient ambi_tenements_automap
+set AM_2_bricksc = 1
+set AM_2_casinox = 1
+extern playambient automap_tenements_2_bricksc2
+
+#switch 16:2326
+extern check_money @partycash
+if (@partycash < 1)
+  goto 16:2385
+goto 16:2327
+
+#switch 16:2330
+extern stopambient ambi_tenements_automap
+set AM_2_ghallas = 1
+extern playambient automap_tenements_2_bricksc2
+
+#switch 16:2331
+extern check_money @partycash
+if (@partycash < 1)
+  goto 16:2385
+goto 16:2332
+
+#switch 16:2335
+extern stopambient ambi_tenements_automap
+set AM_2_hovel = 1
+extern playambient automap_tenements_2_bricksc2
+
+#switch 16:2336
+extern check_money @partycash
+if (@partycash < 1)
+  goto 16:2385
+goto 16:2337
+
+#switch 16:2340
+extern stopambient ambi_tenements_automap
+set AM_2_bricksc = 1
+set AM_2_bricksd = 1
+set AM_2_museum = 1
+extern playambient automap_tenements_2_bricksc2
+
+#switch 16:2341
+extern check_money @partycash
+if (@partycash < 1)
+  goto 16:2385
+goto 16:2342
+
+#switch 16:2345
+extern stopambient ambi_tenements_automap
+set AM_2_mystech = 1
+extern playambient automap_2_mystech 0 16:2390
+
+#switch 16:2346
+extern check_money @partycash
+if (@partycash < 1)
+  goto 16:2385
+goto 16:2347
+
+#switch 16:2350
+extern stopambient ambi_tenements_automap
+set AM_2_bricksc = 1
+set AM_2_bricksd = 1
+set AM_2_rowdys = 1
+extern playambient automap_tenements_2_bricksc2
+
+#switch 16:2351
+extern check_money @partycash
+if (@partycash < 1)
+  goto 16:2385
+goto 16:2352
+
+#switch 16:2355
+extern stopambient ambi_tenements_automap
+set AM_2_bricksc = 1
+set AM_2_toursmap = 1
+set AM_2_tours = 1
+extern playambient automap_tenements_2_bricksc2
+
+#switch 16:2356
+extern check_money @partycash
+if (@partycash < 1)
+  goto 16:2385
+goto 16:2357
+
+#switch 16:2360
+extern stopambient ambi_tenements_automap
+set AM_2_bricksc = 1
+set AM_2_bricksd = 1
+set AM_2_whacks = 1
+extern playambient automap_tenements_2_bricksc2
+
+#switch 16:2361
+extern check_money @partycash
+if (@partycash < 1)
+  goto 16:2385
+goto 16:2362
+
+#switch 16:2365
+extern stopambient ambi_tenements_automap
+set AM_2_bricksc = 1
+set AM_2_bricksd = 1
+set AM_2_zordos = 1
+extern playambient automap_tenements_2_bricksc2
+
+#switch 16:2366
+extern check_money @partycash
+if (@partycash < 1)
+  goto 16:2385
+goto 16:2367
+
+#switch 16:2375
+extern check_money @partycash
+if (@partycash < 1)
+  goto 16:2385
+goto 16:2376
+
+#switch 16:2380
+extern stopambient ambi_tenements_automap
+
+#switch 16:2390
+extern loopambient ambi_tenements_automap
+
+#switch 16:2395
+extern check_money @partycash
+if (@partycash < 1)
+  goto 16:2385
+goto 16:2397
+
+#switch 16:2396
+set AM_2_platform = 1
+extern playambient automap_tenements_2_bricksc2
+
+#switch 16:901
+extern AI_GrabEntity skitter skitter_handle
+extern ANIM_PlayAnim skitter_handle atak2_b 0 1 0
+extern playsound battle/monster_skitter/monster_skitter_jump.wav
+extern AI_ReleaseEntity skitter_handle
+
+#switch 16:1001
+if (Shamper1 < 3)
+  set Shamper1 = (Shamper1 + 1)
+extern is_in_inventory "Poopie's Lifeless Husk" @plh
+if ((Shamper1 == 5) && @shamper_sad)
+  goto 16:1050		                    
+if (Shamper1 == 5)
+  goto 16:1060						                             
+if (@plh)
+  goto 16:1040								                  
+if (mystech_active && (Shamper1 == 4))
+  goto 16:1035	                     
+if (mystech_active && (Shamper1 <= 3))
+  goto 16:1020	                                                               
+if (func_charinparty[grumpos] >= 2)
+  goto 16:1003
+if (Shamper1 > 2)
+  goto 16:1015
+if (Shamper1 > 1)
+  goto 16:1010
+goto 16:1005                                 
+
+#switch 16:1108
+target mystechdoor
+if (met_detta == 1)
+  goto 0:0
+extern AI_GrabEntity doorlord doorlord_handle
+extern AI_SeekAndFace doorlord_handle peepee PlayerChar0
+extern AI_ReleaseEntity doorlord_handle
+
+#switch 16:1109
+if (met_detta == 1)
+  goto 0:0
+extern AI_GrabEntity doorlord doorlord_handle
+extern AI_SeekAndFace doorlord_handle doorlordcorner1 PlayerChar0
+extern AI_ReleaseEntity doorlord_handle
+
+#switch 16:1230
+if (met_detta == 1) {
+  console "target mystechdoor"
+  goto 0:0
+}
+
+#switch 16:1201
+if (Ticket2 == 1)
+  goto 16:1210
+set Ticket1 = (Ticket1 + 1)
+if (Ticket1 > 1)
+  goto 16:1204
+goto 16:1202                                 
+
+#switch 16:1301
+set Sizzis1 = (Sizzis1 + 1)
+if (Sizzis1 > 4)
+  goto 16:1309
+if (Sizzis1 > 3)
+  goto 16:1308
+if (Sizzis1 > 2)
+  goto 16:1307
+if (Sizzis1 > 1)
+  goto 16:1303
+goto 16:1302                                 
+
+#switch 16:1501
+set Kliz1 = (Kliz1 + 1)
+if (Kliz1 > 2)
+  goto 16:1511
+if (Kliz1 > 1)
+  goto 16:1510
+goto 16:1505                                 
+
+#switch 16:1601
+set DoorLord1 = (DoorLord1 + 1)
+if (DoorLord2 > 0)
+  goto 16:1650
+if (MET_EDDIE > 0)
+  goto 16:1630
+goto 16:1605                                 
+
+#switch 16:1701
+set Kzak1 = (Kzak1 + 1)
+if ((Kzak1 > 2) && (INV_LINGUINATOR == 1))
+  goto 16:1710
+if ((Kzak1 > 1) && (INV_LINGUINATOR == 1))
+  goto 16:1720
+if (INV_LINGUINATOR == 1)
+  goto 16:1710
+if (Kzak1 > 2)
+  goto 16:1705
+if (Kzak1 > 1)
+  goto 16:1715
+goto 16:1705
+
+#switch 16:1801
+set Hermerlian1 = 1
+if ((func_charinparty[pal] == 3) || (func_charinparty[democratus] == 3))
+  goto 16:1825
+if (HermerlianYES == 1)
+  goto 16:1815
+if (HermerlianNO == 1)
+  goto 16:1820
+goto 16:1805                                 
+
+#switch 16:1401
+if (Hermerlian1 < 1)
+  goto 16:1420
+set Cecil1 = (Cecil1 + 1)
+if (Cecil1 > 1)
+  goto 16:1420
+goto 16:1405                                 
+
+#switch 16:2201
+set Hoom1 = (Hoom1 + 1)
+if (MET_DETTA == 1)
+  goto 16:2240
+if (Hoom1 > 4)
+  goto 16:2235
+if (Hoom1 > 3)
+  goto 16:2230
+if (Hoom1 > 2)
+  goto 16:2220
+if (Hoom1 > 1)
+  goto 16:2210
+goto 16:2205                                 
+
+#switch 16:2401
+if ((FATIMA_TENEMENTS_HINT == 1) && (MET_DOORLORD == 1))
+  goto 16:2405		                                                                                
+if ((FATIMA_TENEMENTS_HINT == 1) && (MET_DOORLORD == 0))
+  goto 16:2415		                                                                     
+goto 0:0
+
+#switch 16:2501
+if (INV_LINGUINATOR > 0)
+  goto 16:2510
+goto 16:2505
+
+#switch 16:3000
+pathtarget corner1
+target trigger
+
+#switch 16:3001
+elev_dest$="Tenements Lower Area" 
+if (tene_getonelev == 0) {
+  set elev_bank = -1.000000
+} else {
+  set elev_bank = 16
+  set elev_entry = 3002
+}
+gosub 1:8			                             
+goto 0:0
+
+#switch 16:3002
+extern playscene tenements_elevator1top
+
+#switch 16:3003
+elev_dest$="Tenements Upper Area" 
+set elev_bank = 16
+set elev_entry = 3004
+gosub 1:8			                             
+goto 0:0
+
+#switch 16:3004
+extern playscene tenements_elevator1bottom
+goto 0:0
+
+#switch 16:3201
+if (RussYES == 1)
+  goto 16:3210
+if (RussNO == 1)
+  goto 16:3225
+set Russ1 = (Russ1 + 1)
+if (Russ1 > 1)
+  goto 16:3220
+goto 16:3205                                 
+
+#switch 16:3301
+set Tuan1 = (Tuan1 + 1)
+if (Tuan1 > 2)
+  goto 16:3320
+if (Tuan1 > 1)
+  goto 16:3310
+goto 16:3305                                 
+
+#switch 16:5201
+extern is_in_inventory "Labbe Linguinator Adapter" @labbe
+if (INV_LINGUINATOR == 1)
+  goto 16:5220
+if (Noxema1 == 1)
+  goto 16:5215
+goto 16:5205
+
+#switch 16:5301
+goto 16:5201
+
+#switch 16:5401
+set Viehio1 = (Viehio1 + 1)
+if (Viehio1 > 1)
+  goto 16:5410
+goto 16:5405
+
+#switch 16:5501
+goto 16:5401
+
+#switch 16:4001
+if ((follow_lucko == 1) && ((HaveAskedToFollowAgain == 0) && (NextTimeToFollowLucko < func_gametime))) {
+  set HaveAskedToFollowAgain = 1
+  if (briefcase_follow_mode >= 1)
+    goto 16:4002
+  goto 16:4005
+}
+goto 0:0
+
+#switch 16:4003
+set NextTimeToFollowLucko = (func_gametime + 4000)
+set HaveAskedToFollowAgain = 0
+goto 0:0
+
+#switch 16:4004
+set briefcase_follow_mode = 1
+extern playlevelmusic mp3/bricks/bricks_scary_3_0.mp3
+extern playscene briefcase_intro2
+
+#switch 16:4005
+set follow_lucko = 0
+set NextTimeToFollowLucko = (func_gametime + 4000)
+set HaveAskedToFollowAgain = 0
+set briefcase_follow_mode = 1
+extern playlevelmusic mp3/bricks/bricks_scary_3_0.mp3
+extern playscene briefcase_intro
+
+#switch 16:4008
+extern playambient briefcase_tenements
+
+#switch 16:4010
+closewindow 100:100
+extern playscene briefcase_tenements_gone
+
+#switch 16:5005
+if (tenements_alley == 0)
+  goto 0:0
+target alley
+set tenements_alley = 0
+
+#switch 16:5006
+if (tenements_alley == 1)
+  goto 0:0
+target alley
+set tenements_alley = 1
+
+#switch 16:5601
+if (func_charinparty[grumpos] != 3)
+  goto 16:5620
+if (tenements_gotdekra == 1)
+  goto 16:5625
+if (KDekra1 == 1)
+  goto 16:5607
+goto 16:5605
+
+#switch 16:5710
+set TAXI_TO_BRICKSD = 1
+goto 16:5715
+
+#switch 16:5711
+set TAXI_TO_TOURS = 1
+goto 16:5715
+
+#switch 16:5713
+set TAXI_TO_BRICKSB = 1
+goto 16:5715
+
+#switch 16:5720
+extern stopambient tenements_taxi_ambi
+extern playscene tenements_taxi_takeoff
+
+#switch 16:5730
+extern remove_money 6
+set TAXI_ON_ROUTE = 1
+if (TAXI_TO_BRICKSD == 1)
+  console "map bricksd"
+if (TAXI_TO_TOURS == 1)
+  console "map tours"
+if (TAXI_TO_BRICKSB == 1)
+  console "map bricksb"
+goto 0:0
+
+#switch 16:5735
+extern loopambient tenements_taxi_ambi
+
+#switch 16:6661
+if (briefcase_follow_mode == 1) {
+  gosub 100:251
+} else
+  console "map mystech1 fromtenements"
+
+#switch 16:6662
+if ((briefcase_follow_mode == 1) && (briefcase_2_bricksc2 == 0)) {
+  gosub 100:254
+} else
+  console "map BricksC2 fromtenements"
+
+#switch 16:6663
+if (briefcase_follow_mode == 1) {
+  gosub 100:253
+  if (@WGoAheadAndChange == 1)
+    console "map grumpos fromtenements"
+} else
+  console "map grumpos fromtenements"
+
+#switch 16:6664
+if (briefcase_follow_mode == 1) {
+  gosub 100:253
+  if (@WGoAheadAndChange == 1)
+    console "map franks fromtenements"
+} else
+  console "map franks fromtenements"
+
+#switch 66:6666
+extern add_quest "Get Stuff to Grumpos"

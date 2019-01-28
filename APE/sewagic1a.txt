@@ -1,0 +1,373 @@
+#window 666:219
+thinkswitch {
+  closewindow 666:219
+}
+
+finishswitch {
+  if (sewagic_saved_once == 0) {
+    console "savegame 8888"
+    set sewagic_saved_once = 1
+  }
+}
+
+style "NULL"
+font "SUBSYM"
+flags passive, TRUE
+
+#window 666:223
+xyprintfx 18, 18, 1, 1, 1, 1, _anox12, "Sewagic Minigame Summary"
+if (@Bonus >= 0)
+  xyprintfx 170, 60, 1, 1, 1, 1, _anox12, "%i", @Bonus
+if (@prize_given > 0)
+  xyprintfx 70, 286, 1, 1, 1, 1, _anox12, "Party received"
+if (@prize_given > 0)
+  xyprintfx 35, 304, 1, 1, 1, 1, _anox12, "%s!", @prize_desc$
+startswitch {
+  extern add_npc_to_party grumpos
+  set start_time = func_gametime
+  set @Bonus = 0
+  set SW_Paused = 1
+}
+
+thinkswitch {
+  set timer = (func_gametime - start_time)
+  if (timer < 1000) {
+    set Res = (1000 / SW_SP_Bonus)
+    set @Bonus = (timer / Res)
+  } else
+    set @Bonus = SW_SP_Bonus
+  if ((timer > 1500) && (@prize_given == 0)) {
+    set @prize_given = 1
+    extern playsound games/sewagic/games_sewagic_award.wav BigBoat 0.85 1.0
+    if ((@Bonus == 9) && (@TimesHit <= 0)) {
+      extern addnew_to_inventory "Bouge Bangle"
+    } else if (@Bonus == 9) {
+      extern addnew_to_inventory "TimeMinder Tear"
+      extern addnew_to_inventory "TimeMinder Tear"
+      @prize_desc$="HealGrease" 
+    } else if ((@Bonus < 9) && (@Bonus > 6)) {
+      extern addnew_to_inventory "Cordican Diamond Discs"
+      extern addnew_to_inventory "Cordican Diamond Discs"
+      extern addnew_to_inventory "Cordican Diamond Discs"
+      @prize_desc$="3 Cordican Diamond Discs" 
+    } else if ((@Bonus < 7) && (@Bonus > 2)) {
+      extern addnew_to_inventory "Cordican Diamond Discs"
+      extern addnew_to_inventory "Cordican Diamond Discs"
+      @prize_desc$="2 Cordican Diamond Discs" 
+    } else if ((@Bonus < 3) && (@Bonus > 0)) {
+      extern addnew_to_inventory "Cordican Diamond Discs"
+      @prize_desc$="1 Cordican Diamond Discs" 
+    }
+  }
+  extern UI_FillRect 1 1 640 480 255 1 1 1
+}
+
+finishswitch {
+  goto 666:300
+}
+
+style "style_box4"
+xpos 170
+ypos 80
+width 300
+height 330
+if (@Bonus >= 0)
+  image "/sewagic/bonus_crate.tga" 100, 50
+
+#window 666:227
+xyprintfx 96, 26, 1, 1, 1, 1, _anox12, "%i", SW_SP_Bonus
+style "NULL"
+flags passive, TRUE
+xpos 512
+ypos 0
+width 128
+height 128
+
+#window 666:217
+title "BOAT WAS DESTROYED"
+body "And, unfortunately, Boots and Grumpos were in it."
+startswitch {
+  set anox_manner_of_death = 0
+}
+
+style "style_embrace"
+font "_anox12"
+choice "Try again" 666:218
+choice "Can't we pretend I beat it?" 666:228
+
+#window 666:201
+xyprintfx 598, 10, 1, 1, 1, 1, _anox12, "BONUS:%i", SW_SP_Bonus
+startswitch {
+  set InitStart = (func_GameTime + 1000)
+  set anox_no_save = 1
+  set anox_interface_active = 1
+  extern SpawnEntity2 SWMainStart ob_squib null 666:275
+  extern playscene "sewagic1_minigame" 0 666:223 null null 0 0 false
+}
+
+thinkswitch {
+  if (SW_Paused == 0) {
+    if ((InitStart < func_GameTime) && SW_Initialized) {
+      gosub 666:206
+      gosub 666:207
+      gosub 666:213
+      gosub 666:214
+      gosub 666:216
+      extern ANIM_MakeStupid BigBoat
+    } else if (InitStart < func_GameTime) {
+      gosub 666:209
+      set SW_Initialized = 1
+    }
+    if ((SW_CLEANSCREEN < func_maptime) && (SW_CLEANSCREEN > 0)) {
+      extern Flashscreenf 0.0 0.0 0.0 0 3
+      set SW_CLEANSCREEN = 0
+    }
+  }
+}
+
+finishswitch {
+  set partWait = 0
+  set lastMS = 0
+  set currentMS = 0
+  set delta = 0
+  set BigBoat = 0
+  set @mousex = 0
+  set @mousey = 0
+  set Xv = 0
+  set Yv = 0
+  set SWMainStart = 0
+  set InitStart = 0
+  set SW_Initialized = 0
+  set Xd = 0
+  set Yd = 0
+  set XYMovementTimer = 0
+  set anox_no_save = 0
+  set anox_interface_active = 0
+  extern stopsound games/sewagic/games_sewagic_boatengine.wav
+}
+
+style "NULL"
+font "SUBSYM"
+flags passive, TRUE
+
+#switch 666:300
+extern SetPlayerModel models/newface/boots/boots.mda
+console "set storysave \"Deep Mystunnel|Deep in the MysTech tunnels...\""
+extern playscene "sewagic1_outro" 0 666:222 null null 0 0 false
+
+#switch 2:1
+if (play_sewagic == 0)
+  goto 0:0
+extern playlevelmusic mp3/bricks/bricks_minigame_1_0.mp3
+gosub 666:201
+
+#switch 666:222
+closewindow 666:201
+set play_sewagic = 0
+console "map mystech2"
+
+#switch 666:218
+set anox_manner_of_death = 0
+closewindow 666:201
+console "map sewagic1a"
+
+#switch 666:228
+extern SetPlayerModel models/newface/boots/boots.mda
+goto 666:300
+
+#switch 666:206
+set currentMS = func_GameTime
+set delta = (currentMS - lastMS)
+if (delta > 58) {
+  set lastMS = currentMS
+  if (partWait > 0)
+    set partWait = (partWait - 1)
+  if (partWait == 0)
+    set partWait = -1.000000
+}
+
+#switch 666:210
+set @mousex = func_mousex
+set MXd = ((@mousex - 320) / 320)
+
+#switch 666:211
+set dispX = (Rx * Xd)
+set dispY = (Ry * Xd)
+set dispZ = (Rz * Xd)
+set boatX = (squibX + dispX)
+set boatY = (squibY + dispY)
+set boatZ = (squibZ + dispZ)
+extern AI_SetXYZ BigBoat boatX boatY boatZ
+
+#switch 666:207
+gosub 666:210
+extern AI_GetXYZ SWMainStart squibX squibY squibZ
+extern AI_GetFRU SWMainStart Fx Fy Fz Rx Ry Rz Ux Uy Uz
+extern VecToAngles Fx Fy Fz pitch yaw roll
+extern AI_SetPitch	BigBoat	pitch
+extern AI_SetYaw	BigBoat	yaw
+extern AI_SetRoll	BigBoat	roll
+set Xd = (64 * MXd)
+if (Xd > 64) {
+  set Xd = 64
+} else if (Xd < -64.000000)
+  set Xd = -64.000000
+gosub 666:211
+
+#switch 666:208
+extern AI_GetXYZ SWMainStart X Y Z
+extern AI_GetViewForward fX fY fZ
+set SXo = X
+set SYo = Y
+set SZo = Z
+set X = (X + (fX * 150))
+set Y = (Y + (fY * 150))
+extern AI_SpawnEntity BigBoat character_sewage
+extern ANIM_MakeStupid BigBoat
+extern AI_SetXYZ BigBoat X Y Z
+extern AI_GetYaw SWMainStart yaw
+extern AI_SetYaw BigBoat yaw
+extern loopsound games/sewagic/games_sewagic_boatengine.wav
+extern NPSimple BigBoat jake/sewagic_boat_spray 1746
+
+#switch 666:213
+extern AI_GetClosestEntity BigBoat ob_Scrate_explosive 38 found_entity
+extern AI_GetViewForward fX fY fZ
+extern AI_GetXYZ BigBoat X Y Z
+set X = (X + (fX * 32))
+set Y = (Y + (fY * 32))
+set Z = (Z + 16)
+extern AI_SetXYZ Explosion X Y Z
+if (EXP_Timer < func_gametime)
+  extern NPKill Explosion
+if (found_entity > 0) {
+  extern playsound games/sewagic/games_sewagic_boathit_01.wav BigBoat 0.85 1.0
+  extern NPSimple Explosion "NoelWork/WaterExplodeSW"
+  extern AI_SetXYZ found_entity -4000 -4000 -4000
+  set SW_HEALTH = (SW_HEALTH - 1)
+  set EXP_Timer = (func_gametime + 750)
+  set @TimesHit = (@TimesHit + 1)
+  goto 0:0
+}
+extern AI_GetClosestEntity BigBoat ob_Scrate_health 38 found_entity
+if (found_entity > 0) {
+  extern NPSimple Explosion "NoelWork/healthupSW"
+  set EXP_Timer = (func_gametime + 1000)
+  if (SW_HEALTH < 5) {
+    extern playsound games/sewagic/games_sewagic_healthpickup.wav BigBoat 0.85 1.0
+    set SW_HEALTH = (SW_HEALTH + 1)
+    extern AI_SetXYZ found_entity -4000 -4000 -4000
+    goto 0:0
+  }
+}
+extern AI_GetClosestEntity BigBoat ob_Scrate_bonus 38 found_entity
+if (found_entity > 0) {
+  set EXP_Timer = (func_gametime + 1000)
+  extern NPSimple Explosion "NoelWork/BonusSw"
+  set SW_SP_Bonus = (SW_SP_Bonus + 1)
+  extern playsound games/sewagic/games_sewagic_bonuspickup.wav BigBoat 1.0 1.0
+  extern AI_SetXYZ found_entity -4000 -4000 -4000
+}
+
+#switch 666:214
+set Y = 10
+set X = 560
+gosub 666:227
+extern DrawPic @SW_PIC_BONUS$ X Y
+set Y = 0
+set X = 0
+extern DrawPic @SW_PIC_BOTTOM$ X Y
+if (SW_HEALTH == 5) {
+  set SW_Red = 0
+  set SW_Green = 255
+  set SW_Blue = 0
+  set SW_Y = 5
+  set SW_H = 55
+  set SW_ALPHA = 110
+} else if (SW_HEALTH == 4) {
+  set SW_Red = 135
+  set SW_Green = 250
+  set SW_Blue = 0
+  set SW_Y = 15
+  set SW_H = 45
+  set SW_ALPHA = 110
+} else if (SW_HEALTH == 3) {
+  set SW_Red = 235
+  set SW_Green = 160
+  set SW_Blue = 0
+  set SW_Y = 25
+  set SW_H = 35
+  set SW_PULSE = 80
+} else if (SW_HEALTH == 2) {
+  set SW_Red = 250
+  set SW_Green = 80
+  set SW_Blue = 0
+  set SW_Y = 35
+  set SW_H = 25
+  set SW_PULSE = 40
+} else if (SW_HEALTH == 1) {
+  set SW_Red = 255
+  set SW_Green = 0
+  set SW_Blue = 0
+  set SW_Y = 45
+  set SW_H = 15
+  set SW_PULSE = 20
+}
+if (SW_HEALTH <= 3)
+  if (SW_DALPHA < func_gametime) {
+    set SW_DALPHA = (func_gametime + SW_PULSE)
+    if ((SW_ALPHA < 20) && (SW_DIR == -1.000000)) {
+      set SW_DIR = 1
+      set SW_ALPHA = 20
+    } else if ((SW_ALPHA > 110) && (SW_DIR == 1)) {
+      set SW_DIR = -1.000000
+      set SW_ALPHA = 110
+    }
+    set SW_ALPHA = (SW_ALPHA + (10 * SW_DIR))
+  }
+extern UI_FillRect 15 SW_Y 30 SW_H SW_ALPHA SW_BLUE SW_GREEN SW_RED
+extern DrawPic @SW_PIC_TOP$ X Y
+
+#switch 666:215
+extern RegisterPic @SW_PIC_BAD$		/gameflow/sewagic/bad.tga
+extern RegisterPic @SW_PIC_GOOD$	/gameflow/sewagic/good.tga
+extern RegisterPic @SW_PIC_TOP$		/gameflow/sewagic/health_top.tga
+extern RegisterPic @SW_PIC_BOTTOM$	/gameflow/sewagic/health_bottom.tga
+extern RegisterPic @SW_PIC_BONUS$	/gameflow/sewagic/bonus_crate.tga
+
+#switch 666:209
+gosub 666:208
+extern AI_FindEntity BigBoy PlayerChar0
+extern AI_GetXYZ SWMainStart pX pY pZ
+extern AI_SetXYZ BigBoy pX pY pZ
+set partWait = 40
+set SW_Paused = 0
+set Yd = 0
+set Xd = 0
+set XYMovementTimer = 0
+set SW_Health = 5
+set SW_Debug = 1
+set SW_SP_Bonus = 0
+set SW_ALPHA = 145
+set SW_DALPHA = 0
+set SW_DIR = -1.000000
+set lastMS = func_GameTime
+set currentMS = lastMS
+extern AI_SpawnEntity Explosion tg_boom
+extern AI_SpawnEntity ExplosionNew ob_squib
+extern AI_SpawnEntity BonusCrate ob_sewagecratebonus
+gosub 666:215
+set SW_CLEANSCREEN = (func_maptime + 1250)
+extern caminit mario
+extern cam_from playerchar0
+extern cam_set cam_fwddist 32
+
+#switch 666:216
+if (SW_HEALTH <= 0) {
+  extern AI_GetXYZ SWMainStart X Y Z
+  extern AI_SetXYZ BigBoy pX pY pZ
+  extern AI_SetXYZ BigBoat -4000 -4000 -4000
+  extern stopscene "sewagic1_minigame"
+  closewindow 666:201
+  goto 666:217
+}

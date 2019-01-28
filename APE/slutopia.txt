@@ -1,0 +1,916 @@
+#window 45:102
+title "Kevester Kopp"
+body "I don't know you. Scramoo."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:103
+title "Kevester Kopp"
+body "Who's that behind you?"
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:104
+title "Kevester Kopp"
+body "Why if it isn't my favorite private eye! What's the occasion, butch? Hell, I haven't seen you in months."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:0105
+
+#window 45:105
+title "Kevester Kopp"
+body "You found me in the middle of a pickle, man. I left my wedding ring in one of the rooms at the Orange Navel. Dumb, huh?"
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Should I ask what you were doing at the Orange Navel?" 45:111
+choice "Ever heard of a Field Transduction Module? I need one fast." 45:114
+
+#window 45:111
+title "Kevester Kopp"
+body "Hey, don't gimme that look. "
+if (PARTY_DEMOCRATUS)
+  body "You're the one walking around with a planet. "
+body "I was just negotiating some special items with Madame Pulp. Honest & truly on my grave. I love my wife and I ain't breaking my wedding vows for any ol' flat backer. It was just business."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Fine, fine. But how did you lose the ring? Answer me that" 45:113
+choice "Ever heard of a Field Transduction Module? I need one fast." 45:114
+
+#window 45:113
+title "Kevester Kopp"
+body "I was demonstrating one of my items. Very illegal in this sector. I can't tell you what it was, but let's just say your hands need to be bare when handling it. Twenty minutes later, I noticed my ring was gone. My wife's gonna kill me."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:0112
+
+#window 45:112
+title "Kevester Kopp"
+body "My main supplier's meeting me here at any moment to go over some orders. I can't flake out on him. Do me a favor and find my lost wedding ring for me. It should be somewhere in Room #2. Please, man."
+cam left restore zip
+talk npc amb_h stay
+startswitch {
+  set ring_in_room_2 = 1
+}
+
+finishswitch {
+  extern is_quest_done "Need Kevester Ring" @cockRing
+  if (@cockRing == 0)
+    extern add_quest "Need Kevester Ring"
+  extern is_quest_done "Need To Talk to Kevester" @talkerWhore
+  if (@talkerWhore == 1)
+    extern complete_quest "Need To Talk to Kevester"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:114
+title "Kevester Kopp"
+body "Yeah, a business associate got caught transporting one just last month and now he's doin' twenty-to-life. It violates more laws than I care to mention. Sorry, Sly. I'm afraid a Field Transduction Module's a little too hot for my blood."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:0115
+
+#window 45:115
+title "Kevester Kopp"
+body "Look, I've got a major supplier meeting me here at any second. If you find that wedding ring for me while I take care of business, maybe we can work something out. It should be somewhere in Room #2."
+cam left restore zip
+talk npc amb_h stay
+startswitch {
+  set ring_in_room_2 = 1
+}
+
+finishswitch {
+  extern is_quest_done "Need Kevester Ring" @cockRing
+  if (@cockRing == 0)
+    extern add_quest "Need Kevester Ring"
+  extern is_quest_done "Need To Talk to Kevester" @talkerWhore
+  if (@talkerWhore == 1)
+    extern complete_quest "Need To Talk to Kevester"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:116
+title "Kevester Kopp"
+body "You mind picking up that package like I asked you? Thanks."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:120
+title "Kevester Kopp"
+body "Thanks, man. You're a life saver."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:0121
+
+#window 45:121
+title "Kevester Kopp"
+body "I was pretty sure you were gonna come through on the wedding ring, so I asked my supplier about a Field Transduction Module. You're in luck. He's been sittin' on one for the last few weeks and dying to get it off his hands. Cheap even."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:0122
+
+#window 45:122
+title "Kevester Kopp"
+body "Remember my partner, Phunkee Collins? Someone's supposed to deliver it to him within the hour. Find him at the Cold Sweat Sex Machine. Good luck."
+cam left restore zip
+talk npc amb_h stay
+startswitch {
+  extern remove_from_inventory "Wedding Ring"
+  extern complete_quest "Return Kevester Ring"
+  extern add_quest "Talk To Phunkee"
+  set KNOW_ABOUT_PHUNKEE = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:130
+title "Kevester Kopp"
+body "Thanks for the help, Sly. You saved my buttski."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:140
+title "Kevester Kopp"
+body "Tetra?"
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:0141
+
+#window 45:141
+title "Kevester Kopp"
+body "Hold on a minute. You're not getting into that stuff are you, Sly? It's dangerous. Better to steer clear of that junk and stick to Toka."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:0142
+
+#window 45:142
+title "Kevester Kopp"
+body "I know a Cordican who sold his family into slavery for a choice piece of Tetra."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:0143
+
+#window 45:143
+title "Kevester Kopp"
+body "Now he sits around his apartment in squalor, neck-deep in hallucinations, while his grandmother lifts crates on Goria. Besides..."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:0145
+
+#window 45:145
+title "Kevester Kopp"
+body "The Tetra trade's too inbred for my portfolio. Maybe Phunkee knows something."
+cam left restore zip
+talk npc amb_h stay
+finishswitch {
+  if (kev_market == 0)
+    goto 45:0146
+  extern cam_restore
+  goto 0:0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:146
+title "Kevester Kopp"
+body "But you better tell him you're researching a case, or else he'll chain you down and put you in Phunkee Rehab."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:0147
+
+#window 45:147
+title "Kevester Kopp"
+body "And you don't wanna be in Phunkee Rehab. Trust me."
+cam left restore zip
+talk npc amb_h stay
+finishswitch {
+  set kev_market = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:201
+title "Mojo Filter"
+body "I gotta get home and burp the worm."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 mojo
+  extern AI_GrabEntity mojo mojo_handle
+  extern ANIM_PlayAnim mojo_handle amb_h 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity mojo_handle
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:301
+title "Beru"
+body "I suddenly feel like coming to grips with myself."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 beru
+  extern AI_GrabEntity beru beru_handle
+  extern ANIM_PlayAnim beru_handle amb_h 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity beru_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:401
+title "Poolga"
+body "I can't stand it anymore! I'm gonna take matter into my own hands!"
+cam left lift(50) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 poolga
+  extern AI_GrabEntity poolga poolga_handle
+  extern ANIM_PlayAnim poolga_handle amb_d 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity poolga_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:501
+title "Zontag"
+body "C'mon, I've been on a hand diet for weeks. Can't a man shake the dew off his lily in peace?"
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 zontag
+  extern AI_GrabEntity zontag zontag_handle
+  extern ANIM_PlayAnim zontag_handle amb_h 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity zontag_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:601
+title "Mangalo"
+body "Special invitation only. And you don't look special."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:701
+title "Reuben Turkey"
+body "Three rules."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:0702
+
+#window 45:702
+title "Reuben Turkey"
+body "No yelling at the girls."
+cam left restore zip
+talk npc talk_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:0703
+
+#window 45:703
+title "Reuben Turkey"
+body "Keep your zipper up."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:0704
+
+#window 45:704
+title "Reuben Turkey"
+body "And nothing wet against the glass."
+cam left restore zip
+talk npc gest_n stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:0705
+
+#window 45:705
+title "Reuben Turkey"
+body "Have fun."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:805
+title "Jigalord"
+body "Outrageous. The South Anachronox Man-Bipidri Love Association is having a meeting at The Salt Pole."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 jigalord
+  extern AI_GrabEntity jigalord jigalord_handle
+  extern ANIM_PlayAnim jigalord_handle amb_h 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity jigalord_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:810
+title "Jigalord"
+body "I hate Pidriphiles. Disgusting people."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 jigalord
+  extern AI_GrabEntity jigalord jigalord_handle
+  extern ANIM_PlayAnim jigalord_handle amb_h 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity jigalord_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:815
+title "Jigalord"
+body "Oh, hold on. She's squeezing her fun bags."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 jigalord
+  extern AI_GrabEntity jigalord jigalord_handle
+  extern ANIM_PlayAnim jigalord_handle amb_h 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity jigalord_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:905
+title "Lord Peenix"
+body "For one hundred and eighty years, I've searched for one true thing: Love."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:910
+title "Lord Peenix"
+body "I'm not exaggerating. The era of Senders made it possible for me to search every corner of this universe for Her."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:0911
+
+#window 45:911
+title "Lord Peenix"
+body "The Red Light District is my last hope."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:915
+title "Lord Peenix"
+body "My perfect woman eludes me. Will I find her here?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:920
+title "Lord Peenix"
+body "Your wardrobe needs serious adjustment."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:925
+title "Lord Peenix"
+body "Close. Very close. But my perfect woman would never look at me with such contempt."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:1001
+title "Mang-at-Arms"
+body "Now THAT'S what I'm talking about. Look how pouty her suction discs are."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_GrabEntity mang mang_handle
+  extern AI_WaitAndFace bootshandle -1 mang
+  extern ANIM_PlayAnim mang_handle amb_h 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:1002
+
+#window 45:1002
+title "Mang-at-Arms"
+body "She has more orifices per square inch than any known species in the universe."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim mang_handle amb_h 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:1003
+
+#window 45:1003
+title "Mang-at-Arms"
+body "Wait until she squirts her ink. I can't take it when she squirts her ink."
+cam left restore zip
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity mang_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:1105
+title "Scrooch"
+if (func_charinparty[boots] == 3)
+  body "Careful not to wake the Brebulan tiger sleeping on your head. Don't you feel it purring into your brain? Feline engine. Meow-meow?"
+if (func_charinparty[grumpos] == 3)
+  body "No, no-no-no. I don't like you. I don't like your terrifying hair bell. Why are you holding a stiff snake?"
+if (func_charinparty[pal] == 3)
+  body "You're like a little machine man afraid of paper, disguised as a beebot."
+if (func_charinparty[rho] == 3)
+  body "That's not a backpack. You're hiding a big hump under there, and you're embarrassed by it."
+if (func_charinparty[democratus] == 3)
+  body "It's so lucid. I can see the mountains, and the rivers, and the oceans. And it's turning, and the world is turning, and it's looking at me."
+if (func_charinparty[stiletto] == 3)
+  body "You're the most beautiful walking mannequin. It's like there's a real woman trapped inside. I like your hat, and your pretty mask."
+if (func_charinparty[paco] == 3)
+  body "I see a river of blood flowing down behind you. Paddle away with your oar hands."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 45:1110
+title "Scrooch"
+body "Tetra?"
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:1111
+
+#window 45:1111
+title "Scrooch"
+body "Oh, yeah. There's some Tetra under my head right now. Under the pillow."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:1112
+
+#window 45:1112
+title "Scrooch"
+body "See, I like going to sleep with it. My dreams are so real, it feels like I'm really here. Like right now. Talking to you. It's so lucid."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:1113
+
+#window 45:1113
+title "Scrooch"
+body "Hey, I just urinated long strips of wallpaper in the corner. It was the same pattern from my childhood bedroom. Except this wallpaper was pink."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:1114
+
+#window 45:1114
+title "Scrooch"
+body "You have a question about... I mean, you would love Tetra. When you wake up, you wonder if you're still asleep."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:1115
+
+#window 45:1115
+title "Scrooch"
+body "I mean, I know I'm dreaming, but if I wasn't, I still might not know the difference."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:1116
+
+#window 45:1116
+title "Scrooch"
+body "What's your question? You wanna know the who? The what?"
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:1117
+
+#window 45:1117
+title "Scrooch"
+body "Oh, the Tetra-snatcher? Oh, yeah. He's got everyone nervous. But not me. I don't have an unflawed Tetra. I wish."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:1118
+
+#window 45:1118
+title "Scrooch"
+body "No one knows where he's fencing it. It's a pretty small community. Far as I know... no big anonymous deals lined up lately. But I've been asleep an awful long time. Or not."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:1119
+
+#window 45:1119
+title "Scrooch"
+body "They say dreams happen in a second, but they feel much longer in your head. So maybe I've only been asleep for a little while. What was the question?"
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:1120
+
+#window 45:1120
+title "Scrooch"
+body "Yeah. Prime buyers are getting anxious. Upping their bids and hoping he'll cut a deal."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 45:1121
+
+#window 45:1121
+title "Scrooch"
+body "Careful not to wake the Brebulan tiger sleeping on your head. Don't you feel it purring into your brain? Feline engine. Meow-meow?"
+cam left restore zip
+talk npc amb_h stay
+finishswitch {
+  set TETRA_MARKET = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#switch 45:1
+set CURRENT_PLANET = 2
+set CURRENT_BANK = 45
+extern setmasterlevel 21
+extern playlevelmusic mp3/sender/ssundergroundnormal.mp3
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+
+#switch 45:101
+if (TETRA_MARKET == 1)
+  goto 45:0135				                        
+gosub 1:5		             
+if (KNOW_ABOUT_PHUNKEE)
+  goto 45:130
+extern is_in_inventory "Wedding Ring" we_have_ring
+if ((LEAD_BOOTS && ring_in_room_2) && we_have_ring)
+  goto 45:120
+if (LEAD_BOOTS && ring_in_room_2)
+  goto 45:116
+if (LEAD_BOOTS)
+  goto 45:104
+if (PARTY_BOOTS)
+  goto 45:103
+goto 45:0102
+
+#switch 45:135
+if (kev_market == 1)
+  goto 45:0145
+goto 45:0140
+
+#switch 45:801
+set Jigalord1 = (Jigalord1 + 1)
+if (Jigalord1 > 2)
+  goto 45:0815
+if (Jigalord1 > 1)
+  goto 45:0810
+goto 45:0805
+
+#switch 45:901
+set Peenix1 = (Peenix1 + 1)
+if ((Peenix1 > 3) && (func_charinparty[stiletto] == 3))
+  goto 45:0925
+if ((Peenix1 > 3) && (func_charinparty[rho] == 3))
+  goto 45:0920
+if (Peenix1 > 2)
+  goto 45:0915
+if (Peenix1 > 1)
+  goto 45:0910
+goto 45:0905
+
+#switch 45:1101
+if (func_charinparty[boots] != 3)
+  goto 45:1105
+if (TETRA_MARKET == 2)
+  goto 45:1105			                       
+goto 45:1110

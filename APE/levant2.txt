@@ -1,0 +1,162 @@
+#window 74:266
+title "%s", PlayerChar0$
+body "The door is open."
+style "style_hephaestus"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 74:600
+title "%s", PlayerChar0$
+body "This shows UPPER LEVANT STATUS. Power Generator 1: Functional\n"
+if (levant1_bypass == 0)
+  body "Power Generator 2: No Power\n"
+if (levant1_bypass && (levant1_gen2_power == 0))
+  body "Power Generator 2: No Power, Bypass active\n"
+if (levant1_gen2_power && (levant1_divert == 0))
+  body "Power Generator 2: Power\n"
+if (levant1_gen2_power && (levant1_divert == 0))
+  body "Power flowing to line 1.\n"
+if (levant1_gen2_power && levant1_divert)
+  body "Power flowing to line 2.\n"
+style "style_hephaestus"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#switch 74:1
+loadape "levpanel"
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 .5 .5
+set CURRENT_PLANET = 6
+set CURRENT_BANK = 74
+if (PRE_LIMBUS || PRE_DETTA) {
+  extern applylevelconfiguration levant2_second
+} else
+  extern applylevelconfiguration levant2_first
+extern playlevelmusic mp3/hephaestus/levanttheme.mp3
+BattleMusicOverride$="mp3/hephaestus/levantbattle.mp3" 
+if (levant2_bridge_extended)
+  target levbridge
+if (levant2_fix_breaker == 0)
+  extern loopambient ambi_levant2
+if (levant2_pump_primed) {
+  target gen1
+  target gen2
+  target gen3
+  target generator3
+  extern loopambient ambi_levant2_b
+}
+if (levant2_conveyors_on) {
+  extern loopambient ambi_levant2_c
+  target computerlights
+  target computer
+  extern is_in_inventory "Banewave" @got_bwave
+  if (@got_bwave == 0)
+    goto 74:516	                                 
+}
+gosub 74:2
+goto 0:0
+
+#switch 74:2
+extern AI_SpawnEntity @ob_clip_handle_1 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_1 -2656 2950  -1093
+extern AI_SpawnEntity @ob_clip_handle_2 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_2 -2624 2950  -1093
+extern AI_SpawnEntity @ob_clip_handle_3 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_3 -2592 2950  -1093
+extern AI_SpawnEntity @ob_clip_handle_4 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_4 -2560 2950  -1093
+extern AI_SpawnEntity @ob_clip_handle_5 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_5 -2528 2950  -1093
+extern AI_SpawnEntity @ob_clip_handle_6 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_6 -2688 2966 -1077
+extern AI_SpawnEntity @ob_clip_handle_7 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_7 -2944 2998 -1045
+extern AI_SpawnEntity @ob_clip_handle_8 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_8 -2720 2982 -1077
+extern AI_SpawnEntity @ob_clip_handle_9 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_9 -2976 2990 -1045
+extern AI_SpawnEntity @ob_clip_handle_10 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_10 -2784 3006 -1053
+extern AI_SpawnEntity @ob_clip_handle_11 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_11 -3040 2958 -1045
+extern AI_SpawnEntity @ob_clip_handle_12 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_12 -2816 3014 -1045
+extern AI_SpawnEntity @ob_clip_handle_13 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_13 -3072 2942 -1045
+extern AI_SpawnEntity @ob_clip_handle_14 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_14 -2848 3014 -1045
+gosub 74:0003
+
+#switch 74:3
+extern AI_SpawnEntity @ob_clip_handle_15 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_15 -3104 2918 -1045
+extern AI_SpawnEntity @ob_clip_handle_16 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_16 -2880 3014 -1045
+extern AI_SpawnEntity @ob_clip_handle_17 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_17 -2912 3006 -1045
+extern AI_SpawnEntity @ob_clip_handle_18 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_18 -2752 2988 -1069
+extern AI_SpawnEntity @ob_clip_handle_19 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_19 -3136 2886 -1061
+extern AI_SpawnEntity @ob_clip_handle_20 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_20 -3144 2758 -1107
+extern AI_SpawnEntity @ob_clip_handle_21 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_21 -3136 2854 -1069
+extern AI_SpawnEntity @ob_clip_handle_22 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_22 -3136 2854 -1069
+extern AI_SpawnEntity @ob_clip_handle_23 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_23 -3144 2822 -1075
+extern AI_SpawnEntity @ob_clip_handle_24 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_24 -3128 2694 -1131
+extern AI_SpawnEntity @ob_clip_handle_25 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_25 -3152 2790 -1091
+extern AI_SpawnEntity @ob_clip_handle_26 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_26 -3120 2662 -1147
+extern AI_SpawnEntity @ob_clip_handle_27 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_27 -3023 2992 -1040
+extern AI_SpawnEntity @ob_clip_handle_28 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_28 -2839 3042 -1036
+
+#switch 74:100
+goto 75:8030	               
+
+#switch 74:200
+if (levant2_picklock)
+  goto 74:267	                   
+WS_STAND$="boots_skill_1" 
+set LPdifficulty = 3
+set LPtime = 35
+set ws_bank = 74
+set ws_entry = 267
+gosub 4001:1
+goto 0:0
+
+#switch 74:267
+set levant2_picklock = 1
+target fence
+goto 0:0
+
+#switch 74:300
+goto 75:8040		                        
+
+#switch 74:400
+goto 75:8050                        
+
+#switch 74:500
+goto 75:8060			                                            
+
+#switch 74:515
+extern loopambient ambi_levant2_c
+goto 74:516
+
+#switch 74:516
+extern AI_SpawnEntity hMysTech get_mystech04 myspiece
+extern AI_GetEdictNumber mysplace @hPlace
+extern AI_GetXYZ @hPlace @mx @my @mz
+extern AI_SetXYZ hMysTech @mx @my @mz
+extern entkey hMysTech "message" "Banewave"
+goto 0:0

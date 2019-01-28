@@ -1,0 +1,233 @@
+#window 66:2111
+body "Thank you for using Cordicom!"
+style "NULL"
+font "prochars"
+xpos 305
+ypos 340
+
+#window 66:2113
+body "Certified WSC-1009 compliant, inspection 7449L. Cordicom Inc. ID#2828225"
+style "NULL"
+font "procharl"
+xpos 325
+ypos 380
+
+#window 66:2311
+body "Thank you for using Cordicom!"
+style "NULL"
+font "prochars"
+xpos 305
+ypos 340
+
+#window 66:2313
+body "Certified WSC-1009 compliant, inspection 7449L. Cordicom Inc. ID#2828225"
+style "NULL"
+font "procharl"
+xpos 325
+ypos 380
+
+#window 66:3000
+if (current_robot == 3001)
+  xyprintfx 90, 70, 1, 1, 1, 0.5, _anoxthin, "ROBOT 1 ASSIGNED"
+if ((current_robot == 3001) && (wb_battle_over == 0))
+  xyprintfx 90, 86, 1, 1, 1, 1, _anoxthin, "Post duty."
+if ((current_robot == 3001) && (wb_battle_over == 1))
+  xyprintfx 90, 86, 1, 1, 1, 1, _anoxthin, "Not responding."
+if (current_robot == 3002)
+  xyprintfx 90, 70, 1, 1, 1, 0.5, _anoxthin, "ROBOT 2 ASSIGNED"
+if ((current_robot == 3002) && (wb_battle_over == 0))
+  xyprintfx 90, 86, 1, 1, 1, 1, _anoxthin, "Post duty."
+if ((current_robot == 3002) && (wb_battle_over == 1))
+  xyprintfx 90, 86, 1, 1, 1, 1, _anoxthin, "Not responding."
+if ((current_robot == 3003) && (wb_rob3_assigned == 0))
+  xyprintfx 90, 70, 1, 1, 1, 0.5, _anoxthin, "ROBOT 3 UNASSIGNED"
+if ((current_robot == 3003) && (wb_rob3_assigned != 0))
+  xyprintfx 90, 70, 1, 1, 1, 0.5, _anoxthin, "ROBOT 3 ASSIGNED"
+if (((current_robot == 3003) && (wb_battle_over == 0)) && ((wb_rob3_assigned == 1) || (wb_rob3_assigned == 3001)))
+  xyprintfx 90, 86, 1, 1, 1, 1, _anoxthin, "Post duty."
+if ((current_robot == 3003) && ((wb_rob3_assigned == 2) || (wb_rob3_assigned == 3002)))
+  xyprintfx 90, 86, 1, 1, 1, 1, _anoxthin, "Deactivated."
+if ((current_robot == 3003) && (wb_battle_over == 1))
+  xyprintfx 90, 86, 1, 1, 1, 1, _anoxthin, "Not responding."
+startswitch {
+  extern CreateAPE2DControl push wbbutton1 13 69 width=63 height=17 normal=/gameflow/warshipbay/button_rob1.pcx depressed=/gameflow/warshipbay/button_rob1_d.pcx gamevar=current_robot returnvalue=3001
+  extern CreateAPE2DControl push wbbutton2 13 94 width=63 height=17 normal=/gameflow/warshipbay/button_rob2.pcx depressed=/gameflow/warshipbay/button_rob2_d.pcx gamevar=current_robot returnvalue=3002
+  extern CreateAPE2DControl push wbbutton3 13 119 width=63 height=17 normal=/gameflow/warshipbay/button_rob3.pcx depressed=/gameflow/warshipbay/button_rob3_d.pcx gamevar=current_robot returnvalue=3003
+  extern CreateAPE2DControl push wbbutton4 13 144 width=63 height=17 normal=/gameflow/warshipbay/button_robx.pcx depressed=/gameflow/warshipbay/button_robx_d.pcx sequence=66:3070
+  set current_robot = 0
+  set previous_robot = 0
+  goto 0:0
+}
+
+thinkswitch {
+  if (current_robot != previous_robot) {
+    if (((previous_robot == 3003) && (wb_rob3_assigned == 0)) && (wb_battle_over == 0))
+      gosub 66:3010
+    extern playsound ui/gen/ui_gen_movesel4.wav
+    if (current_robot == 3003) {
+      if ((wb_rob3_assigned == 0) && (wb_battle_over == 0))
+        extern CreateAPE2DControl push r3button1 95 110 width=128 height=18 gamevar=wb_rob3_assigned returnvalue=1 font="conshop" message="Post" sequence=66:3010
+      if ((wb_rob3_assigned == 0) && (wb_battle_over == 0))
+        extern CreateAPE2DControl push r3button2 95 130 width=128 height=18  gamevar=wb_rob3_assigned returnvalue=2 font="conshop" message="Self-Destruct" sequence=66:3010
+    }
+  }
+  set previous_robot = current_robot
+  goto 0:0
+}
+
+finishswitch {
+  extern RemoveAPE2DControl wbbutton1
+  extern RemoveAPE2DControl wbbutton2
+  extern RemoveAPE2DControl wbbutton3
+  extern RemoveAPE2DControl wbbutton4
+  goto 0:0
+}
+
+style "NULL"
+font "_anox10"
+flags passive2d, TRUE
+xpos 0
+ypos 0
+width 80
+height 256
+background "warshipbay/secback3.pcx" 
+
+#window 66:2601
+title "Grumpos"
+body "Mind if I spread my pilot wings?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+height 80
+
+#window 66:2605
+title "Dr. Rho Bowman"
+body "Be my guest."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+height 80
+
+#switch 66:1
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+set CURRENT_BANK = 4
+set CURRENT_BANK = 66
+if (ELEMENTOR_ACTIVE) {
+  extern applylevelconfiguration warshipbay_second
+} else
+  extern applylevelconfiguration warshipbay_first
+extern loopambient ambi_warshipbay
+extern playlevelmusic mp3/democratus/democDungeonFinal.mp3
+BattleMusicOverride$="mp3/democratus/democBattleLoop.mp3" 
+extern AI_SpawnEntity @ob_clip_handle_1 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_1 21 142 -1810
+extern AI_SpawnEntity @ob_clip_handle_2 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_2 21 142 -1850
+extern AI_SpawnEntity @ob_clip_handle_3 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_3 -11 110 -1810
+
+#switch 66:2100
+elev_dest$="Cargo Bay Exit" 
+set elev_bank = 66
+set elev_entry = 2120
+gosub 1:8			                             
+goto 0:0
+
+#switch 66:2120
+extern playscene warshipbay_elev1_up
+
+#switch 66:2200
+elev_dest$="Cargo Bay Floor" 
+set elev_bank = 66
+set elev_entry = 2220
+gosub 1:8			                             
+goto 0:0
+
+#switch 66:2220
+extern playscene warshipbay_elev1_down
+
+#switch 66:2300
+elev_dest$="Up to Work Deck" 
+set elev_bank = 66
+set elev_entry = 2320
+gosub 1:8			                             
+goto 0:0
+
+#switch 66:2320
+extern playscene warshipbay_elev2_up
+
+#switch 66:2400
+elev_dest$="Down to Fighter Hangar" 
+set elev_bank = 66
+set elev_entry = 2420
+gosub 1:8			                             
+goto 0:0
+
+#switch 66:2420
+extern playscene warshipbay_elev2_down
+
+#switch 66:2501
+if ((BEEN_2HIVE == 0) && (PLAY_GOING2HIVE == 0))
+  goto 66:2505
+goto 0:0
+
+#switch 66:2505
+set PLAY_GOING2HIVE = 1
+set PLAY_HIVEMINIGAME = 1
+set PLAY_HIVEINTRO = 1
+set PAL_IN_CHAMBER = 0
+extern complete_quest "Get to Democratus Fighter"
+extern playscene warshipbay_2hive
+
+#switch 69:2610
+extern playsound warshipbay_2hive.mp3
+
+#switch 66:4000
+set wb_battle_over = 1
+if (wb_rob3_assigned == 2) {
+  console "battlestart battwith2bots"
+} else
+  console "battlestart battwith3bots"
+goto 0:0
+
+#switch 66:4001
+set wb_battle_over = 1
+if (wb_rob3_assigned == 2) {
+  console "battlestart battwith2botsfromside"
+} else
+  console "battlestart battwith3botsfromside"
+goto 0:0
+
+#switch 66:3050
+set wb_rob3_assigned = 3001
+goto 0:0
+
+#switch 66:3060
+set wb_rob3_assigned = 3002
+extern AI_GetEdictNumber deadboy hdeadboy
+extern AI_DestroyEntity hDeadboy
+extern playsound games/sues/GAMES_sues_explode.wav
+goto 0:0
+
+#switch 66:3070
+extern playsound ui/gen/ui_gen_okay.wav
+closewindow 66:3000
+goto 0:0
+
+#switch 66:3010
+extern RemoveAPE2DControl r3button1
+extern RemoveAPE2DControl r3button2
+if ((current_robot == 3003) && (wb_rob3_assigned != 0))
+  extern playsound ui/gen/ui_gen_communication.wav
+if (wb_rob3_assigned == 2)
+  gosub 66:3060
+goto 0:0

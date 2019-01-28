@@ -1,0 +1,4758 @@
+#window 87:2
+startswitch {
+  set @time = func_gametime
+  set @randtime = func_drand[1,3]
+}
+
+thinkswitch {
+  set @nowtime = (func_gametime - @time)
+  if (@nowtime > @randtime) {
+    set @time = func_gametime
+    set @whotoanim = func_drand[0,3]
+    set @randtime = (func_drand[1,3] * 1000)
+    if (((@whotoanim == 0) && (@lastanim != 0)) && (@mtalking == 0)) {
+      set @whichanim = func_drand[0,1]
+      extern AI_FindEntity mayorhandle mayor
+      if (@whichanim == 0)
+        extern ANIM_PlayAnim mayorhandle gest_f 0 1 0
+      if (@whichanim == 1)
+        extern ANIM_PlayAnim mayorhandle gest_l 0 1 0
+      set @lastanim = 0
+    }
+    if (((@whotoanim == 2) && (@lastanim != 2)) && (defeated_wimpa == 0)) {
+      extern AI_FindEntity temp2handle kristen
+      extern ANIM_PlayAnim temp2handle gest_a 0 1 0
+      set @lastanim = 2
+    }
+    if ((@whotoanim == 3) && (@lastanim != 3)) {
+      extern AI_FindEntity temp3handle waldman
+      extern ANIM_PlayAnim temp3handle gest_a 0 1 0
+      set @lastanim = 3
+    }
+  }
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 10
+ypos 10
+
+#window 87:102
+title "Burgomaster Bennings"
+body "Oh, what trouble is this mayorship. Headaches upon toothaches. This whole kidnapping affair has been a bur in my backside for weeks. As if it wasn't bad enough that we haven't heard from the Ring-dwellars in six months."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0103
+
+#window 87:103
+title "Burgomaster Bennings"
+body "*Sniff*"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0104
+
+#window 87:104
+title "Burgomaster Bennings"
+body "I'd investigate the matter myself, but my mayoral duties keep me caged up in the manor. It's a shame. I've quite a detective instinct."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0105
+
+#window 87:105
+title "Burgomaster Bennings"
+body "Don't lift an eyebrow at me. I've extensively studied the Laugette Method of lie detection. The subtle clues to your truthfulness are painted all over your face."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0106
+
+#window 87:106
+title "Burgomaster Bennings"
+body "*Sniff*"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0107
+
+#window 87:107
+title "Burgomaster Bennings"
+body "Shall I prove it? I'll start by eliminating you as a suspect in the kidnappings. I'm going to ask you a series of questions that will reveal your guilt or innocence. The Laugette Method of lie detection is foolproof."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0108
+
+#window 87:108
+title "Burgomaster Bennings"
+body "*Sniff*"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0109
+
+#window 87:109
+title "Burgomaster Bennings"
+body "What is your name, sir?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Sylvester \"Sly\" Boots." 87:110
+choice "I'm a man with no name." 87:112
+
+#window 87:110
+title "Burgomaster Bennings"
+body "You speak the truth."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  WHITENDON_NAME$="Mister Boots" 
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0111
+
+#window 87:111
+title "Burgomaster Bennings"
+body "*Sniff*"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0115
+
+#window 87:112
+title "Burgomaster Bennings"
+body "How tragic. What a blight on your soul it must be to exist without a name. Rest easy, my son. I shall give you a name so that you may live out the rest of your days in peace."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0113
+
+#window 87:113
+title "Burgomaster Bennings"
+body "*Sniff*"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0114
+
+#window 87:114
+title "Burgomaster Bennings"
+body "I shall name you... \"Guillermo\"."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  WHITENDON_NAME$="Guillermo" 
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0115
+
+#window 87:115
+title "Burgomaster Bennings"
+body "Now then, %s, do you like to sneak up on people?", WHITENDON_NAME$
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Yes." 87:116
+choice "No." 87:117
+
+#window 87:116
+title "Burgomaster Bennings"
+body "You're lying, %s, I don't even need Laugette to see it. If you were telling the truth you would have snuck up on me just a minute ago, instead of tapping me ever-so gently on the shoulder.", WHITENDON_NAME$
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0117
+
+#window 87:117
+title "Burgomaster Bennings"
+body "*Sniff*"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0118
+
+#window 87:118
+title "Burgomaster Bennings"
+body "Yes, well, I suppose you check out then. Oh, it's so nice to talk to someone nearly my intellectual equal. Everyone around me seems to have lost their brain over the last few years. It's quite depressing. Really."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0119
+
+#window 87:119
+title "Burgomaster Bennings"
+body "*Sniff*"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0120
+
+#window 87:120
+title "Burgomaster Bennings"
+body "Excuse me... my thoughts are in motion."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0121
+
+#window 87:121
+title "Burgomaster Bennings"
+body "*Sniff*"
+cam left restore zip
+talk npc gest_a stay
+startswitch {
+  extern AI_GrabEntity mayor mayorhandle
+  extern AI_WaitAndFace mayorhandle 50 mayorface
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0122
+
+#window 87:122
+title "Burgomaster Bennings"
+body "Yes, that's a good idea, Bennings. You're brilliant."
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  extern AI_ReleaseEntity mayorhandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0123
+
+#window 87:123
+title "Burgomaster Bennings"
+body "Maybe you could handle some of the legwork for me out in the field. In exchange, I can offer you free room & board at the Fairweather Inn, and an invitation to next year's Summer Hootin' Party."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0124
+
+#window 87:124
+title "Burgomaster Bennings"
+body "*Sniff*"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0125
+
+#window 87:125
+title "Burgomaster Bennings"
+body "Let's see. Have you been to the crime scene yet? Why don't you take photographs of it-nothing too bloody please, I'm already light-headed. Bring them back here for examination and I'll solve this case from home."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  set METBURGO = 1
+  extern complete_quest "Go See the Burgomaster"
+  extern add_quest "Record Crime Scene"
+}
+
+finishswitch {
+  set @mtalking = 0
+  extern AI_TalkStop mayor
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:126
+title "Burgomaster Bennings"
+body "Visit the crime scene for clues and snap some pictures."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0129
+
+#window 87:127
+title "Burgomaster Bennings"
+body "Walk the perimeter fence and photograph anything unusual."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  extern is_quest_done "Record Fence Opening" @poop
+  if (@poop == 0)
+    extern add_quest "Record Fence Opening"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0129
+
+#window 87:128
+title "Burgomaster Bennings"
+body "Explore the town and photograph anything unusual."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  extern is_quest_done "Record Anything Unusual" @poop
+  if (@poop == 0)
+    extern add_quest "Record Anything Unusual"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0129
+
+#window 87:129
+title "Burgomaster Bennings"
+body "Excuse me, detective. Mayoral duties call."
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  set @mtalking = 0
+  extern AI_TalkStop mayor
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:130
+title "Burgomaster Bennings"
+body "Let's see what pictures you've got for me...."
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  if (WHITE_CLUE1)
+    goto 87:0131
+  if (WHITE_CLUE2)
+    goto 87:0135
+  if (WHITE_CLUE3)
+    goto 87:0145
+  if (NO_GOOD_PICTURES)
+    goto 87:0147
+  goto 87:0148
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:131
+title "Burgomaster Bennings"
+body "This is a photograph from the crime scene? But this is impossible. The drag marks stop right underneath the tree. That doesn't make a whit of sense now, does it?"
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  extern is_quest_done "Record Crime Scene" @poop
+  if (@poop == 1)
+    extern complete_quest "Record Crime Scene"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0132
+
+#window 87:132
+title "Burgomaster Bennings"
+body "*Sniff*"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0133
+
+#window 87:133
+title "Burgomaster Bennings"
+body "Either the kidnapper is using the trees for transportation, or the kidnapper can fly. It would have to be a strong bird, wouldn't it? Perhaps it's building a nest... made of human bones! How ghastly."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  set WHITE_CLUE1 = 0
+  set WHITE_CLUE1_SEEN = 1
+  extern is_quest_done "Record Anything Unusual" @poop
+  if (@poop == 1)
+    extern complete_quest "Record Anything Unusual"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0134
+
+#window 87:134
+title "Burgomaster Bennings"
+body "*Sniff*"
+cam left restore zip
+talk npc gest_a stay
+finishswitch {
+  if (WHITE_CLUE2)
+    goto 87:0135
+  if (WHITE_CLUE3)
+    goto 87:0145
+  if (WHITE_CLUE2_SEEN && WHITE_CLUE3_SEEN)
+    goto 87:0158
+  if (WHITE_CLUE2_SEEN)
+    goto 87:0149
+  goto 87:0155
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:135
+title "Burgomaster Bennings"
+body "Here. Now isn't this an interesting picture? It looks like something is sneaking into the town through that hole in the fence. There are three important things to look at here...."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  extern is_quest_done "Record Fence Opening" @poop
+  if (@poop == 1)
+    extern complete_quest "Record Fence Opening"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0136
+
+#window 87:136
+title "Burgomaster Bennings"
+body "*Sniff*"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0137
+
+#window 87:137
+title "Burgomaster Bennings"
+body "One-that's too tight a squeeze for a regular person, so it must be a child. Look at the size of the feet."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0138
+
+#window 87:138
+title "Burgomaster Bennings"
+body "*Sniff*"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0139
+
+#window 87:139
+title "Burgomaster Bennings"
+body "Second, there are tell-tale claw marks right underneath the opening. It must be a child with very sharp nails."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0140
+
+#window 87:140
+title "Burgomaster Bennings"
+body "*Sniff*"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0141
+
+#window 87:141
+title "Burgomaster Bennings"
+body "And third, those footprints disappear right under the tree."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0142
+
+#window 87:142
+title "Burgomaster Bennings"
+body "*Sniff*"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0143
+
+#window 87:143
+title "Burgomaster Bennings"
+body "Conclusion: There must be a child breaking into town and using the trees for transportation. Perhaps it's a feral child who can climb. Such things are not unheard of in the world."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  set WHITE_CLUE2 = 0
+  set WHITE_CLUE2_SEEN = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0144
+
+#window 87:144
+title "Burgomaster Bennings"
+body "*Sniff*"
+cam left restore zip
+talk npc gest_a stay
+finishswitch {
+  if (WHITE_CLUE3)
+    goto 87:0145
+  if (WHITE_CLUE1_SEEN && WHITE_CLUE3_SEEN)
+    goto 87:0158
+  if (WHITE_CLUE1_SEEN)
+    goto 87:0151
+  if (WHITE_CLUE3_SEEN)
+    goto 87:0153
+  goto 87:0156
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:145
+title "Burgomaster Bennings"
+body "This picture here... notice the claw marks on the roof. And see these little brambles around it? These are whiteberry burs from the White Caves just a few miles away. Whatever produced the claws marks must have brushed by a whiteberry bush outside the caves."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  set WHITE_CLUE3 = 0
+  set WHITE_CLUE3_SEEN = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0146
+
+#window 87:146
+title "Burgomaster Bennings"
+body "*Sniff*"
+cam left restore zip
+talk npc gest_a stay
+finishswitch {
+  if (WHITE_CLUE1_SEEN && WHITE_CLUE2_SEEN)
+    goto 87:0158
+  if (WHITE_CLUE1_SEEN)
+    goto 87:0155
+  if (WHITE_CLUE2_SEEN)
+    goto 87:0157
+  goto 87:0154
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:147
+title "Burgomaster Bennings"
+body "Unfortunately, you haven't taken any pictures that bear relevance to the case. Get back out there and photograph something useful. Tut!"
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  set NO_GOOD_PICTURES = 0
+}
+
+finishswitch {
+  set @mtalking = 0
+  extern AI_TalkStop mayor
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:148
+title "Burgomaster Bennings"
+body "What do you mean you haven't taken any pictures?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0126
+
+#window 87:149
+title "Burgomaster Bennings"
+body "Just a moment. Didn't the feral child that squeezed in through the perimeter fence use the trees for transportation as well? The kidnapper and the child must be one and the same."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0150
+
+#window 87:150
+title "Burgomaster Bennings"
+body "Now if we could only find out where the child is taking the victims, then we could close this case."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0156
+
+#window 87:151
+title "Burgomaster Bennings"
+body "Just a moment. Didn't the kidnapper use the trees for transportation as well? Ah, yes, of course. That must be it. The kidnapper and the feral child are one and the same. But where is this child from and where is he taking the victims?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0152
+
+#window 87:152
+title "Burgomaster Bennings"
+body "Now if we could only find out where the child is taking the victims, then we could close this case."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0156
+
+#window 87:153
+title "Burgomaster Bennings"
+body "Notice the claw marks match the ones you found next to the whiteberry brambles on that rooftop. The feral child must live in the White Caves."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0154
+
+#window 87:154
+title "Burgomaster Bennings"
+body "There's nothing to link this to the kidnappings however. Why don't you photograph the crime scene like I asked you to and see if the clues lead anywhere."
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  set @mtalking = 0
+  extern AI_TalkStop mayor
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:155
+title "Burgomaster Bennings"
+body "Why don't you walk the border of town and photograph any weaknesses in the perimeter fence. I refuse to believe a townsperson is responsible for these disappearances."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  set NO_GOOD_PICTURES = 0
+}
+
+finishswitch {
+  set @mtalking = 0
+  extern AI_TalkStop mayor
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:156
+title "Burgomaster Bennings"
+body "Explore the city and take photographs of anything unusual. There must be a clue out there that will tell us where the feral child is from and where it's taking the victims."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  set NO_GOOD_PICTURES = 0
+}
+
+finishswitch {
+  set @mtalking = 0
+  extern AI_TalkStop mayor
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:157
+title "Burgomaster Bennings"
+body "Notice the claw marks match the ones you found next to the hole in the perimeter fence. The feral child must live in the White Caves."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0154
+
+#window 87:158
+title "Burgomaster Bennings"
+body "I think we now have enough photographic evidence to solve this mystery, young %s. The most logical conclusion is that a sharp-clawed feral child from the White Caves is responsible for the kidnappings, coming in through the hole in the fence, and leaving via the trees.", WHITENDON_NAME$
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0159
+
+#window 87:159
+title "Burgomaster Bennings"
+body "This means there's only one task left for you to do. You must travel to the White Caves and bring back the child. He must be made to pay for his crimes."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0160
+
+#window 87:160
+title "Burgomaster Bennings"
+body "*Sniff*"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0161
+
+#window 87:161
+title "Burgomaster Bennings"
+body "Very well then. Sleep at the Fairweather Inn tonight, compliments of the burgomaster. Then bright and early tomorrow morning, you will journey to the White Caves and bring this case to its proper conclusion."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0162
+
+#window 87:162
+title "Burgomaster Bennings"
+body "How exciting."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  set GO_TO_WHITECAVES = 1
+  extern add_quest "Rest At Inn"
+  extern AI_GrabEntity boots_bed boots_bed_handle
+  extern EntKey boots_bed_handle "sequence" "87:6000"
+}
+
+finishswitch {
+  set @mtalking = 0
+  extern AI_TalkStop mayor
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:163
+title "Burgomaster Bennings"
+body "You better get some rest. You have a big day tomorrow."
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  set @mtalking = 0
+  extern AI_TalkStop mayor
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:165
+title "Burgomaster Bennings"
+body "You're telling me the feral child was not a child at all but a shape-shifting ice beast?  I'm supposed to believe that? "
+if (WHITENDON_NAME$ == "")
+  body "Really, Mr. Boots, there's no need to lie to me about such things. "
+if (WHITENDON_NAME$ != "")
+  body "Really, %s, there's no need to lie to me about such things. ", WHITENDON_NAME$
+body "If you didn't find him, just--"
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  extern complete_quest "White Caves Return"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:166
+
+#window 87:166
+title "Burgomaster Bennings"
+body "Did you hear that?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:167
+
+#window 87:167
+title "Burgomaster Bennings"
+body "It sounds like there's a shuttle landing outside.  Have the ring-dwellers returned?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:168
+
+#window 87:205
+title "Innkeeper Noyter"
+body "Welcome to the Fairweather Inn."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0206
+
+#window 87:206
+title "Innkeeper Noyter"
+body "I hear your ship is sinking with Laurie. It's too bad, mate. Ya made a good couple."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:210
+title "Innkeeper Noyter"
+body "You need a room, huh? Guess the missus done kicked you out for good, eh?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0211
+
+#window 87:211
+title "Innkeeper Noyter"
+body "Here's your key... compliments of the burgomaster."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0212
+
+#window 87:212
+title "Innkeeper Noyter"
+body "Have a pleasant evening, Peter."
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  extern complete_quest "Rest At Inn"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:6030
+
+#window 87:305
+title "John"
+body "Damn storm died down as soon you stepped into town. Seemed like it was storming just for you."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0310
+
+#window 87:310
+title "John"
+body "You might wanna turn tail and try your luck elsewhere, son. Been a nasty rash of disappearances these last few months. Townspeople and such."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0315
+
+#window 87:315
+title "John"
+body "There was one only a quarter hour ago."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0320
+
+#window 87:320
+title "John"
+body "Hell, people are gonna be curious about a stranger like you stumbling in so soon after the kidnapping. You better report to the Burgomaster's Manor if you know what's good for you."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0325
+
+#window 87:325
+title "John"
+body "Let him ask you some questions. Clear yourself of guilt and such. We aren't an unfriendly town, but we aren't dumb either."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern add_quest "Go See the Burgomaster"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:350
+title "John"
+body "You got wax in your ears? I'm trying to help you, son."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0355
+
+#window 87:355
+title "John"
+body "Get on to the Burgomaster's Manor, that big house in the middle there, and rule yourself out as a suspect."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:360
+title "John"
+body "Heard you saved the little one from an ice creature, and on the way back here, he done kicked you in the crawdad and run away."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:405
+title "Waldman"
+body "\"Blue winter. Cold and harsh. While the children play games in the snow, a madman lurks Whitendon. How many times have I unwittingly brushed by him searching for his next victim? How many times have I shared a beer, or worked alongside the killer?\""
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0410
+
+#window 87:410
+title "Waldman"
+body "You like that? It's the first chapter of my novel about the recent disappearances in town. The story follows a stranger with a dark past who wanders into Whitendon and uses the people for his own ends."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0415
+
+#window 87:415
+title "Waldman"
+body "Well, that's just the plot. It's really about the social stratification between the surface-dwellers and the ring-dwellers."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:450
+title "Waldman"
+body "Well, gotta finish this chapter. Talk to you later, Peter."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:505
+title "Mikey"
+body "Hey, Sal. Are you listening to Doodles over here?"
+cam left from(PlayerChar0) to(donny) restore zip
+talk_ex mikey donny gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0510
+
+#window 87:510
+title "Mikey"
+body "He's under some delusion that the Ring-dwellers are giving us a vacation."
+cam left from(PlayerChar0) to(mikey) restore zip
+talk_ex mikey donny gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0515
+
+#window 87:515
+title "Donny"
+body "They have an entire labor force at their disposal. Why would they stop sending us work unless they think we've earned a break?"
+cam left from(PlayerChar0) to(donny) restore zip
+talk_ex donny mikey gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:550
+title "Donny"
+body "What will we do for food if we never hear from them again?"
+cam left from(PlayerChar0) to(donny) restore zip
+talk_ex donny mikey gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0555
+
+#window 87:555
+title "Mikey"
+body "We'll do things the old-fashioned way, you dolt. We'll hunt. We'll gather. We'll eat YOU if it comes to that."
+cam left from(PlayerChar0) to(mikey) restore zip
+talk_ex mikey donny gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0560
+
+#window 87:560
+title "Mikey"
+body "Shut up, and have a drink."
+cam left from(PlayerChar0) to(mikey) restore zip
+talk_ex mikey donny gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:2401
+title "Kristen"
+body "They're mourning for the lost child inside. You should go in there and comfort them."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:705
+title "Howard"
+body "He were playing with his toy workers by the fireplace here when we heard the scream. We jumped outta bed to see if he were fallen into the fire, but he were gone."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0710
+
+#window 87:710
+title "Howard"
+body "The door were wide open and there were fresh drag marks in the snow out there, which you can see."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:715
+title "Howard"
+body "You may check his room if it will help."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:720
+title "Howard"
+body "Joseph wasn't the best-behaved kid in the world, but he was our son. Please. Help us find him."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:725
+title "Howard"
+body "Son...! My boy. Oh, my son, we were so scared for you. I thought you were away with God."
+cam left from(PlayerChar0) to(howard) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_GrabEntity howard howard_handle
+  extern AI_GrabEntity darlene darlene_handle
+  extern AI_GrabEntity joseph joseph_handle
+  extern ANIM_PlayAnim howard_handle gest_g 0 1 0
+  extern AI_WaitAndFace bootshandle -1 howard
+  extern AI_WaitAndFace howard_handle -1 joseph
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0730
+
+#window 87:730
+title "Darlene"
+body "Sweet, sweet Joseph. Where have you been? Where have you been, boy?"
+cam left from(PlayerChar0) to(darlene) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 darlene
+  extern ANIM_PlayAnim darlene_handle talk_a 0 1 0
+  extern AI_WaitAndFace darlene_handle -1 joseph
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0735
+
+#window 87:735
+title "Joseph"
+body "Uh-wandering and such."
+cam left from(PlayerChar0) to(joseph) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 joseph
+  extern ANIM_PlayAnim joseph_handle talk_c 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0740
+
+#window 87:740
+title "Howard"
+body "I can't believe it, sir. I'm overwhelmed with happiness."
+cam left from(PlayerChar0) to(howard) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 howard
+  extern ANIM_PlayAnim howard_handle gest_g 0 1 0
+  extern AI_WaitAndFace howard_handle -1 PlayerChar0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0745
+
+#window 87:745
+title "Howard"
+body "A reward! We MUST give you a reward!"
+cam left from(PlayerChar0) to(howard) restore zip
+startswitch {
+  extern AI_WaitAndFace howard_handle -1 darlene
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity howard_handle
+  extern AI_ReleaseEntity darlene_handle
+  extern AI_ReleaseEntity joseph_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0747
+
+#window 87:750
+title "Howard"
+body "You look disappointed."
+cam left from(PlayerChar0) to(howard) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_GrabEntity howard howard_handle
+  extern AI_GrabEntity darlene darlene_handle
+  extern AI_GrabEntity joseph joseph_handle
+  extern AI_WaitAndFace bootshandle -1 howard
+  extern AI_WaitAndFace howard_handle -1 PlayerChar0
+  extern ANIM_PlayAnim howard_handle gest_g 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0755
+
+#window 87:755
+title "Darlene"
+body "Don't be cheap, Howard! He saved little Joseph."
+cam left from(PlayerChar0) to(darlene) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 darlene
+  extern AI_WaitAndFace darlene_handle -1 howard
+  extern ANIM_PlayAnim darlene_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0760
+
+#window 87:760
+title "Howard"
+body "Oh, alright."
+cam left from(PlayerChar0) to(howard) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 howard
+  extern AI_WaitAndFace howard_handle -1 darlene
+  extern ANIM_PlayAnim howard_handle gest_f 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0765
+
+#window 87:765
+title "Howard"
+body "How about this?"
+cam left from(PlayerChar0) to(howard) restore zip
+startswitch {
+  extern AI_WaitAndFace howard_handle -1 PlayerChar0
+  extern ANIM_PlayAnim howard_handle gest_g 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity howard_handle
+  extern AI_ReleaseEntity darlene_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0767
+
+#window 87:770
+title "Howard"
+body "Alright, Joseph. Go clean up your room."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity howard howard_handle
+  extern AI_WaitAndFace howard_handle -1 joseph
+  extern ANIM_PlayAnim howard_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity howard_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:805
+title "Darlene"
+body "He was such a creative boy. Always telling stories about this or that."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0810
+
+#window 87:810
+title "Darlene"
+body "He was a little monster too, but what child isn't from time to time? He was our son."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:815
+title "Darlene"
+body "Our son..."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:820
+title "Darlene"
+body "Brush your teeth, Joseph. Your breath smells like barrel rot."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity darlene darlene_handle
+  extern AI_WaitAndFace darlene_handle -1 joseph
+  extern ANIM_PlayAnim darlene_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity darlene_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:905
+title "Squinty George"
+body "You musta heard about me catching that coney, huh?"
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0910
+
+#window 87:910
+title "Squinty George"
+body "Betcha you're wanting some when I roast it smothered with garlic and onions tonight. Hell, you probably be wanting the fur cap I'll make from it too."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:915
+title "Squinty George"
+body "That's my trade, son. I make pelts into useful things. I'm not gonna catch your damn food too."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0920
+
+#window 87:920
+title "Squinty George"
+body "You all better get used to fending for yourselves and such. I can't be catching food for the whole damn town, no?"
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:925
+title "Squinty George"
+body "Young Peter's gonna have to learn to catch another type of bird, no?"
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:930
+title "Squinty George"
+body "I see young Peter's poached a pelt of his own. Ya want Squinty George to work his magic and make it into somethin' useful-like?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Sounds good." 87:940
+choice "No thanks." 87:935
+
+#window 87:935
+title "Squinty George"
+body "Too bad. It takes a trapper with true experience to bring out the full utility of a fur like that."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:940
+title "Squinty George"
+body "Excellent. All my life I've been wantin' to try my hand on a wimpa pelt. It'll just take a few hours..."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern remove_from_inventory "Wimpa Pelt"
+}
+
+finishswitch {
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 3
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:0942
+
+#window 87:942
+startswitch {
+  set @tstart = func_gametime
+  set @flashing = 0
+}
+
+thinkswitch {
+  set @t = (func_gametime - @tstart)
+  if ((@t > 4000) && (@flashing == 0)) {
+    extern FlashScreenf 0 0 0 1 0
+    extern FlashScreenf 0 0 0 0 3
+    set @flashing = 1
+  }
+  if (@t > 7000) {
+    gosub 87:0945
+    closewindow 87:0942
+  }
+}
+
+style "null"
+flags passive, TRUE
+
+#window 87:945
+title "Squinty George"
+body "Here you are: The Wimpa Peltcell. All the warmth of a parka packed into one compact belt."
+cam left restore zip
+talk npc gest_h stay
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  set GOT_WPELT = 1
+  extern addnew_to_inventory "Wimpa Peltcell"
+  got_object$="Wimpa Peltcell" 
+  set timed_message = 20
+  gosub 1000:1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:950
+title "Squinty George"
+body "You've got my finest work to date, son."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1005
+title "Krokerran"
+body "What are you doing in here? I thought I locked that door."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1010
+title "Krokerran"
+body "Look, as I already explained to the town, I have no idea what happened to the Ring-Dwellers."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:1015
+
+#window 87:1015
+title "Krokerran"
+body "I know you're worried. I know you're scared. But I am too. Field liaisons are not privy to the inner workings of the High Council. Please, I promise I don't know anything."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:1020
+
+#window 87:1020
+title "Krokerran"
+body "If they send word, you'll know about it as soon as I do. Believe me, I would love to go back home to the Ring and see my wife and children."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1025
+title "Krokerran"
+body "Please lock the door on your way out."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1105
+title "Tanya"
+body "We should have gone with Phyllis and Charles to Greenfield when we had the chance."
+cam left from(PlayerChar0) to(tanya) restore zip
+talk_ex tanya robert talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:1110
+
+#window 87:1110
+title "Robert"
+body "\"Ballotine\", sweetness. It's called \"Ballotine\"."
+cam left from(PlayerChar0) to(robert) restore zip
+talk_ex robert tanya talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:1115
+
+#window 87:1115
+title "Tanya"
+body "No. I won't use their names."
+cam left from(PlayerChar0) to(tanya) restore zip
+talk_ex tanya robert talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:1120
+
+#window 87:1120
+title "Tanya"
+body "These are our cities. We can name them whatever we want."
+cam left from(PlayerChar0) to(tanya) restore zip
+talk_ex tanya robert talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:1125
+
+#window 87:1125
+title "Tanya"
+body "Greenfield isn't \"Ballotine\" any more than this place is \"Politicus\"."
+cam left from(PlayerChar0) to(tanya) restore zip
+talk_ex tanya robert talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1130
+title "Tanya"
+body "It's cold. I'm hungry. We have to get out of here before we disappear next."
+cam left from(PlayerChar0) to(tanya) restore zip
+talk_ex tanya robert talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:1135
+
+#window 87:1135
+title "Robert"
+body "I know, honey. I know."
+cam left from(PlayerChar0) to(robert) restore zip
+talk_ex robert tanya talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1305
+title "Erica"
+body "I say that Ring-Dweller the Burgomaster is hiding in his manor knows something about the disappearances."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1310
+title "Erica"
+body "I say we string up the little egg and lash his bone spot 'til he tells us what's what."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1315
+title "Erica"
+body "You gotta help me, Pete. You always were good at beating on the little guys."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1405
+title "Danny"
+body "There you are. I've been looking everywhere for you. I thought you were hiding from me."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:1410
+
+#window 87:1410
+title "Danny"
+body "Look, I know this is a bad time for both of us, being out of work and all... but have you got that 10 loonies you owe me?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern check_money @partycash
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (@partycash >= 10)
+  choice "Say no more. I've got it right here." 87:1415
+choice "Sorry, but I need some more time." 87:1420
+choice "You got the wrong man, Mac." 87:1435
+
+#window 87:1415
+title "Danny"
+body "Thanks a lot, man. Perryman caught a turkey, and I'm gonna buy a drumstick for my mother. We're gonna feast tonight."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if (whitendon_paid_danny == 0)
+    extern remove_money 10
+  set whitendon_paid_danny = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1420
+title "Danny"
+body "I see."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:1425
+
+#window 87:1425
+title "Danny"
+body "You can afford to buy yourself a new coat, but you can't afford to pay me back."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set whitendon_paid_danny = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:1430
+
+#window 87:1430
+title "Danny"
+body "I never could depend on you, Pete. I'm glad Laurie finally dumped you."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1435
+title "Danny"
+body "What? You're gonna pretend you don't know me?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:1420
+
+#window 87:1440
+title "Danny"
+if (KIDZ == 1)
+  body "Silly me for thinking you were unemployed. I didn't realize being a jerk was a full-time job."
+if (KIDZ == 0)
+  body "Silly me for thinking you were unemployed. I didn't realize being a bastard was a full-time job."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1505
+title "Joey"
+body "It's so cold, my snot's frozen."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1510
+title "Joey"
+body "Aren't you glad you stopped to talk to me?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1705
+title "Robin"
+body "I can't remember what I was doing. I know I came over here for a reason."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1710
+title "Robin"
+body "I don't feel as smart as I used to. I've lost my edge. I even talk slower."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:1715
+
+#window 87:1715
+title "Robin"
+body "I must just be getting old."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1720
+title "Robin"
+body "And I'm not the only one. I've got countless friends who keep saying and doing stupid things."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:1725
+
+#window 87:1725
+title "Robin"
+body "Why would I have come here if not to gather wood?"
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1730
+title "Robin"
+body "I remember why I came here yesterday."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1740
+title "Robin"
+body "It wouldn't be ladylike to tell you why."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1750
+title "Robin"
+body "Stop it. You'll make me blush."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1905
+title "Josh"
+body "But we rely on the Ring-dwellers for most of our basic needs. In exchange, we do work for them. Isn't that slavery?"
+cam left from(PlayerChar0) to(josh) restore zip
+talk_ex josh henrik talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:1910
+
+#window 87:1910
+title "Henrik"
+body "Do you want me to hit you? Hand me a nail."
+cam left from(PlayerChar0) to(henrik) restore zip
+talk_ex henrik josh talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1915
+title "Josh"
+body "I been thinking. It gets harder to remember the time before The Crash."
+cam left from(PlayerChar0) to(josh) restore zip
+talk_ex josh henrik talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:1920
+
+#window 87:1920
+title "Henrik"
+body "What's to remember? We were all in suspended animation. Stop blathering and hand me the hammer."
+cam left from(PlayerChar0) to(henrik) restore zip
+talk_ex henrik josh talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:1925
+title "Josh"
+body "The Ring-dwellers had us working on a ship, weren't they? For the emperor? It's so hard to remember."
+cam left from(PlayerChar0) to(josh) restore zip
+talk_ex josh henrik talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:1930
+
+#window 87:1930
+title "Henrik"
+body "I'm gonna nail you to the building."
+cam left from(PlayerChar0) to(henrik) restore zip
+talk_ex henrik josh talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:2001
+title "Matt"
+body "What if the surface armies decide they wanna take over the world now that the Ring-dwellers are out to lunch?"
+cam left from(PlayerChar0) to(matt) restore zip
+talk_ex matt travis talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2005
+
+#window 87:2005
+title "Travis"
+body "\"Please, sir! Don't take our flimsy homes!\""
+cam left from(PlayerChar0) to(travis) restore zip
+talk_ex travis matt talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2010
+
+#window 87:2010
+title "Travis"
+body "\"No! Not the snow! Please don't take all our snow!\""
+cam left from(PlayerChar0) to(travis) restore zip
+talk_ex travis matt talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:2201
+title "Squirrel"
+body "I'm so hungry, I'm gonna peel my face off and EAT it."
+cam left lift(40) restore zip
+talk npc talk_d stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:2505
+title "Sergio"
+body "Disease? Maybe everyone up there was wiped out by a plague even their science could find no cure for."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:2510
+title "Sergio"
+body "Civil war, perhaps? Except no one has seen explosions or anything resembling violence around the Ring."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:2515
+title "Sergio"
+body "Self-sufficiency? Maybe we're all obsolete now."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:2605
+title "Fritz"
+body "Hey, Peter. Is that a new coat? It looks pretty beat up. In fact, your face looks pretty bad too."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2610
+
+#window 87:2610
+title "Fritz"
+body "You get into a scrape with Laurie's brother? I hear he's been gunning for you."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:2615
+title "Fritz"
+body "Just for the record, I think Laurie's being a drama queen."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2620
+
+#window 87:2620
+title "Fritz"
+if (@been_together == 1)
+  body "You've only been going out for six months."
+if (@been_together == 2)
+  body "You've only been going out for a year."
+if (@been_together == 3)
+  body "You've only been going out for a year and a half."
+if (@been_together == 4)
+  body "You've only been going out for two years."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2625
+
+#window 87:2625
+title "Fritz"
+body "It's not like you guys were married or anything."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:2630
+title "Fritz"
+body "You wanna get a beer?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2555
+
+#window 87:2705
+title "Nikki"
+body "Not that it's any of my business, but why would you throw away a girl like Laurie for a trollop like Pamela?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2710
+
+#window 87:2710
+title "Nikki"
+body "I know she's flashier than Laurie, but everyone from here to Doren has kept her bed warm."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:2715
+title "Nikki"
+body "I don't understand what happened."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2720
+
+#window 87:2720
+title "Nikki"
+body "Weren't you asking for advice on what to buy Laurie for your anniversary not too long ago?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2725
+
+#window 87:2725
+title "Nikki"
+if (@anniversary_gift == 1)
+  body "You wanted to buy her a crowbar and I convinced you to get a snow charm?"
+if (@anniversary_gift == 2)
+  body "You wanted to buy her a crowbar and I convinced you to get a glow stone?"
+if (@anniversary_gift == 3)
+  body "You wanted to buy her a crowbar and I convinced you to get a pledge statue?"
+if (@anniversary_gift == 4)
+  body "You wanted to buy her a crowbar and I convinced you to get a love totem?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2730
+
+#window 87:2730
+title "Nikki"
+body "Look, Laurie really loves you. Patch things up before you regret it for good."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:2735
+title "Nikki"
+body "Oh, and take a look at those scratches on the roof behind you. What is that?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2555
+
+#window 87:2805
+title "Blair"
+body "So it's all over 'tween you and the girly, huh? Nice going, Pete."
+cam left restore zip
+talk npc amb_f stay
+finishswitch {
+  extern AI_SpawnEntity @matt_handle npc_wmb matt 87:2001 @matt_spawn
+  extern AI_SpawnEntity @travis_handle npc_wmb travis 87:2101 @travis_spawn
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:2815
+title "Blair"
+body "What happened? Seems like only yesterday that you kissed her for the first time."
+cam left restore zip
+talk npc amb_f stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2820
+
+#window 87:2820
+title "Blair"
+if (@first_kiss == 1)
+  body "You told me she came to visit you while you were chopping logs, and that you kissed her behind the woodshed. I'll never forget the look on your face."
+if (@first_kiss == 2)
+  body "It was here in the tavern during the solstice celebration. You both looked so happy. For a second I thought you had a romantic bone in your body, heh, but it must have been the ale."
+if (@first_kiss == 3)
+  body "You told me it was at midnight right in front of the Burgomaster's Mansion in town square. I'll never forget the look on your face."
+if (@first_kiss == 4)
+  body "You woke me up in the middle of the night and told me you had the nerve to kiss her in her parent's pantry with her parent's in the house. Your face was red with excitement."
+cam left restore zip
+talk npc amb_f stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2830
+
+#window 87:2830
+title "Blair"
+body "But I guess nobody stays together forever, huh?"
+cam left restore zip
+talk npc amb_f stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:2835
+title "Blair"
+body "So what was Pamela like?"
+cam left restore zip
+talk npc amb_f stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2555
+
+#window 87:2905
+title "Laurie"
+body "Peter?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2910
+
+#window 87:2910
+title "Laurie"
+body "Forget it. We're not making up this time."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2915
+
+#window 87:2915
+title "Laurie"
+body "You always figure out a way to make me feel like it was my fault, just so we can make up and you can get into my bloomers. But not this time."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2920
+
+#window 87:2920
+title "Laurie"
+body "Until you learn to keep your--"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2925
+
+#window 87:2925
+title "Laurie"
+body "You look funny. Are you hung-over again?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2930
+
+#window 87:2930
+title "Laurie"
+body "Next time you want to apologize to me, at least make yourself presentable."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern AI_GrabEntity laurie @laur
+  extern AI_WaitAndFace @laur -1 mayor
+  extern AI_ReleaseEntity @laur
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:2935
+title "Laurie"
+body "What do you want, Peter?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "I'm not Peter. This is a case of mistaken identity." 87:2940
+choice "I was wrong, Laurie. I'm sorry." 87:2965
+choice "You're the one who should apologize." 87:3020
+
+#window 87:2940
+title "Laurie"
+body "You think you can change your coat and suddenly pretend I'm not your problem?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2945
+
+#window 87:2945
+title "Laurie"
+body "Mistaken identity?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2950
+
+#window 87:2950
+title "Laurie"
+body "The mistake was mine."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2955
+
+#window 87:2955
+title "Laurie"
+body "Goodbye, Peter."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern AI_GrabEntity laurie @laur
+  extern AI_WaitAndFace @laur -1 mayor
+  extern AI_ReleaseEntity @laur
+  set talk_laurie = 3
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:2960
+title "Laurie"
+body "No. Really. My heart can't take this anymore. Goodbye."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:2962
+title "Laurie"
+body "See? A memory as faulty as your faithfulness. Goodbye."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern AI_GrabEntity laurie @laur
+  extern AI_WaitAndFace @laur -1 mayor
+  extern AI_ReleaseEntity @laur
+  set talk_laurie = 3
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:2965
+title "Laurie"
+body "You think it's that simple? Forget it."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2970
+
+#window 87:2970
+title "Laurie"
+body "I don't think you care about me at all. I think I'm just one girl in your stable of floozies."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2975
+
+#window 87:2975
+title "Laurie"
+body "I bet you don't even remember where we first kissed."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Behind the woodshed." 87:2976
+choice "Wasn't it at the tavern?" 87:2977
+choice "Right here in town square." 87:2978
+choice "In your parent's pantry." 87:2979
+
+#window 87:2980
+title "Laurie"
+body "Oh, sure. You remember the kissing part. But do you remember when we first began dating?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Of course. It's only been six months." 87:2981
+choice "Whatta ya mean? It's been a year." 87:2982
+choice "How could I forget? It's been a year and a half." 87:2983
+choice "It's been the best two years of my life." 87:2984
+
+#window 87:2985
+title "Laurie"
+body "Okay, so you've got a good memory for dates. But do you remember what you gave me for our last anniversary?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "It was a snow charm." 87:2986
+choice "It was a glow stone." 87:2987
+choice "It was a pledge statue." 87:2988
+choice "It was a love totem" 87:2989
+
+#window 87:2990
+title "Laurie"
+body "Okay."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2995
+
+#window 87:2995
+title "Laurie"
+body "Well."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:2999
+
+#window 87:2999
+title "Laurie"
+body "Maybe Pamela was your only transgression."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:3005
+
+#window 87:3005
+title "Laurie"
+body "Maybe you do love me."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:3010
+
+#window 87:3010
+title "Laurie"
+body "You seem so different. Have you really changed? I need time to think about this."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:3015
+
+#window 87:3015
+title "Laurie"
+body "I'll meet you in front of the tavern at three o'clock sharp tomorrow afternoon. I'll have made my decision by then."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set talk_laurie = 4
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:3020
+title "Laurie"
+body "You've got some gall."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:3025
+
+#window 87:3025
+title "Laurie"
+body "Goodbye, Peter."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set talk_laurie = 3
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:3030
+title "Laurie"
+body "I thought about everything you said to me last night, and I want to give you back your anniversary gift."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:3035
+
+#window 87:3035
+title "Laurie"
+body "It's not what you're thinking. I want to stay with you, Peter. But I want you to keep this as a reminder."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:3040
+
+#window 87:3040
+title "Laurie"
+body "Be responsible. Don't toy with people's emotions or you risk losing them forever."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 87:3045
+
+#window 87:3045
+title "Laurie"
+body "Please. Take it and go. I'll see you tonight."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern getbug CobaltCrawler 7
+  set timed_message = 20
+  got_object$="Cobalt Crawler" 
+  gosub 1000:1
+  set talk_laurie = 5
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:3050
+title "Laurie"
+body "I'll see you tonight."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:3002
+title "Boots"
+body "Weird."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:3101
+title "Piotr Payne"
+body "We're open for business and ready for some shuckskin."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+choice "Buy or Sell" 87:3105
+choice "Nothing" 87:3110
+
+#window 87:3110
+title "Piotr Payne"
+body "Keep warm."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 87:3205
+title "Krapto the Hero Hound"
+body "Bow-wow."
+cam left lift(40) restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:3210
+title "Krapto the Hero Hound"
+body "Ruff-ruff."
+cam left lift(40) restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:3215
+title "Krapto the Hero Hound"
+body "Arf-arf."
+cam left lift(40) restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:3220
+title "Krapto the Hero Hound"
+body "Woof-woof."
+cam left lift(40) restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:3225
+title "Krapto the Hero Hound"
+body "Wau-wau."
+cam left lift(40) restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:3230
+title "Krapto the Hero Hound"
+body "Voof-voof."
+cam left lift(40) restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:3235
+title "Krapto the Hero Hound"
+body "Au-au."
+cam left lift(40) restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:3240
+title "Krapto the Hero Hound"
+body "Woef-woef."
+cam left lift(40) restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:3245
+title "Krapto the Hero Hound"
+body "Ouah-ouah."
+cam left lift(40) restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:3250
+title "Krapto the Hero Hound"
+body "Ghaue-ghaue."
+cam left lift(40) restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:3301
+title "Joseph"
+body "Thank you for saving me and such."
+cam left lift(40) restore zip
+talk npc gest_e stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 87:5001
+startswitch {
+  set @vlastMS = func_GameTime
+  set @vcurrentMS = @vlastMS
+  set vx = 640
+  set vy = 150
+  set vxdelta = -26.000000
+  set vydelta = 0
+  set nx = 303
+  set ny = 480
+  set nydelta = -24.500000
+  set nxdelta = 0
+  set gx = 0
+  set gy = 480
+  set gydelta = -4.000000
+  set gxdelta = 0
+  set sx = 270
+  set sy = 0
+  set sydelta = 11
+  set sxdelta = -11.000000
+  set newstime = 0
+  goto 0:0
+}
+
+thinkswitch {
+  set @vcurrentMS = func_GameTime
+  set @vdelta = (@vcurrentMS - @vlastMS)
+  if (@vdelta < 50)
+    goto 0:0
+  set @vlastMS = @vcurrentMS
+  set @vdelta = (@vdelta - 50)
+  set @vlastMS = (@vcurrentMS - @vdelta)
+  set newstime = (newstime + 1)
+  gosub 87:5005
+  goto 0:0
+}
+
+finishswitch {
+  goto 0:0
+}
+
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 640
+height 480
+if ((newstime > 40) && (newstime < 50))
+  image "van/news_splash.tga" sx, sy
+if ((newstime >= 50) && (newstime < 80))
+  image "van/news_splash.tga" 160, 110
+if (newstime < 20)
+  image "van/votowne.tga" vx, vy
+if ((newstime >= 20) && (newstime < 80))
+  image "van/votowne.tga" 102, 150
+if ((newstime >= 30) && (newstime < 80))
+  image "van/actionplain.tga" 168, 184
+if ((newstime > 30) && (newstime < 40))
+  image "van/news.tga" nx, ny
+if ((newstime >= 40) && (newstime < 80))
+  image "van/news.tga" 303, 235
+if ((newstime > 80) && (newstime < 100))
+  image "van/sherwin.tga" gx, gy
+if (newstime >= 100)
+  image "van/sherwin.tga" 0, 400
+
+#window 87:5006
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 640
+height 480
+image "van/f_planetsabroad.tga" 8, 8
+
+#window 87:5007
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 640
+height 480
+image "van/f_wherearethey.tga" 376, 8
+
+#window 87:5022
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 640
+height 480
+image "van/news_splash.tga" 160, 110
+image "van/votowne.tga" 102, 150
+image "van/actionplain.tga" 168, 184
+image "van/news.tga" 303, 235
+
+#window 87:6010
+title "Boots"
+if (METBURGO)
+  body "I can't sleep... I'm not done figuring out the Whitendon mystery yet..."
+if (METBURGO == 0)
+  body "Hey, nice bed."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 340
+width 580
+
+#window 87:6020
+title "Boots"
+if (defeated_wimpa == 0)
+  body "Better get some REM-time before heading after the Wimpa..."
+if (defeated_wimpa)
+  body "Hope that drool puddle dries up."
+cam left from(PlayerChar0) to(boots_eyeline) lift(40) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 boots_eyeline
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+if (defeated_wimpa == 0)
+  choice "Go to sleep" 87:6030
+if (defeated_wimpa == 0)
+  choice "Not yet" 0:0
+
+#window 87:4001
+title "VOTOWNE ACTION NEWS"
+body "..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4005
+title "GARY SHERWIN, VOTOWNE ACTION NEWS"
+body "..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4010
+title "GARY SHERWIN, VOTOWNE ACTION NEWS"
+body "..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4015
+title "Gary Sherwin"
+body "Gary Sherwin here with startling developments in the controversial Planets Abroad campaign."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 300
+width 580
+
+#window 87:4020
+title "Gary Sherwin"
+body "The diplomatic program that has the entire planet engaged in a ground-breaking mission"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4025
+title "Gary Sherwin"
+body "to save the universe and improve interplanetary relations has run into a disastrous snag."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4030
+title "Gary Sherwin"
+body "In a dramatic turn of events, the High Council unanimously voted to return the planet to full size,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4035
+title "Gary Sherwin"
+body "scattering Ambassador Sylvester Boots and company across the surface of Democratus."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4040
+title "Gary Sherwin"
+body "The question everyone is asking themselves is 'Where are they, and will they survive long enough to be rescued?'"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4045
+title "Gary Sherwin"
+body "Stay tuned here for round-the-clock-"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4065
+title "PAL-18"
+body "You see me bring that baby down? Light as a featheroon!!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4070
+title "Boots"
+body "About time. I've been freezing my BUTT off."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4075
+title "PAL-18"
+body "You're welcome."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4080
+title "Dr. Rho Bowman"
+body "Heretic scientist to the rescue."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4085
+title "Boots"
+body "I love you."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4088
+title "Dr. Rho Bowman"
+body "Liar."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4090
+title "Stiletto"
+body "Hey, Slick. Done freezing your butt off?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4095
+title "Boots"
+body "Yeah. gimme a hug... I need some body heat."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4100
+title "Stiletto"
+body "Oh, you wish. C'mon...."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4105
+title "Councilman Hagen"
+body "Excellent to see you safe and sound, sir."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4110
+title "Councilman Willis"
+body "Yes, quite a relief."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4115
+title "Councilman Lasky"
+body "We're sorry about expanding the planet like that."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4120
+title "Councilman Halpert"
+body "No, we're not. It was the only means of escape."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4125
+title "Boots"
+body "Gas alert. Outta my way, fellas."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4130
+title "PAL-18"
+body "Miss Doohan?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4135
+title "Fatima"
+body "Yes, PAL?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4140
+title "PAL-18"
+body "Do you still have dreams?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4145
+title "Fatima"
+body "All the time."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4150
+title "PAL-18"
+body "I think I had one."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4155
+title "PAL-18"
+body "Are they all that weird?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4160
+title "Dr. Rho Bowman"
+body "Hey. You doing okay over here?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4165
+title "Fatima"
+body "You know me. Miss Moody."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4170
+title "Stiletto"
+body "That was quick thinking, fellas. Whose idea was that?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4175
+title "Councilman Halpert"
+body "Mine."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4180
+title "Councilman Willis"
+body "Mine."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4185
+title "Councilman Lasky"
+body "Mine."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4190
+title "Councilman Hagen"
+body "So what next?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4195
+title "Boots"
+body "I'm gonna take a Trotsky."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4200
+title "Councilman Hagen"
+body "And after that?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4205
+title "Boots"
+body "We stock up on supplies, get a decent night's sleep,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4215
+title "Boots"
+body "and rendezvous with the rest of the party at Sender Station tomorrow morning."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4220
+title "Councilman Hagen"
+body "Splendid. Shall I reserve a room for Mister Estrella?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4225
+title "Boots"
+body "Who?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4230
+title "Councilman Hagen"
+body "\"El Puno\". Your superhero friend."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4235
+title "Councilman Hagen"
+body "We briefed him on our quest, and he has graciously offered to join us."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4240
+title "Boots"
+body "Oh. Hi."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4245
+title "Fatima"
+body "Don't worry about those dreams, PAL."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4250
+title "Fatima"
+body "They can't hurt you."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4255
+title "PAL-18"
+body "But Mister Boots said that if you die in a dream, you die in real life."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4260
+title "Fatima"
+body "Mister Boots doesn't know everything."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4265
+title "Dr. Rho Bowman"
+body "You still thinking about her?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4270
+title "Fatima"
+body "I've enough to worry about."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4275
+title "Dr. Rho Bowman"
+body "Let me know if you need me to rough her up for you."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4280
+title "Fatima"
+body "Thanks."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4285
+title "Boots"
+body "Uh, hey, uh, sorry about all that stuff I said back on the villain ship, Mister Estrella."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4290
+title "Boots"
+body "I was nervous."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4295
+title "Paco"
+body "Call me Paco."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4300
+title "PAL-18"
+body "I'm his new sidekick!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4305
+title "Boots"
+body "I thought you were MY sidekick..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4310
+title "Councilman Hagen"
+body "You will let us know when you're leaving, won't you?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4315
+title "Dr. Rho Bowman"
+body "No, you cannot have a costume too."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4320
+title "Boots"
+body "Whatta you mean?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4325
+title "Stiletto"
+body "He gives a mean backrub."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 87:4330
+title "Boots"
+body "Backrub...?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 87:1
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .6 .6 1
+set CURRENT_PLANET = 8
+set CURRENT_BANK = 87
+extern AI_SpawnEntity hTimeMinder npc_timeminder tmtarget 1:3
+extern AI_SetXYZ hTimeMinder -235 -1364 -566
+extern AI_SetYaw hTimeMinder 45
+extern entkey hTimeMinder "scale" ".6 .6 .6"
+extern entkey hTimeMinder "newscaling" "1"
+extern entkey hTimeMinder "default_anim" "amb_a"
+if (defeated_wimpa == 1) {
+  extern add_quest "White Caves Return"
+  extern complete_quest "White Caves Find Child"
+}
+extern applylevelconfiguration whitendon
+if (play_Bootsintro)
+  goto 87:4
+extern playlevelmusic mp3/whitendon/whitendon.mp3
+goto 87:2
+
+#switch 87:3
+extern AI_FindEntity temp4handle temp4
+extern ANIM_PlayAnim temp4handle talk_a 0 1 0
+
+#switch 87:4
+set play_Bootsintro = 0
+extern playscene whitendon_scene71
+goto 0:0
+
+#switch 87:5
+extern playlevelmusic mp3/whitendon/whitendon.mp3
+
+#switch 87:11
+if (whitendon_inn == 1)
+  goto 0:0
+target inn
+set whitendon_inn = 1
+
+#switch 87:12
+if (whitendon_inn == 0)
+  goto 0:0
+target inn
+set whitendon_inn = 0
+
+#switch 87:13
+if (whitendon_houseportal == 1)
+  goto 0:0
+target houseportal
+set whitendon_houseportal = 1
+
+#switch 87:14
+if (whitendon_houseportal == 0)
+  goto 0:0
+target houseportal
+set whitendon_houseportal = 0
+
+#switch 87:15
+if (whitendon_mayorshouse == 1)
+  goto 0:0
+target mayorshouse
+set whitendon_mayorshouse = 1
+
+#switch 87:16
+if (whitendon_mayorshouse == 0)
+  goto 0:0
+target mayorshouse
+set whitendon_mayorshouse = 0
+
+#switch 87:17
+if (whitendon_whitenshop == 1)
+  goto 0:0
+target whitenshop
+set whitendon_whitenshop = 1
+
+#switch 87:18
+if (whitendon_whitenshop == 0)
+  goto 0:0
+target whitenshop
+set whitendon_whitenshop = 0
+
+#switch 87:101
+if (defeated_wimpa)
+  goto 87:165
+extern PHOTO_FindEntity CLUE1 targetname treeclue
+extern PHOTO_FindEntity CLUE2 targetname fenceclue
+extern PHOTO_FindEntity CLUE3 targetname roofclue
+if (CLUE1 && (WHITE_CLUE1_SEEN == 0))
+  set WHITE_CLUE1 = 1
+if (CLUE2 && (WHITE_CLUE2_SEEN == 0))
+  set WHITE_CLUE2 = 1
+if (CLUE3 && (WHITE_CLUE3_SEEN == 0))
+  set WHITE_CLUE3 = 1
+if ((CLUE1 && CLUE3) && (CLUE1 == CLUE3))
+  set WHITE_CLUE1 = 0
+set @mtalking = 1
+if (GO_TO_WHITECAVES)
+  goto 87:0163
+if (METBURGO == 0)
+  goto 87:0102
+if ((WHITE_CLUE1 || WHITE_CLUE2) || WHITE_CLUE3)
+  goto 87:0130
+if (WHITE_CLUE1_SEEN == 0)
+  goto 87:0126
+if (WHITE_CLUE1_SEEN || WHITE_CLUE3_SEEN)
+  goto 87:0127
+if (WHITE_CLUE1_SEEN && WHITE_CLUE2_SEEN)
+  goto 87:0128
+
+#switch 87:168
+console "set storysave \"Democ Return|Returned from the surface of Democratus...\""
+if (PAL_ON_DEMOCRATUS == 1) {
+  set POST_UNIVERSE = 0
+  set PRE_KRAPTON = 0
+  set PRE_LIMBUS = 1
+  set ship_not_fixed = 1
+  set play_probe_intro = 1
+  set DEMOCRATUS_OPEN = 1
+  extern add_quest "Rest at Republic"
+  extern add_npc_to_party pal
+  extern add_npc_to_party paco
+  extern chainscripts whitendon_scene81_a whitendon_scene81_2_a whitendon_scene81_3_a
+  extern playscene whitendon_scene81_a
+} else if (RHO_ON_DEMOCRATUS) {
+  set POST_UNIVERSE = 0
+  set PRE_KRAPTON = 0
+  set PRE_LIMBUS = 1
+  set ship_not_fixed = 1
+  set play_probe_intro = 1
+  set DEMOCRATUS_OPEN = 1
+  extern add_quest "Rest at Republic"
+  extern add_npc_to_party rho
+  extern add_npc_to_party paco
+  extern chainscripts whitendon_scene81_b whitendon_scene81_2_b whitendon_scene81_3_b
+  extern playscene whitendon_scene81_b
+} else if (STILETTO_ON_DEMOCRATUS) {
+  set POST_UNIVERSE = 0
+  set PRE_KRAPTON = 0
+  set PRE_LIMBUS = 1
+  set ship_not_fixed = 1
+  set play_probe_intro = 1
+  set DEMOCRATUS_OPEN = 1
+  extern add_quest "Rest at Republic"
+  extern add_npc_to_party stiletto
+  extern add_npc_to_party paco
+  extern chainscripts whitendon_scene81_c whitendon_scene81_2_c whitendon_scene81_3_c
+  extern playscene whitendon_scene81_c
+}
+goto 0:0
+
+#switch 87:169
+extern addnew_to_inventory "Spinsucker"
+extern set_party_leader paco
+extern equip_item "Spinsucker"
+extern add_battle_skill "RadiusRage"
+extern forceplayerlevel Paco 42
+extern set_party_leader boots
+goto 0:0
+
+#switch 87:201
+extern is_quest_done "Rest At Inn" @questdone
+if (@questdone == 1)
+  goto 87:0210
+goto 87:0205
+
+#switch 87:301
+if (defeated_wimpa == 1)
+  goto 87:0360
+if (talk_whit_john < 2)
+  set talk_whit_john = (talk_whit_john + 1)
+if (talk_whit_john == 1)
+  goto 87:0305
+goto 87:0350
+
+#switch 87:401
+if (talk_waldman < 2)
+  set talk_waldman = (talk_waldman + 1)
+if (talk_waldman == 1)
+  goto 87:0405
+goto 87:0450
+
+#switch 87:501
+set talk_donny = (1 - talk_donny)
+if (talk_donny)
+  goto 87:0505
+goto 87:0550
+
+#switch 87:601
+goto 87:0501
+
+#switch 87:701
+if (talk_howard < 3)
+  set talk_howard = (talk_howard + 1)
+if ((defeated_wimpa == 0) && (talk_howard == 1))
+  goto 87:0705                                           
+if ((defeated_wimpa == 0) && (talk_howard == 2))
+  goto 87:0715                                           
+if ((defeated_wimpa == 0) && (talk_howard == 3))
+  goto 87:0720                                           
+if (defeated_wimpa && (talk_howard <= 3))
+  goto 87:0725                                                       
+if (defeated_wimpa && (talk_howard == 4))
+  goto 87:0750                                                           
+if (defeated_wimpa && (talk_howard == 5))
+  goto 87:0770                                                          
+goto 0:0
+
+#switch 87:747
+set talk_howard = 4
+extern addnew_to_inventory "HealGrease"
+got_object$="HealGrease" 
+set timed_message = 20
+gosub 1000:1
+goto 0:0
+
+#switch 87:767
+set talk_howard = 5
+extern addnew_to_inventory "Circlet of Safety"
+got_object$="Circlet of Safety" 
+set timed_message = 20
+gosub 1000:1
+goto 0:0
+
+#switch 87:801
+if (talk_darlene < 3)
+  set talk_darlene = (talk_darlene + 1)
+if ((defeated_wimpa == 0) && (talk_darlene == 1))
+  goto 87:0805                                            
+if ((defeated_wimpa == 0) && (talk_darlene == 2))
+  goto 87:0815                                            
+if (defeated_wimpa && (talk_howard <= 3))
+  goto 87:0725                                                       
+if (defeated_wimpa && (talk_howard == 4))
+  goto 87:0750                                                           
+if (defeated_wimpa && (talk_howard == 5))
+  goto 87:0820                                                           
+goto 0:0
+
+#switch 87:901
+if (GOT_WPELT)
+  goto 87:0950
+extern is_in_inventory "Wimpa Pelt" @wimpapelt
+if (@wimpapelt > 0)
+  goto 87:0930
+if (talk_squinty < 3)
+  set talk_squinty = (talk_squinty + 1)
+if (talk_squinty == 1)
+  goto 87:0905
+if (talk_squinty == 2)
+  goto 87:0915
+goto 87:0925	                
+
+#switch 87:1001
+if (talk_krok < 3)
+  set talk_krok = (talk_krok + 1)
+if (talk_krok == 1)
+  goto 87:1005
+if (talk_krok == 2)
+  goto 87:1010
+goto 87:1025	                
+
+#switch 87:1201
+goto 87:1101
+
+#switch 87:1101
+if (talk_tanya < 2)
+  set talk_tanya = (talk_tanya + 1)
+if (talk_tanya == 1)
+  goto 87:1105
+goto 87:1130
+
+#switch 87:1301
+if (talk_erica < 3)
+  set talk_erica = (talk_erica + 1)
+if (talk_erica == 1)
+  goto 87:1305
+if (talk_erica == 2)
+  goto 87:1310
+goto 87:1315
+
+#switch 87:1401
+if (whitendon_paid_danny == 0)
+  goto 87:1405
+if (whitendon_paid_danny == 1)
+  goto 87:1415		               
+if (whitendon_paid_danny == 2)
+  goto 87:1440		            
+
+#switch 87:1501
+set talk_whit_joey = (1 - talk_whit_joey)
+if (talk_whit_joey == 1)
+  goto 87:1505
+goto 87:1510
+
+#switch 87:1701
+if (talk_robin < 3)
+  set talk_robin = (talk_robin + 1)
+if ((talk_robin == 1) && (defeated_wimpa == 0))
+  goto 87:1705
+if ((talk_robin == 2) && (defeated_wimpa == 0))
+  goto 87:1710
+if ((talk_robin == 3) && (defeated_wimpa == 0))
+  goto 87:1720
+if ((talk_robin == 3) && defeated_wimpa)
+  goto 87:1730
+if ((talk_robin == 4) && defeated_wimpa)
+  goto 87:1740
+if ((talk_robin == 5) && defeated_wimpa)
+  goto 87:1750
+
+#switch 87:1801
+goto 87:1901
+
+#switch 87:1901
+if (talk_jah < 3)
+  set talk_jah = (talk_jah + 1)
+if (talk_jah == 1)
+  goto 87:1905
+if (talk_jah == 2)
+  goto 87:1915
+if (talk_jah == 3)
+  goto 87:1925
+
+#switch 87:2101
+goto 87:2001
+
+#switch 87:2501
+if (talk_sergio < 3)
+  set talk_sergio = (talk_sergio + 1)
+if (talk_sergio == 1)
+  goto 87:2505
+if (talk_sergio == 2)
+  goto 87:2510
+goto 87:2515
+
+#switch 87:2601
+if (@been_together == 0)
+  set @been_together = func_drand[1,4]
+if (talk_fritz < 3)
+  set talk_fritz = (talk_fritz + 1)
+if (talk_fritz == 1)
+  goto 87:2605
+if (talk_fritz == 2)
+  goto 87:2615
+goto 87:2630
+
+#switch 87:2555
+if (LAURIE_BE_GONE == 1)
+  goto 0:0
+if (((@been_together > 0) && (@anniversary_gift > 0)) && (@first_kiss > 0)) {
+  set LAURIE_BE_GONE = 1
+  extern AI_SpawnEntity @laurie_handle npc_wfa laurie 87:2901 @laurie_spawn1
+}
+goto 0:0
+
+#switch 87:2701
+if (@anniversary_gift == 0)
+  set @anniversary_gift = func_drand[1,4]
+if (talk_nikki < 3)
+  set talk_nikki = (talk_nikki + 1)
+if (talk_nikki == 1)
+  goto 87:2705
+if (talk_nikki == 2)
+  goto 87:2715
+goto 87:2735
+
+#switch 87:2801
+if (@first_kiss == 0)
+  set @first_kiss = func_drand[1,4]
+if (talk_blair < 3)
+  set talk_blair = (talk_blair + 1)
+if (talk_blair == 1)
+  goto 87:2805
+if (talk_blair == 2)
+  goto 87:2815
+goto 87:2835
+
+#switch 87:2901
+if (talk_laurie < 2)
+  set talk_laurie = (talk_laurie + 1)
+if (talk_laurie == 1)
+  goto 87:2905		            
+if (talk_laurie == 2)
+  goto 87:2935		               
+if (talk_laurie == 3)
+  goto 87:2960		                 
+if ((talk_laurie == 4) && (defeated_wimpa == 0))
+  goto 87:3015		                        
+if ((talk_laurie == 4) && defeated_wimpa)
+  goto 87:3030		                                                              
+goto 87:3050		                                
+
+#switch 87:2976
+if (@first_kiss == 1)
+  goto 87:2980		        
+goto 87:2962		                        
+
+#switch 87:2977
+if (@first_kiss == 2)
+  goto 87:2980		        
+goto 87:2962		                        
+
+#switch 87:2978
+if (@first_kiss == 3)
+  goto 87:2980		        
+goto 87:2962		                        
+
+#switch 87:2979
+if (@first_kiss == 4)
+  goto 87:2980		        
+goto 87:2962		                        
+
+#switch 87:2981
+if (@been_together == 1)
+  goto 87:2985		        
+goto 87:2962		                        
+
+#switch 87:2982
+if (@been_together == 2)
+  goto 87:2985		        
+goto 87:2962		                        
+
+#switch 87:2983
+if (@been_together == 3)
+  goto 87:2985		        
+goto 87:2962		                        
+
+#switch 87:2984
+if (@been_together == 4)
+  goto 87:2985		        
+goto 87:2962		                        
+
+#switch 87:2986
+if (@anniversary_gift == 1)
+  goto 87:2990		        
+goto 87:2962		                        
+
+#switch 87:2987
+if (@anniversary_gift == 2)
+  goto 87:2990		        
+goto 87:2962		                        
+
+#switch 87:2988
+if (@anniversary_gift == 3)
+  goto 87:2990		        
+goto 87:2962		                        
+
+#switch 87:2989
+if (@anniversary_gift == 4)
+  goto 87:2990		        
+goto 87:2962		                        
+
+#switch 87:3000
+goto 87:3002
+
+#switch 87:3001
+goto 87:3002
+
+#switch 87:3105
+extern shop_create "The Shuckskin Shop"
+extern shop_set_active "The Shuckskin Shop"
+extern shop_add_object "HealGrease Plus" 100
+extern shop_add_object "HealGrease Complete" 100
+extern shop_add_object "Blood Filter Fascia" 100
+extern shop_add_object "FreezeMeNot Loop" 100
+extern shop_add_object "Wristbands of Whacking" 100
+extern shop_add_object "TimeMinder Tear" 100
+extern shop_picture "whitshop.png"
+extern shop_slogan "Keeping the town warm for the winter!"
+extern shop_start 87:3110
+
+#switch 87:3201
+set Krapto2 = (Krapto2 + 1)
+if (Krapto2 > 9)
+  goto 87:3250
+if (Krapto2 > 8)
+  goto 87:3245
+if (Krapto2 > 7)
+  goto 87:3240
+if (Krapto2 > 6)
+  goto 87:3235
+if (Krapto2 > 5)
+  goto 87:3230
+if (Krapto2 > 4)
+  goto 87:3225
+if (Krapto2 > 3)
+  goto 87:3220
+if (Krapto2 > 2)
+  goto 87:3215
+if (Krapto2 > 1)
+  goto 87:3210
+goto 87:3205                                 
+
+#switch 87:5005
+if (newstime < 20) {
+  set vx = (vx + vxdelta)
+  set vy = (vy + vydelta)
+} else if ((newstime > 30) && (newstime < 40)) {
+  set nx = (nx + nxdelta)
+  set ny = (ny + nydelta)
+} else if ((newstime > 80) && (newstime < 100)) {
+  set gx = (gx + gxdelta)
+  set gy = (gy + gydelta)
+} else if ((newstime > 40) && (newstime < 50)) {
+  set sx = (sx + sxdelta)
+  set sy = (sy + sydelta)
+}
+if (newstime == 1)
+  extern playsound cine/van/van_votowne.wav
+if (newstime == 30)
+  extern playsound cine/van/van_action.wav
+if (newstime == (30 + 5))
+  extern playsound cine/van/van_news.wav
+goto 0:0
+
+#switch 87:6000
+if (GO_TO_WHITECAVES == 0)
+  goto 87:6010		                     
+goto 87:6020								                 
+
+#switch 87:6030
+gosub 600:3		             
+set start_flashback1 = 1
+console "set storysave \"Boots's Dream|Boots's Dream\""
+console "map flashback"
+goto 0:0
+
+#switch 87:1231
+if (whitendon_picklock1 == 1)
+  goto 87:1238
+WS_STAND$="boots_skill_1" 
+ws_object$="boots_door_1" 
+set ws_bank = 87
+set ws_entry = 1238
+set LPdifficulty = 3
+set LPtime = 35
+gosub 4001:1
+goto 0:0
+
+#switch 87:1238
+set whitendon_picklock1 = 1
+target boots_door_1
+goto 0:0
+
+#switch 87:1240
+set whitendon_rapid = 1
+goto 0:0
+
+#switch 87:1232
+if (whitendon_picklock2 == 1)
+  goto 87:1237
+WS_STAND$="boots_skill_2" 
+ws_object$="boots_door_2" 
+set ws_bank = 87
+set ws_entry = 1237
+set LPdifficulty = 3
+set LPtime = 35
+gosub 4001:1
+goto 0:0
+
+#switch 87:1237
+if (whitendon_picklock2 == 1)
+  target boots_door_2
+set whitendon_picklock2 = 1
+goto 0:0
+
+#switch 87:1233
+if (whitendon_picklock3 == 1)
+  goto 87:1236
+WS_STAND$="boots_skill_3" 
+ws_object$="boots_door_3" 
+set ws_bank = 87
+set ws_entry = 1236
+set LPdifficulty = 3
+set LPtime = 35
+gosub 4001:1
+goto 0:0
+
+#switch 87:1236
+set whitendon_picklock3 = 1
+target boots_door_3
+goto 0:0
+
+#switch 87:1234
+if (whitendon_picklock4 == 1)
+  goto 87:1235
+WS_STAND$="boots_skill_4" 
+ws_object$="boots_door_4" 
+set ws_bank = 87
+set ws_entry = 1235
+set LPdifficulty = 3
+set LPtime = 35
+gosub 4001:1
+goto 0:0
+
+#switch 87:1235
+set whitendon_picklock4 = 1
+target boots_door_4
+goto 0:0
+
+#switch 87:1239
+if (whitendon_fullup == 1)
+  goto 0:0
+set whitendon_fullup = 1
+goto 0:0
+
+#switch 66:6666
+extern addnew_to_inventory "Cordicam Digital Camera"

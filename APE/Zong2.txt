@@ -1,0 +1,715 @@
+#window 50000:28
+title "Welcome To Zong"
+body "-----------------------------\n"
+body "Zong Ver1.1\n"
+body "------------------------------\n"
+body "The objective of Zong is to try to get the other player's\n"
+body "energy bar down to zero.  Your energy bar reduces by 20%\n"
+body "everytime a ball hits your side of the playing field.  You\n"
+body "also have your defensive wall that will protect you from an\n"
+body "enemy trying to send the ball to your end of the field as well\n"
+body "as serve as an energy reserve for your energy bar.  You can \n"
+body "take segments out of your own wall and transfer its energy to\n"
+body "your energy bar by first hitting the ball, the ball will then\n"
+body "change to the color of your paddle, in the direction of your \n"
+body "own wall segments.  Each segment replenishes 5% energy.  The\n"
+body "bonus flying saucer will refresh your own wall if it is hit\n"
+body "when the ball is your color or will refresh both if it is hit\n"
+body "when white.  The pulsing purple star will turn the ball into\n"
+body "three balls for a short period.  The first person to lose all\n"
+body "energy from their energy bar loses.  Good Luck!\n"
+body "-----------------------Click to Start------------------------\n"
+finishswitch {
+  set ZZ_Pause = 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+width 620
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 50000:1
+if ((ZZ_MODE == 1) && (ZZ_Pause == 0))
+  xyprintfx 252, 42, 1, 1, 1, 1, _newsub, "Wibble: [%d]", @CScore
+if ((ZZ_MODE == 1) && (ZZ_Pause == 0))
+  xyprintfx 32, 42, 1, 1, 1, 1, _newsub, "Boots: [%d]", @PScore
+if ((ZZ_MODE > 1) && (ZZ_Pause == 0))
+  xyprintfx 252, 42, 1, 1, 1, 1, _newsub, "Computer: [%d]", @CScore
+if ((ZZ_MODE > 1) && (ZZ_Pause == 0))
+  xyprintfx 32, 42, 1, 1, 1, 1, _newsub, "Player: [%d]", @PScore
+if (ZZ_Pause <= 0)
+  xyprintfx 128, 380, 1, 1, 1, 1, _newsub, "[ESC] To Quit"
+if (ZZ_Pause >= 1)
+  xyprintfx 128, 380, 1, 1, 1, 1, _newsub, "[ESC] To Exit"
+if ((((@PScore == 1) && (@MSGDotTime > func_gametime)) && (ZZ_MODE == 1)) && (wibbleresult == 0))
+  xyprintfx MSGX, MSGY, 1, 1, 1, 1, _newsub, "See?"
+if ((((@PScore == 2) && (@MSGDotTime > func_gametime)) && (ZZ_MODE == 1)) && (wibbleresult == 0))
+  xyprintfx MSGX, MSGY, 1, 1, 1, 1, _newsub, "I suck."
+if ((((@PScore == 3) && (@MSGDotTime > func_gametime)) && (ZZ_MODE == 1)) && (wibbleresult == 0))
+  xyprintfx MSGX, MSGY, 1, 1, 1, 1, _newsub, "I am meat."
+if ((((@PScore == 4) && (@MSGDotTime > func_gametime)) && (ZZ_MODE == 1)) && (wibbleresult == 0))
+  xyprintfx MSGX, MSGY, 1, 1, 1, 1, _newsub, "Go ahead. Finish it."
+if ((((@CScore == 1) && (@MSGPotTime > func_gametime)) && (ZZ_MODE == 1)) && (wibbleresult == 0))
+  xyprintfx MSGX, MSGY, 1, 1, 1, 1, _newsub, "That was luck."
+if ((((@CScore == 2) && (@MSGPotTime > func_gametime)) && (ZZ_MODE == 1)) && (wibbleresult == 0))
+  xyprintfx MSGX, MSGY, 1, 1, 1, 1, _newsub, "I will suck soon."
+if ((((@CScore == 3) && (@MSGPotTime > func_gametime)) && (ZZ_MODE == 1)) && (wibbleresult == 0))
+  xyprintfx MSGX, MSGY, 1, 1, 1, 1, _newsub, "Hey..."
+if ((((@CScore == 4) && (@MSGPotTime > func_gametime)) && (ZZ_MODE == 1)) && (wibbleresult == 0))
+  xyprintfx MSGX, MSGY, 1, 1, 1, 1, _newsub, "I got one! I could win!"
+if ((((@PScore == 1) && (@MSGDotTime > func_gametime)) && (ZZ_MODE > 1)) && (wibbleresult == 0))
+  xyprintfx MSGX, MSGY, 1, 1, 1, 1, _newsub, "That was luck."
+if ((((@PScore == 2) && (@MSGDotTime > func_gametime)) && (ZZ_MODE > 1)) && (wibbleresult == 0))
+  xyprintfx MSGX, MSGY, 1, 1, 1, 1, _newsub, "This game cheats..."
+if ((((@PScore == 3) && (@MSGDotTime > func_gametime)) && (ZZ_MODE > 1)) && (wibbleresult == 0))
+  xyprintfx MSGX, MSGY, 1, 1, 1, 1, _newsub, "Ok, now I am turning on the steam!"
+if ((((@PScore == 4) && (@MSGDotTime > func_gametime)) && (ZZ_MODE > 1)) && (wibbleresult == 0))
+  xyprintfx MSGX, MSGY, 1, 1, 1, 1, _newsub, "You are SOOOO lucky!"
+if ((((@CScore == 1) && (@MSGPotTime > func_gametime)) && (ZZ_MODE > 1)) && (wibbleresult == 0))
+  xyprintfx MSGX, MSGY, 1, 1, 1, 1, _newsub, "Booyaaa!  Score one for the good guys."
+if ((((@CScore == 2) && (@MSGPotTime > func_gametime)) && (ZZ_MODE > 1)) && (wibbleresult == 0))
+  xyprintfx MSGX, MSGY, 1, 1, 1, 1, _newsub, "Are you even trying?"
+if ((((@CScore == 3) && (@MSGPotTime > func_gametime)) && (ZZ_MODE > 1)) && (wibbleresult == 0))
+  xyprintfx MSGX, MSGY, 1, 1, 1, 1, _newsub, "Man, you are really pathetic."
+if ((((@CScore == 4) && (@MSGPotTime > func_gametime)) && (ZZ_MODE > 1)) && (wibbleresult == 0))
+  xyprintfx MSGX, MSGY, 1, 1, 1, 1, _newsub, "Don't quit your day job..."
+startswitch {
+  extern AI_GrabEntity PlayerChar0 playerchar0_handle
+  if (ZZ_MODE == 0)
+    set ZZ_MODE = 1
+  set @PScore = 0
+  set @CScore = 0
+  set MSGX = 10
+  set MSGY = 10
+  set @ZZwintimer = 0
+  set wibbleresult = 0
+  gosub 50000:5
+  gosub 50000:25
+  console "pushbind"
+  console "bind ESCAPE \"invoke 50000:26\""
+  set anox_interface_active = 1
+  extern set2dcursor invisiblecursor.pcx
+}
+
+thinkswitch {
+  set X = 192
+  if (ZZ_READ_HELP == 0) {
+    gosub 50000:28
+    set ZZ_READ_HELP = 1
+    set ZZ_Pause = 1
+  }
+  if (ZZ_Pause <= 0)
+    if (@ZZwintimer > 0) {
+      echo "ZZ Wintimer is set!\n"
+      if (@ZZwintimer < func_gametime) {
+        echo "finished with loop"
+        extern cam_anoxmariomode 0
+        extern set2dcursor default
+        closewindow 50000:1
+        set @ZZwintimer = 0
+      }
+    } else {
+      extern DrawPic @ZZ_PIC_BLACK$ X 80
+      gosub 50000:19
+      extern DrawPic @ZZ_PIC_BACKGRND$ X 80
+      gosub 50000:7
+      gosub 50000:6
+      gosub 50000:8
+      gosub 50000:10
+      gosub 50000:14
+      gosub 50000:12
+      gosub 50000:23
+      gosub 50000:24
+      if (@PScore > 1) {
+        set @ZZwintimer = (func_gametime + 1000)
+        extern playsound GAMES/zong/GAMES_Zong_win.wav
+        set wibbleresult = 2
+      } else if (@CScore > 1) {
+        set @ZZwintimer = (func_gametime + 1000)
+        extern playsound GAMES/zong/GAMES_Zong_win.wav
+        set wibbleresult = 1
+      }
+      if (@ManyBallsTimer < func_gametime)
+        set ZZ_NOB = 0
+    }
+}
+
+finishswitch {
+  extern AI_ReleaseEntity playerchar0_handle
+  gosub 50000:30	
+  set NDir = 0
+  set ZZVBX = 0
+  set ZZVBY = 0
+  set ZZV = 0
+  set ZZBX = 0
+  set ZZBY = 0
+  set ZPadX = 0
+  set ZPadY = 0
+  set ZComX = 0
+  set ZComY = 0
+  set CDel = 0
+  set count = 0
+  set ZZOverTimer = 0
+  set YG = 0
+  set YB = 0
+  set ZXt = 0
+  set ZYt = 0
+  set DX = 0
+  set ZZ_LASTHIT = 0
+  set ZLH = 0
+  set Temp = 0
+  gosub 50000:27
+  extern APE_ARCADE_ReturnFromGame
+  goto 0:0
+}
+
+style "NULL"
+font "SUBSYM"
+flags passive2d, TRUE
+
+#window 50000:30
+if ((wibbleresult == 2) && (ZZ_MODE <= 1))
+  title "You beat Mr. Wibble!"
+if ((wibbleresult == 1) && (ZZ_MODE <= 1))
+  title "Mr. Wibble Wins!"
+if ((wibbleresult == 0) && (ZZ_MODE <= 1))
+  title "Canceling Game..."
+if ((wibbleresult == 2) && (ZZ_MODE > 1))
+  title "You Win! I bet you feel good about yourself huh?"
+if ((wibbleresult == 1) && (ZZ_MODE > 1))
+  title "You Lose...YOU SUCK...LOSER!"
+if ((wibbleresult == 0) && (ZZ_MODE > 1))
+  title "Canceling Game..."
+if ((wibbleresult == 2) && (ZZ_MODE <= 1))
+  xyprintfx 20, 60, 1, 1, 1, 1, _newsub, "Mr. Wibble: See, I can't even win Zong."
+if ((wibbleresult == 1) && (ZZ_MODE <= 1))
+  xyprintfx 20, 60, 1, 1, 1, 1, _newsub, "Mr. Wibble: Maybe things are okay."
+if ((wibbleresult <= 0) && (ZZ_MODE <= 1))
+  xyprintfx 20, 60, 1, 1, 1, 1, _newsub, "Mr. Wibble: Come back when you want to play."
+if ((wibbleresult == 2) && (ZZ_MODE > 1))
+  xyprintfx 20, 60, 1, 1, 1, 1, _newsub, "Computer AI: What?! It must have caught that millennium bug!"
+if ((wibbleresult == 1) && (ZZ_MODE > 1))
+  xyprintfx 20, 60, 1, 1, 1, 1, _newsub, "Computer AI: See, don't mess with perfection!"
+if ((wibbleresult <= 0) && (ZZ_MODE > 1))
+  xyprintfx 20, 60, 1, 1, 1, 1, _newsub, "Computer AI: Hahaha! Run away little man... run away!"
+finishswitch {
+  set ZZ_MODE = 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+width 620
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#switch 50000:17
+set count = 0
+while (count < 30) {
+  if (count > 3) {
+    set Q[$count$] = 1
+  } else {
+    set Q[$count$] = -1.000000
+    set S[$count$] = -1.000000
+  }
+  set count = (count + 1)
+}
+
+#switch 50000:16
+set count = 0
+while (count < 30) {
+  if (count < 26) {
+    set R[$count$] = 1
+  } else {
+    set R[$count$] = -1.000000
+    set T[$count$] = -1.000000
+  }
+  set count = (count + 1)
+}
+
+#switch 50000:15
+if (ZZ_BONUS_ACTIVE == 1)
+  if (((ZZBX >= ZZ_BONUS_X) && (ZZBX <= (ZZ_BONUS_X + 16))) && ((ZZBY >= ZZ_BONUS_Y) && (ZZBY <= (ZZ_BONUS_Y + 16)))) {
+    set ZZVBY = (-1.000000 * ZZVBY)
+    set ZZ_BONUS_X = (192 + 48)
+    set ZZ_BONUS_ACTIVE = 0
+    set ZZ_BONUS_FTIME = (func_gametime + 500)
+    if (ZZ_BONUS_TYPE == 0) {
+      extern playsound GAMES/zong/games_zong_zongscore.wav
+      if (ZZ_LASTHIT == 3) {
+        gosub 50000:17
+      } else if (ZZ_LASTHIT == 2) {
+        gosub 50000:16
+      } else {
+        gosub 50000:16
+        gosub 50000:17
+      }
+    } else {
+      set ZZ_NOB = 2
+      set @point = 1
+      extern playsound GAMES/zong/games_zong_crowdahh.wav
+      while (@point < ZZ_NOB) {
+        set @DirY = func_drand[0,1]
+        set @DirX = func_drand[0,1]
+        if (@DirX == 0)
+          set @DirX = -1.000000
+        if (@DirY == 0)
+          set @DirY = -1.000000
+        set A[$@point$] = @DirX
+        set B[$@point$] = @DirY
+        set C[$@point$] = ZZBX
+        set D[$@point$] = ZZBY
+        set @point = (@point + 1)
+      }
+      set @ManyBallsTimer = (func_gametime + 15000)
+    }
+  }
+
+#switch 50000:14
+if (ZZ_BONUS_ACTIVE == 1) {
+  if (ZZ_BONUS_FTIME < func_gametime) {
+    set ZZ_BONUS_FRAME = (ZZ_BONUS_FRAME + 1)
+    if (ZZ_BONUS_FRAME > 3)
+      set ZZ_BONUS_FRAME = 0
+    if (ZZ_BONUS_FRAME == 0) {
+      if (ZZ_BONUS_TYPE == 0) {
+        ZZ_BONUS_PIC$="%s" , @ZZ_PIC_SHIPA$
+      } else
+        ZZ_BONUS_PIC$="%s" , @ZZ_PIC_SWITCHA$
+    } else if (ZZ_BONUS_FRAME == 1) {
+      if (ZZ_BONUS_TYPE == 0) {
+        ZZ_BONUS_PIC$="%s" , @ZZ_PIC_SHIPB$
+      } else
+        ZZ_BONUS_PIC$="%s" , @ZZ_PIC_SWITCHB$
+    } else if (ZZ_BONUS_FRAME == 2) {
+      if (ZZ_BONUS_TYPE == 0) {
+        ZZ_BONUS_PIC$="%s" , @ZZ_PIC_SHIPC$
+      } else
+        ZZ_BONUS_PIC$="%s" , @ZZ_PIC_SWITCHC$
+    } else if (ZZ_BONUS_FRAME == 3)
+      if (ZZ_BONUS_TYPE == 0) {
+        ZZ_BONUS_PIC$="%s" , @ZZ_PIC_SHIPD$
+      } else
+        ZZ_BONUS_PIC$="%s" , @ZZ_PIC_SWITCHD$
+    set ZZ_BONUS_FTIME = (func_gametime + 75)
+  }
+  set ZZ_BONUS_X = (ZZ_BONUS_X + 0.5)
+  if (ZZ_BONUS_X > (192 + 264)) {
+    set ZZ_BONUS_X = (192 + 48)
+    set ZZ_BONUS_ACTIVE = 0
+    set ZZ_BONUS_FTIME = (func_gametime + 500)
+  }
+  extern DrawPic ZZ_BONUS_PIC$ ZZ_BONUS_X ZZ_BONUS_Y
+} else if (ZZ_BONUS_FTIME < func_gametime) {
+  set Temp = func_drand[1,1500]
+  if ((Temp > 1200) && (ZZ_NOB == 0)) {
+    set Temp = func_drand[1,10]
+    if (Temp > 4) {
+      set ZZ_BONUS_TYPE = 1
+    } else
+      set ZZ_BONUS_TYPE = 0
+    set ZZ_BONUS_ACTIVE = 1
+    set ZZ_BONUS_FTIME = 0
+  } else
+    set ZZ_BONUS_FTIME = (func_gametime + 1500)
+}
+
+#switch 50000:20
+if (ZZ_MODE > 1) {
+  set DUMB = func_drand[1,100]
+  if (DUMB > 98) {
+    set Dumb_Time = func_drand[50,150]
+    set Comp_Dumb = (Dumb_Time + func_gametime)
+  }
+} else {
+  set DUMB = func_drand[1,10]
+  if (DUMB >= 5) {
+    set Dumb_Time = func_drand[200,500]
+    set Comp_Dumb = (Dumb_Time + func_gametime)
+  }
+}
+
+#switch 50000:21
+if ((ZComX <= (192 + 41)) && (NDir == -1.000000))
+  set NDir = 0
+if ((ZComX >= (192 + 240)) && (NDir == 1))
+  set NDir = 0
+set CDel = 4
+set ZComX = (ZComX + (NDir * CDel))
+
+#switch 50000:10
+set @point = 0
+set @BYTemp = 800
+while (@point < ZZ_NOB) {
+  set ZZBY = D[$@point$]
+  if (@BYTemp > ZZBY) {
+    set ZZVBX = A[$@point$]
+    set ZZVBY = B[$@point$]
+    set ZZBX = C[$@point$]
+    set @BYTemp = ZZBY
+  }
+  set @point = (@point + 1)
+}
+if (Comp_Dumb < func_gametime) {
+  if (((ZZBX >= ZComX) && (ZZBX <= (ZComX + 48))) && (ZZBY <= ZComY)) {
+    if ((ZZBX > (ZComX + (0.5 * 48))) && (ZComX > (192 + 43))) {
+      set NDir = -1.000000
+    } else
+      set NDir = 1
+    set CDel = 4
+    set ZComX = (ZComX + (NDir * CDel))
+  } else if (@MoveForThisLong <= 0) {
+    set NDir = 0
+    if (((ZComX + (48 * 0.5)) < ZZBX) && (ZComX < (192 + (244 - 48)))) {
+      set NDir = 1
+    } else if (((ZComX + (48 * 0.5)) > ZZBX) && (ZComX > (192 + 12)))
+      set NDir = -1.000000
+    set WID_FRAC = (func_drand[35,50] * 0.00999999977648)
+    if ((((ZComX + (48 * WID_FRAC)) + (48 * 0.25)) > ZZBX) && (((ZComX + (48 * WID_FRAC)) - (48 * 0.25)) < ZZBX)) {
+      set NDir = 0
+      echo "We are in line with the ball...\n"
+      if (@OneSpotMarker == 0) {
+        set @OneSpotMarker = func_gametime
+      } else
+        set @OneSpot = func_gametime
+      set @TimeInOneSpot = (@OneSpot - @OneSpotMarker)
+      echo "@TimeInOneSpot = %d", @TimeInOneSpot
+      if (@TimeInOneSpot > 4000) {
+        set @MoveForThisLong = (func_gametime + 350)
+        set @TempHolder = func_drand[0,1]
+        if (@TempHolder) {
+          set NDir = 1
+        } else
+          set NDir = -1.000000
+      }
+    } else {
+      set @OneSpot = 0
+      set @OneSpotMarker = 0
+    }
+    gosub 50000:21
+  } else if (@MoveForThisLong < func_gametime)
+    set @MoveForThisLong = 0
+  gosub 50000:20
+} else
+  gosub 50000:21
+extern UI_FillRect ZComX ZComY 48 6 128 0 255 0
+
+#switch 50000:8
+set @mousex = func_mousex
+set MXd = (@mousex / 640)
+set ZPadX = (((MXd * (243 - 48)) + 38) + 192)
+extern UI_FillRect ZPadX ZPadY 48 6 128 255 0 0
+
+#switch 50000:22
+if (@B_CollisionTime < func_gametime) {
+  set BBX = (BBX + 4)
+  set BBY = (BBY + 4)
+  set BBXMIN = (BBX - 4)
+  set BBXMAX = (BBX + 4)
+  set BBYMIN = (BBY - 4)
+  set BBYMAX = (BBY + 4)
+  if (((ZZBX >= BBXMIN) && (ZZBX <= BBXMAX)) && ((ZZBY >= BBYMIN) && (ZZBY <= BBYMAX))) {
+    if (ZZ_LASTHIT == SIDE) {
+      if (SIDE == 3) {
+        set Q[$count$] = 0
+        if (@Comp_State < 100)
+          set @Comp_State = (@Comp_State + 5)
+        if (@Comp_State > 100)
+          set @Comp_State = 100
+      } else if (SIDE == 2) {
+        set R[$count$] = 0
+        if (@Player_State < 100)
+          set @Player_State = (@Player_State + 5)
+        if (@Player_State > 100)
+          set @Player_State = 100
+      }
+      set ZZ_LASTHIT = 1
+      extern playsound GAMES/zong/games_zong_wallhit.wav
+    } else
+      extern playsound GAMES/zong/GAMES_Zong_hitpaddle.wav
+    set ZZVBY = (-1.000000 * ZZVBY)
+    set @B_CollisionTime = (func_gametime + 120)
+  }
+}
+
+#switch 50000:13
+set count = 0
+while (count < 30) {
+  if (Q[$count$] == 1) {
+    set BBX = S[$count$]
+    set BBY = YG
+    set SIDE = 3
+    gosub 50000:22
+  }
+  if (R[$count$] == 1) {
+    set BBX = T[$count$]
+    set BBY = YB
+    set SIDE = 2
+    gosub 50000:22
+  }
+  set count = (count + 1)
+}
+
+#switch 50000:9
+if (((ZZBX >= (ZXt - 6)) && (ZZBX <= (ZXt + 48))) && ((ZZBY >= ZYt) && (ZZBY <= (ZYt + (6 - 4))))) {
+  set DX = (ZZBX - ZXt)
+  set DX = func_abs[$DX$]
+  if ((DX >= (48 / 3)) && (DX <= ((2 * 48) / 3))) {
+    set ZZVBX = 0
+  } else if ((DX <= (48 / 6)) || (DX >= ((5 * 48) / 6))) {
+    if (DX <= (48 / 6)) {
+      set ZZVBX = -1.000000
+    } else
+      set ZZVBX = 1
+  } else if (DX < (48 / 2)) {
+    set ZZVBX = -0.500000
+  } else
+    set ZZVBX = 0.5
+  set ZZVBY = (-1.000000 * ZZVBY)
+  extern playsound GAMES/zong/GAMES_Zong_hitpaddle.wav
+  set ZZ_LASTHIT = ZLH
+}
+
+#switch 50000:18
+set ZZBX = ((ZZVBX * ZZV) + ZZBX)
+set ZZBY = ((ZZVBY * ZZV) + ZZBY)
+set A[$@point$] = ZZVBX
+set B[$@point$] = ZZVBY
+set C[$@point$] = ZZBX
+set D[$@point$] = ZZBY
+
+#switch 50000:7
+set @point = 0
+set @Limit = (ZZ_NOB + 1)
+while (@point < @Limit) {
+  set ZZVBX = A[$@point$]
+  set ZZVBY = B[$@point$]
+  set ZZBX = C[$@point$]
+  set ZZBY = D[$@point$]
+  echo "ZZBX = %d for %d", ZZBX, @point
+  if ((ZZBX >= (192 + 280)) || (ZZBX <= (192 + 40))) {
+    extern playsound GAMES/zong/GAMES_Zong_hitwall.wav
+    if (ZZBX <= (192 + 40))
+      set ZZBX = (192 + 41)
+    if (ZZBY >= (192 + 280))
+      set ZZBX = (192 + 270)
+    if (@B_BALLX_COLLTIME < func_gametime) {
+      set ZZVBX = (-1.000000 * ZZVBX)
+      set @B_BALLX_COLLTIME = (func_gametime + 120)
+    }
+  }
+  if ((ZZBY >= (80 + 305)) || (ZZBY <= (80 + 9))) {
+    if (ZZBY >= (80 + 305)) {
+      if (@Player_State > 0)
+        set @Player_State = (@Player_State - 20)
+      if (@Player_State < 0)
+        set @Player_State = 0
+      if (@PlayerScoreFlash < func_gametime)
+        set @PlayerScoreFlash = (func_gametime + 240)
+    } else if (ZZBY <= (80 + 9)) {
+      if (@Comp_State > 0)
+        set @Comp_State = (@Comp_State - 20)
+      if (@Comp_State < 0)
+        set @Comp_State = 0
+      if (@CompScoreFlash < func_gametime)
+        set @CompScoreFlash = (func_gametime + 240)
+    }
+    extern playsound GAMES/zong/games_zong_oppwallhit.wav
+    set ZZVBY = (-1.000000 * ZZVBY)
+  }
+  set ZXt = ZPadX
+  set ZYt = ZPadY
+  set ZLH = 2
+  gosub 50000:9
+  set ZXt = ZComX
+  set ZYt = ZComY
+  set ZLH = 3
+  gosub 50000:9
+  gosub 50000:13
+  gosub 50000:15
+  gosub 50000:18
+  if (ZZ_BALLCOLORTIME < func_gametime) {
+    if (ZZ_LASTHIT == 3) {
+      set Temp = func_drand[1,54]
+      set ZZ_RED = 0
+      set ZZ_GREEN = (200 + Temp)
+      set ZZ_BLUE = 0
+    } else if (ZZ_LASTHIT == 2) {
+      set Temp = func_drand[1,54]
+      set ZZ_RED = 0
+      set ZZ_GREEN = 0
+      set ZZ_BLUE = (200 + Temp)
+    } else {
+      set Temp = func_drand[1,54]
+      set ZZ_RED = (200 + Temp)
+      set ZZ_GREEN = (200 + Temp)
+      set ZZ_BLUE = (200 + Temp)
+    }
+    set ZZ_BALLCOLORTIME = (func_gametime + 150)
+  }
+  extern UI_FillRect ZZBX ZZBY 4 4 128 ZZ_BLUE ZZ_GREEN ZZ_RED
+  set @point = (@point + 1)
+}
+
+#switch 50000:12
+set count = 0
+if (ZZOverTimer < func_gametime) {
+  while (count < 30) {
+    if (S[$count$] < (192 + 272)) {
+      set S[$count$] = (S[$count$] + 8)
+    } else
+      set S[$count$] = (192 + 40)
+    if (T[$count$] > (192 + 40)) {
+      set T[$count$] = (T[$count$] - 8)
+    } else
+      set T[$count$] = (192 + 272)
+    set count = (count + 1)
+  }
+  set ZZOverTimer = (func_gametime + 300)
+}
+
+#switch 50000:6
+set count = 0
+while (count < 30) {
+  if (Q[$count$] == 1)
+    extern DrawPic @ZZ_PIC_GREEN$ S[$count$] YG
+  if (R[$count$] == 1)
+    extern DrawPic @ZZ_PIC_BLUE$ T[$count$] YB
+  set count = (count + 1)
+}
+
+#switch 50000:5
+extern RegisterPic @ZZ_PIC_BACKGRND$	/gameflow/zong/zong_back.tga
+extern RegisterPic @ZZ_PIC_BLACK$		/gameflow/zong/zong_back_black.tga
+extern RegisterPic @ZZ_PIC_GREEN$		/gameflow/zong/greendot.tga
+extern RegisterPic @ZZ_PIC_BLUE$		/gameflow/zong/bluedot.tga
+extern RegisterPic @ZZ_PIC_SHIPA$		/gameflow/zong/shipa.tga
+extern RegisterPic @ZZ_PIC_SHIPB$		/gameflow/zong/shipb.tga
+extern RegisterPic @ZZ_PIC_SHIPC$		/gameflow/zong/shipc.tga
+extern RegisterPic @ZZ_PIC_SHIPD$		/gameflow/zong/shipd.tga
+extern RegisterPic @ZZ_PIC_SWITCHA$		/gameflow/zong/switcha.tga
+extern RegisterPic @ZZ_PIC_SWITCHB$		/gameflow/zong/switchb.tga
+extern RegisterPic @ZZ_PIC_SWITCHC$		/gameflow/zong/switchc.tga
+extern RegisterPic @ZZ_PIC_SWITCHD$		/gameflow/zong/switchd.tga
+
+#switch 50000:11
+set count = 0
+set @pX = (192 + 37)
+while (count < 30) {
+  if (count > 3) {
+    set Q[$count$] = 1
+    set S[$count$] = (@pX + ((count + 1) * 8))
+  } else {
+    set Q[$count$] = -1.000000
+    set S[$count$] = -1.000000
+  }
+  if (count < 26) {
+    set R[$count$] = 1
+    set T[$count$] = (@pX + ((count + 1) * 8))
+  } else {
+    set R[$count$] = -1.000000
+    set T[$count$] = -1.000000
+  }
+  set A[$ZZ_NOB$] = 0
+  set B[$ZZ_NOB$] = 0
+  set C[$ZZ_NOB$] = 0
+  set D[$ZZ_NOB$] = 0
+  set count = (count + 1)
+}
+
+#switch 50000:25
+gosub 50000:11
+set ZZ_NOB = 0
+set @TempDir = func_drand[1,2]
+if (@TempDir == 1) {
+  set B[0] = 1
+} else
+  set B[0] = -1.000000
+set A[0] = 1
+set B[0] = 1
+set C[0] = (192 + 50)
+set D[0] = (80 + 220)
+set ZZV = 4
+set ZZ_BALLCOLORTIME = (func_gametime + 50)
+set @Comp_State = 100
+set @Player_State = 100
+set ZPadX = (192 + 40)
+set ZPadY = (80 + 300)
+set ZComX = (192 + 40)
+set ZComY = (80 + 15)
+set ZZOverTimer = (func_gametime + 300)
+set YG = (80 + 140)
+set YB = (80 + 180)
+set ZZ_LASTHIT = 0
+set ZZ_BONUS_X = (192 + 48)
+set ZZ_BONUS_Y = (80 + 160)
+set ZZ_BONUS_FRAME = 0
+set ZZ_BONUS_FTIME = (func_gametime + 100)
+unset ZZ_BONUS_PIC$=@ZZ_PIC_SHIPA$ 
+set ZZ_BONUS_ACTIVE = 0
+
+#switch 50000:19
+set @Fill_Region = (315 - ((@Player_State / 100) * 315))
+set @X1 = 192
+set @Y1 = (80 + @Fill_Region)
+set @X2 = 34
+set @Y2 = ((@Player_State / 100) * 315)
+extern UI_FillRect @X1 @Y1 @X2 @Y2 128 255 0 0
+set @Fill_Region = (315 - ((@Comp_State / 100) * 315))
+set @X1 = (192 + 282)
+set @Y1 = (80 + @Fill_Region)
+set @X2 = 34
+set @Y2 = ((@Comp_State / 100) * 315)
+extern UI_FillRect @X1 @Y1 @X2 @Y2 128 0 255 0
+
+#switch 50000:23
+if (@PlayerScoreFlash > func_gametime)
+  if (@PPFlashBlink < func_gametime) {
+    set @PPY = (80 + 309)
+    set @PPX = (192 + 40)
+    extern UI_FillRect @PPX @PPY 240 4 96 0 0 255
+    set @PPFlashBlink = (func_gametime + 60)
+  }
+if (@CompScoreFlash > func_gametime)
+  if (@CCFlashBlink < func_gametime) {
+    set @PPY = (80 + 8)
+    set @PPX = (192 + 40)
+    extern UI_FillRect @PPX @PPY 240 4 96 0 0 255
+    set @CCFlashBlink = (func_gametime + 60)
+  }
+
+#switch 50000:24
+if (@Comp_State <= 0) {
+  set @PScore = (@PScore + 1)
+  set @MSGDotTime = (func_gametime + 1500)
+  set @MSGPotTime = 0
+  gosub 50000:25
+} else if (@Player_State <= 0) {
+  set @CScore = (@CScore + 1)
+  set @MSGPotTime = (func_gametime + 1500)
+  set @MSGDotTime = 0
+  gosub 50000:25
+}
+
+#switch 50000:26
+if (ZZ_Pause <= 0) {
+  closewindow 50000:1
+} else
+  closewindow 50000:28
+
+#switch 50000:27
+set ZZ_BONUS_X = 0
+set ZZ_BONUS_Y = 0
+set ZZ_BONUS_FRAME = 0
+set ZZ_BONUS_FTIME = 0
+ZZ_BONUS_PIC$="" 
+set ZZ_BONUS_ACTIVE = 0
+set ZZ_BALLCOLORTIME = 0
+console "popbind"
+set anox_interface_active = 0
+extern set2dcursor default
+set ZZ_READ_HELP = 0

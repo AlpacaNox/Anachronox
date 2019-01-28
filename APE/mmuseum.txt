@@ -1,0 +1,2019 @@
+#window 17:101
+title "Twin Slag Exhibit"
+body "(Anachronox, Anachronox, 209ac)"
+startswitch {
+  target beep11
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 35
+ypos 340
+
+#window 17:205
+title "Museum Security"
+body "I hate museums. They're too quiet."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:210
+title "Museum Security"
+body "They should close this place down. Nobody cares about this crap."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:215
+title "Museum Security"
+body "I've learned to sleep standing up."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:220
+title "Museum Security"
+body "Zzz."
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2105
+title "Professor Langley"
+if (Bly1 == 0)
+  body "Hello there. You look like you have a question."
+if (Bly1 == 1)
+  body "Anything else I can help you with?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (Bly2 == 0)
+  choice "What's the big deal with MysTech?" 17:2110
+if (BlySymbol == 1)
+  choice "What's an Anachronox symbol?" 17:2135
+if (Bly2 == 1)
+  choice "Can you tell me again about MysTech?" 17:2110
+if (BlyTasks == 1)
+  choice "What do you want me to do for you again?" 17:2120
+if (BlySymbol == 2)
+  choice "Can you tell me about the Anachronox symbol again?" 17:2135
+if (BlyGotPiccy == 1)
+  choice "I've got those pictures of the Anachronox symbols." 17:2160
+if (INV_LOGO == 1)
+  choice "Hey, I've got that authentic symbol for you." 17:2190
+choice "So long." 17:2125
+
+#window 17:2110
+title "Professor Langley"
+body "No one really knows what MysTech is exactly. Our best guess is ancient alien art."
+cam left restore zip
+talk npc gest_c stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2111
+
+#window 17:2111
+title "Professor Langley"
+if (func_charinparty[grumpos] == 2)
+  body "Your friend, Mister Matavastros, was the last curator of this museum. He believes there's hidden power locked away inside them."
+if (func_charinparty[grumpos] == 0)
+  body "Some people, such as our last curator, believe there's hidden power locked away inside them."
+cam left restore zip
+talk npc talk_y stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2112
+
+#window 17:2112
+title "Professor Langley"
+body "Personally, I think they're just ugly antiques. People will collect just about anything these days."
+cam left restore zip
+talk npc gest_b stay
+finishswitch {
+  set Bly1 = 1
+  set Bly2 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2105
+
+#window 17:2115
+title "Professor Langley"
+body "Just a moment. You look like a hooligan."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2116
+
+#window 17:2116
+title "Professor Langley"
+body "You're just the type of man I need for a special job. Two jobs, actually."
+cam left restore zip
+talk npc talk_y stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2117
+
+#window 17:2117
+title "Professor Langley"
+body "I'm going to make a diorama of Anachronox symbols next month for an exhibit. If you take pictures of the SIX symbols scattered around the city, not including the one here in the museum, I'll give you 200 loonies."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2106
+
+#window 17:2106
+title "Professor Langley"
+body "I've already got a picture of the one above the Anachronox Tours sign, so I'll give you credit for that one."
+cam left restore zip
+talk npc talk_y stay
+finishswitch {
+  set BlyTasks = 1
+  extern addnew_to_inventory "Credit For Anachronox Symbol"
+  set KNOW_TO_PHOTOGRAPH_SIX_SYMBOLS = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2118
+
+#window 17:2118
+title "Professor Langley"
+body "In fact, the symbol over the Tours sign was stolen from the museum just a few weeks ago. I'd turn to the NoxGuards for help, but they would laugh in my face."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2119
+
+#window 17:2119
+title "Professor Langley"
+body "If you can retrieve it, I'll pay you 400 loonies."
+cam left restore zip
+talk npc gest_b stay
+finishswitch {
+  set BlySymbol = 1
+  set OPEN_MGS = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2121
+title "Professor Langley"
+body "I'm going to make a diorama of Anachronox symbols next month for an exhibit. If you take pictures of the SIX symbols scattered around the city, not including the one here in the museum, I'll give you 200 loonies."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2122
+
+#window 17:2122
+title "Professor Langley"
+body "I've already got a picture of the one above the Anachronox Tours sign, so I've given you credit for that one."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  goto 17:2105
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2123
+title "Professor Langley"
+body "In fact, if you can retrieve that one, I'll pay you 400 loonies."
+cam left restore zip
+talk npc talk_y stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2105
+
+#window 17:2124
+title "Professor Langley"
+body "If you can retrieve the Anachronox symbol fastened atop the Tours Station sign, I'll pay you 400 loonies."
+cam left restore zip
+talk npc talk_y stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2105
+
+#window 17:2130
+title "Professor Langley"
+body "Greetings, Mister Matavastros. Come to check up on me so soon after your retirement?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2131
+
+#window 17:2131
+title "Professor Langley"
+body "I assure you everything is quite under control. We received a wonderful slag of MysTech from the Barnardian III system earlier this week, and it's quite lovely."
+cam left restore zip
+talk npc talk_y stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2135
+title "Professor Langley"
+body "The first settlers to land on Anachronox found them littered across the landscape, amidst all the alien architecture you see around the city. The symbols became extremely scarce over time."
+cam left from(3173 -262 -1210) to(3110 -270 -1202) fov(50) restore zip
+talk npc gest_n stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2136
+
+#window 17:2136
+title "Professor Langley"
+body "Years ago, the city council adopted the shape as its official logo in an effort to unify the community. They created tungsten imitations and scattered them across the city."
+cam left from(3173 -262 -1210) to(3110 -270 -1202) fov(50) restore zip
+talk npc gest_n stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2137
+
+#window 17:2137
+title "Professor Langley"
+body "The only authentic symbol I know of is the one here in the museum, and the one that was stolen from us."
+cam left fov(90) restore zip
+talk npc talk_a stay
+finishswitch {
+  set BlySymbol = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2105
+
+#window 17:2165
+title "Professor Langley"
+if (@count == 1)
+  body "You've only got a picture of one Anachronox symbol here. The one I gave you credit for."
+if (@count == 2)
+  body "You've only got pictures of two Anachronox symbols here. I need all six of them."
+if (@count == 3)
+  body "You've only got pictures of three Anachronox symbols here. I need all six of them."
+if (@count == 4)
+  body "You've only got pictures of four Anachronox symbols here. I need all six of them."
+if (@count == 5)
+  body "You've only got pictures of five Anachronox symbols here. You only need one more."
+cam left restore zip
+talk npc talk_n stay
+startswitch {
+  set @logopics = (((((@bricksdlogo + @bricksc2logo) + @tenementslogo) + @bricksclogo) + @bricksblogo) + @brickstourslogo)
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2166
+
+#window 17:2166
+title "Professor Langley"
+body "Come back when you've got them all."
+cam left restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2105
+
+#window 17:2168
+title "Professor Langley"
+body "Lemme know if you find any of those symbols."
+cam left restore zip
+talk npc talk_y stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2170
+title "Professor Langley"
+body "No kidding. It looks like you really found all six Anachronox symbols. I didn't even know about this one in the tenements."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2186
+
+#window 17:2186
+title "Professor Langley"
+body "Here's your 200 loonies. I'll throw in a few HealGrease Plus just for the hell of it."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set BlyGotPiccy = 2
+  extern add_money 200
+  if (BlyGotSymbol == 2)
+    set BlyTasks = 2
+  extern addnew_to_inventory "HealGrease Plus" 3
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2192
+title "Professor Langley"
+body "Well, it's not worth anything to me unless you bring it here."
+cam left restore zip
+talk npc talk_n stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2105
+
+#window 17:2195
+title "Professor Langley"
+body "Outstanding. I'm glad to see this back in the museum. Good work."
+cam left restore zip
+talk npc talk_y stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2196
+
+#window 17:2196
+title "Professor Langley"
+body "Here's your 400 loonies."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set INV_LOGO = 0
+  set GOT_SYMBOL = 1
+  set BlySymbol = 0
+  set BlyGotSymbol = 2
+  extern add_money 400
+  if (BlyGotPiccy == 2)
+    set BlyTasks = 2
+  extern remove_from_inventory "Anachronox Logo"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:610
+title "Joe"
+body "The only thing I love more than MysTech is playing piano. I love pounding them keys."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:0615
+
+#window 17:615
+title "Joe"
+body "When I'm rich, I'll own a piano made of mysterium. I'll play every day. People will listen."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:620
+title "Joe"
+body "Sorry, gotta get back to work."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:0621
+
+#window 17:621
+title "Joe"
+body "Ass."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set @start_time = func_gametime
+}
+
+thinkswitch {
+  if ((func_gametime - @start_time) > 200)
+    closewindow 17:0621
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:625
+title "Joe"
+body "Excuse me?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:0626
+
+#window 17:626
+title "Joe"
+body "I said I gotta get back to work."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:701
+title "Dewey Exhibit"
+body "(Barnard IV, Barnard System, 203ac)"
+startswitch {
+  target beep3
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 35
+ypos 340
+
+#window 17:801
+title "Bolzano Exhibit"
+body "(Sapuestes, Forus System, 208ac)"
+startswitch {
+  target beep4
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 35
+ypos 340
+
+#window 17:901
+title "Marling Exhibit"
+body "(Dullea III, Cordica System, 206ac)"
+startswitch {
+  target beep1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 35
+ypos 340
+
+#window 17:1001
+title "Gjertson Exhibit"
+body "(Chinsizi, Goteko System, 203ac)"
+startswitch {
+  target beep2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 35
+ypos 340
+
+#window 17:1301
+title "Quaylutros Exhibit"
+body "(Anachronox, Anachronox, 204ac)"
+startswitch {
+  target beep8
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 35
+ypos 340
+
+#window 17:1401
+title "Heinz Exhibit"
+body "(Asagan IV, Asagan System, 203ac)"
+startswitch {
+  target beep9
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 35
+ypos 340
+
+#window 17:1501
+title "Dimitri Exhibit"
+body "(Anachronox, Anachronox, 208ac)"
+startswitch {
+  target beep11
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 35
+ypos 340
+
+#window 17:1601
+title "Haylo Exhibit"
+body "(Telutz, Sesesquis System, 205ac)"
+startswitch {
+  target beep10
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 35
+ypos 340
+
+#window 17:1701
+title "Ceaplatz Exhibit"
+body "(Hephaestus, Hephaestus System, 208ac)"
+startswitch {
+  target beep12
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 35
+ypos 340
+
+#window 17:1801
+title "Samaritas Exhibit"
+body "(Durling II, Lando System, 205ac)"
+startswitch {
+  target beep13
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 35
+ypos 340
+
+#window 17:1901
+title "Luntz Exhibit"
+body "(Anachronox, Anachronox, 204ac)"
+startswitch {
+  target beep14
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 35
+ypos 340
+
+#window 17:2001
+title "Cavortane Exhibit"
+body "(Hephaestus, Hephaestus System, 208ac)"
+startswitch {
+  target beep15
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 35
+ypos 340
+
+#window 17:2401
+title "Authentic Anachronox Symbol"
+body "(Anachronox, Anachronox, 204ac)"
+startswitch {
+  target beep6
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 35
+ypos 340
+
+#window 17:2205
+title "Professor Visser"
+body "Is that quack on the other side of the museum looking over here? He's trying to steal my research."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2210
+title "Professor Visser"
+body "South Anachronox is too dangerous for scientist types. My esteemed colleagues are too scared to do research here."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2211
+
+#window 17:2211
+title "Professor Visser"
+body "I thought I'd be the lone, bold scientist who would brave danger in the name of science. It's what Einstein Awards are made of."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2212
+
+#window 17:2212
+title "Professor Visser"
+body "Someone always has to steal my thunder. Sad, little story of my life."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2215
+title "Professor Visser"
+body "To make matters worse, a local crime lord claimed ownership over the MysTech Tunnels. It's all been pillaged for his private collection."
+cam left restore zip
+talk npc gest_f stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2220
+title "Professor Visser"
+body "Is he looking over here?"
+cam left restore zip
+talk npc gest_n stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2225
+title "Professor Visser"
+body "Surely a connection exists between the destruction of the Sunder and the awakening of MysTech, no?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2230
+
+#window 17:2230
+title "Professor Visser"
+body "How can it be a coincidence? Only a fool would think so."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2235
+
+#window 17:2235
+title "Professor Visser"
+body "If the destruction of Sunder is the price we must pay for the awakening of MysTech... let Cordica be next!"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2240
+
+#window 17:2240
+title "Professor Cramosha"
+body "Steven! You're in front of people."
+cam left from(PlayerChar0) to(cramosha) restore zip
+talk_ex cramosha visser gest_g amb_b stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2245
+
+#window 17:2245
+title "Professor Visser"
+body "Can't I be swept up in the moment? You ought to try it sometime, you cold bastard."
+cam left from(PlayerChar0) to(visser) restore zip
+talk_ex visser cramosha amb_a amb_b stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2250
+
+#window 17:2250
+title "Professor Cramosha"
+body "He gets this way sometimes. Don't smack him."
+cam left from(PlayerChar0) to(cramosha) restore zip
+talk_ex cramosha playerchar0 gest_g amb_b stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2305
+title "Dr. Van Dijk"
+body "I'm here investigating the origins of Anachronox. Our knowledge is woefully weak."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2306
+
+#window 17:2306
+title "Dr. Van Dijk"
+body "Theories abound, mostly urban legends. The most popular story is that the original inhabitants of the planet were killed off by a horrible plague."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2307
+
+#window 17:2307
+title "Dr. Van Dijk"
+body "The first settlers who discovered Anachronox over eighty years ago originated this particular myth. They found a deserted city-planet and data seemed to indicate an electric virus was responsible."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2308
+
+#window 17:2308
+title "Dr. Van Dijk"
+body "So Anachronox became named after the virus: Electrophagus anachronoxus."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2309
+
+#window 17:2309
+title "Dr. Van Dijk"
+body "That's what \"Anachronox\" means. \"Poison from the past.\""
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2310
+title "Dr. Van Dijk"
+body "But what are the hard facts? What do we know for sure?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2311
+
+#window 17:2311
+title "Dr. Van Dijk"
+body "Anachronox is an artificial planet inside the empty core of Sender One. It was constructed by an unknown alien race. But why did they abandon it?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2312
+
+#window 17:2312
+title "Dr. Van Dijk"
+body "Why leave behind their buildings and technology in working order?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2313
+
+#window 17:2313
+title "Dr. Van Dijk"
+body "Why is the city constantly rearranging itself?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2314
+
+#window 17:2314
+title "Dr. Van Dijk"
+body "Nobody knows."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2315
+title "Dr. Van Dijk"
+body "Back in the day, it was a logical place for fugitives to hide. In fact, Anachronox was a hideout for felons and thieves long before the rest of the universe became aware of its existence."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2316
+
+#window 17:2316
+title "Dr. Van Dijk"
+body "That criminal element has trickled down the decades and plagues us to this day."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2320
+title "Dr. Van Dijk"
+body "I often wonder if inhabiting a planet we know so little about is such a bright idea."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2321
+
+#window 17:2321
+title "Dr. Van Dijk"
+body "Maybe one day its builders will come back and claim their planet."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2325
+title "Dr. Van Dijk"
+body "Say, do you know why that researcher over there keeps giving me ugly looks?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2330
+title "Dr. Van Dijk"
+body "This changes everything. How we think. How we live. How we see the world."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2335
+
+#window 17:2335
+title "Dr. Van Dijk"
+body "How many other scientific fields must this affect? How many assumptions about the universe must we rethink?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Dijk1 = 6
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2340
+
+#window 17:2340
+title "Dr. Van Dijk"
+body "What an incredible wrinkle in the body of opinion this has become."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2345
+
+#window 17:2345
+title "Dr. Van Dijk"
+body "Too bad the major thinkers of our time are all gone."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Dijk1 = 5
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2501
+title "Alecto"
+body "Eddie knows."
+cam left restore zip
+talk npc amb_a stay
+finishswitch {
+  set Alecto1 = 1
+  set LEARN_EDDIE = 1
+  extern is_quest_done "Find More Info on Eddie" @poop
+  if (@poop == 0)
+    extern add_quest "Find More Info on Eddie"
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2605
+title "Professor Langley"
+if (@male)
+  body "No these slags are not for sale, sir. Exhibition only."
+if (@male == 0)
+  body "No these slags are not for sale, ma'am. Exhibition only."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set @male = 1
+  if ((func_charinparty[rho] == 3) || (func_charinparty[stiletto] == 3))
+    set @male = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2610
+title "Professor Langley"
+if (@male)
+  body "I do not wish to comment on the validity of the Gods at this point, sir."
+if (@male == 0)
+  body "I do not wish to comment on the validity of the Gods at this point, ma'am."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set @male = 1
+  if ((func_charinparty[rho] == 3) || (func_charinparty[stiletto] == 3))
+    set @male = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2615
+title "Professor Langley"
+if (@male)
+  body "No, sir. You may not test one out. These slags are for exhibition only."
+if (@male == 0)
+  body "No, ma'am. You may not test one out. These slags are for exhibition only."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set @male = 1
+  if ((func_charinparty[rho] == 3) || (func_charinparty[stiletto] == 3))
+    set @male = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2620
+title "Professor Langley"
+body "I guess you were right about MysTech all these years, Mister Matavastros."
+cam left restore zip
+talk npc gest_n stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2621
+
+#window 17:2621
+title "Professor Langley"
+body "May I kiss the hem of your robe?"
+cam left restore zip
+talk npc gest_n stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2625
+title "Professor Langley"
+body "They came in and took everything. I couldn't stop them."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2626
+
+#window 17:2626
+title "Professor Langley"
+if (func_charinparty[grumpos] != 3)
+  body "It took Mister Matavastros years to obtain these pieces. They were stolen in five minutes."
+if (func_charinparty[grumpos] == 3)
+  body "It took you years to obtain these pieces. They were stolen in five minutes."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2627
+
+#window 17:2627
+title "Professor Langley"
+if (func_charinparty[grumpos] != 3)
+  body "I let him down. I should have tried to fight them with the MysTech, but I just... I couldn't."
+if (func_charinparty[grumpos] == 3)
+  body "I'm sorry I let you down. I should have tried to fight them with the MysTech, but I just... I couldn't."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2628
+
+#window 17:2628
+title "Professor Langley"
+body "Myeeeahhh...."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2701
+title "Mr. Havens"
+body "Can you believe it? Something as innocuous as MysTech... full of so much power. Aunt Amada kept one in the attic."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2705
+
+#window 17:2705
+title "Mr. Havens"
+body "I remember being attracted to it as a kid. I'd sneak up into the attic to look at it. The metal was strange... I looked like an adult in the reflection. "
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:2710
+
+#window 17:2710
+title "Mr. Havens"
+body "I called her to find out if she still had it, but she sold it in a yard sale years ago."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2805
+title "Martin Zendo"
+body "I don't believe any of it. It goes against physics, don't it?"
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2810
+title "Martin Zendo"
+body "Why they been all locked up, huh? Why now they come to power? Don't make any sense."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:2901
+title "Dr. Cramosha"
+body "Incredible, isn't it? This is how Krizimo Kilombi must have felt coming over the event horizon and seeing the Merigo shore for the first time."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:3101
+title "Thipper"
+body "I just wanted to see if it were true. About the MysTech."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:3201
+title "Troy Poppear"
+body "Thompson down the street already owns a slag. He's going to bring it to the party tonight. I just know it."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:3205
+
+#window 17:3205
+title "Troy Poppear"
+body "He'll be bragging and showing off... carrying on in front of Davis' wife."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:3210
+
+#window 17:3210
+title "Troy Poppear"
+body "Then he'll try and use it. He'll make sport of me and burn off my sideburns. He's always been jealous of them."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:3215
+
+#window 17:3215
+title "Troy Poppear"
+body "He'll kill me just to be the life of the party."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:3220
+
+#window 17:3220
+title "Troy Poppear"
+body "But if I've got one too..."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:3301
+title "Ruthen"
+body "I... I... am speechless."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:3305
+
+#window 17:3305
+title "Ruthen"
+body "..."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:3401
+title "Brother Timero"
+body "The Great Awakening has occurred in accordance to our scripture. But can it enrich your everyday life?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:3405
+
+#window 17:3405
+title "Brother Timero"
+body "The Brotherhood of Mysterium now offers affordable lectures on what the Great Awakening can mean to you."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:3410
+
+#window 17:3410
+title "Brother Timero"
+body "Make a pilgrimage to Hephaestus today."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:3501
+title "C.W. Buckhorn"
+body "Innocent people are getting maimed and killed by testing out their MysTech. The stuff's dangerous."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:3505
+
+#window 17:3505
+title "C.W. Buckhorn"
+body "If you're not careful, you could blow your Chuck Brown clean off."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:3602
+title "Tacate Stein"
+body "My grandmother had an antique slag on her dining table. Tackiest thing you've ever seen. When she heard MysTech was active she tried to test it."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:3603
+
+#window 17:3603
+title "Tacate Stein"
+body "She killed the cat."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:3605
+title "Tacate Stein"
+body "It was awesome."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:3705
+title "Dale Chorenon"
+body "There was a fella who worked here who always talked about playing the piano. Ever meet him?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:3710
+
+#window 17:3710
+title "Dale Chorenon"
+body "He was testing out a slag of MysTech and he blew his fingers off. He's gonna get patched up at Ghalla's tomorrow."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:3715
+
+#window 17:3715
+title "Dale Chorenon"
+body "Unfortunately, although a bio-graft can give you new fingers, they're never as responsive as the originals."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:3720
+title "Dale Chorenon"
+body "Can you spell musical death?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:3730
+title "Dale Chorenon"
+body "Hope he didn't like playing Rachmaninoff."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:3805
+title "Brother Hamacki"
+body "Mysterium Technology or MysTech, was discovered on the planet Hephaestus."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:3806
+
+#window 17:3806
+title "Brother Hamacki"
+body "It bubbled up from a deep lava well now called the Mysterium Levant. Later, MysTech was found in the cores of other planets."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:3807
+
+#window 17:3807
+title "Brother Hamacki"
+body "It gets its title from the strange metal from which it is made, dubbed Mysterium by confounded scientists of the time."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:3810
+title "Brother Hamacki"
+body "Is MysTech the technology of a long dead race?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:3811
+
+#window 17:3811
+title "Brother Hamacki"
+body "The greatest hoax ever?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:3812
+
+#window 17:3812
+title "Brother Hamacki"
+body "Or maybe... a Gift from the Gods!"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:3815
+title "Brother Hamacki"
+body "Make a pilgrimage to Hephaestus today."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:4401
+title "Plib"
+body "Greetings-greetings to you. I am Plib the Seller from Cordica."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:4407
+
+#window 17:4402
+title "Plib the Seller"
+if (PRE_DETTA == 1)
+  body "Those stupid hoodlums didn't think of checking the glo-stream for items. "
+body "How can I help you?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Buy or Sell" 17:4403
+choice "Nothing" 17:4405
+
+#window 17:4405
+title "Plib the Seller"
+body "I see. You toy with my emotions."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:4406
+title "Plib the Seller"
+body "Don't tell my scientist friends. They would call me a \"whore\"."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 17:4407
+title "Plib the Seller"
+body "I'm a scientist by trade, but science doesn't really foot the bills, so I've taken to selling items on the side. I store them in this alien glo-stream."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 17:4402
+
+#window 17:3001
+title "Professor Langley"
+body "Uh... is there something I can help you with?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 17:3005
+title "Professor Langley"
+body "Do you need to use the bathroom or something?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 17:1
+set CURRENT_PLANET = 1
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .6 1 1
+if (CASE_MUSEUM == 1)
+  set CASE_MUSEUM = 2
+set CURRENT_BANK = 17
+gosub 500:1                                  
+if (MYSTECH_ACTIVE == 0)
+  extern loopambient ambi_mmuseum
+if ((MYSTECH_ACTIVE == 1) && (PRE_DETTA == 0))
+  extern loopambient ambi_mmuseum_b
+if ((KNOW_TO_PHOTOGRAPH_SIX_SYMBOLS == 1) && (BlyGotPiccy == 0))
+  set BlyGotPiccy = 1
+if (BlySymbol > 0)
+  set BlyGotSymbol = 1
+if (VISIT_MUSEUM == 1) {
+  goto 17:0003
+} else
+  extern playlevelmusic mp3/bricks/bricks_normal_1_0.mp3
+goto 0:0
+
+#switch 17:3
+extern playlevelmusic mp3/bricks/bricks_normal_2_0.mp3
+extern playscene mmuseum_curator_intro
+set VISIT_MUSEUM = 0
+
+#switch 17:201
+set Security1 = (Security1 + 1)
+if (Security1 > 3)
+  goto 17:0220
+if (Security1 > 2)
+  goto 17:0215
+if (Security1 > 1)
+  goto 17:0210
+goto 17:0205                                 
+
+#switch 17:2101
+if (PRE_DETTA == 1)
+  goto 17:2625
+if ((func_charinparty[grumpos] == 3) && (MYSTECH_ACTIVE == 1))
+  goto 17:2620
+if (func_charinparty[grumpos] == 3)
+  goto 17:2130 \\2650
+goto 17:2105
+
+#switch 17:2120
+if (BlyGotPiccy != 2)
+  goto 17:2121
+goto 17:2124
+
+#switch 17:2125
+if (BlyTasks == 0)
+  goto 17:2115
+extern cam_restore
+goto 0:0
+
+#switch 17:2160
+set @brickstourslogo = 1
+extern photo_findentity @bricksdlogo sequence 9:4201
+extern photo_findentity @bricksc2logo sequence 8:3501
+extern photo_findentity @tenementslogo sequence 16:5101
+extern photo_findentity @bricksclogo sequence 10:4101
+extern photo_findentity @bricksblogo sequence 11:2201
+gosub 17:2162		                                    
+if (((((@bricksdlogo && @bricksc2logo) && @tenementslogo) && @bricksclogo) && @bricksblogo) && @brickstourslogo)
+  goto 17:2170
+if (((((@bricksdlogo || @bricksc2logo) || @tenementslogo) || @bricksclogo) || @bricksblogo) || @brickstourslogo)
+  goto 17:2165
+goto 17:2168
+
+#switch 17:2162
+set @count = 1
+if (@bricksdlogo)
+  set @count = (@count + 1)
+if (@bricksc2logo)
+  set @count = (@count + 1)
+if (@tenementslogo)
+  set @count = (@count + 1)
+if (@bricksclogo)
+  set @count = (@count + 1)
+if (@bricksblogo)
+  set @count = (@count + 1)
+extern is_in_inventory "Credit For Anachronox Symbol" @poo
+while (@poo < @count) {
+  extern addnew_to_inventory "Credit For Anachronox Symbol"
+  set @poo = (@poo + 1)
+}
+goto 0:0
+
+#switch 17:2190
+if (INV_LOGO == 1)
+  goto 17:2195
+goto 17:2192
+
+#switch 17:601
+set PianoMang1 = (PianoMang1 + 1)
+if (PianoMang1 > 2)
+  goto 17:0625
+if (PianoMang1 > 1)
+  goto 17:0620
+goto 17:0610                                 
+
+#switch 17:1101
+target beep5
+goto 17:0101
+
+#switch 17:1201
+target beep7
+goto 17:0101
+
+#switch 17:2201
+if (mystech_active && (Visser == 5))
+  goto 17:2235		                      
+if (mystech_active && (Visser <= 4))
+  goto 17:2225	
+if (Visser1 < 4)
+  set Visser1 = (Visser1 + 1)
+if (Visser1 > 3)
+  goto 17:2220
+if (Visser1 > 2)
+  goto 17:2215
+if (Visser1 > 1)
+  goto 17:2210
+goto 17:2205                                 
+
+#switch 17:2301
+if (mystech_active && (Dijk1 <= 5))
+  goto 17:2330	                                                     
+if (mystech_active && (Dijk1 == 6))
+  goto 17:2340	                                             
+if (Dijk1 < 5)
+  set Dijk1 = (Dijk1 + 1)
+if (Dijk1 > 4)
+  goto 17:2325
+if (Dijk1 > 3)
+  goto 17:2320
+if (Dijk1 > 2)
+  goto 17:2315
+if (Dijk1 > 1)
+  goto 17:2310
+goto 17:2305                                 
+
+#switch 17:2601
+if (PRE_DETTA == 1)
+  goto 17:2625
+if (func_charinparty[grumpos] == 3)
+  goto 17:2620
+set Langley2 = (Langley2 + 1)
+if (Langley2 > 2)
+  goto 17:2615
+if (Langley2 > 2)
+  goto 17:2610
+goto 17:2605
+
+#switch 17:2801
+set @zendo = (1 - @zendo)
+if (@zendo)
+  goto 17:2805
+goto 17:2810
+
+#switch 17:3601
+set talk_Tacate = (1 - talk_Tacate)
+if (talk_Tacate == 1)
+  goto 17:3602
+goto 17:3605
+
+#switch 17:3701
+set talk_chorenon = (talk_chorenon + 1)
+if (talk_chorenon > 3)
+  set talk_chorenon = 1
+if (talk_chorenon == 1)
+  goto 17:3705
+if (talk_chorenon == 2)
+  goto 17:3720
+goto 17:3630     
+
+#switch 17:3801
+set Hamacki1 = (Hamacki1 + 1)
+if (Hamacki1 > 2)
+  goto 17:3815
+if (Hamacki1 > 1)
+  goto 17:3810
+goto 17:3805
+
+#switch 17:4400
+if (talk_plib)
+  goto 17:4402
+set talk_plib = 1
+goto 17:4401
+
+#switch 17:4403
+extern is_in_inventory "The Theories of Asagan" @asagan
+extern is_skill_acquired "Scanalyze" @scan
+extern is_in_inventory "Mysteria Scientifica" @myssci
+extern is_skill_acquired "MysShield" @mysshield
+extern is_in_inventory "LaserArray Defense Plans" @lasarrdef
+extern is_skill_acquired "LaserArray" @lasarr
+extern is_in_inventory "PoisonTempest Harmonic" @p5_1
+extern is_equipped "PoisonTempest Harmonic" @p5_2
+extern shop_create "Plib the Seller"
+extern shop_set_active "Plib the Seller"
+if (MYSTECH_ACTIVE == 1) {
+  extern shop_add_object "Poisoner" 100
+  extern shop_add_object "PoisonSpin" 100
+}
+if (((PRE_DETTA == 1) && (@p5_1 == 0)) && (@p5_2 == 0))
+  extern shop_add_object "PoisonTempest Harmonic" 1
+extern shop_add_object "Glodent" 100
+if (ELEMENTOR_ACTIVE)
+  extern shop_add_object "Batt" 100
+if ((PRE_KRAPTON || PRE_LIMBUS) || PRE_DETTA)
+  extern shop_add_object "Bag o' Glodents" 100
+if (MYSTECH_ACTIVE && ((@asagan == 0) && (@scan == 0)))
+  extern shop_add_object "The Theories of Asagan" 1
+if (ELEMENTOR_ACTIVE && ((myssci == 0) && (mysshield == 0)))
+  extern shop_add_object "Mysteria Scientifica" 1
+if (PRE_DETTA && ((@lasarrdef == 0) && (@lasarr == 0)))
+  extern shop_add_object "LaserArray Defense Plans" 1
+extern shop_slogan "I sell these for the sake of science"
+extern shop_picture "plib.png"
+extern shop_start 17:4406
+goto 0:0
+goto 0:0

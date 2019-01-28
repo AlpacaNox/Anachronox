@@ -1,0 +1,2387 @@
+#window 43:105
+title "B.B. Browning"
+if (lead_boots && (partycash < 5))
+  body "You don't have FIVE BUCKS?  Betta shake it at the Pile, pocket-rabbit."
+if (lead_boots && (partycash >= 5))
+  body "Five dollar cover charge. Pay up, or on your butt I'll beat ya."
+cam left restore zip
+talk npc gest_g stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+if (lead_boots)
+  choice "Here you go. Five bucks. Lemme in!" 43:102
+if (lead_boots)
+  choice "Five dollars?! That's outrageous!" 43:103
+
+#window 43:102
+title "B.B. Browning"
+body "Be nice to the girls, else I break your pipe."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  extern remove_money 5
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:103
+title "B.B. Browning"
+body "Cheap bastard. Come back when you grow a pair."
+cam left restore zip
+talk npc gest_g stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:210
+title "Meat Ball"
+body "Ya ain't steppin' upstairs unless you're a paying customer. Beat it."
+cam left restore zip
+talk npc talk_A stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:215
+title "Meat Ball"
+body "Best not rough her up, or I'll snap your knob straw."
+cam left restore zip
+talk npc gest_g stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:302
+title "Madame Pulp"
+body "Welcome to The Orange Navel. You've come to the right place for freshly squeezed love."
+cam left restore zip
+talk npc gest_g stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:0303
+
+#window 43:303
+title "Madame Pulp"
+body "Find a girl you like and she'll take you upstairs."
+cam left restore zip
+talk npc gest_g stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:0304
+
+#window 43:304
+title "Madame Pulp"
+body "Be warned, we don't tolerate rough stuff around here. But I don't imagine we should have much trouble with you. You have a sweet face."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:305
+title "Madame Pulp"
+body "Talk to all the girls, shy guy. Pick one you like. They won't bite. Honest."
+cam left restore zip
+talk npc gest_g stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:402
+title "Peach Pump"
+if (talked_to_peach == 0)
+  body "Ha! Lemme have a look at ya. You've got teeth. That makes my job harder. What's your torture tonight?"
+if (talked_to_peach)
+  body "Haha! Glutton for punishment, eh?  What's your torture tonight?"
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  set talked_to_peach = (talked_to_peach + 1)
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+choice "Gopher Gummer ($3)" 43:403
+choice "Knuckle Shuckle ($5)" 43:404
+choice "Hair Salad ($6)" 43:405
+choice "Whisker-Doodle ($8)" 43:406
+choice "Peach Fuzz Special ($12)" 43:407
+choice "Nah, just lookin'." 0:0
+
+#window 43:408
+title "Peach Pump"
+body "Ha! You're a bold one. Let's take care of you upstairs, uh? Follow the rug."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set which_hooker = 1
+  set payin_customer = 1
+}
+
+finishswitch {
+  extern AI_GrabEntity pump pump_handle
+  extern AI_Path pump_handle pump_path1
+  extern AI_ReleaseEntity pump_handle
+  set hookerstate = 1
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:414
+title "Peach Pump"
+if (which_hooker == 2)
+  body "Don't be greedy. You're already hooking up with Cherry Berry."
+if (which_hooker == 3)
+  body "Don't be greedy. You're already hooking up with Melon Jug."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:415
+title "Peach Pump"
+body "Ha! Don't be impatient, honey!"
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:416
+title "Peach Pump"
+body "You ready, slugger?"
+talk npc talk_a stay
+finishswitch {
+  extern AI_TalkStop pump
+  extern AI_GrabEntity pump pump_handle
+  extern AI_Path pump_handle hooker_path14
+  extern AI_ReleaseEntity pump_handle
+  target hookerdoor
+  set @HookerEnroute = 1
+}
+
+style "style_redlight"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:417
+title "Peach Pump"
+if (which_service == 1)
+  body "Okay, that's a three-buck Gopher Gummer. "
+if (which_service == 2)
+  body "Okay, that's a five-dollar Knuckle Shuckle. "
+if (which_service == 3)
+  body "Okay, that's a Hair Salad for six bucks. "
+if (which_service == 4)
+  body "Okay, eight bucks for a Whisker-Doodle. "
+if (which_service == 5)
+  body "Okay, Mr. Moneybags wants a Peach Fuzz Special for twelve bucks. "
+body "Pay now, groan later."
+talk npc talk_a stay
+startswitch {
+  set @HookerEnroute = 0
+  set visited_hooker = 1
+  set it_was_hooker = which_hooker
+  extern check_money partycash
+}
+
+style "style_redlight"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+if (partycash >= hooker_cost)
+  choice "Here's the dough. Let's get this thing over with." 43:418
+if (partycash < hooker_cost)
+  choice "Um, I, uh, don't have that much." 43:430
+choice "You know what sister? This just ain't my style.  I'm outta here." 43:450
+
+#window 43:418
+title "Peach Pump"
+body "Should I undress first or you?"
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+choice "I'm pretty perverted. You undress first." 43:419
+choice "I'll undress first. But cover your eyes." 43:419
+
+#window 43:419
+title "Peach Pump"
+body "Do you want the lights on or off?"
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+choice "I'll brave the glare." 43:420
+choice "Definitely off." 43:420
+
+#window 43:420
+title "Peach Pump"
+body "Dairy or non-dairy?"
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+choice "Can I call you \"mom\"?" 43:421
+choice "Thanks, no. I'm lactose free." 43:421
+
+#window 43:421
+title "Peach Pump"
+body "Okay, little boy. Let's get this show on the road. Let's see the sauce-pocket."
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:0422
+
+#window 43:422
+title "Peach Pump"
+body "Well, I'm waiting."
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:0423
+
+#window 43:423
+title "Peach Pump"
+body "You mean to tell me you ain't got a sauce-pocket on you? What's wrong with you? You got ice in your head or something? You know damn well I can't do a thing with you unless you've got a sauce-pocket."
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:0424
+
+#window 43:424
+title "Peach Pump"
+body "Run downstairs, catch Switz's ear, and see if he's got one to spare. I think the vendo-machine's fritzing."
+talk npc talk_a stay
+finishswitch {
+  set hookerstate = 4
+  set hooker_result = hookerstate
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:430
+title "Peach Pump"
+body "You little scalawag!"
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:0431
+
+#window 43:431
+title "Peach Pump"
+body "You don't even have enough money! Get out or I'll complain about you!"
+talk npc talk_a stay
+finishswitch {
+  set hookerstate = 5
+  set hooker_result = hookerstate
+}
+
+style "style_redlight"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:440
+title "Peach Pump"
+body "I said to run downstairs, catch Switz's ear, and see if he's got a sauce pocket to spare. I think the vendo-machine's fritzing."
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:450
+title "Peach Pump"
+body "Weirdo."
+talk npc talk_a stay
+startswitch {
+  set hookerstate = 6
+  set hooker_result = hookerstate
+}
+
+style "style_redlight"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:460
+title "Peach Pump"
+body "Sorry, pal. You've jerked us all around long enough."
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:491
+title "Peach Pump"
+body "Hey, Sluggo. Wrong room. Over here!"
+cam left from(PlayerChar0) to(pump) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 pump
+  extern AI_Anim pump_handle talk_n 1 0 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:492
+title "Peach Pump"
+if (it_was_hooker == 1)
+  body "Not you again! You ain't flim-flamming ME again!"
+if (it_was_hooker == 2)
+  body "Not you again! I heard how you flim-flammed Cherry!"
+if (it_was_hooker == 3)
+  body "Not you again! I heard how you flim-flammed Melon!"
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:493
+title "Peach Pump"
+if (it_was_hooker == 1)
+  body "Not you again! You rejected me, chump!"
+if (it_was_hooker == 2)
+  body "Not you again! I heard how you iced on Cherry!"
+if (it_was_hooker == 3)
+  body "Not you again! I heard how you left Melon dry!"
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:502
+title "Cherry Berry"
+if (talked_to_cherry == 0)
+  body "Oooo. Aren't you handsome? This won't even feel like work. What's your taste?"
+if (talked_to_cherry)
+  body "I knew I'd caught your eye. Just go with the flow. What's your taste?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set talked_to_cherry = (talked_to_cherry + 1)
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+choice "Hand Dapple ($1)" 43:503
+choice "Sleeve Job ($15)" 43:504
+choice "Fisticuffs ($20)" 43:505
+choice "Burning Bush ($25)" 43:506
+choice "Cherry Bury Special ($30)" 43:507
+choice "Nah, just lookin'." 0:0
+
+#window 43:508
+title "Cherry Berry"
+body "You were thinking exactly what I was thinking. Let's take this upstairs. Follow these legs."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set which_hooker = 2
+  set payin_customer = 1
+}
+
+finishswitch {
+  extern AI_GrabEntity berry berry_handle
+  extern AI_Path berry_handle berry_path1
+  extern AI_ReleaseEntity berry_handle
+  set hookerstate = 1
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:514
+title "Cherry Berry"
+if (which_hooker == 1)
+  body "Don't be greedy. You're already hooking up with Peach Pump."
+if (which_hooker == 3)
+  body "Don't be greedy. You're already hooking up with Melon Jug."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:515
+title "Cherry Berry"
+body "Don't be impatient, sweets!"
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:516
+title "Cherry Berry"
+body "You ready, slug-boy?"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern AI_TalkStop pump
+  extern AI_GrabEntity berry berry_handle
+  extern AI_Path berry_handle hooker_path14
+  extern AI_ReleaseEntity berry_handle
+  target hookerdoor
+  set @HookerEnroute = 1
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:517
+title "Cherry Berry"
+if (which_service == 1)
+  body "Okay, that's a loonie for a Hand Dapple. "
+if (which_service == 2)
+  body "Okay, that's a Sleeve Job for 15 bucks. "
+if (which_service == 3)
+  body "Okay, Fisticuffs are twenty dollars. "
+if (which_service == 4)
+  body "Okay, Burning Bush will set ya back twenty-five bucks. "
+if (which_service == 5)
+  body "Okay, you wanted the Cherry Bury Special--it's thirty bucks. "
+body "Pay now, groan later."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set @HookerEnroute = 0
+  set visited_hooker = 1
+  set it_was_hooker = which_hooker
+  extern check_money partycash
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+if (partycash >= hooker_cost)
+  choice "Here's the dough. Let's get this thing over with." 43:518
+if (partycash < hooker_cost)
+  choice "Um, I, uh, don't have that much." 43:530
+choice "You know what sister? This just ain't my style.  I'm outta here." 43:550
+
+#window 43:518
+title "Cherry Berry"
+body "Should I undress first or you?"
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+choice "I'm pretty perverted. You undress first." 43:519
+choice "I'll undress first. But cover your eyes." 43:519
+
+#window 43:519
+title "Cherry Berry"
+body "Do you want the lights on or off?"
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+choice "I'll brave the glare." 43:520
+choice "Definitely off." 43:520
+
+#window 43:520
+title "Cherry Berry"
+body "Dairy or non-dairy?"
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+choice "Can I call you \"mom\"?" 43:521
+choice "Thanks, no. I'm lactose free." 43:521
+
+#window 43:521
+title "Cherry Berry"
+body "Okay, little boy. Let's get this show on the road. Let's see the sauce-pocket."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:0522
+
+#window 43:522
+title "Cherry Berry"
+body "Well, I'm waiting."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:0523
+
+#window 43:523
+title "Cherry Berry"
+body "You mean to tell me you ain't got a sauce-pocket on you? What's wrong with you? You got ice in your head or something? You know damn well I can't do a thing with you unless you've got a sauce-pocket."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:0524
+
+#window 43:524
+title "Cherry Berry"
+body "Run downstairs, catch Switz's ear, and see if he's got one to spare. I think the vendo-machine's fritzing."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set hookerstate = 4
+  set hooker_result = hookerstate
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:530
+title "Cherry Berry"
+body "You've gotta be kidding me."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:0531
+
+#window 43:531
+title "Cherry Berry"
+body "You don't even have enough money! Get out or I'll complain about you!"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set hookerstate = 5
+  set hooker_result = hookerstate
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:535
+startswitch {
+  echo "!!!!!!!Boots Timer Called!!!!!!!"
+  set @HookerLeadTime = func_gametime
+}
+
+thinkswitch {
+  if (func_gametime > (@HookerLeadTime + 2000))
+    closewindow 43:0535
+}
+
+finishswitch {
+  extern AI_Path playerchar0_handle boots_path1
+}
+
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 1
+height 1
+
+#window 43:540
+title "Cherry Berry"
+body "I said to run downstairs, catch Switz's ear, and see if he's got a sauce pocket to spare. I think the vendo-machine's fritzing."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:550
+title "Cherry Berry"
+body "Weirdo."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set hookerstate = 6
+  set hooker_result = hookerstate
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:560
+title "Cherry Berry"
+body "Sorry, pal. You've jerked us all around long enough."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:591
+title "Cherry Berry"
+body "Hey, Sluggo. Wrong room.  Over here!"
+cam left from(PlayerChar0) to(berry) restore zip
+startswitch {
+  extern cam_anoxmariomode 1
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 berry
+  extern AI_Anim berry_handle talk_n 1 0 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern cam_anoxmariomode 0
+}
+
+style "style_redlight"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:592
+title "Cherry Berry"
+if (it_was_hooker == 1)
+  body "The nerve. I heard how you flim-flammed Peach!"
+if (it_was_hooker == 2)
+  body "The nerve. You ain't flim-flamming ME again!"
+if (it_was_hooker == 3)
+  body "The nerve. I heard how you flim-flammed Melon!"
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:593
+title "Cherry Berry"
+if (it_was_hooker == 1)
+  body "Not you again! I heard how you peeled out on Peach!"
+if (it_was_hooker == 2)
+  body "Not you again! You rejected me, chump!"
+if (it_was_hooker == 3)
+  body "Not you again! I heard how you left Melon dry!"
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:602
+title "Melon Jug"
+if (talked_to_melon == 0)
+  body "Hey, you're looking pretty tired there. How can I relax you?"
+if (talked_to_melon)
+  body "They always come back to the womb, don't they? How can I relax you?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set talked_to_melon = (talked_to_melon + 1)
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+choice "Throat Chuggle ($10)" 43:603
+choice "Skin Goggle ($12)" 43:604
+choice "Bus-Shuffle Quickie ($15)" 43:605
+choice "Fat Domino ($18)" 43:606
+choice "Melon Juggle Special ($20)" 43:607
+choice "Nah, just lookin'." 0:0
+
+#window 43:608
+title "Melon Jug"
+body "I guess you're not THAT tired. Let's have a walk upstairs. Just follow the butt."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set which_hooker = 3
+  set payin_customer = 1
+}
+
+finishswitch {
+  extern AI_GrabEntity jug jug_handle
+  extern AI_Path jug_handle jug_path1
+  extern AI_ReleaseEntity jug_handle
+  set hookerstate = 1
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:614
+title "Melon Jug"
+if (which_hooker == 1)
+  body "Don't be greedy. You're already hooking up with Peach Pump."
+if (which_hooker == 2)
+  body "Don't be greedy. You're already hooking up with Cherry Berry."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:615
+title "Melon Jug"
+body "Don't be impatient, honey!"
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:616
+title "Melon Jug"
+body "You ready, big boy?"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern AI_TalkStop pump
+  extern AI_GrabEntity jug jug_handle
+  extern AI_Path jug_handle hooker_path14
+  extern AI_ReleaseEntity jug_handle
+  target hookerdoor
+  set @HookerEnroute = 1
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:617
+title "Melon Jug"
+if (which_service == 1)
+  body "Okay, that's ten dollars for your good ol' Throat Chuggle. "
+if (which_service == 2)
+  body "Okay, Skin Goggles cost twelve bucks. "
+if (which_service == 3)
+  body "Okay, fifteen bucks for your Bus-Shuffle Quickie. "
+if (which_service == 4)
+  body "Okay, that'll be eighteen bucks for a Fat Domino. "
+if (which_service == 5)
+  body "Okay, twenty dollars gets Mr. Richboy a Melon Juggle Special. "
+body "Pay now, groan later."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set @HookerEnroute = 0
+  set visited_hooker = 1
+  set it_was_hooker = which_hooker
+  extern check_money partycash
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+if (partycash >= hooker_cost)
+  choice "Here's the dough. Let's get this thing over with." 43:618
+if (partycash < hooker_cost)
+  choice "Um, I, uh, don't have that much." 43:630
+choice "You know what sister? This just ain't my style.  I'm outta here." 43:650
+
+#window 43:618
+title "Melon Jug"
+body "Should I undress first or you?"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern AI_GrabEntity jug jug_handle
+  extern AI_Path jug_handle hooker_path17
+  extern AI_ReleaseEntity jug_handle
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+choice "I'm pretty perverted. You undress first." 43:619
+choice "I'll undress first. But cover your eyes." 43:619
+
+#window 43:619
+title "Melon Jug"
+body "Do you want the lights on or off?"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern AI_GrabEntity jug jug_handle
+  extern AI_Path jug_handle hooker_path18
+  extern AI_ReleaseEntity jug_handle
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+choice "I'll brave the glare." 43:620
+choice "Definitely off." 43:620
+
+#window 43:620
+title "Melon Jug"
+body "Dairy or non-dairy?"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern AI_GrabEntity jug jug_handle
+  extern AI_Path jug_handle hooker_path19
+  extern AI_ReleaseEntity jug_handle
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+choice "Can I call you \"mom\"?" 43:621
+choice "Thanks, no. I'm lactose free." 43:621
+
+#window 43:621
+title "Melon Jug"
+body "Okay, little boy. Let's get this show on the road. Let's see the sauce-pocket."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:0622
+
+#window 43:622
+title "Melon Jug"
+body "Well, I'm waiting."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:0623
+
+#window 43:623
+title "Melon Jug"
+body "You mean to tell me you ain't got a sauce-pocket on you? What's wrong with you? You got ice in your head or something? You know damn well I can't do a thing with you unless you've got a sauce-pocket."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:0624
+
+#window 43:624
+title "Melon Jug"
+body "Run downstairs, catch Switz's ear, and see if he's got one to spare. I think the vendo-machine's fritzing."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set hookerstate = 4
+  set hooker_result = hookerstate
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:630
+title "Melon Jug"
+body "That's just plain rude!"
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:0631
+
+#window 43:631
+title "Melon Jug"
+body "You don't even have enough money! Get out or I'll complain about you!"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set hookerstate = 5
+  set hooker_result = hookerstate
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:640
+title "Melon Jug"
+body "I said to run downstairs, catch Switz's ear, and see if he's got a sauce pocket to spare. I think the vendo-machine's fritzing."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:650
+title "Melon Jug"
+body "Weirdo."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set hookerstate = 6
+  set hooker_result = hookerstate
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:660
+title "Melon Jug"
+body "Sorry, pal. You've jerked us all around long enough."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:691
+title "Melon Jug"
+body "Hey, Sluggo. Wrong room. Over here!"
+cam left from(PlayerChar0) to(jug) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 jug
+  extern AI_Anim jug_handle talk_n 1 0 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:692
+title "Melon Jug"
+if (it_was_hooker == 1)
+  body "You ain't jerkin' me around. I heard how you flim-flammed Peach!"
+if (it_was_hooker == 2)
+  body "You ain't jerkin' me around. I heard how you flim-flammed Cherry!"
+if (it_was_hooker == 3)
+  body "You ain't jerkin' me around again!"
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:693
+title "Cherry Berry"
+if (it_was_hooker == 1)
+  body "Not you again! I heard how you peeled out on Peach!"
+if (it_was_hooker == 2)
+  body "Not you again! I heard how you chilled on Cherry!"
+if (it_was_hooker == 3)
+  body "Not you again! You left me hangin'!"
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:706
+body "*COUGH*"
+cam left from(-101 1084 -62) to(-67 1132 -88) restore zip
+startswitch {
+  extern AI_GrabEntity bippyHooker bippyHooker_handle
+  extern ANIM_PlayAnim bippyHooker_handle atak6_a 0 1 0
+  extern playsound "battle/monster_bipidri/monster_bipidri_cough.wav"
+  extern ENT_SetColor bippyHooker_handle .6 .6 .6
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+nextwindow 43:0707
+
+#window 43:707
+body "*COUGH*"
+cam left from(-101 1084 -62) to(-67 1132 -88) restore zip
+startswitch {
+  extern ANIM_PlayAnim bippyHooker_handle atak6_a 0 1 0
+  extern playsound battle/monster_bipidri/monster_bipidri_cough.wav
+  extern ENT_SetColor bippyHooker_handle .5 .6 .5
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 180
+ypos 30
+nextwindow 43:0708
+
+#window 43:708
+body "*COUGH*"
+cam left from(-101 1084 -62) to(-67 1132 -88) restore zip
+startswitch {
+  extern ANIM_PlayAnim bippyHooker_handle atak6_a 0 1 0
+  extern playsound battle/monster_bipidri/monster_bipidri_cough.wav
+  extern ENT_SetColor bippyHooker_handle .4 .6 .4
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 240
+ypos 30
+nextwindow 43:0709
+
+#window 43:802
+title "Switz"
+body "Drinky?"
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+choice "Phlegm Cutter ($5)" 43:812
+choice "Conversation Fluid ($6)" 43:813
+choice "Kickapoo Joy Juice ($8)" 43:814
+choice "Tall Glass of Milk ($10)" 43:815
+choice "Ain't thirsty." 0:0
+
+#window 43:803
+title "Switz"
+body "Oh, what... you're my best friend all of a sudden? No sauce pocket for you."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:0804
+
+#window 43:804
+title "Switz"
+body "Free-loading punk."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:805
+title "Switz"
+body "Cheers."
+cam left restore zip
+talk npc talk_y stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:1006
+cam left to(fatima_spawn) restore zip
+startswitch {
+  set @t = func_gametime
+  target hookerdoor
+}
+
+thinkswitch {
+  if ((@t + 1000) < func_gametime)
+    closewindow 43:1006 
+}
+
+finishswitch {
+  goto 43:1010 
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 40
+height 40
+
+#window 43:1010
+title "Fatima"
+body "*AHEM*"
+cam left from(playerchar0) to(fatima_spawn) restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 bootshandle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 playerchar0
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+}
+
+style "NULL"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1011
+
+#window 43:1011
+title "Fatima"
+body "We're here for the wedding ring. Remember?"
+cam left from(playerchar0) to(fatima_spawn) restore zip
+startswitch {
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity bootshandle
+  extern AI_DestroyEntity @fatima_handle
+  target hookerdoor
+}
+
+style "NULL"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:1015
+cam left to(fatima_spawn) restore zip
+startswitch {
+  set @t = func_gametime
+  target hookerdoor
+}
+
+thinkswitch {
+  if ((@t + 1000) < func_gametime)
+    closewindow 43:1015 
+}
+
+finishswitch {
+  goto 43:1016 
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 40
+height 40
+
+#window 43:1016
+title "Fatima"
+body "Don't we have somewhere else to be, Boots?"
+cam left from(playerchar0) to(fatima_spawn) restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 bootshandle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 playerchar0
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity bootshandle
+  extern AI_DestroyEntity @fatima_handle
+  target hookerdoor
+}
+
+style "NULL"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:1305
+title "Sergeant Seesaw"
+body "I'm in the Navy, so I get a discount here, right?"
+cam left from(PlayerChar0) to(seesaw) restore zip
+talk_ex seesaw jug talk_a amb_a stay stay
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 seesaw
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1310
+
+#window 43:1310
+title "Melon Jug"
+body "I'll take two minutes off your hour."
+cam left from(PlayerChar0) to(jug) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 jug
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1315
+
+#window 43:1315
+title "Sergeant Seesaw"
+body "Thanks!"
+cam left from(PlayerChar0) to(seesaw) restore zip
+talk_ex seesaw jug talk_a amb_a stay stay
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 seesaw
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1320
+
+#window 43:1320
+title "Sergeant Seesaw"
+body "What're we gonna do for the other 55 minutes?"
+cam left from(PlayerChar0) to(seesaw) restore zip
+talk_ex seesaw jug talk_a amb_a stay stay
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:1325
+title "Sergeant Seesaw"
+body "Wanna see my medals? I got this one for High Valor in the Ghentra Insurgence."
+cam left from(PlayerChar0) to(seesaw) restore zip
+talk_ex seesaw jug talk_a amb_a stay stay
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 seesaw
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1330
+
+#window 43:1330
+title "Melon Jug"
+body "You're from Ujal? I was Resident Recipient for a whole regiment there."
+cam left from(PlayerChar0) to(jug) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 jug
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1335
+
+#window 43:1335
+title "Sergeant Seesaw"
+body "Which one?"
+cam left from(PlayerChar0) to(seesaw) restore zip
+talk_ex seesaw jug talk_a amb_a stay stay
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 seesaw
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1340
+
+#window 43:1340
+title "Melon Jug"
+body "The 57th."
+cam left from(PlayerChar0) to(jug) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 jug
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1345
+
+#window 43:1345
+title "Sergeant Seesaw"
+body "Betty?"
+cam left from(PlayerChar0) to(seesaw) restore zip
+talk_ex seesaw jug talk_a amb_a stay stay
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 seesaw
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:1350
+title "Sergeant Seesaw"
+body "Man, this brings back old memories. Didn't you weigh like 400 pounds then?"
+cam left from(PlayerChar0) to(seesaw) restore zip
+talk_ex seesaw jug talk_a amb_a stay stay
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 seesaw
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1355
+
+#window 43:1355
+title "Melon Jug"
+body "Yeah, I was swallowing a lot of aggression."
+cam left from(PlayerChar0) to(jug) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 jug
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1360
+
+#window 43:1360
+title "Sergeant Seesaw"
+body "Along with--"
+cam left from(PlayerChar0) to(seesaw) restore zip
+talk_ex seesaw jug talk_a amb_a stay stay
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 seesaw
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1365
+
+#window 43:1365
+title "Melon Jug"
+body "Don't."
+cam left from(PlayerChar0) to(jug) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 jug
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:1370
+title "Sergeant Seesaw"
+body "Small world, huh?"
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:1401
+title "Eel Tonkdish"
+body "Do you know anything about Opera?"
+cam left restore zip
+talk npc amb_h stay
+startswitch {
+  set talk_eel = 1
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1405
+
+#window 43:1405
+title "Eel Tonkdish"
+body "There's a libretto by Janacek called \"The Cunning Little Vixen\" in which a farmer takes a little fox from her home in the forest."
+cam left restore zip
+talk npc amb_h stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1410
+
+#window 43:1410
+title "Eel Tonkdish"
+body "At the farm, the fox is constantly tormented by the amorous advances of the farm dog, attacked by children, all kinds of stuff."
+cam left restore zip
+talk npc amb_h stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1415
+
+#window 43:1415
+title "Eel Tonkdish"
+body "She eventually gets away, and ends up having a fine life. Lots of cubs. But she never forgets her life outside of the forest."
+cam left restore zip
+talk npc amb_h stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1420
+
+#window 43:1420
+title "Eel Tonkdish"
+body "It just gets me thinking..."
+cam left restore zip
+talk npc amb_h stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1425
+
+#window 43:1425
+title "Eel Tonkdish"
+body "These poor creatures may never see Bipidrius again. Maybe they have hopes and dreams too. Who are we to take them from their proverbial forest home?"
+cam left restore zip
+talk npc amb_h stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1435
+
+#window 43:1435
+title "Eel Tonkdish"
+body "Just gets me thinking."
+cam left restore zip
+talk npc amb_h stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:1505
+title "Kalpa"
+body "Dance, puppy, dance!"
+cam left restore zip
+talk npc amb_h stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:1510
+title "Kalpa"
+body "For your information, Mr. Tonkdish, the Bipidri's name is NOT \"Little Vixen\"."
+cam left restore zip
+talk npc amb_h stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1515
+
+#window 43:1515
+title "Kalpa"
+body "But no one orders tables dances from \"Al\", so HE had to change HIS name to something that would appeal to degenerates such as yourself."
+cam left restore zip
+talk npc amb_h stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:1520
+title "Kalpa"
+body "Klaz, if it isn't the Microphiles, it's the Opera freaks."
+cam left restore zip
+talk npc amb_h stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:1605
+title "Poto Caliente"
+body "Can she read?"
+cam left from(PlayerChar0) to(poto) restore zip
+talk_ex pulp poto amb_a amb_h stay stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1610
+
+#window 43:1610
+title "Madam Pulp"
+body "Of course she can read. All my girls have at least a secondary school education."
+cam left from(PlayerChar0) to(pulp) restore zip
+talk_ex pulp poto talk_a amb_f stay stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:1615
+title "Poto Caliente"
+body "What about math? Can she do math? I don't like girls what can't do math."
+cam left from(PlayerChar0) to(poto) restore zip
+talk_ex pulp poto amb_a amb_h stay stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1620
+
+#window 43:1620
+title "Madam Pulp"
+body "She can subtract, multiply, and divide large numbers in her head."
+cam left from(PlayerChar0) to(pulp) restore zip
+talk_ex pulp poto talk_y amb_f stay stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 43:1625
+title "Madam Pulp"
+body "What is the point of these questions, Mister Caliente? Do you want a prostitute or a secretary?"
+cam left from(PlayerChar0) to(pulp) restore zip
+talk_ex pulp poto talk_b amb_f stay stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 43:1630
+
+#window 43:1630
+title "Poto Caliente"
+body "Prostitute...?"
+cam left from(PlayerChar0) to(poto) restore zip
+talk_ex pulp poto amb_a amb_h stay stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#switch 43:1
+set CURRENT_PLANET = 2
+set CURRENT_BANK = 43
+extern setmasterlevel 21
+extern playlevelmusic mp3/sender/ssundergroundnormal.mp3
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+set hookerstate = 0
+loadape "sendernet"
+extern is_quest_done "Return Kevester Ring" @poo
+if (bippydead && (@poo == 0)) {
+  extern AI_SpawnEntity Ring_Handle ob_wed_ring kevester_ring 43:1201 spawnringhere
+  extern entkey Ring_Handle "rgb" "1 1 1"
+  extern entkey Ring_Handle "Message" "Wedding Ring"
+}
+goto 0:0
+
+#switch 43:101
+
+#switch 43:201
+if (payin_customer > 0)
+  goto 43:0215
+goto 43:0210
+
+#switch 43:205
+extern AI_GrabEntity beefaroni beefaroni_handle
+extern AI_Path beefaroni_handle beefaroni_path
+extern AI_SetCompletionCallback beefaroni_handle 43:0206
+extern AI_ReleaseEntity beefaroni_handle
+
+#switch 43:206
+extern AI_GrabEntity beefaroni beefaroni_handle
+extern AI_WaitAndFace beefaroni_handle -1 hooker_path5
+extern AI_ReleaseEntity beefaroni_handle
+
+#switch 43:301
+if (talk_pulp)
+  goto 43:0305
+set talk_pulp = 1
+goto 43:0302
+
+#switch 43:401
+if (GOT_WEDDING_RING)
+  goto 43:0460
+if ((it_was_hooker == 1) && (hooker_result == 5))
+  goto 43:0492	                          
+if ((it_was_hooker == 1) && (hooker_result == 6))
+  goto 43:0493	                         
+if (which_hooker == 0)
+  goto 43:0402
+if (which_hooker != 1)
+  goto 43:0414	                
+if (hookerstate == 3)
+  goto 43:0417	         
+if (@HookerEnroute == 1)
+  goto 43:0415                      
+if (hookerstate == 1)
+  goto 43:0415	          
+if (hookerstate == 2)
+  goto 43:0416	          
+if (hookerstate == 4)
+  goto 43:0440	                           
+if (hookerstate == 5)
+  goto 43:0430	                   
+if (hookerstate == 6)
+  goto 43:0450	              
+
+#switch 43:403
+set which_service = 1
+set hooker_cost = 3
+goto 43:408
+
+#switch 43:404
+set which_service = 2
+set hooker_cost = 5
+goto 43:408
+
+#switch 43:405
+set which_service = 3
+set hooker_cost = 6
+goto 43:408
+
+#switch 43:406
+set which_service = 4
+set hooker_cost = 8
+goto 43:408
+
+#switch 43:407
+set which_service = 5
+set hooker_cost = 12
+goto 43:408
+
+#switch 43:470
+extern AI_GrabEntity pump pump_handle
+extern AI_WaitAndFace pump_handle -1 boots_path2
+extern AI_ReleaseEntity pump_handle
+
+#switch 43:4701
+extern AI_Path owNotThatHard boots_path1
+
+#switch 43:4702
+extern AI_Path owNotThatHard boots_path2
+extern AI_ReleaseEntity owNotThatHard
+
+#switch 43:490
+if (which_hooker == 1)
+  goto 43:0491	       
+if (which_hooker == 2)
+  goto 43:0591  	        
+if (which_hooker == 3)
+  goto 43:0691  	       
+goto 0:0
+
+#switch 43:501
+if (GOT_WEDDING_RING)
+  goto 43:0560
+if ((it_was_hooker == 2) && (hooker_result == 5))
+  goto 43:0592	                          
+if ((it_was_hooker == 2) && (hooker_result == 6))
+  goto 43:0593	                         
+if (which_hooker == 0)
+  goto 43:0502
+if (which_hooker != 2)
+  goto 43:0514	                
+if (hookerstate == 3)
+  goto 43:0517	         
+if (@HookerEnroute == 1)
+  goto 43:0515                      
+if (hookerstate == 1)
+  goto 43:0515	          
+if (hookerstate == 2)
+  goto 43:0516	          
+if (hookerstate == 4)
+  goto 43:0540	                           
+if (hookerstate == 5)
+  goto 43:0530	                   
+if (hookerstate == 6)
+  goto 43:0550	              
+
+#switch 43:503
+set which_service = 1
+set hooker_cost = 1
+goto 43:508
+
+#switch 43:504
+set which_service = 2
+set hooker_cost = 15
+goto 43:508
+
+#switch 43:505
+set which_service = 3
+set hooker_cost = 20
+goto 43:508
+
+#switch 43:506
+set which_service = 4
+set hooker_cost = 25
+goto 43:508
+
+#switch 43:507
+set which_service = 5
+set hooker_cost = 30
+goto 43:508
+
+#switch 43:601
+if (GOT_WEDDING_RING)
+  goto 43:0660
+if ((it_was_hooker == 3) && (hooker_result == 5))
+  goto 43:0692	                          
+if ((it_was_hooker == 3) && (hooker_result == 6))
+  goto 43:0693	                         
+if (which_hooker == 0)
+  goto 43:0602
+if (which_hooker != 3)
+  goto 43:0614	                
+if (hookerstate == 3)
+  goto 43:0617	         
+if (@HookerEnroute == 1)
+  goto 43:0615                      
+if (hookerstate == 1)
+  goto 43:0615	          
+if (hookerstate == 2)
+  goto 43:0616	          
+if (hookerstate == 4)
+  goto 43:0640	                           
+if (hookerstate == 5)
+  goto 43:0630	                   
+if (hookerstate == 6)
+  goto 43:0650	              
+
+#switch 43:603
+set which_service = 1
+set hooker_cost = 10
+goto 43:608
+
+#switch 43:604
+set which_service = 2
+set hooker_cost = 12
+goto 43:608
+
+#switch 43:605
+set which_service = 3
+set hooker_cost = 15
+goto 43:608
+
+#switch 43:606
+set which_service = 4
+set hooker_cost = 18
+goto 43:608
+
+#switch 43:607
+set which_service = 5
+set hooker_cost = 20
+goto 43:608
+
+#switch 43:701
+set bippy_click = (bippy_click + 1)
+goto 43:0706
+
+#switch 43:702
+extern AI_GrabEntity bippyHooker bippyHooker_handle
+extern ENT_SetColor bippyHooker_handle 0 .2 .1
+extern rca bippyHooker atak2_a
+extern playsound "battle/monster_bipidri/monster_bipidri_yip.wav"
+extern AI_ReleaseEntity bippyHooker_handle
+extern cam_from -101 1084 -62
+extern cam_to -67 1132 -88
+extern cam_zip
+
+#switch 43:703
+extern AI_GrabEntity bippyHooker bippyHooker_handle
+extern ENT_SetColor bippyHooker_handle 0 .5 .5
+extern rca bippyHooker atak2_a
+extern playsound "battle/monster_bipidri/monster_bipidri_yip.wav"
+extern AI_ReleaseEntity bippyHooker_handle
+extern cam_from -101 1084 -62
+extern cam_to -67 1132 -88
+extern cam_zip
+
+#switch 43:709
+extern playsound battle/monster_bipidri/monster_bipidri_die.wav
+extern ANIM_PlayAnim bippyHooker_handle die_a 0 1 1
+extern ENT_SetColor bippyHooker_handle .2 .6 .2
+extern entkey bippyHooker_handle "sequence" ""
+extern AI_SpawnEntity Ring_Handle ob_wed_ring kevester_ring 43:1201 spawnringhere
+extern entkey Ring_Handle "rgb" "1 1 1"
+extern entkey Ring_Handle "Message" "Wedding Ring"
+extern AI_ReleaseEntity Ring_Handle
+extern AI_ReleaseEntity bippyHooker_handle
+set bippydead = 1
+
+#switch 43:801
+if (hookerstate == 4)
+  goto 43:0803		                     
+goto 43:0802
+
+#switch 43:812
+extern check_money partycash
+if (partycash < 5)
+  goto 43:0804
+extern remove_money 5
+goto 43:0805
+goto 0:0
+
+#switch 43:813
+extern check_money partycash
+if (partycash < 6)
+  goto 43:0804
+extern remove_money 6
+goto 43:0805
+goto 0:0
+
+#switch 43:814
+extern check_money partycash
+if (partycash < 8)
+  goto 43:0804
+extern remove_money 8
+goto 43:0805
+goto 0:0
+
+#switch 43:815
+extern check_money partycash
+if (partycash < 10)
+  goto 43:0804
+extern remove_money 10
+goto 43:0805
+goto 0:0
+
+#switch 43:901
+if (@BootsWithNewHooker == 1)
+  goto 0:0
+set @BootsWithNewHooker = 1
+extern AI_GrabEntity playerchar0 playerchar0_handle
+extern AI_Path playerchar0_handle boots_path1
+
+#switch 43:905
+if (which_hooker == 1)
+  goto 43:0417
+if (which_hooker == 2)
+  goto 43:0517
+if (which_hooker == 3)
+  goto 43:0617
+
+#switch 43:1101
+if ((hookerstate == 1) || (hookerstate == 2))
+  goto 43:0490
+goto 43:1102
+
+#switch 43:1102
+if (orange_picklocked_door) {
+  target bippydoor
+  goto 0:0
+}
+ws_stand$="boots_skill_1" 
+ws_object$="bippydoor" 
+set LPdifficulty = 3
+set LPtime = 35
+set ws_bank = 43
+set ws_entry = 1103
+gosub 4001:1
+goto 0:0
+
+#switch 43:1103
+set orange_picklocked_door = 1
+target bippydoor
+goto 0:0
+
+#switch 43:1001
+if (((spawn_pump > 0) || (spawn_berry > 0)) || (spawn_jug > 0))
+  goto 43:1005
+target hookerdoor
+
+#switch 43:1005
+extern is_in_inventory "Wedding Ring" we_have_ring
+if (we_have_ring == 1)
+  goto 43:1015
+goto 43:1006
+
+#switch 43:1201
+extern AI_FindEntity boots_handle boots
+extern PICKUP_GetItem boots_handle 43:1201
+extern complete_quest "Need Kevester Ring"
+extern add_quest "Return Kevester Ring"
+
+#switch 43:1301
+if (hookerstate > 0)
+  goto 43:1370
+if (talk_seesaw < 3)
+  set talk_seesaw = (talk_seesaw + 1)
+if (talk_seesaw == 3)
+  goto 43:1350		            
+if (talk_seesaw == 2)
+  goto 43:1325		          
+goto 43:1305			                 
+
+#switch 43:1501
+if (talk_eel && talk_kalpa)
+  goto 43:1520
+set talk_kalpa = 1
+if (talk_eel)
+  goto 43:1510
+goto 43:1505
+
+#switch 43:1601
+if (talk_caliente < 3)
+  set talk_caliente = (talk_caliente + 1)
+if (talk_caliente == 3)
+  goto 43:1625
+if (talk_caliente == 2)
+  goto 43:1615
+goto 43:1605

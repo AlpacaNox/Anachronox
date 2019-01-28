@@ -1,0 +1,707 @@
+#window 52:105
+title "Pinko Red"
+body "Check out the science computer in the lobby.... there's some pretty nifty information in there, including how to blow up your workplace using twine and a bottle of hand lotion."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 52:110
+title "Pinko Red"
+body "Look at you. You got all excited by the hand lotion, didn't you? Or was it the twine?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 52:201
+title "Kator Hal"
+body "Whoever's running this museum should think of filling the walls with antique weapons. That always brings in the crowds."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 52:301
+title "Inertial Dampening: A FUN Hands-on Experience!"
+body "Let's watch an INERTIAL DAMPENER in action! This experiment is similar in construction to Garben Fizisko's original amusement park ride, now only legal on Hephaestus. When you press the button, The mechanical arm flings the Iron ball into the air. But it doesn't fly away! Instead, its INERTIA is all Gobbled up by the antipolarity-inducing micro-intraneutrino-chromatimagneto-dissonance-producing inertial dampening field! The Iron ball then falls harmlessly back into place! Press the button for a demonstration!"
+cam left from(PlayerChar0) to(52:0301) restore zip
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+width 580
+nextwindow 52:0305
+
+#window 52:401
+title "Travel Through Senders"
+body "Sitting in space like silent sentinels from a forgotten time, Senders are huge reflective spheres that were systematically placed throughout the universe by parties as-yet unknown. Equipped with long spikes protruding out at regular intervals over its slick surface, each Sender possesses the means by which to travel from one end of the galaxy to the other."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+width 580
+nextwindow 52:0410
+
+#window 52:410
+body "According to the old Earth calendar, the first Sender to be found by earthlings was discovered near Pluto around 2229 AD--50 years before humans made first contact with the race of aliens known as the Gorians. This first encounter with extra-terrestrial life forms forever altered humanity's future, ushering forth a series of horrible wars. This was followed by an age of peace and prosperity, during which time the Senders became the hubs of lucrative trade and galactic civilization."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+width 580
+nextwindow 52:0415
+
+#window 52:415
+body "The largest Sender ever discovered is located at the very center of the universe. Dubbed Sender One, it acts as a relay station connecting all other Senders to each other."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+width 580
+
+#window 52:501
+title "Without Inertial Dampening"
+body "It was in the year 2229 AD that an unsuspecting Earth astronaut first came upon a Sender. Honing in on the signal being transmitted by one of the spikes on the mysterious sphere's surface, pilot Lee Austin must have been startled to suddenly find his ship rocketing towards the Sender. The small spacecraft was then thrust inside a hyperspace tunnel and catapulted out to a different section of space--all the way on the other side of the galaxy."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 30
+ypos 30
+width 580
+nextwindow 52:0510
+
+#window 52:510
+body "Unfortunately for Austin, his ship was not equipped to withstand such powerful inertial forces--and though his battered vessel made it through the history-making journey relatively unscathed, Austin himself did not survive the trip. All that remained of the pilot was a glowing mass of unidentifiable fleshy pulp."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 30
+ypos 30
+width 580
+
+#window 52:601
+title "With Inertial Dampening"
+body "Forty years after Austin's death, a young inventor named Garben Fizisko came up with a solution to the inertial dampening problem for a rail gun-based amusement park ride he had been commissioned to design. His efforts were remarkably successful."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 30
+ypos 30
+width 580
+nextwindow 52:0610
+
+#window 52:610
+body "Eight years later, a breakthrough in the development of Torzewski Radiation Decycling Shields made it possible for Fizisko's inertial dampening technology to be applied to hyperspace travel. After several manned expeditions confirmed the safety of the procedure, travel through Sender spikes quickly became the standard mode of travelling vast distances across the galaxy--and it remains so to this day."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 30
+ypos 30
+width 580
+
+#window 52:701
+title "PHOTACHYON TRANSCEIVER"
+cam left from(PlayerChar0) to(52:0701) restore zip
+style "NULL"
+font "_anox10"
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 30
+ypos 30
+width 580
+
+#window 52:805
+title "The Disaster"
+body "The Photachyon Transceiver on display is by far the oldest piece in the museum's collection, dating back to the early part of the third millenium AD. Its origin is directly linked to the tragic story of the Endeavor, a science vessel on a five-year exploratory mission destined to end in calamity."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 30
+ypos 30
+width 580
+nextwindow 52:0810
+
+#window 52:810
+body "Three years into its ill-fated mission, the Endeavor was knocked off-course by a passing meteor shower. Many of the ship's on-board systems were damaged as a result, including most of its navigation equipment. Unable to enact repairs or rectify their flight path, the damaged vessel sent a distress signal back to Earth while spiraling helplessly along their new course."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 30
+ypos 30
+width 580
+nextwindow 52:0815
+
+#window 52:815
+body "Earth scientists were horrified when their projections estimated that the Endeavor's altered course now placed it in a direct path with a super-congested asteroid field... and certain death."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 30
+ypos 30
+width 580
+nextwindow 52:0820
+
+#window 52:820
+body "Scrambling to find a means by which to alert the Endeavor's crew of the impending danger, the greatest scientific minds on the planet transmitted a radio message to the doomed vessel with detailed instructions outlining how to re-align the ship's trajectory. But by the time the message arrived, it was too late--the Endeavor had already plowed prow-first into one of the giant asteroids."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 30
+ypos 30
+width 580
+nextwindow 52:0825
+
+#window 52:825
+body "There were no survivors."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 30
+ypos 30
+
+#window 52:830
+title "The Distance Problem"
+body "After the tragedy that befell the Endeavor, the scientific community struggled to come up with a more efficient and immediate means of subspace communication. Up till then, radio waves had been perfectly suited for communications over interstellar distances. But as the incident with the Endeavor had so graphically illustrated, radio waves were extremely limited by their capacity to travel only as fast as the speed of light. Despite scientists' best efforts, the distance problem appeared insurmountable."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 30
+ypos 30
+width 580
+
+#window 52:835
+title "The Solution"
+body "It wasn't until almost twenty years later that a determined physics engineer named Jreff Riseo came up with the ingenious idea of bonding a radio wave signal to Photachyons--essentially piggybacking the signal unto pre-existing Photachyon particles already speeding through hyperspace. Though impractical for large-scale commercial communication beyond the system, the device which came to be known as a Photachyon Transceiver proved to be very effective--making it the first instantaneous subspace radio in existence."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 30
+ypos 30
+width 580
+nextwindow 52:0840
+
+#window 52:840
+body "As it turns out, it was later discovered that the first working Photachyon Transceiver prototype had been invented by a young child genius in Madison, Wisconsin (USA, Earth, Sol) about a hundred years earlier."
+finishswitch {
+  set Transceiver1 = 0
+}
+
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 30
+ypos 30
+width 580
+
+#window 52:901
+title "TACHYON DECAY DETECTOR"
+cam left from(PlayerChar0) to(52:0901) lift(40) restore zip
+style "NULL"
+font "_anox12"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 30
+ypos 30
+width 580
+
+#window 52:1001
+title "Back In Time"
+body "The concept of time travel has been around for centuries--most notably as the subject of countless science fiction stories. Unfortunately, there is no practical way to travel into the past, and the sheer physics involved in such a venture have relegated time travel to the ranks of imaginary science."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+width 580
+nextwindow 52:1010
+
+#window 52:1010
+body "Nevertheless, a small yet vocal group of scientists insist that travelling through time will indeed be quite possible someday. And they believe that the key to unlocking the mysteries of time may very well be found in the study of Tachyon particles."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+width 580
+
+#window 52:1101
+title "Tachyon Particles"
+body "Simply put, Tachyons are particles that are constantly moving faster than the speed of light. (As opposed to Tardyons, which can't surpass the speed of light; and Luxons, which can travel only at the speed of light.)"
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 30
+ypos 30
+width 580
+
+#window 52:1201
+title "The Theory"
+body "Till recently, Tachyon particles had only been detected in controlled lab experiments and never in nature, so their rumored existence remained strictly theoretical. All of that changed when Doctor Rho Bowman proposed the construction of a revolutionary device capable of isolating a Tachyon particle and pinpointing its exact position in space and time."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 30
+ypos 30
+width 580
+nextwindow 52:1205
+
+#window 52:1205
+body "One of the more amazing things about the Tachyon Decay Detector is that it isn't limited to just detecting artificially created Tachyons. The device can also trace the negative age of a pre-existing Tachyon particle and determine the point of origin in the future from which it was first formed."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 30
+ypos 30
+width 580
+nextwindow 52:1210
+
+#window 52:1210
+body "Doctor Bowman earned great acclaim with her invention. Unfortunately, her more recent theories regarding the nature of MysTech have been mired in controversy. Once revered for her brilliant analytical mind, Bowman has suffered a severe fall from grace in the minds of her peers. In fact, her radical and rather unorthodox methods have made her somewhat of a pariah in certain social circles. So it is with great trepidation that scientists from different parts of the galaxy accept Bowman's findings as scientific fact."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 30
+ypos 30
+width 580
+nextwindow 52:1215
+
+#window 52:1215
+body "Still, the empirical data collected thus far cannot be so easily discounted. Though the device will require further study in order for us to grasp a greater understanding of the behavior of objects in relation to space-time, for better or worse, the natural existence of Tachyon particles can no longer be refuted. And this in itself may turn out to be a monumental first step towards unraveling the secrets behind time travel."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 30
+ypos 30
+width 580
+
+#window 52:1301
+title "ANTI-GRAVITY RING"
+cam left from(PlayerChar0) to(52:1301) restore zip
+style "NULL"
+font "_anox12"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 30
+ypos 30
+width 580
+nextwindow 52:1355
+
+#window 52:1355
+cam left from(PlayerChar0) to(52:1301) restore zip
+startswitch {
+  set @TantasilAnimTime = func_gametime
+  extern AI_GrabEntity 52:2101 tantasil_handle
+  extern ANIM_PlayAnim tantasil_handle gest_a 0 1 1
+  extern playsound cine/sunder/sunder_ship_hit.wav
+  extern loopsound cine/sunder/sunder_equake4.wav
+}
+
+thinkswitch {
+  if ((func_gametime >= (@TantasilAnimTime + 600)) && (@tantsound1 == 0)) {
+    extern playsound cine/sunder/sunder_walls_move.wav
+    extern playsound battle/mystech/psyslave/psyslave_scream1.wav
+    set @tantsound1 = 1
+  }
+  if ((func_gametime >= (@TantasilAnimTime + 1000)) && (@tantsound2 == 0)) {
+    extern playsound cine/sunder/sunder_rock_hits_ground.wav
+    set @tantsound2 = 1
+  }
+  if ((func_gametime >= (@TantasilAnimTime + 2000)) && (@tantsound3 == 0)) {
+    extern stopsound cine/sunder/sunder_equake4.wav
+    extern playsound cine/sunder/sunder_split_flash.wav
+    set @tantsound3 = 1
+  }
+  if ((func_gametime >= (@TantasilAnimTime + 3500)) && (@tantsound4 == 0)) {
+    extern ANIM_PlayAnim tantasil_handle gest_b 0 1 0
+    extern playsound maps/mac/mac_elevator_start_01.wav
+    set @tantsound4 = 1
+  }
+  if (func_gametime >= (@TantasilAnimTime + 5000))
+    closewindow 52:1355
+}
+
+finishswitch {
+  extern AI_ReleaseEntity tantasil_handle
+  set @TantasilDemoOn = 0
+  set @tantsound1 = 0
+  set @tantsound2 = 0
+  set @tantsound3 = 0
+  set @tantsound4 = 0
+}
+
+style "NULL"
+flags passive, TRUE
+
+#window 52:1401
+title "The Grand Vision"
+body "Long renowned for their impressive technological achievements, the inhabitants of Democratus once had the grand vision to construct magnificent twin cities floating among the clouds above their homeworld. Whether they were motivated by the noblest of intentions or just plain hubris remains uncertain--yet no one can deny that their remarkable efforts eventually made Tantasil a reality."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+width 580
+
+#window 52:1501
+title "Floating In Air"
+body "Far beyond the capabilities of common minor field repulsion, the anti-gravity technology employed by Democratans on the two rings encircling their planet was modified for the great Tantasil experiment. It was a daunting task, made worse by the fact that the project would involve the constant levitation of an incredibly large mass, thereby exceeding the requirements of simply stabilizing a balanced system. Never before had such a feat been attempted--at least certainly not to such a grand scale."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+width 580
+nextwindow 52:1505
+
+#window 52:1505
+body "Despite such a massive undertaking, Democratus was up to the challenge. Before long, Tantasil was finally completed... with catastrophic results."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+width 580
+
+#window 52:1601
+title "The Disaster"
+body "Since Democratans have long favored an extreme isolationist policy which precludes any free exchange of information, little is known about the events leading up to the Tantasil disaster apart from the tidbits gleaned by the few journalists who were allowed to cover it."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 80
+ypos 30
+width 580
+nextwindow 52:1605
+
+#window 52:1605
+body "Disappointingly, what is known about the cataclysm amounts to nothing more than reported sightings of a huge chunk of Tantasil suddenly dropping out of the skies for no apparent reason. Rare eyewitness accounts describe how Tantasil heaved and buckled without warning, then split in two with a sickening wrench as a little over half its bulk plummeted from the skies like so much deadweight."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 80
+ypos 30
+width 580
+nextwindow 52:1610
+
+#window 52:1610
+body "Many believe that it was an uneven distribution of mass that forced an incredible amount of torque to be centered on the juncture between the two halves of the twin cities. This resulted in the formation of an irreparable stress fracture--which in turn caused the fatal shift in the floating island's center of gravity that led to Tantasil's ultimate destruction."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 80
+ypos 30
+width 580
+nextwindow 52:1615
+
+#window 52:1615
+body "Regardless of idle speculation, it appears that the exact nature of the circumstances surrounding the Tantasil tragedy is bound to remain shrouded in mystery."
+style "NULL"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 10101080 color2 = 08080880 color3 = 00000080 color4 = 08080880
+xpos 80
+ypos 30
+width 580
+
+#window 52:1905
+title "Hermano"
+body "It's a beautiful work of art. The fact that it actually does something useful is amazing."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 52:1910
+title "Hermano"
+body "Documents of authenticity? But I don't remember making any sales this week."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 52:1911
+
+#window 52:1911
+title "Hermano"
+body "Ah, no. I'm quite mistaken. There was that landscape I practically gave away to La Contessa Shrivenstein the other day."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 52:1912
+
+#window 52:1912
+title "Hermano"
+body "I didn't include any documentation? How odd. That's standard procedure. How unprofessional of me."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 52:1913
+
+#window 52:1913
+title "Hermano"
+body "Why don't you check with my assistant? He's watching my bags at Gate 2 in Sender Station Station."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set spawn_botfriday = 1
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 52:1915
+title "Hermano"
+body "Check with my assistant at Sender Station Station Gate 2 for the certificate of authenticity."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 52:1920
+title "Hermano"
+body "Thanks for clearing that up. It's always embarassing to make an error of that nature."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 52:2201
+title "PAX Guard"
+body "Get that LifeCursor outta my face."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern AI_TalkStop museum_PAX
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 52:2305
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+if (func_charinparty[pal] == 3)
+  title "PAL-18"
+if (func_charinparty[rho] == 3)
+  title "Rho Bowman"
+if (func_charinparty[democratus] == 3)
+  title "Democratus"
+if (func_charinparty[boots] == 3)
+  body "Man, if that PAX Guard wasn't trolling around here, I'd just grab the TDD and be off."
+if (func_charinparty[grumpos] == 3)
+  body "If that PAX Guard wasn't around, I'd snatch the TDD and light outta here before anyone noticed."
+if (func_charinparty[pal] == 3)
+  body "If that PAX skunk wasn't lurking around like a hot potato, I'd just pinch the TDD and run like hell."
+if (func_charinparty[rho] == 3)
+  body "Too bad that PAX Guard is patrolling the museum. Otherwise, I'd grab the TDD and make a break for it."
+if (func_charinparty[democratus] == 3)
+  body "The High Council unanimously agrees that taking the TDD with the PAX Guard here would be ill-advised."
+cam left from(PlayerChar0) to(tdd) restore zip
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 52:2306
+
+#window 52:2306
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+if (func_charinparty[pal] == 3)
+  title "PAL-18"
+if (func_charinparty[rho] == 3)
+  title "Rho Bowman"
+if (func_charinparty[democratus] == 3)
+  title "Democratus"
+if (func_charinparty[boots] == 3)
+  body "We should come back when there's less heat."
+if (func_charinparty[grumpos] == 3)
+  body "We better come back when it's less busy."
+if (func_charinparty[pal] == 3)
+  body "I better come back later when nobody's around."
+if (func_charinparty[rho] == 3)
+  body "We should come back when it's less crowded."
+if (func_charinparty[democratus] == 3)
+  body "We recommend returning for it when there are less potential witnesses."
+cam left from(PlayerChar0) to(tdd) restore zip
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 52:2310
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+if (func_charinparty[pal] == 3)
+  title "PAL-18"
+if (func_charinparty[rho] == 3)
+  title "Rho Bowman"
+if (func_charinparty[democratus] == 3)
+  title "Democratus"
+if (func_charinparty[boots] == 3)
+  body "We should come back for the TDD when there's less heat."
+if (func_charinparty[grumpos] == 3)
+  body "We better come back for the TDD when it's less busy."
+if (func_charinparty[pal] == 3)
+  body "I better come back for the TDD later when nobody's around."
+if (func_charinparty[rho] == 3)
+  body "We should come back for the TDD when it's less crowded."
+if (func_charinparty[democratus] == 3)
+  body "We recommend returning for the TDD when there are less potential witnesses."
+cam left from(PlayerChar0) to(tdd) restore zip
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 52:4300
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "I can't access datalinks, but I paid big bucks to modify PAL-18 to hotwire these suckers."
+if (func_charinparty[boots] != 3)
+  body "I think that's a datalink for maintenance and diagnostic bots."
+cam left from(PlayerChar0) to(52:4300) lift(40) restore zip
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#switch 52:1
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+extern playlevelmusic MP3/sender/sendertheme.mp3
+extern loopambient ambi_dampener
+extern AI_SpawnEntity @ob_clip_handle_1 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_1 -245 349 -97
+extern AI_SpawnEntity @ob_clip_handle_2 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_2 -353 227 -97
+extern AI_SpawnEntity @ob_clip_handle_3 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_3 319 355 -97
+extern AI_SpawnEntity @ob_clip_handle_4 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_4 431 259 -97
+
+#switch 52:101
+set Pinko1 = (Pinko1 + 1)
+if (Pinko1 > 1)
+  goto 52:0110
+goto 52:0105                                 
+
+#switch 52:305
+extern stopambient ambi_dampener
+extern playambient dampener_active 0 52:0306 null null 0 0 false false
+
+#switch 52:306
+extern loopambient ambi_dampener
+
+#switch 52:801
+set Transceiver1 = (Transceiver1 + 1)
+if (Transceiver1 > 2)
+  goto 52:0835
+if (Transceiver1 > 1)
+  goto 52:0830
+goto 52:0805
+
+#switch 52:1351
+if (@TantasilDemoOn == 1)
+  goto 0:0
+set @TantasilDemoOn = 1
+goto 52:1355
+
+#switch 52:1701
+extern stopambient ambi_dampener
+extern playambient dampener_active 0 52:0306 null null 0 0 false false
+
+#switch 52:1901
+if (Contessa2 > 0)
+  goto 52:1920
+if (spawn_botfriday > 0)
+  goto 52:1915
+if (get_certificate > 0)
+  goto 52:1910
+goto 52:1905                                    
+
+#switch 52:2101
+goto 52:1351
+
+#switch 52:2301
+set TDD1 = (TDD1 + 1)
+if (TDD1 > 1)
+  goto 52:2310
+goto 52:2305

@@ -1,0 +1,5266 @@
+#window 53:101
+title "May Nardmick"
+body "There are a hundred and thirty tiles on the ceiling."
+cam left lift(40) restore zip
+talk npc amb_d stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:0102
+
+#window 53:102
+title "May Nardmick"
+body "I've counted them all."
+cam left lift(40) restore zip
+talk npc amb_d stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:0103
+
+#window 53:103
+title "May Nardmick"
+body "Twice."
+cam left lift(40) restore zip
+talk npc amb_d stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:205
+title "Crazy Jebediah"
+body "You givin' me stink eye, son?"
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:0206
+
+#window 53:206
+title "Crazy Jebediah"
+body "Show some respect to ol' Jebediah. You gimme a shovel & some dirt, and I'll find something valuable."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:0207
+
+#window 53:207
+title "Crazy Jebediah"
+body "There's a bonanza out on Hephaestus, and I'm gonna dredge me up some MysTech nuggets. Ain't every day you can pan for magic."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:210
+title "Crazy Jebediah"
+body "What're a bunch of monks gonna care about an old claim jumpin' tin scratcher like me?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:305
+title "Aroncu"
+body "We're going to Matrix 0 for our honeymoon."
+cam left from(PlayerChar0) to(aroncu) restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:0306
+
+#window 53:306
+title "Bethane"
+body "Because who wants to be themselves on their honeymoon?"
+cam left from(PlayerChar0) to(bethane) restore zip
+startswitch {
+  extern AI_GrabEntity bethane bethane_handle
+  extern AI_GrabEntity aroncu aroncu_handle
+  extern ANIM_PlayAnim bethane_handle talk_e 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:0307
+
+#window 53:307
+title "Aroncu"
+body "Thanks."
+cam left from(PlayerChar0) to(aroncu) restore zip
+startswitch {
+  extern ANIM_PlayAnim aroncu_handle gest_f 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity aroncu_handle
+  extern AI_ReleaseEntity bethane_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:310
+title "Aroncu"
+body "This trip to Matrix 0 is costing me half year's salary. If it's not better than sex, I'll sue."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:405
+title "Bethane"
+body "I've been waiting all my life to go to Matrix 0. I can't wait to be someone other than me."
+cam left from(PlayerChar0) to(bethane) restore zip
+talk npc talk_a stay
+startswitch {
+  extern AI_GrabEntity aroncu aroncu_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:0406
+
+#window 53:406
+title "Aroncu"
+body "Neither can I."
+cam left from(PlayerChar0) to(aroncu) restore zip
+startswitch {
+  extern ANIM_PlayAnim aroncu_handle gest_h 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:0407
+
+#window 53:407
+title "Bethane"
+body "What..?"
+cam left from(PlayerChar0) to(bethane) restore zip
+startswitch {
+  extern AI_GrabEntity bethane bethane_handle
+  extern AI_WaitAndFace bethane_handle -1 aroncu
+  extern ANIM_PlayAnim bethane_handle talk_e 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:0408
+
+#window 53:408
+title "Aroncu"
+body "Nothing."
+cam left from(PlayerChar0) to(aroncu) restore zip
+talk_ex aroncu bethane gest_f amb_a stay stay
+startswitch {
+  extern AI_GrabEntity aroncu aroncu_handle
+  extern AI_WaitAndFace aroncu_handle -1 bethane
+  extern ANIM_PlayAnim aroncu_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity aroncu_handle
+  extern AI_ReleaseEntity bethane_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:410
+title "Bethane"
+body "Two hours from now and I'll be in Matrix 0!"
+cam left from(PlayerChar0) to(bethane) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:505
+title "Albert Spenze"
+body "I'm flying to Gennus to report on the Forusite war against the Gennusites. The first three reporters never came back."
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:0506
+
+#window 53:506
+title "Albert Spenze"
+body "I'm number four."
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:510
+title "Albert Spenze"
+body "I don't expect I'm coming back... but someone's gotta tell the the story. That's Spenze with a \"Z\", by the way."
+cam left restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:605
+title "Jem Jonis"
+body "I finally found a place where I belong. It's a church cooperative on Sagan IV. We're like a big family."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:0611
+
+#window 53:611
+title "Jem Jonis"
+body "Reverend Peoples is teaching us his social gospel. He's a brilliant man. I'd follow him into hell."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:610
+title "Jem Jonis"
+body "My parents are worried about me. They think I've joined some dangerous cult. They don't understand."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:615
+title "Jem Jonis"
+body "We're all gathering in the courtyard for a special toast next week. Reverend Peoples says we will finally all become one with the promised land."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:0620
+
+#window 53:620
+title "Jem Jonis"
+body "I'll pray for you."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:805
+title "Aegis Whyternmen"
+body "The safari on Tantac X this year is going to be most excellent... most excellent indeed."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:0806
+
+#window 53:806
+title "Aegis Whyternmen"
+if (func_charinparty[boots] == 3)
+  body "Ever picked up a gun, boy?"
+if (func_charinparty[grumpos] == 3)
+  body "Ever picked up a gun, old man?"
+if (func_charinparty[pal] == 3)
+  body "Ever picked up a gun, little beebot?"
+if ((func_charinparty[rho] == 3) || (func_charinparty[stiletto] == 3))
+  body "Ever picked up a gun, girl?"
+if (func_charinparty[democratus] == 3)
+  body "Ever picked up a gun, Mister Planetoid?"
+if (func_charinparty[paco] == 3)
+  body "Ever picked up a gun, big boy?"
+body " It's exhilarating... an animal in your sights, the recoil of a weapon against your cheek, and the blood... oh, the blood!"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:810
+title "Aegis Whyternmen"
+body "It's an underwater expedition this year. Hunting in the ocean is a hazardous endeavor... a most excellent challenge indeed."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:815
+title "Aegis Whyternmen"
+body "Between you and me, those Bipidri are surprisingly good hunting. Keen little runners."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:820
+title "Aegis Whyternmen"
+body "Sshhh!"
+cam left restore zip
+talk npc amb_f stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:0821
+
+#window 53:821
+title "Aegis Whyternmen"
+body "Don't make any sudden moves. Those bipidri are skittish, and I'm only moments away from bagging them."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:0822
+
+#window 53:822
+title "Aegis Whyternmen"
+body "Go away."
+cam left restore zip
+talk npc amb_h stay
+finishswitch {
+  set Aegis2 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:825
+title "Aegis Whyternmen"
+body "Thanks for not busting my hunt, mate."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:0826
+
+#window 53:826
+title "Aegis Whyternmen"
+body "Now my biggest challenge awaits me."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:0827
+
+#window 53:827
+title "Aegis Whyternmen"
+body "Customs."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:901
+title "01110000 01100001 01100011 01101111"
+body "My \"El Puño\" action figure has RageMight punch action."
+cam left lift(30) restore zip
+talk npc amb_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:0902
+
+#window 53:902
+title "01110000 01100001 01100011 01101111"
+body "I wanna show it to you, but I broked it."
+cam left lift(30) restore zip
+talk npc amb_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:0903
+
+#window 53:903
+title "01101100 01101001 01110110 01100101 01110011"
+body "Stop bothering the stranger, 111."
+cam left from(PlayerChar0) to(dad110) lift(60) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 110
+  extern ANIM_PlaySequence PlayerChar0 amb_h 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:1001
+title "01101100 01101001 01110110 01100101 01110011"
+body "Excuse my son. He hasn't been the same since Krapton Comics went outta business."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:1105
+title "Bricks Ticketaker"
+body "I'm sorry, but I can't let any of you onboard without tickets."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1110
+title "Bricks Ticketaker"
+body "Enjoy your flight, sir."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:1111
+
+#window 53:1115
+title "Bricks Ticketaker"
+body "Welcome to Sender Station Station. Salad is free today."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1120
+title "Bricks Ticketaker"
+body "I don't talk to baggage, little fella."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1305
+title "Dr. Schooten"
+if (INV_LABCOATS < 1)
+  body "The Brain Train to Sunder? First of all, you certainly aren't getting in looking like that. Sunder's a planet of the most brilliant scholars and scientists the universe has to offer. And you're not exactly dressed like a genius."
+if (INV_LABCOATS > 0)
+  body "The Brain Train to Sunder? I think you're out of luck, fellas."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  set MET_SCHOOTEN = 1
+  set NEED_SUNDER_TICKETS = 1
+  extern add_quest "Get On Sunder Shuttle Do Know"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:1310
+
+#window 53:1310
+title "Dr. Schooten"
+if (INV_LABCOATS < 1)
+  body "Second of all, credentials from the Scientifica Association are required in order to get past that security door. Sorry to jump to conclusions, but I doubt you have the necessary references."
+if (INV_LABCOATS > 0)
+  body "First of all, credentials from the Scientifica Association are required in order to get past that security door. But that shouldn't be a problem for you since you're credentialed scientists, right?"
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:1315
+
+#window 53:1315
+title "Dr. Schooten"
+if (INV_LABCOATS < 1)
+  body "Third, there's a ticket taker beyond the security door. Since all flights this month are sold out and booked, getting on board seems extremely remote."
+if (INV_LABCOATS > 0)
+  body "Your biggest problem is the ticket taker beyond the security door. Since all flights this month are sold out and booked, getting on board seems extremely remote."
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:1320
+
+#window 53:1320
+title "Dr. Schooten"
+body "Lastly, you'll have to face the infamous Brain Bouncer. He makes sure you really have the smarts it takes for Sunder by asking you a series of very difficult questions. If you can't answer them, you ain't going."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1325
+title "Dr. Schooten"
+body "Hey, I've said my piece, bub. Why don't you have your LifeCursor play back the few minutes of my life you've wasted."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1335
+title "Dr. Schooten"
+body "You seem familiar. Were you at the conference in Asagan last month?"
+cam left restore zip
+talk npc gest_h stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:1336
+
+#window 53:1336
+title "Dr. Schooten"
+body "Never mind how preoccupied I look. I'm always happy to chat with a fellow colleague. If I seem a bit distracted, that's only because my thoughts are buried in my latest project. It's very exciting."
+cam left restore zip
+talk npc gest_g stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1340
+title "Dr. Schooten"
+body "For the last fifteen years I've been conducting studies on temporal anomalies. It's just about all I can think about."
+cam left restore zip
+talk npc gest_g stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:1341
+
+#window 53:1341
+title "Dr. Schooten"
+body "I'd love to take the next Brain Train to Sunder and get back to work, but my Scientifica Association grant is dwindling, and without more funds my research will go unfinished."
+cam left restore zip
+talk npc gest_h stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:1342
+
+#window 53:1342
+title "Dr. Schooten"
+body "You know how it is. Even the noble pursuits of science are subject to the whims of bankers and investors."
+cam left restore zip
+talk npc gest_f stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1345
+title "Dr. Schooten"
+body "Well, you better get going. I think the Brain Train departs shortly."
+cam left restore zip
+talk npc gest_h stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1350
+title "Dr. Schooten"
+body "Aren't you cute. I could use a little assistant... if only my project had the budget. Sigh."
+cam left restore zip
+talk npc gest_h stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1405
+title "Jawnn"
+body "Ree'Ngo just do what he please."
+cam left from(PlayerChar0) to(jawnn) restore zip
+startswitch {
+  extern AI_GrabEntity jawnn jawnn_handle
+  extern ANIM_PlayAnim jawnn_handle gest_h 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:1406
+
+#window 53:1406
+title "Pawl"
+body "Very strange."
+cam left from(PlayerChar0) to(pawl) restore zip
+startswitch {
+  extern AI_GrabEntity pawl pawl_handle
+  extern ANIM_PlayAnim pawl_handle gest_e 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:1407
+
+#window 53:1407
+title "Ree'Ngo"
+body "Well, there's no one here to tell us what to do."
+cam left from(PlayerChar0) to(reengo) restore zip
+startswitch {
+  extern AI_GrabEntity reengo reengo_handle
+  extern ANIM_PlayAnim reengo_handle gest_g 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity jawnn_handle
+  extern AI_ReleaseEntity pawl_handle
+  extern AI_ReleaseEntity reengo_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1410
+title "Jawnn"
+body "I think the Meatles are more popular than Klaz."
+cam left from(PlayerChar0) to(jawnn) restore zip
+startswitch {
+  extern AI_GrabEntity jawnn jawnn_handle
+  extern ANIM_PlayAnim jawnn_handle gest_h 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity jawnn_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1505
+title "Pawl"
+body "Have you seen me grandfather?"
+cam left from(PlayerChar0) to(pawl) restore zip
+startswitch {
+  extern AI_GrabEntity pawl pawl_handle
+  extern ANIM_PlayAnim pawl_handle gest_b 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:1506
+
+#window 53:1506
+title "Ree'Ngo"
+body "Are ya sad because you're all alone?"
+cam left from(PlayerChar0) to(reengo) restore zip
+startswitch {
+  extern AI_GrabEntity reengo reengo_handle
+  extern ANIM_PlayAnim reengo_handle gest_h 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity pawl_handle
+  extern AI_ReleaseEntity reengo_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1510
+title "Pawl"
+body "Man, I had a dreadful flight."
+cam left from(PlayerChar0) to(pawl) restore zip
+startswitch {
+  extern AI_GrabEntity pawl pawl_handle
+  extern ANIM_PlayAnim pawl_handle gest_f 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:1511
+
+#window 53:1511
+title "Jawnn"
+body "Klaz, you know it ain't easy."
+cam left from(PlayerChar0) to(jawnn) restore zip
+startswitch {
+  extern AI_GrabEntity jawnn jawnn_handle
+  extern ANIM_PlayAnim jawnn_handle gest_n 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity jawnn_handle
+  extern AI_ReleaseEntity pawl_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1515
+title "Pawl"
+body "Customs tried to bust me for possession of Toka, but I was clean, man, clean."
+cam left from(PlayerChar0) to(pawl) restore zip
+startswitch {
+  extern AI_GrabEntity pawl pawl_handle
+  extern ANIM_PlayAnim pawl_handle gest_g 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity pawl_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1605
+title "Jorj"
+body "I'm writing a song called \"My Sweet Chord\". You've never heard anything like it."
+cam left from(PlayerChar0) to(jorj) restore zip
+startswitch {
+  extern AI_GrabEntity jorj jorj_handle
+  extern ANIM_PlayAnim jorj_handle gest_g 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:1606
+
+#window 53:1606
+title "Pawl"
+body "Yeah, it's guaranteed to raise a smile."
+cam left from(PlayerChar0) to(pawl) restore zip
+startswitch {
+  extern AI_GrabEntity pawl pawl_handle
+  extern ANIM_PlayAnim pawl_handle gest_h 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity pawl_handle
+  extern AI_ReleaseEntity jorj_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1610
+title "Jorj"
+body "I've been studying under the Etramishi Cajoomashi on Asagan IV. He caresses and possesses me."
+cam left from(PlayerChar0) to(jorj) restore zip
+startswitch {
+  extern AI_GrabEntity jorj jorj_handle
+  extern ANIM_PlayAnim jorj_handle gest_g 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity jorj_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1705
+title "Ree'Ngo"
+body "Pawl's got a ticket to ride... but he don't care."
+cam left from(PlayerChar0) to(reengo) restore zip
+startswitch {
+  extern AI_GrabEntity reengo reengo_handle
+  extern ANIM_PlayAnim reengo_handle gest_g 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:1706
+
+#window 53:1706
+title "Jawnn"
+body "It doesn't matter much to me either."
+cam left from(PlayerChar0) to(jawnn) restore zip
+startswitch {
+  extern AI_GrabEntity jawnn jawnn_handle
+  extern ANIM_PlayAnim jawnn_handle gest_h 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:1707
+
+#window 53:1707
+title "Pawl"
+body "Oh, let it be already."
+cam left from(PlayerChar0) to(pawl) restore zip
+startswitch {
+  extern AI_GrabEntity pawl pawl_handle
+  extern ANIM_PlayAnim pawl_handle gest_l 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity jawnn_handle
+  extern AI_ReleaseEntity pawl_handle
+  extern AI_ReleaseEntity reengo_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1710
+title "Ree'Ngo"
+body "Hey, you see that cute bird just go by? I need somebody to love."
+cam left from(PlayerChar0) to(reengo) restore zip
+startswitch {
+  extern AI_GrabEntity reengo reengo_handle
+  extern ANIM_PlayAnim reengo_handle gest_h 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:1711
+
+#window 53:1711
+title "Pawl"
+body "You were made to go out and get her, Ree'Ngo."
+cam left from(PlayerChar0) to(pawl) restore zip
+startswitch {
+  extern AI_GrabEntity pawl pawl_handle
+  extern ANIM_PlayAnim pawl_handle gest_g 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:1712
+
+#window 53:1712
+title "Jawnn"
+body "I think she has colitis."
+cam left from(PlayerChar0) to(jawnn) restore zip
+startswitch {
+  extern AI_GrabEntity jawnn jawnn_handle
+  extern ANIM_PlayAnim jawnn_handle gest_n 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:1713
+
+#window 53:1713
+title "Jorj"
+body "Yeah, it was something in the way she moved."
+cam left from(PlayerChar0) to(jorj) restore zip
+startswitch {
+  extern AI_GrabEntity jorj jorj_handle
+  extern ANIM_PlayAnim jorj_handle gest_h 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity jawnn_handle
+  extern AI_ReleaseEntity pawl_handle
+  extern AI_ReleaseEntity jorj_handle
+  extern AI_ReleaseEntity reengo_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1715
+title "Ree'Ngo"
+body "Ree'Ngo's not me real name, you know."
+cam left from(PlayerChar0) to(reengo) restore zip
+startswitch {
+  extern AI_GrabEntity reengo reengo_handle
+  extern ANIM_PlayAnim reengo_handle gest_g 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity reengo_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1805
+title "Dony Paloney"
+body "Sly Boots? What're you doin' up here? You runnin' out on your debt or somethin'?"
+cam left lift(50) restore zip
+talk npc talk_c stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1810
+title "Dony Paloney"
+body "Detta ain't gonna like dis. You better spin Noxside before I tell 'em what's what."
+cam left lift(50) restore zip
+talk npc talk_c stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1825
+title "Dony Paloney"
+body "Scramoo, beebot."
+cam left lift(50) restore zip
+talk npc amb_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1830
+title "Dony Paloney"
+body "Beat it, old bag."
+cam left lift(50) restore zip
+talk npc amb_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:1901
+title "Einbert Alstein"
+body "...."
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:2005
+title "Mercedes Walsh"
+body "Please, sir. Take a pamphlet."
+cam left restore zip
+talk npc talk_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2003
+
+#window 53:2003
+if (MYSTECH_ACTIVE == 0)
+  title "STOP FORUSITE MASSACRE OF CIVILIANS ON GENNUS!"
+if (MYSTECH_ACTIVE == 1)
+  title "SAVE THE GLODENTS!"
+if (MYSTECH_ACTIVE == 0)
+  body "In an effort to turn the tide of their 23-year old war against the Gennusites, the Forusites have launched a disproportionate air, land and sea bombardment of heavily populated cities on Gennus. News reports indicate at least 12,000 Gennusite civilians have been killed, including mothers, children, and the elderly. We urge you to support our call for the immediate withdrawal of all Forusite troops from Northern Gennus in accordance with the PAX Delanus Resolution. Dropping bombs on civilians is terrorism! Help us!"
+if (MYSTECH_ACTIVE == 1)
+  body "Every day, thousands of Glodents are wrenched from their native homes on Hephaestus and stuffed into tiny battpacks against their will--later to be sold for profit. Despite this blatant act of sentient life form cruelty, the neutron-radiated creatures are used as a convenient source of energy by most intergalactic travelers. Clearly, the mistreatment of Glodents is a moral affront to civilized society--AND MUST BE STOPPED! Let's put an end to this inhumane practice once and for all. It's up to US!"
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+width 580
+
+#window 53:2010
+title "Mercedes Walsh"
+body "Would you like another pamphlet for a friend?"
+cam left restore zip
+talk npc talk_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2003
+
+#window 53:2102
+title "S E C U R I T Y   C H E C K P O I N T"
+if (MYSTECH_ACTIVE == 0)
+  body "         Authorized SA Scientists Only \n \n                        . . . . .\n \nScientifica Association 'Draft Standard 7' credentials are required beyond this checkpoint. Any attempt to fold, spindle, or mutilate this door will resort in severe penalties. \n \nPlease go away before we kill you."
+style "box3"
+font "boost12"
+xpos 110
+ypos 90
+width 415
+height 270
+
+#window 53:2205
+title "Sunder Ticketaker"
+body "I'm sorry, sir. I can't let either one of you onboard without tickets."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:2210
+title "Sunder Ticketaker"
+body "Thank you, and enjoy your flight."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  set NEED_SUNDER_TICKETS = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2211
+
+#window 53:2215
+title "Sunder Ticketaker"
+body "I'm sorry, sir. There must be some mistake. You see, the brain train is for scientists only, and you're not even wearing a lab coat."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:2220
+title "Sunder Ticketaker"
+body "You've only got one ticket here, sir. You'll need another one if both of you want to board."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:2225
+title "Sunder Ticketaker"
+body "I don't talk to baggage, little fella."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:2305
+title "Brain Bouncer"
+body "You've been to Sunder. You know the drill. Credentials can be faked. Knowledge can't."
+cam left from(-1137 3298 52) to(-1127 3328 107) restore zip
+startswitch {
+  extern AI_GrabEntity bouncer bouncer_handle
+  extern AI_GrabEntity PlayerChar0 grumposhandle
+  extern AI_WaitAndFace bouncer_handle -1 PlayerChar0
+  extern ANIM_PlayAnim bouncer_handle gest_h 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2306
+
+#window 53:2306
+title "Brain Bouncer"
+body "Explain the Deitz molecular viscosity process of fluoro-aquafer systems in the Tentac System."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern AI_WaitAndFace grumposhandle -1 bouncer
+  extern ANIM_PlayAnim bouncer_handle gest_h 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2310
+
+#window 53:2310
+title "Grumpos"
+body "That's easy. I wrote an article on the process for The Scientifica Journal. If my memory serves...."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim grumposhandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "The key to the process is the polypropylene baffles in the carbon steel spiral mixers." 53:2311
+choice "The key to the process is the carbon steel spiral mixers in the diaphragm valves." 53:2312
+choice "The key to the process is the 403SS-flanges housing ends in the polypropylene baffles." 53:2313
+choice "The key to the process is the rubber lined diaphragm valves in the 403SS-flanges housing ends." 53:2314
+
+#window 53:2311
+title "Grumpos"
+body "The key to the process is the polypropylene baffles in the carbon steel spiral mixers."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim grumposhandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2315
+
+#window 53:2312
+title "Grumpos"
+body "The key to the process is the carbon steel spiral mixers in the diaphragm valves."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim grumposhandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2315
+
+#window 53:2313
+title "Grumpos"
+body "The key to the process is the 403SS-flanges housing ends in the polypropylene baffles."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim grumposhandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2315
+
+#window 53:2314
+title "Grumpos"
+body "The key to the process is the rubber lined diaphragm valves in the 403SS-flanges housing ends."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim grumposhandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2315
+
+#window 53:2315
+title "Grumpos"
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "The polymer dilution reserves low viscosity applications in the pressure drop blending." 53:2316
+choice "The pressure drop blending reserves abrasion-resistant fluorocarbons in the polymer dilution." 53:2317
+choice "The organic solvents reserve turbidity levels in the abrasion-resistant fluorocarbons." 53:2318
+choice "The sorbitol deashing reserves iron removal in the low viscosity applications." 53:2319
+
+#window 53:2316
+title "Grumpos"
+body "The polymer dilution reserves low viscosity applications in the pressure drop blending."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim grumposhandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2320
+
+#window 53:2317
+title "Grumpos"
+body "The pressure drop blending reserves abrasion-resistant fluorocarbons in the polymer dilution."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim grumposhandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2320
+
+#window 53:2318
+title "Grumpos"
+body "The organic solvents reserve turbidity levels in the abrasion-resistant fluorocarbons."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim grumposhandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2320
+
+#window 53:2319
+title "Grumpos"
+body "The sorbitol deashing reserves iron removal in the low viscosity applications."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim grumposhandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2320
+
+#window 53:2320
+title "Grumpos"
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Molecular sieves synthesize thermal inorganic polymers through solid-phase extraction." 53:2321
+choice "Polyphosphazene derivatives synthesize thermal digital titrators through isokinetic sampling." 53:2322
+choice "Inorganic polymers synthesize thermal polyphosphazene derivatives through stream hydrodynamics." 53:2323
+choice "Digital titrators synthesize thermal molecular sieves through alkalinity titration." 53:2324
+
+#window 53:2321
+title "Grumpos"
+body "Molecular sieves synthesize thermal inorganic polymers through solid-phase extraction."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim grumposhandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2325
+
+#window 53:2322
+title "Grumpos"
+body "Polyphosphazene derivatives synthesize thermal digital titrators through isokinetic sampling."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim grumposhandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2325
+
+#window 53:2323
+title "Grumpos"
+body "Inorganic polymers synthesize thermal polyphosphazene derivatives through stream hydrodynamics."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim grumposhandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2325
+
+#window 53:2324
+title "Grumpos"
+body "Digital titrators synthesize thermal molecular sieves through alkalinity titration."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim grumposhandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2325
+
+#window 53:2325
+title "Grumpos"
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Finally, glycerine purification occurs with semi-permeable TFC membrane filters." 53:2326
+choice "Finally, nanofiltration occurs with preconditioning of amphiphilic macromolecules." 53:2327
+choice "Finally, anaerobic streamflow occurs with extracellular mucopolysaccharide synthesis." 53:2328
+choice "Finally, molecular adhesion occurs with a small aliquot of organonitrogen herbicides." 53:2329
+
+#window 53:2326
+title "Grumpos"
+body "Finally, glycerine purification occurs with semi-permeable TFC membrane filters."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim grumposhandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2330
+
+#window 53:2327
+title "Grumpos"
+body "Finally, nanofiltration occurs with preconditioning of amphiphilic macromolecules."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim grumposhandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2330
+
+#window 53:2328
+title "Grumpos"
+body "Finally, anaerobic streamflow occurs with extracellular mucopolysaccharide synthesis."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim grumposhandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2330
+
+#window 53:2329
+title "Grumpos"
+body "Finally, molecular adhesion occurs with a small aliquot of organonitrogen herbicides."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim grumposhandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2330
+
+#window 53:2330
+title "Brain Bouncer"
+body "Very succinct. I'd like to read the article some day. Have a nice flight, doctor."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  set PASSED_BRAINBOUNCER = 1
+  extern ANIM_PlayAnim bouncer_handle gest_h 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2331
+
+#window 53:2335
+title "Brain Bouncer"
+body "You've been to Sunder. You know the drill. Credentials can be faked. Knowledge can't."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bouncer_handle gest_h 0 1 0
+}
+
+finishswitch {
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2336
+
+#window 53:2336
+title "Brain Bouncer"
+body "Illustrate Bezemer's phylogenetic protocols in biomechanical post-fixation processing."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bouncer_handle gest_h 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2346
+
+#window 53:2346
+title "PAL-18"
+body "Excuse me. Do you speak Awoogan by any chance?"
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar1 palhandle
+  extern ANIM_PlayAnim palhandle gest_d 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2347
+
+#window 53:2347
+title "Brain Bouncer"
+body "I'm afraid Awoogan is not one of the twenty-three languages I know. Why?"
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bouncer_handle gest_h 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2348
+
+#window 53:2348
+title "PAL-18"
+body "Well, my master is an Awoogan from the Asagan System. He speaks an obscure provincial dialect. Luckily for you, I can serve as his translator today."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim palhandle gest_d 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2349
+
+#window 53:2349
+title "Brain Bouncer"
+body "Very well... as long as your translation skills are adequate."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bouncer_handle gest_h 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2350
+
+#window 53:2350
+title "Brain Bouncer"
+body "Illustrate Bezemer's phylogenetic protocols in biomechanical post-fixation processing."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bouncer_handle gest_h 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2351
+
+#window 53:2351
+title "Boots"
+body "*AHEM*"
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Sibidabo kanopi dodado, groovy-doobie momati jibidabo." 53:2352
+choice "Eee-yo tekeme-hwa gwap seekee-peepeen." 53:2353
+choice "Beeba schooten dony paloney keel-ya feel-ya." 53:2354
+choice "Flim flam floom flom." 53:2395
+
+#window 53:2352
+title "Boots"
+body "Sibidabo kanopi dodado, groovy-doobie momati jibidabo."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2355
+
+#window 53:2353
+title "Boots"
+body "Eee-yo tekeme-hwa gwap seekee-peepeen."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2355
+
+#window 53:2354
+title "Boots"
+body "Beeba schooten dony paloney keel-ya feel-ya."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2355
+
+#window 53:2395
+title "Boots"
+body "Flim flam floom flom."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2355
+
+#window 53:2355
+title "PAL-18"
+body "Initially, picric superconductors buffer the cellular dehydrates, precipitating fixative hybridisation."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim palhandle gest_d 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2360
+
+#window 53:2360
+title "Boots"
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Planto poopeeno. Kripampi monanoma. Tetrato ma-neenki mochotri." 53:2361
+choice "Ydob eht ni mraw si ti! Uoy ees I! Tseirp a si eh! Emit su evig!" 53:2362
+choice "Arpie divadopher shazz monito fric-frac zing-ya hrishtoc." 53:2363
+choice "Meendro peendro kandro koondro!" 53:2364
+
+#window 53:2361
+title "Boots"
+body "Planto poopeeno. Kripampi monanoma. Tetrato ma-neenki mochotri."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2365
+
+#window 53:2362
+title "Boots"
+body "Ydob eht ni mraw si ti! Uoy ees I! Tseirp a si eh! Emit su evig"
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2365
+
+#window 53:2363
+title "Boots"
+body "Arpie divadopher shazz monito fric-frac zing-ya hrishtoc."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2365
+
+#window 53:2364
+title "Boots"
+body "Meendro peendro kandro koondro!"
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2365
+
+#window 53:2365
+title "PAL-18"
+body "Meanwhile, Methacrylate embedding results in guanidinium denaturants."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim palhandle gest_d 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2370
+
+#window 53:2370
+title "Boots"
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Vavombi kanoba, tatreepo-potooni gangotono." 53:2371
+choice "Tooby ooby walla, nooby abba nabba." 53:2372
+choice "Blawn chitago fizz mokesi pie lapsee muy-moy sonofa santok." 53:2373
+choice "Koondro keendro kandro koondro!" 53:2374
+
+#window 53:2371
+title "Boots"
+body "Vavombi kanoba, tatreepo-potooni gangotono."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2375
+
+#window 53:2372
+title "Boots"
+body "Tooby ooby walla, nooby abba nabba."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2375
+
+#window 53:2373
+title "Boots"
+body "Blawn chitago fizz mokesi pie lapsee muy-moy sonofa santok."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2375
+
+#window 53:2374
+title "Boots"
+body "Koondro keendro kandro koondro!"
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2375
+
+#window 53:2375
+title "PAL-18"
+body "Cellulose chromotography enables transmigration of paraformaldehyde wiring and Gouin's fixative."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim palhandle gest_d 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2380
+
+#window 53:2380
+title "Boots"
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Tango bobango fifi moprati feeng-fototo patruti." 53:2381
+choice "Eeh-YO! Pleh." 53:2382
+choice "Durr faloocho pizz velter deanamo fatimama dettasera." 53:2383
+choice "Mango chango cheengro changro choondro!" 53:2384
+
+#window 53:2381
+title "Boots"
+body "Tango bobango fifi moprati feeng-fototo patruti."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2385
+
+#window 53:2382
+title "Boots"
+body "Eeh-YO! Pleh."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2385
+
+#window 53:2383
+title "Boots"
+body "Durr faloocho pizz velter deanamo fatimama dettasera."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2385
+
+#window 53:2384
+title "Boots"
+body "Mango chango cheengro changro choondro!"
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2385
+
+#window 53:2385
+title "PAL-18"
+body "In conclusion, supernatant conductors process post-fixation perfusion-fixed tissues."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim palhandle gest_d 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2390
+
+#window 53:2390
+title "Brain Bouncer"
+body "Hmph."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bouncer_handle gest_e 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2391
+
+#window 53:2391
+title "Brain Bouncer"
+body "They know their science on Awooga. You may proceed."
+cam left from(-1145 3341 92) to(-1132 3289 58) fov(60) restore zip
+startswitch {
+  extern ANIM_PlayAnim bouncer_handle gest_h 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2392
+
+#window 53:2425
+title "PAL-18"
+body "I think I need to get Scientifica Association Credential Specs before I can override this baby. Where could I get some inside science know-how? Hmmm..."
+cam left from(PlayerChar0) to(53:2401) lift(40) restore zip
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:2430
+title "Boots"
+body "I can't access datalinks, but I paid big bucks to modify PAL-18 to hotwire these suckers."
+cam left from(PlayerChar0) to(53:2401) lift(40) restore zip
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:2435
+title "%s", PlayerChar0$
+body "I think that's a datalink for maintenance and diagnostic bots."
+cam left from(PlayerChar0) to(53:2401) lift(40) restore zip
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:2501
+title "%s", PlayerChar0$
+body "I think we need Scientifica Association Credentials."
+cam left from(PlayerChar0) to(53:2501) lift(10) restore zip
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:2605
+title "Keel-Ya"
+body "Huh? I don't understand what you're saying to me, man. I don't speak Sender Standard."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:2610
+title "Keel-Ya"
+body "Dude, what do you want? I only speak Brebulan. Can you say something in Brebulan?"
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:2615
+title "Keel-Ya"
+body "Look, we can't have a conversation. Please leave us alone until you get a clue."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Keel1 = 0
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:2705
+title "Feel-Ya"
+body "What's wrong with him, daddy?"
+cam left from(PlayerChar0) to(feel) restore zip
+talk_ex feel keel talk_a amb_a stay stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2706
+
+#window 53:2706
+title "Keel-Ya"
+body "He must have eaten Trotsky for breakfast."
+cam left from(PlayerChar0) to(keel) restore zip
+talk_ex keel feel talk_a amb_a stay stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:2710
+title "Feel-Ya"
+body "You're dumb. "
+cam left from(PlayerChar0) to(feel) restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:2715
+title "Feel-Ya"
+body "Can I have one of these little beebots, daddy?"
+cam left from(PlayerChar0) to(feel) restore zip
+talk_ex feel keel talk_a amb_a stay stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2716
+
+#window 53:2716
+title "Keel-Ya"
+body "Absolutely not."
+cam left from(PlayerChar0) to(keel) restore zip
+talk_ex keel feel talk_a amb_a stay stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:2805
+title "Phillis Colin"
+body "I can't believe The Meatles are standing right over there! Their album \"Beat the Meatles\" is the greatest record of all time!"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:2810
+title "Phillis Colin"
+body "My friends are going to freak when they see these pictures! Isn't Pawl dreamy?!"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:2815
+title "Phillis Colin"
+body "It's all over..."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:2816
+
+#window 53:2816
+title "Phillis Colin"
+body "Moko broke them up. It's all Moko's fault..."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:2904
+title "'Bot Friday"
+body "Certificate of authenticity? For the Shrivenstein sale?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2905
+
+#window 53:2905
+title "'Bot Friday"
+body "Just a moment, sir. I shall check my master's baggage."
+cam left restore zip
+finishswitch {
+  extern AI_GrabEntity botfriday botfriday_handle
+  extern AI_WaitAndFace botfriday_handle -1 botfriday_eyeline
+  extern AI_GrabEntity botfriday_briefcase briefcase_handle
+  extern ANIM_PlayAnim botfriday_handle talk_a 1 0 0
+  extern ANIM_PlayAnim briefcase_handle gest_a 0 0 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2906
+
+#window 53:2906
+title "'Bot Friday"
+body "This isn't it."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim botfriday_handle talk_a 1 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2907
+
+#window 53:2907
+title "'Bot Friday"
+body "This isn't it either."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim botfriday_handle talk_a 1 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2908
+
+#window 53:2908
+title "'Bot Friday"
+body "Neither is this."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim botfriday_handle talk_a 1 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2909
+
+#window 53:2909
+title "'Bot Friday"
+body "Nope, not this one."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim botfriday_handle talk_a 1 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2910
+
+#window 53:2910
+title "'Bot Friday"
+body "Here it is!"
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim botfriday_handle talk_a 1 0 0
+  extern AI_WaitAndFace botfriday_handle -1 PlayerChar0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2911
+
+#window 53:2911
+title "'Bot Friday"
+body "Oh, wait. That's not it."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim botfriday_handle amb_a 1 0 0
+}
+
+finishswitch {
+  extern AI_WaitAndFace botfriday_handle -1 botfriday_eyeline
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2912
+
+#window 53:2912
+title "'Bot Friday"
+body "How about this one?"
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim botfriday_handle talk_a 1 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2913
+
+#window 53:2913
+title "'Bot Friday"
+body "Nope. That's not it either."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim botfriday_handle talk_a 1 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2914
+
+#window 53:2914
+title "'Bot Friday"
+body "It must be here somewhere."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim botfriday_handle amb_a 1 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2915
+
+#window 53:2915
+title "'Bot Friday"
+body "Is this it?"
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim botfriday_handle talk_a 1 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2916
+
+#window 53:2916
+title "'Bot Friday"
+body "No."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim botfriday_handle amb_a 1 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2917
+
+#window 53:2917
+title "'Bot Friday"
+body "What about this one?"
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim botfriday_handle talk_a 1 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2918
+
+#window 53:2918
+title "'Bot Friday"
+body "Yeah, here it is."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim botfriday_handle amb_a 1 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2919
+
+#window 53:2919
+title "'Bot Friday"
+body "Oh, wait. That's not it."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim botfriday_handle amb_a 1 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2920
+
+#window 53:2920
+title "'Bot Friday"
+body "Okay, yeah, no. This is it."
+cam left restore zip
+talk_ex botfriday PlayerChar0 amb_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2921
+
+#window 53:2921
+title "'Bot Friday"
+body "Here you go. Sorry about that."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern AI_WaitAndFace botfriday_handle -1 PlayerChar0
+  extern AI_ReleaseEntity botfriday_handle
+  extern ANIM_PlayAnim briefcase_handle gest_b 0 1 1
+  extern AI_ReleaseEntity briefcase_handle
+}
+
+finishswitch {
+  extern addnew_to_inventory "Wrinkled Dry Cleaning Bill"
+  set timed_message = 20
+  got_object$="Wrinkled Dry Cleaning Bill" 
+  gosub 1000:1
+  goto 0:0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:2925
+title "'Bot Friday"
+body "Oh, I'm sorry. Did I give you an old dry cleaning bill? I thought it was the certificate."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2926
+
+#window 53:2926
+title "'Bot Friday"
+body "Just a moment."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern AI_GrabEntity botfriday botfriday_handle
+  extern AI_WaitAndFace botfriday_handle -1 botfriday_eyeline
+  extern AI_GrabEntity botfriday_briefcase briefcase_handle
+  extern ANIM_PlayAnim briefcase_handle gest_a 0 0 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2927
+
+#window 53:2927
+title "'Bot Friday"
+body "Here it is. It was stuck to the back of the dry cleaning bill."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim botfriday_handle talk_a 1 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2928
+
+#window 53:2928
+title "'Bot Friday"
+body "Sorry about that."
+cam left restore zip
+startswitch {
+  extern AI_WaitAndFace botfriday_handle -1 PlayerChar0
+  extern AI_ReleaseEntity briefcase_handle
+  extern ANIM_PlayAnim briefcase_handle gest_b 0 1 1
+  extern AI_ReleaseEntity botfriday_handle
+  extern ANIM_PlayAnim botfriday_handle talk_a 1 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2929
+
+#window 53:2929
+title "'Bot Friday"
+body "Sucker."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set spawn_botfriday = 0
+  extern remove_from_inventory "Wrinkled Dry Cleaning Bill"
+  extern addnew_to_inventory "Certificate of Authenticity"
+  set timed_message = 20
+  got_object$="Certificate of Authenticity" 
+  gosub 1000:1
+  goto 0:0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:2930
+title "'Bot Friday"
+body "Bucker."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:2931
+
+#window 53:2931
+title "'Bot Friday"
+body "It's a compliment."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:3008
+title "Boots"
+body "We would need tickets to Anachronox to get in here."
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:3310
+title "Karl Kanism"
+body "Is it necessary to manhandle my underwear so angrily?"
+cam left from(PlayerChar0) to(karl) restore zip
+talk_ex karl arpie gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:3311
+
+#window 53:3311
+title "Arpie"
+body "Sir, I was merely checking them for pockets."
+cam left from(PlayerChar0) to(arpie) restore zip
+talk_ex arpie karl gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:3315
+title "Arpie"
+body "Sir, why would I be rough with your underwear? I hate underwear with a passion."
+cam left from(PlayerChar0) to(arpie) restore zip
+talk_ex arpie karl gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:3405
+title "Karl Kanism"
+body "This guy keeps pawing at my underwear. Watch him."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:3501
+title "Fatima"
+body "Um... if you're gonna trek all the way out to Hephaestus, wouldn't it make sense to take Grumpos with you?"
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 bootshandle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 playerchar0
+  extern AI_WaitAndFace @bootshandle -1 fatima
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity bootshandle
+  extern AI_DestroyEntity @fatima_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:3605
+title "Customs Official Arpie"
+body "No pay, no pass."
+cam left restore zip
+talk_ex arpie bune gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:3610
+title "Customs Official Arpie"
+body "Very good. Carry on."
+cam left restore zip
+talk_ex arpie bune gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:3805
+title "Fatima"
+body "Where you sneaking off to, sweetie? The TDD is in the Sender Theoretical Science Museum right here on Sender Station."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 bootshandle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 playerchar0
+  extern AI_WaitAndFace @bootshandle -1 fatima
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity bootshandle
+  extern AI_DestroyEntity @fatima_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:3810
+title "Fatima"
+body "Why are you running off with the TDD? Everyone's at the Lounge of Commerce."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 bootshandle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 playerchar0
+  extern AI_WaitAndFace @bootshandle -1 fatima
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity bootshandle
+  extern AI_DestroyEntity @fatima_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:4002
+title "Bune Funegarten"
+body "But I'm BARELY over the allowed limit. This is ridiculous!"
+cam left from(PlayerChar0) to(bune) restore zip
+talk_ex bune arpie gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:4003
+
+#window 53:4003
+title "Customs Official Arpie"
+body "I'm sorry, sir. You must pay the customs duty."
+cam left from(PlayerChar0) to(arpie) restore zip
+talk_ex arpie bune gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:4004
+
+#window 53:4004
+title "Bune Funegarten"
+body "But I haven't the money! Are you saying I've traveled 500 light years and across three planets shopping for Gullfest, and NOW, as I am about to return home to Mifune, NOW I'm stopped by a ridiculous little purchase limit? I have no more funds, sir!"
+cam left from(PlayerChar0) to(bune) restore zip
+talk_ex bune arpie gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:4005
+
+#window 53:4005
+title "Customs Official Arpie"
+body "Then sell something! Or go dance at Pile O' Hunks. You're a strapping young lad..."
+cam left from(PlayerChar0) to(arpie) restore zip
+talk_ex arpie bune gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:4006
+
+#window 53:4006
+title "Bune Funegarten"
+body "No way... I shan't sully the Funegarten name with such debauchery. But we Funegartens are resourceful. I'll figure something out..."
+cam left from(PlayerChar0) to(bune) restore zip
+talk_ex bune arpie gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:4007
+
+#window 53:4007
+title "Bune Funegarten"
+if (lead_boots)
+  body "You look dumb -- would you help me out? I only need $503 to get through. I have a rare TACO--first run! Whaddya say?"
+if (lead_grumpos)
+  body "You look old -- would you help me out? I only need $503 to get through. I have a rare TACO--first run! Whaddya say?"
+if (lead_pal)
+  body "You look poorly-wired -- would you help me out? I only need $503 to get through. I have a rare TACO--first run! Whaddya say?"
+if (lead_rho)
+  body "You look tough -- would you help me out? I only need $503 to get through. I have a rare TACO--first run! Whaddya say?"
+if (lead_democratus)
+  body "You look like you have a big budget -- would you help me out? I only need $503 to get through. I have a rare TACO--first run! Whaddya say?"
+if (lead_stiletto)
+  body "You look hot -- would you help me out? I only need $503 to get through. I have a rare TACO--first run! Whaddya say?"
+if (lead_paco)
+  body "You look like you could lend a big hand -- would you help me out? I only need $503 to get through. I have a rare TACO--first run! Whaddya say?"
+cam left from(PlayerChar0) to(bune) restore zip
+talk_ex bune playerchar0 gest_g amb_a stay stay
+startswitch {
+  extern check_money @cash
+  gosub 1:5
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+if (@cash < 503)
+  choice "Sorry, low on funds." 53:4008
+if (@cash >= 503)
+  choice "Sure, I'll help you." 53:4009
+if (@cash >= 503)
+  choice "Sorry." 53:4008
+
+#window 53:4008
+title "Bune Funegarten"
+body "Then... I'm screwed! Great. Maybe someone else will buy it..."
+cam left from(PlayerChar0) to(bune) restore zip
+talk_ex bune playerchar0 gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:4009
+title "Bune Funegarten"
+body "Really?!? I'm forever in your debt. If you ever get to Mifune, look me up."
+cam left from(PlayerChar0) to(bune) restore zip
+talk_ex bune playerchar0 gest_g amb_a stay stay
+finishswitch {
+  set got_taco17 = 1
+  extern remove_money 503
+  extern addnew_to_inventory "TACO"
+  set timed_message = 20
+  got_object$="TACO" 
+  gosub 1000:1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:4050
+title "Bune Funegarten"
+body "Whew, I thought I'd never get on the shuttle! What am I gonna give my life-mate for Gullfest now?"
+cam left from(PlayerChar0) to(bune) restore zip
+talk_ex bune playerchar0 gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:4105
+title "Jimmy Todd"
+body "I can't believe the Marauders traded Kinsella to the stinking Outlaws."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:4106
+
+#window 53:4106
+title "Jimmy Todd"
+body "Ray's the best strong side winger in the Anti-Grav Conference, if not the whole Professional Zongball League."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:4110
+title "Jimmy Todd"
+body "I know the Chairman needed to clear up some room under the salary cap, but who's gonna replace Ray's legs in the lineup?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:4115
+title "Jimmy Todd"
+body "HEY! Beat it if you're not gonna listen to me."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:5305
+title "Brother Gnosticus"
+body "Euphoria."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:5310
+
+#window 53:5310
+title "Brother Gnosticus"
+body "That's the only word for it."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:5315
+
+#window 53:5315
+title "Brother Gnosticus"
+body "MysTech has ascended to its true position in the universe, just as the Brotherhood of Mysterium predicted all these years."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:5320
+
+#window 53:5320
+title "Brother Gnosticus"
+body "Once lifeless slags of MysTech currently in my possession have come to life in strange and incredible ways. To think I was on my way to sell them at the yearly MysTech Bazaar on Cordica."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:5325
+
+#window 53:5325
+title "Brother Gnosticus"
+body "No one could ever convince me to part with them now. "
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:5350
+title "Brother Gnosticus"
+body "You can't convince me to sell my slags of MysTech to you, so don't waste your breath."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:5505
+title "Brother Gnosticus"
+body "During the course of your diatribe, you used the Catchumen tedium technique in conjunction with Pacinian fatigue bombardment. Have you thought of throwing a mind fugue into the mix to undercut the interest level that might have been aroused by mention of your sister?"
+cam left restore zip
+startswitch {
+  set gnosticus_was_yammered = 1
+  extern AI_GrabEntity gnosticus @monk_handle
+  extern AI_WaitAndFace @monk_handle -1 PlayerChar0
+  extern ANIM_PlayAnim @monk_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:5510
+
+#window 53:5510
+title "Brother Gnosticus"
+body "Sisters are always of interest. The filial connection is comforting to targets, especially women. You should try a professor or an instructor instead."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @monk_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:5515
+
+#window 53:5515
+title "Brother Gnosticus"
+body "Most people have bad associations with academia. Mentioning a professor might remind them how bored they were in a past class."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @monk_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:5520
+
+#window 53:5520
+title "Brother Gnosticus"
+body "See where I'm going? Mentioning your sister, especially in her college years, brings lusty thoughts into my mind."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @monk_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:5525
+
+#window 53:5525
+title "Brother Gnosticus"
+body "I'm a monk after all."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @monk_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:5530
+
+#window 53:5530
+title "Brother Gnosticus"
+body "You broke the cardinal rule of persuasive yammering: Know your target."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @monk_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:5535
+
+#window 53:5535
+title "Brother Gnosticus"
+body "Still... I must admit your use of a monadic dribble-thought method was noteworthy. You show much promise."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @monk_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:5540
+
+#window 53:5540
+title "Brother Gnosticus"
+body "In exchange for teaching me your dribble-thought technique, I will reveal to you my vocal support method. Agreed?"
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @monk_handle talk_a 0 1 0
+  extern AI_GrabEntity PlayerChar0 grumposhandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "You've piqued my interest, brother. It's a deal." 53:5545
+choice "Exchange secrets of the trade with you? Never." 53:5570
+
+#window 53:5545
+title "Brother Gnosticus"
+body "Oh, joyous night. Let us begin the instruction."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @monk_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:5550
+
+#window 53:5550
+startswitch {
+  set @tstart = func_gametime
+  set @flashing = 0
+}
+
+thinkswitch {
+  set @t = (func_gametime - @tstart)
+  if ((@t > 3000) && (@flashing == 0)) {
+    extern FlashScreenf 0 0 0 1 0
+    extern FlashScreenf 0 0 0 0 2
+    set @flashing = 1
+  }
+  if (@t > 5000) {
+    gosub 53:5555
+    closewindow 53:5550
+  }
+}
+
+style "null"
+
+#window 53:5555
+title "Brother Gnosticus"
+body "Yes, yes... I see. Fuzzy predicate use is indeed underrated."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @monk_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 53:5560
+
+#window 53:5560
+title "Brother Gnosticus"
+body "Very well then. Thank you. And don't forget to practice what I taught you."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @monk_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity @monk_handle
+  extern AI_ReleaseEntity grumposhandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 3000:10
+
+#window 53:5570
+title "Brother Gnosticus"
+body "Not very flexible, are we? How will you ever improve with that attitude?"
+cam left restore zip
+startswitch {
+  set talk_gnosticus = 2
+}
+
+finishswitch {
+  extern AI_ReleaseEntity @monk_handle
+  extern AI_ReleaseEntity grumposhandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:5580
+title "Brother Gnosticus"
+body "Are you so stubborn that you would reject an opportunity to improve your yammering skills?"
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity gnosticus @monk_handle
+  extern AI_WaitAndFace @monk_handle -1 PlayerChar0
+  extern ANIM_PlayAnim @monk_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Absolutely. I don't share trade secrets with fribbles." 53:5570
+choice "I guess it wouldn't hurt. Okay, let's exchange secrets." 53:5545
+
+#window 53:5590
+title "Brother Gnosticus"
+body "If you have nothing more to offer me then off with you."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:5595
+title "Brother Gnosticus"
+body "Do not attempt to test your newly-learned skills on me, Brother."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 53:5605
+title "Traderbot Sandie"
+body "Hey. I'm Traderbot Sandie. Let's make a deal."
+cam left lift(40) restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 7777:1
+
+#window 53:5705
+title "Delvisher"
+body "My pills..."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set Delvisher1 = 1
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:5706
+
+#window 53:5706
+title "Delvisher"
+body "Without my pills..."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:5707
+
+#window 53:5707
+title "Delvisher"
+body "Can't breathe."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:5708
+
+#window 53:5708
+title "Delvisher"
+body "Please... I dropped my pills somewhere in the commons area..."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:5709
+
+#window 53:5709
+title "Delvisher"
+body "Maybe... when I ate lunch in the park..."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:5710
+
+#window 53:5710
+title "Delvisher"
+body "Please... help me find my pills..."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:5715
+title "Delvisher"
+body "My pills..."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set Delvisher1 = 0
+  set Delvisher2 = 1
+  extern remove_from_inventory "Bottle of Pills"
+  extern add_money 250
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:5716
+
+#window 53:5716
+title "Delvisher"
+body "You found them..."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:5717
+
+#window 53:5717
+title "Delvisher"
+body "Thank you... Here is 250 loonies."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set timed_message = 20
+  got_object$="$250" 
+  gosub 1000:1
+  goto 0:0
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:5718
+title "Delvisher"
+body "I am saved."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:5805
+title "Spindrada"
+if (Spindrada1 == 1)
+  body "Are you sure you don't want a number?"
+if (Spindrada1 == 0)
+  body "Would you like a number?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Yes." 53:5815
+choice "No." 53:5810
+
+#window 53:5810
+title "Spindrada"
+body "Infidel."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set Spindrada1 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:5815
+title "Spindrada"
+body "Very well."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:5816
+
+#window 53:5816
+title "Spindrada"
+body "Four."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:5817
+
+#window 53:5817
+title "Spindrada"
+body "It is the divine number of the TetraGods. There is no doubt."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:5818
+
+#window 53:5818
+title "Spindrada"
+body "Look around you. The number four is everywhere in nature."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:5819
+
+#window 53:5819
+title "Spindrada"
+body "The number of eyes on intelligent beings?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:5820
+
+#window 53:5820
+title "Spindrada"
+body "Four."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:5821
+
+#window 53:5821
+title "Spindrada"
+body "The number of offspring a female can carry to term?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:5822
+
+#window 53:5822
+title "Spindrada"
+body "Four."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:5823
+
+#window 53:5823
+title "Spindrada"
+body "The number of days in a Bilifigan week?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:5824
+
+#window 53:5824
+title "Spindrada"
+body "Four."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:5825
+
+#window 53:5825
+title "Spindrada"
+body "The list goes on and on. It cannot be denied. Four is the number of the Gods."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set Spindrada1 = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:5830
+title "Spindrada"
+body "Four."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:5905
+title "Cofrak Khk'l"
+body "Have you heard what has happened on Anachronox? There has been a PAX-condoned coup of the civilian government."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:5906
+
+#window 53:5906
+title "Cofrak Khk'l"
+body "Some local leader called \"Detta\" installed himself as ruler of the entire city-planet."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:5907
+
+#window 53:5907
+title "Cofrak Khk'l"
+body "My understanding is that he's a great supporter of floater rights. What a refreshing voice in a such a bigoted galaxy."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:5910
+title "Cofrak Khk'l"
+body "I might transplant my family to Anachronox if this Detta can clean up the crime problem."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:6005
+title "Beeba-Ya"
+body "When you're planning to annihilate an enemy, the first thing you should destroy is their science base."
+cam left from(PlayerChar0) to(beeba) restore zip
+talk_ex beeba prispis talk_a amb_a stay stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6006
+
+#window 53:6006
+title "Beeba-Ya"
+body "If an enemy can't adapt to new technology, they can be defeated quickly and easily."
+cam left from(PlayerChar0) to(beeba) restore zip
+talk_ex beeba prispis talk_a amb_a stay stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:6010
+title "Beeba-Ya"
+body "How well will our galaxy resist an invasion without the minds of Sunder on our side?"
+cam left from(PlayerChar0) to(beeba) restore zip
+talk_ex beeba prispis talk_a amb_a stay stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:6105
+title "Prispis"
+body "They blew themselves up. It was bound to happen."
+cam left from(PlayerChar0) to(prispis) restore zip
+talk_ex beeba prispis amb_a talk_a stay stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6106
+
+#window 53:6106
+title "Prispis"
+body "Who knows what experiments they were conducting on Sunder."
+cam left from(PlayerChar0) to(prispis) restore zip
+talk_ex beeba prispis amb_a talk_a stay stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:6110
+title "Prispis"
+body "There's no Sunder conspiracy... just a scientist who took an experiment one step too far."
+cam left from(PlayerChar0) to(prispis) restore zip
+talk_ex beeba prispis amb_a talk_a stay stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:6205
+title "Frankie"
+body "There are only about a dozen unexplored sender spikes left on Sender One... and I'm gonna fly into one today."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6206
+
+#window 53:6206
+title "Frankie"
+body "They call 'em Suicide Spikes."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:6210
+title "Frankie"
+body "So either I'm about to make history and discover a new region of space, or I'm gonna hop into a sun and burn up into dust."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:6215
+title "Frankie"
+body "I never gave my girlfriend a proper, you know... like, goodbye."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6216
+
+#window 53:6216
+title "Frankie"
+body "Tell me... would you take something to her? She's staying at Frank's Flophouse in The Bricks."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6217
+
+#window 53:6217
+title "Frankie"
+body "Her name's Wanda."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set SpawnWanda = 1
+  extern addnew_to_inventory "Wanda's Bracelet"
+  set timed_message = 20
+  got_object$="Wanda's Bracelet" 
+  gosub 1000:1
+  goto 0:0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:6220
+title "Frankie"
+body "Um... I didn't ask you to WEAR her bracelet. I need you to take it back to her at Frank's Flophouse in The Bricks."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6221
+
+#window 53:6221
+title "Frankie"
+body "Quit goofin' around. These may be my last few hours."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:6225
+title "Frankie"
+body "Take that bracelet to my girlfriend, Wanda, staying at Frank's Flophouse in The Bricks."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6226
+
+#window 53:6226
+title "Frankie"
+body "Please... I haven't much time left."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:6230
+title "Frankie"
+body "Man, that's really something. Isn't she sweet?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6231
+
+#window 53:6231
+title "Frankie"
+body "Hey, you didn't tell her I was gonna hop the Suicide Spike did you?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6232
+
+#window 53:6232
+title "Frankie"
+body "Here. Take these 500 loonies. I won't need it where I'm going."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set Frankie2 = 1
+  set SpawnWanda = 0
+  extern remove_from_inventory "Wanda's Note to Frankie"
+  extern add_money 500
+  set timed_message = 20
+  got_object$="$500" 
+  gosub 1000:1
+  goto 0:0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:6235
+title "Frankie"
+body "Wish me luck."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:6305
+title "Detective Rukh"
+body "Man, that information you dredged up in Redlight really threw a monkey wrench into my killer's profile. I feel like I've lost the thread."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6306
+
+#window 53:6306
+title "Detective Rukh"
+body "I've been thinking... there's gotta be another angle to this Tetra case that I'm not seeing. I'm trying to step back and look at the big picture, you know?"
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6307
+
+#window 53:6307
+title "Detective Rukh"
+body "Maybe there's another use for Tetra other than getting a sleep-high."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6308
+
+#window 53:6308
+title "Detective Rukh"
+body "My secretary did some digging around and found a scientist-type on Hephaestus who's looking for funding for his Tetra research."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6309
+
+#window 53:6309
+title "Detective Rukh"
+body "Unfortunately, my boy's resumed his killing spree, and collectors on every planet from here to Brebula have been robbed of flawless Tetra in the last few days. PAX has me scheduled to planet-hop my way to all of them."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6310
+
+#window 53:6310
+title "Detective Rukh"
+body "If you've got some free time, maybe you could touch base with this scientist. See if you can't uncover some other possible motivation for the Tetra-snatcher."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6311
+
+#window 53:6311
+title "Detective Rukh"
+body "The scientist's name is Brother Morpheus and he's a monk at the Tower of the Grand Mysterium on Hephaestus."
+cam left restore zip
+talk npc amb_a stay
+finishswitch {
+  set TETRA_SCIENCE = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:6320
+title "Detective Rukh"
+body "Talk to Brother Morpheus in the Tower of the Grand Mysterium on Hephaestus, and see if you can find some other possible motivation for the Tetra-snatcher."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:6325
+title "Detective Rukh"
+body "Thanks again, Sly. This \"transtemporal particle acceleration\" hoo-ha puts a whole new twist on this case."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:6330
+title "Detective Rukh"
+body "Lemme get this straight: there's a link between clusters of Tetra and something ducky like \"transtemporal particle acceleration\"… and this could be used to generate some kinda signal?"
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6331
+
+#window 53:6331
+title "Detective Rukh"
+body "So there's a screwy science angle to keep in mind, huh? Okay. I'll add it to the pile of pieces in this ever-increasing puzzle."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6340
+
+#window 53:6345
+title "Detective Rukh"
+body "Thanks, Sly, I'm really in your debt now. I'll see if I can pick up any hot PAX prototypes for the next time we meet."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:6361
+title "Detective Rukh"
+body "Thanks, Sly. I appreciate it."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6362
+
+#window 53:6362
+title "Detective Rukh"
+body "Listen, I dropped in on my favorite gear master while I was in the neighborhood. He had a prime piece of slim jim you're gonna love… the Galendan Lockpick."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6363
+
+#window 53:6363
+title "Detective Rukh"
+body "Look at this baby. Knurled stainless polysteel set screw, 32 pick designs including the Brebulan diamond rake, a double-sided wishbone jib, and 12 tension wrenches."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6364
+
+#window 53:6364
+title "Detective Rukh"
+body "I'm gonna give it to you."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6365
+
+#window 53:6365
+title "Detective Rukh"
+body "But having the lockpick isn't enough. You gotta know the technique. It's easy to learn, but it takes a while to master. If you've got a few minutes, I'll teach you..."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 ruhk
+}
+
+finishswitch {
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 3
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6367
+
+#window 53:6366
+title "Detective Rukh"
+body "Alright, you're all set, Sly. Thanks for the help."
+cam left restore zip
+talk npc amb_a stay
+finishswitch {
+  echo "*****LOCKPICK NUMBER 2*****"
+  extern addnew_to_inventory "Galendan LockPick"
+  extern set_world_skill_level picklock 2
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:6367
+startswitch {
+  set @tstart = func_gametime
+  set @flashing = 0
+}
+
+thinkswitch {
+  set @t = (func_gametime - @tstart)
+  if ((@t > 4000) && (@flashing == 0)) {
+    extern FlashScreenf 0 0 0 1 0
+    extern FlashScreenf 0 0 0 0 3
+    set @flashing = 1
+  }
+  if (@t > 7000) {
+    gosub 53:6366
+    closewindow 53:6367
+  }
+}
+
+style "null"
+flags passive, TRUE
+
+#window 53:6371
+title "Detective Rukh"
+body "Oh, yeah... how could I forget the latest and greatest from the PAX armory? I'll be happy to hand off this sweet toy if you can back me up at this meet."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6372
+
+#window 53:6372
+title "Detective Rukh"
+body "PAX gave it to me for supplemental protection, but I'm sure you'll find more use for it than me. You seem to be living life pretty dangerously these days."
+cam left restore zip
+talk npc amb_a stay
+finishswitch {
+  set RUKH_REWARD = 5
+  extern addnew_to_inventory "FreezySlicer Harmonic"
+  set timed_message = 20
+  got_object$="FreezySlicer Harmonic" 
+  gosub 1000:1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:6375
+title "Detective Rukh"
+body "Hope you can make it, Sly. Frank's Flophouse. Room 6."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:6380
+title "Detective Rukh"
+body "There you are. Man, you're not gonna believe this."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6381
+
+#window 53:6381
+title "Detective Rukh"
+body "PAX was desperate enough to foot the bill for an unflawed Tetra crystal. Looks like I can spring a trap on my killer."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6382
+
+#window 53:6382
+title "Detective Rukh"
+body "The gig's going down soon, but..."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6383
+
+#window 53:6383
+title "Detective Rukh"
+body "Well, I guess I'm having second thoughts about it."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6384
+
+#window 53:6384
+title "Detective Rukh"
+body "Remember all those scorch marks in the Routubes? Well, you know what a stiff boy I am. My mind is my muscle."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6385
+
+#window 53:6385
+title "Detective Rukh"
+body "I guess what I'm saying is... I could use some backup."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6386
+
+#window 53:6386
+title "Detective Rukh"
+body "I don't wanna tip my hand and stick out with a bunch of undercover PAX clowns, so I thought of you. You're a sure-shot, and you don't look outta place at the Flophouse. No offense."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6387
+
+#window 53:6387
+title "Detective Rukh"
+body "If you're up to it, meet me at Room 6 at Frank's Flophouse. We can decide the best place to fork the deal and go over everything."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 53:6388
+
+#window 53:6388
+title "Detective Rukh"
+body "Hope to see you there, man."
+cam left restore zip
+talk npc amb_a stay
+finishswitch {
+  set TETRA_BOB = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:6390
+title "Detective Rukh"
+body "Hey, there. Keepin' Sly outta trouble?"
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:9001
+title "ARRIVALS/DEPARTURES: GATE 1"
+body "Hephaestus Shuttle"
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 340
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:9002
+title "ARRIVALS/DEPARTURES: GATE 2"
+body "Corporate Shuttle Dock"
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 340
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:9003
+title "ARRIVALS/DEPARTURES: GATE 3"
+body "Private Shuttle Dock"
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 340
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:9004
+title "ARRIVALS/DEPARTURES: GATE 4"
+body "South Anachronox Shuttle"
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 340
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:9005
+title "ARRIVALS/DEPARTURES: GATE 5"
+body "Sunder Shuttle"
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 340
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:9006
+title "ARRIVALS/DEPARTURES: GATE 6"
+body "Extremely Private Shuttle Dock\n"
+if (MYSTECH_ACTIVE == 1)
+  body "Currently rented to: Dr. Rho Bowman"
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 340
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:9100
+title "Boots"
+body "What's the plan, Stan?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+height 80
+
+#window 53:9105
+title "Grumpos"
+body "We need to buy two tickets to Sunder and get this show on the road."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+height 80
+
+#window 53:9110
+title "Boots"
+body "Hey, how 'bout a quick pitstop at the Red Light District while we're here?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+height 80
+
+#window 53:9115
+title "Grumpos"
+body "Will you pull that chin outta the gutter and put your mind to business?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+height 80
+
+#window 53:9117
+title "Grumpos"
+body "Belle Curves on Sunder is much classier."
+startswitch {
+  set divadopher_spawn = 1
+}
+
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+height 80
+
+#window 53:9200
+title "Brain Bouncer"
+body "Extrapolate, if you will, Tschirnhausen's theory of caustics by reflection."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+height 80
+
+#window 53:9205
+title "Dr. Bezout"
+body "That's easy. The catacaustic envelope of a moving line can be determined by... ."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+height 80
+
+#window 53:9210
+title "Boots"
+body "Uh-oh."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+height 80
+
+#window 53:9215
+title "Grumpos"
+body "I'm sure I'LL get through."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+height 80
+
+#window 53:9217
+title "Grumpos"
+body "                                 But I think you're stuck."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+height 80
+
+#window 53:9220
+title "Boots"
+body "Maybe they'll ask me an easy one."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+height 80
+
+#window 53:9225
+title "Brain Bouncer"
+body "Characterize gravity theories in relation to universally coupled scalar fields in the context of Dirac's large number hypothesis."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+height 80
+
+#window 53:9230
+title "Boots"
+body "Oh, well. I didn't really wanna go to Sunder anyway."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+height 80
+
+#window 53:9235
+title "PAL-18"
+body "Don't worry, Mister Boots. Let him ask his questions. I'll take care of everything."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+height 80
+
+#window 53:9240
+title "PAL-18"
+body "You'll see."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+height 80
+
+#switch 53:1
+set CURRENT_PLANET = 2
+set CURRENT_BANK = 53
+extern loopambient ambi_senderss
+extern loopambient ambi_senderss2
+extern playlevelmusic mp3/sender/sendertheme.mp3
+extern applylevelconfiguration senderss
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+if (TETRA_BOB == 1) {
+  extern AI_GrabEntity 53:6301 rukh_handle
+  extern AI_DestroyEntity rukh_handle
+}
+if (MYSTECH_ACTIVE == 0) {
+  extern AI_GrabEntity 53:3020 dock6_handle
+  extern EntKey dock6_handle "sequence" ""
+  extern AI_ReleaseEntity dock6_handle
+  extern AI_GrabEntity 53:3020 dock6_handle
+  extern EntKey dock6_handle "sequence" ""
+  extern AI_ReleaseEntity dock6_handle
+}
+if (mystech_active) {
+  set ship_in_tree = 1
+  extern is_in_inventory "Bugaboo Cartridge" @have_cart
+  extern is_in_inventory "Toy Swerver" @have_swerver
+  if (@have_cart || @have_swerver)
+    set ship_in_tree = 0
+  extern AI_GrabEntity 53:2101 bigdoor_handle
+  extern EntKey bigdoor_handle "sequence" ""
+  extern AI_ReleaseEntity bigdoor_handle
+  extern AI_GrabEntity 53:2101 bigdoor_handle
+  extern EntKey bigdoor_handle "sequence" ""
+  extern AI_ReleaseEntity bigdoor_handle
+  extern AI_GrabEntity 53:2401 pallink_handle
+  extern EntKey pallink_handle "sequence" ""
+  extern AI_ReleaseEntity pallink_handle
+  extern AI_GrabEntity 53:2401 pallink_handle
+  extern EntKey pallink_handle "wsequence" ""
+  extern AI_ReleaseEntity pallink_handle
+  extern AI_GrabEntity 53:2501 card_handle
+  extern EntKey card_handle "sequence" ""
+  extern AI_ReleaseEntity card_handle
+}
+if (MYSTECH_ONLY == 1) {
+  extern AI_GrabEntity paco_toy paco_toy_handle
+  extern AI_GrabEntity rictus_toy rictus_toy_handle
+  extern ANIM_PlayAnim paco_toy_handle amb_a 0 0 1
+  extern ANIM_PlayAnim rictus_toy_handle amb_a 0 0 1
+}
+goto 0:0
+
+#switch 53:201
+set jeb1 = (jeb1 + 1)
+if (jeb1 > 1)
+  goto 53:0210
+goto 53:0205
+
+#switch 53:301
+set Aroncu1 = (Aroncu1 + 1)
+if (Aroncu1 > 1)
+  goto 53:0310
+goto 53:0305                                 
+
+#switch 53:401
+set Bethane1 = (Bethane1 + 1)
+if (Bethane1 > 1)
+  goto 53:0410
+goto 53:0405                                 
+
+#switch 53:501
+set Spence1 = (Spence1 + 1)
+if (Spence1 > 1)
+  goto 53:0510
+goto 53:0505                                 
+
+#switch 53:601
+set Jem1 = (Jem1 + 1)
+if (Jem1 > 3)
+  goto 53:0620
+if (Jem1 > 2)
+  goto 53:0615
+if (Jem1 > 1)
+  goto 53:0610
+goto 53:0605                                 
+
+#switch 53:801
+if (got_bipper == 1)
+  goto 53:0825
+if (MYSTECH_ONLY == 1)
+  goto 53:0820
+set Aegis1 = (Aegis1 + 1)
+if (Aegis1 > 2)
+  goto 53:0815
+if (Aegis1 > 1)
+  goto 53:0810
+goto 53:0805                                 
+
+#switch 53:1101
+if (func_charinparty[pal] == 3)
+  goto 53:1120
+if (INV_TICKET2BRICKS == 1)
+  goto 53:1110
+if (SENDERSS_INTRO == 0)
+  goto 53:1115
+if (INV_TICKET2BRICKS == 1)
+  goto 53:1110
+goto 53:1105
+
+#switch 53:1111
+target D4access1
+
+#switch 53:1301
+if (func_charinparty[pal] == 3)
+  goto 53:1350                                                                          
+set Schooten1 = (Schooten1 + 1)
+if ((INV_LABCOATS > 0) && (Schooten1 > 1))
+  goto 53:1330
+if (Schooten1 > 1)
+  goto 53:1325
+goto 53:1305                                 
+
+#switch 53:1330
+set Schooten2 = (Schooten2 + 1)
+if (Schooten2 > 2)
+  goto 53:1345
+if (Schooten2 > 1)
+  goto 53:1340
+goto 53:1335
+
+#switch 53:1401
+set Jawnn1 = (Jawnn1 + 1)
+if (Jawnn1 > 1)
+  goto 53:1410
+goto 53:1405                                 
+
+#switch 53:1501
+set Pawl1 = (Pawl1 + 1)
+if (Pawl1 > 2)
+  goto 53:1515
+if (Pawl1 > 1)
+  goto 53:1510
+goto 53:1505                                 
+
+#switch 53:1601
+set Jorj1 = (Jorj1 + 1)
+if (Jorj1 > 1)
+  goto 53:1610
+goto 53:1605                                 
+
+#switch 53:1701
+set ReeNgo1 = (ReeNgo1 + 1)
+if (ReeNgo1 > 2)
+  goto 53:1715
+if (ReeNgo1 > 1)
+  goto 53:1710
+goto 53:1705                                 
+
+#switch 53:1801
+set Dony1 = (Dony1 + 1)
+if (func_charinparty[grumpos] == 3)
+  goto 53:1830
+if (func_charinparty[pal] == 3)
+  goto 53:1825
+if (Dony1 > 1)
+  goto 53:1810
+goto 53:1805                                 
+
+#switch 53:2001
+set Walsh1 = (Walsh1 + 1)
+if (Walsh1 > 1)
+  goto 53:2010
+goto 53:2005                                 
+
+#switch 53:2101
+if (senderss_open_door5 > 0) {
+  target door5
+} else
+  goto 53:2102
+
+#switch 53:2201
+if (func_charinparty[pal] == 3)
+  goto 53:2225
+if (INV_LABCOATS == 0)
+  goto 53:2215
+extern is_in_inventory "Sunder Shuttle Ticket" @tickets
+if (@tickets > 1)
+  goto 53:2210
+if ((INV_TICKET2SUNDER_A == 0) && (INV_TICKET2SUNDER_B == 0))
+  goto 53:2205 
+if ((INV_TICKET2SUNDER_A == 0) || (INV_TICKET2SUNDER_B == 0))
+  goto 53:2220 
+goto 53:2205
+
+#switch 53:2211
+target D5access1
+
+#switch 53:2301
+set Bouncer1 = (Bouncer1 + 1)
+if (Bouncer1 > 1)
+  goto 53:2395
+goto 53:2305                                 
+
+#switch 53:2303
+if (func_charinparty[grumpos] != 3)
+  extern set_party_leader grumpos
+goto 53:2305
+
+#switch 53:2331
+extern set_party_leader boots
+extern remove_npc_from_party grumpos
+extern playscene senderss_brain_grumpos_finish
+
+#switch 53:2392
+extern is_quest_done "Get To Sunder" @boo
+if (@boo != 2)
+  extern complete_quest "Get To Sunder"
+extern complete_quest "Get On Sunder Shuttle No Know"
+extern complete_quest "Get On Sunder Shuttle Do Know"
+extern add_npc_to_party grumpos
+console "set storysave \"Brain Train|Elite Scientist Transport to Sunder\""
+extern playscene senderss_brain_finish
+
+#switch 53:2401
+if (func_charinparty[boots] == 3)
+  goto 53:2430
+if (func_charinparty[pal] != 3)
+  goto 53:2435
+goto 53:2425
+
+#switch 53:2402
+if (PAL_KNOWS_ALL_SCIENCE == 0)
+  goto 53:2425
+if (senderss_open_door5)
+  goto 53:2416
+extern assign E[0] -1 50 50 51 50 50 -1
+extern assign E[7] -1 40 40 40 60 40 -1
+extern assign E[14] -1 60 30 40 40 40 -1
+extern assign E[21] -1 40 40 40 40 40 -1
+extern assign E[28] -1 30 40 40 40 40 -1
+extern assign E[35] -1 40 40 30 40 60 -1
+extern assign E[42] -1 46 45 45 45 45 -1
+WS_STAND$="gate5port_path1" 
+set ws_bank = 53
+set ws_entry = 2416
+gosub 4003:1
+goto 0:0
+
+#switch 53:2416
+target door5
+if (senderss_open_door5 == 0)
+  extern complete_quest "Get Past Sunder Shuttle Door"
+set senderss_open_door5 = 1
+goto 0:0
+
+#switch 53:2601
+set Keel1 = (Keel1 + 1)
+if (Keel1 > 2)
+  goto 53:2615
+if (Keel1 > 1)
+  goto 53:2610
+goto 53:2605                                 
+
+#switch 53:2701
+set Feel1 = (Feel1 + 1)
+if (func_charinparty[pal] == 3)
+  goto 53:2715 
+if (Feel1 > 1)
+  goto 53:2710
+goto 53:2705                                 
+
+#switch 53:2801
+if (MYSTECH_ACTIVE == 1)
+  goto 53:2815
+set Phillis1 = (Phillis1 + 1)
+if (Phillis1 > 1)
+  goto 53:2810
+goto 53:2805                                 
+
+#switch 53:2901
+set Botfriday1 = (BotFriday1 + 1)
+if (BotFriday1 > 2)
+  goto 53:2930
+if (BotFriday1 > 1)
+  goto 53:2925
+goto 53:2904
+
+#switch 53:3001
+if (INV_TICKET2BRICKS == 1) {
+  goto 53:3005
+} else
+  goto 53:3008
+
+#switch 53:3005
+target door4
+
+#switch 53:3010
+if (INV_TICKET2BRICKS == 1) {
+  goto 53:3015
+} else
+  goto 0:0
+
+#switch 53:3015
+if (cine_back2bricks == 0) {
+  set cine_back2bricks = 1
+  console "map sphere3"
+} else {
+  set INV_TICKET2BRICKS = 0
+  extern remove_from_inventory "South Anachronox Shuttle Ticket" 2
+  if (INV_LABCOATS == 0) {
+    extern playscene senderss_ss_2_bricks
+  } else
+    extern playscene senderss_ss_2_bricks_lab
+}
+
+#switch 53:3020
+target dock6
+
+#switch 53:3100
+set BRAINTRAIN_INTRO = 1
+set BRAINBOUNCER_INTRO = 1
+if (BRAINBOUNCER_INTRO) {
+  goto 53:3105
+} else
+  goto 0:0
+
+#switch 53:3105
+if (@played_bouncer_scene)
+  goto 0:0
+set @played_bouncer_scene = 1
+extern cam_from -1137 3298 52
+extern cam_to -1127 3328 107
+extern cam_zip
+extern playscene senderss_brain
+
+#switch 53:3200
+set BRAINTRAIN_INTRO = 1
+console "set storysave \"Brain Train|Elite Scientist Transport to Sunder\""
+console "map braintrain"
+
+#switch 53:3301
+if (mystech_active)
+  goto 53:4001	                    
+set Kanarpie1 = (Kanarpie1 + 1)
+if (Kanarpie1 > 1)
+  goto 53:3315
+goto 53:3310                                 
+
+#switch 53:3401
+if (mystech_active)
+  goto 53:4001	                    
+set Kanarpie1 = (Kanarpie1 + 1)
+set Kanarpie1 = (Kanarpie1 + 1)
+if (Kanarpie1 > 1)
+  goto 53:3405
+goto 53:3310                                 
+
+#switch 53:3801
+goto 53:3501
+
+#switch 53:3601
+if (got_taco17 == 0)
+  goto 53:3605
+goto 53:3610
+
+#switch 53:4001
+if (got_taco17)
+  goto 53:4050
+if (talk_bune == 1)
+  goto 53:4007
+set talk_bune = 1
+goto 53:4002
+
+#switch 53:3900
+extern is_quest_done "PAL Get TDD" @PALwithTDD
+if (@PALwithTDD == 1)
+  goto 53:3805
+extern is_quest_done "Return with TDD" @PALgotTDD
+if (@PALgotTDD == 1)
+  goto 53:3810
+if (PRE_LIMBUS < 1)
+  set DI_Cant_Go_To_4 = 1
+if (PRE_KRAPTON == 1)
+  set DI_Cant_Go_To_4 = 0
+gosub 111:1000
+
+#switch 53:4101
+set SportsAss1 = (SportsAss1 + 1)
+if (SportsAss1 > 2)
+  goto 53:4115
+if (SportsAss1 > 2)
+  goto 53:4110
+goto 53:4105
+
+#switch 53:5300
+extern get_world_skill_level Yammer @ylevel
+echo "=============== LEVEL ============== %d", @ylevel
+if (anox_worldskill_active && (@ylevel == 2))
+  goto 53:5595
+if ((@ylevel == 2) && (func_charinparty[grumpos] == 3))
+  goto 53:5590
+if ((talk_gnosticus == 2) && (func_charinparty[grumpos] == 3))
+  goto 53:5580
+if (anox_worldskill_active)
+  goto 53:5360
+if (talk_gnosticus)
+  goto 53:5350
+set talk_gnosticus = 1
+goto 53:5305
+
+#switch 53:5360
+ws_stand$="grumpstand" 
+ws_yammer1$="These robes are sweet, kid. Majestic-like. Awe-inspiring even. There's no denying it. You wear it well. No one can doubt your presence. But don't think for a minute it lends a shred of credence to your otherwise tubby frame, my friend. My sister Lucille fell in with a sect of Brebulan Klazites during her junior year at Lutoslawski Community College, so I know all about weight/size distribution and how it relates to you \"devout\" types. " 
+ws_yammer2$="\"Chant with me the Canticles of Klaz,\" is what she would cry in nauseating exultation every time I saw her during that phase of her life, which is thankfully over. You don't ever wanna see your sister perspiring with sweat beads of reverence. My folks were especially upset during that phase. When we went to pick her up at the starport for her holiday visit, she spent the whole time handing out pamphlets to the weak, and littering crocus leaves in her shimmying wake." 
+ws_yammer3$="Now these Klazites she fell in with were low on cash... you know, on account of being Klazites and all. When they found themselves suddenly shrine-less, my sister, being the good and worldly girl that she was, didn't hesitate for a second in opening her home to them. Just imagine thirteen exultant Brebulans crammed into a tiny dorm room. After a few hours the place smelled like a Gorian sweatshop on labor day." 
+ws_yammer4$="Once she spent an entire afternoon baking prayer krummkakes for her wonder boys. You ever heard a Klazite chant? Klaz apparently responds to Cordican prancer seals in heat. They had good hearts but they were roaring mad. Brebulans have foam spouts that act up when they're all jammed up with excitement. All the klazzin' walls were coated with the stuff. You try leaning against the wall and you were flat on your goose one second later." 
+ws_yammer5$="I'm not making sweeping generalizations here. I'm sure not every nutjob bohickie with an antiquated belief system is a work of the devil. Irony aside, I'm just saying I'm not completely convinced your brains are as big as your habit. I've had enough of our bullshine." 
+ws_yammeredname$="Brother Gnosticus" 
+ws_yammer_response$="Interesting." 
+set ws_bank = 53
+set ws_entry = 5505
+gosub 4002:1
+goto 0:0
+
+#switch 53:5500
+goto 53:5505		                            
+
+#switch 53:5600
+trader_name$="Sandie" 
+if (talk_tbot_sandie < 2)
+  set talk_tbot_sandie = (talk_tbot_sandie + 1)
+if (talk_tbot_sandie == 1)
+  goto 53:5605	                    
+goto 7777:1			                       
+
+#switch 53:5701
+if (Delvisher2 == 1)
+  goto 53:5718
+extern is_in_inventory "Bottle of Pills" @gotcherPILLSbuddy
+if (@gotcherPILLSbuddy == 1)
+  goto 53:5715
+goto 53:5705
+
+#switch 53:5801
+if (Spindrada1 == 2)
+  goto 53:5830
+goto 53:5805
+
+#switch 53:5901
+set Cofrak1 = (Cofrak1 + 1)
+if (Cofrak1 > 1)
+  goto 53:5910
+goto 53:5905
+
+#switch 53:6001
+set @beeba1 = (@beeba1 + 1)
+if (@beeba1 > 1)
+  goto 53:6010
+goto 53:6005
+
+#switch 53:6101
+set @prispis1 = (@prispis1 + 1)
+if (@prispis1 > 1)
+  goto 53:6110
+goto 53:6105
+
+#switch 53:6201
+set Frankie1 = (Frankie1 + 1)
+extern is_in_inventory "Wanda's Note to Frankie" @gotWandaNote
+extern is_equipped "Wanda's Bracelet" @wearingWanda
+extern is_in_inventory "Wanda's Bracelet" @gotWandaBrace
+if (Frankie2 == 1)
+  goto 53:6235
+if (@gotWandaNote == 1)
+  goto 53:6230
+if (@gotWandaBrace == 1)
+  goto 53:6225
+if (@wearingWanda == 1)
+  goto 53:6220
+if (Frankie1 > 2)
+  goto 53:6215
+if (Frankie1 > 1)
+  goto 53:6210
+goto 53:6205
+
+#switch 53:6301
+if (func_charinparty[boots] != 3)
+  goto 53:6390
+if (PRE_DETTA == 1)
+  goto 53:6370				               
+if (TETRA_SCIENCE == 3)
+  goto 53:6325			                     
+if (TETRA_SCIENCE == 2)
+  goto 53:6330			                          
+if (TETRA_SCIENCE == 1)
+  goto 53:6320			                          
+goto 53:6305									                       
+
+#switch 53:6340
+set TETRA_SCIENCE = 3
+set RUKH_REWARD = (RUKH_REWARD + 1)
+if (RUKH_REWARD > 3)
+  goto 53:6345
+goto 53:6361 
+
+#switch 53:6370
+if ((TETRA_BOB == 1) && (RUKH_REWARD == 4))
+  goto 53:6371
+if (TETRA_BOB == 1)
+  goto 53:6375
+goto 53:6380
+
+#switch 53:8000
+if (GOT_FTM == 0)
+  goto 53:8001
+console "map scommonnight fromsenderss2"
+goto 0:0
+
+#switch 53:8001
+console "map scommons fromsenderss2"
+goto 0:0
+
+#switch 53:8822
+if (GOT_FTM) {
+  console "map scommonnight fromsenderss2"
+} else
+  console "map scommons fromsenderss2"
+goto 0:0
+
+#switch 53:8823
+if (GOT_FTM) {
+  console "map scommonnight fromsenderss1"
+} else
+  console "map scommons fromsenderss1"
+goto 0:0
+
+#switch 53:9120
+if (SENDERSS_INTRO == 0) {
+  goto 53:9125
+} else
+  goto 0:0
+
+#switch 53:9125
+set SENDERSS_INTRO = 1
+extern add_quest "Get To Sunder"
+extern playscene senderss_intro
+
+#switch 66:666
+extern addnew_to_inventory "Sunder Shuttle Ticket"
+extern addnew_to_inventory "Sunder Shuttle Ticket"
+extern add_money 500

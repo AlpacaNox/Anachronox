@@ -1,0 +1,5513 @@
+#window 92:105
+title "Santadramangetricus"
+body "The first point of interest in the city of Sesostris is the Lance of the Vigil. It is the very reason we are being invaded. You will find the Lance on the Pillars of Sesostris."
+cam left restore zip
+startswitch {
+  extern AI_WaitAndFace santa_handle -1 PlayerChar0
+  extern ANIM_PlayAnim santa_handle talk_h 1 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0106
+
+#window 92:106
+title "Santadramangetricus"
+body "The second point of interest is the Bridge of Betrayal. You already know it intimately... it is where you fought and destroyed the Sagen-Kra."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim santa_handle talk_h 1 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0107
+
+#window 92:107
+title "Santadramangetricus"
+body "The third and final point of interest is the Cliff of Casting, which you will find within the city."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim santa_handle talk_h 1 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0108
+
+#window 92:108
+title "Santadramangetricus"
+body "I cannot stress enough the importance of this battle. Fight to your last, and do not fail. The fate of existence rests in your hands."
+cam left restore zip
+talk npc talk_h stay
+startswitch {
+  extern ANIM_PlayAnim santa_handle talk_h 1 1 0
+  extern add_quest "Find Pillars"
+  extern add_quest "Find Bridge"
+  extern add_quest "Find Cliff"
+}
+
+finishswitch {
+  extern AI_ReleaseEntity santa_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:110
+title "Santadramangetricus"
+body "Fight to your last, and do not fail. The fate of existence rests in your hands."
+cam left restore zip
+startswitch {
+  extern AI_WaitAndFace santa_handle -1 PlayerChar0
+  extern ANIM_PlayAnim santa_handle talk_h 1 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity santa_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:705
+title "Santadramangetricus"
+body "Words fail me."
+cam left restore zip
+startswitch {
+  extern AI_WaitAndFace santa_handle -1 PlayerChar0
+  extern ANIM_PlayAnim santa_handle talk_h 1 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0710
+
+#window 92:710
+title "Santadramangetricus"
+body "You must return with both of your friends. I wish to give my profound thanks."
+cam left restore zip
+startswitch {
+  extern AI_WaitAndFace santa_handle -1 PlayerChar0
+  extern ANIM_PlayAnim santa_handle talk_h 1 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity santa_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:715
+title "Santadramangetricus"
+body "You have participated in the greatest chapter of our story. You have pushed back the death of our universe."
+cam left restore zip
+startswitch {
+  extern complete_quest "Talk To Santa"
+  extern AI_WaitAndFace santa_handle -1 PlayerChar0
+  extern ANIM_PlayAnim santa_handle talk_h 1 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0717
+
+#window 92:717
+title "Santadramangetricus"
+body "In helping us, you have become part of The Vigil, and are entitled to our knowledge."
+cam left restore zip
+startswitch {
+  extern AI_WaitAndFace santa_handle -1 PlayerChar0
+  extern ANIM_PlayAnim santa_handle talk_h 1 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0725
+
+#window 92:725
+title "Santadramangetricus"
+body "If your leader would follow me, it is time for you to hear the sacred story."
+cam left restore zip
+startswitch {
+  extern AI_WaitAndFace santa_handle -1 PlayerChar0
+  extern ANIM_PlayAnim santa_handle talk_h 1 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity santa_handle
+  extern set_party_leader boots
+  extern add_quest "Find Rowdy"
+  set PRE_DETTA = 1
+  set PLAY_LIMBUSDOME = 1
+  set limbus_saw_dome = 1
+  console "set storysave \"Limbus Dome|The Dome of Desulinominus\""
+  console "map limbusdome"
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:750
+title "Santadramangetricus"
+body "Now you have the complete story."
+cam left restore zip
+startswitch {
+  extern AI_WaitAndFace santa_handle -1 PlayerChar0
+  extern ANIM_PlayAnim santa_handle talk_h 1 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0751
+
+#window 92:751
+title "Santadramangetricus"
+body "Find Roweidekhalicon on Anachronox, and aid him in whatever way you can."
+cam left restore zip
+startswitch {
+  extern AI_WaitAndFace santa_handle -1 PlayerChar0
+  extern ANIM_PlayAnim santa_handle talk_h 1 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0752
+
+#window 92:752
+title "Santadramangetricus"
+body "Order preserve you."
+cam left restore zip
+startswitch {
+  extern AI_WaitAndFace santa_handle -1 PlayerChar0
+  extern ANIM_PlayAnim santa_handle talk_h 1 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity santa_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:205
+title "Jinparparsousanfor"
+body "Don't mind the stench. This is the entrance to the CLIFF OF CASTING."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern complete_quest "Find Cliff"
+  set foundcliff = 1
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0206
+
+#window 92:206
+title "Jinparparsousanfor"
+body "Follow me. I'll show it to you."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern AI_GrabEntity jinpar jin_handle
+  extern AI_WaitAndFace jin_handle -1 cliff_look
+  extern AI_SpawnEntity jin2_handle npc_lim_soldier CoCLimSod 0:0 cliff_spawn_soldier
+  if (func_charinparty[boots] == 3) {
+    set @CoCPlayah1 = 1
+    gosub 92:0280
+  }
+  if (func_charinparty[grumpos] == 3) {
+    set @CoCPlayah1 = 2
+    gosub 92:0280
+  }
+  if (func_charinparty[rho] == 3) {
+    set @CoCPlayah1 = 3
+    gosub 92:0280
+  }
+  if (func_charinparty[pal] == 3) {
+    set @CoCPlayah1 = 4
+    gosub 92:0280
+  }
+  if (func_charinparty[democratus] == 3) {
+    set @CoCPlayah1 = 5
+    gosub 92:0280
+  }
+  if (func_charinparty[stiletto] == 3) {
+    set @CoCPlayah1 = 6
+    gosub 92:0280
+  }
+  if (func_charinparty[paco] == 3) {
+    set @CoCPlayah1 = 7
+    gosub 92:0280
+  }
+  if (func_charinparty[boots] == 2) {
+    set @CoCPlayah2 = 1
+    gosub 92:0282
+  }
+  if (func_charinparty[grumpos] == 2) {
+    set @CoCPlayah2 = 2
+    gosub 92:0282
+  }
+  if (func_charinparty[rho] == 2) {
+    set @CoCPlayah2 = 3
+    gosub 92:0282
+  }
+  if (func_charinparty[pal] == 2) {
+    set @CoCPlayah2 = 4
+    gosub 92:0282
+  }
+  if (func_charinparty[democratus] == 2) {
+    set @CoCPlayah2 = 5
+    gosub 92:0282
+  }
+  if (func_charinparty[stiletto] == 2) {
+    set @CoCPlayah2 = 6
+    gosub 92:0282
+  }
+  if (func_charinparty[paco] == 2) {
+    set @CoCPlayah2 = 7
+    gosub 92:0282
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0207
+
+#window 92:207
+title "Jinparparsousanfor"
+body "This mile-deep chasm is where we dump the city's waste. While we do not usually consider this opening a vulnerability due to its inaccessibility, the enemy's flying skills make it a potential threat."
+cam left from(3774 2487 259) to(3719 2491 228) far(64) near(30) fwd(40) speed(500) lift(62) lag(500) occlude(no) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0208
+
+#window 92:208
+title "Jinparparsousanfor"
+body "Note that the tunnel behind us leads directly into Sesostris. If the Dark Servants discover this entrance, it is the quickest way into the city."
+cam left from(3774 2487 259) to(3719 2491 228) far(64) near(30) fwd(40) speed(500) lift(62) lag(500) occlude(no) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0209
+
+#window 92:209
+title "Jinparparsousanfor"
+body "Come. Let us return. This stench is overpowering."
+cam left from(4000 2541 -39) to(3936 2542 -35) far(64) near(30) fwd(40) speed(500) lift(62) lag(500) occlude(no) restore zip
+talk npc talk_a stay
+startswitch {
+  extern AI_GrabEntity jin2 jin2_handle
+  extern AI_WaitAndFace jin2_handle -1 cliff_look
+}
+
+finishswitch {
+  extern AI_DestroyEntity CoCPlayah1_handle
+  extern AI_DestroyEntity CoCPlayah2_handle
+  extern AI_DestroyEntity CoCPlayah3_handle
+  extern AI_DestroyEntity jin2_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0211
+
+#window 92:211
+title "Jinparparsousanfor"
+body "Now then. This is the most direct route into the city, and therefore the most prone to attack. Will you protect our backdoor?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern AI_GrabEntity jinpar jin_handle
+  extern AI_WaitAndFace jin_handle -1 PlayerChar0
+  extern AI_ReleaseEntity jin_handle
+  if (func_charinparty[boots] >= 2)
+    set cliff_boots = 1
+  if (func_charinparty[pal] >= 2)
+    set cliff_pal = 1
+  if (func_charinparty[rho] >= 2)
+    set cliff_rho = 1
+  if (func_charinparty[democratus] >= 2)
+    set cliff_democratus = 1
+  if (func_charinparty[stiletto] >= 2)
+    set cliff_stiletto = 1
+  if (func_charinparty[paco] >= 2)
+    set cliff_paco = 1
+}
+
+finishswitch {
+  if (((foundpillars + foundbridge) + foundcliff) == 3) {
+    if (func_charinparty[boots] == 3) {
+      set boots_at_cliff = 1
+    } else if (func_charinparty[grumpos] == 3) {
+      set grumpos_at_cliff = 1
+    } else if (func_charinparty[pal] == 3) {
+      set pal_at_cliff = 1
+    } else if (func_charinparty[rho] == 3) {
+      set rho_at_cliff = 1
+    } else if (func_charinparty[democratus] == 3) {
+      set democratus_at_cliff = 1
+    } else if (func_charinparty[stiletto] == 3) {
+      set stiletto_at_cliff = 1
+    } else if (func_charinparty[paco] == 3)
+      set paco_at_cliff = 1
+    set limbus_battle_started = 1
+    set rinqui_off = 1
+    goto 92:0251
+  }
+  goto 92:0212
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:212
+title "%s", PlayerChar0$
+if (func_charinparty[democratus] != 3)
+  body "We're all pretty good fighters."
+if (func_charinparty[democratus] == 3)
+  body "We are all excellent fighters."
+cam to(player) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (func_charinparty[democratus] != 3)
+  choice "I volunteer myself." 92:215
+if (func_charinparty[democratus] == 3)
+  choice "We volunteer ourselves." 92:215
+if (func_charinparty[boots] == 2)
+  choice "Our detective, \"Sly\" Boots, is up to the challenge." 92:220
+if (func_charinparty[pal] == 2)
+  choice "Your best hope rests in the steel hands of PAL-18." 92:225
+if (func_charinparty[rho] == 2)
+  choice "You can depend on our scientist, Dr. Rho Bowman." 92:230
+if (func_charinparty[democratus] == 2)
+  choice "The trustworthy Planet Democratus won't fail you." 92:235
+if (func_charinparty[stiletto] == 2)
+  choice "Stiletto Anyway is always ready for a good fight." 92:240
+if (func_charinparty[paco] == 2)
+  choice "You can trust Paco \"El Puño\" Estrella to save the day." 92:245
+
+#window 92:220
+title "Boots"
+body "Can I quote you on that?"
+cam right to(boots) restore zip
+talk npc talk_a stay
+finishswitch {
+  extern remove_npc_from_party Boots
+  set boots_at_cliff = 1
+  if (Jin2 > 0) {
+    goto 92:0254
+  } else
+    goto 92:0250
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0250
+
+#window 92:225
+title "PAL-18"
+body "Me--?!"
+cam right to(pal) restore zip
+talk npc talk_a stay
+finishswitch {
+  extern remove_npc_from_party pal
+  set pal_at_cliff = 1
+  if (Jin2 > 0) {
+    goto 92:0254
+  } else
+    goto 92:0250
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0250
+
+#window 92:230
+title "Rho Bowman"
+body "I'm flattered."
+cam right to(rho) restore zip
+talk npc talk_a stay
+finishswitch {
+  extern remove_npc_from_party rho
+  set rho_at_cliff = 1
+  if (Jin2 > 0) {
+    goto 92:0254
+  } else
+    goto 92:0250
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0250
+
+#window 92:235
+title "Democratus"
+body "We would be honored to serve the universe."
+cam right to(democratus) restore zip
+talk npc talk_a stay
+finishswitch {
+  extern remove_npc_from_party democratus
+  set democratus_at_cliff = 1
+  if (Jin2 > 0) {
+    goto 92:0254
+  } else
+    goto 92:0250
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0250
+
+#window 92:240
+title "Stiletto"
+body "You better believe it."
+cam right to(stiletto) restore zip
+talk npc talk_a stay
+finishswitch {
+  extern remove_npc_from_party stiletto
+  set stiletto_at_cliff = 1
+  if (Jin2 > 0) {
+    goto 92:0254
+  } else
+    goto 92:0250
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:245
+title "Paco \"El Puño\" Estrella"
+body "I am here."
+cam right to(paco) restore zip
+talk npc talk_a stay
+finishswitch {
+  extern remove_npc_from_party paco
+  set paco_at_cliff = 1
+  if (Jin2 > 0) {
+    goto 92:0254
+  } else
+    goto 92:0250
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0250
+
+#window 92:250
+title "Jinparparsousanfor"
+body "Excellent. We shall put two of our bravest warriors under your command. Use them well."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Jin2 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0251
+
+#window 92:251
+title "Jinparparsousanfor"
+body "This position is critical. If you fail to defend it, the Dark Servants will devastate the city and commandeer the Lance of the Vigil. That cannot be allowed to happen."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0252
+
+#window 92:252
+title "Jinparparsousanfor"
+body "Good luck."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (limbus_battle_started == 1) {
+    if (func_charinparty[boots] == 3) {
+      set boots_at_cliff = 1
+    } else if (func_charinparty[grumpos] == 3) {
+      set grumpos_at_cliff = 1
+    } else if (func_charinparty[pal] == 3) {
+      set pal_at_cliff = 1
+    } else if (func_charinparty[rho] == 3) {
+      set rho_at_cliff = 1
+    } else if (func_charinparty[democratus] == 3) {
+      set democratus_at_cliff = 1
+    } else if (func_charinparty[stiletto] == 3) {
+      set stiletto_at_cliff = 1
+    } else if (func_charinparty[paco] == 3)
+      set paco_at_cliff = 1
+    goto 92:0170		                       
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:254
+title "Jinparparsousanfor"
+body "Your indecisiveness does not put me at ease."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:255
+title "Jinparparsousanfor"
+body "Would you like to change who will defend this position?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Yes." 92:260
+choice "No." 92:251
+nextwindow 92:0260
+
+#window 92:260
+title "Jinparparsousanfor"
+body "Then who is a better choice to fortify our backdoor?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if ((cliff_boots == 1) && (func_charinparty[boots] == 1)) {
+    extern add_npc_to_party boots
+    set boots_at_cliff = 0
+  }
+  if ((cliff_pal == 1) && (func_charinparty[pal] == 1)) {
+    extern add_npc_to_party pal
+    set pal_at_cliff = 0
+  }
+  if ((cliff_rho == 1) && (func_charinparty[rho] == 1)) {
+    extern add_npc_to_party rho
+    set rho_at_cliff = 0
+  }
+  if ((cliff_democratus == 1) && (func_charinparty[democratus] == 1)) {
+    extern add_npc_to_party democratus
+    set democratus_at_cliff = 0
+  }
+  if ((cliff_stiletto == 1) && (func_charinparty[stiletto] == 1)) {
+    extern add_npc_to_party stiletto
+    set stiletto_at_cliff = 0
+  }
+  if ((cliff_paco == 1) && (func_charinparty[paco] == 1)) {
+    extern add_npc_to_party paco
+    set paco_at_cliff = 0
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (func_charinparty[democratus] != 3)
+  choice "I volunteer myself." 92:215
+if (func_charinparty[democratus] == 3)
+  choice "We volunteer ourselves." 92:215
+if (func_charinparty[boots] == 2)
+  choice "Our detective, \"Sly\" Boots, is up to the challenge." 92:220
+if (func_charinparty[pal] == 2)
+  choice "Your best hope rests in the steel hands of PAL-18." 92:225
+if (func_charinparty[rho] == 2)
+  choice "You can depend on our scientist, Dr. Rho Bowman." 92:230
+if (func_charinparty[democratus] == 2)
+  choice "The trustworthy Planet Democratus won't fail you." 92:235
+if (func_charinparty[stiletto] == 2)
+  choice "Stiletto Anyway is always ready for a good fight." 92:240
+if (func_charinparty[paco] == 2)
+  choice "You can trust Paco \"El Puno\" Estrella to save the day." 92:245
+
+#window 92:3110
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "Shiny stanchion, there."
+if (func_charinparty[pal] == 3)
+  body "That looks kinda shiny. And scary."
+if (func_charinparty[rho] == 3)
+  body "Hmmm. Perhaps uses reflectivity to blind opponents?"
+if (func_charinparty[democratus] == 3)
+  body "We detect interesting allows."
+if (func_charinparty[stiletto] == 3)
+  body "Okay, enough sightseeing."
+if (func_charinparty[paco] == 3)
+  body "Stanchion."
+cam left restore zip
+talk_ex kilbar playerchar0 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:305
+title "Kilbarsouquoborrath"
+body "This is a shoulder stanchion of a Dark Servant."
+cam left restore zip
+talk_ex kilbar playerchar0 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0306
+
+#window 92:306
+title "Kilbarsouquoborrath"
+body "Do not stare into its reflection too deeply. Many claim to see the dead who have been killed at the hands of the Dark Servants."
+cam left restore zip
+talk_ex kilbar playerchar0 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:310
+title "Kilbarsouquoborrath"
+body "We keep it here as a reminder."
+cam left restore zip
+talk_ex kilbar playerchar0 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0311
+
+#window 92:311
+title "Kilbarsouquoborrath"
+body "Underneath their armor, they are only men... not gods."
+cam left restore zip
+talk_ex kilbar playerchar0 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:401
+title "Ringordelegennuth"
+body "Peace and prayer, my father."
+cam left restore zip
+talk_ex ringo PlayerChar0 amb_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0402
+
+#window 92:402
+title "Ringordelegennuth"
+body "May the good of the Gods, and the folly of chance result in victory."
+cam left restore zip
+talk_ex ringo PlayerChar0 amb_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0403
+
+#window 92:403
+title "Ringordelegennuth"
+body "And may your memory fuel my courage."
+cam left restore zip
+talk_ex ringo PlayerChar0 amb_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:505
+title "Yiyiquokilzolzodor"
+body "I knew this time would come."
+cam left from(PlayerChar0) to(yiyi) restore zip
+talk_ex yiyi quifi talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0510
+
+#window 92:510
+title "Quifideljingengimon"
+body "As did I."
+cam left from(PlayerChar0) to(quifi) restore zip
+talk_ex quifi yiyi talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0515
+
+#window 92:515
+title "Yiyiquokilzolzodor"
+body "It's really happening."
+cam left from(PlayerChar0) to(yiyi) restore zip
+talk_ex yiyi quifi talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0520
+
+#window 92:520
+title "Quifideljingengimon"
+body "It is."
+cam left from(PlayerChar0) to(quifi) restore zip
+talk_ex quifi yiyi talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0525
+
+#window 92:525
+title "Yiyiquokilzolzodor"
+body "I never got to say goodbye to your sister."
+cam left from(PlayerChar0) to(yiyi) restore zip
+talk_ex yiyi quifi talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0530
+
+#window 92:530
+title "Quifideljingengimon"
+body "I know."
+cam left from(PlayerChar0) to(quifi) restore zip
+talk_ex quifi yiyi talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:540
+title "Yiyiquokilzolzodor"
+body "Our preparations are minor. We are always ready for an attack, eighteen days a week."
+cam left from(PlayerChar0) to(yiyi) restore zip
+talk_ex yiyi quifi talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:0545
+
+#window 92:545
+title "Quifideljingengimon"
+body "Right."
+cam left from(PlayerChar0) to(quifi) restore zip
+talk_ex quifi yiyi talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:1105
+title "Thennikendonorr"
+body "I see a distant stranger, strong of will, her cold eyes reflected in cold steel. Come back here with the fiercest of your friends. I will teach her."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:1110
+title "Thennikendonorr"
+body "Your friend... she is fierce and daring. The glint of her knives is beautiful in the firelight."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:1115
+title "Thennikendonorr"
+body "Never lose your strength of will."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:1120
+title "Thennikendonorr"
+body "You. Step closer."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1125
+
+#window 92:1125
+title "Thennikendonorr"
+if (((gun_stiletto == 1) && (bridge_stiletto == 1)) && (cliff_stiletto == 1))
+  body "I see many things, and the strength of your soul is unmistakable."
+if (gun_stiletto == 1)
+  body "Are you not the stranger who manned the Lance of the Vigil against the scourge of the Dark Servants?"
+if (bridge_stiletto == 1)
+  body "Are you not the stranger who led the defense of the bridge against the scourge of the Dark Servants?"
+if (cliff_stiletto == 1)
+  body "Are you not the stranger who led the defense of the inner city against the scourge of the Dark Servants?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1130
+
+#window 92:1130
+title "Thennikendonorr"
+body "You have courage and determination. But you must temper your will with resolve... discipline your cast of mind with self-control."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1135
+
+#window 92:1135
+title "Thennikendonorr"
+body "Show purpose, be resolute, and steel yourself against distractions."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1140
+
+#window 92:1140
+title "Thennikendonorr"
+body "Let there be deep reflection."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity thenni @fountainave_thenni_handle
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace @fountainave_thenni_handle -1 PlayerChar0
+  extern AI_WaitAndFace bootshandle -1 thenni
+  extern ANIM_PlayAnim @fountainave_thenni_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1145
+
+#window 92:1145
+startswitch {
+  set @tstart = func_gametime
+  set @flashing = 0
+}
+
+thinkswitch {
+  set @t = (func_gametime - @tstart)
+  if ((@t > 3000) && (@flashing == 0)) {
+    extern FlashScreenf 0 0 0 1 0
+    extern FlashScreenf 0 0 0 0 2
+    set @flashing = 1
+  }
+  if (@t > 5000) {
+    gosub 92:1150
+    closewindow 92:1145
+  }
+}
+
+style "null"
+
+#window 92:1150
+title "Thennikendonorr"
+body "Let our meditation on strength of will come to an end now."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @fountainave_thenni_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1155
+
+#window 92:1155
+title "Thennikendonorr"
+body "I have only the highest hopes that you benefited from this reflection."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @fountainave_thenni_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity @fountainave_thenni_handle
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 3000:10
+
+#window 92:1304
+title "Sathquolarbarquibus"
+body "You must hurry inside, my wife. The battle draws near."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity sathquo sathquo_handle
+  extern AI_GrabEntity triri triri_handle
+  extern ANIM_PlayAnim sathquo_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1311
+
+#window 92:1311
+title "Tririgormanparsheth"
+body "Look there. It is the stranger who felled the Sagen-Kra."
+cam left restore zip
+startswitch {
+  extern AI_WaitAndFace triri_handle -1 PlayerChar0
+  extern ANIM_PlayAnim triri_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1312
+
+#window 92:1312
+title "Sathquolarbarquibus"
+body "This?"
+cam left restore zip
+startswitch {
+  extern AI_WaitAndFace sathquo_handle -1 PlayerChar0
+  extern ANIM_PlayAnim sathquo_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1313
+
+#window 92:1313
+title "Sathquolarbarquibus"
+if ((func_charinparty[boots] == 3) || (func_charinparty[paco] == 3))
+  body "Why do we allow him to breathe another minute?"
+if ((func_charinparty[rho] == 3) || (func_charinparty[stiletto] == 3))
+  body "Why do we allow her to breathe another minute?"
+if ((func_charinparty[pal] == 3) || (func_charinparty[democratus] == 3))
+  body "Why do we allow it to exist another minute?"
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim sathquo_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1314
+
+#window 92:1314
+title "Sathquolarbarquibus"
+body "All we have fought for is now in jeopardy."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim sathquo_handle amb_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1321
+
+#window 92:1321
+title "Tririgormanparsheth"
+if ((func_charinparty[boots] == 3) || (func_charinparty[paco] == 3))
+  body "The Lost Brother would not have sent him without reason."
+if ((func_charinparty[rho] == 3) || (func_charinparty[stiletto] == 3))
+  body "The Lost Brother would not have sent her without reason."
+if ((func_charinparty[pal] == 3) || (func_charinparty[democratus] == 3))
+  body "The Lost Brother would not have sent it without reason."
+cam left restore zip
+startswitch {
+  extern AI_WaitAndFace triri_handle -1 sathquo
+  extern ANIM_PlayAnim triri_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1322
+
+#window 92:1322
+title "Sathquolarbarquibus"
+if (((func_charinparty[rho] == 3) || (func_charinparty[boots] == 3)) || (func_charinparty[stiletto] == 3))
+  body "But what chance does such a spindly creature stand against a Dark Servant?"
+if (func_charinparty[pal] == 3)
+  body "What chance does such a small machine stand against a Dark Servant?"
+if (func_charinparty[democratus] == 3)
+  body "But what chance does this water bubble stand against a Dark Servant?"
+if (func_charinparty[paco] == 3)
+  body "While powerful in stature, what chance does a fighter whose heart beats sorrow possibly stand against a Dark Servant?"
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim sathquo_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1323
+
+#window 92:1323
+title "Tririgormanparsheth"
+body "But a mere three of them defeated the Sagen-Kra. If the High Prelate has high confidence in them, they must be heroes of merit and worth."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim triri_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1324
+
+#window 92:1324
+title "Sathquolarbarquibus"
+body "Very well, wife. Let them help if they are able."
+cam left restore zip
+startswitch {
+  extern AI_WaitAndFace sathquo_handle -1 triri
+  extern ANIM_PlayAnim sathquo_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1347
+
+#window 92:1347
+title "Tririgormanparsheth"
+body "Be safe."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim triri_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity sathquo_handle
+  extern AI_ReleaseEntity triri_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:1350
+title "Sathquolarbarquibus"
+body "Do not worry. The story of the Vigil will not end here today."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity sathquo sathquo_handle
+  extern AI_GrabEntity triri triri_handle
+  extern ANIM_PlayAnim sathquo_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1355
+
+#window 92:1355
+title "Tririgormanparsheth"
+body "It is the last chapter of your own story that I fear will be writ."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim triri_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1360
+
+#window 92:1360
+title "Tririgormanparsheth"
+body "Please be safe."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim triri_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity sathquo_handle
+  extern AI_ReleaseEntity triri_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:1405
+title "Tririgormanparsheth"
+body "Where is my husband?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1410
+
+#window 92:1410
+title "Tririgormanparsheth"
+body "Could you please find him for me? He was on the front line."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1415
+
+#window 92:1415
+title "Tririgormanparsheth"
+body "My husband's name is Sathquolarbarquibus."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:1420
+title "Tririgormanparsheth"
+body "My husband's name is Sathquolarbarquibus. Please find him on the battlefield."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:1425
+title "Tririgormanparsheth"
+body "Dead?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set talk_triri = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1430
+
+#window 92:1430
+title "Tririgormanparsheth"
+body "My husband is dead."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1435
+
+#window 92:1435
+title "Tririgormanparsheth"
+body ". . . ."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:1440
+title "Tririgormanparsheth"
+body "Take this trinket."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set talk_triri = 3
+  extern addnew_to_inventory "Disenslavement Round"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1445
+
+#window 92:1445
+title "Tririgormanparsheth"
+body ". . . ."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1450
+
+#window 92:1450
+title "Tririgormanparsheth"
+body "Thank you for taking the trouble."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1455
+
+#window 92:1455
+title "Tririgormanparsheth"
+body ". . . ."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:1510
+title "Merrinkiljanmilcus"
+if (limbus_battle_started == 1)
+  body "Welcome to the White Cloud Inn, saviors."
+if (limbus_battle_started == 0)
+  body "Welcome to the White Cloud Inn."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (limbus_battle_started == 1)
+  choice "Sleep." 92:1520
+if (limbus_battle_started == 0)
+  choice "Sleep." 92:1535
+choice "Bye." 0:0
+
+#window 92:1520
+startswitch {
+  extern cam_anoxmariomode 1
+  extern cam_set from(2484 -1278 -248)
+  extern cam_set to(2446 -1249 -290)
+  extern playsound ui/gen/ui_gen_sleep.wav
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 2
+  set @tstart = func_gametime
+  set @flashing = 0
+}
+
+thinkswitch {
+  set @t = (func_gametime - @tstart)
+  if ((@t > 2050) && (@flashing == 0)) {
+    extern FlashScreenf 0 0 0 1 0
+    extern FlashScreenf 0 0 0 0 2
+    set @flashing = 1
+  }
+  if (@t > 4100) {
+    gosub 92:1530
+    closewindow 92:1520
+  }
+}
+
+style "null"
+flags passive, TRUE
+
+#window 92:1535
+title "%s", PlayerChar0$
+if ((func_charinparty[democratus] != 3) || (func_charinparty[paco] != 3))
+  body "We better make this a quick nap, folks."
+if (func_charinparty[democratus] == 3)
+  body "In the interest of time, we suggest a quick nap."
+if (func_charinparty[paco] == 3)
+  body "Only enough time for nap."
+cam left from(2484 -1278 -248) to(2446 -1249 -290) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 PlayerChar1
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1520
+
+#window 92:1601
+title "Sathfilquiviquorath"
+body "There's a dent in my siege helm and a tear in my breechcloth!"
+talk_ex sathfil trigel talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:1701
+title "Yiquifilsanquoque"
+body "My breastplate has a hair fracture!"
+talk_ex yiqui trigel talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:1801
+title "Zinmivenporhinmon"
+body "The strap on my anklet is frayed loose!"
+talk_ex zinmiv trigel talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:1905
+title "Trigeltrigengengal"
+body "Next time, do not wait until mere moments before battle to replace equipment!"
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:1910
+title "Trigeltrigengengal"
+body "While I was issuing equipment just a few hours ago, the saddest excuse for a soldier stumbled in here to be outfitted."
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1915
+
+#window 92:1915
+title "Trigeltrigengengal"
+body "Every piece of equipment was too small for him. I had to poke additional holes in the armor belts in order to tighten the buckles around his skinny arms."
+cam right restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1920
+
+#window 92:1920
+title "Trigeltrigengengal"
+body "It became obvious he wouldn't stand much of a chance against the Dark Servants without extra help, so I gave him a special twin-scaled underplate. It was a gift from my father before I became ill and unfit for duty."
+cam right restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1925
+
+#window 92:1925
+title "Trigeltrigengengal"
+body "I don't know if he survived the battle, but I would love to get that underplate back either way."
+cam right restore zip
+talk npc talk_a stay
+startswitch {
+  set find_underplate = 1
+  set limbus_find_underplate = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:1930
+title "Trigeltrigengengal"
+body "Keep an eye out for that underplate, won't you?"
+cam right restore zip
+talk npc talk_a stay
+startswitch {
+  set limbus_find_underplate = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:1935
+title "Trigeltrigengengal"
+body "You found it? Was the kid alive or dead?"
+cam right restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1940
+
+#window 92:1940
+title "Trigeltrigengengal"
+body "Forget it. I would rather not know."
+cam right restore zip
+talk npc talk_a stay
+startswitch {
+  set limbus_find_underplate = 2
+  extern remove_from_inventory "Twin-Scaled Underplate"
+  extern addnew_to_inventory "Ward of the Incarnate"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:1945
+title "Trigeltrigengengal"
+body "Thank you for retrieving the underplate. I was afraid I would never lay eyes on it again."
+cam right restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1946
+
+#window 92:1946
+title "Trigeltrigengengal"
+body "My friend, I'm willing to sell you a most rare item. It is, in fact, the most splendid shield cell that has ever been my honor to look on, much less possess."
+cam right restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1947
+
+#window 92:1947
+title "Trigeltrigengengal"
+body "Our bards write glorious and miraculous stories about it. Many constellations are named after it. It figures prominently in the legend of King Sarlamoo."
+cam right restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:1948
+
+#window 92:1948
+title "Trigeltrigengengal"
+if (offer_safecell_again == 0)
+  body "I will sell it to you for 8000 coins of your beautiful currency."
+if (offer_safecell_again == 1)
+  body "Surely you are reconsidering the purchase of a legendary Vigil shield cell for 8000 coins of your beautiful currency."
+cam right restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Yes." 92:1950
+choice "No." 92:1960
+
+#window 92:1955
+title "Trigeltrigengengal"
+body "You will not be disappointed. Stories will be written of this changing of hands."
+cam right restore zip
+talk npc talk_a stay
+finishswitch {
+  if (BOUGHT_SAFECELL == 0) {
+    extern addnew_to_inventory "Vigil Safecell"
+    set timed_message = 20
+    got_object$="Vigil Safecell" 
+    set BOUGHT_SAFECELL = 1
+    gosub 1000:1
+    goto 0:0
+  }
+  goto 0:0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:1960
+title "Trigeltrigengengal"
+body "You are a FOOL not to take advantage of my offer! There will be tales of your ignorance."
+cam right restore zip
+talk npc talk_a stay
+finishswitch {
+  set offer_safecell_again = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:1965
+title "Trigeltrigengengal"
+body "This is a tragedy. You do not possess 8000 of your own coins!"
+cam right restore zip
+talk npc talk_a stay
+finishswitch {
+  set offer_safecell_again = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:2005
+title "Gorzologorbargobus"
+body "Repeat your orders to me."
+cam left from(PlayerChar0) to(gorzo) restore zip
+talk_ex gorzo porpin talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:2006
+
+#window 92:2006
+title "Porpinhinsouninelle"
+body "My unit will stay hidden in Windbreak Pass until the enemy passes. Once an appropriate length across, we will drive a wedge between their columns, creating disorder and disrupting communication."
+cam left from(PlayerChar0) to(porpin) restore zip
+talk_ex PlayerChar0 porpin amb_a gest_b stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:2007
+
+#window 92:2007
+title "Gorzologorbargobus"
+body "Excellent!"
+cam left from(PlayerChar0) to(porpin) restore zip
+talk_ex gorzo porpin talk_a amb_a stay stay
+finishswitch {
+  extern AI_GrabEntity porpin porpin_handle
+  extern AI_GrabEntity barter barter_handle
+  extern AI_GrabEntity venjin venjin_handle
+  extern ANIM_PlayAnim porpin_handle cine_e 0 1 0
+  extern ANIM_PlayAnim barter_handle cine_e 0 1 0
+  extern ANIM_PlayAnim venjin_handle cine_e 0 1 0
+  extern AI_ReleaseEntity porpin_handle
+  extern AI_ReleaseEntity barter_handle
+  extern AI_ReleaseEntity venjin_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:2105
+title "Gorzologorbargobus"
+body "Repeat your orders to me."
+cam left from(PlayerChar0) to(gorzo) restore zip
+talk_ex gorzo barter talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:2106
+
+#window 92:2106
+title "Bartervilathindorquee"
+body "My unit will stay hidden in Windbreak Pass until the enemy passes. Once an appropriate length across, we will drive a wedge between their columns, creating disorder and disrupting communication."
+cam left from(PlayerChar0) to(barter) restore zip
+talk_ex gorzo barter amb_a gest_b stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:2107
+
+#window 92:2107
+title "Gorzologorbargobus"
+body "Excellent!"
+cam left from(PlayerChar0) to(barter) restore zip
+talk_ex gorzo barter talk_a amb_a stay stay
+finishswitch {
+  extern AI_GrabEntity porpin porpin_handle
+  extern AI_GrabEntity barter barter_handle
+  extern AI_GrabEntity venjin venjin_handle
+  extern ANIM_PlayAnim porpin_handle cine_e 0 1 0
+  extern ANIM_PlayAnim barter_handle cine_e 0 1 0
+  extern ANIM_PlayAnim venjin_handle cine_e 0 1 0
+  extern AI_ReleaseEntity porpin_handle
+  extern AI_ReleaseEntity barter_handle
+  extern AI_ReleaseEntity venjin_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:2205
+title "Gorzologorbargobus"
+body "Repeat your orders to me."
+cam left from(PlayerChar0) to(gorzo) restore zip
+talk_ex gorzo venjin talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:2206
+
+#window 92:2206
+title "Venjinpinjincarnuth"
+body "We will hide amidst the brush of the crevice overhang. When the enemy passes below, we will pour buckets of boiling Hyrax grease over them."
+cam left from(PlayerChar0) to(venjin) restore zip
+talk_ex gorzo venjin amb_a gest_b stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:2207
+
+#window 92:2207
+title "Gorzologorbargobus"
+body "Excellent!"
+cam left from(PlayerChar0) to(venjin) restore zip
+talk_ex gorzo venjin talk_a amb_a stay stay
+finishswitch {
+  extern AI_GrabEntity porpin porpin_handle
+  extern AI_GrabEntity barter barter_handle
+  extern AI_GrabEntity venjin venjin_handle
+  extern ANIM_PlayAnim porpin_handle cine_e 0 1 0
+  extern ANIM_PlayAnim barter_handle cine_e 0 1 0
+  extern ANIM_PlayAnim venjin_handle cine_e 0 1 0
+  extern AI_ReleaseEntity porpin_handle
+  extern AI_ReleaseEntity barter_handle
+  extern AI_ReleaseEntity venjin_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:2301
+title "Gorzologorbargobus"
+body "Report to the battle front then. Your help is needed."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:2405
+title "Larzinjanjinquithon"
+body "Listen."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:2406
+
+#window 92:2406
+title "Larzinjanjinquithon"
+body "The city is eerily quiet."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:2407
+
+#window 92:2407
+title "Larzinjanjinquithon"
+body "The loss of the Sagen-Kra was a disastrous setback. Let us hope our vigilance and cunning are enough to stop the Dark Servants."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:2410
+title "Larzinjanjinquithon"
+body "Beyond the tunnel are the city gates of Sesostris and the Bridge of Betrayal."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:2501
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "Glad they left a dangerous-looking enemy probe in the middle of their city."
+if (func_charinparty[pal] == 3)
+  body "Get that away from me!"
+if (func_charinparty[rho] == 3)
+  body "That symbol... I've seen it before."
+if (func_charinparty[democratus] == 3)
+  body "Our most expensive equipment reveals... this probe no longer functions."
+if (func_charinparty[stiletto] == 3)
+  body "Nice. Glad they left a dangerous-looking enemy probe in the middle of their city."
+if (func_charinparty[paco] == 3)
+  body "Like a Gigatoon mind probe."
+cam left lift(40) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:2605
+title "Rinquiwarquolarque"
+body "Timber Division has finished clearing the thicket of underbrush near the bridge."
+cam right restore zip
+talk_ex rinqui borqui talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:2606
+
+#window 92:2606
+title "Rinquiwarquolarque"
+body "Boulder Division is awaiting sling stones and fresh spearheads from the supply room."
+cam right restore zip
+talk_ex rinqui borqui talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:2607
+
+#window 92:2607
+title "Rinquiwarquolarque"
+body "Flame and Rain Divisions are both mobilized and awaiting your orders, sir."
+cam right restore zip
+talk_ex rinqui borqui talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:2608
+
+#window 92:2608
+title "Borquisathgenzolrath"
+body "What of Wind Division?"
+cam right restore zip
+talk_ex rinqui borqui amb_a talk_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:2609
+
+#window 92:2609
+title "Rinquiwarquolarque"
+body "They have not returned from their scouting run, sir."
+cam right restore zip
+talk_ex rinqui borqui talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:2610
+
+#window 92:2610
+title "Borquisathgenzolrath"
+body "Send a runner to meet them upon return."
+cam right restore zip
+talk_ex rinqui borqui amb_a talk_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:2611
+
+#window 92:2611
+title "Rinquiwarquolarque"
+body "At once, sir."
+cam right restore zip
+talk_ex rinqui borqui talk_a amb_a stay stay
+finishswitch {
+  set rinqui_off = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:2615
+title "Rinquiwarquolarque"
+body "Excuse me."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:2705
+title "Borquisathgenzolrath"
+body "We have faced numerous opponents over the years. The Dark Servants are without question the toughest and fiercest tempest we have ever encountered."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:2706
+
+#window 92:2706
+title "Borquisathgenzolrath"
+body "But we shall weather this storm. We shall turn the tides. There is no alternative."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:2707
+
+#window 92:2707
+title "Borquisathgenzolrath"
+body "It is our role. We are the Vigil."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:2710
+title "Borquisathgenzolrath"
+body "Report to the battle front then. Your help is needed."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:2801
+title "Fansancreterniron"
+body "I do not believe my eyes. You are the first outsiders to walk the streets of Sesostris."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:2802
+
+#window 92:2802
+title "Fansancreterniron"
+body "If the High Prelate would allow strangers to roam free in our city, the situation must be desperate."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:2905
+title "Kathsantritrilatmus"
+body "It could all end here. Everything. Not just our lives, and my people, but everyone everywhere could be destroyed if we fail here today."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:2906
+
+#window 92:2906
+title "Kathsantritrilatmus"
+body "It is so much bigger than I can fathom."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:3001
+title "Jinpinmanyequogen"
+body "The city feels empty with everyone locked indoors."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:3002
+
+#window 92:3002
+title "Jinpinmanyequogen"
+body "I know I should be thinking about the coming battle, but my thoughts keep trailing back to that plate of steamed snails my wife cooked last night."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:3003
+
+#window 92:3003
+title "Jinpinmanyequogen"
+body "I left two. I should have eaten them."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:3205
+title "Tritervenyelgencor"
+body "Kingly advice is what I give you, son."
+cam left from(PlayerChar0) to(triter) restore zip
+talk_ex triter barpork talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:3206
+
+#window 92:3206
+title "Tritervenyelgencor"
+body "Just a few years ago, I would have been the one preparing for war. I trained my adult life to lock horns with the Dark Servants, but never got the chance to face them."
+cam left from(PlayerChar0) to(triter) restore zip
+talk_ex triter barpork talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:3207
+
+#window 92:3207
+title "Tritervenyelgencor"
+body "My hard work and training went to waste. I'm too old now."
+cam left from(PlayerChar0) to(triter) restore zip
+talk_ex triter barpork talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:3208
+
+#window 92:3208
+title "Tritervenyelgencor"
+body "But you are blessed with a chance to make yourself the hero of this story. Seize the opportunity while the page is still blank."
+cam left from(PlayerChar0) to(triter) restore zip
+talk_ex triter barpork talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:3210
+title "Tritervenyelgencor"
+body "Keep the wind to your back, and your war sling ready with stones."
+cam left from(PlayerChar0) to(triter) restore zip
+talk_ex triter barpork talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:3211
+
+#window 92:3211
+title "Barporkothlarninelle"
+body "I will be courageous, father."
+cam left from(PlayerChar0) to(barpork) restore zip
+talk_ex triter barpork amb_a talk_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:3215
+title "Tritervenyelgencor"
+body "My son is dead."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:3220
+
+#window 92:3220
+title "Tritervenyelgencor"
+body "He tried his new technique in battle and it cost him his life."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:3225
+
+#window 92:3225
+title "Tritervenyelgencor"
+body "He should have tested the technique during practice, not in battle."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:3230
+
+#window 92:3230
+title "Tritervenyelgencor"
+body "Successful change is about evolution, not revolution."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set talk_triter = 3
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:3235
+title "Tritervenyelgencor"
+body "Please... let me mourn in peace."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:3305
+title "Barporkothlarninelle"
+body "I will be courageous, father."
+cam right restore zip
+talk_ex triter barpork amb_a talk_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:3310
+title "Barporkothlarninelle"
+body "May I ask advice from a fellow warrior?"
+cam right restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:3315
+
+#window 92:3315
+title "Barporkothlarninelle"
+body "The Vigil war sling is traditionally held in the right hand, with a loose grip to facilitate loop swings and quick reloading of the anchor pouch."
+cam right restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:3320
+
+#window 92:3320
+title "Barporkothlarninelle"
+body "But this morning I dreamt of a bold, new handling technique. I held it firmly in my left hand, while reloading the anchor stones with my right."
+cam right restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:3325
+
+#window 92:3325
+title "Barporkothlarninelle"
+body "Should I break with tradition and test this innovation in the heat of battle, or should I stick to the proven manner of my people?"
+cam right restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (func_charinparty[boots] == 3)
+  choice "Innovate, baby. Show 'em how it's done." 92:3330
+if (func_charinparty[boots] == 3)
+  choice "Traditions are traditions for a reason." 92:3350
+if (func_charinparty[pal] == 3)
+  choice "Show 'em up." 92:3330
+if (func_charinparty[pal] == 3)
+  choice "Play it safe." 92:3350
+if (func_charinparty[rho] == 3)
+  choice "Change begets change. Knock yourself out, kid." 92:3330
+if (func_charinparty[rho] == 3)
+  choice "You can't go wrong on the beaten path." 92:3350
+if (func_charinparty[democratus] == 3)
+  choice "The High Council agrees that progress should rule the day." 92:3330
+if (func_charinparty[democratus] == 3)
+  choice "Our findings indicate established customs seldom fail." 92:3350
+if (func_charinparty[stiletto] == 3)
+  choice "Let your hair down and live a little." 92:3330
+if (func_charinparty[stiletto] == 3)
+  choice "Klaz. I don't know." 92:3350
+if (func_charinparty[paco] == 3)
+  choice "Yes." 92:3330
+if (func_charinparty[paco] == 3)
+  choice "No." 92:3350
+
+#window 92:3330
+title "Tritervenyelgencor"
+body "Don't listen to them, son."
+cam right restore zip
+talk_ex triter barpork talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:3335
+
+#window 92:3335
+title "Tritervenyelgencor"
+body "First you destroy the Sagen-Kra, now you put bad ideas into my son's head. Haven't you caused enough trouble?"
+cam right restore zip
+talk npc talk_a stay
+startswitch {
+  set limbus_barp_dies = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:3350
+title "Barporkothlarninelle"
+body "Perhaps you are right. I should not gamble my life on an untested technique."
+cam right restore zip
+talk npc talk_a stay
+startswitch {
+  set limbus_barp_lives = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:3360
+title "Barporkothlarninelle"
+body "Then the Dark Servant turned to me and fired a ball of light. It hit the outcropping behind me."
+cam right restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:3365
+
+#window 92:3365
+title "Barporkothlarninelle"
+body "I pretended to be struck, and fell to the ground. As he stepped over my body, I struck him square in the vulgilotum with all of my strength. He dropped to his knees in agony."
+cam right restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:3370
+
+#window 92:3370
+title "Barporkothlarninelle"
+body "There are men inside that armor... I guarantee it."
+cam right restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:3601
+title "Rizinquocredelphin"
+body "Tell the story again, brother."
+cam right restore zip
+talk_ex rizin barpork talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:3701
+title "Quibisanjeljannuth"
+body "Tell the story again, brother."
+cam right restore zip
+talk_ex quibi barpork talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:3405
+title "Trifinflanniternelle"
+body "We have little of value to you. However, our brothers who have journeyed the stars brought some items that may aid your quest. We understand very few of them."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:3420
+
+#window 92:3410
+title "Trifinflanniternelle"
+body "The shop is not burgeoning with goods, but here is a glow-rock I found in our stores."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:3415
+
+#window 92:3430
+title "Trifinflanniternelle"
+body "Thank you. Your currency is quite beautiful."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:3805
+title "Jansathtribargengen"
+body "In our ancient story of the King of Worriment, a prince, unaware of his royal lineage, defeats the Wall Ghost and opens up his city to attack. But he makes up for it in the end, and saves the kingdom."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:3810
+
+#window 92:3810
+title "Jansathtribargengen"
+body "So do not worry yourself too much over the mishap with the Sagen-Kra. Such mistakes happen to everyone from time to time."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:3815
+title "Jansathtribargengen"
+body "Fight to your last. Redemption will follow."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:8180
+startswitch {
+  console "forcecursormode 1"
+  extern ANIM_PlayAnim hPlayer grab_l 0 1 0
+  set @tstart = func_gametime
+  set @try_get = 0
+  set @done_getting = 0
+}
+
+thinkswitch {
+  set @t = (func_gametime - @tstart)
+  if ((@t > 600) && (@try_get == 0)) {
+    set @try_get = 1
+    extern playsound battle/monster_hyrax/monster_hyrax_baby.wav
+    extern AI_DestroyEntity hHyrax
+  }
+  if ((@t > 1200) && (@done_getting == 0)) {
+    set timed_message = 20
+    got_object$="Baby Hyrax" 
+    gosub 1000:1
+    set @done_getting = 1
+    extern ANIM_MakeSmart hPlayer
+    extern AI_ReleaseEntity hPlayer
+    closewindow 92:8180
+  }
+}
+
+finishswitch {
+  console "forcecursormode 0"
+  set @getting_a_hyrax = 0
+}
+
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 100
+height 100
+
+#window 92:4005
+title "Soupinbargorsanque"
+body "You must find your mother and go indoors, little one."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:4010
+
+#window 92:4010
+title "Trikokoquohornimon"
+body "But I want to hear another story, twin-uncle."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:4015
+
+#window 92:4015
+title "Soupinbargorsanque"
+body "If you quietly stay inside with your mother, I will tell you the story of how the heroic Vigil defeated Dark Servant villainy in a mighty battle. But only in a few hours, and if you're good."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4020
+title "Trikokoquohornimon"
+body "Who is this stranger, twin-uncle?"
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:4025
+
+#window 92:4025
+title "Soupinbargorsanque"
+body "I do not know. They are supposed to be our friends."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:4030
+
+#window 92:4030
+title "Soupinbargorsanque"
+body "I hope for the universe that they are good friends."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4050
+title "Soupinbargorsanque"
+body "The Vigil have survived again. Another chapter will be writ."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:4053
+
+#window 92:4053
+title "Soupinbargorsanque"
+body "Do you know what this means, little one?"
+cam left restore zip
+talk_ex soupin triko talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:4055
+
+#window 92:4055
+title "Trikokoquohornimon"
+body "Sugar root?"
+cam left restore zip
+talk_ex triko soupin talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:4060
+
+#window 92:4060
+title "Soupinbargorsanque"
+body "Yes. Yes, it means plenty of sugar root for everyone."
+cam left restore zip
+talk_ex soupin triko talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4205
+title "Viviporquoricus"
+body "The High Prelate has lost his mind."
+cam left from(PlayerChar0) to(vivi) restore zip
+talk_ex vivi terqui talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:4210
+
+#window 92:4210
+title "Viviporquoricus"
+body "To entrust the fate of the Lance, the Vigil, even our own universe to these strangers is madness."
+cam left from(PlayerChar0) to(vivi) restore zip
+talk_ex vivi terqui talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:4215
+
+#window 92:4215
+title "Terquiwargenporbus"
+body "Ahem."
+cam left from(PlayerChar0) to(terqui) restore zip
+finishswitch {
+  extern AI_GrabEntity vivi vivi_handle
+  extern AI_WaitAndFace vivi_handle -1 PlayerChar0
+  extern AI_ReleaseEntity vivi_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4240
+title "Viviporquoricus"
+body "Put yourself in my place, stranger.."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:4245
+
+#window 92:4245
+title "Viviporquoricus"
+body "The fate of the universe hinges on our success or failure. You brought us one step closer to defeat by destroying the Sagen-Kra. How can I not question your interests?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4260
+title "Viviporquoricus"
+body "Prove your worth, and save us."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4301
+title "Terquiwargenporbus"
+body "I disagree with him. I know you will help us."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4401
+title "Vengengorlarporque"
+body "Is the attack over? Is the city safe?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern AI_DestroyEntity @step1_pop_townsquare_handle
+  extern AI_DestroyEntity @step1_pop_fountainave_handle
+  extern AI_DestroyEntity @step1_pop_townhall_handle
+  set where_am_i_1 = 1
+  if (ts_phase2_complete == 0)
+    gosub 92:8001
+  if (fa_phase2_complete == 0)
+    gosub 92:8013
+  if (th_phase2_complete == 0)
+    gosub 92:8005
+  if (ts_phase3_complete == 0)
+    gosub 92:8002
+  if (fa_phase3_complete == 0)
+    gosub 92:8014
+  if (th_phase3_complete == 0)
+    gosub 92:8006
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4402
+title "Vengengorlarporque"
+body "Is the attack over? Is the city safe?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern AI_DestroyEntity @step1_pop_proberoom_handle
+  extern AI_DestroyEntity @step1_pop_fountainave_handle
+  extern AI_DestroyEntity @step1_pop_townhall_handle
+  set where_am_i_1 = 2
+  if (pr_phase2_complete == 0)
+    gosub 92:8009		                                  
+  if (fa_phase2_complete == 0)
+    gosub 92:8013
+  if (th_phase2_complete == 0)
+    gosub 92:8005
+  if (pr_phase3_complete == 0)
+    gosub 92:8010
+  if (fa_phase3_complete == 0)
+    gosub 92:8014
+  if (th_phase3_complete == 0)
+    gosub 92:8006
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4403
+title "Vengengorlarporque"
+body "Is the attack over? Is the city safe?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern AI_DestroyEntity @step1_pop_proberoom_handle
+  extern AI_DestroyEntity @step1_pop_townsquare_handle
+  extern AI_DestroyEntity @step1_pop_townhall_handle
+  set where_am_i_1 = 3
+  if (pr_phase2_complete == 0)
+    gosub 92:8009		                                  
+  if (ts_phase2_complete == 0)
+    gosub 92:8001
+  if (th_phase2_complete == 0)
+    gosub 92:8005
+  if (pr_phase3_complete == 0)
+    gosub 92:8010
+  if (ts_phase3_complete == 0)
+    gosub 92:8002
+  if (th_phase3_complete == 0)
+    gosub 92:8006
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4404
+title "Vengengorlarporque"
+body "Is the attack over? Is the city safe?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern AI_DestroyEntity @step1_pop_proberoom_handle
+  extern AI_DestroyEntity @step1_pop_townsquare_handle
+  extern AI_DestroyEntity @step1_pop_fountainave_handle
+  set where_am_i_1 = 4
+  if (pr_phase2_complete == 0)
+    gosub 92:8009		                                  
+  if (fa_phase2_complete == 0)
+    gosub 92:8013
+  if (ts_phase2_complete == 0)
+    gosub 92:8001
+  if (pr_phase3_complete == 0)
+    gosub 92:8010
+  if (fa_phase3_complete == 0)
+    gosub 92:8014
+  if (ts_phase3_complete == 0)
+    gosub 92:8002
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4501
+title "Quojinquotermiron"
+body "Listen to the silence. Beyond all hope, have we beaten them?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if (phase2_destroyed)
+    goto 0:0
+  extern AI_DestroyEntity @step2_pop_townsquare_handle
+  extern AI_DestroyEntity @step2_pop_fountainave_handle
+  extern AI_DestroyEntity @step2_pop_townhall_handle
+  set phase2_destroyed = 1
+  set where_am_i_2 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4502
+title "Quojinquotermiron"
+body "Listen to the silence. Beyond all hope, have we beaten them?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if (phase2_destroyed)
+    goto 0:0
+  extern AI_DestroyEntity @step2_pop_proberoom_handle
+  extern AI_DestroyEntity @step2_pop_fountainave_handle
+  extern AI_DestroyEntity @step2_pop_townhall_handle
+  set phase2_destroyed = 1
+  set where_am_i_2 = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4503
+title "Quojinquotermiron"
+body "Listen to the silence. Beyond all hope, have we beaten them?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if (phase2_destroyed)
+    goto 0:0
+  extern AI_DestroyEntity @step2_pop_townsquare_handle
+  extern AI_DestroyEntity @step2_pop_proberoom_handle
+  extern AI_DestroyEntity @step2_pop_townhall_handle
+  set phase2_destroyed = 1
+  set where_am_i_2 = 3
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4504
+title "Quojinquotermiron"
+body "Listen to the silence. Beyond all hope, have we beaten them?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if (phase2_destroyed)
+    goto 0:0
+  extern AI_DestroyEntity @step2_pop_townsquare_handle
+  extern AI_DestroyEntity @step2_pop_proberoom_handle
+  extern AI_DestroyEntity @step2_pop_fountainave_handle
+  set phase2_destroyed = 1
+  set where_am_i_2 = 4
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4601
+title "Gorquiyelterzinmon"
+body "Reports are coming in on all fronts. We have sustained heavy casualties, but the enemy is beaten!"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if (phase3_destroyed == 0) {
+    extern AI_DestroyEntity @step3_pop_fountainave_handle
+    extern AI_DestroyEntity @step3_pop_townhall_handle
+    extern AI_DestroyEntity @step3_pop_townsquare_handle
+    set phase3_destroyed = 1
+  }
+  set where_am_i_3 = 1
+  if (ts_phase4_complete == 0)
+    gosub 92:8003
+  if (fa_phase4_complete == 0)
+    gosub 92:8015
+  if (th_phase4_complete == 0)
+    gosub 92:8007
+  if (ts_phase5_complete == 0)
+    gosub 92:8020
+  if (fa_phase5_complete == 0)
+    gosub 92:8023
+  if (th_phase5_complete == 0)
+    gosub 92:8021
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4602
+title "Gorquiyelterzinmon"
+body "Reports are coming in on all fronts. We have sustained heavy casualties, but the enemy is beaten!"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if (phase3_destroyed == 0) {
+    extern AI_DestroyEntity @step3_pop_proberoom_handle
+    extern AI_DestroyEntity @step3_pop_fountainave_handle
+    extern AI_DestroyEntity @step3_pop_townhall_handle
+    set phase3_destroyed = 1
+  }
+  set where_am_i_3 = 2
+  if (pr_phase4_complete == 0)
+    gosub 92:8011
+  if (fa_phase4_complete == 0)
+    gosub 92:8015
+  if (th_phase4_complete == 0)
+    gosub 92:8007
+  if (pr_phase5_complete == 0)
+    gosub 92:8022
+  if (fa_phase5_complete == 0)
+    gosub 92:8023
+  if (th_phase5_complete == 0)
+    gosub 92:8021
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4603
+title "Gorquiyelterzinmon"
+body "Reports are coming in on all fronts. We have sustained heavy casualties, but the enemy is beaten!"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if (phase3_destroyed == 0) {
+    extern AI_DestroyEntity @step3_pop_townsquare_handle
+    extern AI_DestroyEntity @step3_pop_proberoom_handle
+    extern AI_DestroyEntity @step3_pop_townhall_handle
+    set phase3_destroyed = 1
+  }
+  set where_am_i_3 = 3
+  if (pr_phase4_complete == 0)
+    gosub 92:8011
+  if (ts_phase4_complete == 0)
+    gosub 92:8003
+  if (th_phase4_complete == 0)
+    gosub 92:8007
+  if (pr_phase5_complete == 0)
+    gosub 92:8022
+  if (ts_phase5_complete == 0)
+    gosub 92:8020
+  if (th_phase5_complete == 0)
+    gosub 92:8021
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4604
+title "Gorquiyelterzinmon"
+body "Reports are coming in on all fronts. We have sustained heavy casualties, but the enemy is beaten!"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if (phase3_destroyed == 0) {
+    extern AI_DestroyEntity @step3_pop_townsquare_handle
+    extern AI_DestroyEntity @step3_pop_proberoom_handle
+    extern AI_DestroyEntity @step3_pop_fountainave_handle
+    set phase3_destroyed = 1
+  }
+  set where_am_i_3 = 4
+  if (pr_phase4_complete == 0)
+    gosub 92:8011
+  if (ts_phase4_complete == 0)
+    gosub 92:8003
+  if (fa_phase4_complete == 0)
+    gosub 92:8015
+  if (pr_phase5_complete == 0)
+    gosub 92:8022
+  if (ts_phase5_complete == 0)
+    gosub 92:8020
+  if (fa_phase5_complete == 0)
+    gosub 92:8023
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4701
+title "Kilgorrequipinbus"
+body "Is it safe to come out?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if (phase4_destroyed == 0) {
+    extern AI_DestroyEntity @step4_pop_fountainave_handle
+    extern AI_DestroyEntity @step4_pop_townhall_handle
+    extern AI_DestroyEntity @step4_pop_townsquare_handle
+    set phase4_destroyed = 1
+  }
+  set where_am_i_4 = 1
+  if (fa_phase5_complete == 0)
+    gosub 92:8023
+  if (ts_phase5_complete == 0)
+    gosub 92:8020
+  if (th_phase5_complete == 0)
+    gosub 92:8021
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4702
+title "Kilgorrequipinbus"
+body "Is it safe to come out?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if (phase4_destroyed == 0) {
+    extern AI_DestroyEntity @step4_pop_proberoom_handle
+    extern AI_DestroyEntity @step4_pop_fountainave_handle
+    extern AI_DestroyEntity @step4_pop_townhall_handle
+    set phase4_destroyed = 1
+  }
+  set where_am_i_4 = 2
+  if (pr_phase5_complete == 0)
+    gosub 92:8022
+  if (ts_phase5_complete == 0)
+    gosub 92:8020
+  if (th_phase5_complete == 0)
+    gosub 92:8021
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4703
+title "Kilgorrequipinbus"
+body "Is it safe to come out?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if (phase4_destroyed == 0) {
+    extern AI_DestroyEntity @step4_pop_townsquare_handle
+    extern AI_DestroyEntity @step4_pop_proberoom_handle
+    extern AI_DestroyEntity @step4_pop_townhall_handle
+    set phase4_destroyed = 1
+  }
+  set where_am_i_4 = 3
+  if (pr_phase5_complete == 0)
+    gosub 92:8022
+  if (ts_phase5_complete == 0)
+    gosub 92:8020
+  if (th_phase5_complete == 0)
+    gosub 92:8021
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4704
+title "Kilgorrequipinbus"
+body "Is it safe to come out?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if (phase4_destroyed == 0) {
+    extern AI_DestroyEntity @step4_pop_townsquare_handle
+    extern AI_DestroyEntity @step4_pop_proberoom_handle
+    extern AI_DestroyEntity @step4_pop_fountainave_handle
+    set phase4_destroyed = 1
+  }
+  set where_am_i_4 = 4
+  if (pr_phase5_complete == 0)
+    gosub 92:8022
+  if (ts_phase5_complete == 0)
+    gosub 92:8020
+  if (fa_phase5_complete == 0)
+    gosub 92:8023
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4801
+title "Zollarcarzintrinuth"
+body "For his life. For his death. For the moments in between."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:4805
+
+#window 92:4805
+title "Zollarcarzintrinuth"
+body "To the kisses I gave him in secret night."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:4810
+
+#window 92:4810
+title "Zollarcarzintrinuth"
+body "To the love between us in the glade."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:4815
+
+#window 92:4815
+title "Zollarcarzintrinuth"
+body "To the whispers and touches."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:4820
+
+#window 92:4820
+title "Zollarcarzintrinuth"
+body "Give me strength to close this book."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:4901
+title "Tertriquomifanthon"
+body "In this unbelieving hour, I am choking."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:4905
+
+#window 92:4905
+title "Tertriquomifanthon"
+body "The chapters flew by too quickly, my love."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:4910
+
+#window 92:4910
+title "Tertriquomifanthon"
+body "May the sun strike me blind."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:4915
+
+#window 92:4915
+title "Tertriquomifanthon"
+body "And give me strength to close this book."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:5001
+title "Merquiporrintricor"
+body "Please let this be a dream."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:5005
+
+#window 92:5005
+title "Merquiporrintricor"
+body "Tell me you are hidden away in the valley."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:5010
+
+#window 92:5010
+title "Merquiporrintricor"
+body "Give me strength to close this book."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:5105
+title "Carzolpinmermerron"
+body "When the mourning is over, I will add the names of the dead to the stele."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:5110
+title "Carzolpinmermerron"
+body "We are running out of room. Soon, we will have to erect a second monument to the fallen."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:5205
+title "Parrinquidilcres"
+body "Now, while the memory is still fresh, our master artists paint the story of today's battle on the walls of the Dome of Desulinominus."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:5210
+title "Parrinquidilcres"
+body "You will be lucky to see it."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:5301
+title "Manquihorlarhindor"
+body "How many are dead? Have the dead been counted?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:5401
+title "Nivisathcardelicus"
+body "We have lost as much as we have won."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:5501
+title "Carlagorgenborshelle"
+body "After the mourning, there will be celebration. The memories of the dead will pass into story. They will become immortal."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:5510
+
+#window 92:5510
+title "Carlagorgenborshelle"
+body "It is the ultimate honor."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:5601
+title "Kilzosansougendelle"
+body "Excellent work."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:5610
+
+#window 92:5610
+title "Kilzosansougendelle"
+body "Your team shot down %d troop transports, and defeated %d Dark Servant Knights.", limbus_ships_shot_down, limbus_enemies_fought
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set limbus_ships_shot_down = (20 - BG_ALIENS_LEFT)
+  if (limbus_ships_shot_down < 1)
+    set limbus_ships_shot_down = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:5705
+title "Nithrihinquidilgel"
+body "I think we should take advantage of the Dark Servant armor abundant in the field. We can burn the metal to slag for our next batch of breastplates and spearheads."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:5710
+
+#window 92:5710
+title "Nithrihinquidilgel"
+body "But after careful examination of the metal, the High Prelate asserts that it is evil and no good can come from it. The armor is to be collected and dropped off the Cliff of Casting."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:5715
+title "Nithrihinquidilgel"
+body "Pity."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:5801
+title "Hackengengelcargen"
+body "There are no words to express my gratefulness."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:5905
+title "Jinjanhortritricus"
+body "In the Fable Days, before the Dark Servants became the focus of our lives, we were a peaceful people. Our only enemy was the Spring rains and the bite of the Hyrax."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:5910
+title "Jinjanhortritricus"
+body "We were a rich people too."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:5915
+
+#window 92:5915
+title "Jinjanhortritricus"
+body "Our farming and irrigation techniques never failed us."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:5920
+
+#window 92:5920
+title "Jinjanhortritricus"
+body "We never lacked for food or water."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:5925
+
+#window 92:5925
+title "Jinjanhortritricus"
+body "Our relations with the neighboring peoples of the valley was rich with trade."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:5930
+
+#window 92:5930
+title "Jinjanhortritricus"
+body "And mathematics and architecture came easy to us. You need look no further than the Bridge of Betrayal for evidence."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:5935
+title "Jinjanhortritricus"
+body "It was only in the last fifty years that we have shared our bed with war, developing and refining our war slings and serried spears."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:5940
+
+#window 92:5940
+title "Jinjanhortritricus"
+body "We domesticated some of the beasts of the crevice, and from them we bred the Sagen-Kra."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:5945
+
+#window 92:5945
+title "Reljanlarzinkilbus"
+body "Honestly, Jinjan. What good will it do to put our guest to sleep?"
+cam to(reljan) restore zip
+talk_ex reljan jinjan talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:5950
+
+#window 92:5950
+title "Jinjanhortritricus"
+body "What is wrong with relating our history?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:6001
+title "Reljanlarzinkilbus"
+body "You would be wise to ignore him."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:6105
+title "Janterzinkothquodelle"
+body "There is a nest of baby Hyrax breeding within the city. Ten by my count."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:6106
+
+#window 92:6106
+title "Janterzinkothquodelle"
+body "Please help me catch them all before the mourning celebration begins. You will find them scurrying along the ground."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:6107
+
+#window 92:6107
+title "Janterzinkothquodelle"
+body "They are creatures of habit. Keep your eyes open, be patient, learn their routine, and you will catch them in no time."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set catch_hyrax = 1
+  extern loopambient limbus/ambi_hyrax1
+  extern loopambient limbus/ambi_hyrax2
+  extern loopambient limbus/ambi_hyrax3
+  extern loopambient limbus/ambi_hyrax4
+  extern loopambient limbus/ambi_hyrax5
+  extern loopambient limbus/ambi_hyrax6
+  extern loopambient limbus/ambi_hyrax7
+  extern loopambient limbus/ambi_hyrax8
+  extern loopambient limbus/ambi_hyrax9
+  extern loopambient limbus/ambi_hyrax10
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:6110
+title "Janterzinkothquodelle"
+body "Please help me catch all 10 baby Hyrax in the city."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:6120
+title "Janterzinkothquodelle"
+body "Excellent! You will make a superb hyrax catcher if you ever grow tired of saving the universe."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:6121
+
+#window 92:6121
+title "Janterzinkothquodelle"
+body "Order preserve you."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set hyrax_greedwhore = 1
+  extern addnew_to_inventory "Regenergy Round"
+  set timed_message = 20
+  got_object$="Regenergy Round" 
+  gosub 1000:1
+  goto 0:0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:6130
+title "Janterzinkothquodelle"
+body "You will make a superb hyrax catcher if you ever grow tired of saving the universe."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:6201
+title "Rinakothgorfancus"
+body "We must rejoice our valor, our victory."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 92:6205
+
+#window 92:6205
+title "Rinakothgorfancus"
+body "An award ceremony and celebration will follow the mourning period. The reward for bravery is to be immortalized forever on the Wall of Heroes in the Dome."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:6301
+title "Hackengengelcargen"
+body "There are no words to express my gratefulness."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:6401
+title "Manpinborpingorman"
+body "There are no words to express my gratefulness."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:5578
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "What the hell? That burns my hands!"
+if (func_charinparty[grumpos] == 3)
+  body "Dammit! Too hot! Too hot! Too hot!"
+if (func_charinparty[pal] == 3)
+  body "I ain't a-touchin' nothing that glows red!"
+if (func_charinparty[rho] == 3)
+  body "Um, that appears radioactive."
+if (func_charinparty[democratus] == 3)
+  body "We detect this is a highly dangerous substance."
+if (func_charinparty[stiletto] == 3)
+  body "Forget it. I don't pick up red-hot things."
+cam to(pacogem3) from(PlayerChar0) lift(20) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 pacogem3
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 92:5579
+title "Paco \"El Puño\" Estrella"
+body "Ah... a Crimson Stone."
+cam to(pacogem3) from(PlayerChar0) lift(20) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 pacohandle
+  extern AI_WaitAndFace pacohandle -1 pacogem3
+  extern ANIM_PlayAnim pacohandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 92:5580
+
+#window 92:5580
+title "Paco \"El Puño\" Estrella"
+body "This rough ore can make a form of Kraptonite..."
+cam to(pacogem3) from(PlayerChar0) lift(20) restore zip
+startswitch {
+  extern ANIM_PlayAnim pacohandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 92:5581
+
+#window 92:5581
+title "Paco \"El Puño\" Estrella"
+body "...but first I must irradiate it somewhere."
+cam to(pacogem3) from(PlayerChar0) lift(20) restore zip
+startswitch {
+  extern ANIM_PlayAnim pacohandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity pacohandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 140
+width 580
+nextwindow 92:5582
+
+#window 92:9945
+title "Rho Bowman"
+body "What's this? The Limbusonian Archentome? There are scientific legends of this -- of its theories on black holes and the warping of space. From the study of the anomaly above their planet, I suspect."
+cam left from(PlayerChar0) to(92:9944) lift(20) restore zip
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+nextwindow 92:9946
+
+#window 92:9946
+title "Rho Bowman"
+body "It looks like theories on black holes and the warping of space. They must have studied the anomaly above their planet."
+cam left from(PlayerChar0) to(92:9944) lift(20) restore zip
+talk player talk_a stay
+finishswitch {
+  extern AI_GetEdictNumber PlayerChar0 @getter
+  extern pickup_getitem @getter 92:9944
+  set got_bskill_44 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+
+#window 92:9950
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "Some dumb book."
+if (func_charinparty[grumpos] == 3)
+  body "Looks interesting. Too bad I can't read it."
+if (func_charinparty[pal] == 3)
+  body "Man, I got an entire scientific database in my noodle. I don't need no stupid book!"
+if (func_charinparty[democratus] == 3)
+  body "Our scientific knowledge is light years more advanced than whatever is in that book."
+if (func_charinparty[stiletto] == 3)
+  body "Not my type of reading."
+if (func_charinparty[paco] == 3)
+  body "No."
+cam left from(PlayerChar0) to(92:9944) lift(20) restore zip
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 5001:1
+title "Boots"
+body "No worries."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 5003:1
+title "PAL-18"
+body "No pressure."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 5004:1
+title "Rho Bowman"
+body "Wish me luck."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 5005:1
+title "Democratus"
+body "We will not fail."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 5006:1
+title "Stiletto"
+body "No sweat."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 5007:1
+title "Paco \"El Puño\" Estrella"
+body "Rage On."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 92:1201
+title "Santadrimangetricus"
+body "You."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1205
+title "Santadrimangetricus"
+body "You have butchered our race."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1210
+title "Santadrimangetricus"
+body "You have slaughtered existence itself."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1215
+title "Boots"
+body "Oh, cut it out. We're here to help you."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1220
+title "Boots"
+body "We were sent by the Grand Mysterium."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1225
+title "Santadrimangetricus"
+body "Kill them."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1230
+title "Boots"
+body "But he's your buddy!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1235
+title "Boots"
+body "He made me memorize his name as proof."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1240
+title "Santadrimangetricus"
+body "Then speak it. Your life depends on it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1245
+title "Boots"
+body "It was..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1250
+title "Boots"
+body "Simonuseveticoure Terenisquarenthicalicus."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1255
+title "Santadrimangetricus"
+body "The man you speak of is my brother. Forty years ago, he was sent to find reinforcements."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1260
+title "Santadrimangetricus"
+body "I was hoping for an army."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1265
+title "Santadrimangetricus"
+body "Then again, you must be the only ones he felt confident could help us with our problem."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1270
+title "Boots"
+body "What's your problem?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1275
+title "Santadrimangetricus"
+body "This probe hit the surface half an hour ago."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1280
+title "Santadrimangetricus"
+body "Note the crest of the Dark Servants."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1285
+title "Santadrimangetricus"
+body "If past attacks are any indication, they will launch an assault within the next two hours."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1290
+title "Santadrimangetricus"
+body "Legions of troop carriers will pour out the Eye of Suffering and besiege our city."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1295
+title "Boots"
+body "Slow down, padre. You're losing me."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1300
+title "Santadrimangetricus"
+body "There is much to learn in too short of a time."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1305
+title "Santadrimangetricus"
+body "Rather than try to explain, why don't we let context be your guide. Look around. Explore the city."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1310
+title "Santadrimangetricus"
+body "There are three points of interest that will inform you of our situation better than I can."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1315
+title "Santadrimangetricus"
+body "But find these points of interest within the hour."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1320
+title "Santadrimangetricus"
+body "Every moment that passes brings us closer to invasion."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 92:1330
+title "Santadrimangetricus"
+body "It begins."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 92:1
+set CURRENT_PLANET = 9
+set CURRENT_BANK = 92
+loadape "biggun"
+BattleMusicOverride$="mp3/limbus/limbuscrevicebattle.mp3" 
+if (play_limbus_intro == 1) {
+  set talked_to_santa = 1
+  set play_limbus_intro = 0
+  extern set_party_leader boots
+  extern complete_quest "Explore Limbus"
+  extern playscene limbus_scene86
+} else if (battle_alldone) {
+  extern playlevelmusic mp3/limbus/limbusamb.mp3
+} else
+  extern playlevelmusic mp3/limbus/limbusprepbattle.mp3
+if ((Battle_Gun == 1) && (Battle_Bridge == 0))
+  goto 92:0170                              
+if ((Battle_Cliff == 1) && (Battle_AllDone == 0)) {
+  console "battlestart 0"
+  goto 0:0
+}
+if (Battle_AllDone) {
+  extern AI_GetEdictNumber 92:3101 @hStanchion
+  extern entkey @hStanchion "sequence" ""
+  gosub 92:0801		                      
+  gosub 92:2			                                                 
+}
+if (catch_hyrax) {
+  if (limbus_got_hyrax1 == 0)
+    extern loopambient limbus/ambi_hyrax1
+  if (limbus_got_hyrax2 == 0)
+    extern loopambient limbus/ambi_hyrax2
+  if (limbus_got_hyrax3 == 0)
+    extern loopambient limbus/ambi_hyrax3
+  if (limbus_got_hyrax4 == 0)
+    extern loopambient limbus/ambi_hyrax4
+  if (limbus_got_hyrax5 == 0)
+    extern loopambient limbus/ambi_hyrax5
+  if (limbus_got_hyrax6 == 0)
+    extern loopambient limbus/ambi_hyrax6
+  if (limbus_got_hyrax7 == 0)
+    extern loopambient limbus/ambi_hyrax7
+  if (limbus_got_hyrax8 == 0)
+    extern loopambient limbus/ambi_hyrax8
+  if (limbus_got_hyrax9 == 0)
+    extern loopambient limbus/ambi_hyrax9
+  if (limbus_got_hyrax10 == 0)
+    extern loopambient limbus/ambi_hyrax10
+}
+goto 0:0
+
+#switch 92:2
+if (@santa_spawned == 0) {
+  extern AI_SpawnEntity @townhall_santa_handle npc_santa santa 92:0701 townhall_santa
+  extern EntKey @townhall_santa_handle "default_anim" "amb_b"
+  set @santa_spawned = 1
+}
+if (where_am_i_1 == 4)
+  gosub 92:8004
+if (where_am_i_1 == 2)
+  gosub 92:8000
+if (where_am_i_1 == 1)
+  gosub 92:8008
+if (where_am_i_1 == 3)
+  gosub 92:8012
+if (where_am_i_1 && ((where_am_i_2 == 0) || (where_am_i_2 == 4)))
+  gosub 92:8005
+if (where_am_i_1 && ((where_am_i_2 == 0) || (where_am_i_2 == 2)))
+  gosub 92:8001
+if (where_am_i_1 && ((where_am_i_2 == 0) || (where_am_i_2 == 1)))
+  gosub 92:8009
+if (where_am_i_1 && ((where_am_i_2 == 0) || (where_am_i_2 == 3)))
+  gosub 92:8013
+if (where_am_i_2 && ((where_am_i_3 == 0) || (where_am_i_3 == 4)))
+  gosub 92:8006
+if (where_am_i_2 && ((where_am_i_3 == 0) || (where_am_i_3 == 2)))
+  gosub 92:8002
+if (where_am_i_2 && ((where_am_i_3 == 0) || (where_am_i_3 == 1)))
+  gosub 92:8010
+if (where_am_i_2 && ((where_am_i_3 == 0) || (where_am_i_3 == 3)))
+  gosub 92:8014
+if (where_am_i_3 && ((where_am_i_4 == 0) || (where_am_i_4 == 4)))
+  gosub 92:8007
+if (where_am_i_3 && ((where_am_i_4 == 0) || (where_am_i_4 == 2)))
+  gosub 92:8003
+if (where_am_i_3 && ((where_am_i_4 == 0) || (where_am_i_4 == 1)))
+  gosub 92:8011
+if (where_am_i_3 && ((where_am_i_4 == 0) || (where_am_i_4 == 3)))
+  gosub 92:8015
+if (where_am_i_4) {
+  gosub 92:8021
+  gosub 92:8020
+  gosub 92:8022
+  gosub 92:8023
+}
+goto 0:0
+
+#switch 92:101
+extern AI_GrabEntity santa santa_handle
+extern EntKey santa_handle "default_anim" "amb_b"
+set Santa1 = (Santa1 + 1)
+if (Santa1 > 1)
+  goto 92:0110
+goto 92:0105                                 
+
+#switch 92:701
+extern AI_GrabEntity santa santa_handle
+extern EntKey santa_handle "default_anim" "amb_b"
+if (limbus_saw_dome)
+  goto 92:750
+gosub 1:5
+if (party_population < 3)
+  goto 92:0705
+goto 92:0715
+
+#switch 92:201
+set Jin1 = (Jin1 + 1)
+if (TempAlphaLimbus == 1)
+  goto 92:0174
+if (Jin1 > 1)
+  goto 92:0255
+goto 92:0205                                 
+
+#switch 92:280
+if (@CoCPlayah1 == 1)
+  extern AI_SpawnEntity  CoCPlayah1_handle character_boots CoCPlayah1 0:0 cliff_spawn_boots
+if (@CoCPlayah1 == 2)
+  extern AI_SpawnEntity  CoCPlayah1_handle character_grumpos CoCPlayah1 0:0 cliff_spawn_boots
+if (@CoCPlayah1 == 3)
+  extern AI_SpawnEntity  CoCPlayah1_handle character_rho CoCPlayah1 0:0 cliff_spawn_boots
+if (@CoCPlayah1 == 4)
+  extern AI_SpawnEntity  CoCPlayah1_handle character_pal CoCPlayah1 0:0 cliff_spawn_boots
+if (@CoCPlayah1 == 5)
+  extern AI_SpawnEntity  CoCPlayah1_handle character_democratus CoCPlayah1 0:0 cliff_spawn_boots
+if (@CoCPlayah1 == 6)
+  extern AI_SpawnEntity  CoCPlayah1_handle character_stiletto CoCPlayah1 0:0 cliff_spawn_boots
+if (@CoCPlayah1 == 7)
+  extern AI_SpawnEntity  CoCPlayah1_handle character_paco CoCPlayah1 0:0 cliff_spawn_boots
+goto 0:0
+
+#switch 92:282
+set @CoCPickedAPlayah = (@CoCPickedAPlayah + 1)
+if (@CoCPickedAPlayah >= 3)
+  goto 0:0
+if (@CoCPickedAPlayah == 1) {
+  if (@CoCPlayah2 == 1)
+    extern AI_SpawnEntity  CoCPlayah2_handle character_boots CoCPlayah2 0:0 cliff_spawn_player2
+  if (@CoCPlayah2 == 2)
+    extern AI_SpawnEntity  CoCPlayah2_handle character_grumpos CoCPlayah2 0:0 cliff_spawn_player2
+  if (@CoCPlayah2 == 3)
+    extern AI_SpawnEntity  CoCPlayah2_handle character_rho CoCPlayah2 0:0 cliff_spawn_player2
+  if (@CoCPlayah2 == 4)
+    extern AI_SpawnEntity  CoCPlayah2_handle character_pal CoCPlayah2 0:0 cliff_spawn_player2
+  if (@CoCPlayah2 == 5)
+    extern AI_SpawnEntity  CoCPlayah2_handle character_democratus CoCPlayah2 0:0 cliff_spawn_player2
+  if (@CoCPlayah2 == 6)
+    extern AI_SpawnEntity  CoCPlayah2_handle character_stiletto CoCPlayah2 0:0 cliff_spawn_player2
+  if (@CoCPlayah2 == 7)
+    extern AI_SpawnEntity  CoCPlayah2_handle character_paco CoCPlayah2 0:0 cliff_spawn_player2
+}
+if (@CoCPickedAPlayah == 2) {
+  if (@CoCPlayah2 == 1)
+    extern AI_SpawnEntity  CoCPlayah3_handle character_boots CoCPlayah3 0:0 cliff_spawn_player3
+  if (@CoCPlayah2 == 2)
+    extern AI_SpawnEntity  CoCPlayah3_handle character_grumpos CoCPlayah3 0:0 cliff_spawn_player3
+  if (@CoCPlayah2 == 3)
+    extern AI_SpawnEntity  CoCPlayah3_handle character_rho CoCPlayah3 0:0 cliff_spawn_player3
+  if (@CoCPlayah2 == 4)
+    extern AI_SpawnEntity  CoCPlayah3_handle character_pal CoCPlayah3 0:0 cliff_spawn_player3
+  if (@CoCPlayah2 == 5)
+    extern AI_SpawnEntity  CoCPlayah3_handle character_democratus CoCPlayah3 0:0 cliff_spawn_player3
+  if (@CoCPlayah2 == 6)
+    extern AI_SpawnEntity  CoCPlayah3_handle character_stiletto CoCPlayah3 0:0 cliff_spawn_player3
+  if (@CoCPlayah2 == 7)
+    extern AI_SpawnEntity  CoCPlayah3_handle character_paco CoCPlayah3 0:0 cliff_spawn_player3
+}
+goto 0:0
+
+#switch 92:215
+if ((func_charinparty[boots] == 3) && (func_charinparty[rho] == 2)) {
+  extern set_party_leader rho
+  extern remove_npc_from_party Boots
+  set boots_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[boots] == 3) && (func_charinparty[stiletto] == 2)) {
+  extern set_party_leader stiletto
+  extern remove_npc_from_party Boots
+  set boots_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[boots] == 3) && (func_charinparty[pal] == 2)) {
+  extern set_party_leader pal
+  extern remove_npc_from_party Boots
+  set boots_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[boots] == 3) && (func_charinparty[paco] == 2)) {
+  extern set_party_leader paco
+  extern remove_npc_from_party Boots
+  set boots_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[boots] == 3) && (func_charinparty[democratus] == 2)) {
+  extern set_party_leader democratus
+  extern remove_npc_from_party Boots
+  set boots_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[pal] == 3) && (func_charinparty[boots] == 2)) {
+  extern set_party_leader boots
+  extern remove_npc_from_party pal
+  set pal_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[pal] == 3) && (func_charinparty[rho] == 2)) {
+  extern set_party_leader rho
+  extern remove_npc_from_party pal
+  set pal_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[pal] == 3) && (func_charinparty[stiletto] == 2)) {
+  extern set_party_leader stiletto
+  extern remove_npc_from_party pal
+  set pal_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[pal] == 3) && (func_charinparty[paco] == 2)) {
+  extern set_party_leader paco
+  extern remove_npc_from_party pal
+  set pal_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[pal] == 3) && (func_charinparty[democratus] == 2)) {
+  extern set_party_leader democratus
+  extern remove_npc_from_party pal
+  set pal_at_cliff = 1
+  goto 92:0250
+}
+goto 92:0216
+
+#switch 92:216
+if ((func_charinparty[rho] == 3) && (func_charinparty[boots] == 2)) {
+  extern set_party_leader boots
+  extern remove_npc_from_party rho
+  set rho_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[rho] == 3) && (func_charinparty[stiletto] == 2)) {
+  extern set_party_leader stiletto
+  extern remove_npc_from_party rho
+  set rho_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[rho] == 3) && (func_charinparty[pal] == 2)) {
+  extern set_party_leader pal
+  extern remove_npc_from_party rho
+  set rho_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[rho] == 3) && (func_charinparty[paco] == 2)) {
+  extern set_party_leader paco
+  extern remove_npc_from_party rho
+  set rho_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[rho] == 3) && (func_charinparty[democratus] == 2)) {
+  extern set_party_leader democratus
+  extern remove_npc_from_party rho
+  set rho_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[democratus] == 3) && (func_charinparty[boots] == 2)) {
+  extern set_party_leader boots
+  extern remove_npc_from_party democratus
+  set democratus_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[democratus] == 3) && (func_charinparty[rho] == 2)) {
+  extern set_party_leader rho
+  extern remove_npc_from_party democratus
+  set democratus_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[democratus] == 3) && (func_charinparty[stiletto] == 2)) {
+  extern set_party_leader stiletto
+  extern remove_npc_from_party democratus
+  set democratus_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[democratus] == 3) && (func_charinparty[pal] == 2)) {
+  extern set_party_leader pal
+  extern remove_npc_from_party democratus
+  set democratus_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[democratus] == 3) && (func_charinparty[paco] == 2)) {
+  extern set_party_leader paco
+  extern remove_npc_from_party democratus
+  set democratus_at_cliff = 1
+  goto 92:0250
+}
+goto 92:0217
+
+#switch 92:217
+if ((func_charinparty[stiletto] == 3) && (func_charinparty[boots] == 2)) {
+  extern set_party_leader boots
+  extern remove_npc_from_party stiletto
+  set stiletto_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[stiletto] == 3) && (func_charinparty[rho] == 2)) {
+  extern set_party_leader rho
+  extern remove_npc_from_party stiletto
+  set stiletto_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[stiletto] == 3) && (func_charinparty[pal] == 2)) {
+  extern set_party_leader pal
+  extern remove_npc_from_party stiletto
+  set stiletto_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[stiletto] == 3) && (func_charinparty[paco] == 2)) {
+  extern set_party_leader paco
+  extern remove_npc_from_party stiletto
+  set stiletto_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[stiletto] == 3) && (func_charinparty[democratus] == 2)) {
+  extern set_party_leader democratus
+  extern remove_npc_from_party stiletto
+  set stiletto_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[paco] == 3) && (func_charinparty[boots] == 2)) {
+  extern set_party_leader boots
+  extern remove_npc_from_party paco
+  set paco_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[paco] == 3) && (func_charinparty[rho] == 2)) {
+  extern set_party_leader rho
+  extern remove_npc_from_party paco
+  set paco_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[paco] == 3) && (func_charinparty[stiletto] == 2)) {
+  extern set_party_leader stiletto
+  extern remove_npc_from_party paco
+  set paco_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[paco] == 3) && (func_charinparty[pal] == 2)) {
+  extern set_party_leader pal
+  extern remove_npc_from_party paco
+  set paco_at_cliff = 1
+  goto 92:0250
+} else if ((func_charinparty[paco] == 3) && (func_charinparty[democratus] == 2)) {
+  extern set_party_leader democratus
+  extern remove_npc_from_party paco
+  set paco_at_cliff = 1
+  goto 92:0250
+}
+
+#switch 92:170
+extern get_party_order first$ second$ third$
+if (boots_at_gun == 1) {
+  if (func_charinparty[boots] != 3) {
+    extern operate_on_party 0
+    extern set_party_members 0 boots
+  }
+  extern playscene limbus_scene86a_boots 0 666:100
+} else if (pal_at_gun == 1) {
+  if (func_charinparty[pal] != 3) {
+    extern operate_on_party 0
+    extern set_party_members 0 pal
+  }
+  extern playscene limbus_scene86a_pal 0 666:100
+} else if (rho_at_gun == 1) {
+  if (func_charinparty[rho] != 3) {
+    extern operate_on_party 0
+    extern set_party_members 0 rho
+  }
+  extern playscene limbus_scene86a_rho 0 666:100
+} else if (democratus_at_gun == 1) {
+  if (func_charinparty[democratus] != 3) {
+    extern operate_on_party 0
+    extern set_party_members 0 democratus
+  }
+  extern playscene limbus_scene86a_democratus 0 666:100
+} else if (stiletto_at_gun == 1) {
+  if (func_charinparty[stiletto] != 3) {
+    extern operate_on_party 0
+    extern set_party_members 0 stiletto
+  }
+  extern playscene limbus_scene86a_stiletto 0 666:100
+} else if (paco_at_gun == 1) {
+  if (func_charinparty[paco] != 3) {
+    extern operate_on_party 0
+    extern set_party_members 0 paco
+  }
+  extern playscene limbus_scene86a_paco 0 666:100
+} else
+  echo "@@@@@@@@@@@@@@@@ REPORT AN ERROR: NO CINE PLAYED TO START LIMBUS GUNNER! @@@@@@@@@@@@@@@@@@@@@"
+goto 0:0
+
+#switch 92:3101
+if (battle_alldone)
+  goto 92:3110		                                                           
+goto 92:0301
+
+#switch 92:301
+set Kilbar1 = (Kilbar1 + 1)
+if (Kilbar1 > 1)
+  goto 92:0310
+goto 92:0305
+
+#switch 92:501
+if (talk_yiyi == 1)
+  goto 92:0540
+set talk_yiyi = 1
+goto 92:0505
+
+#switch 92:601
+goto 92:0501
+
+#switch 92:801
+if (Battle_AllDone == 0)
+  set Battle_AllDone = 1
+extern AI_GrabEntity 92:0501 @despawn_bitch5
+extern AI_DestroyEntity @despawn_bitch5
+extern AI_GrabEntity 92:0601 @despawn_bitch6
+extern AI_DestroyEntity @despawn_bitch6
+extern AI_GrabEntity 92:1401 @despawn_bitch14
+extern AI_DestroyEntity @despawn_bitch14
+extern AI_GrabEntity 92:2001 @despawn_bitch20
+extern AI_DestroyEntity @despawn_bitch20
+goto 92:0802
+
+#switch 92:802
+extern AI_GrabEntity 92:2401 @despawn_bitch24
+extern AI_DestroyEntity @despawn_bitch24
+extern AI_GrabEntity 92:2801 @despawn_bitch28
+extern AI_DestroyEntity @despawn_bitch28
+extern AI_GrabEntity 92:2901 @despawn_bitch29
+extern AI_DestroyEntity @despawn_bitch29
+extern AI_GrabEntity 92:3801 @despawn_bitch38
+extern AI_DestroyEntity @despawn_bitch38
+extern AI_GrabEntity 92:4001 @despawn_bitch40
+extern AI_DestroyEntity @despawn_bitch40
+extern AI_GrabEntity 92:4101 @despawn_bitch41
+extern AI_DestroyEntity @despawn_bitch41
+goto 92:0803
+
+#switch 92:803
+if (where_am_i_1 == 0)
+  gosub 92:8000
+if (where_am_i_1 == 0)
+  gosub 92:8004
+if (where_am_i_1 == 0)
+  gosub 92:8008
+if (where_am_i_1 == 0)
+  gosub 92:8012
+if (where_am_i_1 == 0)
+  extern playlevelmusic mp3/limbus/limbusamb.mp3
+set boots_at_cliff = 0
+set pal_at_cliff = 0
+set rho_at_cliff = 0
+set democratus_at_cliff = 0
+set paco_at_cliff = 0
+set stiletto_at_cliff = 0
+extern is_quest_done "Talk To Santa" @tts
+if (@tts == 0)
+  extern add_quest "Talk To Santa"
+goto 0:0
+
+#switch 92:1101
+if (func_charinparty[stiletto] < 2)
+  goto 92:1105
+if (func_charinparty[stiletto] == 2)
+  goto 92:1110
+extern get_world_skill_level throwloonie @tl
+if (@tl == 2)
+  goto 92:1115
+goto 92:1120
+
+#switch 92:1301
+if (talk_sathquo)
+  goto 92:1350	                 
+set talk_sathquo = 1
+goto 92:1304
+
+#switch 92:1401
+if (limbus_battle_started == 0)
+  goto 92:1301		                                      
+if (talk_triri == 3)
+  goto 92:1455		                
+if (talk_triri == 2)
+  goto 92:1440		               
+if (talk_triri && crevice_found_sathquo)
+  goto 92:1425
+if (talk_triri)
+  goto 92:1420		                      
+set talk_triri = 1
+goto 92:1405
+
+#switch 92:1501
+goto 92:1510
+
+#switch 92:1530
+extern ANIM_MakeSmart bootshandle
+extern AI_ReleaseEntity bootshandle
+extern cam_restore
+extern cam_anoxmariomode 0
+gosub 600:3		             
+goto 0:0
+
+#switch 92:1901
+if (BOUGHT_SAFECELL == 1)
+  goto 92:1955
+if (offer_safecell_again == 1)
+  goto 92:1948
+if (limbus_find_underplate == 2)
+  goto 92:1945		                      
+extern is_in_inventory "Twin-Scaled Underplate" @got_it
+if ((limbus_battle_started && limbus_find_underplate) && @got_it)
+  goto 92:1935
+if (limbus_battle_started && limbus_find_underplate)
+  goto 92:1930
+if (limbus_battle_started)
+  goto 92:1910
+goto 92:1905
+
+#switch 92:1950
+extern check_money @triggerDICK
+if (@triggerDICK < 8000)
+  goto 92:1965
+goto 92:1955
+
+#switch 92:2001
+goto 92:2005
+
+#switch 92:2101
+goto 92:2105
+
+#switch 92:2201
+goto 92:2205
+
+#switch 92:2401
+set Larzin1 = (Larzin1 + 1)
+if (Larzin1 > 1)
+  goto 92:2410
+goto 92:2405
+
+#switch 92:2601
+if (rinqui_off == 1)
+  goto 92:2615
+goto 92:2605
+
+#switch 92:2666
+extern AI_GrabEntity rinqui rinqui_handle
+extern AI_DestroyEntity rinqui_handle
+
+#switch 92:2701
+if (rinqui_off == 0)
+  goto 92:2605
+set Borqui1 = (Borqui1 + 1)
+if (Borqui1 > 1)
+  goto 92:2710
+goto 92:2705
+
+#switch 92:2901
+set Kathsan1 = (Kathsan1 + 1)
+if (Kathsan1 > 1)
+  goto 92:2906
+goto 92:2905
+
+#switch 92:3201
+if ((limbus_battle_started && (limbus_barp_dies == 1)) && (talk_triter == 3))
+  goto 92:3235		                     
+if (limbus_battle_started && (limbus_barp_dies == 1))
+  goto 92:3215
+if (talk_triter && (limbus_barp_dies == 1))
+  goto 92:3330	                                 
+if (talk_triter < 2)
+  set talk_triter = (talk_triter + 1)
+if (talk_triter > 1)
+  goto 92:3210
+goto 92:3205
+
+#switch 92:3301
+if (limbus_battle_started && (limbus_barp_lives == 1))
+  goto 92:3360	                                                          
+if (talk_triter && (limbus_barp_dies == 1))
+  goto 92:3330	                                 
+if (talk_triter && (limbus_barp_lives == 1))
+  goto 92:3350	                   
+if (talk_triter)
+  goto 92:3310			              
+goto 92:3305
+
+#switch 92:3401
+if (limbus_got_fz == 0)
+  goto 92:3410
+goto 92:3405
+
+#switch 92:3415
+set limbus_got_fz = 1
+extern addnew_to_inventory "Firestorm"
+got_object$="Firestorm" 
+set timed_message = 20
+gosub 1000:1
+goto 0:0
+
+#switch 92:3420
+extern shop_create "Sesostris Salveseller"
+extern shop_set_active "Sesostris Salveseller"
+extern shop_add_object "HealGrease Plus" 100
+extern shop_add_object "HealGrease Complete" 100
+extern shop_add_object "TimeMinder Tear" 100
+extern shop_add_object "Stargent Sleepshank" 100
+if (limbus_battle_started)
+  extern shop_add_object "Stargent Bladerangs" 100
+extern shop_picture "trifin.png"
+extern shop_slogan "Gifts from our brothers abroad, we share"
+extern shop_start 92:3430
+goto 0:0
+
+#switch 92:3801
+if (talk_jansath)
+  goto 92:3815
+set talk_jansath = 1
+goto 92:3805
+
+#switch 92:3901
+if (@getting_a_hyrax)
+  goto 0:0
+extern AI_GetEdictNumber 92:3901 hHyrax
+gosub 92:8100		                      
+if (@hyrax_gettable == 0)
+  goto 0:0
+set limbus_got_hyrax1 = 1
+extern stopambient limbus/ambi_hyrax1
+set @getting_hyrax = 1
+gosub 92:8150	                  
+goto 0:0
+
+#switch 92:3902
+if (@getting_a_hyrax)
+  goto 0:0
+extern AI_GetEdictNumber 92:3902 hHyrax
+gosub 92:8100		                      
+if (@hyrax_gettable == 0)
+  goto 0:0
+set limbus_got_hyrax2 = 1
+extern stopambient limbus/ambi_hyrax2
+set @getting_hyrax = 2
+gosub 92:8150	                  
+goto 0:0
+
+#switch 92:3903
+if (@getting_a_hyrax)
+  goto 0:0
+extern AI_GetEdictNumber 92:3903 hHyrax
+gosub 92:8100		                      
+if (@hyrax_gettable == 0)
+  goto 0:0
+set limbus_got_hyrax3 = 1
+extern stopambient limbus/ambi_hyrax3
+set @getting_hyrax = 3
+gosub 92:8150	                  
+goto 0:0
+
+#switch 92:3904
+if (@getting_a_hyrax)
+  goto 0:0
+extern AI_GetEdictNumber 92:3904 hHyrax
+gosub 92:8100		                      
+if (@hyrax_gettable == 0)
+  goto 0:0
+set limbus_got_hyrax4 = 1
+extern stopambient limbus/ambi_hyrax4
+set @getting_hyrax = 4
+gosub 92:8150	                  
+goto 0:0
+
+#switch 92:3905
+if (@getting_a_hyrax)
+  goto 0:0
+extern AI_GetEdictNumber 92:3905 hHyrax
+gosub 92:8100		                      
+if (@hyrax_gettable == 0)
+  goto 0:0
+set limbus_got_hyrax5 = 1
+extern stopambient limbus/ambi_hyrax5
+set @getting_hyrax = 5
+gosub 92:8150	                  
+goto 0:0
+
+#switch 92:3906
+if (@getting_a_hyrax)
+  goto 0:0
+extern AI_GetEdictNumber 92:3906 hHyrax
+gosub 92:8100		                      
+if (@hyrax_gettable == 0)
+  goto 0:0
+set limbus_got_hyrax6 = 1
+extern stopambient limbus/ambi_hyrax6
+set @getting_hyrax = 6
+gosub 92:8150	                  
+goto 0:0
+
+#switch 92:3907
+if (@getting_a_hyrax)
+  goto 0:0
+extern AI_GetEdictNumber 92:3907 hHyrax
+gosub 92:8100		                      
+if (@hyrax_gettable == 0)
+  goto 0:0
+set limbus_got_hyrax7 = 1
+extern stopambient limbus/ambi_hyrax7
+set @getting_hyrax = 7
+gosub 92:8150	                  
+goto 0:0
+
+#switch 92:3908
+if (@getting_a_hyrax)
+  goto 0:0
+extern AI_GetEdictNumber 92:3908 hHyrax
+gosub 92:8100		                      
+if (@hyrax_gettable == 0)
+  goto 0:0
+set limbus_got_hyrax8 = 1
+extern stopambient limbus/ambi_hyrax8
+set @getting_hyrax = 8
+gosub 92:8150	                  
+goto 0:0
+
+#switch 92:3909
+if (@getting_a_hyrax)
+  goto 0:0
+extern AI_GetEdictNumber 92:3909 hHyrax
+gosub 92:8100		                      
+if (@hyrax_gettable == 0)
+  goto 0:0
+set limbus_got_hyrax9 = 1
+extern stopambient limbus/ambi_hyrax9
+set @getting_hyrax = 9
+gosub 92:8150	                  
+goto 0:0
+
+#switch 92:3910
+if (@getting_a_hyrax)
+  goto 0:0
+extern AI_GetEdictNumber 92:3910 hHyrax
+gosub 92:8100		                      
+if (@hyrax_gettable == 0)
+  goto 0:0
+set limbus_got_hyrax10 = 1
+extern stopambient limbus/ambi_hyrax10
+set @getting_hyrax = 10
+gosub 92:8150	                  
+goto 0:0
+
+#switch 92:8100
+set @hyrax_gettable = 0
+extern AI_GetEdictNumber playerchar0 hPlayer
+extern AI_GetXYZ hPlayer @px @py @pz
+extern AI_GetXYZ hHyrax @hx @hy @hz
+set @dx = (@px - @hx)
+set @dx = func_abs[@dx]
+set @dy = (@py - @hy)
+set @dy = func_abs[@dy]
+set @dz = (@pz - @hz)
+if ((@dx > 64) || (@dy > 64)) {
+  set timed_message = 43
+  unset TimedMessageChar0$=PlayerChar0$ 
+  gosub 1000:1
+  set @getting_a_hyrax = 0
+  goto 0:0
+}
+if (@dz > 16) {
+  set timed_message = 55
+  unset TimedMessageChar0$=PlayerChar0$ 
+  gosub 1000:1
+  set @getting_a_hyrax = 0
+  goto 0:0
+}
+if (@dz < -16.000000) {
+  set timed_message = 54
+  unset TimedMessageChar0$=PlayerChar0$ 
+  gosub 1000:1
+  set @getting_a_hyrax = 0
+  goto 0:0
+}
+set @hyrax_gettable = 1
+goto 0:0
+
+#switch 92:8150
+extern addnew_to_inventory "Baby Hyrax"
+extern cam_anoxmariomode 1
+extern AI_GrabEntity playerchar0 hPlayer
+goto 92:8180
+
+#switch 92:4001
+if (limbus_battle_started)
+  goto 92:4050
+if (talk_soup)
+  goto 92:4020
+set talk_soup = 1
+goto 92:4005
+
+#switch 92:4101
+goto 92:4001		                      
+
+#switch 92:4201
+set talk_vivi = (talk_vivi + 1)
+if (talk_vivi == 3)
+  goto 92:4260
+if (talk_vivi == 2)
+  goto 92:4240
+goto 92:4205
+
+#switch 92:8000
+extern AI_SpawnEntity @step1_pop_townsquare_handle npc_lim_soldier vengen 92:4402 step1_pop_townsquare
+set ts_phase1_complete = 1
+goto 0:0
+
+#switch 92:8001
+extern AI_SpawnEntity @step2_pop_townsquare_handle npc_lim_soldier quojin 92:4502 step2_pop_townsquare
+set ts_phase2_complete = 1
+goto 0:0
+
+#switch 92:8002
+extern AI_SpawnEntity @step3_pop_townsquare_handle npc_lim_soldier gorqui 92:4602 step3_pop_townsquare
+set ts_phase3_complete = 1
+goto 0:0
+
+#switch 92:8003
+extern AI_SpawnEntity @step4_pop_townsquare_handle npc_vigil_male kilgor 92:4702 step4_pop_townsquare
+set ts_phase4_complete = 1
+goto 0:0
+
+#switch 92:8020
+extern AI_SpawnEntity @townsquare_janter_handle npc_vigil_male janter 92:6101 townsquare_janter
+extern AI_SpawnEntity @townsquare_zollar_handle npc_vigil_female zollar 92:4801 townsquare_zollar
+extern AI_SpawnEntity @townsquare_tertri_handle npc_vigil_female tertri 92:4901 townsquare_tertri
+extern AI_SpawnEntity @townsquare_merqui_handle npc_vigil_female merqui 92:5001 townsquare_merqui
+extern AI_SpawnEntity @townsquare_carzol_handle npc_vigil_male carzol 92:5101 townsquare_carzol
+extern AI_SpawnEntity @townsquare_carla_handle npc_vigil carla 92:5501 townsquare_carla
+extern AI_Path @townsquare_carla_handle limbus1_path7
+extern AI_SpawnEntity @townsquare_nitri_handle npc_vigil nitri 92:5701 townsquare_nitri
+extern AI_SpawnEntity @townsquare_rina_handle npc_vigil_female rina 92:6201 townsquare_rina
+set ts_phase5_complete = 1
+goto 0:0
+
+#switch 92:8004
+if (@santa_spawned == 0) {
+  extern AI_SpawnEntity @townhall_santa_handle npc_santa santa 92:0701 townhall_santa
+  extern EntKey @townhall_santa_handle "default_anim" "amb_b"
+  set @santa_spawned = 1
+}
+extern AI_SpawnEntity @step1_pop_townhall_handle npc_lim_soldier vengen 92:4404 step1_pop_townhall
+set th_phase1_complete = 1
+goto 0:0
+
+#switch 92:8005
+extern AI_SpawnEntity @step2_pop_townhall_handle npc_lim_soldier quojin 92:4504 step2_pop_townhall
+set th_phase2_complete = 1
+goto 0:0
+
+#switch 92:8006
+extern AI_SpawnEntity @step3_pop_townhall_handle npc_lim_soldier gorqui 92:4604 step3_pop_townhall
+set th_phase3_complete = 1
+goto 0:0
+
+#switch 92:8007
+extern AI_SpawnEntity @step4_pop_townhall_handle npc_vigil_male kilgor 92:4704 step4_pop_townhall
+set th_phase4_complete = 1
+goto 0:0
+
+#switch 92:8021
+if (@santa_spawned == 0) {
+  extern AI_SpawnEntity @townhall_santa_handle npc_santa santa 92:0701 townhall_santa
+  set @santa_spawned = 1
+}
+if (barp_lives == 1) {
+  extern AI_SpawnEntity @townhall_borpark_handle npc_lim_soldier borpark 92:3301 townhall_borpark
+  extern AI_SpawnEntity @townhall_quibi_handle npc_vigil_female quibi 92:3701 townhall_quibi
+  extern AI_SpawnEntity @townhall_rizin_handle npc_vigil_male rizin 92:3601 townhall_rizin
+}
+if (barp_dies == 1)
+  extern AI_SpawnEntity @townhall_triter_handle npc_vigil_male triter 92:3201 townhall_triter
+set th_phase5_complete = 1
+goto 0:0
+
+#switch 92:8008
+extern AI_SpawnEntity @step1_pop_proberoom_handle npc_lim_soldier vengen 92:4401 step1_pop_proberoom
+set pr_phase1_complete = 1
+goto 0:0
+
+#switch 92:8009
+extern AI_SpawnEntity @step2_pop_proberoom_handle npc_lim_soldier quojin 92:4501 step2_pop_proberoom
+set pr_phase2_complete = 1
+goto 0:0
+
+#switch 92:8010
+extern AI_SpawnEntity @step3_pop_proberoom_handle npc_lim_soldier gorqui 92:4601 step3_pop_proberoom
+set pr_phase3_complete = 1
+goto 0:0
+
+#switch 92:8011
+extern AI_SpawnEntity @step4_pop_proberoom_handle npc_vigil_male kilgor 92:4701 step4_pop_proberoom
+set pr_phase4_complete = 1
+goto 0:0
+
+#switch 92:8022
+extern AI_SpawnEntity @proberoom_manqui_handle npc_vigil_female manqui 92:5301 proberoom_manqui
+extern AI_SpawnEntity @proberoom_nivi_handle npc_vigil nivi 92:5401 proberoom_nivi
+set pr_phase5_complete = 1
+goto 0:0
+
+#switch 92:8012
+extern AI_SpawnEntity @step1_pop_fountainave_handle npc_lim_soldier vengen 92:4403 step1_pop_fountainave
+set fa_phase1_complete = 1
+goto 0:0
+
+#switch 92:8013
+extern AI_SpawnEntity @step2_pop_fountainave_handle npc_lim_soldier quojin 92:4503 step2_pop_fountainave
+set fa_phase2_complete = 1
+goto 0:0
+
+#switch 92:8014
+extern AI_SpawnEntity @step3_pop_fountainave_handle npc_lim_soldier gorqui 92:4603 step3_pop_fountainave
+set fa_phase3_complete = 1
+goto 0:0
+
+#switch 92:8015
+extern AI_SpawnEntity @step4_pop_fountainave_handle npc_vigil_male kilgor 92:4703 step4_pop_fountainave
+set fa_phase4_complete = 1
+goto 0:0
+
+#switch 92:8023
+extern AI_SpawnEntity @fountainave_kilzo_handle npc_lim_soldier kilzo 92:5601 fountainave_kilzo
+extern AI_SpawnEntity @fountainave_thenni_handle npc_vigil thenni 92:1101 fountainave_thenni
+extern AI_SpawnEntity @fountainave_hacken_handle npc_lim_soldier hacken 92:5801 fountainave_hacken
+extern AI_Path @fountainave_hacken_handle limbus5_path1
+extern AI_SpawnEntity @fountainave_yizo_handle npc_lim_soldier yizo 92:6301 fountainave_yizo
+extern AI_Path @fountainave_yizo_handle limbus3_path1
+extern AI_SpawnEntity @fountainave_parrin_handle npc_vigil_male parrin 92:5201 fountainave_parrin
+set fa_phase5_complete = 1
+goto 0:0
+
+#switch 92:8016
+goto 0:0
+
+#switch 92:8017
+goto 0:0
+
+#switch 92:8018
+goto 0:0
+
+#switch 92:8019
+goto 0:0
+
+#switch 92:5101
+set talk_carzol = (1 - talk_carzol)
+if (talk_carzol)
+  goto 92:5105
+goto 92:5110
+
+#switch 92:5201
+set talk_parrin = (1 - talk_parrin)
+if (talk_parrin)
+  goto 92:5205
+goto 92:5210
+
+#switch 92:5701
+set talk_nithri = (1 - talk_nithri)
+if (talk_nithri)
+  goto 92:5705
+goto 92:5715
+
+#switch 92:5901
+if (talk_jinjan < 3)
+  set talk_jinjan = (talk_jinjan + 1)
+if (talk_jinjan == 1)
+  goto 92:5905
+if (talk_jinjan == 2)
+  goto 92:5910
+if (talk_jinjan == 3)
+  goto 92:5935
+
+#switch 92:6101
+extern is_in_inventory "Baby Hyrax" @babies
+if (hyrax_greedwhore == 1)
+  goto 92:6130
+if (@babies == 10)
+  goto 92:6120
+if (catch_hyrax == 1)
+  goto 92:6110
+goto 92:6105
+
+#switch 92:5577
+extern AI_GrabEntity PlayerChar0 hPlayer
+extern AI_SeekAndFace hPlayer pacostand3
+extern AI_SetCompletionCallback hPlayer 92:5588
+
+#switch 92:5588
+extern ANIM_MakeSmart hPlayer
+extern AI_ReleaseEntity hPlayer
+extern is_in_inventory "Crimson Stone" @cs
+extern is_in_inventory "Crimson Kraptonite" @ck
+extern is_in_inventory "ProximaPunch" @pp
+if ((((func_charinparty[paco] == 3) && (@cs == 0)) && (@ck == 0)) && (@pp == 0))
+  goto 92:5579
+goto 92:5578
+
+#switch 92:5582
+extern AI_GetEdictNumber PlayerChar0 getter
+extern pickup_getitem getter 92:5577
+goto 0:0
+
+#switch 92:9944
+if (func_charinparty[rho] == 3)
+  goto 92:9945
+goto 92:9950

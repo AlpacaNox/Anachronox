@@ -1,0 +1,1309 @@
+#window 80:100
+title "RED SECURITY DOOR"
+body "The door is locked."
+style "style_bubble"
+font "_anox10inv"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+xpos 30
+ypos 30
+width 580
+
+#window 80:400
+title "RED SECURITY DOOR"
+body "The door is locked."
+style "style_bubble"
+font "_anox10inv"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+xpos 30
+ypos 30
+width 580
+
+#window 80:500
+title "RED SECURITY DOOR"
+body "The door is locked."
+style "style_bubble"
+font "_anox10inv"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+xpos 30
+ypos 30
+width 580
+
+#window 80:600
+title "RED SECURITY DOOR"
+body "The door is locked."
+style "style_bubble"
+font "_anox10inv"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+xpos 30
+ypos 30
+width 580
+
+#window 80:700
+title "%s", PlayerChar0$
+body "We already opened that door."
+talk player talk_a stay
+style "style_bubbleleft"
+font "_anox10inv"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+xpos 30
+ypos 30
+width 580
+
+#window 80:7501
+xyprintfx 182, 208, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "You are Here"
+xyprintfx 374, 208, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "Exits lead to..."
+xyprintfx 136, 54, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "Bow"
+xyprintfx 462, 54, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "Stern"
+xyprintfx 256, 59, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "a"
+xyprintfx 299, 59, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "b"
+xyprintfx 336, 59, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "c"
+xyprintfx 216, 155, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "Bay <<"
+xyprintfx 395, 91, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, ">> Control"
+xyprintfx 225, 75, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "S"
+xyprintfx 241, 92, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "M"
+xyprintfx 256, 109, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "P"
+xyprintfx 390, 37, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "3"
+xyprintfx 412, 110, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "2"
+xyprintfx 410, 173, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "1"
+if (krapton_whichcomp == 121)
+  xyprintfx 8, 236, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "1M-a: Bow Bay Exit"
+if (krapton_whichcomp == 115)
+  xyprintfx 8, 236, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "3M-c: Krapotron BrutalBot Lair"
+if (krapton_whichcomp == 123)
+  xyprintfx 8, 236, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "1M-a: Insanito Brigade Lair"
+if (krapton_whichcomp == 211)
+  xyprintfx 8, 236, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "2P-a: El Pinto Lair"
+if (krapton_whichcomp == 212)
+  xyprintfx 8, 236, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "2M-b: Devil Slug Lair"
+if (krapton_whichcomp == 214)
+  xyprintfx 8, 236, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "2M-b: Devil Slug Lair"
+if (krapton_whichcomp == 221)
+  xyprintfx 8, 236, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "2M-a: Computer Room"
+if (krapton_whichcomp == 232)
+  xyprintfx 8, 236, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "2S-b: Computer Room"
+if (krapton_whichcomp == 233)
+  xyprintfx 8, 236, 1, 1, 0.709999978542, 0.119999997318, _anoxthin, "2S-c: Orange Roughy Lair"
+startswitch {
+  extern AI_GrabEntity PlayerChar0 playerchar0_handle
+  set @c = 1
+  while (@c <= 39) {
+    set F[$@c$] = E[$@c$]
+    set @c = (@c + 1)
+  }
+  set @current_gametime = func_gametime
+  extern CreateAPE2DControl push exitbutt 514 343 width=62 height=25 normal=/gameflow/krapcomp/krap_exit_n.pcx bright=/gameflow/krapcomp/krap_exit_b.pcx sequence=80:7505 gamevar=kc_wheretogo returnvalue=99
+  extern CreateAPE2DControl push securitybutt 448 343 width=32 height=25 normal=/gameflow/krapcomp/krap_sec_n.pcx bright=/gameflow/krapcomp/krap_sec_b.pcx sequence=80:7505 gamevar=kc_wheretogo returnvalue=1
+  if (kc_fivecomp)
+    extern CreateAPE2DControl push fivebutt 481 343 width=32 height=25 normal=/gameflow/krapcomp/krap_five_n.pcx bright=/gameflow/krapcomp/krap_five_b.pcx sequence=80:7505 gamevar=kc_wheretogo returnvalue=2
+  goto 0:0
+}
+
+thinkswitch {
+  if (func_gametime > (@current_gametime + 100)) {
+    set anim_counter = (anim_counter + 1)
+    if (anim_counter > 3)
+      set anim_counter = 0
+    set @current_gametime = func_gametime
+  }
+  gosub 80:7500
+  goto 0:0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity playerchar0_handle
+  extern RemoveAPE2DControl exitbutt
+  extern RemoveAPE2DControl securitybutt
+  if (kc_fivecomp)
+    extern RemoveAPE2DControl fivebutt
+  if (kc_wheretogo == 1)
+    goto 80:7506		               
+  if (kc_wheretogo == 2)
+    goto 80:7507		              
+  set kc_fivecomp = 0
+  goto 0:0
+}
+
+style "NULL"
+font "_anoxthin"
+flags passive2d, TRUE
+xpos 64
+ypos 112
+width 512
+height 256
+background "krapcomp/krapint_left.tga" 
+image "krapcomp/krapint_right.tga" 256, 0
+image "krapcomp/room_$F[31]$.tga" 252, 37
+image "krapcomp/room_$F[32]$.tga" 296, 37
+image "krapcomp/room_$F[33]$.tga" 340, 37
+image "krapcomp/room_$F[27]$.tga" 240, 75
+image "krapcomp/room_$F[28]$.tga" 284, 75
+image "krapcomp/room_$F[29]$.tga" 328, 75
+image "krapcomp/room_$F[24]$.tga" 256, 92
+image "krapcomp/room_$F[25]$.tga" 300, 92
+image "krapcomp/room_$F[26]$.tga" 345, 92
+image "krapcomp/room_$F[21]$.tga" 271, 109
+image "krapcomp/room_$F[22]$.tga" 315, 109
+image "krapcomp/room_$F[23]$.tga" 359, 109
+image "krapcomp/room_$F[17]$.tga" 240, 138
+image "krapcomp/room_$F[18]$.tga" 284, 138
+image "krapcomp/room_$F[19]$.tga" 328, 138
+image "krapcomp/room_$F[14]$.tga" 256, 155
+image "krapcomp/room_$F[15]$.tga" 300, 155
+image "krapcomp/room_$F[16]$.tga" 345, 155
+image "krapcomp/room_$F[11]$.tga" 271, 172
+image "krapcomp/room_$F[12]$.tga" 315, 172
+image "krapcomp/room_$F[13]$.tga" 359, 172
+image "krapcomp/roomtype_$current_roomtype$.tga" 1, 97
+
+#window 80:7506
+xyprintfx 16, 16, 0.5, 1, 0, 0, _anoxthin, "REC"
+startswitch {
+  extern AI_GrabEntity PlayerChar0 playerchar0_handle
+  extern cam_anoxmariomode 1
+  extern cam_from icamera_src
+  extern cam_to icamera_dest
+  extern cam_zip
+  if (kc_wheretogo != 55)
+    set kc_wheretogo = 0
+  extern playsound ui/gen/ui_gen_distant_event.wav
+  extern CreateAPE2DControl push secexitbutt 514 33 width=62 height=25 normal=/gameflow/krapcomp/krap_exit_n.pcx bright=/gameflow/krapcomp/krap_exit_b.pcx sequence=80:7512 gamevar=@kcpoo returnvalue=1
+  goto 0:0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity playerchar0_handle
+  extern RemoveAPE2DControl secexitbutt
+  extern cam_restore
+  extern cam_anoxmariomode 0
+  extern cam_zip
+  if (kc_wheretogo == 55)
+    goto 80:7523		                            
+  goto 80:7501
+}
+
+style "NULL"
+font "_anoxthin"
+flags passive2d, TRUE
+xpos 0
+ypos 0
+width 640
+height 480
+
+#window 80:7507
+startswitch {
+  extern AI_GrabEntity PlayerChar0 playerchar0_handle
+  extern cam_anoxmariomode 1
+  extern cam_from fivecamera_src
+  extern cam_to fivecamera_dest
+  extern cam_zip
+  set kc_wheretogo = 0
+  extern CreateAPE2DControl push exitbutt5 514 420 width=62 height=25 normal=/gameflow/krapcomp/krap_exit_n.pcx bright=/gameflow/krapcomp/krap_exit_b.pcx sequence=80:7513 gamevar=@quititfoo returnvalue=1
+  extern CreateAPE2DControl push h1minus 110 380 width=32 height=32 normal=/gameflow/krapcomp/krap_left_n.pcx bright=/gameflow/krapcomp/krap_left_b.pcx sequence=80:7514 gamevar=@delta returnvalue=-1
+  extern CreateAPE2DControl push h1plus 150 380 width=32 height=32 normal=/gameflow/krapcomp/krap_right_n.pcx bright=/gameflow/krapcomp/krap_right_b.pcx sequence=80:7514 gamevar=@delta returnvalue=1
+  extern CreateAPE2DControl push h2minus 195 380 width=32 height=32 normal=/gameflow/krapcomp/krap_left_n.pcx bright=/gameflow/krapcomp/krap_left_b.pcx sequence=80:7515 gamevar=@delta returnvalue=-1
+  extern CreateAPE2DControl push h2plus 235 380 width=32 height=32 normal=/gameflow/krapcomp/krap_right_n.pcx bright=/gameflow/krapcomp/krap_right_b.pcx sequence=80:7515 gamevar=@delta returnvalue=1
+  extern CreateAPE2DControl push h3minus 280 380 width=32 height=32 normal=/gameflow/krapcomp/krap_left_n.pcx bright=/gameflow/krapcomp/krap_left_b.pcx sequence=80:7516 gamevar=@delta returnvalue=-1
+  extern CreateAPE2DControl push h3plus 320 380 width=32 height=32 normal=/gameflow/krapcomp/krap_right_n.pcx bright=/gameflow/krapcomp/krap_right_b.pcx sequence=80:7516 gamevar=@delta returnvalue=1
+  extern CreateAPE2DControl push h4minus 365 380 width=32 height=32 normal=/gameflow/krapcomp/krap_left_n.pcx bright=/gameflow/krapcomp/krap_left_b.pcx sequence=80:7517 gamevar=@delta returnvalue=-1
+  extern CreateAPE2DControl push h4plus 405 380 width=32 height=32 normal=/gameflow/krapcomp/krap_right_n.pcx bright=/gameflow/krapcomp/krap_right_b.pcx sequence=80:7517 gamevar=@delta returnvalue=1
+  extern CreateAPE2DControl push h5minus 450 380 width=32 height=32 normal=/gameflow/krapcomp/krap_left_n.pcx bright=/gameflow/krapcomp/krap_left_b.pcx sequence=80:7518 gamevar=@delta returnvalue=-1
+  extern CreateAPE2DControl push h5plus 490 380 width=32 height=32 normal=/gameflow/krapcomp/krap_right_n.pcx bright=/gameflow/krapcomp/krap_right_b.pcx sequence=80:7518 gamevar=@delta returnvalue=1
+  extern loopambient kraptonmaze/ambi_kraptonmaze_monsters
+  if (kraptonmaze_thing1 == 0) {
+    set kraptonmaze_thing1 = 1
+    set kraptonmaze_thing2 = 1
+    set kraptonmaze_thing3 = 1
+    set kraptonmaze_thing4 = 1
+    set kraptonmaze_thing5 = 1
+  }
+  gosub 80:7522
+  extern playsound ui/gen/ui_gen_chng_good.wav
+  goto 0:0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity playerchar0_handle
+  set @which_holo = 1
+  while (@which_holo < 6) {
+    if (@which_holo == 1) {
+      set kraptonmaze_oldthing = kraptonmaze_thing1
+    } else if (@which_holo == 2) {
+      set kraptonmaze_oldthing = kraptonmaze_thing2
+    } else if (@which_holo == 3) {
+      set kraptonmaze_oldthing = kraptonmaze_thing3
+    } else if (@which_holo == 4) {
+      set kraptonmaze_oldthing = kraptonmaze_thing4
+    } else if (@which_holo == 5)
+      set kraptonmaze_oldthing = kraptonmaze_thing5
+    gosub 80:7521		                        
+    set @which_holo = (@which_holo + 1)
+  }
+  extern stopambient kraptonmaze/ambi_kraptonmaze_monsters
+  extern RemoveAPE2DControl h1minus
+  extern RemoveAPE2DControl h1plus
+  extern RemoveAPE2DControl h2minus
+  extern RemoveAPE2DControl h2plus
+  extern RemoveAPE2DControl h3minus
+  extern RemoveAPE2DControl h3plus
+  extern RemoveAPE2DControl h4minus
+  extern RemoveAPE2DControl h4plus
+  extern RemoveAPE2DControl h5minus
+  extern RemoveAPE2DControl h5plus
+  extern RemoveAPE2DControl exitbutt5
+  if ((kraptonmaze_red_doors_open == 1) && (@play_once == 1)) {
+    set @play_once = 0
+    gosub 80:301	                         
+    extern stopscene kraptonmaze_
+    extern playscene kraptonmaze_secdoors_open
+    extern cam_restore
+    extern cam_anoxmariomode 0
+    goto 0:0
+  }
+  extern cam_restore
+  extern cam_anoxmariomode 0
+  if (@quititfoo) {
+    set @quititfoo = 0
+    goto 80:7501
+  }
+}
+
+style "NULL"
+font "_anoxthin"
+flags passive2d, TRUE
+xpos 0
+ypos 0
+width 640
+height 480
+
+#window 80:7523
+startswitch {
+  extern AI_GrabEntity PlayerChar0 playerchar0_handle
+  extern cam_anoxmariomode 1
+  extern cam_from finalcamera_src
+  extern cam_to finalcamera_dest
+  extern cam_zip
+  set kc_wheretogo = 0
+  extern CreateAPE2DControl push exitbutt5 514 420 width=62 height=25 normal=/gameflow/krapcomp/krap_exit_n.pcx bright=/gameflow/krapcomp/krap_exit_b.pcx sequence=80:7526 gamevar=@poo returnvalue=1
+  extern CreateAPE2DControl push h1minus 130 380 width=32 height=32 normal=/gameflow/krapcomp/krap_left_n.pcx bright=/gameflow/krapcomp/krap_left_b.pcx sequence=80:7527 gamevar=@delta returnvalue=-1
+  extern CreateAPE2DControl push h1plus 170 380 width=32 height=32 normal=/gameflow/krapcomp/krap_right_n.pcx bright=/gameflow/krapcomp/krap_right_b.pcx sequence=80:7527 gamevar=@delta returnvalue=1
+  extern CreateAPE2DControl push h2minus 220 380 width=32 height=32 normal=/gameflow/krapcomp/krap_left_n.pcx bright=/gameflow/krapcomp/krap_left_b.pcx sequence=80:7528 gamevar=@delta returnvalue=-1
+  extern CreateAPE2DControl push h2plus 260 380 width=32 height=32 normal=/gameflow/krapcomp/krap_right_n.pcx bright=/gameflow/krapcomp/krap_right_b.pcx sequence=80:7528 gamevar=@delta returnvalue=1
+  extern CreateAPE2DControl push h3minus 310 380 width=32 height=32 normal=/gameflow/krapcomp/krap_left_n.pcx bright=/gameflow/krapcomp/krap_left_b.pcx sequence=80:7529 gamevar=@delta returnvalue=-1
+  extern CreateAPE2DControl push h3plus 350 380 width=32 height=32 normal=/gameflow/krapcomp/krap_right_n.pcx bright=/gameflow/krapcomp/krap_right_b.pcx sequence=80:7529 gamevar=@delta returnvalue=1
+  extern CreateAPE2DControl push h4minus 400 380 width=32 height=32 normal=/gameflow/krapcomp/krap_left_n.pcx bright=/gameflow/krapcomp/krap_left_b.pcx sequence=80:7530 gamevar=@delta returnvalue=-1
+  extern CreateAPE2DControl push h4plus 440 380 width=32 height=32 normal=/gameflow/krapcomp/krap_right_n.pcx bright=/gameflow/krapcomp/krap_right_b.pcx sequence=80:7530 gamevar=@delta returnvalue=1
+  extern CreateAPE2DControl push h5minus 490 380 width=32 height=32 normal=/gameflow/krapcomp/krap_left_n.pcx bright=/gameflow/krapcomp/krap_left_b.pcx sequence=80:7531 gamevar=@delta returnvalue=-1
+  extern CreateAPE2DControl push h5plus 530 380 width=32 height=32 normal=/gameflow/krapcomp/krap_right_n.pcx bright=/gameflow/krapcomp/krap_right_b.pcx sequence=80:7531 gamevar=@delta returnvalue=1
+  extern CreateAPE2DControl push exitbutt5 514 420 width=62 height=25 normal=/gameflow/krapcomp/krap_exit_n.pcx bright=/gameflow/krapcomp/krap_exit_b.pcx sequence=80:7526 gamevar=@poo returnvalue=1
+  extern CreateAPE2DControl push securitybutt 448 420 width=32 height=25 normal=/gameflow/krapcomp/krap_sec_n.pcx bright=/gameflow/krapcomp/krap_sec_b.pcx sequence=80:7526 gamevar=kc_wheretogo returnvalue=55
+  if (kraptonmaze_fthing1 == 0) {
+    set kraptonmaze_fthing1 = 1
+    set kraptonmaze_fthing2 = 1
+    set kraptonmaze_fthing3 = 1
+    set kraptonmaze_fthing4 = 1
+    set kraptonmaze_fthing5 = 1
+  }
+  gosub 80:7535
+  extern playsound ui/gen/ui_gen_chng_good.wav
+  goto 0:0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity playerchar0_handle
+  set @which_holo = 1
+  while (@which_holo < 6) {
+    if (@which_holo == 1) {
+      set kraptonmaze_oldthing = kraptonmaze_fthing1
+    } else if (@which_holo == 2) {
+      set kraptonmaze_oldthing = kraptonmaze_fthing2
+    } else if (@which_holo == 3) {
+      set kraptonmaze_oldthing = kraptonmaze_fthing3
+    } else if (@which_holo == 4) {
+      set kraptonmaze_oldthing = kraptonmaze_fthing4
+    } else if (@which_holo == 5)
+      set kraptonmaze_oldthing = kraptonmaze_fthing5
+    gosub 80:7534		                        
+    set @which_holo = (@which_holo + 1)
+  }
+  extern RemoveAPE2DControl h1minus
+  extern RemoveAPE2DControl h1plus
+  extern RemoveAPE2DControl h2minus
+  extern RemoveAPE2DControl h2plus
+  extern RemoveAPE2DControl h3minus
+  extern RemoveAPE2DControl h3plus
+  extern RemoveAPE2DControl h4minus
+  extern RemoveAPE2DControl h4plus
+  extern RemoveAPE2DControl h5minus
+  extern RemoveAPE2DControl h5plus
+  extern RemoveAPE2DControl exitbutt5
+  extern RemoveAPE2DControl securitybutt
+  if (kc_wheretogo != 55) {
+    extern cam_anoxmariomode 0
+    extern cam_restore
+    extern cam_zip
+  }
+  if (kc_wheretogo == 55) {
+    extern cam_anoxmariomode 1
+    extern cam_from icamera_src
+    extern cam_to icamera_dest
+    extern cam_zip
+    goto 80:7506
+  }
+  goto 0:0
+}
+
+style "NULL"
+font "_anoxthin"
+flags passive2d, TRUE
+xpos 0
+ypos 0
+width 640
+height 480
+
+#window 80:8505
+title "%s", PlayerChar0$
+body "Empty."
+style "style_embrace"
+font "_anoxthin"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 80:8605
+title "%s", PlayerChar0$
+body "Empty."
+style "style_embrace"
+font "_anoxthin"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#switch 80:1
+set CURRENT_PLANET = 7
+set CURRENT_BANK = 80
+extern applylevelconfiguration kraptonmaze
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .4 .2 1
+set CURRENT_BANK = 80
+BattleMusicOverride$="../music/mp3/krapton/kraptoncine.mp3" 
+extern playlevelmusic mp3/krapton/kraptontheme.mp3
+extern loopambient ambi_kraptonmaze
+extern loopambient ambi_kraptonmaze2
+extern loopambient ambi_kraptonmaze3
+if (kraptonmaze_red_doors_open == 1)
+  gosub 80:301
+if (kraptonmaze_green_doors_open == 1)
+  gosub 80:302
+goto 0:0
+
+#switch 80:200
+set krapton_whichcomp = 222
+extern assign E[11] 0 0 0 0 0 0 0 0 0
+extern assign E[21] 0 0 0 5 0 0 0 0 0
+extern assign E[31] 1 5 0
+set current_roomtype = 4
+set kc_fivecomp = 1
+goto 80:7501
+
+#switch 80:300
+set krapton_whichcomp = 222
+extern assign E[11] 0 0 0 0 0 0 0 0 0
+extern assign E[21] 0 0 0 0 0 0 0 5 1
+extern assign E[31] 0 0 0
+set current_roomtype = 4
+set kc_fivecomp = 1
+goto 80:7523			                            
+
+#switch 80:301
+set @kraptonmaze_doorstate = 1
+set @count = 1
+while (@count <= 5) {
+  extern AI_GrabEntity reddoorblock hBlocker
+  extern AI_DestroyEntity hBlocker
+  set @count = (@count + 1)
+}
+extern playsound ui/gen/ui_gen_distant_event.wav
+goto 0:0
+
+#switch 80:302
+extern AI_GrabEntity greendoorblock hBlocker
+extern AI_DestroyEntity hBlocker
+extern playsound ui/gen/ui_gen_distant_event.wav
+goto 0:0
+
+#switch 80:7115
+set krapton_whichcomp = 115
+extern assign E[11] 0 0 0 0 0 0 0 5 0
+extern assign E[21] 0 0 5 0 0 0 0 0 5
+extern assign E[31] 0 5 1
+set current_roomtype = 9
+set kc_fivecomp = 0
+goto 80:7501
+
+#switch 80:7121
+set krapton_whichcomp = 121
+extern assign E[11] 0 0 0 1 0 0 5 0 0
+extern assign E[21] 5 0 0 0 0 0 0 0 0
+extern assign E[31] 0 0 0
+set current_roomtype = 2
+set kc_fivecomp = 0
+goto 80:7501
+
+#switch 80:7123
+set krapton_whichcomp = 123
+extern assign E[11] 0 0 5 0 0 1 0 0 5
+extern assign E[21] 0 0 0 0 0 0 0 0 0
+extern assign E[31] 0 0 0
+set current_roomtype = 7
+set kc_fivecomp = 0
+goto 80:7501
+
+#switch 80:7211
+set krapton_whichcomp = 211
+extern assign E[11] 0 0 0 5 0 0 0 0 0
+extern assign E[21] 1 5 0 0 0 0 0 0 0
+extern assign E[31] 0 0 0
+set current_roomtype = 5
+set kc_fivecomp = 0
+goto 80:7501
+
+#switch 80:7212
+set krapton_whichcomp = 212
+extern assign E[11] 0 5 0 0 0 0 0 0 0
+extern assign E[21] 5 1 0 0 0 0 0 0 0
+extern assign E[31] 0 0 0
+set current_roomtype = 6
+set kc_fivecomp = 0
+goto 80:7501
+
+#switch 80:7214
+set krapton_whichcomp = 214
+extern assign E[11] 0 0 0 0 0 0 0 0 5
+extern assign E[21] 0 0 0 0 0 0 0 0 1
+extern assign E[31] 0 0 5
+set current_roomtype = 8
+set kc_fivecomp = 0
+goto 80:7501
+
+#switch 80:7221
+set krapton_whichcomp = 221
+extern assign E[11] 0 0 0 0 0 0 0 0 0
+extern assign E[21] 0 0 0 1 5 0 5 0 0
+extern assign E[31] 5 0 0
+set current_roomtype = 2
+set kc_fivecomp = 0
+goto 80:7501
+
+#switch 80:7231
+set krapton_whichcomp = 231
+extern assign E[11] 0 0 0 0 0 0 0 0 0
+extern assign E[21] 0 0 0 5 0 0 1 5 0
+extern assign E[31] 0 0 0
+set current_roomtype = 2
+set kc_fivecomp = 0
+goto 80:7501
+
+#switch 80:7232
+set krapton_whichcomp = 232
+extern assign E[11] 0 0 0 0 0 0 0 5 0
+extern assign E[21] 0 0 0 0 0 0 5 1 0
+extern assign E[31] 0 0 0
+set current_roomtype = 2
+set kc_fivecomp = 0
+goto 80:7501
+
+#switch 80:7233
+set krapton_whichcomp = 233
+extern assign E[11] 0 0 0 0 0 0 0 0 5
+extern assign E[21] 0 0 0 0 0 0 0 0 1
+extern assign E[31] 0 0 5
+set current_roomtype = 8
+set kc_fivecomp = 0
+goto 80:7501
+
+#switch 80:7505
+if (kc_wheretogo == 0)
+  extern playsound ui/gen/ui_gen_done.wav
+closewindow 80:7501
+goto 0:0
+
+#switch 80:7500
+set @c = 1
+while (@c <= 39) {
+  if (E[$@c$] == 0) {
+    set F[$@c$] = E[$@c$]
+  } else
+    set F[$@c$] = (E[$@c$] + anim_counter)
+  set @c = (@c + 1)
+}
+
+#switch 80:7512
+extern playsound ui/gen/ui_gen_done.wav
+closewindow 80:7506
+goto 0:0
+
+#switch 80:7522
+set @which_holo = 1
+while (@which_holo < 6) {
+  gosub 80:7520		                         
+  set @which_holo = (@which_holo + 1)
+}
+goto 0:0
+
+#switch 80:7513
+extern playsound ui/gen/ui_gen_done.wav
+closewindow 80:7507
+goto 0:0
+
+#switch 80:7514
+set kraptonmaze_oldthing = kraptonmaze_thing1
+set kraptonmaze_thing1 = (kraptonmaze_thing1 + @delta)
+if (kraptonmaze_thing1 == 0) {
+  set kraptonmaze_thing1 = 5
+} else if (kraptonmaze_thing1 == 6)
+  set kraptonmaze_thing1 = 1
+set @which_holo = 1
+extern playsound ui/gen/ui_gen_displaychange.wav
+gosub 80:7520
+gosub 80:7519		                                
+goto 0:0
+
+#switch 80:7515
+set kraptonmaze_oldthing = kraptonmaze_thing2
+set kraptonmaze_thing2 = (kraptonmaze_thing2 + @delta)
+if (kraptonmaze_thing2 == 0) {
+  set kraptonmaze_thing2 = 5
+} else if (kraptonmaze_thing2 == 6)
+  set kraptonmaze_thing2 = 1
+set @which_holo = 2
+extern playsound ui/gen/ui_gen_displaychange.wav
+gosub 80:7520
+gosub 80:7519		                                
+goto 0:0
+
+#switch 80:7516
+set kraptonmaze_oldthing = kraptonmaze_thing3
+set kraptonmaze_thing3 = (kraptonmaze_thing3 + @delta)
+if (kraptonmaze_thing3 == 0) {
+  set kraptonmaze_thing3 = 5
+} else if (kraptonmaze_thing3 == 6)
+  set kraptonmaze_thing3 = 1
+set @which_holo = 3
+extern playsound ui/gen/ui_gen_displaychange.wav
+gosub 80:7520
+gosub 80:7519		                                
+goto 0:0
+
+#switch 80:7517
+set kraptonmaze_oldthing = kraptonmaze_thing4
+set kraptonmaze_thing4 = (kraptonmaze_thing4 + @delta)
+if (kraptonmaze_thing4 == 0) {
+  set kraptonmaze_thing4 = 5
+} else if (kraptonmaze_thing4 == 6)
+  set kraptonmaze_thing4 = 1
+set @which_holo = 4
+extern playsound ui/gen/ui_gen_displaychange.wav
+gosub 80:7520
+gosub 80:7519		                                
+goto 0:0
+
+#switch 80:7518
+set kraptonmaze_oldthing = kraptonmaze_thing5
+set kraptonmaze_thing5 = (kraptonmaze_thing5 + @delta)
+if (kraptonmaze_thing5 == 0) {
+  set kraptonmaze_thing5 = 5
+} else if (kraptonmaze_thing5 == 6)
+  set kraptonmaze_thing5 = 1
+set @which_holo = 5
+extern playsound ui/gen/ui_gen_displaychange.wav
+gosub 80:7520
+gosub 80:7519		                                
+goto 0:0
+
+#switch 80:7519
+if (kraptonmaze_thing1 != 4)
+  goto 0:0
+if (kraptonmaze_thing2 != 2)
+  goto 0:0
+if (kraptonmaze_thing3 != 3)
+  goto 0:0
+if (kraptonmaze_thing4 != 5)
+  goto 0:0
+if (kraptonmaze_thing5 != 1)
+  goto 0:0
+if (kraptonmaze_red_doors_open == 0) {
+  set @play_once = 1
+  set kraptonmaze_red_doors_open = 1
+  closewindow 80:7507
+  goto 0:0
+}
+closewindow 80:7507
+gosub 80:700
+goto 0:0
+
+#switch 80:7520
+gosub 80:7521			                          
+if (@which_holo == 1) {
+  if (kraptonmaze_thing1 == 1)
+    extern loopambient kraptonmaze/kraptonmaze_set1to1
+  if (kraptonmaze_thing1 == 2)
+    extern loopambient kraptonmaze/kraptonmaze_set1to2
+  if (kraptonmaze_thing1 == 3)
+    extern loopambient kraptonmaze/kraptonmaze_set1to3
+  if (kraptonmaze_thing1 == 4)
+    extern loopambient kraptonmaze/kraptonmaze_set1to4
+  if (kraptonmaze_thing1 == 5)
+    extern loopambient kraptonmaze/kraptonmaze_set1to5
+} else if (@which_holo == 2) {
+  if (kraptonmaze_thing2 == 1)
+    extern loopambient kraptonmaze/kraptonmaze_set2to1
+  if (kraptonmaze_thing2 == 2)
+    extern loopambient kraptonmaze/kraptonmaze_set2to2
+  if (kraptonmaze_thing2 == 3)
+    extern loopambient kraptonmaze/kraptonmaze_set2to3
+  if (kraptonmaze_thing2 == 4)
+    extern loopambient kraptonmaze/kraptonmaze_set2to4
+  if (kraptonmaze_thing2 == 5)
+    extern loopambient kraptonmaze/kraptonmaze_set2to5
+} else if (@which_holo == 3) {
+  if (kraptonmaze_thing3 == 1)
+    extern loopambient kraptonmaze/kraptonmaze_set3to1
+  if (kraptonmaze_thing3 == 2)
+    extern loopambient kraptonmaze/kraptonmaze_set3to2
+  if (kraptonmaze_thing3 == 3)
+    extern loopambient kraptonmaze/kraptonmaze_set3to3
+  if (kraptonmaze_thing3 == 4)
+    extern loopambient kraptonmaze/kraptonmaze_set3to4
+  if (kraptonmaze_thing3 == 5)
+    extern loopambient kraptonmaze/kraptonmaze_set3to5
+} else if (@which_holo == 4) {
+  if (kraptonmaze_thing4 == 1)
+    extern loopambient kraptonmaze/kraptonmaze_set4to1
+  if (kraptonmaze_thing4 == 2)
+    extern loopambient kraptonmaze/kraptonmaze_set4to2
+  if (kraptonmaze_thing4 == 3)
+    extern loopambient kraptonmaze/kraptonmaze_set4to3
+  if (kraptonmaze_thing4 == 4)
+    extern loopambient kraptonmaze/kraptonmaze_set4to4
+  if (kraptonmaze_thing4 == 5)
+    extern loopambient kraptonmaze/kraptonmaze_set4to5
+} else if (@which_holo == 5) {
+  if (kraptonmaze_thing5 == 1)
+    extern loopambient kraptonmaze/kraptonmaze_set5to1
+  if (kraptonmaze_thing5 == 2)
+    extern loopambient kraptonmaze/kraptonmaze_set5to2
+  if (kraptonmaze_thing5 == 3)
+    extern loopambient kraptonmaze/kraptonmaze_set5to3
+  if (kraptonmaze_thing5 == 4)
+    extern loopambient kraptonmaze/kraptonmaze_set5to4
+  if (kraptonmaze_thing5 == 5)
+    extern loopambient kraptonmaze/kraptonmaze_set5to5
+}
+goto 0:0
+
+#switch 80:7521
+if (@which_holo == 1) {
+  if (kraptonmaze_oldthing == 1)
+    extern stopambient kraptonmaze/kraptonmaze_set1to1
+  if (kraptonmaze_oldthing == 2)
+    extern stopambient kraptonmaze/kraptonmaze_set1to2
+  if (kraptonmaze_oldthing == 3)
+    extern stopambient kraptonmaze/kraptonmaze_set1to3
+  if (kraptonmaze_oldthing == 4)
+    extern stopambient kraptonmaze/kraptonmaze_set1to4
+  if (kraptonmaze_oldthing == 5)
+    extern stopambient kraptonmaze/kraptonmaze_set1to5
+} else if (@which_holo == 2) {
+  if (kraptonmaze_oldthing == 1)
+    extern stopambient kraptonmaze/kraptonmaze_set2to1
+  if (kraptonmaze_oldthing == 2)
+    extern stopambient kraptonmaze/kraptonmaze_set2to2
+  if (kraptonmaze_oldthing == 3)
+    extern stopambient kraptonmaze/kraptonmaze_set2to3
+  if (kraptonmaze_oldthing == 4)
+    extern stopambient kraptonmaze/kraptonmaze_set2to4
+  if (kraptonmaze_oldthing == 5)
+    extern stopambient kraptonmaze/kraptonmaze_set2to5
+} else if (@which_holo == 3) {
+  if (kraptonmaze_oldthing == 1)
+    extern stopambient kraptonmaze/kraptonmaze_set3to1
+  if (kraptonmaze_oldthing == 2)
+    extern stopambient kraptonmaze/kraptonmaze_set3to2
+  if (kraptonmaze_oldthing == 3)
+    extern stopambient kraptonmaze/kraptonmaze_set3to3
+  if (kraptonmaze_oldthing == 4)
+    extern stopambient kraptonmaze/kraptonmaze_set3to4
+  if (kraptonmaze_oldthing == 5)
+    extern stopambient kraptonmaze/kraptonmaze_set3to5
+} else if (@which_holo == 4) {
+  if (kraptonmaze_oldthing == 1)
+    extern stopambient kraptonmaze/kraptonmaze_set4to1
+  if (kraptonmaze_oldthing == 2)
+    extern stopambient kraptonmaze/kraptonmaze_set4to2
+  if (kraptonmaze_oldthing == 3)
+    extern stopambient kraptonmaze/kraptonmaze_set4to3
+  if (kraptonmaze_oldthing == 4)
+    extern stopambient kraptonmaze/kraptonmaze_set4to4
+  if (kraptonmaze_oldthing == 5)
+    extern stopambient kraptonmaze/kraptonmaze_set4to5
+} else if (@which_holo == 5) {
+  if (kraptonmaze_oldthing == 1)
+    extern stopambient kraptonmaze/kraptonmaze_set5to1
+  if (kraptonmaze_oldthing == 2)
+    extern stopambient kraptonmaze/kraptonmaze_set5to2
+  if (kraptonmaze_oldthing == 3)
+    extern stopambient kraptonmaze/kraptonmaze_set5to3
+  if (kraptonmaze_oldthing == 4)
+    extern stopambient kraptonmaze/kraptonmaze_set5to4
+  if (kraptonmaze_oldthing == 5)
+    extern stopambient kraptonmaze/kraptonmaze_set5to5
+}
+goto 0:0
+
+#switch 80:7535
+set @which_holo = 1
+while (@which_holo < 6) {
+  gosub 80:7533		                         
+  set @which_holo = (@which_holo + 1)
+}
+goto 0:0
+
+#switch 80:7526
+extern playsound ui/gen/ui_gen_done.wav
+closewindow 80:7523
+goto 0:0
+
+#switch 80:7527
+set kraptonmaze_oldthing = kraptonmaze_fthing1
+set kraptonmaze_fthing1 = (kraptonmaze_fthing1 + @delta)
+if (kraptonmaze_fthing1 == 0) {
+  set kraptonmaze_fthing1 = 5
+} else if (kraptonmaze_fthing1 == 6)
+  set kraptonmaze_fthing1 = 1
+set @which_holo = 1
+extern playsound ui/gen/ui_gen_displaychange.wav
+gosub 80:7533
+gosub 80:7532		                                
+goto 0:0
+
+#switch 80:7528
+set kraptonmaze_oldthing = kraptonmaze_fthing2
+set kraptonmaze_fthing2 = (kraptonmaze_fthing2 + @delta)
+if (kraptonmaze_fthing2 == 0) {
+  set kraptonmaze_fthing2 = 5
+} else if (kraptonmaze_fthing2 == 6)
+  set kraptonmaze_fthing2 = 1
+set @which_holo = 2
+extern playsound ui/gen/ui_gen_displaychange.wav
+gosub 80:7533
+gosub 80:7532		                                
+goto 0:0
+
+#switch 80:7529
+set kraptonmaze_oldthing = kraptonmaze_fthing3
+set kraptonmaze_fthing3 = (kraptonmaze_fthing3 + @delta)
+if (kraptonmaze_fthing3 == 0) {
+  set kraptonmaze_fthing3 = 5
+} else if (kraptonmaze_fthing3 == 6)
+  set kraptonmaze_fthing3 = 1
+set @which_holo = 3
+extern playsound ui/gen/ui_gen_displaychange.wav
+gosub 80:7533
+gosub 80:7532		                                
+goto 0:0
+
+#switch 80:7530
+set kraptonmaze_oldthing = kraptonmaze_fthing4
+set kraptonmaze_fthing4 = (kraptonmaze_fthing4 + @delta)
+if (kraptonmaze_fthing4 == 0) {
+  set kraptonmaze_fthing4 = 5
+} else if (kraptonmaze_fthing4 == 6)
+  set kraptonmaze_fthing4 = 1
+set @which_holo = 4
+extern playsound ui/gen/ui_gen_displaychange.wav
+gosub 80:7533
+gosub 80:7532		                                
+goto 0:0
+
+#switch 80:7531
+set kraptonmaze_oldthing = kraptonmaze_fthing5
+set kraptonmaze_fthing5 = (kraptonmaze_fthing5 + @delta)
+if (kraptonmaze_fthing5 == 0) {
+  set kraptonmaze_fthing5 = 5
+} else if (kraptonmaze_fthing5 == 6)
+  set kraptonmaze_fthing5 = 1
+set @which_holo = 5
+extern playsound ui/gen/ui_gen_displaychange.wav
+gosub 80:7533
+gosub 80:7532		                                
+goto 0:0
+
+#switch 80:7532
+if (kraptonmaze_fthing1 != 5)
+  goto 0:0
+if (kraptonmaze_fthing2 != 2)
+  goto 0:0
+if (kraptonmaze_fthing3 != 3)
+  goto 0:0
+if (kraptonmaze_fthing4 != 1)
+  goto 0:0
+if (kraptonmaze_fthing5 != 4)
+  goto 0:0
+closewindow 80:7523
+if (kraptonmaze_green_doors_open == 0) {
+  set kraptonmaze_green_doors_open = 1
+  extern playscene kraptonmaze_finaldoor_open
+  gosub 80:302		                          
+  goto 0:0
+} else
+  gosub 80:700
+goto 0:0
+
+#switch 80:7533
+gosub 80:7534			                          
+if (@which_holo == 1) {
+  if (kraptonmaze_fthing1 == 1)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_1to1
+  if (kraptonmaze_fthing1 == 2)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_1to2
+  if (kraptonmaze_fthing1 == 3)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_1to3
+  if (kraptonmaze_fthing1 == 4)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_1to4
+  if (kraptonmaze_fthing1 == 5)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_1to5
+} else if (@which_holo == 2) {
+  if (kraptonmaze_fthing2 == 1)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_2to1
+  if (kraptonmaze_fthing2 == 2)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_2to2
+  if (kraptonmaze_fthing2 == 3)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_2to3
+  if (kraptonmaze_fthing2 == 4)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_2to4
+  if (kraptonmaze_fthing2 == 5)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_2to5
+} else if (@which_holo == 3) {
+  if (kraptonmaze_fthing3 == 1)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_3to1
+  if (kraptonmaze_fthing3 == 2)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_3to2
+  if (kraptonmaze_fthing3 == 3)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_3to3
+  if (kraptonmaze_fthing3 == 4)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_3to4
+  if (kraptonmaze_fthing3 == 5)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_3to5
+} else if (@which_holo == 4) {
+  if (kraptonmaze_fthing4 == 1)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_4to1
+  if (kraptonmaze_fthing4 == 2)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_4to2
+  if (kraptonmaze_fthing4 == 3)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_4to3
+  if (kraptonmaze_fthing4 == 4)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_4to4
+  if (kraptonmaze_fthing4 == 5)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_4to5
+} else if (@which_holo == 5) {
+  if (kraptonmaze_fthing5 == 1)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_5to1
+  if (kraptonmaze_fthing5 == 2)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_5to2
+  if (kraptonmaze_fthing5 == 3)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_5to3
+  if (kraptonmaze_fthing5 == 4)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_5to4
+  if (kraptonmaze_fthing5 == 5)
+    extern loopambient kraptonmaze/kraptonmaze_monsters_5to5
+}
+goto 0:0
+
+#switch 80:7534
+if (@which_holo == 1) {
+  if (kraptonmaze_oldthing == 1)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_1to1
+  if (kraptonmaze_oldthing == 2)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_1to2
+  if (kraptonmaze_oldthing == 3)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_1to3
+  if (kraptonmaze_oldthing == 4)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_1to4
+  if (kraptonmaze_oldthing == 5)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_1to5
+} else if (@which_holo == 2) {
+  if (kraptonmaze_oldthing == 1)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_2to1
+  if (kraptonmaze_oldthing == 2)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_2to2
+  if (kraptonmaze_oldthing == 3)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_2to3
+  if (kraptonmaze_oldthing == 4)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_2to4
+  if (kraptonmaze_oldthing == 5)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_2to5
+} else if (@which_holo == 3) {
+  if (kraptonmaze_oldthing == 1)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_3to1
+  if (kraptonmaze_oldthing == 2)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_3to2
+  if (kraptonmaze_oldthing == 3)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_3to3
+  if (kraptonmaze_oldthing == 4)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_3to4
+  if (kraptonmaze_oldthing == 5)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_3to5
+} else if (@which_holo == 4) {
+  if (kraptonmaze_oldthing == 1)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_4to1
+  if (kraptonmaze_oldthing == 2)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_4to2
+  if (kraptonmaze_oldthing == 3)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_4to3
+  if (kraptonmaze_oldthing == 4)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_4to4
+  if (kraptonmaze_oldthing == 5)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_4to5
+} else if (@which_holo == 5) {
+  if (kraptonmaze_oldthing == 1)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_5to1
+  if (kraptonmaze_oldthing == 2)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_5to2
+  if (kraptonmaze_oldthing == 3)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_5to3
+  if (kraptonmaze_oldthing == 4)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_5to4
+  if (kraptonmaze_oldthing == 5)
+    extern stopambient kraptonmaze/kraptonmaze_monsters_5to5
+}
+goto 0:0
+
+#switch 80:8000
+console "battlestart 0"
+echo "battle 0 triggered"
+
+#switch 80:8010
+if (kmz_area_1 != 1)
+  goto 0:0
+console "battlestart 1"
+echo "battle 1 triggered"
+
+#switch 80:8020
+if (kmz_area_1 != 2)
+  goto 0:0
+console "battlestart 2"
+echo "battle 2 triggered"
+
+#switch 80:8030
+if (kmz_area_1 != 3)
+  goto 0:0
+console "battlestart 3"
+echo "battle 3 triggered"
+
+#switch 80:8040
+set kmz_area_1 = 2
+console "battlestart 4"
+echo "battle 4 triggered"
+
+#switch 80:8050
+set kmz_area_1 = 3
+console "battlestart 5"
+echo "battle 5 triggered"
+
+#switch 80:8060
+set kmz_area_1 = 1
+console "battlestart 6"
+echo "battle 6 triggered"
+
+#switch 80:8070
+if (kmz_area_2 != 1)
+  goto 0:0
+console "battlestart 7"
+echo "battle 7 triggered"
+
+#switch 80:8080
+set kmz_area_2 = 1
+console "battlestart 8"
+echo "battle 8 triggered"
+
+#switch 80:8090
+if (kmz_area_3 != 1)
+  goto 0:0
+console "battlestart 9"
+echo "battle 9 triggered"
+
+#switch 80:8100
+set kmz_area_3 = 1
+console "battlestart 10"
+echo "battle 10 triggered"
+
+#switch 80:8110
+if (kmz_area_4 != 1)
+  goto 0:0
+console "battlestart 11"
+echo "battle 11 triggered"
+
+#switch 80:8120
+if (kmz_area_4 != 2)
+  goto 0:0
+console "battlestart 12"
+echo "battle 12 triggered"
+
+#switch 80:8130
+set kmz_area_4 = 2
+console "battlestart 13"
+echo "battle 13 triggered"
+
+#switch 80:8140
+set kmz_area_4 = 1
+console "battlestart 14"
+echo "battle 14 triggered"
+
+#switch 80:8150
+if (kmz_area_5 != 1)
+  goto 0:0
+console "battlestart 15"
+echo "battle 15 triggered"
+
+#switch 80:8160
+set kmz_area_5 = 1
+console "battlestart 16"
+echo "battle 16 triggered"
+
+#switch 80:8170
+if (kmz_area_6 != 1)
+  goto 0:0
+console "battlestart 17"
+echo "battle 17 triggered"
+
+#switch 80:8180
+set kmz_area_6 = 1
+console "battlestart 18"
+echo "battle 18 triggered"
+
+#switch 80:8190
+if (kmz_area_7 != 1)
+  goto 0:0
+console "battlestart 19"
+echo "battle 19 triggered"
+
+#switch 80:8200
+set kmz_area_7 = 1
+console "battlestart 20"
+echo "battle 20 triggered"
+
+#switch 80:8210
+if (kmz_area_8 != 1)
+  goto 0:0
+console "battlestart 21"
+echo "battle 21 triggered"
+
+#switch 80:8220
+set kmz_area_8 = 1
+console "battlestart 22"
+echo "battle 22 triggered"
+
+#switch 80:8230
+if (kmz_area_9 != 1)
+  goto 0:0
+console "battlestart 23"
+echo "battle 23 triggered"
+
+#switch 80:8240
+if (kmz_area_9 != 2)
+  goto 0:0
+console "battlestart 24"
+echo "battle 24 triggered"
+
+#switch 80:8250
+set kmz_area_9 = 1
+console "battlestart 25"
+echo "battle 25 triggered"
+
+#switch 80:8260
+set kmz_area_9 = 2
+console "battlestart 26"
+echo "battle 26 triggered"
+
+#switch 80:8270
+if (kmz_area_10 != 1)
+  goto 0:0
+console "battlestart 27"
+echo "battle 27 triggered"
+
+#switch 80:8280
+set kmz_area_10 = 1
+console "battlestart 28"
+echo "battle 28 triggered"
+
+#switch 80:8290
+if (kmz_area_11 != 1)
+  goto 0:0
+console "battlestart 29"
+echo "battle 29 triggered"
+
+#switch 80:8300
+if (kmz_area_11 != 2)
+  goto 0:0
+console "battlestart 30"
+echo "battle 30 triggered"
+
+#switch 80:8310
+set kmz_area_11 = 1
+console "battlestart 31"
+echo "battle 31 triggered"
+
+#switch 80:8320
+if (kmz_area_12 != 1)
+  goto 0:0
+console "battlestart 32"
+echo "battle 32 triggered"
+
+#switch 80:8330
+set kmz_area_12 = 1
+console "battlestart 33"
+echo "battle 33 triggered"
+
+#switch 80:8340
+if (kmz_area_13 != 1)
+  goto 0:0
+console "battlestart 34"
+echo "battle 34 triggered"
+
+#switch 80:8350
+set kmz_area_13 = 1
+console "battlestart 35"
+echo "battle 35 triggered"
+
+#switch 80:8360
+set kmz_area_11 = 2
+console "battlestart 36"
+echo "battle 36 triggered"
+
+#switch 80:8500
+if (kmaze_gotsuper)
+  goto 80:8505
+WS_STAND$="superstand" 
+ws_object$="schest" 
+set ws_bank = 80
+set ws_entry = 8510
+set LPdifficulty = 3
+set LPtime = 35
+gosub 4001:1
+goto 0:0
+
+#switch 80:8510
+extern AI_GrabEntity schest hChest
+extern ANIM_PlayAnim hChest amb_b 0 1 1
+set kmaze_gotsuper = 1
+extern addnew_to_inventory "Beef Bracers"
+set timed_message = 20
+got_object$="Beef Bracers" 
+gosub 1000:1
+extern AI_ReleaseEntity hChest
+goto 0:0
+
+#switch 80:8600
+if (kmaze_gotlaser)
+  goto 80:8605
+WS_STAND$="laserstand" 
+ws_object$="mchest" 
+set ws_bank = 80
+set ws_entry = 8610
+set LPdifficulty = 5
+set LPtime = 10
+gosub 4001:1
+goto 0:0
+
+#switch 80:8610
+extern AI_GrabEntity mchest hChest
+extern ANIM_PlayAnim hChest amb_b 0 1 1
+set kmaze_gotmega = 1
+extern addnew_to_inventory "LaserArray Defense Plans"
+set timed_message = 20
+got_object$="LaserArray Defense Plans" 
+gosub 1000:1
+extern AI_ReleaseEntity hChest
+goto 0:0
+
+#switch 80:9000
+WS_STAND$="demo_skill_1" 
+ws_object$="tractor_hgp" 
+set ws_bank = 80
+set ws_entry = 9001
+gosub 4005:1
+goto 0:0
+
+#switch 80:9001
+extern addnew_to_inventory "HealGrease Plus"
+set kraptonmaze_tractor_hgp = 1
+set timed_message = 20
+got_object$="HealGrease Plus" 
+gosub 1000:1
+goto 0:0
+
+#switch 80:9100
+WS_STAND$="demo_skill_2" 
+ws_object$="tractor_tmt" 
+set ws_bank = 80
+set ws_entry = 9110
+gosub 4005:1
+goto 0:0
+
+#switch 80:9110
+extern addnew_to_inventory "TimeMinder Tear"
+set timed_message = 20
+set kraptonmaze_tractor_tmt = 1
+got_object$="TimeMinder Tear" 
+gosub 1000:1
+goto 0:0
+
+#switch 80:9200
+WS_STAND$="demo_skill_3" 
+ws_object$="tractor_hgc" 
+set ws_bank = 80
+set ws_entry = 9210
+gosub 4005:1
+goto 0:0
+
+#switch 80:9210
+extern addnew_to_inventory "HealGrease Complete"
+set timed_message = 20
+set kraptonmaze_tractor_hgc = 1
+got_object$="HealGrease Complete" 
+gosub 1000:1
+goto 0:0
+
+#switch 80:9300
+WS_STAND$="demo_skill_4" 
+ws_object$="tractor_bs" 
+set ws_bank = 80
+set ws_entry = 9310
+gosub 4005:1
+goto 0:0
+
+#switch 80:9310
+extern addnew_to_inventory "BlastSack"
+set timed_message = 20
+set kraptonmaze_tractor_bs = 1
+got_object$="BlastSack" 
+gosub 1000:1
+goto 0:0
+
+#switch 80:9400
+WS_STAND$="demo_skill_5" 
+ws_object$="tractor_aa" 
+set ws_bank = 80
+set ws_entry = 9410
+gosub 4005:1
+goto 0:0
+
+#switch 80:9410
+extern addnew_to_inventory "Antiwinky Annulet"
+set timed_message = 20
+set kraptonmaze_tractor_aa = 1
+got_object$="Antiwinky Annulet" 
+gosub 1000:1
+goto 0:0

@@ -1,0 +1,457 @@
+#window 6:101
+title "Zordo"
+body "Hail, yon soldier. Welcome to Zordo's Gun Palace."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  extern is_in_inventory "Old Vistin Pistol" @alreadygotpistol
+  if (anox_talk_zordo < 2)
+    set anox_talk_zordo = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 6:0102
+
+#window 6:102
+title "Zordo"
+if (anox_talk_zordo == 2)
+  body "Are you lookin' to buy and sell?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (anox_talk_zordo == 2)
+  choice "Yes." 6:105
+if (anox_talk_zordo == 2)
+  choice "No." 0:0
+
+#window 6:113
+title "Zordo"
+body "Hey, little fellow, I have something for you! What with all the ne'er-do-wells running about, one sometime needs to aid their compatriots. Hope you can use this."
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 6:0114
+
+#window 6:115
+title "Zordo"
+body "Excellent choice, yon soldier. Mother wishes success be to yon!"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 6:0126
+
+#window 6:120
+title "Zordo"
+body "Mother sends her congrats on yon choice, yon soldier. Success be to you!"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 6:0126
+
+#window 6:125
+title "Zordo"
+body "Congrats, yon soldier. Success be to you!"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 6:0126
+
+#window 6:127
+title "Zordo"
+body "You look to be ailing, my son. Here is a HealGrease. May it speed yon recovery!"
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  extern addnew_to_inventory "HealGrease"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 6:0126
+
+#window 6:130
+title "Zordo"
+body "Come back again soon, yon soldier. Mother misses you."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 6:135
+title "Zordo"
+if (@goodone == 0)
+  body "Hey, would you like this broken MysTech? I cannot get it to function."
+if (@goodone == 1)
+  body "Hello, beautiful madam. Would you like this broken MysTech? I cannot get it to function."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  if (func_charinparty[stiletto] == 3)
+    set @goodone = 1
+  set zordos_gavehost = 1
+  if (@goodone == 0) {
+    extern addnew_to_inventory "Two-Function Host"
+  } else
+    extern addnew_to_inventory "Three-Function Host"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 6:0136
+
+#window 6:205
+title "JeJe"
+body "Don't step on my feet or I'll strangle you. Don't think I won't."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "brebulan"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 6:215
+title "JeJe"
+body "Don't step on my feet or I'll strangle you. Don't think I won't."
+cam left restore zip
+talk npc talk_a stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 6:302
+title "Herman"
+body "I'm gonna buy a really big gun."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 6:305
+title "Herman"
+body "I'm gonna buy a really big gun. Then I'm gonna kill everyone. Just you watch."
+cam left restore zip
+talk npc gest_e stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 6:310
+title "Herman"
+body "What, you don't believe me? I hope you're there. I hope you're there when I snap."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 6:315
+title "Herman"
+body "Kill ya! Ha! Not yet..."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 6:405
+title "Shasta Wappanoni"
+body "Look at that clone. Where do they get off trying to pass that duplicate off as Gordo?"
+cam left restore zip
+talk npc gest_a\g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 6:410
+title "Shasta Wappanoni"
+body "Zordo is a total fake. How could anyone mistake those gestures, that tone of voice, that POSTURE, for a real person, much less Gordo himself?!"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 6:415
+title "Shasta Wappanoni"
+body "Gordo thought he was the only one who could run his shop properly, so when his chain grew he had himself cloned. Now they're all over the galaxy, each sharing a fanatical devotion to his mother... like she's the queen bee or something."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 6:420
+title "Shasta Wappanoni"
+body "It's like, on the one hand, I think clones have rights, you know? But on the other hand, I think all clones should die."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 6:425
+title "Shasta Wappanoni"
+body "See, if I waste Zordo, they'll just replace him with another clone. I've gotta nail the real Gordo himself if I'm gonna put an end to this madness."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 6:430
+title "Shasta Wappanoni"
+body "Look at that clone. Where do they get off trying to pass that duplicate off as Gordo?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 6:501
+title "Ziricon"
+body "It turns out my brother-in-law has a fifth degree black belt in Brebulan Palo Fighting."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 6:0502
+
+#window 6:502
+title "Ziricon"
+body "Let's see how good he is at kicking down bullets."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#switch 6:1
+set CURRENT_PLANET = 1
+set CURRENT_BANK = 6
+gosub 500:1				                              
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+extern playlevelmusic mp3/bricks/bricks_normal_1_0.mp3
+goto 0:0
+
+#switch 6:105
+if (PRE_DETTA) {
+  extern is_in_inventory "PAX Flashpak" @paxflash
+  extern is_skill_acquired "FlashBlind" @flashblind
+  extern is_in_inventory "AutoTargeter" @autotarget
+  extern is_skill_acquired "Cap" @cap
+  extern is_in_inventory "Supershot" @supershot
+  extern is_skill_acquired "Aerial Trigger" @aerial
+  extern is_in_inventory "BladeSleeves Merc Suit" @bladesleeves
+  extern is_skill_acquired "BladeFan" @bladefan
+}
+extern shop_create "Zordo's Gun Palace"
+extern shop_set_active "Zordo's Gun Palace"
+if (met_detta)
+  extern shop_add_object "Vistin ThreeBeam" 100
+if (PRE_DETTA)
+  extern shop_add_object "Stargent HandCannon" 100
+if (met_detta)
+  extern shop_add_object "Vistin Spikehead" 100
+if (PRE_DETTA)
+  extern shop_add_object "Stargent HandCannon" 100
+if (PRE_KRAPTON || (PRE_LIMBUS || PRE_LIMBUS))
+  extern shop_add_object "Stargent Sleepshank" 100
+if (PRE_DETTA)
+  extern shop_add_object "Stargent Bladerangs" 100
+extern shop_add_object "Pre-owned Shieldcell" 100
+if (PRE_DETTA) {
+  if ((@paxflash == 0) && (@flashblind == 0))
+    extern shop_add_object "PAX Flashpak" 1
+  if ((@autotarget == 0) && (@cap == 0))
+    extern shop_add_object "AutoTargeter" 1
+  if ((@supershot == 0) && (@aerial == 0))
+    extern shop_add_object "Supershot" 1
+  if ((@bladesleeves == 0) && (@bladefan == 0))
+    extern shop_add_object "BladeSleeves Merc Suit" 1
+}
+extern shop_add_object "HealGrease" 100
+extern shop_add_object "HealGrease Plus" 100
+extern shop_add_object "Eluder Band" 100
+extern shop_add_object "Wristbands of Whacking" 100
+extern shop_add_object "TimeMinder Tear" 100
+extern shop_add_object "Glodent" 100
+if (MYSTECH_ACTIVE)
+  extern shop_add_object "Batt" 100
+extern shop_picture "zordo.png"
+extern shop_slogan "Fine fares at fair prices"
+extern shop_start 6:0110
+goto 0:0
+
+#switch 6:110
+if (elementor_active && (zordos_gavehost == 0))
+  goto 6:0135
+if (((func_charinparty[pal] == 3) && (mystech_active == 1)) && (got_pal_ws_3 == 0))
+  goto 6:0113
+if (anox_talk_zordo == 1)
+  goto 6:0127
+if (random < 33)
+  goto 6:0125	
+if (random < 50)
+  goto 6:0120	
+goto 6:0115			
+
+#switch 6:114
+set got_pal_ws_3 = 1
+extern addnew_to_inventory "Battlebot Conduit Upgrade"
+set timed_message = 20
+got_object$="Battlebot Conduit Upgrade" 
+gosub 1000:1
+goto 0:0
+
+#switch 6:126
+if (gotgun)
+  goto 0:0
+extern is_in_inventory "Old Vistin Pistol" gotPistol
+if (gotPistol)
+  set gotgun = 1
+set HozeYA = 1
+set blockGravpath = (1 - gotgun)
+if ((@alreadygotpistol == 0) && gotgun) {
+  set timed_message = 1002
+  gosub 1000:1
+}
+goto 0:0
+
+#switch 6:136
+if (@goodone == 0) {
+  got_object$="Two-Function Host" 
+} else
+  got_object$="Three-Function Host" 
+set timed_message = 20
+gosub 1000:1
+goto 0:0
+
+#switch 6:201
+if (INV_LINGUINATOR == 1)
+  goto 6:0215
+goto 6:0205                                 
+
+#switch 6:301
+set Herman1 = (Herman1 + 1)
+if (Herman1 > 3)
+  goto 6:0315
+if (Herman1 > 2)
+  goto 6:0310
+if (Herman1 > 1)
+  goto 6:0305
+goto 6:0302                                 
+
+#switch 6:401
+set Shasta1 = (Shasta1 + 1)
+if (Shasta1 > 5)
+  goto 6:0430
+if (Shasta1 > 4)
+  goto 6:0425
+if (Shasta1 > 3)
+  goto 6:0420
+if (Shasta1 > 2)
+  goto 6:0415
+if (Shasta1 > 1)
+  goto 6:0410
+goto 6:0405                                 
+
+#switch 6:8000
+WS_STAND$="demo_skill_1" 
+ws_object$="democratusitem" 
+set ws_bank = 6
+set ws_entry = 8001
+gosub 4005:1
+goto 0:0
+
+#switch 6:8001
+extern addnew_to_inventory "Cordicom Powerbelt Cell"
+set timed_message = 20
+set zordos_tractor = 1
+got_object$="Cordicom Powerbelt Cell" 
+gosub 1000:1
+goto 0:0

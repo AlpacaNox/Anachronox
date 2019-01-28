@@ -1,0 +1,1289 @@
+#window 50000:1
+if (gameState == 11)
+  body "   COLLECT TEN JEWELS!"
+if ((gameState == 5) && (randSaying == 1))
+  body "That's it!"
+if ((gameState == 5) && (randSaying == 2))
+  body "I'll get 'em!"
+if ((gameState == 5) && (randSaying == 3))
+  body "Have at you!"
+if ((gameState == 5) && (randSaying == 4))
+  body "Jewels ahoy!"
+if ((gameState == 5) && (randSaying == 5))
+  body "Jewels and Jim!"
+if ((gameState == 5) && (randSaying == 6))
+  body "Watch it, Pooper!"
+if ((gameState == 5) && (randSaying == 7))
+  body "Biters scare me not!"
+if ((gameState == 5) && (randSaying == 8))
+  body "Fortune and Glory!"
+if ((gameState == 5) && (randSaying == 9))
+  body "I love the night life!"
+if ((gameState == 5) && (randSaying == 10))
+  body "T.C.B. or T.Y.A.!"
+if ((gameState == 5) && (randSaying == 11))
+  body "La la la!"
+if ((gameState == 5) && (randSaying == 12))
+  body "Again changes to Hell!"
+if ((gameState == 5) && (randSaying == 13))
+  body "Wokka wokka!"
+if ((gameState == 5) && (randSaying == 14))
+  body "It's-a me, the blue guy!"
+if ((gameState == 5) && (randSaying == 15))
+  body "What?  More jewels?"
+if ((gameState == 5) && (randSaying == 16))
+  body "I'm on the case!"
+if ((gameState == 5) && (randSaying == 17))
+  body "Woo hoo!"
+if ((gameState == 5) && (randSaying == 18))
+  body "Oofta!"
+if ((gameState == 5) && (randSaying == 19))
+  body "Whatcha got?"
+if ((gameState == 5) && (randSaying == 20))
+  body "Spleen!"
+startswitch {
+  set currentLevel = 1
+  set mazeType = 0
+  set currentJewelCount = 0
+  set keyMeaning = 0
+  set playerQuit = 0
+  set creditsCounter = 1
+  set poofCounter = 0
+  set pooper_intransition = 30
+  set guyState = 1
+  set gameState = 1
+  set lastMS = func_GameTime
+  set currentMS = lastMS
+  extern AI_GrabEntity PlayerChar0 PlayerChar0_handle
+  set anox_interface_active = 1
+  extern pauselevelmusic
+  extern loopsound games/pooper/games_pooper_song_fast2.mp3
+  console "pushbind"
+  console "bind KP_UPARROW \"invoke 50000:801\""
+  console "bind KP_RIGHTARROW \"invoke 50000:802\""
+  console "bind KP_DOWNARROW \"invoke 50000:803\""
+  console "bind KP_LEFTARROW \"invoke 50000:804\""
+  console "bind KP_MINUS \"invoke 50000:805\""
+  console "bind ESCAPE \"invoke 50000:805\""
+  console "bind KP_ENTER \"invoke 50000:806\""
+  console "bind PAUSE \"pause\""
+  gosub 50000:206			                               
+  gosub 50000:40                                             
+  gosub 50000:9727		                               
+  extern set2dcursor invisiblecursor.pcx
+  goto 0:0
+}
+
+thinkswitch {
+  set currentMS = func_GameTime
+  set delta = (currentMS - lastMS)
+  if (delta < 50)
+    goto 0:0
+  set lastMS = currentMS
+  gosub 50000:21
+  if (playerQuit != 0) {
+    gosub 50000:807
+    if (playerQuit)
+      closewindow 50000:1
+  }
+  gosub 50000:23
+  goto 0:0
+}
+
+finishswitch {
+  extern stopsound games/pooper/games_pooper_song_fast2.mp3
+  extern resumelevelmusic
+  unset locValue
+  unset tempX
+  unset tempY
+  unset toggleX
+  unset toggleY
+  unset mazeDone
+  unset errorNumber
+  unset currentLevel
+  unset currentJewelCount
+  unset recurse
+  unset guyX
+  unset guyY
+  unset mazeLocationX
+  unset mazeLocationY
+  goto 50000:9950
+}
+
+style "style_apearcade"
+font "arcfix"
+flags passive2d, TRUE
+xpos 184
+ypos 88
+width 240
+height 272
+background "pooper/maze$mazeType$.PCX" 
+image "pooper/SCOREBAR.PCX" 0, 240
+image "pooper/num$tenThousands$.PCX" 8, 256
+image "pooper/num$thousands$.PCX" 16, 256
+image "pooper/num$hundreds$.PCX" 24, 256
+image "pooper/num$tens$.PCX" 32, 256
+image "pooper/num$ones$.PCX" 40, 256
+image "pooper/num$hiTenThousands$.PCX" 192, 256
+image "pooper/num$hiThousands$.PCX" 200, 256
+image "pooper/num$hiHundreds$.PCX" 208, 256
+image "pooper/num$hiTens$.PCX" 216, 256
+image "pooper/num$hiOnes$.PCX" 224, 256
+if ((gameState > 2) && (currentJewelCount < 10))
+  image "pooper/num$currentJewelCount$.pcx" 144, 256
+if ((gameState > 2) && (currentJewelCount == 10))
+  image "pooper/num1.pcx" 136, 256
+if ((gameState > 2) && (currentJewelCount == 10))
+  image "pooper/num0.pcx" 144, 256
+if ((gameState > 2) && (currentLevel < 10))
+  image "pooper/num$currentLevel$.pcx" 96, 256
+if ((gameState > 2) && (currentLevel > 9))
+  image "pooper/num$levelTens$.pcx" 88, 256
+if ((gameState > 2) && (currentLevel > 9))
+  image "pooper/num$levelOnes$.pcx" 96, 256
+if (gameState == 1)
+  background "pooper/title1.pcx" 
+if ((gameState == 1) || (gameState == 2))
+  image "pooper/title2.pcx" 0, 240
+if (gameState == 2)
+  background "pooper/credback.pcx" 
+if (gameState == 2)
+  image "pooper/credit_org.pcx" 80, 20
+if (gameState == 4)
+  background "pooper/levelscr.pcx" 
+if (gameState == 4)
+  image "pooper/level.pcx" 20, 150
+if ((gameState == 4) && (currentLevel < 10))
+  image "pooper/num$currentLevel$.pcx" 68, 150
+if ((gameState == 4) && (currentLevel > 9))
+  image "pooper/num$levelTens$.pcx" 68, 150
+if ((gameState == 4) && (currentLevel > 9))
+  image "pooper/num$levelOnes$.pcx" 76, 150
+if ((jewelState != -1.000000) && (poofCounter == 0))
+  image "pooper/jewel$jewelCounter$.PCX" jewelX, jewelY
+if (mine1State != -1.000000)
+  image "pooper/mine$mine1Counter$.PCX" mine1X, mine1Y
+if ((guyState == 9) || (guyState == 6))
+  image "pooper/GUYWIN.PCX" guyX, guyY
+if ((guyState == 7) && (whoKilledMe != 5))
+  image "pooper/GUYDIE.PCX" guyX, guyY
+if ((guyState == 7) && (whoKilledMe == 5))
+  image "pooper/explode$guycounter$.PCX" guyX, guyY
+if (((guyState == 1) && (gameState > 10)) && (blinkCounter > 0))
+  image "pooper/GUY0.PCX" guyX, guyY
+if (((guyState == 1) && (gameState > 10)) && (blinkCounter == 0))
+  image "pooper/GUY2.PCX" guyX, guyY
+if (guyState == 12)
+  image "pooper/GUY0.PCX" guyX, guyY
+if ((guyState == 2) || (guyState == 3))
+  image "pooper/GUY$guyCounter$.PCX" guyX, guyY
+if ((guyState == 4) || (guyState == 5))
+  image "pooper/GUY$guyCounter$.PCX" guyX, guyY
+if (pooperState != -1.000000)
+  image "pooper/pooper$pooperCounter$.PCX" pooperX, pooperY
+if (biter1State != -1.000000)
+  image "pooper/biter1$biter1Counter$.PCX" biter1X, biter1Y
+if (biter2State != -1.000000)
+  image "pooper/biter2$biter1Counter$.PCX" biter2X, biter2Y
+if (biter3State != -1.000000)
+  image "pooper/biter3$biter3Counter$.PCX" biter3X, biter3Y
+if (f[1] != -1.000000)
+  image "pooper/bghost$biter1Counter$.PCX" g[1], h[1]
+if (f[2] != -1.000000)
+  image "pooper/bghost$biter2Counter$.PCX" g[2], h[2]
+if (f[3] != -1.000000)
+  image "pooper/bghost$biter3Counter$.PCX" g[3], h[3]
+if (poofCounter && (pooperState != -1.000000))
+  image "pooper/poof$poofCounter$.pcx" poofX, poofY
+if (gameState == 6)
+  image "pooper/GAMEOVER.PCX" 72, 112
+if (gameState == 16)
+  image "pooper/GAMEWON.PCX" 76, 112
+if (gameState == 3)
+  image "pooper/DEMO.PCX" 96, 112
+if (gameState == 5)
+  background "pooper/levtrans.PCX" 
+
+#window 50000:51
+title "ERROR!"
+if (errorNumber == 1)
+  body "Got an Event ($eventNum$)! I don't understand!"
+
+#switch 50000:40
+gosub 50000:7100
+gosub 50000:9727			                             
+gosub 50000:7102
+gosub 50000:7101
+gosub 50000:7103
+set biter1State = 1
+gosub 50000:12
+if (levelType > 0) {
+  set biter2State = 1
+  gosub 50000:13
+}
+if (levelType > 1) {
+  set biter3State = 1
+  gosub 50000:14
+}
+if (currentLevel > 6) {
+  set mine1State = 1
+  gosub 50000:15
+}
+goto 0:0
+
+#switch 50000:7100
+set levelZeroRelative = (currentLevel - 1)
+set mazeType = func_div[$levelZeroRelative$,3]
+set levelType = func_mod[$levelZeroRelative$,3]
+set levelOnes = func_mod[$currentLevel$,10]
+set levelTens = func_div[$currentLevel$,10]
+set gc = 1
+while (gc < 4) {
+  set f[$gc$] = -1.000000
+  set gc = (gc + 1)
+}
+set whoKilledMe = 0
+set ghostWait = 40
+goto 0:0
+
+#switch 50000:7102
+gosub 50000:205
+set guyX = mazeLocationX
+set guyY = mazeLocationY
+if ((guyX == 112) && (guyY == 112))
+  set guyY = 96
+set guyCounter = func_mod[$RANDOM$,4]
+set blinkCounterGoal = (10 + func_mod[$RANDOM$,$40$])
+if ((gameState == 3) || (gameState == 1)) {
+  set guyState = -1.000000
+} else
+  set guyState = 1
+goto 0:0
+
+#switch 50000:7101
+set collided = 1
+while (collided) {
+  gosub 50000:205
+  set pooperX = mazeLocationX
+  set pooperY = mazeLocationY
+  set box1X = pooperX
+  set box1Y = pooperY
+  set box2X = guyX
+  set box2Y = guyY
+  gosub 50000:204	                               
+}
+set pooperCounter = func_mod[$RANDOM$,4]
+set pooperState = 1
+goto 0:0
+
+#switch 50000:7103
+set poofCounter = 0
+set jewelTimer = 0
+set jewelState = 1
+set jewelX = pooperX
+set jewelY = pooperY
+set currentJewelCount = 0
+set isPoofLevel = 0
+if (((currentLevel > 3) && (currentLevel < 7)) || (currentLevel > 9)) {
+  set isPoofLevel = 1
+  set jewelTimer = 100
+}
+goto 0:0
+
+#switch 50000:12
+set collided = 1
+while (collided) {
+  gosub 50000:205
+  set biter1X = mazeLocationX
+  set biter1Y = mazeLocationY
+  set collided = 0
+  if (biter1X > guyX) {
+    if ((biter1X - guyX) < 32)
+      set collided = 1
+  } else if ((guyX - biter1X) < 32)
+    set collided = 1
+  if (biter1Y > guyY) {
+    if ((biter1Y - guyY) < 32)
+      set collided = 1
+  } else if ((guyY - biter2Y) < 32)
+    set collided = 1
+}
+set biter1Counter = func_mod[$RANDOM$,4]
+goto 0:0
+
+#switch 50000:13
+set collided = 1
+while (collided) {
+  gosub 50000:205
+  set biter2X = mazeLocationX
+  set biter2Y = mazeLocationY
+  set collided = 0
+  if (biter2X > guyX) {
+    if ((biter2X - guyX) < 32)
+      set collided = 1
+  } else if ((guyX - biter2X) < 32)
+    set collided = 1
+  if (biter2Y > guyY) {
+    if ((biter2Y - guyY) < 32)
+      set collided = 1
+  } else if ((guyY - biter2Y) < 32)
+    set collided = 1
+}
+set biter1Counter = func_mod[$RANDOM$,4]
+goto 0:0
+
+#switch 50000:14
+set collided = 1
+while (collided) {
+  gosub 50000:205
+  set biter3X = mazeLocationX
+  set biter3Y = mazeLocationY
+  set collided = 0
+  if (biter3X > guyX) {
+    if ((biter3X - guyX) < 32)
+      set collided = 1
+  } else if ((guyX - biter3X) < 32)
+    set collided = 1
+  if (biter3Y > guyY) {
+    if ((biter3Y - guyY) < 32)
+      set collided = 1
+  } else if ((guyY - biter3Y) < 32)
+    set collided = 1
+}
+set biter3Counter = func_mod[$RANDOM$,4]
+goto 0:0
+
+#switch 50000:15
+set mine1X = (7 * 16)
+set mine1Y = (7 * 16)
+set mine1State = 3
+set mine1Counter = func_mod[$RANDOM$,4]
+goto 0:0
+
+#switch 50000:204
+set box1Left = box1X
+set box1Right = (box1X + 15)
+set box1Top = box1Y
+set box1Bottom = (box1Y + 15)
+set box2Left = box2X
+set box2Right = (box2X + 15)
+set box2Top = box2Y
+set box2Bottom = (box2Y + 15)
+set collided = 0
+if (box1Top > box2Bottom)
+  goto 0:0
+if (box2Top > box1Bottom)
+  goto 0:0
+if (box1Left > box2Right)
+  goto 0:0
+if (box2Left > box1Right)
+  goto 0:0
+set collided = 1
+goto 0:0
+
+#switch 50000:205
+set i = func_mod[$RANDOM$,7]
+set mazeLocationX = (((i * 2) + 1) * 16)
+set i = func_mod[$RANDOM$,7]
+set mazeLocationY = (((i * 2) + 1) * 16)
+goto 0:0
+
+#switch 50000:206
+extern assign m[0] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+extern assign m[15] 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+extern assign m[30] 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1
+extern assign m[45] 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+extern assign m[60] 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1
+extern assign m[75] 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+extern assign m[90] 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1
+extern assign m[105] 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+extern assign m[120] 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1
+extern assign m[135] 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+extern assign m[150] 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1
+extern assign m[165] 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+extern assign m[180] 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1
+extern assign m[195] 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+extern assign m[210] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+goto 0:0
+
+#switch 50000:21
+if (keyMeaning == 0)
+  goto 0:0
+if (keyMeaning == 5) {
+  set playerQuit = 1
+  goto 0:0
+} else if (gameState == 12)
+  if (keyMeaning == 1) {
+    gosub 50000:5122
+  } else if (keyMeaning == 2) {
+    gosub 50000:5123
+  } else if (keyMeaning == 3) {
+    gosub 50000:5124
+  } else if (keyMeaning == 4) {
+    gosub 50000:5125
+  } else if (keyMeaning != 6) {
+    set errorNumber = 1
+    goto 50000:51
+  }
+if ((keyMeaning == 6) && (((gameState == 1) || (gameState == 3)) || (gameState == 2))) {
+  set pooper_intransition = 1
+  set gameState = 7
+  extern stopsound games/pooper/games_pooper_song_fast2.mp3
+}
+set keyMeaning = 0
+goto 0:0
+
+#switch 50000:5122
+if (guyState == 1) {
+  set tryX = guyX
+  set tryY = guyY
+  gosub 50000:850
+  set guyState = tryState
+} else if (guyState == 4)
+  set guyState = 2
+goto 0:0
+
+#switch 50000:5123
+if (guyState == 1) {
+  set tryX = guyX
+  set tryY = guyY
+  gosub 50000:853
+  set guyState = tryState
+} else if (guyState == 5)
+  set guyState = 3
+goto 0:0
+
+#switch 50000:5124
+if (guyState == 1) {
+  set tryX = guyX
+  set tryY = guyY
+  gosub 50000:851
+  set guyState = tryState
+} else if (guyState == 2)
+  set guyState = 4
+goto 0:0
+
+#switch 50000:5125
+if (guyState == 1) {
+  set tryX = guyX
+  set tryY = guyY
+  gosub 50000:852
+  set guyState = tryState
+} else if (guyState == 3)
+  set guyState = 5
+goto 0:0
+
+#switch 50000:850
+set tryX = func_div[$tryX$,16]
+set tryY = (func_div[$tryY$,16] - 1)
+set mazeloc = (tryX + (tryY * 15))
+set junkie = m[$mazeloc$]
+echo "UMazeloc=%d, tryX=%d, tryY=%d, m[mazeloc]=%d", mazeloc, tryX, tryY, junkie
+if (m[$mazeloc$] == 0) {
+  set tryState = 2
+  extern playsound "GAMES/pooper/GAMES_Pooper_guywalk.wav"
+} else
+  set tryState = 1
+goto 0:0
+
+#switch 50000:853
+set tryX = (1 + func_div[$tryX$,16])
+set tryY = func_div[$tryY$,16]
+set mazeloc = (tryX + (tryY * 15))
+set junkie = m[$mazeloc$]
+echo "UMazeloc=%d, tryX=%d, tryY=%d, m[mazeloc]=%d", mazeloc, tryX, tryY, junkie
+if (m[$mazeloc$] == 0) {
+  set tryState = 3
+  extern playsound "GAMES/pooper/GAMES_Pooper_guywalk.wav"
+} else
+  set tryState = 1
+goto 0:0
+
+#switch 50000:851
+set tryX = func_div[$tryX$,16]
+set tryY = (1 + func_div[$tryY$,16])
+set mazeloc = (tryX + (tryY * 15))
+set junkie = m[$mazeloc$]
+echo "UMazeloc=%d, tryX=%d, tryY=%d, m[mazeloc]=%d", mazeloc, tryX, tryY, junkie
+if (m[$mazeloc$] == 0) {
+  set tryState = 4
+  extern playsound "GAMES/pooper/GAMES_Pooper_guywalk.wav"
+} else
+  set tryState = 1
+goto 0:0
+
+#switch 50000:852
+set tryX = (func_div[$tryX$,16] - 1)
+set tryY = func_div[$tryY$,16]
+set mazeloc = (tryX + (tryY * 15))
+set junkie = m[$mazeloc$]
+echo "UMazeloc=%d, tryX=%d, tryY=%d, m[mazeloc]=%d", mazeloc, tryX, tryY, junkie
+if (m[$mazeloc$] == 0) {
+  set tryState = 5
+  extern playsound "GAMES/pooper/GAMES_Pooper_guywalk.wav"
+} else
+  set tryState = 1
+goto 0:0
+
+#switch 50000:807
+goto 50000:808
+
+#switch 50000:808
+set playerQuit = 1
+goto 0:0
+
+#switch 50000:809
+set playerQuit = 0
+goto 0:0
+
+#switch 50000:23
+if ((levelType == 2) && (gameState == 12)) {
+  set musicWait = (musicWait + 1)
+  if (musicWait > 33) {
+    set musicWait = 0
+    extern playsound "GAMES/Pooper/GAMES_Pooper_poopbkgd.wav"
+  }
+}
+gosub 50000:24			                                
+if ((((gameState == 3) || (gameState > 10)) || (gameState == 6)) && (gameState != 11)) {
+  gosub 50000:28					              
+  gosub 50000:29				                                
+  gosub 50000:35			                        
+  gosub 50000:38			                                     
+}
+goto 0:0
+
+#switch 50000:24
+set guyCounter = (guyCounter + 1)
+set guyCounter = func_mod[$guyCounter$,4]
+set biter1Counter = (biter1Counter + 1)
+set biter1Counter = func_mod[$biter1Counter$,4]
+set biter2Counter = (biter1Counter + 1)
+set biter2Counter = func_mod[$biter2Counter$,4]
+set biter3Counter = (biter1Counter + 1)
+set biter3Counter = func_mod[$biter3Counter$,4]
+set pooperCounter = (pooperCounter + 1)
+set pooperCounter = func_mod[$pooperCounter$,4]
+set mine1Counter = (mine1Counter + 1)
+set mine1Counter = func_mod[$mine1Counter$,4]
+set jewelCounter = (jewelCounter + 1)
+set jewelCounter = func_mod[$jewelCounter$,4]
+goto 50000:25
+
+#switch 50000:25
+if (showScore < currentScore)
+  set showScore = (showScore + 1)
+if (showHiScore < pooper_hiscore)
+  set showHiScore = (showHiScore + 1)
+if (poofCounter && isPoofLevel) {
+  set poofCounter = (poofCounter - 1)
+  set jewelTimer = 100
+}
+if (jewelTimer && isPoofLevel) {
+  set jewelTimer = (jewelTimer - 1)
+  if (jewelTimer == 0) {
+    set poofCounter = 4
+    set poofX = jewelX
+    set poofY = jewelY
+    set jewelState = -1.000000
+    extern playsound "GAMES/pooper/GAMES_Pooper_poof.wav"
+  }
+}
+if (pooper_intransition == 0)
+  goto 50000:27
+set pooper_intransition = (pooper_intransition - 1)
+if (pooper_intransition == 0)
+  goto 50000:9927		
+goto 50000:27
+
+#switch 50000:27
+if (ghostWait)
+  set ghostWait = (ghostWait - 1)
+if (guyCountdown > 0)
+  goto 50000:9827
+set creditsCounter = (creditsCounter + 1)
+if (creditsCounter > 11)
+  set creditsCounter = 1
+set blinkCounter = (blinkCounter + 1)
+if (blinkCounter > blinkCounterGoal) {
+  set blinkCounter = 0
+  set blinkCounterGoal = (10 + func_mod[$RANDOM$,$40$])
+}
+goto 0:0
+
+#switch 50000:9927
+set pooper_intransition = 50
+if (gamestate == 6) {
+  extern loopsound games/pooper/games_pooper_song_fast2.mp3
+  set gameState = 1
+  gosub 50000:9727		                           
+} else if (gameState == 1) {
+  set gameState = 2
+  set pooper_intransition = 100
+} else if (gameState == 2) {
+  set gameState = 3
+} else if (gameState == 3) {
+  set gameState = 1
+} else if (gameState == 7) {
+  set currentLevel = 1
+  set gameState = 4
+  set currentScore = 0
+  set showScore = 0
+  set ghostWait = 40
+  set showHiScore = pooper_hiscore
+} else if (gameState == 4) {
+  gosub 50000:40
+  set gameState = 11
+  set guyState = 12
+  set pooper_intransition = 40
+} else if (gameState == 11) {
+  set gamestate = 12
+  set guyState = 1
+} else if (gameState == 13) {
+  set gameState = 5
+  set currentLevel = (currentLevel + 1)
+  set randSaying = (func_mod[$RANDOM$,19] + 1)
+} else if (gameState == 5) {
+  set gameState = 4
+  extern playsound "GAMES/pooper/GAMES_Pooper_levintro.wav"
+} else if (gameState == 15) {
+  set gameState = 6
+} else if (gameState == 14) {
+  set gameState = 6
+} else if (gameState == 16)
+  set gameState = 1
+if (gameState == 3) {
+  set pooper_intransition = 500
+  set currentLevel = (func_mod[$RANDOM$,12] + 1)
+  gosub 50000:40
+}
+if (gameState == 12)
+  set pooper_intransition = 0
+if (((gameState == 3) || (gameState == 1)) || (gameState == 2))
+  set guyState = -1.000000
+if ((gameState == 4) || (gameState == 6))
+  set guyState = -1.000000
+if (((gameState == 1) || (gameState == 2)) || (gameState == 4))
+  gosub 50000:9727
+goto 0:0
+
+#switch 50000:9727
+set guyState = -1.000000
+set pooperState = -1.000000
+set biter1State = -1.000000
+set biter2State = -1.000000
+set biter3State = -1.000000
+set mine1State = -1.000000
+set jewelState = -1.000000
+set f[1] = -1.000000
+set f[2] = -1.000000
+set f[3] = -1.000000
+goto 0:0
+
+#switch 50000:9827
+set guyCountdown = (guyCountdown - 1)
+if (guyCountdown == 0)
+  if (guyState == 7) {
+    set gameState = 6
+    set guyState = 8
+  } else if (guyState == 9) {
+    set guyState = 1
+  } else if (guyState == 6)
+    set guyState = 1
+goto 0:0
+
+#switch 50000:28
+gosub 50000:9128
+gosub 50000:9228
+if (biter2State != -1.000000)
+  gosub 50000:9328
+if (biter3State != -1.000000)
+  gosub 50000:9428
+goto 0:0
+
+#switch 50000:9128
+if (pooperState == 1) {
+  if (((jewelState == -1.000000) && (pooperX != mine1X)) && (pooperY != mine1Y)) {
+    set jewelState = 1
+    set jewelX = pooperX
+    set jewelY = pooperY
+    extern playsound "GAMES/pooper/GAMES_Pooper_pooping.wav"
+    if (isPoofLevel)
+      set jewelTimer = 100
+  }
+  set goo = RANDOM
+  if ((goo > 80) && (pooperY > 31)) {
+    set pooperState = 2
+    set tryX = pooperX
+    set tryY = pooperY
+    gosub 50000:850
+    set pooperState = tryState
+  } else if ((goo > 60) && (pooperX < 193)) {
+    set pooperState = 3
+    set tryX = pooperX
+    set tryY = pooperY
+    gosub 50000:853
+    set pooperState = tryState
+  } else if ((goo > 40) && (pooperY < 193)) {
+    set pooperState = 4
+    set tryX = pooperX
+    set tryY = pooperY
+    gosub 50000:851
+    set pooperState = tryState
+  } else if ((goo > 20) && (pooperX > 31)) {
+    set pooperState = 5
+    set tryX = pooperX
+    set tryY = pooperY
+    gosub 50000:852
+    set pooperState = tryState
+  } else {
+    set checkX = func_mod[$pooperX$,16]
+    set checkY = func_mod[$pooperY$,16]
+    set pooperState = 1
+  }
+  set @pooper_sound_counter = (@pooper_sound_counter + 1)
+  if (@pooper_sound_counter == 4)
+    set @pooper_sound_counter = 1
+  if ((pooperState != 1) && (@pooper_sound_counter == 1))
+    extern playsound "GAMES/pooper/GAMES_Pooper_newdir.wav"
+}
+goto 0:0
+
+#switch 50000:9228
+if (biter1State == 1) {
+  set checkX = func_mod[$biter1X$,16]
+  set checkY = func_mod[$biter1Y$,16]
+  set goo = RANDOM
+  if ((goo > 80) && (biter1Y > 31)) {
+    set biter1State = 2
+    set tryX = biter1X
+    set tryY = biter1Y
+    gosub 50000:850
+    set biter1State = tryState
+  } else if ((goo > 60) && (biter1X < 193)) {
+    set biter1State = 3
+    set tryX = biter1X
+    set tryY = biter1Y
+    gosub 50000:853
+    set biter1State = tryState
+  } else if ((goo > 40) && (biter1Y < 193)) {
+    set biter1State = 4
+    set tryX = biter1X
+    set tryY = biter1Y
+    gosub 50000:851
+    set biter1State = tryState
+  } else if ((goo > 20) && (biter1X > 31)) {
+    set biter1State = 5
+    set tryX = biter1X
+    set tryY = biter1Y
+    gosub 50000:852
+    set biter1State = tryState
+  } else
+    set biter1State = 1
+  if (biter1State != 1)
+    extern playsound "GAMES/pooper/GAMES_Pooper_newdir.wav"
+}
+goto 0:0
+
+#switch 50000:9328
+if (biter2State == 1) {
+  set goo = RANDOM
+  if ((goo > 80) && (biter2Y > 31)) {
+    set biter2State = 2
+    set tryX = biter2X
+    set tryY = biter2Y
+    gosub 50000:850
+    set biter2State = tryState
+  } else if ((goo > 60) && (biter2X < 193)) {
+    set biter2State = 3
+    set tryX = biter2X
+    set tryY = biter2Y
+    gosub 50000:853
+    set biter2State = tryState
+  } else if ((goo > 40) && (biter2Y < 193)) {
+    set biter2State = 4
+    set tryX = biter2X
+    set tryY = biter2Y
+    gosub 50000:851
+    set biter2State = tryState
+  } else if ((goo > 20) && (biter2X > 31)) {
+    set biter2State = 5
+    set tryX = biter2X
+    set tryY = biter2Y
+    gosub 50000:852
+    set biter2State = tryState
+  } else
+    set biter2State = 1
+  if (biter2State != 1)
+    extern playsound "GAMES/pooper/GAMES_Pooper_newdir.wav"
+}
+goto 0:0
+
+#switch 50000:9428
+if (biter3State == 1) {
+  set goo = RANDOM
+  if ((goo > 80) && (biter3Y > 31)) {
+    set biter3State = 2
+    set tryX = biter3X
+    set tryY = biter3Y
+    gosub 50000:850
+    set biter3State = tryState
+  } else if ((goo > 60) && (biter3X < 193)) {
+    set biter3State = 3
+    set tryX = biter3X
+    set tryY = biter3Y
+    gosub 50000:853
+    set biter3State = tryState
+  } else if ((goo > 40) && (biter3Y < 193)) {
+    set biter3State = 4
+    set tryX = biter3X
+    set tryY = biter3Y
+    gosub 50000:851
+    set biter3State = tryState
+  } else if ((goo > 20) && (biter3X > 31)) {
+    set biter3State = 5
+    set tryX = biter3X
+    set tryY = biter3Y
+    gosub 50000:852
+    set biter3State = tryState
+  } else
+    set biter3State = 1
+  if (biter3State != 1)
+    extern playsound "GAMES/pooper/GAMES_Pooper_newdir.wav"
+}
+goto 0:0
+
+#switch 50000:5534
+set g[1] = biter1X
+set h[1] = biter1Y
+extern playsound "GAMES/Pooper/GAMES_Pooper_ghost.wav"
+if (biter1X == guyX) {
+  if (biter1Y < guyY) {
+    set f[1] = 4
+  } else
+    set f[1] = 2
+} else if (biter1Y == guyY)
+  if (biter1X < guyX) {
+    set f[1] = 3
+  } else
+    set f[1] = 5
+goto 0:0
+
+#switch 50000:5535
+set g[2] = biter2X
+set h[2] = biter2Y
+extern playsound "GAMES/Pooper/GAMES_Pooper_ghost.wav"
+if (biter2X == guyX) {
+  if (biter2Y < guyY) {
+    set f[2] = 4
+  } else
+    set f[2] = 2
+} else if (biter2Y == guyY)
+  if (biter2X < guyX) {
+    set f[2] = 3
+  } else
+    set f[2] = 5
+goto 0:0
+
+#switch 50000:5536
+set g[3] = biter3X
+set h[3] = biter3Y
+extern playsound "GAMES/Pooper/GAMES_Pooper_ghost.wav"
+if (biter3X == guyX) {
+  if (biter3Y < guyY) {
+    set f[3] = 4
+  } else
+    set f[3] = 2
+} else if (biter3Y == guyY)
+  if (biter3X < guyX) {
+    set f[3] = 3
+  } else
+    set f[3] = 5
+goto 0:0
+
+#switch 50000:29
+gosub 50000:30
+if ((guyState > 1) && (guyState < 6))
+  gosub 50000:9029
+if (biter1State != -1.000000)
+  gosub 50000:31
+if (biter2State != -1.000000)
+  gosub 50000:32
+if (biter3State != -1.000000)
+  gosub 50000:33
+if (mine1State != -1.000000)
+  gosub 50000:5542
+gosub 50000:5537
+goto 0:0
+
+#switch 50000:9029
+set thingState = guyState
+set thingX = guyX
+set thingY = guyY
+gosub 50000:34
+set guyState = thingState
+set guyX = thingX
+set guyY = thingY
+goto 0:0
+
+#switch 50000:30
+set dopoo = 0
+while (dopoo < 2) {
+  set thingState = pooperState
+  set thingX = pooperX
+  set thingY = pooperY
+  gosub 50000:34
+  set pooperState = thingState
+  set pooperX = thingX
+  set pooperY = thingY
+  set dopoo = (dopoo + 1)
+}
+goto 0:0
+
+#switch 50000:31
+set thingState = biter1State
+set thingX = biter1X
+set thingY = biter1Y
+gosub 50000:34
+set biter1State = thingState
+set biter1X = thingX
+set biter1Y = thingY
+if (ghostWait)
+  goto 0:0
+if (((biter1X == guyX) || (biter1Y == guyY)) && (f[1] == -1.000000))
+  gosub 50000:5534
+goto 0:0
+
+#switch 50000:32
+set thingState = biter2State
+set thingX = biter2X
+set thingY = biter2Y
+gosub 50000:34
+set biter2State = thingState
+set biter2X = thingX
+set biter2Y = thingY
+if (ghostWait)
+  goto 0:0
+if (((biter2X == guyX) || (biter2Y == guyY)) && (f[2] == -1.000000))
+  gosub 50000:5535
+goto 0:0
+
+#switch 50000:33
+set thingState = biter3State
+set thingX = biter3X
+set thingY = biter3Y
+gosub 50000:34
+set biter3State = thingState
+set biter3X = thingX
+set biter3Y = thingY
+if (ghostWait)
+  goto 0:0
+if (((biter3X == guyX) || (biter3Y == guyY)) && (f[3] == -1.000000))
+  gosub 50000:5536
+goto 0:0
+
+#switch 50000:5542
+if (mine1State == 3) {
+  set mine1X = (mine1X + 4)
+  if (mine1X > 204) {
+    set mine1State = 5
+    extern playsound "GAMES/Pooper/GAMES_Pooper_minebump.wav"
+  }
+} else {
+  set mine1X = (mine1X - 4)
+  if (mine1X < 20) {
+    set mine1State = 3
+    extern playsound "GAMES/Pooper/GAMES_Pooper_minebump.wav"
+  }
+}
+goto 0:0
+
+#switch 50000:5537
+set gc = 1
+while (gc < 4) {
+  if (f[$gc$] == 2)
+    gosub 50000:5538
+  if (f[$gc$] == 3)
+    gosub 50000:5539
+  if (f[$gc$] == 4)
+    gosub 50000:5540
+  if (f[$gc$] == 5)
+    gosub 50000:5541
+  set gc = (gc + 1)
+}
+goto 0:0
+
+#switch 50000:5538
+set h[$gc$] = (h[$gc$] - 2)
+if (h[$gc$] < 17)
+  set f[$gc$] = -1.000000
+goto 0:0
+
+#switch 50000:5539
+set g[$gc$] = (g[$gc$] + 2)
+if (g[$gc$] > 208)
+  set f[$gc$] = -1.000000
+goto 0:0
+
+#switch 50000:5540
+set h[$gc$] = (h[$gc$] + 2)
+if (h[$gc$] > 208)
+  set f[$gc$] = -1.000000
+goto 0:0
+
+#switch 50000:5541
+set g[$gc$] = (g[$gc$] - 2)
+if (g[$gc$] < 17)
+  set f[$gc$] = -1.000000
+goto 0:0
+
+#switch 50000:34
+if (thingState == 1)
+  goto 0:0
+if (thingState == 2) {
+  gosub 50000:9134
+} else if (thingState == 3) {
+  gosub 50000:9234
+} else if (thingState == 4) {
+  gosub 50000:9334
+} else if (thingState == 5)
+  gosub 50000:9434
+goto 0:0
+
+#switch 50000:9134
+set thingY = (thingY - 2)
+set tileMove = func_mod[$thingY$,16]
+if (tileMove == 0)
+  set thingState = 1
+goto 0:0
+
+#switch 50000:9234
+set thingX = (thingX + 2)
+set tileMove = func_mod[$thingX$,16]
+if (tileMove == 0)
+  set thingState = 1
+goto 0:0
+
+#switch 50000:9334
+set thingY = (thingY + 2)
+set tileMove = func_mod[$thingY$,16]
+if (tileMove == 0)
+  set thingState = 1
+goto 0:0
+
+#switch 50000:9434
+set thingX = (thingX - 2)
+set tileMove = func_mod[$thingX$,16]
+if (tileMove == 0)
+  set thingState = 1
+goto 0:0
+
+#switch 50000:35
+if ((guyState == -1.000000) || (guyState == 7))
+  goto 0:0
+gosub 50000:9736
+if (collided == 0)
+  gosub 50000:9740		                                    
+if (collided == 0)
+  gosub 50000:9737		                             
+if (collided == 0)
+  gosub 50000:9738
+if (collided == 0)
+  gosub 50000:9739
+if (collided == 0)
+  gosub 50000:9735
+goto 0:0
+
+#switch 50000:9736
+if (mine1State != -1.000000) {
+  set box1X = guyX
+  set box1Y = guyY
+  set box2X = mine1X
+  set box2Y = mine1Y
+  gosub 50000:204
+  if (collided) {
+    set whoKilledMe = 5
+    goto 50000:36
+  }
+}
+goto 0:0
+
+#switch 50000:9737
+set box1X = guyX
+set box1Y = guyY
+set box2X = biter1X
+set box2Y = biter1Y
+gosub 50000:204
+if (collided) {
+  set whoKilledMe = 1
+  goto 50000:36
+}
+goto 0:0
+
+#switch 50000:9738
+if (biter2State != -1.000000) {
+  set box1X = guyX
+  set box1Y = guyY
+  set box2X = biter2X
+  set box2Y = biter2Y
+  gosub 50000:204
+  if (collided) {
+    set whoKilledMe = 2
+    goto 50000:36
+  }
+}
+goto 0:0
+
+#switch 50000:9739
+if (biter3State != -1.000000) {
+  set box1X = guyX
+  set box1Y = guyY
+  set box2X = biter3X
+  set box2Y = biter3Y
+  gosub 50000:204
+  if (collided) {
+    set whoKilledMe = 3
+    goto 50000:36
+  }
+}
+goto 0:0
+
+#switch 50000:9740
+if ((guyState != 1) || (jewelState == -1.000000))
+  goto 0:0
+set box1X = guyX
+set box1Y = guyY
+set box2X = jewelX
+set box2Y = jewelY
+gosub 50000:204
+if (collided)
+  goto 50000:37
+goto 0:0
+
+#switch 50000:9735
+set gc = 1
+while (gc < 4) {
+  if ((f[$gc$] != -1.000000) && (guyState != 7)) {
+    set box1X = guyX
+    set box1Y = guyY
+    set box2X = g[$gc$]
+    set box2Y = h[$gc$]
+    gosub 50000:204
+    if (collided)
+      goto 50000:36
+  }
+  set gc = (gc + 1)
+}
+goto 0:0
+
+#switch 50000:36
+set guyState = 7
+set gameState = 14
+set guyCountdown = 20
+set pooper_intransition = 20
+if (whoKilledMe != 5) {
+  extern playsound "GAMES/pooper/GAMES_Pooper_bitten.wav"
+} else
+  extern playsound "GAMES/Pooper/GAMES_Pooper_explode.wav"
+goto 0:0
+
+#switch 50000:37
+set collided = 0
+set guyState = 6
+extern playsound "GAMES/pooper/GAMES_Pooper_getjewel.wav"
+set guyCountdown = 10
+set currentScore = (currentScore + 10)
+set jewelState = -1.000000
+set currentJewelCount = (currentJewelCount + 1)
+if (currentJewelCount == 10)
+  if (currentLevel == 12) {
+    set guyState = 10
+    set gameState = 16
+    set guyCountdown = 10
+    set pooper_intransition = 10
+    extern playsound "GAMES/pooper/GAMES_Pooper_wingame.wav"
+  } else {
+    set guyState = 9
+    set gameState = 13
+    set guyCountdown = 10
+    set pooper_intransition = 9
+    extern playsound "GAMES/pooper/games_pooper_winlevel.wav"
+  }
+goto 0:0
+
+#switch 50000:38
+set bustValue = showScore
+gosub 50000:39
+set tenThousands = digit10000
+set thousands = digit1000
+set hundreds = digit100
+set tens = digit10
+set ones = digit1
+if (currentScore > pooper_hiscore)
+  set pooper_hiscore = currentScore
+set bustValue = showHiScore
+gosub 50000:39
+set hiTenThousands = digit10000
+set hiThousands = digit1000
+set hiHundreds = digit100
+set hiTens = digit10
+set hiOnes = digit1
+goto 0:0
+
+#switch 50000:39
+set digit1 = func_mod[$bustValue$,10]
+set bustValue = func_div[$bustValue$,10]
+set digit10 = func_mod[$bustValue$,10]
+set bustValue = func_div[$bustValue$,10]
+set digit100 = func_mod[$bustValue$,10]
+set bustValue = func_div[$bustValue$,10]
+set digit1000 = func_mod[$bustValue$,10]
+set bustValue = func_div[$bustValue$,10]
+set digit10000 = func_mod[$bustValue$,10]
+set bustValue = func_div[$bustValue$,10]
+goto 0:0
+
+#switch 50000:801
+set keyMeaning = 1
+goto 0:0
+
+#switch 50000:802
+set keyMeaning = 2
+goto 0:0
+
+#switch 50000:803
+set keyMeaning = 3
+goto 0:0
+
+#switch 50000:804
+set keyMeaning = 4
+goto 0:0
+
+#switch 50000:805
+set keyMeaning = 5
+goto 0:0
+
+#switch 50000:806
+set keyMeaning = 6
+goto 0:0
+
+#switch 50000:9950
+unset pooperX
+unset pooperY
+unset currentJewel
+unset currentJewelX
+unset currentJewelY
+unset warmstart
+unset playerquit
+unset gamestate
+unset showhiscore
+unset levelones
+unset leveltens
+unset currentms
+unset lastms
+extern set2dcursor default
+extern AI_ReleaseEntity PlayerChar0_handle
+set anox_interface_active = 0
+console "popbind"
+extern APE_ARCADE_ReturnFromGame
+goto 0:0

@@ -1,0 +1,105 @@
+#switch 20000:300
+set defeated_wimpa = 1
+extern playscene battle/monster_wimpa/whitecaves-b_outro
+
+#switch 20000:400
+extern playscene battle/monster_wimpa/whitecaves-b_wimpa_intro 0 20000:401
+
+#switch 20000:401
+extern BATTLE_EndIntro
+
+#switch 20000:100
+set @bootsnode = func_atof[@boots_current_node$]
+
+#switch 20000:200
+if (@wimpa_dead == 1) {
+  set @wimpa_dead = 2
+  extern playscene battle/monster_wimpa/monster_wimpa_atak1_transform 0 20000:201 @wimpa_current_node$ PlayerChar0
+  extern BATTLE_StopTime
+}
+
+#switch 20000:201
+extern BATTLE_SpawnMonster Wimpa monster1 battle/monster_rictus/monster_null_death
+extern BATTLE_AttachNode 84 90
+extern BATTLE_AttachNode 90 84
+extern BATTLE_AttachNode 85 86
+extern BATTLE_AttachNode 86 85
+extern BATTLE_AttachNode 88 89
+extern BATTLE_AttachNode 89 88
+extern BATTLE_StartTime
+
+#switch 20000:500
+if (@wimpa_dead == 0)
+  set @wimpa_dead = 1
+
+#switch 20000:1082
+@boots_current_node$="82" 
+
+#switch 20000:1083
+@boots_current_node$="83" 
+
+#switch 20000:1084
+@boots_current_node$="84" 
+
+#switch 20000:1085
+@boots_current_node$="85" 
+
+#switch 20000:1086
+@boots_current_node$="86" 
+
+#switch 20000:1087
+@boots_current_node$="87" 
+
+#switch 20000:1088
+@boots_current_node$="88" 
+
+#switch 20000:1089
+@boots_current_node$="89" 
+
+#switch 20000:1090
+@boots_current_node$="90" 
+
+#switch 20000:1182
+@wimpa_current_node$="82" 
+
+#switch 20000:1183
+@wimpa_current_node$="83" 
+
+#switch 20000:1184
+@wimpa_current_node$="84" 
+
+#switch 20000:1185
+@wimpa_current_node$="85" 
+
+#switch 20000:1186
+@wimpa_current_node$="86" 
+
+#switch 20000:1187
+@wimpa_current_node$="87" 
+
+#switch 20000:1188
+@wimpa_current_node$="88" 
+
+#switch 20000:1189
+@wimpa_current_node$="89" 
+
+#switch 20000:1190
+@wimpa_current_node$="90" 
+
+#switch 20000:600
+if (anox_game_difficulty == 3) {
+  extern BATTLE_AffectNodeOccupant func_atof[@boots_current_node$] "hp=1200"
+} else if (anox_game_difficulty == 1) {
+  extern BATTLE_AffectNodeOccupant func_atof[@boots_current_node$] "hp=400"
+} else
+  extern BATTLE_AffectNodeOccupant func_atof[@boots_current_node$] "hp=800"
+goto 0:0
+
+#switch 20000:700
+if (anox_game_difficulty == 3) {
+  extern BATTLE_AffectNodeOccupant @bootsnode "hp=1800"
+} else if (anox_game_difficulty == 1) {
+  extern BATTLE_AffectNodeOccupant @bootsnode "hp=600"
+} else
+  extern BATTLE_AffectNodeOccupant @bootsnode "hp=1200"
+goto 0:0

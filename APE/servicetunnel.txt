@@ -1,0 +1,172 @@
+#window 97:105
+title "Dr. Jango"
+body "The exit? Relax, man. It's just up this hall."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 97:305
+title "Dowder Kanazi"
+body "There's been a weird rumor that there are emergency life pods stored down here in the event of a disaster. But it's just an urban legend... I've worked here for years and I've never seen such a thing."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 97:310
+title "Dowder Kanazi"
+body "Hey, you okay? You guys look a little freaked out."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 97:405
+title "Prof. Feelcho"
+body "Exit? You mean there's a way out of these tunnels?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 97:410
+title "Prof. Feelcho"
+body "Man, you guys look like you've seen a ghost."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 97:605
+title "Mr. Kiliwaki"
+body "The exit? It's up that hall. Wait, no. That hall. Wait...."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 97:701
+title "BotBot"
+body "That way!"
+cam left lift(40) restore zip
+startswitch {
+  extern AI_GrabEntity botbot1 botbot1_handle
+  extern AI_WaitAndFace botbot1_handle -1 botbot_eyeline
+  extern AI_GrabEntity botbot2 botbot2_handle
+  extern AI_WaitAndFace botbot2_handle -1 botbot_eyeline
+  extern AI_GrabEntity botbot3 botbot3_handle
+  extern AI_WaitAndFace botbot3_handle -1 botbot_eyeline
+}
+
+finishswitch {
+  extern AI_ReleaseEntity botbot1_handle
+  extern AI_ReleaseEntity botbot2_handle
+  extern AI_ReleaseEntity botbot3_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 97:801
+title "BotBot"
+body "That way!"
+cam left lift(40) restore zip
+startswitch {
+  extern AI_GrabEntity botbot1 botbot1_handle
+  extern AI_WaitAndFace botbot1_handle -1 botbot_eyeline
+  extern AI_GrabEntity botbot2 botbot2_handle
+  extern AI_WaitAndFace botbot2_handle -1 botbot_eyeline
+  extern AI_GrabEntity botbot3 botbot3_handle
+  extern AI_WaitAndFace botbot3_handle -1 botbot_eyeline
+}
+
+finishswitch {
+  extern AI_ReleaseEntity botbot1_handle
+  extern AI_ReleaseEntity botbot2_handle
+  extern AI_ReleaseEntity botbot3_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 97:901
+title "BotBot"
+body "That way!"
+cam left lift(40) restore zip
+startswitch {
+  extern AI_GrabEntity botbot1 botbot1_handle
+  extern AI_WaitAndFace botbot1_handle -1 botbot_eyeline
+  extern AI_GrabEntity botbot2 botbot2_handle
+  extern AI_WaitAndFace botbot2_handle -1 botbot_eyeline
+  extern AI_GrabEntity botbot3 botbot3_handle
+  extern AI_WaitAndFace botbot3_handle -1 botbot_eyeline
+}
+
+finishswitch {
+  extern AI_ReleaseEntity botbot1_handle
+  extern AI_ReleaseEntity botbot2_handle
+  extern AI_ReleaseEntity botbot3_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#switch 128:1
+extern setmasterlevel 12
+if (mystech_active) {
+  extern playlevelmusic mp3/sunder/sunderscary.mp3
+} else
+  extern playlevelmusic mp3/sunder/sunderamb.mp3
+set CURRENT_PLANET = 3
+set CURRENT_BANK = 97
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .7 .7 1
+loadape "countdownClock"
+if (timer_active)
+  goto 60:9300
+
+#switch 97:101
+set Jango1 = (Jango1 + 1)
+goto 97:0105                                 
+
+#switch 97:301
+set Dowder1 = (Dowder1 + 1)
+if (Dowder1 > 1)
+  goto 97:0310
+goto 97:0305                                 
+
+#switch 97:401
+set Feelcho1 = (Feelcho1 + 1)
+if (Feelcho1 > 1)
+  goto 97:0410
+goto 97:0405                                 
+
+#switch 97:601
+goto 97:0605                                 

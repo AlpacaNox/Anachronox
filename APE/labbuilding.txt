@@ -1,0 +1,2133 @@
+#window 60:101
+title "Dr. Norwood"
+body "The only way to lose your heretic status is to hope your political enemies who put you on the list are either out of power or dead."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0102
+
+#window 60:102
+title "Dr. Norwood"
+body "I've no such luck."
+cam left restore zip
+talk npc gest_f stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:201
+title "Professor Furi"
+body "The Scientifica Association adds insult to injury by forcing heretics to relocate here to the Rainbow Sanctuary."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0202
+
+#window 60:202
+title "Dr. Norwood"
+body "How are we supposed to get any work done this close to the starport?"
+cam left restore zip
+talk npc gest_f stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:305
+title "Ms. Cachepence"
+body "Welcome to the Rainbow Sanctuary. Is there anything I can do for you?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "We'd like to see Dr. Rho Bowman please." 60:350
+choice "Never mind." 60:345
+
+#window 60:310
+title "Ms. Cachepence"
+body "Just this way."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:315
+title "Ms. Cachepence"
+body "Just a little further."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:320
+title "Ms. Cachepence"
+body "We're almost there."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:325
+title "Ms. Cachepence"
+body "I'm afraid the beebot will have to wait here. Security reasons."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0326
+
+#window 60:326
+title "Boots"
+body "PAL, you better stay here while we see the doctor. I'd hate for you to touch something and accidentally short yourself."
+cam left from(boots) to(pal) restore zip
+talk_ex boots pal talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0327
+
+#window 60:327
+title "PAL-18"
+body "Whatever."
+cam left from(boots) to(pal) restore zip
+talk_ex pal boots talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0328
+
+#window 60:329
+title "Ms. Cachepence"
+body "Ready?"
+cam left restore zip
+startswitch {
+  set Lab_door1 = 0
+  set SEEN_DOOR_1 = 0
+  set SEEN_DOOR_2 = 1
+  set SEEN_DOOR_3 = 1
+  set SEEN_DOOR_4 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0360
+
+#window 60:330
+title "Ms. Cachepence"
+body "Security's pretty ridiculous I know."
+cam left restore zip
+startswitch {
+  target lab_door1
+  set Lab_door2 = 0
+  set SEEN_DOOR_1 = 1
+  set SEEN_DOOR_2 = 0
+  set SEEN_DOOR_3 = 1
+  set SEEN_DOOR_4 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 60:9201
+
+#window 60:335
+title "Ms. Cachepence"
+body "Still with me? Good."
+cam left restore zip
+startswitch {
+  target lab_door2
+  set Lab_door3 = 0
+  set SEEN_DOOR_1 = 1
+  set SEEN_DOOR_2 = 1
+  set SEEN_DOOR_3 = 0
+  set SEEN_DOOR_4 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:9201
+
+#window 60:340
+title "Ms. Cachepence"
+body "Almost there."
+cam left restore zip
+startswitch {
+  target lab_door4
+  set Lab_door4 = 0
+  set SEEN_DOOR_1 = 1
+  set SEEN_DOOR_2 = 1
+  set SEEN_DOOR_3 = 1
+  set SEEN_DOOR_4 = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:9201
+
+#window 60:345
+title "Ms. Cachepence"
+body "Come back any time."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:350
+title "Ms. Cachepence"
+body "Congratulations, you're her first visitors in the six months she's been here. Let me just get her on the line. Half a moment."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0351
+
+#window 60:351
+title "Ms. Cachepence"
+body "Dr. Bowman? Dr. Bowman are you there?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0352
+
+#window 60:352
+title "Ms. Cachepence"
+body "Hello? Doctor?"
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0353
+
+#window 60:353
+title "Ms. Cachepence"
+body "She must have disconnected the line. She can be difficult sometimes. Let me walk you to her office."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set Cachepence1 = 1
+  extern complete_quest "Starport Lasers Down"
+  extern add_quest "Follow Cachepence"
+  extern cam_restore
+  extern AI_TalkStop cachepence
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0354
+
+#window 60:355
+title "Ms. Cachepence"
+body "Excuse me, doctor. Can I help you with something?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:380
+title "Ms. Cachepence"
+body "Excuse me, but you can't go back there without authorization."
+cam left from(PlayerChar0) to(cachepence) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0381
+
+#window 60:381
+title "Ms. Cachepence"
+body "Is there anything I can do for you?"
+cam left from(PlayerChar0) to(cachepence) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Dr. Rho Bowman, please." 60:350
+choice "Never mind." 60:345
+
+#window 60:390
+title "Ms. Cachepence"
+body "Hope she didn't bite your head off. It's nice to see Dr. Bowman finally get some visitors."
+cam left from(PlayerChar0) to(cachepence) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (func_charinparty[boots] == 3)
+  choice "Doll, you need to get the hell outta here." 60:392
+if (func_charinparty[grumpos] == 3)
+  choice "Sweetheart, if you're smart, you'll take a lunch break." 60:392
+if (func_charinparty[pal] == 3)
+  choice "Miss, you better double-time your butt outta here." 60:392
+if (func_charinparty[boots] == 3)
+  choice "Yeah, whatever. Have a nice trip." 0:0
+if (func_charinparty[grumpos] == 3)
+  choice "This horse & pony show is OVER." 0:0
+if (func_charinparty[pal] == 3)
+  choice "I'm uh-history." 0:0
+
+#window 60:392
+title "Ms. Cachepence"
+body "Oh, don't worry about me. I get out plenty on the weekends, even on a planet like this."
+cam left from(PlayerChar0) to(cachepence) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:401
+title "SECURITY CODE (temp window)"
+body "Red, red, blue."
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+subwindow 60:450
+
+#window 60:405
+title "SECURITY CODE (temp window)"
+body "Red, yellow, red."
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+subwindow 60:450
+
+#window 60:410
+title "SECURITY CODE (temp window)"
+body "Blue, green, red."
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+subwindow 60:450
+
+#window 60:415
+title "SECURITY CODE (temp window)"
+body "Green, yellow, yellow."
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+subwindow 60:450
+
+#window 60:450
+background "simon.bmp" stretch
+
+#window 60:491
+title "Fatima"
+body "Where are you going?! Help Dr. Bowman find her pass key!"
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 @bootshandle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 playerchar0
+  extern AI_WaitAndFace @bootshandle -1 fatima
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_DestroyEntity @fatima_handle
+  goto 60:0492
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:505
+startswitch {
+  set @stupidassdelaytimer = (func_gametime + 1000)
+}
+
+thinkswitch {
+  if (func_gametime >= @stupidassdelaytimer)
+    closewindow 60:0505
+}
+
+finishswitch {
+  gosub 60:0503	
+}
+
+style "null"
+flags passive, TRUE
+
+#window 60:503
+title "Rho Bowman"
+body "Readings show that a huge anomaly hovering over the planet will reach critical mass in about eight minutes."
+startswitch {
+  extern cam_anoxmariomode 1
+  extern AI_GrabEntity 60:0501 @rho_handle
+  extern AI_GrabEntity PlayerChar0 playerchar0_handle
+  extern AI_WaitAndFace @rho_handle -1 PlayerChar0
+  extern AI_WaitAndFace playerchar0_handle -1 60:0501
+  extern ANIM_PlayAnim @rho_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0506
+
+#window 60:506
+title "Rho Bowman"
+body "We could use my private shuttle to get off the planet, but I lost the docking bay keycard weeks ago."
+cam left from(PlayerChar0) to(60:0501) restore zip
+startswitch {
+  extern ANIM_PlayAnim @rho_handle talk_a 0 1 0
+  set @FindKeycard = 1
+  extern is_quest_done "Find Rho Bowman" @boo
+  if (@boo < 2) {
+    extern is_quest_done "Find Rho Bowman" @questHONEY
+    if (@questHONEY == 1)
+      extern complete_quest "Find Rho Bowman"
+    extern is_quest_done "Find Rho Shuttlekey" @questCUNNY
+    if (@questCUNNY == 0)
+      extern add_quest "Find Rho Shuttlekey"
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0507
+
+#window 60:507
+title "Rho Bowman"
+body "Help me find it. I know it's somewhere in the lab."
+cam left from(PlayerChar0) to(60:0501) restore zip
+startswitch {
+  extern ANIM_PlayAnim @rho_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity @rho_handle
+  extern AI_ReleaseEntity playerchar0_handle
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0508
+
+#window 60:510
+title "Rho Bowman"
+body "Don't stop and talk to me! Find the passkey."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern AI_TalkStop 60:0501
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:516
+title "Rho Bowman"
+body "I know it's around here."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern AI_TalkStop 60:0501
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:521
+title "Rho Bowman"
+body "Here it is. I found it."
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 60:0501
+  extern cam_zip
+  extern cam_from -2718 3172 502
+  extern cam_to -2753 3213 468
+  extern ANIM_PlayAnim @rho_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0522
+
+#window 60:522
+title "Rho Bowman"
+body "Take it and warm up my shuttle at Gate 12. Don't use the conveyor belt outside. It's only one-way. Take the basement exit. There's a shortcut through the maintenance tunnels. "
+startswitch {
+  extern ANIM_PlayAnim @rho_handle talk_a 0 1 0
+  extern is_quest_done "Find Rho Shuttlekey" @boo
+  if (@boo < 2) {
+    extern complete_quest "Find Rho Shuttlekey"
+    extern add_quest "Get To Starport Gate"
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0535
+
+#window 60:535
+title "Rho Bowman"
+body "I'll meet you there. I've got readings to gather."
+startswitch {
+  extern ANIM_PlayAnim @rho_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0523
+
+#window 60:523
+title "Rho Bowman"
+body "But hurry. You've only got about eight minutes before this anomaly reaches critical mass, and who knows what will happen then."
+startswitch {
+  extern ANIM_PlayAnim @rho_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0524
+
+#window 60:524
+title "Rho Bowman"
+body "Don't leave without me."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @rho_handle talk_a 0 1 0
+}
+
+finishswitch {
+  set Countdown_Clear_Dialog = 1
+  extern cam_restore
+  set GOT_RHO_KEYCARD = 1
+  extern AI_GrabEntity rho_keycard @keycard_handle
+  extern AI_DestroyEntity @keycard_handle
+  if (@rho_found_keycard == 1)
+    extern AI_SeekAndFace @rho_handle *rho_path31
+  extern AI_ReleaseEntity @rho_handle
+  extern AI_ReleaseEntity bootshandle
+  extern addnew_to_inventory "Gate 12 Keycard"
+  set timed_message = 20
+  got_object$="Gate 12 Keycard" 
+  gosub 1000:1
+  goto 0:0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:9300
+
+#window 60:525
+title "Rho Bowman"
+body "Excellent."
+cam left from(PlayerChar0) to(60:0501) restore zip
+startswitch {
+  extern AI_GrabEntity 60:0501 @rho_handle
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 60:0501
+  extern AI_WaitAndFace @rho_handle -1 PlayerChar0
+  extern ANIM_PlayAnim @rho_handle talk_a 0 1 0
+  set @rho_found_keycard = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0522
+
+#window 60:526
+thinkswitch {
+  if (@FatimaStopsGuys == 0)
+    closewindow 60:0526
+}
+
+finishswitch {
+  goto 60:0521		                                        
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 40
+height 40
+
+#window 60:530
+title "Rho Bowman"
+body "What are you doing?"
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity 60:0501 @rho_handle
+  extern AI_WaitAndFace @rho_handle -1 PlayerChar0
+  extern ANIM_PlayAnim @rho_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0531
+
+#window 60:531
+title "Rho Bowman"
+body "Get to my shuttle at Gate 12 immediately."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @rho_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0532
+
+#window 60:532
+title "Rho Bowman"
+body "My calculations show that anomaly reaches critical mass in eight minutes."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @rho_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity @rho_handle
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:605
+title "Dr. Peltdown"
+body "I excavated this three million-year old Brebulan skeleton from a dry riverbed last month. Unfortunately, it's missing important pieces."
+cam left restore zip
+talk npc amb_f stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:610
+title "Dr. Peltdown"
+body "My theories concerning the evolution of the Brebulan species are controversial... refuting some of their most cherished beliefs about the origin of their people."
+cam left restore zip
+talk npc amb_f stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:0611
+
+#window 60:611
+title "Dr. Peltdown"
+body "In a political move typical of the Scientifica Association, I was downgraded to heretic status to placate the large contingent of Brebulans on Sunder."
+cam left restore zip
+talk npc amb_f stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:620
+title "Dr. Peltdown"
+body "Careful running in the halls. You almost knocked over my specimen."
+cam left restore zip
+talk npc amb_f stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:1206
+title "%s", PlayerChar0$
+body "Come on, PAL. Shake that hairspring!"
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 60:1253
+title "%s", PlayerChar0$
+body "If we ditch her now, she probably won't let us see Doctor Bowman later."
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:1305
+title "Ms. Cachepence"
+body "Are you ready to continue to Doctor Bowman's laboratory?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Yes." 60:1310
+choice "No." 60:1315
+
+#window 60:1310
+title "Ms. Cachepence"
+body "Walk this way."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern AI_GrabEntity cachepence cachepence_handle
+  extern AI_Path cachepence_handle lab_path16
+  extern AI_ReleaseEntity cachepence_handle
+  set @cachepence_waiting = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:1315
+title "Ms. Cachepence"
+body "Take your time."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:5450
+title "Ms. Cachepence"
+body "Please leave that alone."
+cam left restore zip
+talk_ex cachepence playerchar0 talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:5510
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+if (func_charinparty[pal] == 3)
+  title "PAL-18"
+if (func_charinparty[rho] == 3)
+  title "Rho"
+if (func_charinparty[democratus] == 3)
+  title "Democratus"
+if (func_charinparty[stiletto] == 3)
+  title "Stiletto"
+if (func_charinparty[paco] == 3)
+  title "Paco"
+body "We don't have a card key for this lock."
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 60:5710
+title "Dr. Xiuwen"
+body "Gemini?"
+cam left lift(40) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:5711
+
+#window 60:5711
+title "Dr. Xiuwen"
+body "Glory! I never thought my gracious and munificent benefactor would ever smuggle in a contact."
+cam left lift(40) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:5712
+
+#window 60:5712
+title "Dr. Xiuwen"
+body "Just in time. The prototype is ready and operational. All I require is final payment."
+cam left lift(40) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "It's in an unlabeled Cordican bank account. Access codes arrive via SenderNet shortly." 60:5720
+choice "You haven't received it yet? The package must be tied up in PAX customs." 60:5720
+
+#window 60:5720
+title "Dr. Xiuwen"
+body "Very well."
+cam left lift(40) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 60:5721
+
+#window 60:5721
+title "Dr. Xiuwen"
+body "Be VERY careful not to break the seal before placing it in a sterilized environment. The results might be... most unfortunate."
+cam left lift(40) restore zip
+talk npc talk_a stay
+finishswitch {
+  set GET_MITOTIC = 2
+  extern addnew_to_inventory "Xiuwen's Package"
+  set timed_message = 20
+  got_object$="Xiuwen's Package" 
+  gosub 1000:1
+  goto 0:0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:5730
+title "Dr. Xiuwen"
+body "You look ridiculous in that costume, by the way."
+cam left lift(40) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:5735
+title "Dr. Xiuwen"
+body "Welcome to the Lounge of Losers."
+cam left lift(40) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:9901
+startswitch {
+  set lastMS = func_GameTime
+  set currentMS = lastMS
+  if (currentSunderDoor == 0)
+    set currentSunderDoor = 1
+  gosub 60:9905
+  gosub 60:9906
+  extern set2dcursor sundcursor.tga
+  set doorResult = 0
+  set currentEnteredDigit = 1
+  goto 0:0
+}
+
+thinkswitch {
+  set currentMS = func_GameTime
+  set delta = (currentMS - lastMS)
+  if (delta < 50)
+    goto 0:0
+  set lastMS = currentMS
+  if (timeToQuit) {
+    set timeToQuit = (timeToQuit - 1)
+    if (timeToQuit == 0) {
+      if (doorResult == 1) {
+        extern playsound "games/sundoor/games_sundoor_granted.wav"
+      } else
+        extern playsound "games/sundoor/games_sundoor_denied.wav"
+      if ((currentSunderDoor == 1) && (doorResult == 1))
+        console "target lab_door1"
+      if ((currentSunderDoor == 2) && (doorResult == 1))
+        console "target lab_door2"
+      if ((currentSunderDoor == 3) && (doorResult == 1))
+        console "target lab_door4"
+      if ((currentSunderDoor == 4) && (doorResult == 1))
+        console "target lab_door3"
+      closewindow 60:9901
+    }
+  }
+  goto 0:0
+}
+
+finishswitch {
+  extern RemoveAPE2DControl button1
+  extern RemoveAPE2DControl button2
+  extern RemoveAPE2DControl button3
+  extern RemoveAPE2DControl button4
+  extern set2dcursor default
+  goto 0:0
+}
+
+style "null"
+font "albertus"
+flags passive2d, TRUE
+xpos 192
+ypos 112
+background "sundoor/sundoor.tga" 
+if ((showButton == 1) && buttonTimer)
+  background "sundoor/b_red.tga" 
+if ((showButton == 2) && buttonTimer)
+  image "sundoor/b_green.tga" 128, 0
+if ((showButton == 3) && buttonTimer)
+  image "sundoor/b_yellow.tga" 0, 128
+if ((showButton == 4) && buttonTimer)
+  image "sundoor/b_blue.tga" 128, 128
+
+#window 60:9201
+startswitch {
+  extern AI_TalkStop cachepence
+  set plastMS = func_GameTime
+  set pcurrentMS = plastMS
+  set doorCounter = 0
+  set watchLearnButton1 = 0
+  set watchLearnButton2 = 0
+  set watchLearnButton3 = 0
+  set watchLearnButton4 = 0
+  goto 0:0
+}
+
+thinkswitch {
+  set pcurrentMS = func_GameTime
+  set pdelta = (pcurrentMS - plastMS)
+  if (pdelta < 50)
+    goto 0:0
+  set plastMS = pcurrentMS
+  set doorCounter = (doorCounter + 1)
+  if (doorCounter == 10)
+    gosub 60:9205	          
+  if (doorCounter == 20)
+    gosub 60:9206	          
+  if (doorCounter == 30)
+    gosub 60:9207	          
+  if (doorCounter == 40)
+    gosub 60:9208	          
+  if (doorCounter == 60)
+    closewindow 60:9201	       
+  goto 0:0
+}
+
+finishswitch {
+  set which_door = (which_door + 1)
+  if (which_door == 1) {
+    extern AI_TalkStop cachepence
+    extern playsound "games/sundoor/games_sundoor_granted.wav"
+    console "target lab_door1"
+    extern AI_GrabEntity cachepence cachepence_handle
+    extern AI_Path cachepence_handle lab_path2a
+    extern AI_ReleaseEntity cachepence_handle
+  } else if (which_door == 2) {
+    extern AI_TalkStop cachepence
+    extern playsound "games/sundoor/games_sundoor_granted.wav"
+    console "target lab_door2"
+    extern AI_GrabEntity cachepence cachepence_handle
+    extern AI_Path cachepence_handle lab_path10
+    extern AI_ReleaseEntity cachepence_handle
+  } else if (which_door == 3) {
+    extern AI_TalkStop cachepence
+    extern playsound "games/sundoor/games_sundoor_granted.wav"
+    console "target lab_door4"
+    extern AI_GrabEntity cachepence cachepence_handle
+    extern AI_Path cachepence_handle lab_path32
+    extern AI_ReleaseEntity cachepence_handle
+  } else if (which_door == 4) {
+    extern AI_TalkStop cachepence
+    extern playsound "games/sundoor/games_sundoor_granted.wav"
+    console "target lab_door3"
+    extern AI_GrabEntity cachepence cachepence_handle
+    extern AI_Path cachepence_handle lab_path38
+    extern AI_ReleaseEntity cachepence_handle
+  }
+  goto 0:0
+}
+
+style "null"
+font "albertus"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 640
+if (watchLearnButton1 > 0)
+  image "sundoor/sm_b$watchLearnButton1$.tga" 200, 16
+if (watchLearnButton2 > 0)
+  image "sundoor/sm_b$watchLearnButton2$.tga" 280, 16
+if (watchLearnButton3 > 0)
+  image "sundoor/sm_b$watchLearnButton3$.tga" 360, 16
+if (watchLearnButton4 > 0)
+  image "sundoor/sm_b$watchLearnButton4$.tga" 440, 16
+
+#window 5003:1
+title "PAL-18"
+if (met_rho == 0)
+  body "Go do your do."
+if (met_rho == 1)
+  body "I guess we're leavin'?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 60:4
+title "Dr. Rho Bowman"
+body "Bad timing, fellas..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:6
+title "Dr. Rho Bowman"
+body "                          I'm in the middle of something."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:10
+title "Dr. Rho Bowman"
+body "In exactly fifty-seven seconds,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:15
+title "Dr. Rho Bowman"
+body "the particles in this mass supra-accelerator reach maximum velocity,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:20
+title "Dr. Rho Bowman"
+body "working with this high harmonic pulse generator"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:25
+title "Dr. Rho Bowman"
+body "and metaplasmic interferometer to reproduce specific spatial conditions..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:30
+title "Dr. Rho Bowman"
+body "which, if I'm correct, will unlock and activate"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:35
+title "Dr. Rho Bowman"
+body "this test sample of MysTech."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:40
+title "Dr. Rho Bowman"
+body "So whatever you want..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:45
+title "Dr. Rho Bowman"
+body "                                 is gonna have to wait."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:50
+title "Grumpos"
+body "Are those Witherspoon time-signature drives?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:55
+title "Dr. Rho Bowman"
+body "You know they are, Mister Matavastros."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:60
+title "Dr. Rho Bowman"
+body "Yeah, I know you."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:65
+title "Dr. Rho Bowman"
+body "I practically lived in your museum two summers ago."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:70
+title "Dr. Rho Bowman"
+body "So who's the meat puppet?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:75
+title "Grumpos"
+body "He's my tough guy. Ignore him."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:80
+title "Grumpos"
+body "Tell me, did you calibrate against Gausican frame references?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:85
+title "Grumpos"
+body "Won't Brownian delineations muddle your tardyon count?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:90
+title "Dr. Rho Bowman"
+body "Yes... if I was testing for tardyons."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:95
+title "Grumpos"
+body "But if you're not testing for tardyons, then that would mean..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:100
+title "Dr. Rho Bowman"
+body "Stand by."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:105
+title "Dr. Rho Bowman"
+body "	Well, that sucks."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:110
+title "PAL-18"
+body "Wanna see my batteries?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:115
+title "Grumpos"
+body "You're saying MysTech is from a future universe?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:120
+title "Dr. Rho Bowman"
+body "Well, I can't prove it yet, but yes!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:125
+title "Dr. Rho Bowman"
+body "And that's not all."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:130
+title "Dr. Rho Bowman"
+body "Remember the Rudolph anomaly just a few months back?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:135
+title "Dr. Rho Bowman"
+body "Look at these tachyon readings I took of the MysTech at the time..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:145
+title "Grumpos"
+body "What are you saying now? That MysTech responds to spatial disturbances?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:150
+title "Dr. Rho Bowman"
+body "Yes, and the bigger the disturbance, the stronger the glow."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:155
+title "Dr. Rho Bowman"
+body "Smaller ruptures in the fabric of the universe wouldn't register to the naked eye..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:160
+title "Dr. Rho Bowman"
+body "...the glow would be too faint."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:165
+title "Dr. Rho Bowman"
+body "But get a strong anomaly nearby and we'd be seeing fireworks."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:170
+title "Boots"
+body "Uh... Doctor?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:175
+title "Grumpos"
+body "I don't know. Seems a bit much to swallow."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:180
+title "Boots"
+body "Doctor?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:185
+title "Dr. Rho Bowman"
+body "I figured you say that."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:190
+title "Boots"
+body "DOCTOR!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:195
+title "Dr. Rho Bowman"
+body "Oh, hell."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:200
+title "Grumpos"
+body "Oh, NO."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:205
+title "Boots"
+body "Oh, what?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:210
+title "Dr. Rho Bowman"
+body "We gotta get outta here."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:215
+title "Boots"
+body "Outta the lab?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:220
+title "Dr. Rho Bowman"
+body "Outta the system. We don't have much time."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 60:225
+title "Dr. Rho Bowman"
+body "Move!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 60:1
+set CURRENT_PLANET = 3
+set CURRENT_BANK = 60
+extern loopambient ambi_labbuilding
+if (mystech_active) {
+  extern playlevelmusic/mp3/sunder/sunderscary.mp3
+} else
+  extern playlevelmusic mp3/sunder/sunderamb.mp3
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .7 .7 1
+extern AI_SpawnEntity @laderhosen1 ob_invisiclick
+extern AI_SetXYZ @laderhosen1 -2872 3352 376
+extern AI_SpawnEntity @laderhosen2 ob_invisiclick
+extern AI_SetXYZ @laderhosen2 -2904 3352 376
+if (DEMO_MODE_ENABLED)
+  goto 60:2
+loadape "sendernet"
+loadape "countdownClock"
+if (timer_active)
+  goto 60:9300
+
+#switch 60:2
+extern playlevelmusic mp3/sunder/sunderscary.mp3
+
+#switch 60:301
+if (@cachepence_waiting == 1)
+  goto 60:1305
+if (MYSTECH_ACTIVE)
+  goto 60:0390
+if (Lab_door1 == 1)
+  goto 60:0325
+if (Lab_door2 == 1)
+  goto 60:0330
+if (Lab_door3 == 1)
+  goto 60:0335
+if (Lab_door4 == 1)
+  goto 60:0340
+if (Cachepence1 > 0)
+  goto 60:0310
+goto 60:0305                                 
+
+#switch 60:328
+if (func_charinparty[pal] == 3)
+  extern set_party_leader boots
+extern remove_npc_from_party pal
+set PAL_WAITING = 1
+extern AI_GrabEntity pal @hPal
+extern AI_GetEdictNumber wherepalshouldbe @where
+extern AI_GetXYZ @where @x @y @z
+extern AI_SetXYZ @hPal @x @y @z
+extern ANIM_MakeSmart @hPal
+extern entkey @hPal default_anim amb_a
+extern AI_ReleaseEntity @hPal
+extern AI_GrabEntity boots @hBoots
+extern AI_GetEdictNumber wherebootsshouldbe @where
+extern AI_GetXYZ @where @x @y @z
+extern AI_SetXYZ @hBoots @x @y @z
+extern ANIM_MakeSmart @hBoots
+extern AI_ReleaseEntity @hBoots
+goto 60:0329
+
+#switch 60:360
+extern AI_TalkStop cachepence
+extern AI_GrabEntity cachepence cachepence_handle
+extern AI_Path cachepence_handle dummy_path1
+extern AI_ReleaseEntity cachepence_handle
+
+#switch 60:354
+extern AI_GrabEntity cachepence cachepence_handle
+extern AI_Path cachepence_handle lab_path1
+extern AI_ReleaseEntity cachepence_handle
+console "echo SENT TO PATH..."
+
+#switch 60:480
+if (@MovingPlayerToPath)
+  goto 0:0
+if ((MET_RHO && @FindKeycard) && (GOT_RHO_KEYCARD == 0)) {
+  set @MovingPlayerToPath = 1
+  goto 60:0490
+}
+if (MET_RHO) {
+  goto 0:0
+} else
+  goto 60:0485
+
+#switch 60:485
+set MET_RHO 1 = (1 + 0)
+target lab_door3
+set MYSTECH_ACTIVE 1 = (1 + 0)
+set MYSTECH_ONLY 1 = (1 + 0)
+set MARINA_SCREWED 0 = (1 + 0)
+set NEED_TO_GO_TO_SHUTTLE 1 = (1 + 0)
+extern is_in_inventory "Art Piece 1" @a1
+extern is_in_inventory "Art Piece 2" @a2
+extern is_in_inventory "Art Piece 3" @a3
+if (@a1) {
+  extern remove_from_inventory "Art Piece 1"
+  extern addnew_to_inventory "Bane"
+}
+if (@a2) {
+  extern remove_from_inventory "Art Piece 2"
+  extern addnew_to_inventory "Freezo"
+}
+if (@a3) {
+  extern remove_from_inventory "Art Piece 3"
+  extern addnew_to_inventory "Winkywind"
+}
+extern chainscripts labbuilding_rhointro labbuilding_rhointro2
+extern playscene labbuilding_rhointro
+
+#switch 60:490
+if (@FatimaStopsGuys == 1)
+  goto 0:0
+set @FatimaStopsGuys = 1
+goto 60:0491
+
+#switch 60:492
+extern cam_anoxmariomode 1
+extern AI_SeekAndFace @bootshandle Player_DontLeave
+extern AI_SetCompletionCallback @bootshandle 60:0493
+
+#switch 60:493
+set @FatimaStopsGuys = 0
+set @MovingPlayerToPath = 0
+extern cam_anoxmariomode 0
+extern ANIM_MakeSmart @bootshandle
+extern AI_ReleaseEntity @bootshandle
+
+#switch 60:501
+set Rho1 = (Rho1 + 1)
+if (GOT_RHO_KEYCARD == 1)
+  goto 60:0530
+if (Rho1 > 2)
+  goto 60:0515
+if (Rho1 > 1)
+  goto 60:0510
+goto 60:0505                                 
+
+#switch 60:508
+extern cam_anoxmariomode 0
+extern AI_GrabEntity rho rho_handle
+extern AI_Path rho_handle *rho_path1
+extern AI_ReleaseEntity rho_handle
+extern cam_restore
+
+#switch 60:515
+if (GOT_RHO_KEYCARD == 1)
+  goto 0:0
+goto 60:0516
+
+#switch 60:520
+extern AI_GrabEntity 60:0501 @rho_handle
+extern AI_WaitAndFace @rho_handle -1 PlayerChar0
+if (@FatimaStopsGuys == 1)
+  goto 60:0526
+if (GOT_RHO_KEYCARD == 1)
+  goto 0:0
+goto 60:0521
+
+#switch 60:601
+set Peltdown1 = (Peltdown1 + 1)
+if (MYSTECH_ACTIVE > 0)
+  goto 60:0620
+if (Peltdown1 > 1)
+  goto 60:0610
+goto 60:0605                                 
+
+#switch 60:801
+extern AI_GrabEntity rho rho_handle
+extern AI_Path rho_handle *rho_path1
+extern AI_ReleaseEntity rho_handle
+
+#switch 60:901
+set GOT_RHO_KEYCARD = 1
+extern AI_GrabEntity PlayerChar0 bootshandle
+extern AI_WaitAndFace bootshandle -1 rho_keycard
+extern ANIM_PlayAnim bootshandle grab_m 0 1 0
+extern AI_ReleaseEntity bootshandle
+goto 60:0525
+
+#switch 60:1201
+if (MYSTECH_ACTIVE && PAL_WAITING)
+  goto 60:1205
+goto 0:0
+
+#switch 60:1205
+set PAL_WAITING = 0
+extern add_npc_to_party pal
+if (TIMER_ACTIVE && (escapeMinutes > 6))
+  goto 60:1206
+
+#switch 60:1251
+if (PAL_WAITING == 1)
+  goto 60:1253
+target t1
+goto 0:0
+
+#switch 60:1301
+set @cachepence_waiting = 1
+
+#switch 60:5101
+if (mystech_active == 0)
+  goto 60:5450
+if (Pal_Waiting == 0)
+  goto 60:0380
+set currentSunderDoor = 1
+goto 60:9901
+
+#switch 60:5201
+if (mystech_active == 0)
+  goto 60:5450
+set currentSunderDoor = 2
+goto 60:9901
+
+#switch 60:5301
+if (mystech_active == 0)
+  goto 60:5450
+set currentSunderDoor = 3
+goto 60:9901
+
+#switch 60:5401
+if (mystech_active == 0)
+  goto 60:5450
+set currentSunderDoor = 4
+goto 60:9901
+
+#switch 60:5501
+if (GOT_RHO_KEYCARD == 1)
+  goto 60:5505
+goto 60:5510
+
+#switch 60:5505
+target service_door
+
+#switch 60:5601
+target secretdoor
+
+#switch 60:5701
+if (func_charinparty[boots] != 3)
+  goto 60:5735
+if (GET_MITOTIC == 1)
+  goto 60:5710
+goto 60:5730
+
+#switch 60:6781
+if (@LabB_GotMoss)
+  goto 0:0
+WS_STAND$="boots_skill_1" 
+ws_object$="mosschest" 
+set LPdifficulty = 3
+set LPtime = 35
+set ws_bank = 60
+set ws_entry = 6782
+gosub 4001:1
+goto 0:0
+
+#switch 60:6782
+set @LabB_GotMoss = 1
+extern AI_GrabEntity mosschest chest_handle
+extern ANIM_PlayAnim chest_handle amb_b 0 1 1
+extern AI_ReleaseEntity chest_handle
+extern addnew_to_inventory "Sunder Moss"
+got_object$="Sunder Moss" 
+set TIMED_MESSAGE = 20
+gosub 1000:1
+goto 0:0
+
+#switch 60:9001
+set currentSunderDoor = 1
+goto 60:9901
+goto 0:0
+
+#switch 60:9002
+set currentSunderDoor = 2
+goto 60:9901
+goto 0:0
+
+#switch 60:9003
+set currentSunderDoor = 3
+goto 60:9901
+goto 0:0
+
+#switch 60:9004
+set currentSunderDoor = 4
+goto 60:9901
+goto 0:0
+
+#switch 60:9905
+if (currentSunderDoor == 1) {
+  set K[1] = 1
+  set K[2] = 1
+  set K[3] = 2
+  set K[4] = 2
+}
+if (currentSunderDoor == 2) {
+  set K[1] = 1
+  set K[2] = 2
+  set K[3] = 4
+  set K[4] = 3
+}
+if (currentSunderDoor == 3) {
+  set K[1] = 2
+  set K[2] = 3
+  set K[3] = 2
+  set K[4] = 3
+}
+if (currentSunderDoor == 4) {
+  set K[1] = 1
+  set K[2] = 4
+  set K[3] = 3
+  set K[4] = 2
+}
+
+#switch 60:9906
+extern CreateAPE2DControl push button1 192 112 width=128 height=128 normal=/gameflow/sundoor/b_red.tga bright=/gameflow/sundoor/b_redh.tga gamevar=sundoorChoice returnvalue=1 sequence=60:9907
+extern CreateAPE2DControl push button2 320 112 width=128 height=128 normal=/gameflow/sundoor/b_green.tga bright=/gameflow/sundoor/b_greenh.tga gamevar=sundoorChoice returnvalue=2 sequence=60:9907
+extern CreateAPE2DControl push button3 192 240 width=128 height=128 normal=/gameflow/sundoor/b_yellow.tga bright=/gameflow/sundoor/b_yellowh.tga gamevar=sundoorChoice returnvalue=3 sequence=60:9907
+extern CreateAPE2DControl push button4 320 240 width=128 height=128 normal=/gameflow/sundoor/b_blue.tga bright=/gameflow/sundoor/b_blueh.tga gamevar=sundoorChoice returnvalue=4 sequence=60:9907
+goto 0:0
+
+#switch 60:9907
+if (doorResult != 0)
+  goto 0:0
+if ((K[$currentEnteredDigit$] == sundoorChoice) && (currentEnteredDigit == 4)) {
+  gosub 60:9908
+  if (currentSunderDoor == 1)
+    console "echo target sundoor1"
+  if (currentSunderDoor == 2)
+    console "echo target sundoor2"
+  if (currentSunderDoor == 3)
+    console "echo target sundoor3"
+  if (currentSunderDoor == 4)
+    console "echo target sundoor4"
+  set timeToQuit = 10
+  set doorResult = 1
+} else if (K[$currentEnteredDigit$] == sundoorChoice) {
+  gosub 60:9908
+  set currentEnteredDigit = (currentEnteredDigit + 1)
+} else {
+  gosub 60:9908
+  set timeToQuit = 10
+  set doorResult = 2
+}
+goto 0:0
+
+#switch 60:9908
+if (sundoorChoice == 1) {
+  extern playsound "GAMES/sundoor/games_sundoor_button1.wav"
+} else if (sundoorChoice == 2) {
+  extern playsound "GAMES/sundoor/games_sundoor_button2.wav"
+} else if (sundoorChoice == 3) {
+  extern playsound "GAMES/sundoor/games_sundoor_button3.wav"
+} else if (sundoorChoice == 4)
+  extern playsound "GAMES/sundoor/games_sundoor_button4.wav"
+goto 0:0
+
+#switch 60:9101
+set currentSunderDoor = 1
+goto 60:9201
+goto 0:0
+
+#switch 60:9102
+set currentSunderDoor = 2
+goto 60:9201
+goto 0:0
+
+#switch 60:9103
+set currentSunderDoor = 3
+goto 60:9201
+goto 0:0
+
+#switch 60:9104
+set currentSunderDoor = 4
+goto 60:9201
+goto 0:0
+
+#switch 60:9205
+if (SEEN_DOOR_1 == 0) {
+  set watchLearnButton1 = 1
+} else if (SEEN_DOOR_2 == 0) {
+  set watchLearnButton1 = 1
+} else if (SEEN_DOOR_3 == 0) {
+  set watchLearnButton1 = 2
+} else if (SEEN_DOOR_4 == 0)
+  set watchLearnButton1 = 1
+if (watchLearnButton1 == 1)
+  extern playsound "games/sundoor/games_sundoor_button1.wav"
+if (watchLearnButton1 == 2)
+  extern playsound "games/sundoor/games_sundoor_button2.wav"
+if (watchLearnButton1 == 3)
+  extern playsound "games/sundoor/games_sundoor_button3.wav"
+if (watchLearnButton1 == 4)
+  extern playsound "games/sundoor/games_sundoor_button4.wav"
+goto 0:0
+
+#switch 60:9206
+if (SEEN_DOOR_1 == 0) {
+  set watchLearnButton2 = 1
+} else if (SEEN_DOOR_2 == 0) {
+  set watchLearnButton2 = 2
+} else if (SEEN_DOOR_3 == 0) {
+  set watchLearnButton2 = 3
+} else if (SEEN_DOOR_4 == 0)
+  set watchLearnButton2 = 4
+if (watchLearnButton2 == 1)
+  extern playsound "games/sundoor/games_sundoor_button1.wav"
+if (watchLearnButton2 == 2)
+  extern playsound "games/sundoor/games_sundoor_button2.wav"
+if (watchLearnButton2 == 3)
+  extern playsound "games/sundoor/games_sundoor_button3.wav"
+if (watchLearnButton2 == 4)
+  extern playsound "games/sundoor/games_sundoor_button4.wav"
+goto 0:0
+
+#switch 60:9207
+if (SEEN_DOOR_1 == 0) {
+  set watchLearnButton3 = 2
+} else if (SEEN_DOOR_2 == 0) {
+  set watchLearnButton3 = 4
+} else if (SEEN_DOOR_3 == 0) {
+  set watchLearnButton3 = 2
+} else if (SEEN_DOOR_4 == 0)
+  set watchLearnButton3 = 3
+if (watchLearnButton3 == 1)
+  extern playsound "games/sundoor/games_sundoor_button1.wav"
+if (watchLearnButton3 == 2)
+  extern playsound "games/sundoor/games_sundoor_button2.wav"
+if (watchLearnButton3 == 3)
+  extern playsound "games/sundoor/games_sundoor_button3.wav"
+if (watchLearnButton3 == 4)
+  extern playsound "games/sundoor/games_sundoor_button4.wav"
+goto 0:0
+
+#switch 60:9208
+if (SEEN_DOOR_1 == 0) {
+  set watchLearnButton4 = 2
+} else if (SEEN_DOOR_2 == 0) {
+  set watchLearnButton4 = 3
+} else if (SEEN_DOOR_3 == 0) {
+  set watchLearnButton4 = 3
+} else if (SEEN_DOOR_4 == 0)
+  set watchLearnButton4 = 2
+if (watchLearnButton4 == 1)
+  extern playsound "games/sundoor/games_sundoor_button1.wav"
+if (watchLearnButton4 == 2)
+  extern playsound "games/sundoor/games_sundoor_button2.wav"
+if (watchLearnButton4 == 3)
+  extern playsound "games/sundoor/games_sundoor_button3.wav"
+if (watchLearnButton4 == 4)
+  extern playsound "games/sundoor/games_sundoor_button4.wav"
+goto 0:0
+
+#switch 60:9209
+target door1

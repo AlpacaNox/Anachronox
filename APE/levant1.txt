@@ -1,0 +1,336 @@
+#window 73:266
+title "Boots"
+body "The main power line is burnt through. I can bypass it though."
+finishswitch {
+  set levant1_bypass = 1
+  extern AI_GetEdictNumber smoke @poops
+  extern AI_DestroyEntity @poops
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 73:276
+title "%s", PlayerChar0$
+body "Already bypassed."
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 73:510
+title "%s", PlayerChar0$
+if ((func_charinparty[democratus] != 3) || (func_charinparty[pal] != 3))
+  body "Here's the LOWER LEVANT EXIT. The door's powered. The controls must be nearby...."
+if (func_charinparty[pal] == 3)
+  body "This is the LOWER LEVANT EXIT. The door's powered. Betcha the controls are nearby...."
+if (func_charinparty[democratus] == 3)
+  body "Here is the LOWER LEVANT EXIT. This door is powered. Surely the controls are nearby."
+cam left from(PlayerChar0) to(73:500) restore zip
+talk player talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 73:520
+title "%s", PlayerChar0$
+if (func_charinparty[democratus] == 3)
+  body "Here's the LOWER LEVANT EXIT. There's no power to the pneumatic door."
+if (func_charinparty[democratus] != 3)
+  body "Here's the LOWER LEVANT EXIT. There is no power to this pneumatic door."
+cam left from(PlayerChar0) to(73:500) restore zip
+talk player talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 73:720
+title "%s", PlayerChar0$
+body "The LOWER LEVANT EXIT CONTROLS..."
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+nextwindow 73:721
+
+#window 73:721
+title "%s", PlayerChar0$
+body "Nothing."
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 73:805
+title "Abbot Babbit"
+body "I was just kidding about the doors not opening from the inside. You're free to come and go as you please."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set @fabbot = 2
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 73:810
+title "Abbot Babbit"
+body "You can't blame me for being a dramatic queen now, can you?"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set @fabbot = 1
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 73:201
+title "Boots"
+body "The Mysterium Levant?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 73:205
+title "Abbot Babbit"
+body "Uh-huh."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 73:210
+title "Boots"
+body "You're gonna make me do something, aren't ya?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 73:215
+title "Abbot Babbit"
+body "Someone has sabotaged the main pump deep inside the Levant."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 73:225
+title "Abbot Babbit"
+body "No monk has the strength or courage to brave the many miles of dangerous terrain leading to it..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 73:230
+title "Abbot Babbit"
+body "...but we know you can be trusted with the job."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 73:235
+title "Boots"
+body "I'm not your handy man. Forget it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 73:240
+title "Abbot Babbit"
+body "I'm sure the Grand Mysterium will want to congratulate you personally for handling this problem."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 73:245
+title "Boots"
+body "You're a leech."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 73:255
+title "Abbot Babbit"
+body "Locate the main pump. Determine the problem. Fix it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 73:260
+title "Boots"
+body "You make it sound easy. What if we can't?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 73:265
+title "Abbot Babbit"
+body "These doors don't open from the inside."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 73:1
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 .5 .5
+set CURRENT_PLANET = 6
+set CURRENT_BANK = 73
+loadape "levpanel"
+if (PRE_LIMBUS || PRE_DETTA) {
+  extern applylevelconfiguration levant1_second
+} else
+  extern applylevelconfiguration levant1_first
+extern playlevelmusic mp3/hephaestus/levanttheme.mp3
+BattleMusicOverride$="mp3/hephaestus/levantbattle.mp3" 
+if (PLAY_BRAVELEVANT == 1) {
+  set PLAY_BRAVELEVANT = 0
+  playscene levant1_scene64_2
+}
+if (levant1_bridge_extended)
+  target bridge
+if (levant1_door_is_open)
+  target levgate
+if (levant1_divert)
+  target gatelight
+if (levant1_gen2_power) {
+  target generator1
+  target generator2
+}
+if (levant1_bypass == 1) {
+  extern AI_GetEdictNumber smoke @poops
+  extern AI_DestroyEntity @poops
+}
+
+#switch 73:100
+goto 75:8010		                
+
+#switch 73:200
+if (levant1_bypass)
+  goto 73:276
+WS_STAND$="boots_skill_1" 
+ws_object$="powerbox" 
+set LPdifficulty = 3
+set LPtime = 35
+set ws_bank = 73
+set ws_entry = 266
+gosub 4001:1
+goto 0:0
+
+#switch 73:300
+goto 75:8070			              
+
+#switch 73:400
+goto 75:8080			                           
+
+#switch 73:410
+set levant1_divert = 1
+extern playscene levant_switch3
+goto 0:0
+
+#switch 73:500
+if (levant1_divert)
+  goto 73:510
+goto 73:520
+
+#switch 73:600
+set levant_whichterminal = 0
+goto 75:7510		                            
+
+#switch 73:700
+goto 75:8020		                    
+
+#switch 73:801
+if (@fabbot > 1)
+  goto 73:0810
+goto 73:0805
+
+#switch 73:9101
+elev_dest$="Levatic Processing Facility" 
+set elev_bank = 73
+set elev_entry = 9102
+gosub 1:8			                             
+goto 0:0
+
+#switch 73:9102
+console "resetbattle levant111"
+console "resetbattle levant112"
+console "resetbattle levant113"
+console "resetbattle levant221"
+console "resetbattle levant222"
+console "resetbattle levant223"
+console "resetbattle levant224"
+console "resetbattle levant225"
+extern playscene levant1_2hephfactory

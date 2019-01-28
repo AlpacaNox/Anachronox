@@ -1,0 +1,272 @@
+#window 61:105
+title "Professor Lynox"
+body "Happy accidents are often the mother of invention."
+cam left lift(30) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 61:0110
+
+#window 61:110
+title "Professor Lynox"
+body "Case in point: I was toying with the gravimetric flux of inanimate objects when I inadvertently found a way to reverse the polarity of my boots. Now I've got myself some dandy anti-gravity footgear."
+cam left lift(30) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 61:0115
+
+#window 61:115
+title "Professor Lynox"
+body "Pretty neat, eh? I bet you wish YOU had a pair!"
+cam left lift(30) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 61:0120
+
+#window 61:120
+title "Professor Lynox"
+body "Well, gotta go! And it's up, up, and AWAY!"
+cam left lift(30) restore zip
+startswitch {
+  set lynox_gone = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 61:0125
+
+#window 61:210
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+if (func_charinparty[pal] == 3)
+  title "PAL-18"
+if (func_charinparty[rho] == 3)
+  title "Rho"
+if (func_charinparty[democratus] == 3)
+  title "Democratus"
+if (func_charinparty[stiletto] == 3)
+  title "Stiletto"
+if (func_charinparty[paco] == 3)
+  title "Paco"
+body "We don't have a card key for this lock."
+cam left to(PlayerChar0) restore zip
+talk player talk_a7 stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 61:305
+title "Dr. Blondini"
+body "I like to take my lunch break out here. But some heretic from the Rainbow Sanctuary invariably wanders over here and spoils my peace."
+cam left lift(40) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 61:310
+title "Dr. Blondini"
+body "I guess all those shuttles taking off spoil the peace too."
+cam left lift(40) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 61:315
+title "Dr. Blondini"
+body "Can you get outta my sun?"
+cam left lift(40) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 61:405
+title "Doctor Om"
+body "Welcome to the Rainbow Sanctuary..."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 61:0406
+
+#window 61:406
+title "Doctor Om"
+body "...home of the wretched and the depraved. Home of the heretics."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 61:410
+title "Doctor Om"
+body "Rho Bowman is probably the most popular of us. She made quite a number of magazine covers with her controversial, best-selling book. She was the best that science had to offer and they paid her back with public humiliation. In a purely politically-motivated move, the Scientifica Association found her theories unsound and branded her a \"heretic\"."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 61:0411
+
+#window 61:411
+title "Doctor Om"
+body "Interesting term to use in this day and age, isn't it? Bowman was said to have committed heresy against science itself. Her findings were a slap in the face of the establishment."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 61:0412
+
+#window 61:412
+title "Doctor Om"
+body "But if her theories were so extreme, why was she allowed to remain a member of the Scientifica Association? Why not get rid of her entirely if she presented such an affront to knowledge?"
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 61:0413
+
+#window 61:413
+title "Doctor Om"
+body "I'll tell you why."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 61:0414
+
+#window 61:414
+title "Doctor Om"
+body "It's because those in power are smart enough to know that heretics are often the revolutionary thinkers who change the galaxy."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 61:0415
+
+#window 61:415
+title "Doctor Om"
+body "Rho Bowman and the rest of us heretics are kept around in case our theories turn out to be true. We use the Scientifica Association for funding, and they use us for our potential knowledge."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 61:0416
+
+#window 61:416
+title "Doctor Om"
+body "Ain't politics wonderful?"
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 61:420
+title "Doctor Om"
+if (func_charinparty[pal] == 3)
+  body "So enter at your own risk, little guy. You might catch heretical thoughts."
+if ((func_charinparty[boots] == 3) || (func_charinparty[grumpos] == 3))
+  body "So enter at your own risk, Doctor. You might catch heretical thoughts."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#switch 61:1
+set CURRENT_PLANET = 3
+set CURRENT_BANK = 61
+if (mystech_active) {
+  extern playlevelmusic mp3/sunder/sunderscary.mp3
+} else
+  extern playlevelmusic mp3/sunder/sunderamb.mp3
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .7 .7 1
+extern loopambient ambi_sunstrip
+extern loopambient ambi_sunstripb
+if (lynox_gone == 0)
+  extern loopambient sunstrip_floatingscien
+loadape "countdownClock"
+if (timer_active)
+  goto 60:9300
+
+#switch 61:101
+if (lynox_gone)
+  goto 0:0
+goto 61:0105
+
+#switch 61:125
+extern unlinkentity sunstrip_floatingscien 0
+extern stopambient sunstrip_floatingscien
+extern playambient sunstrip_floataccident
+
+#switch 61:201
+if (GOT_RHO_KEYCARD == 1)
+  goto 61:0205
+goto 61:0210
+
+#switch 61:205
+target service_door
+
+#switch 61:301
+set Blondini1 = (Blondini1 + 1)
+if (Blondini1 > 2)
+  goto 61:0315
+if (Blondini1 > 1)
+  goto 61:0310
+goto 61:0305                                 
+
+#switch 61:401
+set Om1 = (Om1 + 1)
+if (Om1 > 2)
+  goto 61:0420
+if (Om1 > 1)
+  goto 61:0410
+goto 61:0405                                 

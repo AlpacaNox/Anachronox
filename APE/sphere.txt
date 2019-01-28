@@ -1,0 +1,53 @@
+#window 4:6
+startswitch {
+  set frameDelay = 3
+  goto 0:0
+}
+
+thinkswitch {
+  set frameDelay = (frameDelay - 1)
+  if (frameDelay <= 0)
+    closewindow 4:6
+}
+
+finishswitch {
+  goto 4:008
+}
+
+style "NULL"
+
+#switch 4:1
+set anox_game_difficulty = 1
+if (gamestart)
+  goto 4:0005
+
+#switch 4:2
+set anox_game_difficulty = 2
+if (gamestart)
+  goto 4:0005
+
+#switch 4:3
+set anox_game_difficulty = 3
+if (gamestart)
+  goto 4:0005
+
+#switch 4:5
+set ape_no_autosave = 1
+set CURRENT_PLANET = 1
+set CURRENT_BANK = 5
+extern pauselevelmusic
+set lifecursor_registered = 1
+extern SetPlayerCurrentHP Boots 30
+extern playscene sphere_intro
+goto 0:0
+
+#switch 4:8
+extern playscene sphere_intro
+
+#switch 4:7
+extern playsound ../music/mp3/sender/sscoolsite3.mp3
+
+#switch 4:10
+console "msound_stopfile ../music/mp3/sender/sscoolsite3.mp3 150"
+
+#switch 4:15

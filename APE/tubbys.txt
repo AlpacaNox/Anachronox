@@ -1,0 +1,363 @@
+#window 44:105
+title "Regina Dentata"
+body "Dang it. I lost my shopping list."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 44:110
+title "Regina Dentata"
+body "Where did you find this? Thanks a million. I'd forgotten about the butt garnish."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set tubbys_found_list = 1
+  extern remove_from_inventory "Shopping List"
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 44:115
+title "Regina Dentata"
+body "What? You want a medal or something? All you did was pick up my shopping list. Gimme a break."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 44:205
+title "PIECE OF PAPER"
+body "spackling compound\n"
+body "1 tapioca arabesque\n"
+body "circumference ointment\n"
+body "whiffle prunes\n"
+body "2 bottles of grunion grout\n"
+body "butt garnish\n"
+startswitch {
+  extern ANIM_PlayAnim bootshandle grab_l 0 1 0
+  extern AI_GrabEntity shopping_list @list
+  extern AI_DestroyEntity @list
+  extern AI_ReleaseEntity bootshandle
+  extern addnew_to_inventory "Shopping List"
+  got_object$="Shopping list" 
+  set timed_message = 20
+  gosub 1000:1
+}
+
+style "style_redlight"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 320
+image "graphics/underline_red.pcx" 16, 31, 288, 32
+
+#window 44:301
+title "Wet Louie"
+body "We just got a carton of lap lather and some grease crayons in the back, if you're interested."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 44:401
+title "Lord Hoolaha"
+body "Got anything for tennis elbow?"
+cam left restore zip
+talk npc gest_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 44:505
+title "Vermin"
+body "If I've told you once, I've told you a thousand times! Just because your bank-monitors are speculating Redlines, there's NO reason to liquefy holding assets. That's equity, man."
+cam left restore zip
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 44:510
+title "Vermin"
+body "People just don't consider their investments carefully."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 44:515
+title "Vermin"
+body "Alright, no more free lunch. Buzz off."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 44:601
+title "Splintus"
+if (talk_splintus == 1)
+  body "Meat."
+if (talk_splintus == 2)
+  body "Ground chuck."
+if (talk_splintus == 3)
+  body "Loin chop."
+if (talk_splintus == 4)
+  body "Ham hock."
+if (talk_splintus == 5)
+  body "Skirt steak."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set talk_splintus = (talk_splintus + 1)
+  if (talk_splintus > 5)
+    set talk_splintus = 1
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 44:705
+title "Sweet Melinda"
+body "Welcome to Tubby's Grease Shack."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 44:0710
+
+#window 44:710
+title "Sweet Melinda"
+body "You gonna stand there all day staring at Tubby's derriere, or are you gonna buy something?"
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 44:0715
+
+#window 44:720
+title "Sweet Melinda"
+body "Tubby says, \"Thanks for trying Tubby's.\""
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 44:0725
+
+#window 44:725
+title "Sweet Melinda"
+if (talk_tubby == 0)
+  body "Actually, he said, \"Go to hell.\""
+if (talk_tubby == 1)
+  body "No, really."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set talk_tubby = 1
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 44:750
+title "Sweet Melinda"
+body "Welcome to Tubby's Grease Shack."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 44:0755
+
+#window 44:755
+title "Sweet Melinda"
+body "Tubby wants to know what the hell you want."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 44:0715
+
+#window 44:801
+title "Wet Louie"
+body "That's my TACO. I'll sell it to you for 50 loonies if you want it."
+cam left to(wet) restore zip
+startswitch {
+  extern check_money @c
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+if (@c >= 50)
+  choice "Buy it" 44:805
+choice "Sorry" 44:810
+
+#window 44:805
+title "Wet Louie"
+body "Here you go. Don't choke on it or get it stuck anywhere."
+cam left to(wet) restore zip
+startswitch {
+  extern AI_GrabEntity tubbytaco hTaco
+  extern AI_DestroyEntity hTaco
+  extern addnew_to_inventory "TACO"
+  extern remove_money 50
+  set got_taco_19 = 1
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 44:0806
+
+#window 44:810
+title "Wet Louie"
+body "That's cool. I wouldn't sell it to you anyway."
+cam left to(wet) restore zip
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#switch 44:1
+set CURRENT_PLANET = 2
+set CURRENT_BANK = 44
+extern playlevelmusic mp3/sender/ssundergroundnormal.mp3
+
+#switch 44:101
+if (tubbys_found_list == 1)
+  goto 44:0115
+extern is_in_inventory "Shopping List" @sl
+if (@sl)
+  goto 44:0110
+goto 44:0105
+
+#switch 44:201
+extern AI_GrabEntity PlayerChar0 bootshandle
+extern AI_WaitAndFace bootshandle -1 shopping_list
+extern AI_SeekAndFace bootshandle get_list
+extern AI_SetCompletionCallback bootshandle 44:0205
+
+#switch 44:501
+if (talk_vermin < 3)
+  set talk_vermin = (talk_vermin + 1)
+if (talk_vermin == 3)
+  goto 44:0515
+if (talk_vermin == 2)
+  goto 44:0510
+goto 44:0505
+
+#switch 44:701
+if (talk_tubby == 1)
+  goto 44:0750
+goto 44:0705
+
+#switch 44:715
+extern shop_create "Tubby's Grease Shack"
+extern shop_set_active "Tubby's Grease Shack"
+extern shop_add_object "HealGrease" 100
+extern shop_add_object "HealGrease Plus" 100
+extern shop_add_object "HealGrease Complete" 100
+extern shop_add_object "TimeMinder Tear" 100
+if (ELEMENTOR_ACTIVE)
+  extern shop_add_object "Batt" 100
+if ((PRE_KRAPTON || PRE_LIMBUS) || PRE_DETTA)
+  extern shop_add_object "Bag o' Glodents" 100
+if (PRE_DETTA)
+  extern shop_add_object "Glodent Colony" 100
+extern shop_picture "tubshop.png"
+extern shop_slogan "Buy your goo from Tubby!"
+extern shop_start 44:0720
+goto 0:0
+
+#switch 44:806
+set timed_message = 20
+got_object$="TACO" 
+gosub 1000:1
+goto 0:0

@@ -1,0 +1,4674 @@
+#window 81:5
+if (ComicTitle_R$ != "")
+  xyprintfx 400, 399, 1, 1, 1, 1, comicfont_black, "%s", ComicTitle_R$
+if (ComicTitle_L$ != "")
+  xyprintfx 48, 399, 1, 1, 1, 1, comicfont_black, "%s", ComicTitle_L$
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+if (ComicTitle_R$ != "")
+  image "krapton/namebox.tga" 387, 389
+if (ComicTitle_L$ != "")
+  image "krapton/namebox.tga" 35, 389
+
+#window 81:205
+body "Go away. I'm in a bad mood."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Creepfood" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:210
+body "I've got problems with my glands."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Creepfood" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:215
+body "My perspiration sacs are bloated with water. It's very unpleasant."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Creepfood" 
+  set Creepfood1 = 0
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:220
+body "My discomfort is unbearable. Please... would you mind milking my sweat glands to relieve the pressure?"
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Creepfood" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+choice "Sure. I'll use this water dish to catch the juice." 81:225
+choice "Um... no." 81:235
+
+#window 81:225
+body "You are too kind. Thank you."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Creepfood" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0226
+
+#window 81:226
+body "Lean forward between the bars, and place your hands around my scuzzum sac. While massaging the base, firmly pull down on the sleeve bag and squeeze. Be careful not to upset the hair spine near the opening. Pump the pouch until it is empty."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Creepfood" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0227
+
+#window 81:227
+body "Are you ready? Then spit on your hands and let us begin."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Creepfood" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0252
+
+#window 81:228
+body "Ah... sweet relief. Thank you ever so much."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Creepfood" 
+  set @Creepfood_Milking_Active = 0
+  extern AI_ReleaseEntity creepfood_handle
+  extern ANIM_MakeSmart bootshandle
+  extern AI_ReleaseEntity bootshandle
+  extern cam_restore
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0229
+
+#window 81:229
+body "Look how much fluid spilled into the water dish. It's filled to the top."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Creepfood" 
+  extern remove_from_inventory "Krapto's Water Dish"
+  extern addnew_to_inventory "Krapto's Filled Water Dish"
+  set KRAPTO_DISH = 2
+  set Creepfood2 = 1
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:230
+title "Creepfood"
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Creepfood" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+choice "Fine, freak. Just don't get any funny ideas about us." 81:225
+choice "Like... no." 81:235
+
+#window 81:235
+title "Creepfood"
+body "You are a villain."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Creepfood" 
+  set Creepfood3 = 1
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:240
+body "Sorry about my rudeness before. I was irritable. I'm feeling much better now."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Creepfood" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:245
+body "Won't you please milk my sweat glands and relieve the pressure? I'm in agony...."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Creepfood" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+choice "Fine, freak. Just don't get any funny ideas about us." 81:225
+choice "Like... no." 81:235
+
+#window 81:250
+cam left lift(40) restore zip
+startswitch {
+  set @start_time = func_gametime
+  extern AI_GrabEntity creepfood creepfood_handle
+  extern AI_WaitAndFace creepfood_handle -1 sac_eyeline
+  extern ANIM_PlayAnim bootshandle pick_f 1 0 0
+  extern playsound cine/openlast.wav
+}
+
+thinkswitch {
+  if ((func_gametime - @start_time) > 3000) {
+    closewindow 81:0250
+    goto 81:0251
+  }
+  goto 0:0
+}
+
+style "NULL"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 0
+ypos 0
+width 100
+height 100
+
+#window 81:251
+body "Aaaahhh...."
+startswitch {
+  ComicTitle_R$="       Creepfood" 
+  extern cam_anoxmariomode 0
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0228
+
+#window 81:255
+body "I see you're sharing Headwork's power. Be careful. It will give you nightmares, you know."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Creepfood" 
+  set Creepfood4 = 1
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:260
+body "Stay out of my brain. I know things that could kill you..."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Creepfood" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0261
+
+#window 81:261
+body "...in fact, HAVE killed you, in different realities."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Creepfood" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:305
+body "I'm guarding the Emergency Parole Button."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  ComicTitle_R$="      Dr. Hush-Hush" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+if (Hush2 < 1)
+  choice "Dr. Hush-Hush?! I'm a huge \"Rage of the Fist\" fan!" 81:310
+if (Hush3 < 1)
+  choice "What's an Emergency Parole Button?" 81:315
+if (Hush3 == 1)
+  choice "Why are you guarding the Emergency Parole Button?" 81:335
+if ((KRAP_PAD1 == 1) && (Hush5 < 1))
+  choice "Do you know the security code for El Puño's prison cell?" 81:320
+if (Hush4 < 1)
+  choice "I'm gonna go bang my head on a wall over there. See ya." 81:325
+if (Hush4 > 0)
+  choice "I'm leaving." 81:330
+
+#window 81:310
+body "You recognize me from the comic books, huh? Personally, I don't think the graphic novels did my agreeable personality any justice. Aren't you surprised by my genial nature?"
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  ComicTitle_R$="      Dr. Hush-Hush" 
+  set Hush2 = 1
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0311
+
+#window 81:311
+body "While I understand artistic liberties must be taken to make characters more dramatic, did they have to make me so short on looks? Isn't life hard enough for intelligent men?"
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  ComicTitle_R$="      Dr. Hush-Hush" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+if (Hush2 < 1)
+  choice "Dr. Hush-Hush?! I'm a huge \"Rage of the Fist\" fan!" 81:310
+if (Hush3 < 1)
+  choice "What's an Emergency Parole Button?" 81:315
+if (Hush3 == 1)
+  choice "Why are you guarding the Emergency Parole Button?" 81:335
+if ((KRAP_PAD1 == 1) && (Hush5 < 1))
+  choice "Do you know the security code for El Puno's prison cell?" 81:320
+if ((Hush4 < 1) && ((Hush2 < 1) || (Hush3 < 2)))
+  choice "I'm gonna go bang my head on a wall over there. See ya." 81:325
+if ((Hush4 > 0) && ((Hush2 < 1) || (Hush3 < 2)))
+  choice "I'm leaving." 81:330
+
+#window 81:315
+body "It's better if I don't tell you. Super villains have a sick sense of humor. Let's leave it at that lest the truth drive you mad."
+cam left restore zip
+talk npc talk_b stay
+startswitch {
+  set Hush3 = 1
+  ComicTitle_R$="      Dr. Hush-Hush" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+if (Hush2 < 1)
+  choice "Dr. Hush-Hush?! I'm a huge \"Rage of the Fist\" fan!" 81:310
+if (Hush3 < 1)
+  choice "What's an Emergency Parole Button?" 81:315
+if (Hush3 == 1)
+  choice "Why are you guarding the Emergency Parole Button?" 81:335
+if ((KRAP_PAD1 == 1) && (Hush5 < 1))
+  choice "Do you know the security code for El Puno's prison cell?" 81:320
+if ((Hush4 < 1) && ((Hush2 < 1) || (Hush3 < 2)))
+  choice "I'm gonna go bang my head on a wall over there. See ya." 81:325
+if ((Hush4 > 0) && ((Hush2 < 1) || (Hush3 < 2)))
+  choice "I'm leaving." 81:330
+
+#window 81:320
+body "Yes."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  ComicTitle_R$="      Dr. Hush-Hush" 
+  set Hush5 = 1
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0321
+
+#window 81:321
+body "But I'm not giving it to you. You'll just hound him for an autograph, and he's in no mood for fans."
+cam left restore zip
+talk npc talk_b stay
+startswitch {
+  ComicTitle_R$="      Dr. Hush-Hush" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0322
+
+#window 81:322
+body "Besides, that code was hard to acquire. I'm not going to just give it away."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  ComicTitle_R$="      Dr. Hush-Hush" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+if (Hush2 < 1)
+  choice "Dr. Hush-Hush?! I'm a huge \"Rage of the Fist\" fan!" 81:310
+if (Hush3 < 1)
+  choice "What's an Emergency Parole Button?" 81:315
+if (Hush3 == 1)
+  choice "Why are you guarding the Emergency Parole Button?" 81:335
+if ((KRAP_PAD1 == 1) && (Hush5 < 1))
+  choice "Do you know the security code for El Puno's prison cell?" 81:320
+if ((Hush4 < 1) && ((Hush2 < 1) || (Hush3 < 2)))
+  choice "I'm gonna go bang my head on a wall over there. See ya." 81:325
+if ((Hush4 > 0) && ((Hush2 < 1) || (Hush3 < 2)))
+  choice "I'm leaving." 81:330
+if (((Hush4 < 1) && (KRAP_PAD1 == 1)) && (Hush5 < 1))
+  choice "I'm gonna go bang my head on a wall over there. See ya." 81:325
+if (((Hush4 > 0) && (KRAP_PAD1 == 1)) && (Hush5 < 1))
+  choice "I'm leaving." 81:330
+
+#window 81:325
+body "Fine. Just don't bang it on the button."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  ComicTitle_R$="      Dr. Hush-Hush" 
+  set Hush4 = 1
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:330
+body "Watch for InvisoLad."
+cam left restore zip
+talk npc gest_i stay
+startswitch {
+  ComicTitle_R$="      Dr. Hush-Hush" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:335
+body "Because InvisoLad is going to push it. Ever since he lost the ability to become visible he's gone off the deep end-doubting his own existence and talking like a crazy man. My fear is that he'll sneak up on me and press the button."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  ComicTitle_R$="      Dr. Hush-Hush" 
+  set Hush3 = 2
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0336
+
+#window 81:336
+body "I'm trying to jury-rig a device that can locate his position anywhere in the room using sonar, but I'm having trouble doubling a stick of gum as a frequency transducer medium."
+cam left restore zip
+talk npc gest_i stay
+startswitch {
+  ComicTitle_R$="      Dr. Hush-Hush" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0337
+
+#window 81:337
+body "Hey, you wouldn't happen to have a beveled rubber washer, would you?"
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  ComicTitle_R$="      Dr. Hush-Hush" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+if (Hush2 < 1)
+  choice "Dr. Hush-Hush?! I'm a huge \"Rage of the Fist\" fan!" 81:310
+if (Hush3 < 1)
+  choice "What's an Emergency Parole Button?" 81:315
+if (Hush3 == 1)
+  choice "Why are you guarding the Emergency Parole Button?" 81:335
+if ((KRAP_PAD1 == 1) && (Hush5 < 1))
+  choice "Do you know the security code for El Puno's prison cell?" 81:320
+if ((Hush4 < 1) && ((Hush2 < 1) || (Hush3 < 2)))
+  choice "I'm gonna go bang my head on a wall over there. See ya." 81:325
+if ((Hush4 > 0) && ((Hush2 < 1) || (Hush3 < 2)))
+  choice "I'm leaving." 81:330
+
+#window 81:340
+body "You better leave me alone. If InvisoLad sees I'm distracted, he'll creep up and push the button. And if THAT happens... it's quietus for everyone."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  ComicTitle_R$="      Dr. Hush-Hush" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+if ((KRAP_PAD1 == 1) && (Hush5 < 1))
+  choice "Do you know the security code for El Puno's prison cell?" 81:320
+if (((Hush4 < 1) && (Hush2 < 1)) && (Hush3 < 1))
+  choice "I'm gonna go bang my head on a wall over there. See ya." 81:325
+if (((Hush4 > 0) && (Hush2 < 1)) && (Hush3 < 1))
+  choice "I'm leaving." 81:330
+if (((Hush4 < 1) && (KRAP_PAD1 == 1)) && (Hush5 < 1))
+  choice "I'm gonna go bang my head on a wall over there. See ya." 81:325
+if (((Hush4 > 0) && (KRAP_PAD1 == 1)) && (Hush5 < 1))
+  choice "I'm leaving." 81:330
+
+#window 81:345
+body "Will you stop pestering me for the code? It's not yours to have, and it's not mine to give."
+cam left restore zip
+talk npc talk_b stay
+startswitch {
+  ComicTitle_R$="      Dr. Hush-Hush" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:355
+body "quadrature mixing at sonar frequency taken care of.... calibration input switchable to ground... maybe... perhaps input to preamp... 50 khz intermediate filters... thermal fault detection... problem is mainly"
+cam left restore zip
+talk npc talk_b stay
+startswitch {
+  ComicTitle_R$="      Dr. Hush-Hush" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:360
+body "chewing gum might work... not so crazy... max power 1 kw... transducer voltage during transmit... frequency range... 781 hz - 1.6 mhz (lo/8)..."
+cam left restore zip
+talk npc talk_b stay
+startswitch {
+  ComicTitle_R$="      Dr. Hush-Hush" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:365
+body "high gain and low gain separated by 30 db... dc - 44 khz frequency response... think... sin/cos intermediate frequency... A to D conversion... but how to jimmy db-9 (d sub) style connector for the"
+cam left restore zip
+talk npc talk_b stay
+startswitch {
+  ComicTitle_R$="      Dr. Hush-Hush" 
+  set Hush6 = 0
+  set Hush7 = 1
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:375
+body "%d28... or was it... %d82... or perhaps it was... %d22... maybe it was", @kj_1, @kj_1, @kj_1
+cam left restore zip
+talk npc talk_b stay
+startswitch {
+  ComicTitle_R$="      Dr. Hush-Hush" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:380
+body "%d67... or maybe it was... %d12... or was it... %d45... or perhaps it", @kj_1, @kj_1, @kj_1
+cam left restore zip
+talk npc talk_b stay
+startswitch {
+  ComicTitle_R$="      Dr. Hush-Hush" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:385
+body "%d87... perhaps it was... %d43... or maybe it was... %d12... or was it", @kj_1, @kj_1, @kj_1
+cam left restore zip
+talk npc talk_b stay
+startswitch {
+  ComicTitle_R$="      Dr. Hush-Hush" 
+  set Hush7 = 1
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:505
+body "MY DEAR CHILD, COME CLOSER TO ME. I AM HARMLESS."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  set Headwork1 = 1
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0506
+
+#window 81:506
+body "I AM BUT A DANCER ON THE FRINGE OF THOUGHT-SPACE... DARTING FROM NOTION TO IDEA IN THE TWILIGHT OF CONSCIOUSNESS."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0507
+
+#window 81:507
+body "I AM ALSO A TELEPATH. MY POWERS ARE SO STRONG THAT IF WE MAKE PHYSICAL CONTACT, MY MIND READING ABILITIES WILL EXTEND TO YOU. WOULD YOU LIKE TO TRY?"
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+choice "Are you kidding? I insist." 81:510
+choice "Forget it. You fried Fabuloid's brain doing that in Power Patrol #3." 81:515
+
+#window 81:510
+body "ARE YOU QUITE SURE YOU ARE READY FOR THE EXPERIENCE?"
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+choice "Absolutely. Bring it on, baby." 81:520
+choice "Maybe not...." 81:530
+
+#window 81:515
+body "WHILE TRUE THAT FABULOID'S MIND WAS COMPLETELY WIPED OF ALL MEMORIES BY MY POWER, THE EVENT WAS DRASTICALLY OVER-DRAMATIZED IN THE PERIODICALS."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0516
+
+#window 81:516
+body "THE ADVERSE REACTION WAS A RESULT OF MENTAL CONDITIONING HE PREVIOUSLY SUFFERED AT THE HANDS OF EVIL GIGATOON'S MIND FOAM."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0530
+
+#window 81:520
+body "VERY WELL, MY CHILD. LEAN FORWARD AND TOUCH MY SLEEVE."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle grab_m 0 0 0
+  extern AI_ReleaseEntity bootshandle
+  if (@have_read_minds > 0)
+    goto 81:0565
+  goto 81:0521
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:521
+body "THAT WAS MY BELLY BUTTON, BUT NO MATTER.... YOU SHOULD FEEL A TINGLE RACE DOWN YOUR SPINE."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  set @have_read_minds = 1
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0522
+
+#window 81:522
+body "NOW THE WARM SENSATION OF YOUR EXPANDING MIND WILL WASH OVER YOU. IT IS THE HARMONY OF THE UNIVERSE FILLING YOUR SOUL WITH LOVE AND UNDERSTANDING."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0523
+
+#window 81:523
+body "YES... I CAN FEEL YOUR MIND SWELLING. NOW WANDER THE PRISON YARD AND SAMPLE THE GOSSAMER STRANDS OF TRANSPLENDENT THOUGHT FLOATING ACROSS THE ROOM. IT IS QUITE PLEASANT."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0524
+
+#window 81:524
+body "WHEN YOU ARE DONE, RETURN TO ME AND I SHALL SUBTRACT THE POWER FROM YOUR MIND."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0525
+
+#window 81:525
+body "ENJOY YOURSELF, MY CHILD."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  set MIND_READ = 1
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:530
+body "TO READ ANOTHER PERSON'S MIND IS A LIFE-AFFIRMING EXPERIENCE, MY CHILD. IT PUSHES INDIVIDUALS ONE STEP CLOSER TO COLLECTIVE HARMONY. IT MAKES US REALIZE THAT WE ARE NOT SO DIFFERENT FROM ONE ANOTHER AS IT WOULD SEEM. IT IS A PITY YOU WILL NOT EVEN TRY."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0531
+
+#window 81:531
+body "YOU ARE ALWAYS WELCOME TO CHANGE YOUR MIND, MY SON...."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  set Headwork1 = 1
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:535
+body "YOUR THOUGHTS SPEAK LOUDLY. YOU WISH TO EXPERIENCE THE WONDER AND JOY OF MY MIND READING AFTER ALL."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+choice "Sure, why not?" 81:510
+choice "Maybe not...." 81:531
+
+#window 81:540
+body "BACK SO SOON? WOULD YOU LIKE ME TO REMOVE YOUR MIND-READING POWERS OR EXTEND THEM?"
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+choice "Make it stop. I'm getting a headache." 81:550
+choice "Extend them. I beg you." 81:545
+
+#window 81:545
+body "OF COURSE, MY CHILD. I'M HAPPY TO SEE YOU ENJOYING YOURSELF."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:550
+body "VERY WELL, MY CHILD."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  set MIND_READ = 0
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0551
+
+#window 81:551
+body "NOW THAT THE POWER IS GONE FROM YOUR MIND, I WILL DISCLOSE THE POTENTIAL SIDE EFFECTS."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0552
+
+#window 81:552
+body "YOU MAY EXPERIENCE FEELINGS OF LOSS AND REGRET."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0553
+
+#window 81:553
+body "MANY REPORT FEELING INTROSPECTIVE FOR SEVERAL WEEKS AFTER THE EVENT. DO NOT BE SURPRISED IF YOU EXPERIENCE RECURRING DREAMS IN WHICH YOU RELIVE PAINFUL EVENTS FROM THE PAST."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0554
+
+#window 81:554
+body "COMMONLY OBSERVED SIDE EFFECTS ALSO INCLUDE DIZZINESS, NAUSEA, SHORTNESS OF BREATH, CONSTIPATION, HALLUCINATIONS, AND INTRACTABLE VOMITING."
+cam left fov(170) lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0555
+
+#window 81:555
+body "BUT THOSE ARE TEMPORARY."
+cam left fov(90) lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0556
+
+#window 81:556
+body "OH, NO NEED TO THANK ME, MY CHILD. HAVE A TRANSCENDENT DAY."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  set Headwork1 = 2
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:560
+body "OH, NO NEED TO THANK ME, MY CHILD. HAVE A TRANSCENDENT DAY."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:565
+body "THE GIFT IS YOURS AGAIN, MY SON."
+cam left lift(50) restore zip
+talk npc amb_a stay
+startswitch {
+  set MIND_READ = 1
+  ComicTitle_R$="        HEADWORK" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:605
+body "In the deep of night, it is the flashing red light that disturbs my slumber and beckons me. It represents all the answers to all my questions. How easy it would be to push the button..."
+cam left to(invisolad) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 invisolad
+  ComicTitle_R$="        InvisoLad" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0606
+
+#window 81:606
+body "But knowledge must be earned. This I believe."
+cam left to(invisolad) restore zip
+startswitch {
+  ComicTitle_R$="        InvisoLad" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:610
+body "There are many things it is impossible to doubt... that I am in this prison yard, standing next to this door without a stitch of clothing... these facts I am certain of."
+cam left to(invisolad) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 invisolad
+  ComicTitle_R$="        InvisoLad" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0611
+
+#window 81:611
+body "However, where is proof that I possess hands and body... indeed, that I possess corporeal form of any nature?"
+cam left to(invisolad) restore zip
+startswitch {
+  ComicTitle_R$="        InvisoLad" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:615
+body "I extend my hand with express purpose, but I do not perceive it. I wave it before this man's face, yet he does not flinch. I rudely gesture with one upright finger, yet he does not strike me...."
+cam left to(invisolad) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 invisolad
+  ComicTitle_R$="        InvisoLad" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:620
+body "I am certain I am looking at him with my eyes, and that I am not asleep... but how often have I dreamt I was in similar surroundings, standing in much the same place, thinking much the same thoughts?"
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 invisolad
+  ComicTitle_R$="        InvisoLad" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0621
+
+#window 81:621
+body "I have too often been deceived by the illusions of sleep. My only hope is that this is a terrible dream... one I will wake from and be visible once more."
+cam left to(invisolad) restore zip
+startswitch {
+  ComicTitle_R$="        InvisoLad" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:625
+body "I must commit these meditations to paper that they may be collected and bound in a single volume. Others must be allowed to benefit from my struggles. But what shall I call this book...?"
+cam left to(invisolad) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 invisolad
+  ComicTitle_R$="        InvisoLad" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:630
+body "Even now... the flashing red light beckons me across the room. How easy it would be to push the button and have all my questions answered."
+cam left to(invisolad) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 invisolad
+  ComicTitle_R$="        InvisoLad" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:640
+body "tubular clusters of thought and reality... the foremost secret banner of titles... and the holiest of the numbers... the holiest number... the number is"
+cam left to(invisolad) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 invisolad
+  ComicTitle_R$="        InvisoLad" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:645
+body "is the number... fractions and decimals... existence is safe when invisible to the word... i must keep the number safe... zoo keeper addict... what is the number again... the holiest of numbers... the number is"
+cam left to(invisolad) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 invisolad
+  ComicTitle_R$="        InvisoLad" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:650
+body "%d... %d... in mine eye... i fly... i fly... pattern... light show clusters... the tubes... %d tubular number punches... i'm dying inside... invisible to myself", @kj_2, @kj_2, @kj_2
+cam left to(invisolad) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 invisolad
+  ComicTitle_R$="        InvisoLad" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:655
+body "%d... %d... in mine eye... i fly... i fly...", @kj_2, @kj_2
+cam left to(invisolad) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 invisolad
+  ComicTitle_R$="        InvisoLad" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:705
+body "Bow-wow."
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_a stay
+startswitch {
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+
+#window 81:710
+body "Ruff-ruff."
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_a stay
+startswitch {
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+
+#window 81:715
+body "Arf-arf."
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_a stay
+startswitch {
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+
+#window 81:720
+body "Woof-woof."
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_a stay
+startswitch {
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+
+#window 81:725
+body "Wau-wau."
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_a stay
+startswitch {
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+
+#window 81:730
+body "Voof-voof."
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_a stay
+startswitch {
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+
+#window 81:735
+body "Au-au."
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_a stay
+startswitch {
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+
+#window 81:740
+body "Woef-woef."
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_a stay
+startswitch {
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+
+#window 81:745
+body "Ouah-ouah."
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_a stay
+startswitch {
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+
+#window 81:750
+body "Ghaue-ghaue."
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_a stay
+startswitch {
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+
+#window 81:755
+body "Hau-hau."
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_a stay
+startswitch {
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+
+#window 81:760
+body "Vau-vau."
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_a stay
+startswitch {
+  set Krapto1 = 0
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+
+#window 81:770
+body "Are you reading my mind? Oh, how glorious."
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_c stay
+startswitch {
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:775
+body "Do you know how frustrating it is to have inadequate vocal cords for human speech? Everyone treats me like a dumb animal. It's maddening."
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_c stay
+startswitch {
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:780
+body "I'm feeling really drained right now. All my senses are dulled from dehydration..."
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_c stay
+startswitch {
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:785
+body "You filled up my water dish!"
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_c stay
+startswitch {
+  extern remove_from_inventory "Krapto's Filled Water Dish"
+  extern AI_GrabEntity krapto krapto_handle
+  extern entkey krapto_handle "default_anim" "amb_b"
+  extern AI_ReleaseEntity krapto_handle
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0786
+
+#window 81:786
+body "Thank you very much. That was refreshing."
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_b stay
+startswitch {
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0787
+
+#window 81:787
+body "My heightened sense of smell is finally coming back..."
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_b stay
+startswitch {
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0788
+
+#window 81:788
+body "Why does my water dish smell funny?"
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_b stay
+startswitch {
+  set Krapto_gavehimwater = 1
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:790
+body "Did you know that there's an invisible man wandering the prison yard? My nose is powerful enough to pinpoint his exact location in the room."
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_b stay
+startswitch {
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0791
+
+#window 81:791
+body "He's hanging out in the far corner of the yard, near the entrance door."
+cam left pitch(65506) lift(30) restore zip
+talk npc gest_b stay
+startswitch {
+  extern is_quest_done "Find Invisolad" @poo
+  if (@poo == 0)
+    extern add_quest "Find Invisolad"
+  if (kraptonjail_lad_okay == 0) {
+    extern AI_GrabEntity invisowall hInviso
+    extern entkey hInviso "sequence" "81:0601"
+    set kraptonjail_lad_okay = 1
+  }
+  ComicTitle_R$=" Krapto the Hero Hound" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:805
+body "Welcome to lock-up, dude. I hope you didn't have any plans this year. With \"El Puno\" down in the dumps and drunk as an owl, escape doesn't seem likely."
+cam left restore zip
+talk npc amb_i stay
+startswitch {
+  extern AI_GrabEntity multidude0 multidude0_handle
+  extern ANIM_PlayAnim multidude0_handle amb_f 1 0 0
+  ComicTitle_R$="       Multidude 0" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity multidude0_handle
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:810
+body "Me? I can create duplicates of myself whenever I want."
+cam left restore zip
+talk npc amb_i stay
+startswitch {
+  extern AI_GrabEntity multidude0 multidude0_handle
+  extern ANIM_PlayAnim multidude0_handle amb_f 1 0 0
+  ComicTitle_R$="       Multidude 0" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity multidude0_handle
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0811
+
+#window 81:811
+body "Here, watch this."
+cam left restore zip
+talk npc amb_i stay
+startswitch {
+  extern AI_GrabEntity multidude0 multidude0_handle
+  extern ANIM_PlayAnim multidude0_handle amb_f 1 0 0
+  ComicTitle_R$="       Multidude 0" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity multidude0_handle
+  extern AI_SpawnEntity multidude128_handle npc_kma multidude128 81:0801 dude128
+  extern AI_SpawnEntity multidude129_handle npc_kma multidude129 81:0801 dude129
+  extern AI_WaitAndFace multidude128_handle -1 PlayerChar0
+  extern AI_WaitAndFace multidude129_handle -1 PlayerChar0
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0812
+
+#window 81:812
+body "Wuttup, dude?"
+startswitch {
+  extern AI_GrabEntity multidude0 multidude0_handle
+  extern ANIM_PlayAnim multidude0_handle amb_f 1 0 0
+  ComicTitle_R$="       Multidude 128" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity multidude0_handle
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+xpos 30
+ypos 230
+subwindow 81:813
+nextwindow 81:0814
+
+#window 81:813
+body "Hola!"
+startswitch {
+  extern AI_GrabEntity multidude0 multidude0_handle
+  extern ANIM_PlayAnim multidude0_handle amb_f 1 0 0
+  ComicTitle_R$="       Multidude 129" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity multidude0_handle
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+xpos 205
+ypos 300
+
+#window 81:814
+body "Unless they wander out of sight, I can absorb 'em back into me quick as a blink."
+cam left restore zip
+talk npc amb_i stay
+startswitch {
+  extern AI_GrabEntity multidude0 multidude0_handle
+  extern ANIM_PlayAnim multidude0_handle amb_f 1 0 0
+  extern AI_WaitAndFace multidude128_handle -1 multidude0
+  extern AI_WaitAndFace multidude129_handle -1 multidude0
+  ComicTitle_R$="       Multidude 0" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity multidude0_handle
+  extern AI_DestroyEntity multidude128_handle
+  extern AI_DestroyEntity multidude129_handle
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0815
+
+#window 81:815
+body "Each one is capable of independent thought, which is a real pain in the butt since they're all as lazy as I am."
+cam left restore zip
+talk npc amb_i stay
+startswitch {
+  extern AI_GrabEntity multidude0 multidude0_handle
+  extern ANIM_PlayAnim multidude0_handle amb_f 1 0 0
+  ComicTitle_R$="       Multidude 0" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity multidude0_handle
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:820
+body "I've lost about two dozen duplicates since my powers developed. They tend to sneak off to live their own lives without me. If you've ever met anyone who looked like me, he was probably one of my duplicates. They're all over the galaxy."
+cam left restore zip
+talk npc amb_i stay
+startswitch {
+  extern AI_GrabEntity multidude0 multidude0_handle
+  extern ANIM_PlayAnim multidude0_handle amb_f 1 0 0
+  ComicTitle_R$="       Multidude 0" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity multidude0_handle
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:825
+body "Well... make yourself cozy, dude. We're gonna be here a looooong time."
+cam left restore zip
+talk npc amb_i stay
+startswitch {
+  extern AI_GrabEntity multidude0 multidude0_handle
+  extern ANIM_PlayAnim multidude0_handle amb_f 1 0 0
+  ComicTitle_R$="       Multidude 0" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity multidude0_handle
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:830
+body "Hey, at least we're not in a Gorian prison."
+cam left restore zip
+talk npc amb_i stay
+startswitch {
+  extern AI_GrabEntity multidude0 multidude0_handle
+  extern ANIM_PlayAnim multidude0_handle amb_f 1 0 0
+  ComicTitle_R$="       Multidude 0" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity multidude0_handle
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:835
+body "Is that girl in the beret with you? Man, what I wouldn't do to get my hands on some of that. My duplicates would go to town on her."
+cam left restore zip
+talk npc amb_i stay
+startswitch {
+  extern AI_GrabEntity multidude0 multidude0_handle
+  extern ANIM_PlayAnim multidude0_handle amb_f 1 0 0
+  set stiletto_flirt = 1
+  extern AI_SpawnEntity multidude126_handle npc_kma multidude126 81:0901 dude126
+  extern AI_SpawnEntity multidude127_handle npc_kma multidude127 81:1001 dude127
+  extern AI_WaitAndFace multidude126_handle -1 81:2101
+  extern AI_WaitAndFace multidude127_handle -1 81:2101
+  ComicTitle_R$="       Multidude 0" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity multidude0_handle
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:840
+body "Are Multidude 126 and 127 hitting on your girlfriend? I'm sorry, dude. Lemme take care of that."
+cam left restore zip
+talk npc amb_i stay
+startswitch {
+  extern AI_GrabEntity multidude0 multidude0_handle
+  extern ANIM_PlayAnim multidude0_handle amb_f 1 0 0
+  ComicTitle_R$="       Multidude 0" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity multidude0_handle
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0841
+
+#window 81:841
+body "Poof! They're gone."
+cam left restore zip
+talk npc amb_i stay
+startswitch {
+  extern AI_GrabEntity multidude0 multidude0_handle
+  extern ANIM_PlayAnim multidude0_handle amb_f 1 0 0
+  set stiletto_flirt = 0
+  extern AI_DestroyEntity multidude126_handle
+  extern AI_DestroyEntity multidude127_handle
+  ComicTitle_R$="       Multidude 0" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity multidude0_handle
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:901
+body "Nice. Real nice."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  set stiletto_flirt = 2
+  ComicTitle_R$="      Multidude 26" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1001
+body "Tasty. Absolute delish."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  ComicTitle_R$="      Multidude 27" 
+}
+
+finishswitch {
+  set stiletto_flirt = 2
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1105
+body "What's your power?"
+cam left lift(40) restore zip
+talk npc amb_c stay
+startswitch {
+  ComicTitle_R$="      Susan Street" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1115
+body "haven't shaved my armpits in two months"
+cam left lift(40) restore zip
+talk npc amb_c stay
+startswitch {
+  ComicTitle_R$="      Susan Street" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1120
+body "legs feel like barbed wire"
+cam left lift(40) restore zip
+talk npc amb_c stay
+startswitch {
+  ComicTitle_R$="      Susan Street" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1125
+body "birds could build a nest in my hair... plenty of lice for food"
+cam left lift(40) restore zip
+talk npc amb_c stay
+startswitch {
+  ComicTitle_R$="      Susan Street" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1130
+body "No offense, but you don't look like you warrant detention in the high security cell."
+cam left lift(40) restore zip
+talk npc amb_c stay
+startswitch {
+  ComicTitle_R$="      Susan Street" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:1131
+
+#window 81:1131
+body "Lemme guess… you've got good slags of MysTech?"
+cam left lift(40) restore zip
+talk npc amb_c stay
+startswitch {
+  ComicTitle_R$="      Susan Street" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:1132
+
+#window 81:1132
+body "Well, can't be THAT good if Rictus gave them back to you before putting you in here."
+cam left lift(40) restore zip
+talk npc amb_c stay
+startswitch {
+  ComicTitle_R$="      Susan Street" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1135
+body "So what's your power?"
+cam left lift(40) restore zip
+talk npc amb_c stay
+startswitch {
+  ComicTitle_R$="      Susan Street" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1805
+body "None of these clowns will save us. What chance do we have? I've been here ten months and not one of them has lifted a finger to help us."
+cam left restore zip
+talk npc amb_h stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1810
+body "Take that little freak Headwork for instance... he could read the mind of a guard and find out a security weakness to exploit, except he's too busy communing with the harmonic melody of the universe to bother."
+cam left restore zip
+talk npc amb_h stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1815
+body "Couldn't Multidude have created dozens of duplicates of himself to overpower the guards when they put you in here?"
+cam left restore zip
+talk npc amb_h stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1820
+body "The only hero with a real chance of saving us sits in his cell, drinking all day. No one knows what's wrong with him. It's like \"El Puno\" has given up on life. It's sad."
+cam left restore zip
+talk npc amb_h stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:1821
+
+#window 81:1821
+body "Rictus keeps the booze flowing to make sure he's too sloshed to rescue us...."
+cam left restore zip
+talk npc amb_h stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1825
+body "I've been cooped up here for ten months. I've seen 'em come and go. We've had some characters...."
+cam left restore zip
+talk npc amb_h stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:1826
+
+#window 81:1826
+body "There was one guy who had the power to turn into different types of bread. He was a lovely loaf of cinnamon walnut raisin bread when Galactigoat ate him."
+cam left restore zip
+talk npc amb_h stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1830
+body "Oh, yeah... and how could I forget the guy with a head made outta gelatin. He was a real winner."
+cam left restore zip
+talk npc amb_h stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1835
+body "Why couldn't I be locked up in here with the Golden Strumpet, or Wammo Woman?"
+cam left restore zip
+talk npc amb_h stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1840
+body "Klaz, I gotta get outta here."
+cam left restore zip
+talk npc amb_h stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1850
+body "must say something to make him go away... nothing threatening or he might punch... lie to him... say some-thing powerful enough to force him to"
+cam left restore zip
+talk npc amb_f stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:1851
+
+#window 81:1851
+body "I farted."
+cam left restore zip
+talk npc amb_h stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1855
+body "really bad"
+cam left restore zip
+talk npc amb_f stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:1856
+
+#window 81:1856
+body "Really bad."
+cam left restore zip
+talk npc amb_h stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1860
+body "might wanna clear the"
+cam left restore zip
+talk npc amb_f stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:1861
+
+#window 81:1861
+body "You might wanna clear the area. The prison gruel isn't kind on the guts."
+cam left restore zip
+talk npc amb_h stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1862
+body "keep saying same thing..."
+cam left restore zip
+talk npc amb_f stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:1861
+
+#window 81:1870
+body "so in love with her... why won't she look at me... look at me once... please... the most beautiful... the most gorgeous... it's love... love... love... love... her face so"
+cam left restore zip
+talk npc amb_f stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1875
+body "walk over and say, come here often... ha ha ha... that's clever, mister... olingo... jack olingo... that's a very interesting name... are you from"
+cam left restore zip
+talk npc amb_f stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1880
+body "so cool she hangs out with planets... mom/dad im-pressed if she were my girlfriend... bet she can really"
+cam left restore zip
+talk npc amb_f stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:1881
+
+#window 81:1881
+body "klaz... no-no-no-no-no-no-no... klaz she caught me... stupid STUPID... saw me... looking... saw me... now she'll never"
+cam left restore zip
+talk npc amb_f stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1885
+body "want to hide... stay here... stay calm... don't look again... if she looks and i'm not staring everything fine... i hope she doesn't think i'm"
+cam left restore zip
+talk npc amb_f stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1890
+body "tough guy won't leave... invading personal space... what's he looking at... his girlfriend maybe... saw me looking... gonna punch me... gonna punch me in the"
+cam left restore zip
+talk npc amb_f stay
+startswitch {
+  ComicTitle_R$="       Jack Olingo" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:102
+body "You are weakness. I am strongness. Take this, and maybe one day I will kill you fairly."
+cam left lift(90) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="    Amazing Force-O" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:0103
+
+#window 81:105
+body "Do you have super power?"
+cam left lift(90) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="    Amazing Force-O" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:110
+body " "
+startswitch {
+  ComicTitle_R$="    Amazing Force-O" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1905
+body "Look, Mister Boots. It's that guy from your comic books. Why's he just sittin' there like that?"
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="          PAL-18" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1910
+body "I bet he's strong enough to pick me up, throw me high up in the air, and catch me."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="          PAL-18" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:1911
+
+#window 81:1911
+body "Not down stairs, like some people."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="          PAL-18" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1915
+body "I bet he likes little robots."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="          PAL-18" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1920
+body "Maybe he can help us get outta here...."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="          PAL-18" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1925
+body "ain't ever gonna love me unless i fight better... claw enhancements..."
+cam left lift(40) restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="          PAL-18" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2005
+body "Nice going, ace."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Rho Bowman" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2010
+body "Don't look at me like that. I'm not the one who got us in here."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Rho Bowman" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2015
+body "Stay away from me, Boots. I'm cranky and I'll bite your head off."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Rho Bowman" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2020
+body "circuits along the wall part of lock mechanism... maybe short or disrupt them... with what... think rho think"
+cam left restore zip
+startswitch {
+  ComicTitle_R$="       Rho Bowman" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2105
+body "This is one tight drum. Nice going, slick."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="         Stiletto" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2106
+
+#window 81:2106
+body "How about you drop the hero act already. You’ve gotten us into enough trouble."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="         Stiletto" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2110
+body "Beat it, Sly. I’ll let you know when I’ve figured out a way outta this dump."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="         Stiletto" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2115
+body "I'm thinking, I'm thinking...."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="         Stiletto" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2120
+body "missed staccato blade hidden in my boot... fake emergency... guard will investigate... nail him in the eye... grab weapon... make a break for it... then try"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern AI_GrabEntity 81:2101 stiletto_handle
+  extern ANIM_PlayAnim stiletto_handle amb_a 1 0 0
+  ComicTitle_R$="         Stiletto" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity stiletto_handle
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2125
+body "Don't be a jealous boy, Sly."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set stiletto_flirt = 2
+  ComicTitle_R$="         Stiletto" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2205
+body "Perhaps leaving the safety of the shuttle was not the best idea, was it? Next time we shall put it to a vote."
+cam left restore zip
+startswitch {
+  ComicTitle_R$="       Democratus" 
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_GrabEntity 81:2201 democratus_handle
+  extern AI_WaitAndFace bootshandle -1 81:2201
+  extern AI_WaitAndFace democratus_handle -1 PlayerChar0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity democratus_handle
+  extern cam_anoxmariomode 1
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2210
+body "Our scientists can't find anything to disable this force field."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Democratus" 
+}
+
+finishswitch {
+  set DEMOKRAP2 = 0
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2215
+body "We're debating whether or not to push the Emergency Parole Button."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Democratus" 
+}
+
+finishswitch {
+  extern cam_anoxmariomode 1
+  set DEMOKRAP3 = 0
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2216
+
+#window 81:2216
+body "Better not!"
+cam left from(PlayerChar0) to(hush-hush) restore zip
+talk npc talk_a stay
+startswitch {
+  extern AI_GrabEntity hush-hush hush_handle
+  extern AI_WaitAndFace hush_handle -1 81:2201
+  extern ANIM_PlayAnim hush_handle gest_h
+  ComicTitle_R$="      Dr. Hush-Hush" 
+}
+
+finishswitch {
+  extern AI_ReleaseEntity hush_handle
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2220
+body "Our situation appears rather dire, doesn't it? We have our top minds working on a solution."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Democratus" 
+}
+
+finishswitch {
+  set DEMOKRAP4 = 0
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2225
+body "Perhaps that flamboyantly-dressed gentleman in the prison chamber can help us...."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Democratus" 
+}
+
+finishswitch {
+  set DEMOKRAP5 = 0
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2230
+body "Excuse me, sir. Our planetary sensors are picking up a strange field emanating from your hippocampus and frontal lobe. Do you feel all right?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Democratus" 
+}
+
+finishswitch {
+  set DEMOKRAP4 = 0
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2305
+body "I am Amanuensis, the supreme Krapton archivist. My sole purpose in life is to chronicle the lives of the amazing beings who make their home on the planet Krapton. My mind is brimming with thrilling stories, death-defying tales, and fantastic adventures."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2306
+
+#window 81:2306
+if (@amanuensusTalk == 0)
+  body "What would you like to know about?"
+if (@amanuensusTalk == 1)
+  body "What else would you like to know about?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+  set @amanuensusTalk = 1
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+choice "A Brief History of Krapton" 81:2310
+choice "Character Data Sheets" 81:2330
+choice "Nothing, thanks." 81:2350
+nextwindow 81:2306
+
+#window 81:2310
+body "In 197ac, an unexplored Sender Spike sent an expeditionary team to a remote area of the universe somewhere near the Wu-Chan system. They discovered a crystalline planet operating under bizarre comic book rules."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2311
+
+#window 81:2311
+body "It was the superhero world of Krapton."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2312
+
+#window 81:2312
+body "The normal inhabitants of the planet, tired of being constantly abducted and saved by the super-powered population, had long since moved away."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2313
+
+#window 81:2313
+body "Many super villains constructed massive starships and sent them out to roam the galaxy in search of victims to bring back to Krapton. That's where we are now."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2314
+
+#window 81:2314
+body "The source of their super powers is a mystery. Some people believe that abnormal radiation from Krapton's sun is responsible."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2315
+
+#window 81:2315
+body "Others believe the powers were a gift from a godlike being in search of quality entertainment."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2316
+
+#window 81:2316
+body "Twenty years ago, two enterprising brothers created a line of comic books based on the real-life adventures of the Krapton heroes and villains."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2317
+
+#window 81:2317
+body "\"Rage of the Fist\" was the flagship of Krapton Comics until lagging sales and a general disinterest in super heroes put the publishers outta business for good."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2318
+
+#window 81:2318
+body "These are the twilight years. Most of the major heroes and villains are gone or simply specters of their former selves. Only a handful, like Rictus, continue to play the game."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2306
+
+#window 81:2330
+if (@amanuensusTalk2 == 0)
+  body "You may peruse the data sheets of any of the characters who are currently imprisoned here. Who would you like to know more about?"
+if (@amanuensusTalk2 == 1)
+  body "Who else would you like to know more about?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+  set @amanuensusTalk2 = 1
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+choice "Amazing Force-O" 81:2332
+choice "Creepfood" 81:2334
+choice "Dr. Hush-Hush" 81:2336
+choice "Paco 'El Puno' Estrella" 81:2338
+choice "Headwork" 81:2340
+choice "Invisolad" 81:2342
+choice "Krapto the Hero Hound" 81:2344
+choice "Multidude" 81:2346
+choice "Susan Street" 81:2348
+choice "Never mind." 81:2350
+
+#window 81:2332
+body "Real name: Jos'ph D'apple\n Occupation: Fruit picker\n Other Aliases: Windego Joe\n Place of Birth: Verner, Bilifiga\n Group Affiliation: None\n Base of Operations: Tunnel of Winds, Krapton\n First appearance: Amazing Force-O #1\n Powers: Force-O gained his powers after flying his damaged spacecraft through a region of space known as the Newton Field. His many abilities include super-strength when the wind blows, x-ray breath, and the power to eerily imitate a wounded cat."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2330
+
+#window 81:2334
+body "Real name: Unknown\n Occupation: Super Villain\n Other Aliases: Dour Paul\n Place of Birth: Quanos System (unconfirmed)\n Group Affiliation: The Nasty 23\n Base of Operations: Phendra Rajh\n First appearance: Band of the Gland Limited Series #2\n Powers: Creepfood was Rictus' right-hand man until he attempted to double-cross him during the Fall of the Heroes saga (Fall of the Heroes Limited Series #1-12). His powers have long since been taken away."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2330
+
+#window 81:2336
+body "Real name: Ivan E. Pitney\n Occupation: Scientist\n Other Aliases: None\n Place of Birth: Pelmida, Cordica\n Group Affiliation: None\n Base of Operations: Casa de Rage, Krapton\n First appearance: Rage of the Fist #3\n Powers: None whatsoever, although highly intelligent."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2330
+
+#window 81:2338
+body "Real name: Paco Estrella\n Occupation: Adventurer\n Other Aliases: Supermang, The Fist\n Place of Birth: Crystopolis, Krapton\n Group Affiliation: None\n Base of Operations: Casa de Rage, Krapton\n First appearance: Krapton Comics #12\n Powers: When \"El Puno\" becomes angry or irritated, he acquires RageMight and is capable of punching through large barriers. Two years ago, he lost the ability to fly-the reasons for which are unknown."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2330
+
+#window 81:2340
+body "Real name: Ydzs'z Pfiz\n Occupation: Unknown\n Other Aliases: Mindshuck\n Place of Birth: Crystopolis, Krapton\n Group Affiliation: Mega Pals\n Base of Operations: Mega Tower, Krapton\n First appearance: Screaming Stickboy #23\n Powers: In addition to being a powerful telepath, Headwork also temporarily extends his powers to anyone he makes physical contact with. His blatant disregard for individual privacy makes him unpopular wherever he goes."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2330
+
+#window 81:2342
+body "Real name: Ray Daycart\n Occupation: Mathematician\n Other Aliases: None\n Place of Birth: New York, Earth\n Group Affiliation: Mega Pals (reserve member)\n Base of Operations: Kraptonamo Bay, Krapton\n First appearance: Metallion Man #33\n Powers: Invisolad is currently in a state of permanent invisibility, having lost his ability to reappear after being strenuously probed by Evil Gigatoon's brainer stick."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2330
+
+#window 81:2344
+body "Real name: Sebastian\n Occupation: Adventurer\n Other Aliases: Power Puppy\n Place of Birth: Crystopolis, Krapton\n Group Affiliation: None\n Base of Operations: The Doghouse\n First appearance: Metallion #56\n Powers: Krapto has limited invulnerability, the power of flight, and a super-enhanced sense of smell."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2330
+
+#window 81:2346
+body "Real name: Stephen \"Dude\" Chris\n Occupation: Adventurer\n Other Aliases: Many-Man\n Place of Birth: Crystopolis, Krapton\n Group Affiliation: Powerful T.E.A.M. Incorporated\n Base of Operations: Powerful T.E.A.M. Incorporated Headquarters, Krapton\n First appearance: Giant Size Hangmen #1\n Powers: Multidude has the ability to create duplicates of himself who act independently and have free will. He can also \"absorb\" the duplicates at will, as long as they're in visual range."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2330
+
+#window 81:2348
+body "Real name: Susan Street\n Occupation: Journalist\n Other Aliases: None.\n Place of Birth:  New Cordica, Cordica\n Group Affiliation: None.\n Base of Operations: Crystopolis Observer Building, Krapton\n First appearance: Rage of the Fist #14\n Powers: Susan is incredibly adept at hiding among blankets."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2330
+
+#window 81:2350
+body "I'll be here if you change your mind. My books are never closed."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2370
+if (STILETTO_ON_DEMOCRATUS == 1)
+  body "tell everyone to stand back... then i punch down guards. grab rictus by the collar... lift him over my head... CRASH... stiletto girl gives me a kiss on the cheek"
+if (STILETTO_ON_DEMOCRATUS == 0)
+  body "tell everyone to stand back... then i punch down guards. grab rictus by the collar... lift him over my head... CRASH... ms. street gives me a kiss on the cheek"
+cam left restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2375
+body "energy shoots from my blow hole as i swim past enemies... ZZFAT!... suddenly... the sea cucumber erupts from the foamy sea to help me... vomits on enemy with violent"
+cam left restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2380
+body "first issue of WHALE BOY becomes instant collector's item... gold foil... stamp... embossed... signed... with 38 alternate covers"
+cam left restore zip
+talk npc amb_a stay
+startswitch {
+  ComicTitle_R$="       Amanuensus" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubblethinkright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2405
+body "Get away from me. I'm trying to be inconspicuous."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  ComicTitle_R$="      Multidude 42" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2410
+body "Will you knock it off?"
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  ComicTitle_R$="      Multidude 42" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2411
+
+#window 81:2411
+body "If Multidude 0 notices me, he might absorb me again."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  ComicTitle_R$="      Multidude 42" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2412
+
+#window 81:2412
+body "And I don't wanna go back."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  ComicTitle_R$="      Multidude 42" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:2415
+body "Stop it, dude. I've managed to survive two months without getting absorbed. Don't blow this for me."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  ComicTitle_R$="      Multidude 42" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 81:2416
+
+#window 81:2416
+body "Too late."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity multidude42 fortytwo_handle
+  extern AI_WaitAndFace fortytwo_handle -1 multidude0
+  ComicTitle_R$="      Multidude 42" 
+}
+
+finishswitch {
+  extern AI_DestroyEntity fortytwo_handle
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1401
+body "Are you kidding? That forcefield's impenetrable."
+cam left from(PlayerChar0) to(81:1401) restore zip
+talk player talk_a stay
+startswitch {
+  ComicTitle_R$="         Boots" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleleft"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 81:1501
+startswitch {
+  set lastMS = func_GameTime
+  set currentMS = lastMS
+  gosub 81:1503
+  gosub 81:1504
+  extern set2dcursor sundcursor.tga
+  set KRAP_PAD1 = 1
+  set doorResult = 0
+  set currentEnteredDigit = 0
+  goto 0:0
+}
+
+thinkswitch {
+  set currentMS = func_GameTime
+  set delta = (currentMS - lastMS)
+  if (delta < TICKS_PER_FRAME)
+    goto 0:0
+  set lastMS = currentMS
+  if (pressing)
+    set pressing = (pressing - 1)
+  if (timeToQuit) {
+    set timeToQuit = (timeToQuit - 1)
+    if (timeToQuit == 0) {
+      if ((((r[1] == 0) && (r[2] == 0)) && (r[3] == 0)) && (r[4] == 0)) {
+        extern playsound "games/sundoor/games_sundoor_button4.wav"
+        closewindow 81:1501
+      } else if ((((t[1] == r[1]) && (t[2] == r[2])) && (t[3] == r[3])) && (t[4] == r[4])) {
+        extern playsound "games/sundoor/games_sundoor_button2.wav"
+        gosub 81:1508
+      } else
+        extern playsound "games/sundoor/games_sundoor_button4.wav"
+      closewindow 81:1501
+    }
+  }
+  goto 0:0
+}
+
+finishswitch {
+  extern RemoveAPE2DControl button1
+  extern RemoveAPE2DControl button2
+  extern RemoveAPE2DControl button3
+  extern RemoveAPE2DControl button4
+  extern RemoveAPE2DControl button5
+  extern RemoveAPE2DControl button6
+  extern RemoveAPE2DControl button7
+  extern RemoveAPE2DControl button8
+  extern RemoveAPE2DControl button9
+  extern RemoveAPE2DControl button0
+  extern set2dcursor default
+  goto 0:0
+}
+
+style "NULL"
+font "_message"
+flags passive2d, TRUE
+xpos 0
+ypos 0
+background "hephnumpad/hephnumpad2.tga" 
+image "hephnumpad/hephnumpad1.tga" 0, 32
+if (n[1] != -1.000000)
+  image "hephnumpad/hephnum$n[1]$c.tga" 24, 4
+if (n[2] != -1.000000)
+  image "hephnumpad/hephnum$n[2]$c.tga" 40, 4
+if (n[3] != -1.000000)
+  image "hephnumpad/hephnum$n[3]$c.tga" 56, 4
+if (n[4] != -1.000000)
+  image "hephnumpad/hephnum$n[4]$c.tga" 72, 4
+
+#window 81:1201
+title "Boots"
+body "Uh... excuse me, Mister Estrella."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1203
+title "Boots"
+body "I've been a big fan for a while now. Really."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1205
+title "Boots"
+body "When you teamed up with Metallion Man in Tales of the Super-Greatest... man, that was the best."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1210
+title "Boots"
+body "I thought your Giant-Sized Annual was one of the best issues in comic book history. No joke."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1215
+title "Boots"
+body "That part when you punched Evil Gigatoon in the stomach and his eyes popped out... that was classic."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1220
+title "Boots"
+body "What happened to your hair?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1225
+title "Democratus"
+body "Perhaps our mission to Limbus will stir his interest."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1230
+title "Boots"
+body "Hey... nice thinking, grapeshot."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1235
+title "Boots"
+body "Yeah, see... we're heroes too. Out to save the universe."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1240
+title "Boots"
+body "You should join us. We could really use someone buff."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1245
+title "Paco"
+body "No."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1250
+title "Boots"
+body "Hey, look, I know we're not the Union of Super Powers,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1255
+title "Boots"
+body "but we've still got what it takes."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1260
+title "Boots"
+body "Hell, we've got a big planet on our team... that should give us some cred, right? Look at 'em."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1265
+title "Boots"
+body "Fine. You work alone. I understand. At least help us bust outta here. We'll even do all the fighting."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1267
+title "Boots"
+body "Just Rage On and punch through this wall or something."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1270
+title "Paco"
+body "No."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1275
+title "Boots"
+body "But these people need your help. What kind of hero are you?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1280
+title "Boots"
+body "Oh, forget it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1285
+title "Boots"
+body "C'mon, guys. This guy's not The Fist."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1290
+title "Dr. Hush-Hush"
+body "Someone hit the Emergency Parole Button!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1295
+title "Boots"
+body "Is that good?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1300
+title "Boots"
+body "Alright, buddy--! Time to snap out of it! Find the rage. Find the rage."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1305
+title "Democratus"
+body "We're alarmed. Are you alarmed?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1310
+title "Councilman Willis"
+body "We're at Critical Red, people."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1315
+title "Councilman Willis"
+body "Shall I launch the executive order?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1320
+title "ALL COUNCILMEN"
+body "Do it!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1325
+title "COUNCILMAN ?"
+body "Do it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1330
+title "COUNCILMAN ?"
+body "Do it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1335
+title "COUNCILMAN ?"
+body "Do it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1340
+title "COUNCILMAN ?"
+body "Do it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1345
+title "COUNCILMAN ?"
+body "Do it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1350
+title "COUNCILMAN ?"
+body "Do it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1355
+title "COUNCILMAN ?"
+body "Do it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1360
+title "COUNCILMAN Willis"
+body "Doing it."
+style "NULL"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1365
+title "Democratus"
+body "Farewell, friends."
+style "NULL"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1371
+title "SUPER TITLE:"
+body "TO BE CONTINUED NEXT ISSUE!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 81:1370
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "krapton/17continued.tga" 64, 432
+
+#switch 81:1
+extern add_quest "Escape Krapton Jail"
+extern complete_quest "Find Rictus"
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .6 .3 1
+set CURRENT_PLANET = 7
+set CURRENT_BANK = 81
+extern setmasterlevel 31
+if (func_charinparty[boots] != 3)
+  extern set_party_leader Boots
+extern remove_npc_from_party democratus
+if (func_charinparty[pal] == 2) {
+  extern remove_npc_from_party pal 1
+  set PAL_ON_DEMOCRATUS = 1
+}
+if (func_charinparty[rho] == 2) {
+  extern remove_npc_from_party rho 1
+  set RHO_ON_DEMOCRATUS = 1
+}
+if (func_charinparty[stiletto] == 2) {
+  extern remove_npc_from_party stiletto 1
+  set STILETTO_ON_DEMOCRATUS = 1
+}
+extern playlevelmusic MP3/krapton/kraptontheme.mp3
+gosub 81:0005                                
+if (PLAY_KRAPTONJAIL_CINE == 1)
+  extern playscene kraptonjail_intro
+extern AI_SpawnEntity @ob_clip_handle_1 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_1 3618 -2430 46
+extern AI_SpawnEntity @ob_clip_handle_2 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_2 3618 -2478 46
+extern AI_SpawnEntity @ob_clip_handle_3 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_3 3618 -2382 46
+extern AI_SpawnEntity @ob_clip_handle_4 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_4 3618 -2342 46
+goto 0:0
+
+#switch 81:201
+if (@Creepfood_Milking_Active)
+  goto 0:0
+set Creepfood1 = (Creepfood1 + 1)
+if (krapto_dish < 2)
+  extern is_in_inventory "Krapto's Water Dish" krapto_dish
+if ((Creepfood4 == 1) && mind_read)
+  goto 81:0260	                       
+if ((MIND_READ == 1) && (creepfood2 == 0))
+  goto 81:0255		                    
+if (Creepfood2 == 1)
+  goto 81:0240	                     
+if (Creepfood3 == 1)
+  goto 81:0245
+if (krapto_dish == 1)
+  goto 81:0220
+if (Creepfood1 > 2)
+  goto 81:0215
+if (Creepfood1 > 1)
+  goto 81:0210
+goto 81:0205                                 
+
+#switch 81:252
+extern cam_from 2113 -2456 46
+extern cam_to 2054 -2457 70
+extern cam_zip
+set @Creepfood_Milking_Active = 1
+extern cam_anoxmariomode 1
+extern AI_GrabEntity PlayerChar0 bootshandle
+extern AI_SeekAndFace bootshandle milk_point
+extern AI_SetCompletionCallback bootshandle 81:0250
+
+#switch 81:301
+if (MIND_READ == 1)
+  goto 81:0350
+if ((((Hush2 == 1) && (Hush3 == 2)) && (Hush5 == 1)) && (KRAP_PAD1 > 0))
+  goto 81:0345
+if (((Hush2 == 1) && (Hush3 == 2)) && (KRAP_PAD1 < 1))
+  goto 81:0340
+goto 81:0305                                 
+
+#switch 81:350
+set Hush6 = (Hush6 + 1)
+if (Hush7 > 0)
+  goto 81:0370
+if (Hush6 > 2)
+  goto 81:0365
+if (Hush6 > 1)
+  goto 81:0360
+goto 81:0355                                 
+
+#switch 81:370
+if (kraptonjail_firsthalf == 0) {
+  set kraptonjail_firsthalf = ((func_drand[1,9] * 10) + func_drand[0,9])
+  set @kj_1 = kraptonjail_firsthalf
+}
+set Hush7 = (Hush7 + 1)
+if (Hush7 > 3)
+  goto 81:0385
+if (Hush7 > 2)
+  goto 81:0380
+if (Hush7 > 1)
+  goto 81:0375
+
+#switch 81:501
+if (MIND_READ == 1)
+  goto 81:0540
+if (Headwork1 > 0)
+  goto 81:0535
+goto 81:0505                                 
+
+#switch 81:601
+extern is_quest_done "Find Invisolad" @foundHEEM
+if (@foundHEEM == 1)
+  extern complete_quest "Find Invisolad"
+if (MIND_READ == 1)
+  goto 81:0635
+set InvisoLad1 = (InvisoLad1 + 1)
+if (InvisoLad1 > 5)
+  goto 81:0630
+if (InvisoLad1 > 4)
+  goto 81:0625
+if (InvisoLad1 > 3)
+  goto 81:0620
+if (InvisoLad1 > 2)
+  goto 81:0615
+if (InvisoLad1 > 1)
+  goto 81:0610
+goto 81:0605                                 
+
+#switch 81:635
+if (kraptonjail_secondhalf == 0) {
+  set kraptonjail_secondhalf = ((func_drand[1,9] * 10) + func_drand[0,9])
+  set @kj_2 = kraptonjail_secondhalf
+}
+set InvisoLad2 = (InvisoLad2 + 1)
+if (InvisoLad2 > 3)
+  goto 81:0655
+if (InvisoLad2 > 2)
+  goto 81:0650
+if (InvisoLad2 > 1)
+  goto 81:0645
+goto 81:0640                                 
+
+#switch 81:701
+if (MIND_READ == 1)
+  goto 81:0765
+set Krapto1 = (Krapto1 + 1)
+if (Krapto1 > 11)
+  goto 81:0760
+if (Krapto1 > 10)
+  goto 81:0755
+if (Krapto1 > 9)
+  goto 81:0750
+if (Krapto1 > 8)
+  goto 81:0745
+if (Krapto1 > 7)
+  goto 81:0740
+if (Krapto1 > 6)
+  goto 81:0735
+if (Krapto1 > 5)
+  goto 81:0730
+if (Krapto1 > 4)
+  goto 81:0725
+if (Krapto1 > 3)
+  goto 81:0720
+if (Krapto1 > 2)
+  goto 81:0715
+if (Krapto1 > 1)
+  goto 81:0710
+goto 81:0705                                 
+
+#switch 81:765
+if (Krapto_gavehimwater == 1)
+  goto 81:0790			                         
+extern is_in_inventory "Krapto's Filled Water Dish" krapto_bowl
+if (krapto_bowl == 1)
+  goto 81:0785		                                 
+set Krapto2 = (Krapto2 + 1)
+if (Krapto2 > 2)
+  goto 81:0780
+if (Krapto2 > 1)
+  goto 81:0775
+goto 81:0770                                 
+
+#switch 81:801
+set Multidude01 = (Multidude01 + 1)
+if (stiletto_flirt == 2)
+  goto 81:0840
+if ((Multidude01 > 5) && (stiletto_in_party == 1))
+  goto 81:0830
+if ((Multidude01 > 4) && (stiletto_in_party == 1))
+  goto 81:0835
+if (Multidude01 > 4)
+  goto 81:0830
+if (Multidude01 > 3)
+  goto 81:0825
+if (Multidude01 > 2)
+  goto 81:0820
+if (Multidude01 > 1)
+  goto 81:0810
+goto 81:0805                                 
+
+#switch 81:1100
+
+#switch 81:1375
+extern playambient kraptonjail_democ
+
+#switch 81:1101
+if (MIND_READ == 1)
+  goto 81:1110
+set Street1 = (Street1 + 1)
+if (Street1 > 2)
+  goto 81:1135
+if (Street1 > 1)
+  goto 81:1130
+goto 81:1105
+
+#switch 81:1110
+set Street1 = (Street1 + 1)
+if (Street1 > 2)
+  goto 81:1125
+if (Street1 > 1)
+  goto 81:1120
+goto 81:1115
+
+#switch 81:1801
+if (MIND_READ == 1)
+  goto 81:1845
+set Olingo1 = (Olingo1 + 1)
+if (Olingo1 > 7)
+  goto 81:1840
+if (Olingo1 > 6)
+  goto 81:1835
+if (Olingo1 > 5)
+  goto 81:1830
+if (Olingo1 > 4)
+  goto 81:1825
+if (Olingo1 > 3)
+  goto 81:1820
+if (Olingo1 > 2)
+  goto 81:1815
+if (Olingo1 > 1)
+  goto 81:1810
+goto 81:1805                                 
+
+#switch 81:1845
+set Olingo2 = (Olingo2 + 1)
+if (STILETTO_ON_DEMOCRATUS == 1)
+  goto 81:1865
+if (Olingo2 > 3)
+  goto 81:1862
+if (Olingo2 > 2)
+  goto 81:1860
+if (Olingo2 > 1)
+  goto 81:1855
+goto 81:1850
+
+#switch 81:1865
+set Olingo3 = (Olingo3 + 1)
+if (Olingo3 > 4)
+  goto 81:1890
+if (Olingo3 > 3)
+  goto 81:1885
+if (Olingo3 > 2)
+  goto 81:1880
+if (Olingo3 > 1)
+  goto 81:1875
+goto 81:1870
+
+#switch 81:101
+if (MIND_READ == 1)
+  goto 81:0110
+if (kraptonjail_got_bracer == 1)
+  goto 81:0105
+goto 81:0102
+
+#switch 81:103
+set kraptonjail_got_bracer = 1
+extern addnew_to_inventory "Beef Bracers"
+set timed_message = 20
+got_object$="Beef Bracers" 
+gosub 1000:1
+goto 0:0
+
+#switch 81:1901
+if (MIND_READ == 1)
+  goto 81:1925
+set KrapPal1 = (KrapPal1 + 1)
+if (KrapPal1 > 3)
+  goto 81:1920
+if (KrapPal1 > 2)
+  goto 81:1915
+if (KrapPal1 > 1)
+  goto 81:1910
+goto 81:1905                                 
+
+#switch 81:2001
+if (MIND_READ == 1)
+  goto 81:2020
+set KrapRho1 = (KrapRho1 + 1)
+if (KrapRho1 > 2)
+  goto 81:2015
+if (KrapRho1 > 1)
+  goto 81:2010
+goto 81:2005                                 
+
+#switch 81:2101
+if (MIND_READ == 1)
+  goto 81:2120
+set KrapStiletto1 = (KrapStiletto1 + 1)
+if (stiletto_flirt > 0)
+  goto 81:2125
+if (KrapStiletto1 > 1)
+  goto 81:2110
+goto 81:2105                                 
+
+#switch 81:2201
+if (MIND_READ == 1)
+  goto 81:2230
+if (DEMOKRAP5 == 1)
+  goto 81:2225
+if (DEMOKRAP4 == 1)
+  goto 81:2220
+if (DEMOKRAP3 == 1)
+  goto 81:2215
+if (DEMOKRAP2 == 1)
+  goto 81:2210
+if (DEMOKRAP1 == 1)
+  goto 81:2205
+
+#switch 81:2301
+if (MIND_READ == 1)
+  goto 81:2365
+set Amanuensis1 = (Amanuensis1 + 1)
+if (Amanuensis1 > 1)
+  goto 81:2306
+goto 81:2305                                 
+
+#switch 81:2365
+set Amanuensis2 = (Amanuensis2 + 1)
+if (Amanuensis2 > 2)
+  goto 81:2380
+if (Amanuensis2 > 1)
+  goto 81:2375
+goto 81:2370
+
+#switch 81:2401
+set FortyTwo1 = (FortyTwo1 + 1)
+if (FortyTwo1 > 3)
+  goto 81:2420
+if (FortyTwo1 > 2)
+  goto 81:2415
+if (FortyTwo1 > 1)
+  goto 81:2410
+goto 81:2405
+
+#switch 81:1503
+set n[1] = -1.000000
+set n[2] = -1.000000
+set n[3] = -1.000000
+set n[4] = -1.000000
+set t[1] = -1.000000
+set t[2] = -1.000000
+set t[3] = -1.000000
+set t[4] = -1.000000
+set r[1] = func_div[$kraptonjail_firsthalf$,10]
+set r[2] = func_mod[$kraptonjail_firsthalf$,10]
+set r[3] = func_div[$kraptonjail_secondhalf$,10]
+set r[4] = func_mod[$kraptonjail_secondhalf$,10]
+goto 0:0
+
+#switch 81:1504
+extern CreateAPE2DControl push button7 0 32 width=32 height=32 normal=/gameflow/hephnumpad/hephnum7a.tga bright=/gameflow/hephnumpad/hephnum7b.tga gamevar=buttonPressed returnvalue=7 sequence=81:1507
+extern CreateAPE2DControl push button8 32 32 width=32 height=32 normal=/gameflow/hephnumpad/hephnum8a.tga bright=/gameflow/hephnumpad/hephnum8b.tga gamevar=buttonPressed returnvalue=8 sequence=81:1507
+extern CreateAPE2DControl push button9 64 32 width=32 height=32 normal=/gameflow/hephnumpad/hephnum9a.tga bright=/gameflow/hephnumpad/hephnum9b.tga gamevar=buttonPressed returnvalue=9 sequence=81:1507
+extern CreateAPE2DControl push button4 0 64 width=32 height=32 normal=/gameflow/hephnumpad/hephnum4a.tga bright=/gameflow/hephnumpad/hephnum4b.tga gamevar=buttonPressed returnvalue=4 sequence=81:1507
+extern CreateAPE2DControl push button5 32 64 width=32 height=32 normal=/gameflow/hephnumpad/hephnum5a.tga bright=/gameflow/hephnumpad/hephnum5b.tga gamevar=buttonPressed returnvalue=5 sequence=81:1507
+extern CreateAPE2DControl push button6 64 64 width=32 height=32 normal=/gameflow/hephnumpad/hephnum6a.tga bright=/gameflow/hephnumpad/hephnum6b.tga gamevar=buttonPressed returnvalue=6 sequence=81:1507
+extern CreateAPE2DControl push button1 0 96 width=32 height=32 normal=/gameflow/hephnumpad/hephnum1a.tga bright=/gameflow/hephnumpad/hephnum1b.tga gamevar=buttonPressed returnvalue=1 sequence=81:1507
+extern CreateAPE2DControl push button2 32 96 width=32 height=32 normal=/gameflow/hephnumpad/hephnum2a.tga bright=/gameflow/hephnumpad/hephnum2b.tga gamevar=buttonPressed returnvalue=2 sequence=81:1507
+extern CreateAPE2DControl push button3 64 96 width=32 height=32 normal=/gameflow/hephnumpad/hephnum3a.tga bright=/gameflow/hephnumpad/hephnum3b.tga gamevar=buttonPressed returnvalue=3 sequence=81:1507
+extern CreateAPE2DControl push button0 32 128 width=32 height=32 normal=/gameflow/hephnumpad/hephnum0a.tga bright=/gameflow/hephnumpad/hephnum0b.tga gamevar=buttonPressed returnvalue=0 sequence=81:1507
+goto 0:0
+
+#switch 81:1507
+if (timeToQuit)
+  goto 0:0
+if (pressing)
+  goto 0:0
+extern playsound "games/sundoor/games_sundoor_button1.wav"
+set currentEnteredDigit = (currentEnteredDigit + 1)
+set t[$currentEnteredDigit$] = buttonPressed
+set n[1] = n[2]
+set n[2] = n[3]
+set n[3] = n[4]
+set n[4] = buttonPressed
+if (currentEnteredDigit == 4)
+  set timeToQuit = 20
+set pressing = 5
+goto 0:0
+
+#switch 81:1508
+set third_party_member = 0
+set play_bootsintro = 1
+extern complete_quest "Escape Krapton Jail"
+console "set storysave \"To Whitendon|Whitendon: Lost in Snow\""
+if (PAL_ON_DEMOCRATUS == 1) {
+  extern chainscripts kraptonjail_scene70_pal kraptonjail_scene70_2_pal
+  extern playscene kraptonjail_scene70_pal
+} else if (RHO_ON_DEMOCRATUS == 1) {
+  extern chainscripts kraptonjail_scene70_rho kraptonjail_scene70_2_rho
+  extern playscene kraptonjail_scene70_rho
+} else if (STILETTO_ON_DEMOCRATUS == 1) {
+  extern chainscripts kraptonjail_scene70_stiletto kraptonjail_scene70_2_stiletto
+  extern playscene kraptonjail_scene70_stiletto
+} else
+  echo "ERROR: NOT PLAYED FROM SLOUNGE/Real Game, XXX_in_party vars not set!!!!"
+goto 0:0
+
+#switch 66:6666
+extern add_quest "Escape Krapton Jail"

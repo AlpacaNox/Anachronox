@@ -1,0 +1,5274 @@
+#window 12:105
+title "Whackmaster Jack"
+body "Judging by the choice condition of that shiner, I suspect you're here to learn the fine art of the scuffle. The beat. The whack."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:0107
+
+#window 12:107
+title "Whackmaster Jack"
+body "Know then, I don't take loafers, and I don't take thieves. I take students. And I expect respect. Gimme any lip, and I'll fatten it."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:0108
+
+#window 12:108
+title "Whackmaster Jack"
+body "Before we begin, however, there's the small matter of my training fee. Knowledge isn't cheap... but for a mere five loonies, we can begin our first lesson."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Sounds great. Here's your cash." 12:115
+choice "Sorry, I'm broke." 0:0
+
+#window 12:110
+title "Whackmaster Jack"
+body "That's five loonies you owe me."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:0120
+
+#window 12:120
+title "Whackmaster Jack"
+body "Very good. Let's begin with a crash course on simple combat. The streets of Anachronox hide all manner of threat, and you would do well to learn some basics."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:0122
+
+#window 12:122
+title "Whackmaster Jack"
+body "Come, step into the ring."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3000
+
+#window 12:125
+title "Whackmaster Jack"
+body "Have you lost your wallet?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:0110
+
+#window 12:130
+title "Whackmaster Jack"
+body "That last lesson got your blood pumping, didn't it? Ready for more?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Bring it." 12:135
+choice "Nope." 0:0
+nextwindow 12:0135
+
+#window 12:135
+title "Whackmaster Jack"
+body "That's the spirit!"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3550
+
+#window 12:140
+title "Whackmaster Jack"
+body "That last lesson got your blood pumping, didn't it? Ready for more?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Bring it." 12:145
+choice "Nope." 0:0
+nextwindow 12:0135
+
+#window 12:145
+title "Whackmaster Jack"
+body "You're almost ready to graduate from the Temple of Beating, but there's still a handful of tricks left to show you."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:0155
+
+#window 12:150
+title "Whackmaster Jack"
+body "[TEMP] You have almost learned everything I can teach you, but there are still a few more things I can show you."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:0155
+
+#window 12:155
+title "Whackmaster Jack"
+body "Why don't we step into the ring for your final lesson?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3900
+
+#window 12:160
+title "Whackmaster Jack"
+if (func_charinparty[grumpos] == 3)
+  body "You're too old for my ring, grandpa. I won't be liable for your death."
+if (func_charinparty[pal] == 3)
+  body "Get outta my face, little lamb. Unless you wanna volunteer as a target."
+if (func_charinparty[rho] == 3)
+  body "Sorry, angel. I won't allow your beautiful face to get disfigured in the ring."
+if (func_charinparty[democratus] == 3)
+  body "Sorry, but it's against the rules to allow that many people to fight in the ring at one time."
+if (func_charinparty[stiletto] == 3)
+  body "Sorry, angel. I won't allow your beautiful face to get disfigured in the ring."
+if (func_charinparty[paco] == 3)
+  body "Sorry, pal. Your gonna damage my equipment with those meat hooks."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:190
+title "Whackmaster Jack"
+body "That's it, kid."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:0191
+
+#window 12:191
+title "Whackmaster Jack"
+body "We're done."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:0192
+
+#window 12:192
+title "Whackmaster Jack"
+body "No more."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:0193
+
+#window 12:193
+title "Whackmaster Jack"
+body "Party's over."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:0194
+
+#window 12:194
+title "Whackmaster Jack"
+body "Go out and conquer the world."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:205
+title "Finian Paloo"
+body "C'mon, Heenan! Take a swing! Those robotargets are making a joke outta you."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity Playerchar0 boots_handle
+  extern AI_GrabEntity paloo paloo_handle
+  extern ANIM_PlayAnim paloo_handle talk_c 0 1 0
+  extern AI_WaitAndFace boots_handle -1 paloo
+}
+
+finishswitch {
+  extern AI_ReleaseEntity boots_handle
+  extern AI_ReleaseEntity paloo_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:210
+title "Finian Paloo"
+body "You're weak, kid! You ain't ever gonna be somebody!"
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity Playerchar0 boots_handle
+  extern AI_GrabEntity paloo paloo_handle
+  extern ANIM_PlayAnim paloo_handle talk_c 0 1 0
+  extern AI_WaitAndFace boots_handle -1 paloo
+}
+
+finishswitch {
+  extern AI_ReleaseEntity boots_handle
+  extern AI_ReleaseEntity paloo_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:215
+title "Finian Paloo"
+body "You must not want it bad enough, Heenan. You're just standing there!"
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity Playerchar0 boots_handle
+  extern AI_GrabEntity paloo paloo_handle
+  extern ANIM_PlayAnim paloo_handle talk_c 0 1 0
+  extern AI_WaitAndFace boots_handle -1 paloo
+}
+
+finishswitch {
+  extern AI_ReleaseEntity boots_handle
+  extern AI_ReleaseEntity paloo_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:220
+title "Finian Paloo"
+body "We're throwing you back on the streets if you don't step it up, Heenan."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity Playerchar0 boots_handle
+  extern AI_GrabEntity paloo paloo_handle
+  extern ANIM_PlayAnim paloo_handle talk_c 0 1 0
+  extern AI_WaitAndFace boots_handle -1 paloo
+}
+
+finishswitch {
+  extern AI_ReleaseEntity boots_handle
+  extern AI_ReleaseEntity paloo_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:225
+title "Finian Paloo"
+body "You're a disappointment, Heenan. Detta ain't gonna be happy."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity Playerchar0 boots_handle
+  extern AI_GrabEntity paloo paloo_handle
+  extern ANIM_PlayAnim paloo_handle talk_c 0 1 0
+  extern AI_WaitAndFace boots_handle -1 paloo
+}
+
+finishswitch {
+  extern AI_ReleaseEntity boots_handle
+  extern AI_ReleaseEntity paloo_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:230
+title "Finian Paloo"
+body "Beat it, schmuguggle."
+cam left restore zip
+talk npc talk_c stay
+finishswitch {
+  set Paloo1 = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:240
+title "Finian Paloo"
+body "C'mon, Heenan! The fight's tomorrow night! You're gonna get creamed!"
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity Playerchar0 boots_handle
+  extern AI_GrabEntity paloo paloo_handle
+  extern ANIM_PlayAnim paloo_handle talk_c 0 1 0
+  extern AI_WaitAndFace boots_handle -1 paloo
+}
+
+finishswitch {
+  extern AI_ReleaseEntity boots_handle
+  extern AI_ReleaseEntity paloo_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:245
+title "Finian Paloo"
+body "What's your mother gonna say when she sees you bleeding face down on the canvas, Heenan?"
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity Playerchar0 boots_handle
+  extern AI_GrabEntity paloo paloo_handle
+  extern ANIM_PlayAnim paloo_handle talk_c 0 1 0
+  extern AI_WaitAndFace boots_handle -1 paloo
+}
+
+finishswitch {
+  extern AI_ReleaseEntity boots_handle
+  extern AI_ReleaseEntity paloo_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:250
+title "Finian Paloo"
+body "This is hopeless."
+cam left restore zip
+talk npc talk_c stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:301
+title "RoboSheep"
+body "Contact my mother... let her know what happened. Please...."
+cam left lift(60) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:401
+title "Robo Hamster"
+body "I..."
+cam left lift(60) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:0402
+
+#window 12:402
+title "Robo Hamster"
+body "am..."
+cam left lift(60) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:0403
+
+#window 12:403
+title "Robo Hamster"
+body "so..."
+cam left lift(60) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:0404
+
+#window 12:404
+title "Robo Hamster"
+body "...dead."
+cam left lift(60) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:501
+title "Kid Heenan"
+body "I wish he'd leave me alone."
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:605
+title "Robo Target #386"
+body "Hope."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:0606
+
+#window 12:606
+title "Robo Target #386"
+body "Is."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:0607
+
+#window 12:607
+title "Robo Target #386"
+body "Broken."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:610
+title "Robo Target #386"
+body "You are a saint."
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:615
+title "Robo Target #386"
+body "Villain!"
+cam left restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:705
+title "Bully Boy"
+body "To hit, or not to hit?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "To hit" 12:706
+choice "Not to hit." 12:715
+
+#window 12:706
+title "Bully Boy"
+body "Now you're talkin'!"
+cam left restore zip
+startswitch {
+  set @PreeYES = 1
+  extern AI_GrabEntity bullyboy bully_handle
+  extern AI_WaitAndFace bully_handle -1 rbtarget386
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:0710
+
+#window 12:715
+title "Bully Boy"
+body "You're right. Forgive my violence."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set @PreeNO = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:920
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "I can't access datalinks, but I paid big bucks to modify PAL-18 to hotwire these suckers."
+if (func_charinparty[boots] != 3)
+  body "I think that's a datalink for maintenance and diagnostic bots."
+cam left from(PlayerChar0) to(12:0910) lift(40) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 12:0910
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:975
+title "Bean Fredicksson"
+body "I am five by five by five. Show do you?"
+cam left lift(110) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "What?" 12:976
+choice "Huh?" 12:976
+choice "Wheh?" 12:976
+if (whacks_gotbean5 == 0)
+  choice "Um, yes, by fives." 12:977
+choice "Whatever." 12:976
+
+#window 12:976
+title "Bean Fredicksson"
+if (whacks_bean1 == 1)
+  body "A see you are not making. Beef."
+if (whacks_bean1 == 2)
+  body "Things upon the finding go long."
+if (whacks_bean1 == 3)
+  body "Rag rags ragends. Be not."
+if (whacks_bean1 == 4)
+  body "Golonda. Golonda go."
+if (whacks_bean1 == 5)
+  body "No for the far-seeing. Long-do."
+cam left lift(110) restore zip
+talk npc talk_a stay
+startswitch {
+  set whacks_bean1 = (whacks_bean1 + 1)
+  if (whacks_bean1 > 5)
+    set whacks_bean1 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:977
+title "Bean Fredicksson"
+body "Ah, for fives and friends I do confess."
+cam left lift(110) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:0978
+
+#window 12:1005
+title "Skurp"
+body "Hit me."
+cam left from(PlayerChar0) to(skurp) restore zip
+talk_ex skurp pliz talk_a amb_a stay stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1006
+
+#window 12:1006
+title "Pliz"
+body "No."
+cam left from(PlayerChar0) to(pliz) restore zip
+talk_ex skurp pliz amb_a talk_a stay stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1007
+
+#window 12:1007
+title "Skurp"
+body "C'mon, hit me."
+cam left from(PlayerChar0) to(skurp) restore zip
+talk_ex skurp pliz talk_a amb_a stay stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1008
+
+#window 12:1008
+title "Pliz"
+body "No."
+cam left from(PlayerChar0) to(pliz) restore zip
+talk_ex skurp pliz amb_a talk_a stay stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1010
+title "Skurp"
+body "What're you afraid of? Hit me."
+cam left from(PlayerChar0) to(skurp) restore zip
+talk_ex skurp pliz talk_a amb_a stay stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1012
+
+#window 12:1012
+title "Pliz"
+body "No."
+cam left from(PlayerChar0) to(pliz) restore zip
+talk_ex skurp pliz amb_a talk_a stay stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1013
+
+#window 12:1013
+title "Skurp"
+body "C'mon, don't be a little [untranslatable]. Hit me."
+cam left from(PlayerChar0) to(skurp) restore zip
+talk_ex skurp pliz talk_a amb_a stay stay
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1014
+
+#window 12:1014
+title "Pliz"
+body "I'm not gonna hit ya."
+cam left from(PlayerChar0) to(pliz) restore zip
+talk_ex skurp pliz amb_a talk_a stay stay
+finishswitch {
+  set SkurpPliz1 = 0
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1235
+title "Skurp"
+body "Hit me."
+cam left from(PlayerChar0) to(skurp) restore zip
+talk_ex skurp pliz talk_a amb_a stay stay
+style "style_embrace"
+font "brebulan"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1236
+
+#window 12:1236
+title "Pliz"
+body "No."
+cam left from(PlayerChar0) to(pliz) restore zip
+talk_ex skurp pliz amb_a talk_a stay stay
+style "style_embrace"
+font "brebulan"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1237
+
+#window 12:1237
+title "Skurp"
+body "C'mon, hit me."
+cam left from(PlayerChar0) to(skurp) restore zip
+talk_ex skurp pliz talk_a amb_a stay stay
+style "style_embrace"
+font "brebulan"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1238
+
+#window 12:1238
+title "Pliz"
+body "No."
+cam left from(PlayerChar0) to(pliz) restore zip
+talk_ex skurp pliz amb_a talk_a stay stay
+style "style_embrace"
+font "brebulan"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1305
+title "Pree Mable"
+body "Fortunate, is it not... that such a place as this exists?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1306
+
+#window 12:1306
+title "Pree Mable"
+body "I've nothing to fear in the dark of the night, for I have beefy whacking at my disposal."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1310
+title "Pree Mable"
+body "Last night, while strolling home, someone was following me. I could tell by the sound of his dainty footfalls that he was a ruffian of the most degenerate sort."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1311
+
+#window 12:1311
+title "Pree Mable"
+body "Just as he came within my grasp, I unleashed high-octane beefiness on him!"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1312
+
+#window 12:1312
+title "Pree Mable"
+body "I broke him. Snap for snap. Bone for bone."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1313
+
+#window 12:1313
+title "Pree Mable"
+body "I held him like giant paintbrush, spelling out my name on the wall with his blood."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1315
+title "Pree Mable"
+body "Self-defense is sweet."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1405
+title "Ziricon"
+body "He beats me."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1406
+
+#window 12:1406
+title "Ziricon"
+body "He never used to. But once he became my brother-in-law, I became his punching bag."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1407
+
+#window 12:1407
+title "Ziricon"
+body "My friends told me to buy a slag of MysTech to use against him."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1408
+
+#window 12:1408
+title "Ziricon"
+body "But it was a dud slag. When I tried to use it on him, all it did was turn me purple for a few minutes."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1409
+
+#window 12:1409
+title "Ziricon"
+body "That only got him madder."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1410
+title "Ziricon"
+body "So now I'm here. For my first lesson. I'm gonna start lifting weights and everything."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1415
+title "Ziricon"
+body "Wish me luck. I'm very frail."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1505
+title "Will Petit"
+body "She says she likes men with broad shoulders. Every guy she's gone out with is the size of a zongball player. But she complains they're dumb as dice."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1506
+
+#window 12:1506
+title "Will Petit"
+body "Well, I'm gonna be both. Brains and brawn. All in one."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1507
+
+#window 12:1507
+title "Will Petit"
+body "I just need some help on the brawn."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1510
+title "Will Petit"
+body "She will love me."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1520
+title "Will Petit"
+body "Whatta you think?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1521
+
+#window 12:1521
+title "Will Petit"
+body "She's gonna fall for me hardcore when she sees this."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1525
+title "Will Petit"
+body "Maybe I should buy her a MysTech mood ring. They're becoming really popular."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1530
+title "Will Petit"
+body "You think I'm overdoing it?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1601
+title "Ringa Sween"
+body "I want to volunteer to be a human target. These robotargets just don't capture the visceral kick of trauma-on-skin."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1705
+title "Polimus Vallejo"
+body "I've studied Kalistarrian Ground Boxing for ten years. I'll split your skull with one punch."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1710
+title "Polimus Vallejo"
+body "I can perform a Bilifigan Leg Trap that will sever your skinny, white leg at the knee."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1715
+title "Polimus Vallejo"
+body "I'm a tenth degree black belt in Brebulan Palo Fighting. I can disconnect your central nervous system with one back-breaking kick."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1720
+title "Polimus Vallejo"
+body "Wanna feel my Gorian Blood-Vessel Bite? Your body will drain of blood in forty-two short seconds."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1725
+title "Polimus Vallejo"
+body "My Jaradiin Muscle Jab can render any limb useless with one hit. Shall I demonstrate?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1730
+title "Polimus Vallejo"
+body "The Sikivika Pillow Punch can rupture internal organs. Too bad I've only perfected bursting the heart."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Polimus1 = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1735
+title "Polimus Vallejo"
+body "Hey, how much you bench?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1740
+title "Polimus Vallejo"
+body "You like my muscles, baby? I'd love to demonstrate their power on you."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1745
+title "Polimus Vallejo"
+body "My, my, my... I could destroy an entire planet with just one move. But which move?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1750
+title "Polimus Vallejo"
+body "Three seconds of my Blooboid Cluster Hold will short out all your circuits, little beebot."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1755
+title "Polimus Vallejo"
+body "One well-executed Bipidri Struggle-Yank will shear off your entire beard within two seconds."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1805
+title "Stang"
+body "Lookin' at my bag o' glodents, eh?"
+cam left restore zip
+talk npc gest_n stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1806
+
+#window 12:1806
+title "Stang"
+body "I been collecting glodents for ten long years now. I know ALL about 'em."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1810
+title "Stang"
+body "Glodents are odd rodents bathed in neutron radiation. They fuel your shield cells and power belts, so they're a definite MUST if you're gonna get into any scraps."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1811
+
+#window 12:1811
+title "Stang"
+body "They were originally discovered on Hephaestus, the lava planet where all those wonky monks live. Glodents are easy to breed, and easy to raise from similar, non-radiated rodents."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1812
+
+#window 12:1812
+title "Stang"
+body "They're such a cheap power source, everyone's using 'em now. Even Cordicom finally got in on the action and markets them."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:1815
+title "Stang"
+body "The only real nasty thing about 'em is their odor. And the fact that shield cells and power belts consume them: lock, stock, and whiskers."
+cam left restore zip
+talk npc gest_n stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:1816
+
+#window 12:1816
+title "Stang"
+body "Here. Take one. It's worth 40 NRG. But don't get too friendly with it. They're meant for fuel, not companionship."
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  extern addnew_to_inventory "Glodent"
+  set timed_message = 20
+  got_object$="Glodent" 
+  gosub 1000:1
+  goto 0:0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3020
+startswitch {
+  set @Battle_DelayFuck = (func_gametime + 1000)
+}
+
+thinkswitch {
+  if (func_gametime >= @Battle_DelayFuck)
+    closewindow 12:3020
+}
+
+finishswitch {
+  set @Battle_DelayFuck = 0
+  gosub 12:3230                                                                                            
+  gosub 12:$@postdelay_sequence$
+}
+
+style "NULL"
+flags passive, TRUE
+
+#window 12:3105
+startswitch {
+  extern SetPlayerCurrentHP boots 500
+  set Whackmaster_TakePlaces = 0
+  extern AI_GrabEntity PlayerChar0 playerchar0_handle
+  extern AI_GrabEntity jack jack_handle
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 1
+  set @WhackmasterPrepTime = (func_gametime + 1100)
+}
+
+thinkswitch {
+  if (func_gametime >= @WhackmasterPrepTime)
+    if (Whackmaster_TakePlaces == 2) {
+      closewindow 12:3105
+    } else if (Whackmaster_TakePlaces == 1) {
+      echo "||||| - - Fade In - - |||||"
+      extern FlashScreenf 0 0 0 1 0
+      extern FlashScreenf 0 0 0 0 1
+      extern cam_anoxmariomode 1
+      set Whackmaster_TakePlaces = 2
+      set @WhackmasterPrepTime = (func_gametime + 1100)
+    } else if (Whackmaster_TakePlaces == 0) {
+      extern AI_SetXYZ jack_handle 411 2030 -130
+      extern AI_SetYAW jack_handle 255
+      extern AI_SpawnEntity tutorialdroid_handle monster_rbtarget tutorialdroid 0:0 Jack_Tutorial1
+      extern AI_SetXYZ tutorialdroid_handle 370 2179 -130
+      extern AI_SetYAW tutorialdroid_handle 275
+      extern entkey tutorialdroid_handle "message" "monster1"
+      extern entkey tutorialdroid_handle "battlegroupname" "whacks_droid"
+      extern AI_SetXYZ playerchar0_handle 368 1927 -130
+      extern AI_SetYAW playerchar0_handle 75
+      set Whackmaster_TakePlaces = 1
+      set @WhackmasterPrepTime = func_gametime
+    } else
+      echo "Jack is whacked!!!\n"
+}
+
+finishswitch {
+  set Whackmaster_TakePlaces = 0
+  gosub 12:3110
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3110
+title "Whackmaster Jack"
+body "If you're gonna learn the Way of the Whack, you better cut Jack-wise and beef up on the fundamentals."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+  extern cam_from 373 1995 -80
+  extern cam_to 405 2049 -68
+  extern cam_zip
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3111
+
+#window 12:3111
+title "Whackmaster Jack"
+body "Some of this will seem simple. Basic even. But unless you got a firm grasp of the firm grasp, you're gonna be coughin' up teeth instead of wisecracks next time you're in a scuffle. Got it?"
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3112
+
+#window 12:3112
+title "Whackmaster Jack"
+body "So let's learn the basic abilities and concepts that can make even an infirm bag o' loose change like yourself into a bastion of Beat-hood."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3115
+
+#window 12:3115
+title "Whackmaster Jack"
+body "The first of the basic abilities is MIGHT. It indicates how physically powerful you are in a fight. Something about that spare tire around your girdle tells me this ain't gonna be your forte."
+body "\n\n\n\n\n\n"
+body "Might is an important attribute for both your Beefiness and Beat skill."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "whackmaster/might.pcx" 162, 115
+nextwindow 12:3120
+
+#window 12:3120
+title "Whackmaster Jack"
+body "The second of these basic abilities is AGILITY. Your Agility is what makes you fast, graceful, and likely to avoid a lickin'. A true master of Agility can dodge all but the most skilled attacks."
+body "\n\n\n\n\n"
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "whackmaster/agility.pcx" 162, 110
+nextwindow 12:3121
+
+#window 12:3121
+title "Whackmaster Jack"
+body "Hell, someday you might even learn to dodge that Robot Target behind me. Right now, though... I'm just not seeing it, tiger."
+body "\n\n\n\n\n\n"
+body "Agility is an important attribute for your Speed, Beat, Beat Block skills."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "whackmaster/agility.pcx" 162, 95
+nextwindow 12:3125
+
+#window 12:3125
+title "Whackmaster Jack"
+body "The third and last of these basic skills is WISDOM. This one doesn't seem your forte either, but let's hope for your sake there's still a brain cell or two rattlin' around in there."
+body "\n\n\n\n\n"
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "whackmaster/wisdom.pcx" 162, 110
+nextwindow 12:3130
+
+#window 12:3130
+title "Boots"
+body "Hold on a sec, chief. I came here to learn how to fight."
+startswitch {
+  extern ANIM_PlayAnim jack_handle amb_a 1 1 0
+  extern ANIM_PlayAnim playerchar0_handle talk_a 0 1 0
+  extern cam_from 368 1994 -70
+  extern cam_to 398 1938 -72
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3131
+
+#window 12:3131
+title "Boots"
+body "So far all you've done is explain really obvious concepts while giving me the verbal smackdown. You gonna teach me something useful or what?"
+startswitch {
+  extern ANIM_PlayAnim jack_handle amb_a 1 1 0
+  extern ANIM_PlayAnim playerchar0_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3135
+
+#window 12:3135
+title "Whackmaster Jack"
+body "If you wanna learn something, take your medicine and bridle your tongue. If you get frazzled this easily, you're gonna get sandbagged by the first scrapper you lock horns with."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+  extern cam_from 373 1995 -80
+  extern cam_to 405 2049 -68
+  extern ANIM_PlayAnim playerchar0_handle amb_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3136
+
+#window 12:3136
+title "Whackmaster Jack"
+body "If you wanna size up an enemy on the quick and make fast tactical decisions in the thick of the thick, drop your pride and use your brain. Your BRAIN, squab."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+  extern ANIM_PlayAnim playerchar0_handle amb_a 1 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3140
+
+#window 12:3140
+title "Whackmaster Jack"
+body "Wisdom boils down to intelligence. And though you can't drub an opponent with brains alone, a spoonful of Wisdom can make a little Might go a long way."
+body "\n\n\n\n\n\n"
+body "Wisdom is an important attribute for your Beat Block skill."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "whackmaster/wisdom.pcx" 162, 110
+nextwindow 12:3145
+
+#window 12:3145
+title "Whackmaster Jack"
+body "These three main attributes, Might, Agility, and Wisdom, are what determine how good you are at all of your various skills. Until you really understand these \"obvious\" ideas, you're hopeless. Get me?"
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3146
+
+#window 12:3146
+title "Whackmaster Jack"
+body "Now pay attention: the main skills used in battle are Beefiness, Beat, Speed, and Beat Block."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3150
+
+#window 12:3150
+title "Whackmaster Jack"
+body "Your BEEFINESS is your ability to deal large amounts of raw damage."
+body "\n\n\n\n\n"
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "whackmaster/beefiness.pcx" 162, 70
+nextwindow 12:3155
+
+#window 12:3155
+title "Whackmaster Jack"
+body "Your BEAT is how good you are at hitting someone."
+body "\n\n\n\n\n"
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "whackmaster/beat.pcx" 162, 65
+nextwindow 12:3160
+
+#window 12:3160
+title "Whackmaster Jack"
+body "Your SPEED is how fast you can attack."
+body "\n\n\n\n\n"
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "whackmaster/speed.pcx" 162, 65
+nextwindow 12:3165
+
+#window 12:3165
+title "Whackmaster Jack"
+body "And your BEAT BLOCK allows you to avoid gettin' hit by your opponents."
+body "\n\n\n\n\n\n"
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "whackmaster/beatblock.pcx" 162, 80
+nextwindow 12:3166
+
+#window 12:3166
+title "Whackmaster Jack"
+body "With me, squab?"
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3175
+
+#window 12:3170
+title "Whackmaster Jack"
+body "Now that you're aware of these basic skills, you can start monitoring them in yourself. Your handy-dandy LifeCursor will help keep track of your progress and self-improvement."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3175
+
+#window 12:3175
+title "Whackmaster Jack"
+body "Self-improvement's what separates us from the animals. So does a high caliber Beat pistol, which is noticeably absent from your person."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3180
+
+#window 12:3180
+title "Boots"
+body "Yeah, well, about that, see, I..."
+startswitch {
+  extern cam_from 368 1994 -70
+  extern cam_to 398 1938 -72
+  extern ANIM_PlayAnim jack_handle amb_a 1 1 0
+  extern ANIM_PlayAnim playerchar0_handle talk_a 1 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3183
+
+#window 12:3183
+title "Whackmaster Jack"
+body "Save it. It happens when your clientele are mostly deadbeats."
+startswitch {
+  extern cam_from 373 1995 -80
+  extern cam_to 405 2049 -68
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+  extern ANIM_PlayAnim playerchar0_handle amb_a 1 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3190
+
+#window 12:3190
+title "Whackmaster Jack"
+body "I'll let you have this old Vistin pistol. It's old. It's beat-up. But it's better than a bare-knuckle blood fight."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3195
+
+#window 12:3195
+title "Whackmaster Jack"
+body "Wherever you are, whatever you're doing... ALWAYS have your weapon equipped at all times. The last thing you wanna worry about when alley goons are kicking your teeth into kibble is getting out your sidearm and loading it."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3200
+
+#window 12:3200
+title "Whackmaster Jack"
+body "Here. Take it and equip it."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern addnew_to_inventory "Old Vistin Pistol"
+  extern equip_item "Old Vistin Pistol"
+  set gotGun = 1
+  extern remove_from_inventory "Broken Vistin Pistol"
+  set timed_message = 20
+  got_object$="an Old Vistin Pistol" 
+  gosub 1000:1
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3205
+
+#window 12:3205
+title "Whackmaster Jack"
+body "Now let's see if you can shoot straight, boss."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+finishswitch {
+  echo "\n"
+  echo "||| - - Finishswitch for 12:3185 - - |||"
+  echo "\n"
+  extern AI_Path jack_handle Jack_Tutorial1
+  extern cam_to 368 1870 109		ORGINAL CAM BEFORE RICHIE MEDDLED IN IT
+  extern cam_from 368 1814 150	ORGINAL CAM BEFORE RICHIE MEDDLED IN IT
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3210
+
+#window 12:3210
+thinkswitch {
+  if (@Jack_At_Path == 2)
+    closewindow 12:3210
+}
+
+finishswitch {
+  set @Jack_At_Path = 0
+  gosub 12:3215
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3230
+startswitch {
+  echo "STARTSWITCH for 12:3230"
+  set @Whacks_KillWindow = 0
+  extern CreateAPE2DControl push windowcontrol 0 0 width=640 height=480 nodrawflag=true holdfocusflag=false gamevar=@Whacks_KillWindow returnvalue=1
+}
+
+thinkswitch {
+  if (@Whacks_KillWindow) {
+    echo "THINKSWITCH : @Whacks_KillWindow = 1 for 12:3230; closing window 12:%d", @Whacks_TSequence
+    closewindow 12:$@Whacks_TSequence$
+    set @Whacks_KillWindow = 0
+  }
+}
+
+finishswitch {
+  echo "FINISHSWITCH for 12:3230"
+  extern RemoveAPE2DControl windowcontrol
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3240
+title "Whackmaster Jack"
+body "Okay, now... this is what it looks like whenever you get into battle. As soon as a fight breaks out, your Battle Plaque will appear."
+body "\n\n\n\n\n\n"
+body "It contains all the information and commands you need to fight."
+startswitch {
+  set @Whacks_TSequence = 3240
+}
+
+finishswitch {
+  goto 12:3245
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "whackmaster/plaque.tga" 191, 90
+
+#window 12:3245
+title "Whackmaster Jack"
+body "Whenever it's your turn in combat, Battle Icons will appear above the plaque. These allow you to select your next move in battle."
+body "\n\n\n\n"
+startswitch {
+  set @Whacks_TSequence = 3245
+}
+
+finishswitch {
+  goto 12:3250
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "../graphics/interface/battle/icon_choice_beat_lite.png" 212, 100
+image "../graphics/interface/battle/icon_choice_move_lite.png" 254, 100
+image "../graphics/interface/battle/icon_choice_item_lite.png" 296, 100
+image "../graphics/interface/battle/icon_choice_action_lite.png" 338, 100
+
+#window 12:3250
+title "Whackmaster Jack"
+body "Use the ATTACK icon to try and plant a blow to your enemy. When you click on it, icons for all hostiles in the immediate vicinity appear. Use 'em to choose which one to attack."
+body "\n\n\n\n"
+startswitch {
+  set @Whacks_TSequence = 3250
+}
+
+finishswitch {
+  goto 12:3255
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "../graphics/interface/battle/icon_choice_beat_lite.png" 275, 110
+
+#window 12:3255
+title "Whackmaster Jack"
+body "The MOVE icon allows you to sidestep to other points in the battle arena. You can only select it if there's a place to move."
+body "\n\n\n\n"
+body "We can discuss this in more detail later if you decide to continue your training."
+startswitch {
+  set @Whacks_TSequence = 3255
+}
+
+finishswitch {
+  goto 12:3260
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "../graphics/interface/battle/icon_choice_move_lite.png" 275, 85
+
+#window 12:3260
+title "Whackmaster Jack"
+body "The ITEM icon allows you to use items from your inventory. Again, you will only be able to select it if you have battle-usable items in your inventory."
+body "\n\n\n\n"
+body "This we can also discuss further if you decide to continue training."
+startswitch {
+  set @Whacks_TSequence = 3260
+}
+
+finishswitch {
+  goto 12:3265
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "../graphics/interface/battle/icon_choice_item_lite.png" 270, 100
+
+#window 12:3265
+title "Whackmaster Jack"
+body "The ACTION icon allows you to use something in the immediate environment, but only if you can reach it from where you're standing."
+body "\n\n\n\n"
+body "This too we can scrutinize further if you continue your training. Sense a trend?"
+startswitch {
+  set @Whacks_TSequence = 3265
+}
+
+finishswitch {
+  goto 12:3270
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "../graphics/interface/battle/icon_choice_action_lite.png" 275, 85
+
+#window 12:3270
+startswitch {
+  extern BATTLE_DetachNode 93 92
+  extern BATTLE_StartTime
+  set @Whacks_Time = (func_gametime + 3500)
+}
+
+thinkswitch {
+  if (func_gametime >= @Whacks_Time) {
+    extern BATTLE_StopTime
+    closewindow 12:3270
+  }
+}
+
+finishswitch {
+  set @Whacks_Time = 0
+  goto 12:3290
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3290
+title "Whackmaster Jack"
+body "You might have noticed the circle filling up on your battle plaque. This, my friend, is your battle timer. You would do well to pay attention to it."
+body "\n\n\n\n\n\n"
+body "You can only perform actions when it reaches full."
+startswitch {
+  set @Whacks_TSequence = 3290
+}
+
+finishswitch {
+  goto 12:3295
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "whackmaster/timer.tga" 259, 85
+
+#window 12:3295
+title "Whackmaster Jack"
+body "Once it fills up, try shooting the Robo Target using the attack icon, then clicking on his battle icon."
+body "\n\n\n\n"
+startswitch {
+  set @Whacks_TSequence = 3295
+}
+
+finishswitch {
+  goto 12:3297
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "../graphics/interface/battle/icon_choice_beat_lite.png" 254, 95
+image "../graphics/interface/battle/monster_icons/lgbot_lite.png" 296, 95
+
+#window 12:3297
+title "Whackmaster Jack"
+body "You can cancel the action by RIGHT CLICKING on your mouse or by hitting ESCAPE."
+startswitch {
+  set @Whacks_TSequence = 3297
+}
+
+finishswitch {
+  goto 12:3300
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3305
+startswitch {
+  set @Whacks_KillWindow = 0
+}
+
+thinkswitch {
+  if (@GotShot_Target) {
+    if (@CraisinsWasHere == 0) {
+      set @Whacks_Time = (func_gametime + 1000)
+      set @CraisinsWasHere = 1
+    }
+    if (func_gametime >= @Whacks_Time) {
+      gosub 12:3310
+      closewindow 12:3305
+    }
+  }
+}
+
+finishswitch {
+  set @Whacks_Time = 0
+  extern BATTLE_AttachNode 93 92
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3310
+startswitch {
+  set @Whacks_KillWindow = 0
+}
+
+thinkswitch {
+  if (@GotShot_Player) {
+    if (@LoomisWasHere == 0) {
+      extern BATTLE_StopTime
+      set @Whacks_Time = (func_gametime + 500)
+      set @LoomisWasHere = 1
+    }
+    if (func_gametime >= @Whacks_Time) {
+      extern BATTLE_DetachNode 93 92
+      closewindow 12:3310
+    }
+  }
+}
+
+finishswitch {
+  set Whacks_FirstShot = func_lastbattledamage
+  set @Whacks_Time = 0
+  gosub 12:3230                                                                                            
+  gosub 12:3330
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3330
+title "Whackmaster Jack"
+body "HA! Did you think he would just take a poke without fighting back? Can't stir up a hornet's nest without getting stung. That's why it's important to keep an eye on your health."
+startswitch {
+  set @Whacks_TSequence = 3330
+}
+
+finishswitch {
+  goto 12:3335
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3335
+title "Whackmaster Jack"
+body "Your health bar shows you how much life you have left. Looks like he landed quite a wallop."
+body "\n\n\n\n"
+startswitch {
+  set @Whacks_TSequence = 3335
+}
+
+finishswitch {
+  goto 12:3340
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "whackmaster/health.tga" 231, 90
+
+#window 12:3340
+title "Whackmaster Jack"
+body "Go ahead and take another shot at 'em and then we'll move on."
+startswitch {
+  set @Whacks_TSequence = 3340
+}
+
+finishswitch {
+  goto 12:3345
+  extern cam_to 368 1870 109		ORGINAL CAM BEFORE RICHIE MEDDLED IN IT
+  extern cam_from 368 1814 150	ORGINAL CAM BEFORE RICHIE MEDDLED IN IT
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3350
+startswitch {
+  set @GotShot_Target = 0
+  set @Whacks_KillWindow = 0
+}
+
+thinkswitch {
+  if (@GotShot_Target) {
+    if (@WhacksTemp == 0) {
+      set @Whacks_Time = (func_gametime + 1000)
+      set @WhacksTemp = 1
+    }
+    if (func_gametime >= @Whacks_Time) {
+      console "battlewin"
+      closewindow 12:3350
+    }
+  }
+}
+
+finishswitch {
+  set @Whacks_Time = 0
+  set @WhacksTemp = 0
+  gosub 12:3353
+}
+
+style "NULL"
+flags passive, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 0
+ypos 0
+
+#window 12:3353
+startswitch {
+  set @SuckMyAssDumbShitDelayTime = (func_gametime + 100)
+}
+
+thinkswitch {
+  if (func_gametime >= @SuckMyAssDumbShitDelayTime)
+    closewindow 12:3353
+}
+
+finishswitch {
+  unset @SuckMyAssDumbShitDelayTime
+  echo "Delay Time Window Closed"
+  extern cam_anoxmariomode 1
+  extern cam_to 368 1870 139
+  extern cam_from 368 1814 170
+  extern cam_zip
+  extern AI_GrabEntity PlayerChar0 playerchar0_handle
+  extern AI_Path jack_handle Jack_Tutorial3
+  gosub 12:3355
+}
+
+style "NULL"
+flags passive, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 0
+ypos 0
+
+#window 12:3355
+thinkswitch {
+  if (@Jack_At_Path == 4)
+    closewindow 12:3355
+}
+
+finishswitch {
+  set @Jack_At_Path = 0
+  gosub 12:3365
+}
+
+style "NULL"
+flags passive, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 0
+ypos 0
+
+#window 12:3365
+title "Whackmaster Jack"
+body "Not bad, kid. But you need to loosen up. You hold the gun like it's a dead rat. You gotta wrist it better."
+startswitch {
+  extern cam_from 373 1995 -80
+  extern cam_to 405 2049 -68
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3370
+
+#window 12:3370
+title "Whackmaster Jack"
+body "You got plenty of potential, but don't let it go to your head. Especially after seeing what that Robot Droid did to you with ONE hit."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3375
+
+#window 12:3375
+title "Whackmaster Jack"
+body "You're gonna need a ton of tutoring if we're gonna shape you up into a bastion of unstoppable Beat-hood. I'll tell you what... I wouldn't normally do this, but you can't learn or pay me if you're dead."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3380
+
+#window 12:3380
+title "Whackmaster Jack"
+body "Some porker once paid me with a Life Cursor Shield Upgrade. Since I don't even own one, why don't you take it?"
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3385
+
+#window 12:3385
+title "Whackmaster Jack"
+body "No really, you caught me on a generous day. Go ahead and apply the upgrade. I'm curious to see if it's got any guts."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3390
+
+#window 12:3390
+startswitch {
+  extern SetPlayerCurrentHP boots 300
+  extern add_battle_skill "FatimaScreen"
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 1
+  extern cam_anoxmariomode 0
+  extern cam_restore
+  extern AI_ReleaseEntity playerchar0_handle
+  extern AI_ReleaseEntity tutorialdroid_handle
+  set @WhackmasterPrepTime = (func_gametime + 1100)
+}
+
+thinkswitch {
+  if (func_gametime >= @WhackmasterPrepTime) {
+    if (Whackmaster_TakePlaces == 3) {
+      extern BATTLE_DetachNode 93 92
+      closewindow 12:3390
+    }
+    if (Whackmaster_TakePlaces == 2) {
+      extern FlashScreenf 0 0 0 1 0
+      extern FlashScreenf 0 0 0 0 1
+      extern SetPlayerCurrentBouge boots 100
+      set @WhackmasterPrepTime = (func_gametime + 500)
+      set Whackmaster_TakePlaces = 3
+    }
+    if (Whackmaster_TakePlaces == 1) {
+      set @postdelay_sequence = 3410
+      console "battlestart 1 ambush;invoke 12:3020"
+      echo "||||| - - Fade In - - |||||"
+      set Whackmaster_TakePlaces = 2
+      set @WhackmasterPrepTime = (func_gametime + 1100)
+    }
+    if (Whackmaster_TakePlaces == 0) {
+      extern AI_SetXYZ jack_handle 344 1731 -108
+      extern AI_SetYAW jack_handle 180
+      extern ANIM_PlayAnim jack_handle amb_a 0 1 0
+      set Whackmaster_TakePlaces = 1
+      set @WhackmasterPrepTime = (func_gametime + 500)
+    }
+  }
+}
+
+finishswitch {
+  set Whackmaster_TakePlaces = 0
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3410
+title "Whackmaster Jack"
+body "Now that we've spiced up your LifeCursor, you'll notice a new battle icon and a full bar that we haven't discussed yet."
+startswitch {
+  set @Whacks_TSequence = 3410
+}
+
+finishswitch {
+  goto 12:3415
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3415
+title "Whackmaster Jack"
+body "Pay attention. Here's the fun stuff. This new icon is for your BATTLE SKILL."
+body "\n\n\n\n"
+body "Battle Skills are special moves that you can perform during battle. They're quite powerful, but require special energy to execute, unlike beat attacks that you can do every turn."
+startswitch {
+  set @Whacks_TSequence = 3415
+}
+
+finishswitch {
+  goto 12:3420
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "../graphics/interface/battle/icon_choice_skill_lite.png" 275, 80
+
+#window 12:3420
+title "Whackmaster Jack"
+body "This special energy, which slowly accumulates during battle, is called BOUGE. Keep track of how much you have left with your Bouge bar."
+body "\n\n\n\n"
+body "Note that different Battle Skills require different amounts of Bouge."
+startswitch {
+  set @Whacks_TSequence = 3420
+}
+
+finishswitch {
+  goto 12:3425
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "whackmaster/bouge.tga" 231, 85
+
+#window 12:3425
+title "Whackmaster Jack"
+body "But enough talk. Let's use your new Battle Skill by clicking on the battle skill icon, selecting the battle skill of your choice and then clicking on your image."
+body "\n\n\n\n\n"
+startswitch {
+  set @Whacks_TSequence = 3425
+}
+
+finishswitch {
+  goto 12:3430
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "../graphics/interface/battle/icon_choice_skill_lite.png" 227, 115
+image "whackmaster/face.tga" 293, 100
+
+#window 12:3430
+startswitch {
+  closewindow 12:3230                                                                                            
+  extern battle_choice_disable beat
+  extern battle_choice_disable move
+  extern battle_choice_disable item
+  extern battle_choice_disable action
+  extern battle_choice_enable skill
+  extern BATTLE_StartTime
+}
+
+thinkswitch {
+  extern GetPlayerCurrentBouge boots @babyjesus
+  if ((@babyjesus < 10) && (@crybabycry == 0)) {
+    set @crybabycry = 1
+    set @WhackmasterPrepTime = (func_gametime + 16000)
+  }
+  if (@crybabycry)
+    if (func_gametime >= @WhackmasterPrepTime)
+      closewindow 12:3430
+}
+
+finishswitch {
+  extern BATTLE_StopTime
+  gosub 12:3230                                                                                            
+  gosub 12:3450
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3450
+title "Whackmaster Jack"
+body "Let's cut it up, boy."
+startswitch {
+  set @Whacks_TSequence = 3450
+}
+
+finishswitch {
+  goto 12:3455
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3460
+startswitch {
+  extern BATTLE_AttachNode 93 92
+  set @Whacks_KillWindow = 0
+}
+
+thinkswitch {
+  if (@GotShot_Player) {
+    if (@WhacksTemp == 0) {
+      extern BATTLE_StopTime
+      set @Whacks_Time = (func_gametime + 500)
+      set @WhacksTemp = 1
+    }
+    if (func_gametime >= @Whacks_Time) {
+      extern BATTLE_DetachNode 93 92
+      closewindow 12:3460
+    }
+  }
+}
+
+finishswitch {
+  set @Whacks_Time = 0
+  set @WhacksTemp = 0
+  gosub 12:3230                                                                                            
+  gosub 12:3475
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3475
+title "Whackmaster Jack"
+body "Excellent. Last time the Robot Target hit you for %d damage. With the upgrade screen he only hit you for %d! Quite a difference.", Whacks_FirstShot, func_lastbattledamage
+startswitch {
+  set @Whacks_TSequence = 3475
+}
+
+finishswitch {
+  goto 12:3480
+  extern cam_to 368 1870 109		ORGINAL CAM BEFORE RICHIE MEDDLED IN IT
+  extern cam_from 368 1814 150	ORGINAL CAM BEFORE RICHIE MEDDLED IN IT
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3483
+startswitch {
+  set @SuckMyAssDumbShitDelayTime = (func_gametime + 100)
+}
+
+thinkswitch {
+  if (func_gametime >= @SuckMyAssDumbShitDelayTime)
+    closewindow 12:3483
+}
+
+finishswitch {
+  unset @SuckMyAssDumbShitDelayTime
+  extern AI_Path jack_handle Jack_Tutorial3
+  extern AI_GrabEntity PlayerChar0 playerchar0_handle
+  extern cam_anoxmariomode 1
+  extern cam_from 368 1814 150
+  extern cam_to 368 1870 109
+  extern cam_zip
+  gosub 12:3485
+}
+
+style "NULL"
+flags passive, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 0
+ypos 0
+
+#window 12:3485
+thinkswitch {
+  if (@Jack_At_Path == 4)
+    closewindow 12:3485
+}
+
+finishswitch {
+  set @Jack_At_Path = 0
+  gosub 12:3500
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3500
+title "Whackmaster Jack"
+body "Well, congratulations, squab. You survived your first lesson."
+startswitch {
+  extern cam_from 373 1995 -80
+  extern cam_to 405 2049 -68
+  set whack_has_taught_you_well = 1
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3505
+
+#window 12:3505
+title "Whackmaster Jack"
+body "Now that you know the basics, we can build on them."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3506
+
+#window 12:3506
+title "Whackmaster Jack"
+body "As part of the introductory offer to the Temple of Beating, every new client gets 2 HealGrease Plus at the end of their first lesson."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern addnew_to_inventory "HealGrease Plus" 2
+  set timed_message = 20
+  got_object$="2 HealGrease Plus" 
+  gosub 1000:1
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3507
+
+#window 12:3507
+title "Whackmaster Jack"
+body "Judging by the way that robot beat you around, you're gonna need it."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3508
+
+#window 12:3508
+title "Whackmaster Jack"
+body "Come grab me again when you're ready for your next lesson."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3510
+
+#window 12:3510
+startswitch {
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 1
+  set Whackmaster_TakePlaces = 0
+  set @WhackmasterPrepTime = (func_gametime + 1100)
+}
+
+thinkswitch {
+  if (func_gametime >= @WhackmasterPrepTime)
+    if (Whackmaster_TakePlaces == 2) {
+      closewindow 12:3510
+    } else if (Whackmaster_TakePlaces == 1) {
+      echo "||||| - - Fade In - - |||||"
+      extern FlashScreenf 0 0 0 1 0
+      extern FlashScreenf 0 0 0 0 1
+      extern cam_anoxmariomode 0
+      extern cam_restore
+      set Whackmaster_TakePlaces = 2
+      set @WhackmasterPrepTime = (func_gametime + 0)
+    } else if (Whackmaster_TakePlaces == 0) {
+      extern AI_SetXYZ jack_handle 592 372 3
+      extern AI_SetYAW jack_handle 240
+      extern ANIM_PlayAnim jack_handle amb_a 1 1 0
+      set Whackmaster_TakePlaces = 1
+      set @WhackmasterPrepTime = (func_gametime + 0)
+    } else
+      echo "Jack is whacked!!!\n"
+}
+
+finishswitch {
+  echo "Releasing JACK!\n"
+  extern AI_ReleaseEntity playerchar0_handle
+  extern AI_ReleaseEntity jack_handle
+  set @Whacks_Tutorial_In_Progress = 0
+  set anox_interface_active = 0
+  set Whackmaster_TakePlaces = 0
+  if (Whackmaster_Tutorial1_Completed == 0)
+    extern complete_quest "Go To Whackmaster"
+  set Whackmaster_Tutorial1_Completed = 1
+  set boots_black_eye = 0
+  set timed_message = 99
+  timed_message$="Boots Gains A Level" 
+  gosub 1000:1
+  extern SetPlayerCurrentHP boots 500
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3555
+startswitch {
+  extern SetPlayerCurrentHP boots 500
+  set Whackmaster_TakePlaces = 0
+  extern AI_GrabEntity PlayerChar0 playerchar0_handle
+  extern AI_GrabEntity jack jack_handle
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 1
+  set @WhackmasterPrepTime = (func_gametime + 1100)
+}
+
+thinkswitch {
+  if (func_gametime >= @WhackmasterPrepTime)
+    if (Whackmaster_TakePlaces == 2) {
+      closewindow 12:3555
+    } else if (Whackmaster_TakePlaces == 1) {
+      echo "||||| - - Fade In - - |||||"
+      extern FlashScreenf 0 0 0 1 0
+      extern FlashScreenf 0 0 0 0 1
+      extern cam_anoxmariomode 1
+      extern cam_zip
+      set Whackmaster_TakePlaces = 2
+      set @WhackmasterPrepTime = (func_gametime + 1100)
+    } else if (Whackmaster_TakePlaces == 0) {
+      extern AI_SetXYZ jack_handle 411 2030 -130
+      extern AI_SetYAW jack_handle 255
+      extern AI_SpawnEntity tutorialdroid_handle monster_rbtarget tutorialdroid 0:0 Jack_Tutorial1
+      extern AI_SetXYZ tutorialdroid_handle 370 2431 -130
+      extern AI_SetYAW tutorialdroid_handle 275
+      extern entkey tutorialdroid_handle "message" "monster1"
+      extern entkey tutorialdroid_handle "battlegroupname" "whacks_droid"
+      extern AI_SetXYZ playerchar0_handle 368 1927 -130
+      extern AI_SetYAW playerchar0_handle 75
+      set Whackmaster_TakePlaces = 1
+      set @WhackmasterPrepTime = func_gametime
+    } else
+      echo "Jack is whacked!!!\n"
+}
+
+finishswitch {
+  set Whackmaster_TakePlaces = 0
+  gosub 12:3560
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3560
+title "Whackmaster Jack"
+body "Crack your knuckles, pull up your socks, and let's begin."
+startswitch {
+  extern cam_from 373 1995 -80
+  extern cam_to 405 2049 -68
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3561
+
+#window 12:3561
+title "Whackmaster Jack"
+body "The next major element you need to learn about is distance. The distance between you and your enemies can make all the difference in the world."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3565
+
+#window 12:3565
+title "Whackmaster Jack"
+body "For example, someone who fights with their bare hands or a stick needs to be close to their enemy in order to land a blow, while someone with a gun can attack from further away."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3566
+
+#window 12:3566
+title "Whackmaster Jack"
+body "Don't roll your eyes at me, squab. For all I know you haven't a cent of common sense in that cranium. Until you prove otherwise, I gotta state the obvious."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3570
+
+#window 12:3570
+title "Whackmaster Jack"
+body "There are two attack types: Melee and Range. Melee attacks require the attacker to be close, while Ranged attacks can be done from a distance."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3571
+
+#window 12:3571
+title "Whackmaster Jack"
+body "I saw that."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3572
+
+#window 12:3572
+title "Whackmaster Jack"
+body "I swear to Klaz, son... if you roll your eyes at me one more time, and I'll knock 'em out for good. You hear me?"
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3575
+
+#window 12:3575
+title "Whackmaster Jack"
+body "How about we beat some of that attitude outta you."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+finishswitch {
+  echo "\n"
+  echo "||| - - Finishswitch for 12:3185 - - |||"
+  echo "\n"
+  extern cam_to 368 1870 109		ORGINAL CAM BEFORE RICHIE MEDDLED IN IT
+  extern cam_from 368 1814 150	ORGINAL CAM BEFORE RICHIE MEDDLED IN IT
+  extern cam_zip
+  extern AI_Path jack_handle Jack_Tutorial1
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3580
+
+#window 12:3580
+thinkswitch {
+  if (@Jack_At_Path == 2)
+    closewindow 12:3580
+}
+
+finishswitch {
+  set @Jack_At_Path = 0
+  gosub 12:3582
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3600
+title "Whackmaster Jack"
+body "You remember your last lesson taught you about the different battle icons?"
+startswitch {
+  set @Whacks_TSequence = 3600
+}
+
+finishswitch {
+  goto 12:3605
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3605
+title "Whackmaster Jack"
+body "We're gonna focus on the Move command now."
+startswitch {
+  set @Whacks_TSequence = 3605
+  console "showbattlegrid 1"
+}
+
+finishswitch {
+  goto 12:3610
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3610
+title "Whackmaster Jack"
+body "When you click on the Move icon, the movement grid will appear, allowing you to select any available node you wanna travel to."
+body "\n\n\n\n"
+startswitch {
+  set @Whacks_TSequence = 3610
+}
+
+finishswitch {
+  console "showbattlegrid 0"
+  goto 12:3615
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "../graphics/interface/battle/icon_choice_move_lite.png" 275, 90
+
+#window 12:3615
+title "Whackmaster Jack"
+body "Let's try an exercise."
+startswitch {
+  set @Whacks_TSequence = 3615
+}
+
+finishswitch {
+  goto 12:3620
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3620
+title "Whackmaster Jack"
+body "I'm gonna set the Robo Target to Melee attack only. Try avoiding it for as long as possible using the move button."
+startswitch {
+  set @Whacks_TSequence = 3620
+}
+
+finishswitch {
+  goto 12:3625
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3625
+title "Whackmaster Jack"
+body "Let's see how far those chicken legs get you."
+startswitch {
+  set @Whacks_TSequence = 3625
+}
+
+finishswitch {
+  goto 12:3630
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3635
+thinkswitch {
+  if (@GotShot2_Move)
+    closewindow 12:3635	
+}
+
+finishswitch {
+  extern BATTLE_StopTime
+  gosub 12:3230                                                                                            
+  gosub 12:3650
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3650
+title "Whackmaster Jack"
+if (@Someone_Moved == 0)
+  body "If you're not even gonna try, then you deserve a good drubbing!"
+if (@Someone_Moved == 1)
+  body "Not as quick as you think you are, huh?"
+if (@Someone_Moved == 2)
+  body "Not bad. It took him a while to catch up to you, boss."
+if (@Someone_Moved > 2)
+  body "Excellent. You're a slippery one. Might save your life some day, squab."
+startswitch {
+  set @Whacks_TSequence = 3650
+}
+
+finishswitch {
+  goto 12:3655
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3655
+title "Whackmaster Jack"
+body "Not the most useful tactic in battle, but it's nice to know your options in a pinch."
+startswitch {
+  set @Whacks_TSequence = 3655
+}
+
+finishswitch {
+  goto 12:3660
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3660
+title "Whackmaster Jack"
+body "Listen, if you're gonna make a habit outta gettin' slapped around every time I throw you in the ring, I better teach you how to heal yourself."
+startswitch {
+  set @Whacks_TSequence = 3660
+}
+
+finishswitch {
+  goto 12:3665
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3665
+title "Whackmaster Jack"
+body "I personally recommend Cordicom HealGrease for all your healing needs."
+startswitch {
+  set @Whacks_TSequence = 3665
+}
+
+finishswitch {
+  goto 12:3670
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3670
+title "Whackmaster Jack"
+body "This antibiotic healing grease prevents scars, infection, and relieves pain. It's a specially formulated compound salve that works instantly on humans, non-humans, and bots alike."
+startswitch {
+  set @Whacks_TSequence = 3670
+}
+
+finishswitch {
+  goto 12:3675
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3675
+title "Whackmaster Jack"
+body "I imagine a downtrodden bastard such as yourself should keep one handy at all times."
+startswitch {
+  set @Whacks_TSequence = 3675
+}
+
+finishswitch {
+  goto 12:3680
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3680
+title "Boots"
+body "Hey!"
+startswitch {
+  set @Whacks_TSequence = 3680
+}
+
+finishswitch {
+  goto 12:3685
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3685
+title "Whackmaster Jack"
+body "Luckily for you, Cordicom gives me a free supply of standard HealGrease every month for endorsing their product. Here's a sample tube."
+startswitch {
+  set @Whacks_TSequence = 3685
+}
+
+finishswitch {
+  goto 12:3690
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3690
+title "Whackmaster Jack"
+body "To use HealGrease, you'll need to select the item icon, choose the HealGrease, and then click on your portrait on the battle plaque."
+body "\n\n\n\n\n"
+startswitch {
+  set @Whacks_TSequence = 3690
+}
+
+finishswitch {
+  goto 12:3695
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "../graphics/interface/battle/icon_choice_item_lite.png" 227, 105
+image "whackmaster/face.tga" 293, 90
+
+#window 12:3695
+title "Whackmaster Jack"
+body "Pay attention, son. The wandering mind is the first to get torpedoed."
+startswitch {
+  set @Whacks_TSequence = 3695
+}
+
+finishswitch {
+  goto 12:3700
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3705
+thinkswitch {
+  extern GetPlayerCurrentHP boots @Whacks_Health
+  if ((@Whacks_Health > @Whacks_StartHealth) && (@GodBlessGretchenMolsBreasts == 0)) {
+    set @GodBlessGretchenMolsBreasts = 1
+    set @Whacks_Time = (func_gametime + 7000)
+  }
+  if ((func_gametime >= @Whacks_Time) && @GodBlessGretchenMolsBreasts)
+    closewindow 12:3705
+}
+
+finishswitch {
+  set @GodBlessGretchenMolsBreasts = 0
+  extern BATTLE_StopTime
+  gosub 12:3230                                                                                            
+  gosub 12:3720
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3720
+title "Whackmaster Jack"
+body "Feels nice, doesn't it? You can never have enough HealGrease, so stock up when you have the chance, m'boy."
+startswitch {
+  set @Whacks_TSequence = 3720
+}
+
+finishswitch {
+  goto 12:3725
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3725
+title "Whackmaster Jack"
+body "On the other hand, HealGrease is unnecessary if you never take damage in the first place... which brings us to our next exercise."
+startswitch {
+  set @Whacks_TSequence = 3725
+}
+
+finishswitch {
+  goto 12:3730
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3735
+startswitch {
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 1
+  set @WhackmasterPrepTime = (func_gametime + 1100)
+  set Whackmaster_TakePlaces = 0
+}
+
+thinkswitch {
+  if (func_gametime >= @WhackmasterPrepTime)
+    if (Whackmaster_TakePlaces == 2) {
+      closewindow 12:3735
+    } else if (Whackmaster_TakePlaces == 1) {
+      set @postdelay_sequence = 3750
+      console "battlestart 3;invoke 12:3020"
+      echo "||||| - - Fade In - - |||||"
+      extern FlashScreenf 0 0 0 1 0
+      extern FlashScreenf 0 0 0 0 1
+      set Whackmaster_TakePlaces = 2
+      set @WhackmasterPrepTime = (func_gametime + 1100)
+    } else if (Whackmaster_TakePlaces == 0) {
+      echo "||| - - SPAWN ENTITIES - - |||"
+      gosub 12:3740
+      set Whackmaster_TakePlaces = 1
+      set @WhackmasterPrepTime = (func_gametime + 500)
+    }
+}
+
+finishswitch {
+  set Whackmaster_TakePlaces = 0
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3750
+title "Whackmaster Jack"
+body "Now that we've made appropriate changes to the arena, I'm gonna teach you something that might give you the whip hand in an encounter."
+startswitch {
+  set @Whacks_TSequence = 3750
+}
+
+finishswitch {
+  goto 12:3755
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3755
+title "Whackmaster Jack"
+body "Sometimes, you'll have the opportunity to use the surrounding environment to your advantage."
+startswitch {
+  set @Whacks_TSequence = 3755
+}
+
+finishswitch {
+  goto 12:3760
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3760
+title "Whackmaster Jack"
+body "Whenever you're standing next to something that can be used in battle, the Action icon will appear."
+body "\n\n\n\n"
+startswitch {
+  set @Whacks_TSequence = 3760
+}
+
+finishswitch {
+  goto 12:3765
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "../graphics/interface/battle/icon_choice_action_lite.png" 296, 95
+
+#window 12:3765
+title "Whackmaster Jack"
+body "Take a good look at the current movement grid. Note there are two places for you to move: directly in front of you, and to your left."
+startswitch {
+  set @Whacks_TSequence = 3765
+  console "showbattlegrid 1"
+}
+
+finishswitch {
+  console "showbattlegrid 0"
+  goto 12:3770
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3770
+title "Whackmaster Jack"
+body "Step to the node on your left using the Move icon, and use the Action icon to activate the switch there."
+body "\n\n\n\n"
+startswitch {
+  set @Whacks_TSequence = 3770
+}
+
+finishswitch {
+  goto 12:3775
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "../graphics/interface/battle/icon_choice_move_lite.png" 254, 95
+image "../graphics/interface/battle/icon_choice_action_lite.png" 296, 95
+
+#window 12:3780
+thinkswitch {
+  if (@Whacks_Action)
+    closewindow 12:3780
+}
+
+finishswitch {
+  extern BATTLE_StopTime
+  gosub 12:3785
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3785
+startswitch {
+  set @ForTheLoveOfChristKillMeNow = (func_gametime + 1500)
+  extern BATTLE_DetachNode 93 97
+  extern BATTLE_DetachNode 97 93
+  extern BATTLE_DetachNode 92 97
+  extern BATTLE_DetachNode 97 92
+  extern np laser1sq_handle 1 0 effect_1 0 lucas/laser2
+  extern np laser2sq_handle 1 0 effect_1 0 lucas/laser2
+  extern np laser3sq_handle 1 0 effect_1 0 lucas/laser2
+}
+
+thinkswitch {
+  if (func_gametime >= @ForTheLoveOfChristKillMeNow)
+    closewindow 12:3785
+}
+
+finishswitch {
+  set @ForTheLoveOfChristKillMeNow = 0
+  gosub 12:3230                                                                                            
+  gosub 12:3795
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3795
+title "Whackmaster Jack"
+body "See now what you've done? Take another look at the movement grid. Notice the lasers are now cutting off that node. Since the Robo Target is set to Melee mode, he can't attack you."
+startswitch {
+  set @Whacks_TSequence = 3795
+  console "showbattlegrid 1"
+}
+
+finishswitch {
+  goto 12:3800
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3800
+title "Whackmaster Jack"
+body "Take this opportunity to show 'em bedlam with your Range weapon."
+startswitch {
+  set @Whacks_TSequence = 3800
+}
+
+finishswitch {
+  console "showbattlegrid 0"
+  goto 12:3805
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3805
+title "Whackmaster Jack"
+body "Dust him."
+startswitch {
+  set @Whacks_TSequence = 3805
+}
+
+finishswitch {
+  goto 12:3810
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3815
+thinkswitch {
+  if (@GotShot_Target)
+    closewindow 12:3815
+}
+
+finishswitch {
+  extern BATTLE_StopTime
+  gosub 12:3230                                                                                            
+  gosub 12:3830
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3830
+title "Whackmaster Jack"
+body "You're making progress, squab."
+startswitch {
+  set @Whacks_TSequence = 3830
+}
+
+finishswitch {
+  goto 12:3835
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3835
+title "Whackmaster Jack"
+body "Just realize that having a Range weapon doesn't always mean you'll hit your intended target. Line of sight can come into play during battle as well."
+startswitch {
+  set @Whacks_TSequence = 3835
+}
+
+finishswitch {
+  goto 12:3840
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3840
+title "Whackmaster Jack"
+body "For example, if someone stands directly between you and the enemy, chances are you won't target them and vice versa."
+startswitch {
+  set @Whacks_TSequence = 3840
+}
+
+finishswitch {
+  goto 12:3845
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3845
+title "Whackmaster Jack"
+body "Okay, okay... I can see you're gettin' that insolent look again."
+startswitch {
+  set @Whacks_TSequence = 3845
+}
+
+finishswitch {
+  goto 12:3850
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3850
+title "Whackmaster Jack"
+body "We better end this lesson before you push me too far and I cane your face."
+startswitch {
+  set @Whacks_TSequence = 3850
+}
+
+finishswitch {
+  goto 12:3855
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3855
+title "Whackmaster Jack"
+body "Come grab me again when you're ready for your next lesson."
+startswitch {
+  set @Whacks_TSequence = 3855
+}
+
+finishswitch {
+  goto 12:3860
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3865
+startswitch {
+  extern AI_GrabEntity PlayerChar0 playerchar0_handle
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 1
+  set Whackmaster_TakePlaces = 0
+  set @WhackmasterPrepTime = (func_gametime + 1100)
+}
+
+thinkswitch {
+  if (func_gametime >= @WhackmasterPrepTime)
+    if (Whackmaster_TakePlaces == 2) {
+      closewindow 12:3865
+    } else if (Whackmaster_TakePlaces == 1) {
+      echo "||||| - - Fade In - - |||||"
+      extern FlashScreenf 0 0 0 1 0
+      extern FlashScreenf 0 0 0 0 1
+      extern cam_anoxmariomode 0
+      extern cam_restore
+      set Whackmaster_TakePlaces = 2
+      set @WhackmasterPrepTime = (func_gametime + 100)
+    } else if (Whackmaster_TakePlaces == 0) {
+      extern AI_SetXYZ jack_handle 592 372 3
+      extern AI_SetYAW jack_handle 240
+      extern ANIM_PlayAnim jack_handle amb_a 1 1 0
+      echo "Destroying Entities"
+      extern AI_GetEdictNumber fence1 fence1_handle
+      extern AI_DestroyEntity fence1_handle
+      extern AI_DestroyEntity fence2_handle
+      extern AI_DestroyEntity laser1sq_handle
+      extern AI_DestroyEntity laser2sq_handle
+      extern AI_DestroyEntity laser3sq_handle
+      extern AI_DestroyEntity laserpanel_handle
+      set Whackmaster_TakePlaces = 1
+      set @WhackmasterPrepTime = (func_gametime + 1000)
+    } else
+      echo "Jack is whacked!!!\n"
+}
+
+finishswitch {
+  extern AI_ReleaseEntity playerchar0_handle
+  extern AI_ReleaseEntity jack_handle
+  set @Whacks_Tutorial_In_Progress = 0
+  set anox_interface_active = 0
+  set Whackmaster_TakePlaces = 0
+  if (Whackmaster_Tutorial2_Completed == 0)
+    extern Add_XP boots 200
+  set Whackmaster_Tutorial2_Completed = 1
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3905
+startswitch {
+  extern SetPlayerCurrentHP boots 500
+  set Whackmaster_TakePlaces = 0
+  extern AI_GrabEntity PlayerChar0 playerchar0_handle
+  extern AI_GrabEntity jack jack_handle
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 1
+  set @WhackmasterPrepTime = (func_gametime + 1100)
+}
+
+thinkswitch {
+  if (func_gametime >= @WhackmasterPrepTime)
+    if (Whackmaster_TakePlaces == 2) {
+      closewindow 12:3905
+    } else if (Whackmaster_TakePlaces == 1) {
+      echo "||||| - - Fade In - - |||||"
+      extern FlashScreenf 0 0 0 1 0
+      extern FlashScreenf 0 0 0 0 1
+      extern cam_anoxmariomode 1
+      extern cam_zip
+      set Whackmaster_TakePlaces = 2
+      set @WhackmasterPrepTime = (func_gametime + 1100)
+    } else if (Whackmaster_TakePlaces == 0) {
+      extern AI_SetXYZ jack_handle 411 2030 -130
+      extern AI_SetYAW jack_handle 255
+      extern AI_SpawnEntity tutorialdroid_handle monster_rbtarget tutorialdroid 0:0 Jack_Tutorial1
+      extern AI_SetXYZ tutorialdroid_handle 370 2431 -130
+      extern AI_SetYAW tutorialdroid_handle 275
+      extern entkey tutorialdroid_handle "message" "monster1"
+      extern entkey tutorialdroid_handle "battlegroupname" "whacks_droid"
+      extern AI_SetXYZ playerchar0_handle 368 1927 -130
+      extern AI_SetYAW playerchar0_handle 75
+      set Whackmaster_TakePlaces = 1
+      set @WhackmasterPrepTime = func_gametime
+    } else
+      echo "Jack is whacked!!!\n"
+}
+
+finishswitch {
+  set Whackmaster_TakePlaces = 0
+  gosub 12:3910
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3910
+title "Whackmaster Jack"
+body "Some adversaries you encounter will have attacks with lingering properties. These effects are called Status Effects."
+startswitch {
+  extern cam_from 373 1995 -80
+  extern cam_to 405 2049 -68
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3915
+
+#window 12:3915
+title "Whackmaster Jack"
+body "Take, for instance, the Bindle Bag. When you throw one at an enemy, they will experience a burn status effect until the flames go out."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3920
+
+#window 12:3920
+title "Whackmaster Jack"
+body "The same is true if someone nails you with one too."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3925
+
+#window 12:3925
+title "Whackmaster Jack"
+body "Here. Take these Bindle Bags and test 'em out on our friend here."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern addnew_to_inventory "Bindlebag" 3
+  set timed_message = 20
+  got_object$="3 Bindlebags" 
+  gosub 1000:1
+  extern cam_to 368 1870 109		ORGINAL CAM BEFORE RICHIE MEDDLED IN IT
+  extern cam_from 368 1814 150	ORGINAL CAM BEFORE RICHIE MEDDLED IN IT
+  extern cam_zip
+  extern AI_Path jack_handle Jack_Tutorial1
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:3930
+
+#window 12:3930
+thinkswitch {
+  if (@Jack_At_Path == 2)
+    closewindow 12:3930
+}
+
+finishswitch {
+  set @Jack_At_Path = 0
+  gosub 12:3932
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3950
+title "Whackmaster Jack"
+body "Using the Item icon, click on the Bindle Bag, and select the Robo Target icon."
+body "\n\n\n\n"
+startswitch {
+  set @Whacks_TSequence = 3950
+}
+
+finishswitch {
+  goto 12:3955
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "../graphics/interface/battle/icon_choice_item_lite.png" 254, 95
+image "../graphics/interface/battle/monster_icons/lgbot_lite.png" 296, 95
+
+#window 12:3960
+thinkswitch {
+  if (@GotShot_Target)
+    closewindow 12:3960
+}
+
+finishswitch {
+  extern BATTLE_StopTime
+  gosub 12:3230                                                                                            
+  gosub 12:3975
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:3975
+title "Whackmaster Jack"
+body "Nice. Looks like you blew off some of his fiddly bits."
+startswitch {
+  set @Whacks_TSequence = 3975
+}
+
+finishswitch {
+  goto 12:3976
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3976
+title "Whackmaster Jack"
+body "As you can see, Status Effect items make excellent weapons in battle... but with better weapons comes the need for better defense. That's where SHIELD CELLS come in."
+startswitch {
+  set @Whacks_TSequence = 3976
+}
+
+finishswitch {
+  goto 12:3995
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3980
+title "Whackmaster Jack"
+body "That's where Shield Cells come in. They decrease the damage you take in battle."
+startswitch {
+  set @Whacks_TSequence = 3980
+}
+
+finishswitch {
+  goto 12:3995
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:3995
+title "Whackmaster Jack"
+body "Shield cells give you an extra layer of protection, forcing your enemies to chew through your shields before they can get to you."
+startswitch {
+  set @Whacks_TSequence = 3995
+}
+
+finishswitch {
+  goto 12:4000
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:4000
+title "Whackmaster Jack"
+body "I'll let you borrow an old Shield Cell for training purposes, but don't even think about running off with it. Even my worst shield cell is worth more than everything you own. Except, maybe the LifeCursor."
+startswitch {
+  set @Whacks_TSequence = 4000
+}
+
+finishswitch {
+  goto 12:4015
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:4015
+title "Whackmaster Jack"
+body "As with other weapons and equipment, Shield Cells must be equipped before battle."
+body "\n\n\n\n\n\n\n\n\n\n\n\n"
+startswitch {
+  set @Whacks_TSequence = 4015
+}
+
+finishswitch {
+  goto 12:4020
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "whackmaster/w_equip.tga" 163, 90
+
+#window 12:4020
+title "Whackmaster Jack"
+body "Alright. Let's test this sucker out."
+startswitch {
+  set @Whacks_TSequence = 4020
+}
+
+finishswitch {
+  goto 12:4030
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:4030
+startswitch {
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 1
+  set @WhackmasterPrepTime = (func_gametime + 1100)
+  set Whackmaster_TakePlaces = 0
+  console "battlewin"
+  extern GetPlayerCurrentHP boots @WhacksNRG_Health
+}
+
+thinkswitch {
+  if (func_gametime >= @WhackmasterPrepTime)
+    if (Whackmaster_TakePlaces == 2) {
+      extern updatebattlebars
+      closewindow 12:4030
+    } else if (Whackmaster_TakePlaces == 1) {
+      set @postdelay_sequence = 4035
+      console "battlestart 5; invoke 12:3020"
+      echo "||||| - - Fade In - - |||||"
+      extern FlashScreenf 0 0 0 1 0
+      extern FlashScreenf 0 0 0 0 1
+      set Whackmaster_TakePlaces = 2
+      set @WhackmasterPrepTime = (func_gametime + 1100)
+    } else if (Whackmaster_TakePlaces == 0) {
+      echo "*** Adding ShieldCell"
+      extern addnew_to_inventory "Beat-up Powercell"
+      extern equip_item "Beat-up Powercell"
+      extern AI_GetEdictNumber PlayerChar0 @p0
+      extern adjust_nrg @p0 9999
+      set Whackmaster_TakePlaces = 1
+      set @WhackmasterPrepTime = (func_gametime + 500)
+      extern raiseshields
+      extern is_in_inventory "Beat-up Powercell" @totalcell1
+      extern is_equipped "Beat-up Powercell" @totalcell2
+      echo "*** Total Cells Inventory (%f) - Equipped (%f)", @totalcell1, @totalcell2
+    }
+}
+
+finishswitch {
+  set Whackmaster_TakePlaces = 0
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:4035
+title "Whackmaster Jack"
+body "Notice that before you were using the shield cell you had %d health, but now you have 40 more hitpoints. This extra health is from the shield.", @WhacksNRG_Health
+startswitch {
+  set @Whacks_TSequence = 4035
+}
+
+finishswitch {
+  goto 12:4045
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "whackmaster/w_nrg.tga" 231, 85
+
+#window 12:4045
+title "Whackmaster Jack"
+body "Lemme activate the Robo Target so you can test your personal shield in action."
+startswitch {
+  set @Whacks_TSequence = 4045
+}
+
+finishswitch {
+  goto 12:4050
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:4055
+thinkswitch {
+  if (@GotShot_Player)
+    closewindow 12:4055
+}
+
+finishswitch {
+  extern BATTLE_StopTime
+  gosub 12:3230                                                                                            
+  gosub 12:4075
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:4070
+title "Whackmaster Jack"
+body "Notice the difference?"
+startswitch {
+  set @Whacks_TSequence = 4070
+}
+
+finishswitch {
+  goto 12:4075
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:4075
+title "Whackmaster Jack"
+body "See? He barely managed to scrape you that time. The shield took the brunt of the beating."
+startswitch {
+  set @Whacks_TSequence = 4075
+}
+
+finishswitch {
+  goto 12:4080
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:4080
+title "Whackmaster Jack"
+body "It's the last and most important advice I'm gonna give you, son: Invest in a shield pack."
+startswitch {
+  set @Whacks_TSequence = 4080
+}
+
+finishswitch {
+  goto 12:4083
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:4081
+title "Whackmaster Jack"
+body "Now."
+startswitch {
+  set @Whacks_TSequence = 4081
+}
+
+finishswitch {
+  goto 12:4082
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:4082
+title "Whackmaster Jack"
+body "Run don't walk."
+startswitch {
+  set @Whacks_TSequence = 4082
+}
+
+finishswitch {
+  goto 12:4083
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:4083
+title "Whackmaster Jack"
+body "Now give it back before you \"forget\" to return it."
+startswitch {
+  set @Whacks_TSequence = 4083
+}
+
+finishswitch {
+  extern cam_to 368 1870 109		ORGINAL CAM BEFORE RICHIE MEDDLED IN IT
+  extern cam_from 368 1814 150	ORGINAL CAM BEFORE RICHIE MEDDLED IN IT
+  extern cam_zip
+  goto 12:4085
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 12:4087
+startswitch {
+  set @SuckMyAssDumbShitDelayTime = (func_gametime + 100)
+}
+
+thinkswitch {
+  if (func_gametime >= @SuckMyAssDumbShitDelayTime)
+    closewindow 12:4087
+}
+
+finishswitch {
+  unset @SuckMyAssDumbShitDelayTime
+  extern AI_GrabEntity PlayerChar0 playerchar0_handle
+  extern cam_anoxmariomode 1
+  extern cam_to 368 1870 109
+  extern cam_from 368 1814 150
+  extern cam_zip
+  extern AI_Path jack_handle Jack_Tutorial3
+  gosub 12:4090
+}
+
+style "NULL"
+flags passive, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 0
+ypos 0
+
+#window 12:4090
+thinkswitch {
+  if (@Jack_At_Path == 4)
+    closewindow 12:4090
+}
+
+finishswitch {
+  set @Jack_At_Path = 0
+  if (@GotShot_Target) {
+    gosub 12:4100
+  } else
+    gosub 12:4105
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 12:4100
+title "Whackmaster Jack"
+body "By the way, nice initiative during that fight. That's what I like to see in a student."
+startswitch {
+  extern cam_from 373 1995 -80
+  extern cam_to 405 2049 -68
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:4101
+
+#window 12:4101
+title "Whackmaster Jack"
+body "Have a couple of HealGrease on me. I always reward the fight-hungry."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern addnew_to_inventory "HealGrease" 2
+  set timed_message = 20
+  got_object$="2 HealGreases" 
+  gosub 1000:1
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:4105
+
+#window 12:4105
+title "Whackmaster Jack"
+body "And with that, I send you off into the great, big, wonderful world of beating strangers, m'boy."
+startswitch {
+  extern removeshield
+  extern cam_from 373 1995 -80
+  extern cam_to 405 2049 -68
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:4110
+
+#window 12:4110
+title "Whackmaster Jack"
+body "Whackmaster Jack can teach you no more. Anything else you're gonna learn you gotta earn at the cost of your own blood out there in the field where it counts."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:4112
+
+#window 12:4112
+title "Whackmaster Jack"
+body "Give and take, cut and thrust, make 'em bray, and never be afraid to shoot 'em in the ding-dong."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:4125
+
+#window 12:4125
+title "Whackmaster Jack"
+body "Take care, kid. Don't die dumb or anything. Although in your case, I guess that's inevitable."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:4130
+
+#window 12:4130
+title "Whackmaster Jack"
+body "Pleasant journeys."
+startswitch {
+  extern ANIM_PlayAnim jack_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 12:4135
+
+#window 12:4135
+startswitch {
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 1
+  set Whackmaster_TakePlaces = 0
+  set @WhackmasterPrepTime = (func_gametime + 1100)
+}
+
+thinkswitch {
+  if (func_gametime >= @WhackmasterPrepTime)
+    if (Whackmaster_TakePlaces == 2) {
+      closewindow 12:4135
+    } else if (Whackmaster_TakePlaces == 1) {
+      echo "||||| - - Fade In - - |||||"
+      extern FlashScreenf 0 0 0 1 0
+      extern FlashScreenf 0 0 0 0 1
+      extern cam_anoxmariomode 0
+      extern cam_restore
+      set Whackmaster_TakePlaces = 2
+      set @WhackmasterPrepTime = (func_gametime + 0)
+    } else if (Whackmaster_TakePlaces == 0) {
+      extern AI_SetXYZ jack_handle 592 372 3
+      extern AI_SetYAW jack_handle 240
+      extern ANIM_PlayAnim jack_handle amb_a 1 1 0
+      set Whackmaster_TakePlaces = 1
+      set @WhackmasterPrepTime = (func_gametime + 0)
+    } else
+      echo "Jack is whacked!!!\n"
+}
+
+finishswitch {
+  echo "Releasing JACK!\n"
+  extern AI_ReleaseEntity playerchar0_handle
+  extern AI_ReleaseEntity jack_handle
+  set @Whacks_Tutorial_In_Progress = 0
+  set Whackmaster_TakePlaces = 0
+  set anox_interface_active = 0
+  if (Whackmaster_Tutorial3_Completed == 0)
+    extern Add_XP boots 200
+  set Whackmaster_Tutorial3_Completed = 1
+  echo "*|*|  Removing Beat-up Powercell"
+  extern is_in_inventory "Beat-up Powercell" @totalcell1
+  extern is_equipped "Beat-up Powercell" @totalcell2
+  echo "*** Total Cells Inventory (%f) - Equipped (%f)", @totalcell1, @totalcell2
+  extern remove_from_inventory "Beat-up Powercell"
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#switch 12:1
+set CURRENT_PLANET = 1
+set CURRENT_BANK = 12
+extern applylevelconfiguration whacks
+extern playlevelmusic mp3/bricks/bricks_normal_3_0.mp3
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+
+#switch 12:101
+if ((func_charinparty[boots] == 3) && met_grumpos)
+  goto 12:0190
+if (func_charinparty[boots] != 3)
+  goto 12:0160
+if (@Whacks_Tutorial_In_Progress)
+  goto 0:0
+if (Whackmaster_Tutorial3_Completed == 1)
+  goto 12:0190
+if (Whackmaster_Tutorial2_Completed == 1)
+  goto 12:0140
+if (Whackmaster_Tutorial1_Completed == 1)
+  goto 12:0130
+goto 12:0105
+
+#switch 12:115
+extern check_money money_jack
+if (money_jack < 5)
+  goto 12:0125
+extern remove_money 5
+goto 12:0120
+
+#switch 12:201
+if (MYSTECH_ACTIVE == 1)
+  goto 12:0235
+set Paloo1 = (Paloo1 + 1)
+if (Paloo1 > 5)
+  goto 12:0230
+if (Paloo1 > 4)
+  goto 12:0225
+if (Paloo1 > 3)
+  goto 12:0220
+if (Paloo1 > 2)
+  goto 12:0215
+if (Paloo1 > 1)
+  goto 12:0210
+goto 12:0205                                 
+
+#switch 12:235
+set Paloo2 = (Paloo2 + 1)
+if (Paloo2 > 2)
+  goto 12:0250
+if (Paloo2 > 1)
+  goto 12:0245
+goto 12:0240                                 
+
+#switch 12:601
+if (@PreeYES == 1)
+  goto 12:0615
+if (@PreeNO == 1)
+  goto 12:0610
+goto 12:0605
+
+#switch 12:701
+if (@PreeYES == 1)
+  goto 12:0710
+if (@PreeNO == 1)
+  goto 12:0715
+goto 12:0705                                 
+
+#switch 12:710
+extern AI_GrabEntity rbtarget386 rbtarget386_handle
+extern AI_GrabEntity bullyboy bully_handle
+extern ANIM_PlayAnim rbtarget386_handle hit_a 0 1 0
+extern ANIM_PlayAnim bully_handle atak2_a 0 1 0
+extern playsound games/sunlaser/newssmash.wav
+extern AI_ReleaseEntity rbtarget386_handle
+extern AI_ReleaseEntity bully_handle
+
+#switch 12:901
+target brdg1
+
+#switch 12:910
+if (func_charinparty[pal] == 3)
+  goto 12:0915
+goto 12:0920
+
+#switch 12:915
+extern assign E[0] -1 50 50 51 50 50 -1
+extern assign E[7] -1 40 40 40 40 40 -1
+extern assign E[14] -1 60 40 30 40 40 -1
+extern assign E[21] -1 30 40 60 40 60 -1
+extern assign E[28] -1 40 40 40 30 40 -1
+extern assign E[35] -1 40 30 40 40 60 -1
+extern assign E[42] -1 46 45 45 45 45 -1
+WS_STAND$="pal_skill_1" 
+ws_object$="paldoor" 
+ws_scenename$="worldskills/comptalk_whacks_1" 
+gosub 4003:1
+goto 0:0
+
+#switch 12:978
+extern addnew_to_inventory "Pentagonal Prism"
+set whacks_gotbean5 = 1
+set timed_message = 20
+got_object$="Pentagonal Prism" 
+gosub 1000:1
+goto 0:0
+
+#switch 12:1001
+extern is_in_inventory "Cordicom Linguinator" @gotLINGI
+if (@gotLINGI < 1)
+  goto 12:1235
+set SkurpPliz1 = (SkurpPliz1 + 1)
+if (SkurpPliz1 > 1)
+  goto 12:1010
+goto 12:1005
+
+#switch 12:1101
+goto 12:1001
+
+#switch 12:1301
+if (MYSTECH_ACTIVE == 1)
+  goto 12:1701
+set Pree1 = (Pree1 + 1)
+if (Pree1 > 2)
+  goto 12:1315
+if (Pree1 > 1)
+  goto 12:1310
+goto 12:1305                                 
+
+#switch 12:1401
+set Ziricon1 = (Ziricon1 + 1)
+if (Ziricon1 > 2)
+  goto 12:1415
+if (Ziricon1 > 1)
+  goto 12:1410
+goto 12:1405                                 
+
+#switch 12:1501
+set Petit1 = (Petit1 + 1)
+if (MYSTECH_ACTIVE == 1)
+  goto 12:1515
+if (Petit1 > 1)
+  goto 12:1510
+goto 12:1505                                 
+
+#switch 12:1515
+set Petit2 = (Petit2 + 1)
+if (Petit2 > 2)
+  goto 12:1530
+if (Petit2 > 1)
+  goto 12:1525
+goto 12:1520                                 
+
+#switch 12:1701
+set Polimus1 = (Polimus1 + 1)
+if (func_charinparty[grumpos] == 3)
+  goto 12:1755
+if (func_charinparty[pal] == 3)
+  goto 12:1750
+if (func_charinparty[democratus] == 3)
+  goto 12:1745
+if (func_charinparty[stiletto] == 3)
+  goto 12:1740
+if (func_charinparty[paco] == 3)
+  goto 12:1735
+if (Polimus1 > 5)
+  goto 12:1730
+if (Polimus1 > 4)
+  goto 12:1725
+if (Polimus1 > 3)
+  goto 12:1720
+if (Polimus1 > 2)
+  goto 12:1715
+if (Polimus1 > 1)
+  goto 12:1710
+goto 12:1705                                 
+
+#switch 12:1801
+set Stang1 = (Stang1 + 1)
+if (Stang1 > 3)
+  goto 12:1806
+if (Stang1 > 2)
+  goto 12:1815
+if (Stang1 > 1)
+  goto 12:1810
+goto 12:1805                                 
+
+#switch 12:3000
+set @Whacks_Tutorial_In_Progress = 1
+set anox_interface_active = 1
+goto 12:3100
+
+#switch 12:3100
+goto 12:3105
+
+#switch 12:3215
+echo "((( Anim 1 )))"
+extern ANIM_PlayAnim tutorialdroid_handle gest_a 0 1 0
+extern ANIM_SetCallback tutorialdroid_handle 12:3220
+
+#switch 12:3217
+echo "((( Anim 2 )))"
+extern ANIM_PlayAnim tutorialdroid_handle atak6_b 0 1 0
+extern ANIM_SetCallback tutorialdroid_handle 12:3220
+
+#switch 12:3220
+echo "((( Anim 3 )))"
+extern ANIM_PlayAnim tutorialdroid_handle gest_a 0 1 1
+goto 12:3225
+
+#switch 12:3225
+extern cam_anoxmariomode 0
+extern cam_restore
+extern AI_ReleaseEntity playerchar0_handle
+extern AI_ReleaseEntity tutorialdroid_handle
+set @postdelay_sequence = 3240
+console "battlestart 0 ambush;invoke 12:3020"
+goto 0:0
+
+#switch 12:3300
+closewindow 12:3230                                                                                            
+extern BATTLE_StartTime
+extern battle_choice_disable item
+goto 12:3305
+goto 0:0
+
+#switch 12:3345
+closewindow 12:3230                                                                                            
+extern BATTLE_StartTime
+goto 12:3350
+goto 0:0
+
+#switch 12:3455
+extern battle_choice_disable skill
+closewindow 12:3230                                                                                            
+set @GotShot_Player = 0
+set @WhacksTemp = 0
+extern BATTLE_StartTime
+goto 12:3460
+goto 0:0
+
+#switch 12:3480
+console "battlewin"
+closewindow 12:3230                                                                                            
+goto 12:3483
+
+#switch 12:3550
+set @Whacks_Tutorial_In_Progress = 1
+set anox_interface_active = 1
+extern addnew_to_inventory "HealGrease"
+goto 12:3555
+
+#switch 12:3582
+echo "((( Anim 1 )))"
+extern ANIM_PlayAnim tutorialdroid_handle gest_a 0 1 0
+extern ANIM_SetCallback tutorialdroid_handle 12:3586
+
+#switch 12:3584
+echo "((( Anim 2 )))"
+extern ANIM_PlayAnim tutorialdroid_handle atak6_b 0 1 0
+extern ANIM_SetCallback tutorialdroid_handle 12:3586
+
+#switch 12:3586
+echo "((( Anim 3 )))"
+extern ANIM_PlayAnim tutorialdroid_handle gest_a 0 1 1
+goto 12:3588
+
+#switch 12:3588
+extern cam_anoxmariomode 0
+extern cam_restore
+extern AI_ReleaseEntity playerchar0_handle
+extern AI_ReleaseEntity tutorialdroid_handle
+set @postdelay_sequence = 3600
+console "battlestart 2;invoke 12:3020"
+goto 0:0
+
+#switch 12:3630
+closewindow 12:3230                                                                                            
+set @Whacks_Health = 100
+set @GotShot2_Move = 0
+set @Someone_Moved = 0
+extern battle_choice_disable beat
+extern battle_choice_disable skill
+extern battle_choice_disable item
+extern battle_choice_disable action
+extern BATTLE_StartTime
+goto 12:3635
+
+#switch 123:456
+extern battle_choice_disable skill
+
+#switch 123:457
+extern battle_choice_enable skill
+
+#switch 12:3700
+closewindow 12:3230                                                                                            
+set @fymasmd = 1
+extern GetPlayerCurrentHP boots @Whacks_StartHealth
+extern battle_choice_disable beat
+extern battle_choice_disable skill
+extern battle_choice_disable action
+extern battle_choice_disable move
+extern battle_choice_enable item
+extern BATTLE_StartTime
+goto 12:3705
+
+#switch 12:3730
+console "battlewin"
+goto 12:3735
+goto 0:0
+
+#switch 12:3740
+extern AI_SpawnEntity fence1_handle ob_commfence01 fence1 0:0 Jack_Tutorial1
+extern AI_SetXYZ fence1_handle 201 2143 -136
+extern AI_SetYaw fence1_handle 0
+extern AI_SpawnEntity fence2_handle ob_commfence01 fence2 0:0 Jack_Tutorial1
+extern AI_SetXYZ fence2_handle 538 2143 -136
+extern AI_SetYaw fence2_handle 0
+extern AI_SpawnEntity laserpanel_handle ob_whackpanel laserpanel 0:0 Jack_Tutorial1
+extern AI_SetXYZ laserpanel_handle 127 1971 -134
+extern AI_SetYaw laserpanel_handle 0
+extern AI_SpawnEntity laser1sq_handle ob_squib2 laser1sq 0:0 Jack_Tutorial1
+extern AI_SetXYZ laser1sq_handle 220 2143 -103
+extern AI_SpawnEntity laser2sq_handle ob_squib2 laser2sq 0:0 Jack_Tutorial1
+extern AI_SetXYZ laser2sq_handle 220 2143 -83
+extern AI_SpawnEntity laser3sq_handle ob_squib2 laser3sq 0:0 Jack_Tutorial1
+extern AI_SetXYZ laser3sq_handle 220 2143 -63
+extern AI_SetYaw laser1sq_handle 0
+extern AI_SetYaw laser2sq_handle 0
+extern AI_SetYaw laser3sq_handle 0
+
+#switch 12:3775
+closewindow 12:3230
+extern battle_choice_disable beat
+extern battle_choice_disable skill
+extern battle_choice_disable item
+extern battle_choice_enable move
+extern battle_choice_enable action
+extern BATTLE_StartTime
+goto 12:3780
+
+#switch 12:3810
+closewindow 12:3230
+set @GotShot_Target = 0
+extern battle_choice_disable skill
+extern battle_choice_disable item
+extern battle_choice_disable action
+extern battle_choice_enable move
+extern battle_choice_enable beat
+extern BATTLE_StartTime
+goto 12:3815
+
+#switch 12:3860
+closewindow 12:3230
+console "battlewin"
+goto 12:3865
+goto 0:0
+
+#switch 12:3900
+set @Whacks_Tutorial_In_Progress = 1
+set anox_interface_active = 1
+goto 12:3905
+
+#switch 12:3932
+echo "((( Anim 1 )))"
+extern ANIM_PlayAnim tutorialdroid_handle gest_a 0 1 0
+extern ANIM_SetCallback tutorialdroid_handle 12:3934
+
+#switch 12:3934
+echo "((( Anim 2 )))"
+goto 12:3936
+
+#switch 12:3936
+echo "((( Anim 3 )))"
+extern ANIM_PlayAnim tutorialdroid_handle gest_a 0 1 1
+goto 12:3938
+
+#switch 12:3938
+extern cam_anoxmariomode 0
+extern cam_restore
+extern AI_ReleaseEntity playerchar0_handle
+extern AI_ReleaseEntity tutorialdroid_handle
+set @postdelay_sequence = 3950
+console "battlestart 4;invoke 12:3020"
+goto 0:0
+
+#switch 12:3955
+closewindow 12:3230                                                                                            
+set @GotShot_Target = 0
+set @fymasmd = 1
+extern battle_choice_disable beat
+extern battle_choice_disable move
+extern battle_choice_disable skill
+extern battle_choice_disable action
+extern battle_choice_enable item
+extern BATTLE_StartTime
+goto 12:3960
+
+#switch 12:4050
+closewindow 12:3230                                                                                            
+set @GotShot_Player = 0
+set @GotShot_Target = 0
+set @fymasmd = 0
+extern battle_choice_disable move
+extern battle_choice_disable skill
+extern BATTLE_StartTime
+goto 12:4055
+
+#switch 12:4085
+console "battlewin"
+closewindow 12:3230                                                                                            
+gosub 12:4087
+goto 0:0
+
+#switch 12:4980
+echo "||| - - Jack Path 1 - - |||"
+set @Jack_At_Path = 1
+
+#switch 12:4985
+echo "||| - - Jack Path 2 - - |||"
+set @Jack_At_Path = 2
+
+#switch 12:4990
+echo "||| - - Jack Path 3 - - |||"
+set @Jack_At_Path = 3
+
+#switch 12:4995
+echo "||| - - Jack Path 4 - - |||"
+set @Jack_At_Path = 4
+
+#switch 555:5555
+extern AI_SpawnEntity fence1_handle ob_commfence01 fence1 0:0 Jack_Tutorial1
+extern AI_SetXYZ fence1_handle 201 2143 -136
+extern AI_SetYaw fence1_handle 0
+extern AI_SpawnEntity fence2_handle ob_commfence01 fence2 0:0 Jack_Tutorial1
+extern AI_SetXYZ fence2_handle 538 2143 -136
+extern AI_SetYaw fence2_handle 0
+extern AI_SpawnEntity laserpanel_handle ob_sendernet laserpanel 0:0 Jack_Tutorial1
+extern AI_SetXYZ laserpanel_handle 127 1971 -134
+extern AI_SetYaw laserpanel_handle 0
+extern AI_SpawnEntity laser1sq_handle ob_squib2 laser1sq 0:0 Jack_Tutorial1
+extern AI_SetXYZ laser1sq_handle 220 2143 -103
+extern AI_SpawnEntity laser2sq_handle ob_squib2 laser2sq 0:0 Jack_Tutorial1
+extern AI_SetXYZ laser2sq_handle 220 2143 -83
+extern AI_SpawnEntity laser3sq_handle ob_squib2 laser3sq 0:0 Jack_Tutorial1
+extern AI_SetXYZ laser3sq_handle 220 2143 -63
+extern AI_SetYaw laser1sq_handle 0
+extern AI_SetYaw laser2sq_handle 0
+extern AI_SetYaw laser3sq_handle 0
+extern np laser1sq_handle 1 0 effect_1 0 lucas/laser2
+extern np laser2sq_handle 1 0 effect_1 0 lucas/laser2
+extern np laser3sq_handle 1 0 effect_1 0 lucas/laser2

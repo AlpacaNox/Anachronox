@@ -1,0 +1,853 @@
+#window 95:105
+title "Trizinsandametricus"
+body "Look up in the sky. That is the EYE OF SUFFERING..."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern complete_quest "Find Pillars"
+  set foundpillars = 1
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 95:0106
+
+#window 95:106
+title "Trizinsandametricus"
+body "It is a one-way tunnel into our universe from a distant region of space. It is closed at the moment, but when the Dark Servants arrive, it will open and their invasion force will emerge from it."
+cam left from(-484 1125 599) to(-485 1176 638) fov(90) far(64) near(30) fwd(40) speed(500) lift(62) lag(500) occlude(no) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 95:0107
+
+#window 95:107
+title "Trizinsandametricus"
+body "Five times the Dark Servants have tried to invade us. Five times we have repelled them... with the LANCE OF THE VIGIL..."
+cam left from(-343 1008 532) to(-396 1041 547) fov(110) far(64) near(30) fwd(40) speed(500) lift(62) lag(500) occlude(no) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 95:0108
+
+#window 95:108
+title "Trizinsandametricus"
+body "...a high-range cannon that will automatically target and destroy anything that comes out of the Eye. It has been quite effective over the last fifty years. Our only concern is that the enemy has discovered the cannon's weakness."
+cam left from(-343 1008 532) to(-396 1041 547) fov(110) far(64) near(30) fwd(40) speed(500) lift(62) lag(500) occlude(no) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 95:0109
+
+#window 95:109
+title "Trizinsandametricus"
+body "Sheer numbers in a concentrated attack can overwhelm the gun's slow rate of recharge. We believe their probes were testing its rate of fire."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 95:0110
+
+#window 95:110
+title "Trizinsandametricus"
+body "Now we're considering taking it off automatic. The cannon might be more effective if we man it ourselves. Unfortunately, our targeting skills are woefully weak."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern check_party_size @partysize
+  if (@partysize == 1)
+    goto 95:0151
+  goto 95:0111
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 95:111
+title "Trizinsandametricus"
+if (party_population == 1)
+  body "I assume you have the proper skills for this task? Then let us be ready."
+if (party_population > 1)
+  body "Is there anyone in your party with the proper skills for this task?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if (func_charinparty[boots] >= 2)
+    set gun_boots = 1
+  if (func_charinparty[pal] >= 2)
+    set gun_pal = 1
+  if (func_charinparty[rho] >= 2)
+    set gun_rho = 1
+  if (func_charinparty[democratus] >= 2)
+    set gun_democratus = 1
+  if (func_charinparty[stiletto] >= 2)
+    set gun_stiletto = 1
+  if (func_charinparty[paco] >= 2)
+    set gun_paco = 1
+  gosub 1:5		                       
+}
+
+finishswitch {
+  if (((foundpillars + foundbridge) + foundcliff) == 3) {
+    if (func_charinparty[boots] == 3) {
+      set boots_at_gun = 1
+    } else if (func_charinparty[grumpos] == 3) {
+      set grumpos_at_gun = 1
+    } else if (func_charinparty[pal] == 3) {
+      set pal_at_gun = 1
+    } else if (func_charinparty[rho] == 3) {
+      set rho_at_gun = 1
+    } else if (func_charinparty[democratus] == 3) {
+      set democratus_at_gun = 1
+    } else if (func_charinparty[stiletto] == 3) {
+      set stiletto_at_gun = 1
+    } else if (func_charinparty[paco] == 3)
+      set paco_at_gun = 1
+    set limbus_battle_started = 1
+    set Battle_Gun = 1
+    set rinqui_off = 1
+    goto 95:0170
+  }
+  goto 95:0112
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 95:112
+title "%s", PlayerChar0$
+if (func_charinparty[democratus] != 3)
+  body "We're all pretty good shots. More or less."
+if (func_charinparty[democratus] == 3)
+  body "We are all rather good shots. More or less."
+cam to(player) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (func_charinparty[democratus] != 3)
+  choice "I volunteer myself." 95:115
+if (func_charinparty[democratus] == 3)
+  choice "We volunteer ourselves." 95:115
+if (func_charinparty[boots] == 2)
+  choice "Our detective, \"Sly\" Boots, is up to the challenge." 95:120
+if (func_charinparty[pal] == 2)
+  choice "Your best hope rests in the steel hands of PAL-18." 95:125
+if (func_charinparty[rho] == 2)
+  choice "You can depend on our scientist, Dr. Rho Bowman." 95:130
+if (func_charinparty[democratus] == 2)
+  choice "The trustworthy Planet Democratus won't fail you." 95:135
+if (func_charinparty[stiletto] == 2)
+  choice "Stiletto Anyway is always ready for a good fight." 95:140
+if (func_charinparty[paco] == 2)
+  choice "You can trust Paco \"El Puno\" Estrella to save the day." 95:145
+
+#window 95:120
+title "Boots"
+body "Can I quote you on that?"
+cam right to(boots) restore zip
+talk npc talk_a stay
+finishswitch {
+  extern remove_npc_from_party Boots
+  set boots_at_gun = 1
+  extern AI_GrabEntity boots boots_handle
+  extern AI_SeekAndFace boots_handle gun_position
+  extern AI_ReleaseEntity boots_handle
+  if (Triz2 > 0) {
+    goto 95:0154
+  } else
+    goto 95:0150
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 95:125
+title "PAL-18"
+body "Me--?!"
+cam right to(pal) restore zip
+talk npc talk_a stay
+finishswitch {
+  extern remove_npc_from_party pal
+  set pal_at_gun = 1
+  extern AI_GrabEntity pal pal_handle
+  extern AI_SeekAndFace pal_handle gun_position
+  extern AI_ReleaseEntity pal_handle
+  if (Triz2 > 0) {
+    goto 95:0154
+  } else
+    goto 95:0150
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 95:0150
+
+#window 95:130
+title "Rho Bowman"
+body "I'm flattered."
+cam right to(rho) restore zip
+talk npc talk_a stay
+finishswitch {
+  extern remove_npc_from_party rho
+  set rho_at_gun = 1
+  extern AI_GrabEntity 5004:1 rho_handle
+  extern AI_SeekAndFace rho_handle gun_position
+  extern AI_ReleaseEntity rho_handle
+  if (Triz2 > 0) {
+    goto 95:0154
+  } else
+    goto 95:0150
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 95:0150
+
+#window 95:135
+title "Democratus"
+body "We would be honored to serve the universe."
+cam right to(democratus) restore zip
+talk npc talk_a stay
+finishswitch {
+  extern remove_npc_from_party democratus
+  set democratus_at_gun = 1
+  extern AI_GrabEntity democratus democratus_handle
+  extern AI_SeekAndFace democratus_handle gun_position
+  extern AI_ReleaseEntity democratus_handle
+  if (Triz2 > 0) {
+    goto 95:0154
+  } else
+    goto 95:0150
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 95:0150
+
+#window 95:140
+title "Stiletto"
+body "You better believe it."
+cam right to(stiletto) restore zip
+talk npc talk_a stay
+finishswitch {
+  extern remove_npc_from_party stiletto
+  set stiletto_at_gun = 1
+  extern AI_GrabEntity stiletto stiletto_handle
+  extern AI_SeekAndFace stiletto_handle gun_position
+  extern AI_ReleaseEntity stiletto_handle
+  if (Triz2 > 0) {
+    goto 95:0154
+  } else
+    goto 95:0150
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 95:145
+title "Paco \"El Puño\" Estrella"
+body "I am here."
+cam right to(paco) restore zip
+talk npc talk_a stay
+finishswitch {
+  extern remove_npc_from_party paco
+  set paco_at_gun = 1
+  extern AI_GrabEntity paco paco_handle
+  extern AI_SeekAndFace paco_handle gun_position
+  extern AI_ReleaseEntity paco_handle
+  if (Triz2 > 0) {
+    goto 95:0154
+  } else
+    goto 95:0150
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 95:0150
+
+#window 95:150
+title "Trizinsandametricus"
+body "Very well."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Triz2 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 95:0151
+
+#window 95:151
+title "Trizinsandametricus"
+body "When the Eye of Suffering opens, dozens of Dark Servant troop transports will pour into our universe."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 95:0152
+
+#window 95:152
+title "Trizinsandametricus"
+body "Shoot down as many of them as you can. The more transports you fail to shoot down, the more Dark Servants our ground troops will be forced to fight."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 95:0153
+
+#window 95:153
+title "Trizinsandametricus"
+body "Their goal is the cannon itself. If they commandeer it, they can send as many troop transports into our universe as they wish. That cannot be allowed to happen."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (((foundpillars + foundbridge) + foundcliff) == 3) {
+    if (func_charinparty[boots] == 3) {
+      set boots_at_gun = 1
+    } else if (func_charinparty[grumpos] == 3) {
+      set grumpos_at_gun = 1
+    } else if (func_charinparty[pal] == 3) {
+      set pal_at_gun = 1
+    } else if (func_charinparty[rho] == 3) {
+      set rho_at_gun = 1
+    } else if (func_charinparty[democratus] == 3) {
+      set democratus_at_gun = 1
+    } else if (func_charinparty[stiletto] == 3) {
+      set stiletto_at_gun = 1
+    } else if (func_charinparty[paco] == 3)
+      set paco_at_gun = 1
+    set limbus_battle_started = 1
+    set Battle_Gun = 1
+    set rinqui_off = 1
+    goto 95:0170
+  }
+  goto 95:0156
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 95:154
+title "Trizinsandametricus"
+body "Your indecisiveness does not put me at ease."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 95:155
+title "Trizinsandametricus"
+body "Would you like to change who will man the gun?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Yes." 95:160
+choice "No." 95:151
+nextwindow 95:0160
+
+#window 95:156
+title "Trizinsandametricus"
+body "Good luck."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 95:160
+title "Trizinsandametricus"
+body "Then who is a better choice to shoot down the enemy troop transports?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if ((gun_boots == 1) && (func_charinparty[boots] == 1)) {
+    extern add_npc_to_party boots
+    set boots_at_gun = 0
+  }
+  if ((gun_pal == 1) && (func_charinparty[pal] == 1)) {
+    extern add_npc_to_party pal
+    set pal_at_gun = 0
+  }
+  if ((gun_rho == 1) && (func_charinparty[rho] == 1)) {
+    extern add_npc_to_party rho
+    set rho_at_gun = 0
+  }
+  if ((gun_democratus == 1) && (func_charinparty[democratus] == 1)) {
+    extern add_npc_to_party democratus
+    set democratus_at_gun = 0
+  }
+  if ((gun_stiletto == 1) && (func_charinparty[stiletto] == 1)) {
+    extern add_npc_to_party stiletto
+    set stiletto_at_gun = 0
+  }
+  if ((gun_paco == 1) && (func_charinparty[paco] == 1)) {
+    extern add_npc_to_party paco
+    set paco_at_gun = 0
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (func_charinparty[democratus] != 3)
+  choice "I volunteer myself." 95:115
+if (func_charinparty[democratus] == 3)
+  choice "We volunteer ourselves." 95:115
+if (func_charinparty[boots] == 2)
+  choice "Our detective, \"Sly\" Boots, is up to the challenge." 95:120
+if (func_charinparty[pal] == 2)
+  choice "Your best hope rests in the steel hands of PAL-18." 95:125
+if (func_charinparty[rho] == 2)
+  choice "You can depend on our scientist, Dr. Rho Bowman." 95:130
+if (func_charinparty[democratus] == 2)
+  choice "The trustworthy Planet Democratus won't fail you." 95:135
+if (func_charinparty[stiletto] == 2)
+  choice "Stiletto Anyway is always ready for a good fight." 95:140
+if (func_charinparty[paco] == 2)
+  choice "You can trust Paco \"El Puno\" Estrella to save the day." 95:145
+
+#window 95:171
+title "Trizinsandametricus"
+body "I cannot believe my eyes...."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 5001:1
+title "Boots"
+if (limbus_battle_started == 0)
+  body "No worries."
+if (limbus_battle_started)
+  body "That was easy. Let's cook."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (limbus_battle_started) {
+    extern add_npc_to_party Boots
+    set boots_at_gun = 0
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 5003:1
+title "PAL-18"
+if (limbus_battle_started == 0)
+  body "No pressure."
+if (limbus_battle_started == 1)
+  body "We did it, man!"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (limbus_battle_started) {
+    extern add_npc_to_party PAL
+    set pal_at_gun = 0
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 5004:1
+title "Rho Bowman"
+if (limbus_battle_started == 0)
+  body "Wish me luck."
+if (limbus_battle_started == 1)
+  body "We survived. I can't believe it."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (limbus_battle_started) {
+    extern add_npc_to_party Rho
+    set rho_at_gun = 0
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 5005:1
+title "Democratus"
+if (limbus_battle_started == 0)
+  body "We will not fail."
+if (limbus_battle_started == 1)
+  body "We are victorious! Aren't we, gentlemen?"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (limbus_battle_started) {
+    extern add_npc_to_party Democratus
+    set democratus_at_gun = 0
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 5006:1
+title "Stiletto"
+if (limbus_battle_started == 0)
+  body "No sweat."
+if (limbus_battle_started == 1)
+  body "Carved 'em up. Let's go."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (limbus_battle_started) {
+    extern add_npc_to_party Stiletto
+    set stiletto_at_gun = 0
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 5007:1
+title "Paco \"El Puño\" Estrella"
+if (limbus_battle_started == 0)
+  body "Rage On."
+if (limbus_battle_started == 1)
+  body "Rage Off. Let us go."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (limbus_battle_started) {
+    extern add_npc_to_party Paco
+    set paco_at_gun = 0
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#switch 95:1
+set CURRENT_PLANET = 9
+set CURRENT_BANK = 95
+extern loopambient ambi_pillars
+if (limbus_saved || limbus_battle_started) {
+  extern playlevelmusic mp3/limbus/limbusamb.mp3
+} else
+  extern playlevelmusic mp3/limbus/limbusprepbattle.mp3
+
+#switch 95:101
+set Triz1 = (Triz1 + 1)
+if (limbus_battle_started)
+  goto 95:0171
+if (Triz1 > 1)
+  goto 95:0155
+goto 95:0105                                 
+
+#switch 95:115
+if ((func_charinparty[boots] == 3) && (func_charinparty[rho] == 2)) {
+  extern set_party_leader rho
+  extern remove_npc_from_party Boots
+  set boots_at_gun = 1
+  extern AI_GrabEntity boots boots_handle
+  extern AI_SeekAndFace boots_handle gun_position
+  extern AI_ReleaseEntity boots_handle
+  goto 95:0150
+} else if ((func_charinparty[boots] == 3) && (func_charinparty[stiletto] == 2)) {
+  extern set_party_leader stiletto
+  extern remove_npc_from_party Boots
+  set boots_at_gun = 1
+  extern AI_GrabEntity boots boots_handle
+  extern AI_SeekAndFace boots_handle gun_position
+  extern AI_ReleaseEntity boots_handle
+  goto 95:0150
+} else if ((func_charinparty[boots] == 3) && (func_charinparty[pal] == 2)) {
+  extern set_party_leader pal
+  extern remove_npc_from_party Boots
+  set boots_at_gun = 1
+  extern AI_GrabEntity boots boots_handle
+  extern AI_SeekAndFace boots_handle gun_position
+  extern AI_ReleaseEntity boots_handle
+  goto 95:0150
+} else if ((func_charinparty[boots] == 3) && (func_charinparty[paco] == 2)) {
+  extern set_party_leader paco
+  extern remove_npc_from_party Boots
+  set boots_at_gun = 1
+  extern AI_GrabEntity boots boots_handle
+  extern AI_SeekAndFace boots_handle gun_position
+  extern AI_ReleaseEntity boots_handle
+  goto 95:0150
+} else if ((func_charinparty[boots] == 3) && (func_charinparty[democratus] == 2)) {
+  extern set_party_leader democratus
+  extern remove_npc_from_party Boots
+  set boots_at_gun = 1
+  extern AI_GrabEntity boots boots_handle
+  extern AI_SeekAndFace boots_handle gun_position
+  extern AI_ReleaseEntity boots_handle
+  goto 95:0150
+} else if ((func_charinparty[pal] == 3) && (func_charinparty[boots] == 2)) {
+  extern set_party_leader boots
+  extern remove_npc_from_party pal
+  set pal_at_gun = 1
+  extern AI_GrabEntity pal pal_handle
+  extern AI_SeekAndFace pal_handle gun_position
+  extern AI_ReleaseEntity pal_handle
+  goto 95:0150
+} else if ((func_charinparty[pal] == 3) && (func_charinparty[rho] == 2)) {
+  extern set_party_leader rho
+  extern remove_npc_from_party pal
+  set pal_at_gun = 1
+  extern AI_GrabEntity pal pal_handle
+  extern AI_SeekAndFace pal_handle gun_position
+  extern AI_ReleaseEntity pal_handle
+  goto 95:0150
+} else if ((func_charinparty[pal] == 3) && (func_charinparty[democratus] == 2)) {
+  extern set_party_leader democratus
+  extern remove_npc_from_party pal
+  set pal_at_gun = 1
+  extern AI_GrabEntity pal pal_handle
+  extern AI_SeekAndFace pal_handle gun_position
+  extern AI_ReleaseEntity pal_handle
+  goto 95:0150
+} else if ((func_charinparty[pal] == 3) && (func_charinparty[stiletto] == 2)) {
+  extern set_party_leader stiletto
+  extern remove_npc_from_party pal
+  set pal_at_gun = 1
+  extern AI_GrabEntity pal pal_handle
+  extern AI_SeekAndFace pal_handle gun_position
+  extern AI_ReleaseEntity pal_handle
+  goto 95:0150
+} else if ((func_charinparty[pal] == 3) && (func_charinparty[paco] == 2)) {
+  extern set_party_leader paco
+  extern remove_npc_from_party pal
+  set pal_at_gun = 1
+  extern AI_GrabEntity pal pal_handle
+  extern AI_SeekAndFace pal_handle gun_position
+  extern AI_ReleaseEntity pal_handle
+  goto 95:0150
+}
+goto 95:0116
+
+#switch 95:116
+if ((func_charinparty[rho] == 3) && (func_charinparty[boots] == 2)) {
+  extern set_party_leader boots
+  extern remove_npc_from_party rho
+  set rho_at_gun = 1
+  extern AI_GrabEntity 5004:1 rho_handle
+  extern AI_SeekAndFace rho_handle gun_position
+  extern AI_ReleaseEntity rho_handle
+  goto 95:0150
+} else if ((func_charinparty[rho] == 3) && (func_charinparty[stiletto] == 2)) {
+  extern set_party_leader stiletto
+  extern remove_npc_from_party rho
+  set rho_at_gun = 1
+  extern AI_GrabEntity 5004:1 rho_handle
+  extern AI_SeekAndFace rho_handle gun_position
+  extern AI_ReleaseEntity rho_handle
+  goto 95:0150
+} else if ((func_charinparty[rho] == 3) && (func_charinparty[pal] == 2)) {
+  extern set_party_leader pal
+  extern remove_npc_from_party rho
+  set rho_at_gun = 1
+  extern AI_GrabEntity 5004:1 rho_handle
+  extern AI_SeekAndFace rho_handle gun_position
+  extern AI_ReleaseEntity rho_handle
+  goto 95:0150
+} else if ((func_charinparty[rho] == 3) && (func_charinparty[paco] == 2)) {
+  extern set_party_leader paco
+  extern remove_npc_from_party rho
+  set rho_at_gun = 1
+  extern AI_GrabEntity 5004:1 rho_handle
+  extern AI_SeekAndFace rho_handle gun_position
+  extern AI_ReleaseEntity rho_handle
+  goto 95:0150
+} else if ((func_charinparty[rho] == 3) && (func_charinparty[democratus] == 2)) {
+  extern set_party_leader democratus
+  extern remove_npc_from_party rho
+  set rho_at_gun = 1
+  extern AI_GrabEntity 5004:1 rho_handle
+  extern AI_SeekAndFace rho_handle gun_position
+  extern AI_ReleaseEntity rho_handle
+  goto 95:0150
+} else if ((func_charinparty[democratus] == 3) && (func_charinparty[boots] == 2)) {
+  extern set_party_leader boots
+  extern remove_npc_from_party democratus
+  set democratus_at_gun = 1
+  extern AI_GrabEntity democratus democratus_handle
+  extern AI_SeekAndFace democratus_handle gun_position
+  extern AI_ReleaseEntity democratus_handle
+  goto 95:0150
+} else if ((func_charinparty[democratus] == 3) && (func_charinparty[rho] == 2)) {
+  extern set_party_leader rho
+  extern remove_npc_from_party democratus
+  set democratus_at_gun = 1
+  extern AI_GrabEntity democratus democratus_handle
+  extern AI_SeekAndFace democratus_handle gun_position
+  extern AI_ReleaseEntity democratus_handle
+  goto 95:0150
+} else if ((func_charinparty[democratus] == 3) && (func_charinparty[stiletto] == 2)) {
+  extern set_party_leader stiletto
+  extern remove_npc_from_party democratus
+  set democratus_at_gun = 1
+  extern AI_GrabEntity democratus democratus_handle
+  extern AI_SeekAndFace democratus_handle gun_position
+  extern AI_ReleaseEntity democratus_handle
+  goto 95:0150
+} else if ((func_charinparty[democratus] == 3) && (func_charinparty[pal] == 2)) {
+  extern set_party_leader pal
+  extern remove_npc_from_party democratus
+  set democratus_at_gun = 1
+  extern AI_GrabEntity democratus democratus_handle
+  extern AI_SeekAndFace democratus_handle gun_position
+  extern AI_ReleaseEntity democratus_handle
+  goto 95:0150
+} else if ((func_charinparty[democratus] == 3) && (func_charinparty[paco] == 2)) {
+  extern set_party_leader paco
+  extern remove_npc_from_party democratus
+  set democratus_at_gun = 1
+  extern AI_GrabEntity democratus democratus_handle
+  extern AI_SeekAndFace democratus_handle gun_position
+  extern AI_ReleaseEntity democratus_handle
+  goto 95:0150
+}
+goto 95:0117
+
+#switch 95:117
+if ((func_charinparty[stiletto] == 3) && (func_charinparty[boots] == 2)) {
+  extern set_party_leader boots
+  extern remove_npc_from_party stiletto
+  set stiletto_at_gun = 1
+  extern AI_GrabEntity stiletto stiletto_handle
+  extern AI_SeekAndFace stiletto_handle gun_position
+  extern AI_ReleaseEntity stiletto_handle
+  goto 95:0150
+} else if ((func_charinparty[stiletto] == 3) && (func_charinparty[rho] == 2)) {
+  extern set_party_leader rho
+  extern remove_npc_from_party stiletto
+  set stiletto_at_gun = 1
+  extern AI_GrabEntity stiletto stiletto_handle
+  extern AI_SeekAndFace stiletto_handle gun_position
+  extern AI_ReleaseEntity stiletto_handle
+  goto 95:0150
+} else if ((func_charinparty[stiletto] == 3) && (func_charinparty[pal] == 2)) {
+  extern set_party_leader pal
+  extern remove_npc_from_party stiletto
+  set stiletto_at_gun = 1
+  extern AI_GrabEntity stiletto stiletto_handle
+  extern AI_SeekAndFace stiletto_handle gun_position
+  extern AI_ReleaseEntity stiletto_handle
+  goto 95:0150
+} else if ((func_charinparty[stiletto] == 3) && (func_charinparty[paco] == 2)) {
+  extern set_party_leader paco
+  extern remove_npc_from_party stiletto
+  set stiletto_at_gun = 1
+  extern AI_GrabEntity stiletto stiletto_handle
+  extern AI_SeekAndFace stiletto_handle gun_position
+  extern AI_ReleaseEntity stiletto_handle
+  goto 95:0150
+} else if ((func_charinparty[stiletto] == 3) && (func_charinparty[democratus] == 2)) {
+  extern set_party_leader democratus
+  extern remove_npc_from_party stiletto
+  set stiletto_at_gun = 1
+  extern AI_GrabEntity stiletto stiletto_handle
+  extern AI_SeekAndFace stiletto_handle gun_position
+  extern AI_ReleaseEntity stiletto_handle
+  goto 95:0150
+} else if ((func_charinparty[paco] == 3) && (func_charinparty[boots] == 2)) {
+  extern set_party_leader boots
+  extern remove_npc_from_party paco
+  set paco_at_gun = 1
+  extern AI_GrabEntity paco paco_handle
+  extern AI_SeekAndFace paco_handle gun_position
+  extern AI_ReleaseEntity paco_handle
+  goto 95:0150
+} else if ((func_charinparty[paco] == 3) && (func_charinparty[rho] == 2)) {
+  extern set_party_leader rho
+  extern remove_npc_from_party paco
+  set paco_at_gun = 1
+  extern AI_GrabEntity paco paco_handle
+  extern AI_SeekAndFace paco_handle gun_position
+  extern AI_ReleaseEntity paco_handle
+  goto 95:0150
+} else if ((func_charinparty[paco] == 3) && (func_charinparty[stiletto] == 2)) {
+  extern set_party_leader stiletto
+  extern remove_npc_from_party paco
+  set paco_at_gun = 1
+  extern AI_GrabEntity paco paco_handle
+  extern AI_SeekAndFace paco_handle gun_position
+  extern AI_ReleaseEntity paco_handle
+  goto 95:0150
+} else if ((func_charinparty[paco] == 3) && (func_charinparty[pal] == 2)) {
+  extern set_party_leader pal
+  extern remove_npc_from_party paco
+  set paco_at_gun = 1
+  extern AI_GrabEntity paco paco_handle
+  extern AI_SeekAndFace paco_handle gun_position
+  extern AI_ReleaseEntity paco_handle
+  goto 95:0150
+} else if ((func_charinparty[paco] == 3) && (func_charinparty[democratus] == 2)) {
+  extern set_party_leader democratus
+  extern remove_npc_from_party paco
+  set paco_at_gun = 1
+  extern AI_GrabEntity paco paco_handle
+  extern AI_SeekAndFace paco_handle gun_position
+  extern AI_ReleaseEntity paco_handle
+  goto 95:0150
+}
+
+#switch 95:170
+console "set storysave \"Eye of Suffering|The Eye of Suffering\""
+console "map limbus cinematic"

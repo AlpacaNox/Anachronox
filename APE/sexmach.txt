@@ -1,0 +1,1440 @@
+#window 58:115
+title "Phunkee Collins"
+body "Tetra?"
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:0116
+
+#window 58:116
+title "Phunkee Collins"
+body "Excuse me?"
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:0117
+
+#window 58:117
+title "Phunkee Collins"
+body "Am I gonna have to slap you down and put you in Phunkee Rehab? Is this for an investigation?"
+cam left restore zip
+talk npc gest_b stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:0118
+
+#window 58:118
+title "Phunkee Collins"
+body "There's one Goner that walked in here earlier today. I kicked him out when he started pawing the Bipidri."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:0119
+
+#window 58:119
+title "Phunkee Collins"
+body "I sent him to Slutopia across the quad. Let Reuben deal with him."
+cam left restore zip
+talk npc talk_y stay
+finishswitch {
+  set PHUNKEE_TAG = 2
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:125
+title "Phunkee Collins"
+body "There might be a Goner sailing high off some Tetra in Slutopia."
+cam left restore zip
+talk npc talk_y stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:202
+title "Phunkee Collins"
+body "Slap me some dap."
+cam left restore zip
+talk npc gest_b stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:0203
+
+#window 58:203
+title "Boots"
+body "Slide me some dermis."
+cam left from(PlayerChar0) to(phunkee) restore zip
+talk player talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:0204
+
+#window 58:204
+title "Phunkee Collins"
+body "Damn, baby. Where you been? Vibe's been good 'round here since you been gone. PAX raids are rare. Guess they got bigger worries now that planets are splittin' in half, huh?"
+cam left from(PlayerChar0) to(phunkee) restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:205
+title "Phunkee Collins"
+body "Wait, is this package from Kevie for you? What kind of trouble you gettin' into, baby? Should I be worried?"
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:0206
+
+#window 58:206
+title "Phunkee Collins"
+body "I've got it here under the counter. Get it outta my place before it blows up."
+cam left restore zip
+talk npc talk_y stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:0207
+
+#window 58:207
+title "Phunkee Collins"
+body "But before you leave, check out the new girl. I haven't seen her dance yet, but I know she's gonna sizzle. She calls herself \"Stiletto Anyway\"."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:0208
+
+#window 58:208
+title "Boots"
+body "What a dumb name."
+cam left from(PlayerChar0) to(phunkee) restore zip
+talk player talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:0209
+
+#window 58:209
+title "Phunkee Collins"
+body "Just wait 'til you see her."
+cam left restore zip
+talk npc talk_y stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:1000
+
+#window 58:210
+title "Phunkee Collins"
+body "That was, without question, the greatest show I've ever seen. I hope she comes back. I got a list of bad customers I wouldn't mind making part of her climax."
+cam left restore zip
+talk npc gest_b stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:0211
+
+#window 58:211
+title "Phunkee Collins"
+body "Hey, get that package outta here."
+cam left restore zip
+talk npc gest_a stay
+finishswitch {
+  if (GOT_FTM == 0) {
+    set timed_message = 20
+    got_object$="Field Transduction Module" 
+    gosub 1000:1
+    extern addnew_to_inventory "Field Transduction Module"
+    extern complete_quest "Need To Get FTM"
+    extern complete_quest "Talk To Phunkee"
+    extern add_quest "Return with FTM"
+    set GOT_FTM = 1
+    set PLAY_GOT_FTM = 1
+  }
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:220
+title "Phunkee Collins"
+if (talk_phunkee > 0)
+  body "Glad you're a regular, baby."
+if (talk_phunkee == 0)
+  body "Something to drink, baby?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern check_money partycash
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+if (partycash >= 5)
+  choice "Gullet Wash ($5)" 58:221
+if (partycash >= 8)
+  choice "Fancy Smile ($8)" 58:222
+if (partycash >= 8)
+  choice "Simon Pure ($8)" 58:223
+if (partycash >= 10)
+  choice "Torpedo Juice ($10)" 58:224
+choice "Gotta slide, Phunkee." 58:230
+
+#window 58:230
+title "Phunkee Collins"
+body "Keep it alive."
+cam left restore zip
+talk npc talk_y stay
+startswitch {
+  extern check_money partycash
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:250
+title "Phunkee Collins"
+body "There you are. I was wondering if you were ever gonna come back, sister."
+cam left restore zip
+talk npc talk_y stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:0255
+
+#window 58:255
+title "Phunkee Collins"
+body "That was, without a doubt, the best act I've ever seen. You've gotta become a regular!"
+cam left restore zip
+talk npc talk_y stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:0260
+
+#window 58:260
+title "Phunkee Collins"
+body "I can already see the posters: \"Someone will die every night. Is it worth risking death to see the dangerous Stiletto Anyway? Find out at the Cold Sex Sweat Machine.\""
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set talk_phunkee_stiletto = 1
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:270
+title "Phunkee Collins"
+body "Yeah... I guess saving the universe takes priority over my hole in the wall. No hard feelings."
+cam left restore zip
+talk npc talk_n stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:605
+title "Brozek"
+body "I'm always looking for new recipes to try out. Now that my tastes are maturing, I'm getting into the exotic eccentricities of Gorian cuisine."
+cam left restore zip
+talk npc gest_g stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:0610
+
+#window 58:610
+title "Brozek"
+body "If you ever come across any interesting Gorian recipes, please let me know. I'm willing to pay 250 loonies for a new recipe."
+cam left restore zip
+talk npc gest_g stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:615
+title "Brozek"
+body "Gorian grilled Bipidri with Blood Sauce?"
+cam left restore zip
+talk npc gest_g stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:0620
+
+#window 58:620
+title "Brozek"
+body "This is a perfect recipe! And the ingredients are so readily available."
+cam left restore zip
+talk npc gest_g stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:0625
+
+#window 58:625
+title "Brozek"
+body "I will pay you an extra 25 loonies for your efforts. Thank you!"
+cam left restore zip
+talk npc gest_g stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:0627
+
+#window 58:630
+title "Brozek"
+body "I guess it's another visit to Club Foot."
+cam left restore zip
+talk npc gest_g stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:1901
+title "Larooto"
+if (seen_stiletto == 0)
+  body "I am not aroused."
+if ((seen_stiletto == 1) && (func_charinparty[stiletto] != 3))
+  body "I will never make love to my wife again."
+if (func_charinparty[stiletto] == 3)
+  body "You have ruined me forever."
+cam left restore zip
+talk npc amb_h stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:1801
+title "Sirquan"
+if (seen_stiletto == 0)
+  body "This spectacle does nothing to exorcise my personal demons. Why am I here?"
+if ((seen_stiletto == 1) && (func_charinparty[stiletto] != 3))
+  body "I have achieved catharsis. Sirquan is reborn."
+if (func_charinparty[stiletto] == 3)
+  body "You devastate me."
+cam left restore zip
+talk npc amb_h stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:1701
+title "Sta-qued"
+if (seen_stiletto == 0)
+  body "My hopes are gone. All desire has vanished from my life. Why am I here?"
+if ((seen_stiletto == 1) && (func_charinparty[stiletto] != 3))
+  body "The world is born anew. My lust for life is reawakened."
+if (func_charinparty[stiletto] == 3)
+  body "My life will never be the same again after watching you dance. Thank you."
+cam left restore zip
+talk npc amb_h stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:1401
+title "Peck"
+if (talk_peck)
+  body "Move ON, fuzzy! You'll blow my cover."
+if (talk_peck == 0)
+  body "Rat on me, and I'll knife you."
+cam left lift(40) restore zip
+talk npc talk_d stay
+startswitch {
+  set talk_peck = (1 - talk_peck)
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:1601
+title "Peenith"
+if ((act_almost_over == 0) && (act_over == 0))
+  body "Wow. This is such cheese."
+if ((act_almost_over == 1) || (act_over == 1))
+  body "What about the International House of Frottage?"
+cam left restore zip
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:1505
+title "Bartholin"
+body "Let's head to Tubby's and stock up on jitter bags."
+cam left restore zip
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:1510
+title "Bartholin"
+body "Alright, man. You can stop asking me about personal stuff. Like I know you."
+cam left restore zip
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:1515
+title "Bartholin"
+body "This might pass for entertainment if they were topless."
+cam left restore zip
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:1520
+
+#window 58:1520
+title "Bartholin"
+body "And wearing diapers."
+cam left restore zip
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:1525
+
+#window 58:1525
+title "Bartholin"
+body "Or rubber masks that look like women's heads."
+cam left restore zip
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:1530
+
+#window 58:1530
+title "Bartholin"
+body "Maybe fur suits. Y'know, like mascots at Zongball games? But with bigger breasts."
+cam left restore zip
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:1535
+
+#window 58:1535
+title "Bartholin"
+body "Actually, you know those rubber cat suits that you inflate, kinda make people look like a biker Santa with a gas mask? Maybe some flippers? THAT's the kinda stage presence these people need to have..."
+cam left restore zip
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:1540
+
+#window 58:1540
+title "Bartholin"
+body "Yeah, there's only so far I can tolerate this vanilla crap. If the drinks weren't so good, I'd be back over at the Not Even Barely Legal... At least THEY have monkeys."
+cam left restore zip
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:2405
+title "Samoth"
+body "You brought out the Urticate too early! I thought we were saving that for the climax!"
+cam left from(PlayerChar0) to(samoth) restore zip
+talk_ex samoth nevets talk_a amb_a stay stay
+startswitch {
+  set talk_samandnev = 1
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:2410
+
+#window 58:2410
+title "Nevets"
+body "I was reading the audience and they were bored out of their skulls! If I hadn't brought out the Urticate, they would have thrown us to the Gorians."
+cam left from(PlayerChar0) to(nevets) restore zip
+talk_ex nevets samoth talk_a amb_a stay stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:2415
+
+#window 58:2415
+title "Samoth"
+body "Bored? Our magical arm movements delighted them! I'll prove it."
+cam left from(PlayerChar0) to(samoth) restore zip
+talk_ex samoth nevets talk_a amb_a stay stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:2420
+
+#window 58:2420
+title "Samoth"
+body "You there. How would you rate our act tonight?"
+cam left from(PlayerChar0) to(samoth) restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+choice "Above average." 58:2425
+choice "Average." 58:2430
+choice "Below Average." 58:2435
+
+#window 58:2425
+title "Samoth"
+body "See! We are Masters of Arcane Illusion. Have faith in our act."
+cam left from(PlayerChar0) to(samoth) restore zip
+talk_ex samoth nevets talk_a amb_a stay stay
+startswitch {
+  set samoth_and_nevets_argue = 0
+  set act_almost_over = 0
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:2430
+title "Nevets"
+body "You see? Hardly a ringing endorsement."
+cam left from(PlayerChar0) to(nevets) restore zip
+talk_ex nevets samoth talk_a amb_a stay stay
+startswitch {
+  set act_almost_over = 1
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:2435
+title "Nevets"
+body "I rest my case. How ever will we compete against all the new illusionists out there. We must up the ante."
+cam left from(PlayerChar0) to(nevets) restore zip
+talk_ex nevets samoth talk_a amb_a stay stay
+startswitch {
+  set act_almost_over = 1
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:2440
+title "Samoth"
+body "You need to learn how to build up suspense, and listen to your partner."
+cam left from(PlayerChar0) to(samoth) restore zip
+talk_ex samoth nevets talk_a amb_a stay stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:2445
+title "Samoth"
+body "I can't work under these conditions."
+cam left from(PlayerChar0) to(samoth) restore zip
+talk_ex samoth nevets talk_a amb_a stay stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:2460
+title "Samoth"
+body "Why is he so difficult? I'm not a street performer. I'm an artist."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:2505
+title "Nevets"
+body "It looks like the Masters of Arcane Illusion are no more."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:2510
+title "Nevets"
+body "Learn some showmanship."
+cam left from(PlayerChar0) to(nevets) restore zip
+talk_ex nevets samoth talk_a amb_a stay stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:2515
+title "Nevets"
+body "We'll never play on Hephaestus at this rate. You need to learn better showmanship."
+cam left from(PlayerChar0) to(nevets) restore zip
+talk_ex nevets samoth talk_a amb_a stay stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:1305
+title "Huddie"
+body "Some people say they come to Red Light for the excitement. Or they want to be someone else. Or explore another side of their personality."
+cam left lift(60) restore zip
+talk npc amb_f stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:1310
+
+#window 58:1310
+title "Huddie"
+body "Me? I come for the naked girls."
+cam left lift(60) restore zip
+talk npc amb_f stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:1315
+title "Huddie"
+body "You're kidding."
+cam left lift(60) restore zip
+talk npc amb_f stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:1320
+title "Huddie"
+body "You ran off before I could tip you the other day."
+cam left restore zip
+talk npc amb_f stay
+startswitch {
+  extern add_money 50
+  set sexmach_huddie_tip = 1
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:1322
+
+#window 58:1325
+title "Huddie"
+body "You set that stage on fire, baby. I mean it."
+cam left restore zip
+talk npc amb_f stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:2001
+title "Masturbot"
+body "I'll dance for you as soon as I'm done with these customers."
+cam left lift(40) restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:2105
+title "Damon"
+body "Sorry, Rich. I just can't get off on this."
+cam left to(damon) restore zip
+startswitch {
+  extern AI_GrabEntity damon @damon_handle
+  extern ANIM_PlayAnim @damon_handle amb_h 0 1 0
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:2110
+
+#window 58:2110
+title "Rich"
+body "Open your mind, man. Just go with the experience. Enjoy it for what it is."
+cam left to(rich) restore zip
+startswitch {
+  extern AI_GrabEntity rich @rich_handle
+  extern ANIM_PlayAnim @rich_handle amb_h 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity @rich_handle
+  extern AI_ReleaseEntity @damon_handle
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:2115
+title "Rich"
+body "Did you get off on THAT?"
+cam left to(rich) restore zip
+startswitch {
+  extern AI_GrabEntity rich @rich_handle
+  extern ANIM_PlayAnim @rich_handle amb_h 0 1 0
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:2120
+
+#window 58:2120
+title "Damon"
+body "Totally."
+cam left to(damon) restore zip
+startswitch {
+  extern AI_GrabEntity damon @damon_handle
+  extern ANIM_PlayAnim @damon_handle amb_h 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity @rich_handle
+  extern AI_ReleaseEntity @damon_handle
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:2125
+title "Damon"
+body "Better look out, Rich. If she comes back, you might become her encore."
+cam left to(damon) restore zip
+startswitch {
+  extern AI_GrabEntity damon @damon_handle
+  extern ANIM_PlayAnim @damon_handle amb_h 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity @damon_handle
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:2130
+title "Damon"
+body "It's the dancer, Rich. I'm gonna faint."
+cam left to(damon) restore zip
+startswitch {
+  extern AI_GrabEntity damon @damon_handle
+  extern ANIM_PlayAnim @damon_handle amb_h 0 1 0
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:2135
+
+#window 58:2135
+title "Rich"
+body "Slap me, baby. Slap my face. I can't take it."
+cam left to(rich) restore zip
+startswitch {
+  extern AI_GrabEntity rich @rich_handle
+  extern ANIM_PlayAnim @rich_handle amb_h 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity @rich_handle
+  extern AI_ReleaseEntity @damon_handle
+}
+
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:2302
+title "Mitch"
+body "I won't make the little magician dead. He makes me laugh inside, in the deep places."
+cam left restore zip
+talk npc gest_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:402
+title "Murray Wanzaro"
+body "Where are the naked Janes?"
+cam left restore zip
+talk npc gest_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:502
+title "J. Graff"
+body "And for my next trick, I'm gonna make their LIVES disappear."
+cam left restore zip
+talk npc gest_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:2601
+title "Chloe"
+body "What're you doing back here?"
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:2605
+
+#window 58:2605
+title "Chloe"
+body "You must be one of those \"nose clippers\" they warned me about. Get outta here before I call management."
+cam left restore zip
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:5567
+title "Feena"
+body "I hear Stiletto's been hanging out with you characters. Tell her to come back here and pick up the stuff she left in her dressing room. She left something important she may wanna have."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:5568
+title "Feena"
+body "Stiletto? What're you doing back here?"
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+
+#window 58:5569
+title "Feena"
+body "Quite a climax you added to your last number. They weren't very good tippers. I was glad to see them go."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:5570
+
+#window 58:5570
+title "Feena"
+body "Like your outfit. Really takes those little things and makes some serious clea-vahhge. Of course, no offense, they are perrrr-fect, but you know guys. Hah."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:5571
+
+#window 58:5571
+title "Feena"
+body "Ooh, you left something in the dressing room. You really wowed 'em with your Mrs. Claus number. Hooh."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 58:5572
+
+#window 58:5573
+title "Feena"
+body "Bon apetit..."
+cam left restore zip
+talk npc talk_a stay
+style "style_redlight"
+font "_anox10"
+background color1 = 440000d0 color2 = 220000d0 color3 = 110000d0 color4 = 220000d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_red.pcx" 16, 31, 548, 32
+nextwindow 0:0
+
+#window 58:1020
+title "Announcer"
+body "Kippers and coppers! Pushers and poppers! Cool cats and jumpin' jats!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 58:1025
+title "Announcer"
+body "Gather round and put some danger money down 'cause we have something spectacular for you tonight!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 58:1030
+title "Announcer"
+body "Give it up for the leather-clad, super-bad, wish-you-had, cover-your-eyes-Dad, one and only... "
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 58:1035
+title "Announcer"
+body "Stileeeeeeeettoooo Anywaaaaaaaaaay!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 58:1055
+title "Boots"
+body "SERA!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 58:1060
+title "Stiletto"
+body "Hey, Bucelli."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 58:1065
+title "Boots"
+body "Sera..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 58:1
+set CURRENT_PLANET = 2
+set CURRENT_BANK = 58
+extern setmasterlevel 21
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+if ((act_over == 0) && (samoth_and_nevets_argue == 0))
+  extern loopambient ambi_sexmach
+extern playlevelmusic mp3/sexmach/sendrsexmach.mp3
+goto 0:0
+
+#switch 58:101
+if (TETRA_MARKET == 1)
+  goto 58:0110
+if ((func_charinparty[stiletto] == 3) && (talk_phunkee_stiletto == 0))
+  goto 58:0250
+if (func_charinparty[stiletto] == 3)
+  goto 58:0270
+if (Phunkee < 2)
+  set Phunkee1 = (Phunkee1 + 1)
+if (seen_stiletto == 1)
+  goto 58:0210
+extern is_quest_done "Talk To Phunkee" @talk2phunkee
+if (@talk2phunkee == 1)
+  goto 58:0205
+if (know_about_phunkee == 1)
+  goto 58:0205	                                                                                                       
+if (Phunkee1 > 1)
+  goto 58:0220
+goto 58:0202
+
+#switch 58:110
+if (PHUNKEE_TAG == 2)
+  goto 58:0125
+goto 58:0115
+
+#switch 58:221
+extern remove_money 5
+goto 58:0230
+
+#switch 58:222
+extern remove_money 8
+goto 58:0230
+
+#switch 58:223
+extern remove_money 8
+goto 58:0230
+
+#switch 58:224
+extern remove_money 10
+goto 58:0230
+
+#switch 58:601
+if (sexmach_delivered_recipe)
+  goto 58:0630
+extern is_in_inventory "Gorian Recipe" @recipe
+if (@recipe)
+  goto 58:0615
+goto 58:0605
+
+#switch 58:627
+extern remove_from_inventory "Gorian Recipe"
+set sexmach_delivered_recipe = 1
+extern add_money 275
+got_object$="275 bucks" 
+set timed_message = 20
+gosub 1000:1
+goto 0:0
+
+#switch 58:701
+extern AI_GrabEntity bipme bipme_handle
+extern ANIM_PlayAnim bipme_handle hit_a 0 1 0
+extern AI_ReleaseEntity bipme_handle
+goto 0:0
+
+#switch 58:801
+extern AI_GrabEntity bipshe bipshe_handle
+extern ANIM_PlayAnim bipshe_handle hit_a 0 1 0
+extern AI_ReleaseEntity bipshe_handle
+goto 0:0
+
+#switch 58:901
+extern AI_GrabEntity biphe biphe_handle
+extern ANIM_PlayAnim biphe_handle hit_a 0 1 0
+extern AI_ReleaseEntity biphe_handle
+goto 0:0
+
+#switch 58:1501
+if ((act_almost_over == 1) || (act_over == 1))
+  goto 58:1505
+if (talk_bartholin < 2)
+  set talk_bartholin = (talk_bartholin + 1)
+if (talk_bartholin == 2)
+  goto 58:1510		                 
+goto 58:1515	           
+
+#switch 58:2401
+if (act_over)
+  goto 58:2460		                   
+if (talk_samandnev && act_almost_over)
+  goto 58:2445		                                      
+if (talk_samandnev && (act_almost_over == 0))
+  goto 58:2440	                        
+goto 58:2405		                
+
+#switch 58:2501
+if (talk_samandnev == 0)
+  goto 58:2401		                                        
+if (act_over)
+  goto 58:2505		                   
+if (act_almost_over)
+  goto 58:2510		                                      
+goto 58:2515	                        
+
+#switch 58:1301
+if (func_charinparty[democratus] == 3)
+  goto 58:1315
+if ((func_charinparty[stiletto] == 3) && (sexmach_huddie_tip == 0))
+  goto 58:1320 
+if ((func_charinparty[stiletto] == 3) && sexmach_huddie_tip)
+  goto 58:1325
+goto 58:1305
+
+#switch 58:1322
+got_object$="50 bucks" 
+set timed_message = 20
+gosub 1000:1
+goto 0:0
+
+#switch 58:2101
+if (seen_stiletto == 0)
+  goto 58:2105
+if ((func_charinparty[stiletto] != 3) && (talk_damon == 0))
+  goto 58:2115
+if (func_charinparty[stiletto] != 3)
+  goto 58:2125
+goto 58:2130                   
+
+#switch 58:2201
+goto 58:2101
+
+#switch 58:2301
+if (GOT_FTM == 0)
+  goto 58:2302
+goto 0:0
+
+#switch 58:401
+if (GOT_FTM == 0)
+  goto 58:0402
+goto 0:0
+
+#switch 58:501
+if (GOT_FTM == 0)
+  goto 58:0502
+goto 0:0
+
+#switch 58:5566
+extern is_in_inventory "Hot Merc Santa Suit" @santa
+extern is_skill_acquired charm @charm
+if ((@santa == 1) || (@charm == 1))
+  goto 58:5573
+if (((func_charinparty[stiletto] == 3) && (@santa == 0)) && (@charm == 0))
+  goto 58:5569
+if (((func_charinparty[stiletto] == 2) && (@santa == 0)) && (@charm == 0))
+  goto 58:5568
+goto 58:5567
+
+#switch 58:5572
+extern addnew_to_inventory "Hot Merc Santa Suit"
+set timed_message = 20
+got_object$="Hot Merc Santa Suit" 
+gosub 1000:1
+goto 0:0
+
+#switch 58:1000
+set seen_stiletto = 1
+set samoth_and_nevets_argue = 1
+extern stopambient ambi_sexmach
+extern AI_SpawnEntity @samoth_handle npc_ami samoth 58:2401 samoth_spawn
+extern AI_SpawnEntity @nevets_handle npc_ami nevets 58:2501 nevets_spawn
+extern playscene sexmach_scene1
+
+#switch 66:6666
+extern add_quest "Talk To Phunkee" @talk2phunkee

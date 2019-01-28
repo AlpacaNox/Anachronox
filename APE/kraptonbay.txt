@@ -1,0 +1,924 @@
+#window 80:5
+if (ComicTitle_R$ != "")
+  xyprintfx 400, 399, 1, 1, 1, 1, comicfont_black, "%s", ComicTitle_R$
+if (ComicTitle_L$ != "")
+  xyprintfx 48, 399, 1, 1, 1, 1, comicfont_black, "%s", ComicTitle_L$
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+if (ComicTitle_R$ != "")
+  image "krapton/namebox.tga" 387, 389
+if (ComicTitle_L$ != "")
+  image "krapton/namebox.tga" 35, 389
+
+#window 80:105
+body "Whatta ya think?"
+cam left from(PlayerChar0) to(harrington) restore zip
+startswitch {
+  ComicTitle_R$="      Ed Harrington" 
+  extern AI_GrabEntity harrington harrington_handle
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace harrington_handle -1 plenty
+  extern AI_WaitAndFace bootshandle -1 harrington
+  extern ANIM_PlayAnim harrington_handle gest_a 0 1 0
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+  extern AI_WaitAndFace harrington_handle -1 PlayerChar0
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 80:0106
+
+#window 80:106
+body "The planet might make it out alive, but the rest of 'em are screwed for sure."
+cam left from(PlayerChar0) to(plenty) restore zip
+startswitch {
+  ComicTitle_R$="    Garrison Plenty" 
+  extern AI_GrabEntity plenty plenty_handle
+  extern AI_WaitAndFace plenty_handle -1 PlayerChar0
+  extern AI_WaitAndFace bootshandle -1 plenty
+  extern ANIM_PlayAnim plenty_handle gest_g 0 1 0
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+  extern AI_ReleaseEntity harrington_handle
+  extern AI_ReleaseEntity plenty_handle
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 80:110
+body "Don't look to us for answers. This whole place was a mystery when we landed too."
+cam left from(PlayerChar0) to(harrington) restore zip
+startswitch {
+  ComicTitle_R$="      Ed Harrington" 
+  extern AI_GrabEntity harrington harrington_handle
+  extern AI_WaitAndFace harrington_handle -1 PlayerChar0
+  extern AI_WaitAndFace bootshandle -1 harrington
+  extern ANIM_PlayAnim harrington_handle gest_g 0 1 0
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 80:0111
+
+#window 80:111
+body "Screw the rules. I'm spilling the beans."
+cam left from(PlayerChar0) to(plenty) restore zip
+startswitch {
+  ComicTitle_R$="    Garrison Plenty" 
+  extern AI_GrabEntity plenty plenty_handle
+  extern AI_WaitAndFace plenty_handle -1 harrington
+  extern AI_WaitAndFace bootshandle -1 plenty
+  extern ANIM_PlayAnim plenty_handle gest_g 0 1 0
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 80:0112
+
+#window 80:112
+body "It's like this..."
+cam left from(PlayerChar0) to(plenty) restore zip
+startswitch {
+  ComicTitle_R$="    Garrison Plenty" 
+  extern AI_WaitAndFace plenty_handle -1 PlayerChar0
+  extern ANIM_PlayAnim plenty_handle gest_h 0 1 0
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 80:0113
+
+#window 80:113
+body "We're all trapped in a grand comic book contrivance."
+cam left from(PlayerChar0) to(plenty) restore zip
+startswitch {
+  ComicTitle_R$="    Garrison Plenty" 
+  extern ANIM_PlayAnim plenty_handle gest_g 0 1 0
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 80:0114
+
+#window 80:114
+body "You're the prey in an elaborate game of cat & mouse against an army of super henchmen. With only a few scant clues for guidance, you must escape this ship before the enemy catches you."
+cam left from(PlayerChar0) to(plenty) restore zip
+startswitch {
+  ComicTitle_R$="    Garrison Plenty" 
+  extern ANIM_PlayAnim plenty_handle gest_g 0 1 0
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+  extern AI_ReleaseEntity harrington_handle
+  extern AI_ReleaseEntity plenty_handle
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 80:120
+body "We were heading out to the Sunder debris to salvage scientific equipment when the Villain Ship swallowed us."
+cam left from(PlayerChar0) to(harrington) restore zip
+startswitch {
+  ComicTitle_R$="      Ed Harrington" 
+  extern AI_GrabEntity harrington harrington_handle
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace harrington_handle -1 PlayerChar0
+  extern AI_WaitAndFace bootshandle -1 harrington
+  extern ANIM_PlayAnim harrington_handle gest_g 0 1 0
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+  extern AI_WaitAndFace harrington_handle -1 PlayerChar0
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 80:0121
+
+#window 80:121
+body "Nice, huh? While the competition is out there scavenging the valuable stuff, we're stuck in here fighting for our lives."
+cam left from(PlayerChar0) to(plenty) restore zip
+startswitch {
+  ComicTitle_R$="    Garrison Plenty" 
+  extern AI_GrabEntity plenty plenty_handle
+  extern AI_WaitAndFace plenty_handle -1 PlayerChar0
+  extern AI_WaitAndFace harrington_handle -1 plenty
+  extern AI_WaitAndFace bootshandle -1 plenty
+  extern ANIM_PlayAnim plenty_handle gest_f 0 1 0
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+nextwindow 80:0122
+
+#window 80:122
+body "Well, the rest of the crew is. We refuse to participate in this twaddle."
+cam left from(PlayerChar0) to(harrington) restore zip
+startswitch {
+  ComicTitle_R$="      Ed Harrington" 
+  extern AI_WaitAndFace harrington_handle -1 PlayerChar0
+  extern AI_WaitAndFace bootshandle -1 harrington
+  extern ANIM_PlayAnim harrington_handle gest_g 0 1 0
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+  extern AI_ReleaseEntity harrington_handle
+  extern AI_ReleaseEntity plenty_handle
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 80:125
+body "We're pretty sure that hologram is a clue to escaping."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  ComicTitle_R$="      Ed Harrington" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 80:205
+body "Push that blinking button over there to open the door downstairs and join the game."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  ComicTitle_R$="    Garrison Plenty" 
+}
+
+finishswitch {
+  ComicTitle_R$="" 
+}
+
+style "style_bubbleright"
+font "comicfont_black"
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 80:301
+body "THE COSMIC MACHINE: Created by Grand Borzum Pillory in the Second Age of Wonderment, the Cosmic Machine is the alleged source of Kapow Power, and is infinitely fueled by the good graces of the cosmos. Found by Rictus during the Villain Crisis Crossover, it has been put to evil purpose and is now the ultimate force of mayhem in the galaxy."
+cam fov(90) from(-2675 2891 2249) to(-2612 2895 2255) restore zip
+style "style_bubbleright"
+font "comicfont_black"
+flags noscroll, TRUE
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+width 580
+
+#window 80:1200
+title "PAL-18"
+body "Thanks for choosing me to come along with you."
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 40
+ypos 380
+width 580
+
+#window 80:1205
+title "Boots"
+body "Yeah."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1210
+title "PAL-18"
+body "It's like you like me or something."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1215
+title "Boots"
+body "Yeah."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1220
+title "PAL-18"
+body "Like we're partners on a really big case."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1225
+title "Boots"
+body "Yeah."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1230
+title "PAL-18"
+body "I would've thought you'd take Miss Stiletto."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1235
+title "Boots"
+body "YEAH."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1240
+title "Dr. Rho Bowman"
+body "Are you really a detective?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1245
+title "Boots"
+body "Yeah."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1250
+title "Dr. Rho Bowman"
+body "Credentialed?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1255
+title "Boots"
+body "It's odd. You. Me. Fatima."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1260
+title "Boots"
+body "Riding off to save the galaxy together..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1265
+title "Boots"
+body "the fate of the universe resting in our hands."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1270
+title "Boots"
+body "Sometimes I think about how you disappeared from my life."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1275
+title "Boots"
+body "How I lost the both of you at the same time."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1280
+title "Boots"
+body "And how now you're back when I need you the most."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1285
+title "Boots"
+body "It's like a second chance, you know? Between the three of us."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1290
+title "Stiletto"
+body "I'm sorry, were you talking to me?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1295
+title "Democratus"
+body "Sir--"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1300
+title "Boots"
+body "Didn't I tell you to shut up?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1305
+title "Democratus"
+body "--we're getting conflicting readings on a starship rapidly closing in on our course."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1310
+title "Boots"
+body "Spit it out, dewdrop. What's the problem?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1315
+title "Democratus"
+body "Either our planetary sensors are severely malfunctioning,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1320
+title "Democratus"
+body "or this is the biggest starship on record."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1325
+title "Boots"
+body "Then your records suck. How big can it be?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1330
+title "Boots"
+body "Rictus."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1335
+title "Democratus"
+body "Pardon?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1340
+title "Boots"
+body "The purple lighting, the angry face, that gaping jaw."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1345
+title "Boots"
+body "There's no doubt about it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1350
+title "Boots"
+body "We're in the custody of super villain Rictus."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1355
+title "Boots"
+body "Ever read any Krapton comic books?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1360
+title "Boots"
+body "Men in tights? With big muscles? Punching each other in the crotch?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1365
+title "Democratus"
+body "We're unfamiliar with the literature."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1370
+title "Boots"
+body "Krapton Comix were a line of superhero comic books based on real-life superheroes from planet Krapton."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1375
+title "Boots"
+body "I used to read 'em all the time growing up."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1380
+title "Boots"
+body "You remember those, PAL?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1385
+title "PAL-18"
+body "Yessum."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1390
+title "Democratus"
+body "Is this safe?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1395
+title "Boots"
+body "No. But this is how it's done in the comics."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1400
+title "Boots"
+body "C'mon..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 80:1405
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "krapton/01meanwhile.tga" 10, 10
+
+#window 80:1410
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "krapton/02inspection.tga" 10, 10
+
+#window 80:1415
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "krapton/03pintoleft.tga" 64, 432
+image "krapton/04pintoright.tga" 320, 432
+
+#window 80:1420
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "krapton/05pintoleft.tga" 64, 336
+
+#window 80:1425
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "krapton/05pintoleft.tga" 64, 432
+
+#window 80:1430
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "krapton/06slugleft.tga" 64, 432
+image "krapton/07slugright.tga" 320, 432
+
+#window 80:1435
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "krapton/08slugtext.tga" 16, 16
+
+#window 80:1440
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "krapton/09editor.tga" 368, 432
+
+#window 80:1445
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "krapton/10brigade.tga" 368, 336
+
+#window 80:1450
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "krapton/11brigadetext.tga" 16, 336
+
+#window 80:1455
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "krapton/11brigadetext.tga" 16, 336
+
+#window 80:1460
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "krapton/12woman.tga" 192, 16
+
+#window 80:1461
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "krapton/12robot.tga" 192, 16
+
+#window 80:1465
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "krapton/13fightleft.tga" 64, 432
+image "krapton/14fightright.tga" 320, 432
+
+#switch 80:1
+set CURRENT_PLANET = 7
+set CURRENT_BANK = 80
+console "gl_fog 0"
+extern is_quest_done "Find Rictus" @fric
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .6 .7 1
+extern loopambient ambi_kraptonbay
+extern playlevelmusic ""
+set PLAY_KRAPTONJAIL_CINE = 1
+if ((@fric == 0) && ((PAL_IN_PARTY == 1) || (func_charinparty[pal] > 1))) {
+  extern add_quest "Find Rictus"
+  extern chainscripts kraptonbay_scene68_a & kraptonbay_scene68_2_a kraptonbay_scene68_3_a
+  extern playscene kraptonbay_scene68_a
+} else if ((@fric == 0) && ((RHO_IN_PARTY == 1) || (func_charinparty[rho] > 1))) {
+  extern add_quest "Find Rictus"
+  extern chainscripts kraptonbay_scene68_b & kraptonbay_scene68_2_b kraptonbay_scene68_3_b
+  extern playscene kraptonbay_scene68_b
+} else if ((@fric == 0) && ((STILETTO_IN_PARTY == 1) || (func_charinparty[stiletto] > 1))) {
+  extern add_quest "Find Rictus"
+  extern chainscripts kraptonbay_scene68_c & kraptonbay_scene68_2_c kraptonbay_scene68_3_c
+  extern playscene kraptonbay_scene68_c
+} else
+  extern playlevelmusic MP3/krapton/kraptontheme.mp3
+gosub 80:0005
+goto 0:0
+
+#switch 80:2
+extern playlevelmusic MP3/krapton/kraptontheme.mp3
+
+#switch 80:401
+console "target monkey"
+goto 0:0
+
+#switch 80:402
+target monkey
+goto 0:0
+
+#switch 80:100
+target reddoors
+goto 0:0
+
+#switch 80:101
+set Plentyton1 = (Plentyton1 + 1)
+if (Plentyton1 > 3)
+  goto 80:0125
+if (Plentyton1 > 2)
+  goto 80:0120
+if (Plentyton1 > 1)
+  goto 80:0110
+goto 80:0105
+
+#switch 80:201
+set Plentyton1 = (Plentyton1 + 1)
+if (Plentyton1 > 3)
+  goto 80:0205
+if (Plentyton1 > 2)
+  goto 80:0120
+if (Plentyton1 > 1)
+  goto 80:0110
+goto 80:0105

@@ -1,0 +1,572 @@
+#window 50:110
+body "Use the elevator?"
+style "NULL"
+font "brebulan"
+xpos 20
+ypos 180
+
+#window 50:111
+body "Thank you for using Cordicom!"
+style "NULL"
+font "prochars"
+xpos 305
+ypos 340
+
+#window 50:112
+body "CORDICOM CLASS 3."
+style "box3"
+font "brebulan"
+xpos 305
+ypos 360
+
+#window 50:113
+body "Certified WSC-1009 compliant, inspection 3600M. Cordicom Inc. ID#2856725"
+style "box3"
+font "procharl"
+xpos 325
+ypos 380
+
+#window 50:305
+title "Doctor Nynx"
+body "I didn't find one important artifact on Brebula. I can't return to the archeology department on Sunder empty handed. They'll call me a failure."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 50:0306
+
+#window 50:306
+title "Doctor Nynx"
+body "Gasp! You don't think they'll put me in the Rainbow Sanctuary with the heretics, do you?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 50:310
+title "Doctor Nynx"
+body "Please go away. I'm not in the mood to talk."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 50:315
+title "Doctor Nynx"
+body "Yes, I've got a ticket to Sunder. Now leave me alone. I'm not in a talking mood."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 50:322
+title "Grumpos"
+body "So you don't wanna give me your ticket, huh? I understand. You're worried sick and you haven't made up your mind one way or another. That's fine. I mean, I hate to bother you while you're trying to make such a big decision... it's just that you remind me so much of my sister."
+cam left restore zip
+talk_ex nynx player amb_a talk_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 50:0323
+
+#window 50:323
+title "Grumpos"
+body "My sister, Lucille... you woulda loved the hell outta her. Hell, half my hometown did. Often more than once. She was an open young lady with a taste for the mundane, exotic, and everything in-between. She brought home a different boyfriend to the family dinner every night. She especially had a soft spot for you Cordicans. She said that something about the solitary eye excited the poet inside her."
+cam left restore zip
+talk_ex nynx player amb_a talk_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 50:0324
+
+#window 50:324
+title "Grumpos"
+body "The real kicker was when she brought home a Brebulan for dinner. I've never seen my mother drink more Gorian wine. She could barely look at the kid, which was a real shame considering what an interesting lad he turned out to be. I must admit, even I had a hard time keeping my meal. I kept envisioning what my sister was going to do with him later that night."
+cam left restore zip
+talk_ex nynx player amb_a talk_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 50:0325
+
+#window 50:325
+title "Grumpos"
+body "I'm not sure how my sister would tolerate the mechanics of it, but Klaz bless her, if anyone was gonna experiment, it was her. I think she just wanted to lay down with every type of alien in the galaxy just to say she had. I think our little Brebulan was just another check on her very long list. And although it was a short-lived affair, she dated him long enough to infect us all with his love of Brebulan cinema."
+cam left restore zip
+talk_ex nynx player amb_a talk_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 50:0326
+
+#window 50:326
+title "Grumpos"
+body "He was especially a sucker for the Brebulan New Wave movement. He introduced us to the works of Karrem, Tufruta-Ya, and Rodago. He made us appreciate a film aesthetic based purely around aliquot camera lenses which produce moving cubist imagery."
+cam left restore zip
+talk_ex nynx player amb_a talk_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 50:0327
+
+#window 50:327
+title "Grumpos"
+body "Rodago was the first to use chiaroscuro filters and cubist lenses to great effect in his landmark film, \"Spike 435\".  I don't know if you've ever seen any Brebulan cinema, but the interplay of light and shadow, fragmented color schemes, and Doppler editing techniques make for highly charged filmmaking."
+cam left restore zip
+talk_ex nynx player amb_a talk_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 50:0328
+
+#window 50:328
+title "Grumpos"
+body "Tufruta-Ya took the concept of splinter theory to the next degree with her groundbreaking film \"Pincher Crab Next\". Her use of indiscreet color tones and radial shutter techniques revolutionized the Brebulan film industry. These days, just about every film outta Brebula features fracture editing and trilateral focusing. But it wasn't until Karrem's deep sight photography in the milestone film \"Razma\" that--"
+cam left restore zip
+talk_ex nynx player amb_a talk_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 50:0329
+
+#window 50:329
+title "Doctor Nynx"
+body "Goodness."
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  set timed_message = 20
+  got_object$="Sunder Shuttle Ticket" 
+  gosub 1000:1
+  set NYNX_TICKET = 1
+  set INV_TICKET2SUNDER = (INV_TICKET2SUNDER + 1)
+  extern addnew_to_inventory "Sunder Shuttle Ticket"
+  extern is_quest_done "Get One Ticket To Sunder" @poop
+  if (@poop == 1) {
+    extern complete_quest "Get One Ticket To Sunder"
+    extern add_quest "Get On Sunder Shuttle No Know"
+  } else {
+    extern is_quest_done "Get Two Tickets To Sunder" @poop
+    if (@poop == 1) {
+      extern complete_quest "Get Two Tickets To Sunder"
+      extern add_quest "Get One Ticket To Sunder"
+    }
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 50:330
+title "Doctor Nynx"
+body "I've given you what you wanted. Please just go."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 50:345
+title "Doctor Nynx"
+body "Don't expect me to shower laurels on you, Ms. Bowman."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 50:0346
+
+#window 50:346
+title "Doctor Nynx"
+body "You may have been right about MysTech, but that's no excuse for sloppy science."
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  if (nynx_cubic == 0)
+    goto 50:0350
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 50:350
+title "Doctor Nynx"
+body "Why, with your shortage of scientific savvy, I doubt you could even figure out how to activate this cubic impactor without an instruction manual."
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  set nynx_cubic = 1
+  extern addnew_to_inventory "Cubic Impactor"
+  set timed_message = 20
+  got_object$="Cubic Impactor" 
+  gosub 1000:1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 50:405
+title "Rykk Jones"
+body "I just had a nightmare. The stars were falling. The universe was in flames. This is the seventh nightmare this month. I'm so scared."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 50:410
+title "Rykk Jones"
+body "My dreams come true. Most of the time. That's why something big is going down soon. I can feel it deep inside, in the place where the dreams come from."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 50:415
+title "Rykk Jones"
+body "Of course, I could be wrong . . . but I doubt it. That's why I picked up some nifty cosmic wristbands while I was on Krapton. Just in case."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 50:420
+title "Rykk Jones"
+body "I told you something was going to happen. Sunder exploded, and MysTech became active. "
+if (func_charinparty[democratus] == 3)
+  body "And now a planet is talking to me."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 50:425
+title "Rykk Jones"
+body "Wow, you look just like Paco \"El Puno\". I should zap you with my cosmic wristbands, killer."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 50:501
+title "Claudia"
+body "I just dreamt I slipped out of my sleep chamber and fell down the shaft. That was harsh."
+cam left lift(40) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 50:605
+title "Dada-Dada"
+if (Dada1 == 4)
+  body "Should I shave my knuckles? "
+if (Dada1 == 3)
+  body "Should I color my nostril hair? "
+if (Dada1 == 2)
+  body "Should I shave between my eyebrows? "
+if (Dada1 == 1)
+  body "Should I grow a moustache? "
+body "Oh, wait. You want a chamber, don't you? Two bucks a piece. An extra buck gets you a pillow."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "I'll take a chamber, pillow please." 50:610
+choice "I'll take a chamber, no pillow." 50:615
+choice "No, thanks." 50:620
+
+#window 50:620
+title "Dada-Dada"
+body "No problem. Creep."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 50:625
+title "Dada-Dada"
+body "C'mon, man. You don't even have enough money. Yeesh."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 50:805
+title "Traderbot Norm"
+body "I'm Traderbot Norm. Wheel, deal, buck or walk."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 7777:1
+
+#switch 50:1
+set CURRENT_PLANET = 2
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+extern applylevelconfiguration sendormitory
+set CURRENT_BANK = 50
+extern playlevelmusic MP3/sender/sendertheme.mp3
+goto 0:0
+
+#switch 50:101
+elev_dest$="Sendormitory Chamber" 
+set elev_bank = 50
+set elev_entry = 105
+gosub 1:8			                             
+goto 0:0
+
+#switch 50:105
+extern playscene sendormitory_elevatordown
+
+#switch 50:201
+elev_dest$="Sendormitory Counter" 
+set elev_bank = 50
+set elev_entry = 205
+gosub 1:8			                             
+goto 0:0
+
+#switch 50:205
+extern playscene sendormitory_elevatorup
+
+#switch 50:301
+if (func_charinparty[rho] == 3)
+  goto 50:0345
+if (NYNX_TICKET == 1)
+  goto 50:0330
+set Nynx1 = (Nynx1 + 1)
+if ((NEED_SUNDER_TICKETS == 1) && (Nynx1 > 1))
+  goto 50:0315
+if (Nynx1 > 1)
+  goto 50:0310
+goto 50:0305                                 
+
+#switch 50:320
+if (func_charinparty[grumpos] != 3)
+  goto 50:0315
+goto 50:0321
+
+#switch 50:321
+if (NYNX_TICKET == 1)
+  goto 50:0330
+extern cam_set cam_lift 70
+set ws_time = 35
+set ws_difficulty = 1
+WS_STAND$="grumpos_skill_1" 
+set ws_standoverride = 1
+ws_yammer1$="So you don't wanna give me your ticket, huh? I understand. You're worried sick and you haven't made up your mind one way or another. That's fine. I mean, I hate to bother you while you're trying to make such a big decision... it's just that you remind me so much of my sister." 
+ws_yammer2$="My sister, Lucille... you woulda loved the hell outta her. Hell, half my hometown did. Often more than once. She was an open young lady with a taste for the mundane, exotic, and everything in-between. She brought home a different boyfriend to the family dinner every night. She especially had a soft spot for you Cordicans. She said that something about the solitary eye excited the poet inside her." 
+ws_yammer3$="The real kicker was when she brought home a Brebulan for dinner. I've never seen my mother drink more Gorian wine. She could barely look at the kid, which was a real shame considering what an interesting lad he turned out to be. I must admit, even I had a hard time keeping my meal. I kept envisioning what my sister was going to do with him later that night." 
+ws_yammer4$="I'm not sure how my sister would tolerate the mechanics of it, but Klaz bless her, if anyone was gonna experiment, it was her. I think she just wanted to lay down with every type of alien in the galaxy just to say she had. I think our little Brebulan was just another check on her very long list. And although it was a short-lived affair, she dated him long enough to infect us all with his love of Brebulan cinema." 
+ws_yammer5$="He was especially a sucker for the Brebulan New Wave movement. He introduced us to the works of Karrem, Tufruta-Ya, and Rodago. He made us appreciate a film aesthetic based purely around aliquot camera lenses which produce moving cubist imagery." 
+ws_yammer6$="Rodago was the first to use chiaroscuro filters and cubist lenses to great effect in his landmark film, \"Spike 435\".  I don't know if you've ever seen any Brebulan cinema, but the interplay of light and shadow, fragmented color schemes, and Doppler editing techniques make for highly charged filmmaking." 
+ws_yammer7$="Tufruta-Ya took the concept of splinter theory to the next degree with her groundbreaking film \"Pincher Crab Next\". Her use of indiscreet color tones and radial shutter techniques revolutionized the Brebulan film industry. These days, just about every film outta Brebula features fracture editing and trilateral focusing. But it wasn't until Karrem's deep sight photography in the milestone film \"Razma\" that--" 
+ws_yammeredname$="Doctor Nynx" 
+ws_yammer_response$="Here. Take my ticket to Sunder. Please. Just go." 
+set ws_bank = 50
+set ws_entry = 329
+gosub 4002:1
+goto 0:0
+
+#switch 50:401
+set Rykk1 = (Rykk1 + 1)
+if (func_charinparty[paco] == 3)
+  goto 50:0425
+if (MYSTECH_ACTIVE == 1)
+  goto 50:0420
+if (Rykk1 > 2)
+  goto 50:0415
+if (Rykk1 > 1)
+  goto 50:0410
+goto 50:0405                                 
+
+#switch 50:601
+set Dada1 = (Dada1 + 1)
+goto 50:0605                                 
+
+#switch 50:610
+gosub 50:0613                                  
+set @cash_due = (@total_in_party * 3)
+extern check_money @money_sendormitory
+set @total_in_party = 0
+if (@money_sendormitory < @cash_due)
+  goto 50:0625
+goto 50:0611
+
+#switch 50:611
+gosub 600:3		             
+extern remove_money @cash_due
+extern playscene sendormitory_sleep
+
+#switch 50:613
+if (func_charinparty[boots] > 1)
+  set @total_in_party = (@total_in_party + 1)
+if (func_charinparty[grumpos] > 1)
+  set @total_in_party = (@total_in_party + 1)
+if (func_charinparty[rho] > 1)
+  set @total_in_party = (@total_in_party + 1)
+if (func_charinparty[democratus] > 1)
+  set @total_in_party = (@total_in_party + 1)
+if (func_charinparty[stiletto] > 1)
+  set @total_in_party = (@total_in_party + 1)
+if (func_charinparty[paco] > 1)
+  set @total_in_party = (@total_in_party + 1)
+
+#switch 50:615
+gosub 50:0613                                  
+set @cash_due = (@total_in_party * 2)
+extern check_money @money_sendormitory
+set @total_in_party = 0
+if (@money_sendormitory < @cash_due)
+  goto 50:0625
+goto 50:0616
+
+#switch 50:616
+extern get_party_order @one$ @two$ @three$
+if (@one$ != "") {
+  extern GetPlayerCurrentHP @one$ @playerhealth
+  set @playerhealth = (@playerhealth + 200)
+  extern SetPlayerCurrentHP @one$ @playerhealth
+}
+if (@two$ != "") {
+  extern GetPlayerCurrentHP @two$ @playerhealth
+  set @playerhealth = (@playerhealth + 200)
+  extern SetPlayerCurrentHP @two$ @playerhealth
+}
+if (@three$ != "") {
+  extern GetPlayerCurrentHP @three$ @playerhealth
+  set @playerhealth = (@playerhealth + 200)
+  extern SetPlayerCurrentHP @three$ @playerhealth
+}
+gosub 600:2		                  
+extern remove_money @cash_due
+extern playscene sendormitory_sleep
+
+#switch 50:801
+trader_name$="Norm" 
+if (talk_tbot_norm < 2)
+  set talk_tbot_norm = (talk_tbot_norm + 1)
+if (talk_tbot_norm == 1)
+  goto 50:0805	                    
+goto 7777:1			                       
+
+#switch 50:8000
+if (GOT_FTM == 0)
+  goto 50:8001
+console "map scommonnight fromsendormitory"
+goto 0:0
+
+#switch 50:8001
+console "map scommons fromsendormitory"
+goto 0:0
+
+#switch 50:8822
+if (GOT_FTM) {
+  console "map scommonnight fromsendormitory"
+} else
+  console "map scommons fromsendormitory"
+goto 0:0
+
+#switch 50:1231
+WS_STAND$="demo_skill_1" 
+ws_object$="democratusitem" 
+set ws_bank = 50
+set ws_entry = 1232
+gosub 4005:1
+goto 0:0
+
+#switch 50:1232
+set sendormitory_tractor = 1
+extern addnew_to_inventory "Bag o' Glodents"
+set timed_message = 20
+got_object$="Bag o' Glodents" 
+gosub 1000:1
+goto 0:0

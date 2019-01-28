@@ -1,0 +1,528 @@
+#window 56:101
+title "Happy MugMug"
+body "MugMug helped by nice planet."
+cam left lift(20) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 56:102
+
+#window 56:102
+title "Happy MugMug"
+body "MugMug happy!"
+cam left lift(20) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 56:105
+title "Happy MugMug"
+body "MugMug dropped El Puño toy down there."
+cam left lift(20) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 56:106
+
+#window 56:106
+title "Happy MugMug"
+body "MugMug cannot reach it."
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 56:110
+title "Wide-Eyed MugMug"
+body "Have toy! MugMug want!"
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Give the MugMug the toy" 56:115
+choice "No. It's mine." 56:120
+
+#window 56:115
+title "Ecstatic MugMug"
+body "MugMug love toy!"
+cam left lift(20) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 56:116
+
+#window 56:116
+title "Ecstatic MugMug"
+body "MugMug thank!"
+cam left lift(20) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 56:117
+
+#window 56:120
+title "Very Sad MugMug"
+body "*SNIFF*"
+cam left lift(20) restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 56:121
+
+#window 56:121
+title "Very Sad MugMug"
+body "El Puño toy."
+cam left lift(20) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 56:122
+
+#window 56:122
+title "Very Sad MugMug"
+body "MugMug need."
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 56:123
+
+#window 56:123
+title "Very Sad MugMug"
+body "*SNIFF*"
+cam left lift(20) restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 56:201
+title "Elder MugMug"
+body "MugMug like friends. MugMug live here."
+cam left lift(20) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 56:202
+
+#window 56:202
+title "Elder MugMug"
+body "MugMug grow bad moss. MugMug want good moss."
+cam left lift(20) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 56:203
+
+#window 56:203
+title "Elder MugMug"
+body "MugMug thank for moss. MugMug thank."
+cam left lift(20) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 56:204
+
+#window 56:204
+title "Elder MugMug"
+body "MugMug want moss..."
+cam left lift(20) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 56:205
+
+#window 56:205
+title "Elder MugMug"
+body "MugMug want moss a lot."
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 56:210
+
+#window 56:206
+title "Elder MugMug"
+body "MugMug want moss..."
+cam left lift(20) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 56:207
+
+#window 56:207
+title "Elder MugMug"
+body "MugMug want moss a lot."
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 56:211
+title "Elder MugMug"
+body "MugMug see MOSS! MugMug want moss!"
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+if (@have_sunder)
+  choice "Give him Sunder Moss" 56:220
+if (@have_waugee)
+  choice "Give him Waugee Moss" 56:230
+if (@have_monk)
+  choice "Give him Monk Moss" 56:240
+if (@have_wild)
+  choice "Give him Wild Moss" 56:250
+if (@have_hive)
+  choice "Give him Hive Moss" 56:260
+if (@have_hero)
+  choice "Give him Hero Moss" 56:270
+choice "Bite me! No moss for you!" 0:0
+
+#window 56:212
+title "Elder MugMug"
+body "MugMug want."
+cam left lift(20) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 56:213
+
+#window 56:213
+title "Elder MugMug"
+body "MugMug give."
+cam left lift(20) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 56:214
+
+#window 56:214
+title "Elder MugMug"
+body "*SNIFF*"
+cam left lift(20) restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 56:215
+
+#window 56:215
+title "Elder MugMug"
+body "Mug need."
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 56:305
+title "Chi Freon"
+body "Why are you all tense? You think I was gonna attack you or something?"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 56:310
+title "Chi Freon"
+body "Gorian cuisine uses the blood of the animal being cooked to accentuate the flavor of the meat. We have no vegetarian dishes. Would you like a sample recipe?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "Sure." 56:315
+choice "NO." 56:325
+
+#window 56:315
+title "Chi Freon"
+body "I'll give you one that's low in blood."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 56:0316
+
+#window 56:316
+title "GORIAN GRILLED BIPIDRI WITH BLOOD SAUCE"
+body "(4 Servings) \n2 cups of zizinti wood chips \n2 tablespoons red vinegar seeds \n½ cup peppered goat mustard \n2 teaspoons fresh red lime juice \n1 tablespoon dried blood root \n4 hell radishes, finely diced \n2 cups Gorian red wine, 1 cup bipidri blood \nFreshly ground earth pepper \nFury sac oil, for the grill \nOne 4-pound bipidri fillet, skin on \nEarth salt"
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+xpos 30
+ypos 30
+width 580
+nextwindow 56:0317
+
+#window 56:317
+title "Gorian Grilled Bipidri with Blood Sauce"
+body "1. Soak the zizinti chips in cold water for 1 hour. Toast vinegar seeds in a salted skillet over medium heat until they turn blood red and start to pop. Transfer to a plate."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+xpos 30
+ypos 30
+width 580
+nextwindow 56:0318
+
+#window 56:318
+title "Gorian Grilled Bipidri with Blood Sauce"
+body "2. In a bowl, whisk the mustard with the lime juice, blood root and radishes. Season with pepper."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+xpos 30
+ypos 30
+width 580
+nextwindow 56:0319
+
+#window 56:319
+title "Gorian Grilled Bipidri with Blood Sauce"
+body "3. Light a grill, and lightly brush the grate with oil. Drain the zizinti chips and spread them over the burning coals. Run your fingers over the bipidri fillet, feeling for hairs, and use medical tweezers to remove them."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+xpos 30
+ypos 30
+width 580
+nextwindow 56:0320
+
+#window 56:320
+title "Gorian Grilled Bipidri with Blood Sauce"
+body "4. Season the bipidri with the red wine and earth salt. Set the fillet on the grill, skin side down, and grease with blood. Close the grill and cook over high heat for about twenty minutes. Serve hot."
+cam left restore zip
+finishswitch {
+  set got_recipe = 1
+  extern addnew_to_inventory "Gorian Recipe"
+  set timed_message = 20
+  got_object$="Gorian Recipe" 
+  gosub 1000:1
+  goto 0:0
+}
+
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+xpos 30
+ypos 30
+width 580
+
+#window 56:325
+title "Chi Freon"
+body "Your loss."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 56:330
+title "Chi Freon"
+body "Enjoy the recipe."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#switch 56:1
+set CURRENT_PLANET = 2
+set CURRENT_BANK = 56
+BattleMusicOverride$="mp3/sender/SSSadNoVoices.mp3" 
+extern playlevelmusic mp3/sender/mugmugtheme.mp3
+if (PRE_LIMBUS || PRE_DETTA) {
+  extern applylevelconfiguration mugpath_second
+} else
+  extern applylevelconfiguration mugpath_first
+
+#switch 56:100
+if (got_taco_12 == 1)
+  goto 56:101
+extern is_in_inventory "El Puño Toy" @havetoy
+if (@havetoy)
+  goto 56:110		               
+goto 56:105					                   
+
+#switch 56:117
+extern remove_from_inventory "El Puño Toy"
+extern addnew_to_inventory "TACO"
+set got_taco_12 = 1
+set timed_message = 20
+got_object$="TACO" 
+gosub 1000:1
+goto 0:0
+
+#switch 56:200
+if (talk_bartermug < 2)
+  set talk_bartermug = (talk_bartermug + 1)
+if (talk_bartermug == 2)
+  goto 56:210	         
+goto 56:201	          
+
+#switch 56:210
+extern is_in_inventory "Sunder Moss" @have_sunder
+extern is_in_inventory "Waugee Moss" @have_waugee
+extern is_in_inventory "Monk Moss" @have_monk
+extern is_in_inventory "Wild Moss" @have_wild
+extern is_in_inventory "Hive Moss" @have_hive
+extern is_in_inventory "Hero Moss" @have_hero
+if (((((@have_sunder || @have_waugee) || @have_monk) || @have_wild) || @have_hive) || @have_hero)
+  goto 56:211
+if (talk_bartermug > 1)
+  goto 56:206		                             
+goto 0:0
+
+#switch 56:220
+extern remove_from_inventory "Sunder Moss"
+extern addnew_to_inventory "Circlet of Safety"
+set timed_message = 20
+got_object$="Circlet of Safety" 
+gosub 1000:1
+goto 56:210		                      
+
+#switch 56:230
+extern remove_from_inventory "Waugee Moss"
+extern addnew_to_inventory "Two-One Host"
+set timed_message = 20
+got_object$="Two-One Host" 
+gosub 1000:1
+goto 56:210		                      
+
+#switch 56:240
+extern remove_from_inventory "Monk Moss"
+extern addnew_to_inventory "Firestorm"
+set timed_message = 20
+got_object$="Firestorm MysTech" 
+gosub 1000:1
+goto 56:210		                      
+
+#switch 56:250
+extern remove_from_inventory "Wild Moss"
+extern addnew_to_inventory "Verdun War Medallion"
+set timed_message = 20
+got_object$="Verdun War Medallion" 
+gosub 1000:1
+goto 56:210		                      
+
+#switch 56:260
+extern remove_from_inventory "Hive Moss"
+extern addnew_to_inventory "Resonance Crystal"
+set timed_message = 20
+got_object$="Resonance Crystal" 
+gosub 1000:1
+goto 56:210		                      
+
+#switch 56:270
+extern remove_from_inventory "Hero Moss"
+extern addnew_to_inventory "MugMug Sluggicell"
+set timed_message = 20
+got_object$="MugMug Sluggicell" 
+gosub 1000:1
+goto 56:210		                      
+
+#switch 56:301
+set Chi1 = (Chi1 + 1)
+if (got_recipe == 1)
+  goto 56:0330
+if (Chi1 > 1)
+  goto 56:0310
+goto 56:0305
+
+#switch 56:8000
+ws_stand$="demo_stand1" 
+ws_object$="mugitem" 
+set ws_bank = 56
+set ws_entry = 8001
+gosub 4005:1
+goto 0:0
+
+#switch 56:8001
+set got_mugmug_toy = 1
+extern addnew_to_inventory "El Puño Toy"
+set timed_message = 20
+got_object$="El Puño Toy" 
+gosub 1000:1
+goto 0:0

@@ -1,0 +1,608 @@
+#window 98:105
+startswitch {
+  set @viewlastMS = func_GameTime
+  set @viewcurrentMS = @viewlastMS
+  set mazeminutes = 10
+  set mazeseconds = 0
+  set mazeinc = 20
+  set currentview = 1
+  set viewcycle = 1
+  set lasernumber = 1
+  set viewcounter = 40
+}
+
+thinkswitch {
+  set @viewcurrentMS = func_GameTime
+  set @viewdelta = (@viewcurrentMS - @viewlastMS)
+  if (@viewdelta < 50)
+    goto 0:0
+  set @viewlastMS = @viewcurrentMS
+  set @viewdelta = (@viewdelta - 50)
+  set @viewlastMS = (@viewcurrentMS - @viewdelta)
+  if (viewcycle) {
+    set viewcounter = (viewcounter - 1)
+    if (viewcounter == 0) {
+      set viewcounter = 40
+      set currentview = (currentview + 1)
+      if (currentview == 4)
+        set currentview = 1
+      extern playsound games/museumnight/games_mn_laserswitch.wav
+      gosub 98:2
+    }
+  }
+}
+
+style "NULL"
+font "_message"
+flags passive, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 560
+ypos 0
+width 80
+height 40
+
+#window 98:500
+if (textcounter == 1)
+  xyprintfx 6, 232, 0.800000011921, 1, 0, 0, thinbright, "10010101001010101010101010100001010101001110100010100110010"
+if (textcounter == 2)
+  xyprintfx 6, 232, 0.800000011921, 1, 0, 0, thinbright, "00101001001010101000101010101000101010100110100111010001101"
+if (textcounter == 3)
+  xyprintfx 6, 232, 0.800000011921, 1, 0, 0, thinbright, "00010100100101010101010101010101000011000010011010101010111"
+xyprintfx 36, security_y, 1, 1, 0.899999976158, 0.300000011921, hatten, "SECURITY COMMUNICATIONS LASER"
+startswitch {
+  set security_y = 21
+  set security_frame = 1
+  set @slastMS = func_GameTime
+  set @scurrentMS = @slastMS
+  if (currentView == 0) {
+    set currentview = 1
+    set lasernumber = 0
+    set viewcycle = 1
+    set viewcounter = 40
+  }
+  gosub 98:502		                 
+}
+
+thinkswitch {
+  set @scurrentMS = func_GameTime
+  set @sdelta = (@scurrentMS - @slastMS)
+  if (@sdelta < 50)
+    goto 0:0
+  set @slastMS = @scurrentMS
+  set @sdelta = (@sdelta - 50)
+  set @slastMS = (@scurrentMS - @sdelta)
+  set textcounter = (textcounter + 1)
+  if (textcounter >= 4)
+    set textcounter = 1
+  set flashx = func_drand[0,230]
+}
+
+finishswitch {
+  extern RemoveAPE2DControl mnbutton1
+  extern RemoveAPE2DControl mnbutton2
+  extern RemoveAPE2DControl mnbutton3
+  extern RemoveAPE2DControl mnbutton123
+  extern RemoveAPE2DControl mnbuttonx
+}
+
+style "NULL"
+font "setse"
+flags passive2d, TRUE
+xpos 160
+ypos 112
+width 272
+height 272
+background "museumnight/games_mn_commback.pcx" 
+if (currentView == 1)
+  image "museumnight/games_mn_cam1.pcx" 23, 43
+if (currentView == 2)
+  image "museumnight/games_mn_cam2.pcx" 94, 43
+if (currentView == 3)
+  image "museumnight/games_mn_cam3.pcx" 165, 43
+if (currentView != 1)
+  image "museumnight/games_mn_noimage0.pcx" 23, 43
+if (currentView != 2)
+  image "museumnight/games_mn_noimage0.pcx" 94, 43
+if (currentView != 3)
+  image "museumnight/games_mn_noimage0.pcx" 165, 43
+image "museumnight/games_mn_redscan.pcx" flashx, 220
+
+#window 98:600
+xyprintfx 18, 10, 1, 0.899999976158, 0.800000011921, 0.00999999977648, _anox6, "@TOWER CONTROL@"
+xyprintfx 126, 75, 1, 0.899999976158, 0.800000011921, 0.00999999977648, _anox6, "1"
+xyprintfx 174, 75, 1, 0.899999976158, 0.800000011921, 0.00999999977648, _anox6, "2"
+xyprintfx 222, 75, 1, 0.899999976158, 0.800000011921, 0.00999999977648, _anox6, "3"
+if (textcounter == 1)
+  xyprintfx 6, 104, 0.800000011921, 1, 0, 0, thinbright, "10010101001010101010101010100001010101001110100010100110010"
+if (textcounter == 2)
+  xyprintfx 6, 104, 0.800000011921, 1, 0, 0, thinbright, "00101001001010101000101010101000101010100110100111010001101"
+if (textcounter == 3)
+  xyprintfx 6, 104, 0.800000011921, 1, 0, 0, thinbright, "00010100100101010101010101010101000011000010011010101010111"
+startswitch {
+  set @slastMS = func_GameTime
+  set @scurrentMS = @slastMS
+  if (doorstate == 0) {
+    extern CreateAPE2DControl push doorbutton 210 205 width=80 height=20 normal=gameflow/museumnight/games_mn_towerbutt.pcx bright=gameflow/museumnight/games_mn_towerbutt_h.pcx gamevar=doorButtonPressed returnvalue=1 sequence=98:603
+  } else
+    extern CreateAPE2DControl push doorbutton 210 205 width=80 height=20 normal=gameflow/museumnight/games_mn_towerbutt.pcx bright=gameflow/museumnight/games_mn_towerbutt_h.pcx gamevar=doorButtonPressed returnvalue=2 sequence=98:603
+  extern CreateAPE2DControl push mnbuttonx 210 229 width=80 height=20  normal=gameflow/museumnight/games_mn_exitbutt.pcx bright=gameflow/museumnight/games_mn_exitbutt_h.pcx  gamevar=doorbuttonPressed returnvalue=3 sequence=98:603
+  extern AI_GrabEntity playerchar0 palhandle
+}
+
+thinkswitch {
+  set @scurrentMS = func_GameTime
+  set @sdelta = (@scurrentMS - @slastMS)
+  if (@sdelta < 50)
+    goto 0:0
+  set @slastMS = @scurrentMS
+  set @sdelta = (@sdelta - 50)
+  set @slastMS = (@scurrentMS - @sdelta)
+  set textcounter = (textcounter + 1)
+  if (textcounter >= 4)
+    set textcounter = 1
+  set flashx = func_drand[0,230]
+}
+
+finishswitch {
+  extern RemoveAPE2DControl mnbuttonx
+  extern RemoveAPE2DControl doorbutton
+  extern ANIM_MakeSmart palhandle
+  extern AI_ReleaseEntity palhandle
+}
+
+style "NULL"
+font "_anox10"
+flags passive2d, TRUE
+xpos 192
+ypos 176
+width 272
+height 144
+background "museumnight/games_mn_doorback.pcx" 
+if (doorstate == 1)
+  image "museumnight/games_mn_tower1.pcx" 112, 9
+if (doorstate == 0)
+  image "museumnight/games_mn_tower2.pcx" 112, 9
+if (doorstate == 0)
+  image "museumnight/games_mn_tower1.pcx" 160, 9
+if (doorstate == 1)
+  image "museumnight/games_mn_tower2.pcx" 160, 9
+if (doorstate == 1)
+  image "museumnight/games_mn_tower1.pcx" 208, 9
+if (doorstate == 0)
+  image "museumnight/games_mn_tower2.pcx" 208, 9
+image "museumnight/games_mn_redscan.pcx" flashx, 92
+
+#window 98:5200
+body "PAL-18 BOTOS 2.1\n\n\n\n\n"
+if (PALCount < 14)
+  body "NOTICE\n\n"
+if (PALCount >= 20)
+  body "TACHYON DECAY DETECTOR\n\n"
+if (PALCount >= 22)
+  body "5.6 METERS\n\n"
+if (PALCount >= 24)
+  body "STEEL/TITANIUM CONSTRUCTION\n"
+if (PALCount >= 26)
+  body "ENERGY SIGNATURE: NONE\n\n\n\n"
+if (PALCount >= 32)
+  body "ENVIRONMENT:\n"
+if (PALCount >= 32)
+  body "----WARNING----\n\n"
+if ((PALCount >= 38) && (PALCount < 48))
+  body "LASER GRID"
+if (PALCount >= 48)
+  body "LASER GRID\n\n"
+if ((PALCount >= 52) && (PALCount < 65))
+  body "SENSORS OVERLOADING"
+if (PALCount >= 68)
+  body "DANGER!\n"
+if (PALCount >= 70)
+  body "DANGER!\n"
+if (PALCount >= 72)
+  body "DANGER!\n"
+startswitch {
+  set plastMS = func_GameTime
+  set pcurrentMS = plastMS
+  set PALCount = 0
+  goto 0:0
+}
+
+thinkswitch {
+  set pcurrentMS = func_GameTime
+  set pdelta = (pcurrentMS - plastMS)
+  if (pdelta < 50)
+    goto 0:0
+  set plastMS = pcurrentMS
+  set pdelta = (pdelta - 50)
+  set plastMS = (pcurrentMS - pdelta)
+  set PALCount = (PALCount + 1)
+  if (PALCount > 72)
+    closewindow 98:5200
+  goto 0:0
+}
+
+finishswitch {
+  goto 0:0
+}
+
+style "NULL"
+font "setse"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 640
+
+#window 98:4310
+title "MUSEUM SERVICE ROBOT"
+if (mn_lasers_off == 0)
+  body "Status: Cleaning floor.\n\n"
+if (mn_lasers_off == 0)
+  body "Switch status to inactive?"
+if (mn_lasers_off)
+  body "Status: Robot inactive."
+startswitch {
+  set museumnight_ct_done = 1
+}
+
+style "style_simplebox"
+font "_anox10"
+background color1 = 000000ff color2 = 000000ff color3 = 000000ff color4 = 000000ff
+xpos 30
+ypos 30
+width 640
+if (mn_lasers_off == 0)
+  choice "Yes" 98:4320
+if (mn_lasers_off == 0)
+  choice "No" 0:0
+nextwindow 0:0
+
+#switch 52:1
+set CURRENT_PLANET = 2
+set CURRENT_BANK = 98
+gosub 500:1                                  
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+extern playlevelmusic mp3/sender/ssscaryfinal.mp3
+extern AI_SpawnEntity @poophandle ob_squib2
+extern AI_DestroyEntity @poophandle
+extern AI_GrabEntity musebot bothandle
+extern AI_Path bothandle botpath1
+extern AI_AvoidEnts bothandle false
+console "bbox -12 -12 0 12 12 24"
+set botexists = 1
+extern AI_SpawnEntity @ob_clip_handle_1 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_1 184 73 -71
+goto 0:0
+
+#switch 98:2
+if (currentview != lasernumber)
+  if (lasernumber == 1) {
+    extern BEAM_KillBeam hSource1
+    extern AI_DestroyEntity hLasertip1
+  } else if (lasernumber == 2) {
+    extern BEAM_KillBeam hSource2
+    extern AI_DestroyEntity hLasertip2
+    extern AI_DestroyEntity hLaserend2
+  } else if (lasernumber == 3) {
+    extern BEAM_KillBeam hSource3
+    extern AI_DestroyEntity hLasertip3
+  }
+if (currentview == 1) {
+  extern AI_GetEdictNumber fireplace-1 hSource1
+  extern AI_GetEdictNumber lasertarget1 hTarget1
+  extern BEAM_CreateBeamEx hSource1 0 hTarget1 0 1 0 0 1 1 0 0 100000 1 1 3 7 7 8232
+  extern AI_SpawnEntity hLasertip1 ob_squib2 tLasersource1 0:0 fireplace-1
+  extern PARTICLE_StartEffect hLasertip1 effect_1 9906079943001100101000220717599300080052000001000000000000000000
+}
+if (currentview == 2) {
+  extern AI_GrabEntity fireplace-2 hSource2
+  extern AI_GrabEntity lasertarget2 hTarget2
+  extern BEAM_CreateBeamEx hSource2 0 hTarget2 0 1 0 0 1 1 0 0 100000 1 1 3 7 7 8232
+  extern AI_SpawnEntity hLasertip2 ob_squib2 tLasersource2 0:0 fireplace-2
+  extern PARTICLE_StartEffect hLasertip2 effect_1 9906079943001100101000220717599300080052000001000000000000000000
+  extern AI_SpawnEntity hLaserend2 ob_squib2 tLaserdest2 0:0 lasertarget2
+  extern PARTICLE_StartEffect hLaserend2 effect_1 9906079943001100101000220717599300080052000001000000000000000000
+  extern AI_ReleaseEntity hSource2
+  extern AI_ReleaseEntity hTarget2
+} else if (currentview == 3) {
+  extern AI_GrabEntity fireplace-3 hSource3
+  extern AI_GrabEntity lasertarget3 hTarget3
+  extern BEAM_CreateBeamEx hSource3 0 hTarget3 0 1 0 0 1 1 0 0 100000 1 1 3 7 7 8232
+  extern AI_SpawnEntity hLasertip3 ob_squib2 tLasersource3 0:0 fireplace-3
+  extern PARTICLE_StartEffect hLasertip3 effect_1 9906079943001100101000220717599300080052000001000000000000000000
+  extern AI_ReleaseEntity hSource3
+  extern AI_ReleaseEntity hTarget3
+}
+set lasernumber = currentview
+extern playsound games/museumnight/games_mn_laserbeam.wav
+goto 0:0
+
+#switch 98:100
+extern AI_GrabEntity PlayerChar0 palhandle
+extern PARTICLE_StartEffect palhandle Hand_R lt661200
+extern AI_ReleaseEntity palhandle
+extern playsound player/pal_light.wav
+goto 0:0
+
+#switch 98:501
+if (security_frame == 1) {
+  set security_y = (security_y - 1)
+} else if (security_frame == 2) {
+  set security_y = (security_y - 2)
+} else if (security_frame == 3) {
+  set security_y = (security_y - 2)
+} else if (security_frame == 4) {
+  set security_y = (security_y - 3)
+} else if (security_frame == 5) {
+  set security_y = (security_y - 3)
+} else if (security_frame == 6) {
+  set security_y = (security_y - 2)
+} else if (security_frame == 7) {
+  set security_y = (security_y - 2)
+} else if (security_frame == 8) {
+  set security_y = (security_y - 1)
+} else if (security_frame == 9) {
+  set security_y = (security_y + 1)
+} else if (security_frame == 10) {
+  set security_y = (security_y + 2)
+} else if (security_frame == 11) {
+  set security_y = (security_y + 2)
+} else if (security_frame == 12) {
+  set security_y = (security_y + 3)
+} else if (security_frame == 13) {
+  set security_y = (security_y + 3)
+} else if (security_frame == 14) {
+  set security_y = (security_y + 2)
+} else if (security_frame == 15) {
+  set security_y = (security_y + 2)
+} else if (security_frame == 16)
+  set security_y = (security_y + 1)
+set security_frame = (security_frame + 1)
+if (security_frame > 24)
+  set security_frame = 1
+goto 0:0
+
+#switch 98:502
+extern CreateAPE2DControl push mnbutton1 185 216 width=64 height=32 normal=/gameflow/museumnight/games_mn_button1.pcx bright=/gameflow/museumnight/games_mn_button1_h.pcx gamevar=buttonPressed returnvalue=1 sequence=98:503
+extern CreateAPE2DControl push mnbutton2 255 216 width=64 height=32 normal=/gameflow/museumnight/games_mn_button2.pcx bright=/gameflow/museumnight/games_mn_button2_h.pcx gamevar=buttonPressed returnvalue=2 sequence=98:503
+extern CreateAPE2DControl push mnbutton3 325 216 width=64 height=32 normal=/gameflow/museumnight/games_mn_button3.pcx bright=/gameflow/museumnight/games_mn_button3_h.pcx gamevar=buttonPressed returnvalue=3 sequence=98:503
+extern CreateAPE2DControl push mnbutton123 255 252 width=64 height=32 normal=/gameflow/museumnight/games_mn_button0.pcx bright=/gameflow/museumnight/games_mn_button0_h.pcx gamevar=buttonPressed returnvalue=4 sequence=98:503
+extern CreateAPE2DControl push mnbuttonx 255 288 width=64 height=32 normal=/gameflow/museumnight/games_mn_buttonout.pcx bright=/gameflow/museumnight/games_mn_buttonout_h.pcx gamevar=buttonPressed returnvalue=5 sequence=98:503
+goto 0:0
+
+#switch 98:503
+if (buttonPressed <= 3) {
+  set currentView = buttonPressed
+  set viewCycle = 0
+} else if (buttonPressed == 4) {
+  set viewCycle = 1
+  set viewcounter = 40
+} else if (buttonPressed == 5)
+  closewindow 98:500
+goto 0:0
+
+#switch 98:603
+extern playsound ui/gen/ui_gen_select.wav
+if (doorButtonPressed == 3) {
+  closewindow 98:600
+  goto 0:0
+}
+extern RemoveAPE2DControl doorbutton
+extern playsound games/museumnight/games_mn_doorswitch.wav
+set doorstate = (1 - doorstate)
+target all-doors
+if (doorstate == 0) {
+  extern CreateAPE2DControl push doorbutton 210 205 width=80 height=20 normal=gameflow/museumnight/games_mn_towerbutt.pcx bright=gameflow/museumnight/games_mn_towerbutt_h.pcx gamevar=doorButtonPressed returnvalue=1 sequence=98:603
+} else
+  extern CreateAPE2DControl push doorbutton 210 205 width=80 height=20 normal=gameflow/museumnight/games_mn_towerbutt.pcx bright=gameflow/museumnight/games_mn_towerbutt_h.pcx gamevar=doorButtonPressed returnvalue=2 sequence=98:603
+goto 0:0
+
+#switch 98:700
+set @forget_the_dumb_wrench_trigger = 1
+goto 0:0
+
+#switch 98:800
+echo "CHANGE TO 801-802-803!"
+goto 0:0
+
+#switch 98:801
+set pal_shootable = 1
+if (lasernumber != 1)
+  goto 0:0
+goto 98:810
+
+#switch 98:802
+set pal_shootable = 2
+if (lasernumber != 2)
+  goto 0:0
+goto 98:810
+
+#switch 98:803
+set pal_shootable = 3
+if (lasernumber != 3)
+  goto 0:0
+goto 98:810
+
+#switch 98:810
+set anox_manner_of_death = 11
+set anox_game_not_in_progress = 1
+goto 986:1							            
+
+#switch 98:850
+set anox_manner_of_death = 8
+set anox_game_not_in_progress = 1
+goto 986:1							            
+
+#switch 98:900
+set pal_shootable = 0
+goto 0:0
+
+#switch 98:1001
+WS_STAND$="palskill2" 
+set ws_bank = 98
+set ws_entry = 600
+extern assign E[0] -1 50 50 50 50 51 -1
+extern assign E[7] -1 40 40 40 60 40 -1
+extern assign E[14] -1 60 40 40 30 40 -1
+extern assign E[21] -1 40 40 40 40 40 -1
+extern assign E[28] -1 30 40 40 40 30 -1
+extern assign E[35] -1 40 40 30 40 60 -1
+extern assign E[42] -1 45 45 45 46 45 -1
+gosub 4003:1		                      
+goto 0:0
+
+#switch 98:1002
+WS_STAND$="palskill3" 
+set ws_bank = 98
+set ws_entry = 600
+extern assign E[0] -1 50 50 50 51 50 -1
+extern assign E[7] -1 40 40 30 40 60 -1
+extern assign E[14] -1 60 40 40 40 40 -1
+extern assign E[21] -1 40 30 40 30 40 -1
+extern assign E[28] -1 30 40 40 40 30 -1
+extern assign E[35] -1 40 40 30 40 60 -1
+extern assign E[42] -1 45 46 45 45 45 -1
+gosub 4003:1		                      
+goto 0:0
+
+#switch 98:1003
+WS_STAND$="palskill6" 
+set ws_bank = 98
+set ws_entry = 600
+extern assign E[0] -1 50 51 50 50 50 -1
+extern assign E[7] -1 40 40 40 60 40 -1
+extern assign E[14] -1 60 40 40 40 40 -1
+extern assign E[21] -1 40 40 40 30 40 -1
+extern assign E[28] -1 30 40 40 40 30 -1
+extern assign E[35] -1 40 40 30 40 60 -1
+extern assign E[42] -1 46 45 45 45 45 -1
+gosub 4003:1		                      
+goto 0:0
+
+#switch 98:1200
+if (@palpoo)
+  goto 0:0
+set @palpoo = 1
+extern playlevelmusic mp3/sender/ssundergroundnormal.mp3
+extern AI_GrabEntity PlayerChar0 palhandle
+extern PARTICLE_StopEffect palhandle Hand_R
+extern AI_ReleaseEntity palhandle
+closewindow 98:105		                 
+extern playscene museumnight_pal_dropdown
+goto 0:0
+
+#switch 98:1100
+if (botexists)
+  goto 0:0
+extern AI_SpawnEntity bothandle ob_musebot musebot 98:2300 botstart
+extern AI_Path bothandle botpath1
+extern AI_AvoidEnts bothandle false
+set botexists = 1
+goto 0:0
+
+#switch 98:2000
+echo "BUSTED!"
+
+#switch 98:2050
+set credit_for_riding = 1
+goto 0:0
+
+#switch 98:2100
+if (credit_for_riding == 0)
+  goto 0:0
+set museum_exit_counter = (museum_exit_counter + 1)
+set credit_for_riding = 0
+if (museum_exit_counter >= 2) {
+  extern AI_Path bothandle botexit
+} else
+  echo "DEBUG: CHECKED EXIT CONDITION AND FAILED!"
+goto 0:0
+
+#switch 98:2200
+echo "ESCAPED!"
+console "bbox -16 -16 0 16 16 64"
+set play_pal_stiletto_scene = 1
+console "map scommonnight"
+goto 0:0
+
+#switch 98:4000
+set @pal_in_cine = 1
+goto 0:0
+
+#switch 98:4100
+set @pal_in_cine = 0
+goto 0:0
+
+#switch 98:4201
+WS_STAND$="palskill1" 
+set ws_bank = 98
+set ws_entry = 500
+extern assign E[0] -1 50 50 50 50 51 -1
+extern assign E[7] -1 40 40 40 40 40 -1
+extern assign E[14] -1 60 40 40 40 60 -1
+extern assign E[21] -1 40 40 40 30 40 -1
+extern assign E[28] -1 30 40 40 30 30 -1
+extern assign E[35] -1 40 40 40 40 60 -1
+extern assign E[42] -1 45 45 46 45 45 -1
+gosub 4003:1		                      
+goto 0:0
+
+#switch 98:4202
+WS_STAND$="palskill4" 
+set ws_bank = 98
+set ws_entry = 500
+extern assign E[0] -1 50 50 50 50 51 -1
+extern assign E[7] -1 40 40 40 60 40 -1
+extern assign E[14] -1 60 40 40 30 40 -1
+extern assign E[21] -1 40 40 40 40 40 -1
+extern assign E[28] -1 30 60 40 30 40 -1
+extern assign E[35] -1 40 40 30 40 40 -1
+extern assign E[42] -1 45 45 45 45 46 -1
+gosub 4003:1		                      
+goto 0:0
+
+#switch 98:4203
+WS_STAND$="palskill5" 
+set ws_bank = 98
+set ws_entry = 500
+extern assign E[0] -1 50 50 51 50 50 -1
+extern assign E[7] -1 40 30 40 60 40 -1
+extern assign E[14] -1 60 40 40 40 40 -1
+extern assign E[21] -1 40 40 30 30 40 -1
+extern assign E[28] -1 30 40 40 60 30 -1
+extern assign E[35] -1 40 40 30 40 60 -1
+extern assign E[42] -1 45 46 45 45 45 -1
+gosub 4003:1		                      
+goto 0:0
+
+#switch 98:4300
+if (museumnight_ct_done == 1)
+  goto 98:4310
+WS_STAND$="palmuseumstand" 
+set ws_bank = 98
+set ws_entry = 4310
+extern assign E[0] -1 50 50 50 50 51 -1
+extern assign E[7] -1 40 30 40 40 40 -1
+extern assign E[14] -1 60 30 40 40 30 -1
+extern assign E[21] -1 40 40 40 30 40 -1
+extern assign E[28] -1 30 40 30 60 30 -1
+extern assign E[35] -1 40 40 30 40 60 -1
+extern assign E[42] -1 46 45 45 45 45 -1
+gosub 4003:1		                      
+goto 0:0
+
+#switch 98:4320
+extern AI_GetEdictNumber bridgeplace hBridgeBot
+if (bothandle > 0) {
+  set hBot = bothandle
+} else
+  extern AI_GrabEntity musebot hBot
+extern AI_Wait hBot -1
+extern ANIM_MakeDumb hBot
+extern AI_GetXYZ hBridgebot @x @y @z
+extern AI_SetXYZ hBot @x @y @z
+extern playsound ui/gen/ui_gen_okay.wav
+set mn_lasers_off = 1
+target securityblock
+goto 0:0

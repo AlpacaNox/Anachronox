@@ -1,0 +1,16 @@
+#switch 2:1
+set anox_demo = 1
+set gamestart = 1
+set whack_has_taught_you_well = 1
+set mystech_active = 1
+set inv_linguinator = 1
+extern addnew_to_inventory "Old Vistin Pistol"
+extern equip_item "Old Vistin Pistol"
+extern addnew_to_inventory "Sender Standard Shieldcell"
+extern equip_item "Sender Standard Shieldcell"
+extern add_money 500
+extern addnew_to_inventory "Firespire"
+extern equip_item "Firespire"
+extern forceplayerlevel Boots 20
+extern SetPlayerCurrentHP Boots 2000
+goto 0:0

@@ -1,0 +1,366 @@
+#window 75:7500
+xyprintfx 56, 110, 1, 1, 1, 1, albertus, "Utility Generator"
+xyprintfx 184, 35, 1, 1, 1, 0, anox7, "Light Sys."
+xyprintfx 184, 64, 1, 1, 1, 0, anox7, "Con Panels"
+if ((levant1_bridge_extended == 0) && ((levant_whichterminal != 1) || ((levant_whichterminal == 1) && levant_showgood)))
+  xyprintfx 184, 94, 1, 0.699999988079, 0.699999988079, 0.699999988079, anox7, "Gen Bridge"
+if (levant1_bridge_extended && ((levant_whichterminal != 1) || ((levant_whichterminal == 1) && levant_showgood)))
+  xyprintfx 184, 94, 1, 1, 1, 0, anox7, "Gen Bridge"
+xyprintfx 62, 237, 1, 1, 1, 1, albertus, "Aux Generator"
+if (((levant1_gen2_power == 0) && (levant1_bypass == 0)) && ((levant_whichterminal != 7) || ((levant_whichterminal == 7) && levant_showbad)))
+  xyprintfx 22, 139, 1, 1, 0.5, 0, anox7, "Aux Gen"
+if (((levant1_gen2_power == 0) && levant1_bypass) && ((levant_whichterminal != 7) || ((levant_whichterminal == 7) && levant_showgood)))
+  xyprintfx 22, 139, 1, 0.699999988079, 0.699999988079, 0.699999988079, anox7, "Aux Gen"
+if (levant1_gen2_power && ((levant_whichterminal != 7) || ((levant_whichterminal == 7) && levant_showgood)))
+  xyprintfx 22, 139, 1, 1, 1, 0, anox7, "Aux Gen"
+if ((levant1_gen2_power == 0) && ((levant_whichterminal != 8) || ((levant_whichterminal == 8) && levant_showbad)))
+  xyprintfx 101, 148, 1, 1, 0.5, 0, anox7, "Distrib"
+if ((levant1_gen2_power && (levant1_divert == 0)) && ((levant_whichterminal != 8) || ((levant_whichterminal == 8) && levant_showgood)))
+  xyprintfx 101, 148, 1, 0.699999988079, 0.699999988079, 0.699999988079, anox7, "Distrib"
+if (levant1_divert && ((levant_whichterminal != 8) || ((levant_whichterminal == 8) && levant_showgood)))
+  xyprintfx 101, 148, 1, 1, 1, 0, anox7, "Distrib"
+if ((levant1_divert == 0) && ((levant_whichterminal != 2) || ((levant_whichterminal == 2) && levant_showbad)))
+  xyprintfx 186, 160, 1, 1, 0.5, 0, anox7, "Access Gate"
+if (((levant1_gen2_power && levant1_divert) && (levant1_door_is_open == 0)) && ((levant_whichterminal != 2) || ((levant_whichterminal == 2) && levant_showgood)))
+  xyprintfx 186, 160, 1, 0.699999988079, 0.699999988079, 0.699999988079, anox7, "Access Gate"
+if (((levant1_gen2_power && levant1_divert) && levant1_door_is_open) && ((levant_whichterminal != 2) || ((levant_whichterminal == 2) && levant_showgood)))
+  xyprintfx 186, 160, 1, 1, 1, 0, anox7, "Access Gate"
+if ((levant1_divert == 0) && ((levant_whichterminal != 3) || ((levant_whichterminal == 3) && levant_showbad)))
+  xyprintfx 186, 189, 1, 1, 0.5, 0, anox7, "Pwr Bridge"
+if ((levant1_divert && (levant2_bridge_extended == 0)) && ((levant_whichterminal != 3) || ((levant_whichterminal == 3) && levant_showgood)))
+  xyprintfx 186, 189, 1, 0.699999988079, 0.699999988079, 0.699999988079, anox7, "Pwr Bridge"
+if ((levant1_divert && levant2_bridge_extended) && ((levant_whichterminal != 3) || ((levant_whichterminal == 3) && levant_showgood)))
+  xyprintfx 186, 189, 1, 1, 1, 0, anox7, "Pwr Bridge"
+if (levant1_divert == 0)
+  xyprintfx 186, 218, 1, 1, 0.5, 0, anox7, "Aux Sys"
+if (levant1_divert)
+  xyprintfx 186, 218, 1, 1, 1, 0, anox7, "Aux Sys"
+xyprintfx 12, 384, 1, 1, 1, 1, albertus, "Lavatic"
+xyprintfx 12, 400, 1, 1, 1, 1, albertus, "Pump"
+xyprintfx 12, 416, 1, 1, 1, 1, albertus, "Systems"
+if ((levant2_fix_breaker == 0) && ((levant_whichterminal != 4) || ((levant_whichterminal == 4) && levant_showbad)))
+  xyprintfx 21, 265, 1, 1, 0.5, 0, anox7, "P Power"
+if (levant2_fix_breaker && ((levant_whichterminal != 4) || ((levant_whichterminal == 4) && levant_showgood)))
+  xyprintfx 21, 265, 1, 1, 1, 0, anox7, "P Power"
+if (levant2_pump_primed == 0)
+  xyprintfx 186, 287, 1, 1, 0.5, 0, anox7, "Filtration"
+if (levant2_pump_primed)
+  xyprintfx 186, 287, 1, 1, 1, 0, anox7, "Filtration"
+if (levant2_pump_primed == 0)
+  xyprintfx 186, 316, 1, 1, 0.5, 0, anox7, "Lower Pwr"
+if (levant2_pump_primed)
+  xyprintfx 186, 316, 1, 1, 1, 0, anox7, "Aux Pwr In"
+if ((levant2_fix_breaker == 0) && ((levant_whichterminal != 5) || ((levant_whichterminal == 5) && levant_showbad)))
+  xyprintfx 98, 278, 1, 1, 0.5, 0, anox7, "Pr Pump"
+if ((levant2_fix_breaker && (levant2_pump_primed == 0)) && ((levant_whichterminal != 5) || ((levant_whichterminal == 5) && levant_showgood)))
+  xyprintfx 98, 278, 1, 0.699999988079, 0.699999988079, 0.699999988079, anox7, "Pr Pump"
+if (levant2_pump_primed && ((levant_whichterminal != 5) || ((levant_whichterminal == 5) && levant_showgood)))
+  xyprintfx 98, 278, 1, 1, 1, 0, anox7, "Pr Pump"
+if ((levant2_pump_primed == 0) && ((levant_whichterminal != 6) || ((levant_whichterminal == 6) && levant_showbad)))
+  xyprintfx 186, 345, 1, 1, 0.5, 0, anox7, "Comp Sys"
+if ((levant2_pump_primed && (levant2_conveyors_on == 0)) && ((levant_whichterminal != 6) || ((levant_whichterminal == 6) && levant_showgood)))
+  xyprintfx 186, 345, 1, 0.699999988079, 0.699999988079, 0.699999988079, anox7, "Comp Sys"
+if (levant2_conveyors_on && ((levant_whichterminal != 6) || ((levant_whichterminal == 6) && levant_showgood)))
+  xyprintfx 186, 345, 1, 1, 1, 0, anox7, "Comp Sys"
+if (levant2_pump_primed == 0)
+  xyprintfx 186, 374, 1, 1, 0.5, 0, anox7, "Conveyance"
+if (levant2_pump_primed && (levant2_conveyors_on == 0))
+  xyprintfx 186, 374, 1, 0.699999988079, 0.699999988079, 0.699999988079, anox7, "Conveyance"
+if (levant2_conveyors_on)
+  xyprintfx 186, 374, 1, 1, 1, 0, anox7, "Conveyance"
+if (fought_magmatos == 0)
+  xyprintfx 189, 415, 1, 1, 0.5, 0, anox7, "Lavatic"
+if (fought_magmatos == 0)
+  xyprintfx 195, 425, 1, 1, 0.5, 0, anox7, "Pump"
+if (fought_magmatos)
+  xyprintfx 189, 415, 1, 1, 1, 0, anox7, "Lavatic"
+if (fought_magmatos)
+  xyprintfx 195, 425, 1, 1, 1, 0, anox7, "Pump"
+if (levant_whichterminal == 0)
+  xyprintfx 43, 8, 1, 1, 1, 0, anox6fat, "~STATUS PANEL"
+if (levant_whichterminal == 1)
+  xyprintfx 43, 8, 1, 1, 1, 0, anox6fat, "~GEN BRIDGE PAD"
+if (levant_whichterminal == 2)
+  xyprintfx 43, 8, 1, 1, 1, 0, anox6fat, "~ACCESS GATE PAD"
+if (levant_whichterminal == 3)
+  xyprintfx 43, 8, 1, 1, 1, 0, anox6fat, "~POWER BRIDGE PAD"
+if (levant_whichterminal == 4)
+  xyprintfx 43, 8, 1, 1, 1, 0, anox6fat, "~PRIMER CTRL PWR"
+if (levant_whichterminal == 5)
+  xyprintfx 43, 8, 1, 1, 1, 0, anox6fat, "~PRIMER PUMP PAD"
+if (levant_whichterminal == 6)
+  xyprintfx 43, 8, 1, 1, 1, 0, anox6fat, "~CONVEYANCE PAD"
+if (levant_whichterminal == 7)
+  xyprintfx 43, 8, 1, 1, 1, 0, anox6fat, "~AUX GEN PAD"
+if (levant_whichterminal == 8)
+  xyprintfx 43, 8, 1, 1, 1, 0, anox6fat, "~DISTRIBUTOR PAD"
+if (levant_whichterminal == 0)
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "General Status displayed"
+if ((levant_whichterminal == 1) && (levant1_bridge_extended == 0))
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "Gen Bridge retracted."
+if ((levant_whichterminal == 1) && levant1_bridge_extended)
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "Gen Bridge extended."
+if ((levant_whichterminal == 7) && (levant1_bypass == 0))
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "Check AuxGen Power!"
+if (((levant_whichterminal == 7) && levant1_bypass) && (levant1_gen2_power == 0))
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "Aux Generator: off."
+if ((levant_whichterminal == 7) && levant1_gen2_power)
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "Aux Generator: on."
+if ((levant_whichterminal == 8) && (levant1_gen2_power == 0))
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "Check AuxGen Power!"
+if (((levant_whichterminal == 8) && (levant1_divert == 0)) && levant1_gen2_power)
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "Distributor: off."
+if (((levant_whichterminal == 8) && levant1_gen2_power) && levant1_divert)
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "Distributor: on."
+if ((levant_whichterminal == 2) && (levant1_gen2_power == 0))
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "Check AuxGen Power!"
+if (((levant_whichterminal == 2) && levant1_gen2_power) && (levant1_divert == 0))
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "AuxGen not diverted!"
+if ((((levant_whichterminal == 2) && levant1_gen2_power) && levant1_divert) && (levant1_door_is_open == 0))
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "Access Door closed."
+if (((levant_whichterminal == 2) && levant1_gen2_power) && levant1_door_is_open)
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "Access Door open."
+if ((levant_whichterminal == 3) && (levant2_bridge_extended == 0))
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "Power Bridge retracted."
+if ((levant_whichterminal == 3) && levant2_bridge_extended)
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "Power Bridge extended."
+if ((levant_whichterminal == 4) && (levant2_fix_breaker == 0))
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "Circuit breaker blown!"
+if ((levant_whichterminal == 4) && levant2_fix_breaker)
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "Primer Controls: online."
+if ((levant2_fix_breaker == 0) && (levant_whichterminal == 5))
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "Check Primer Power!"
+if ((levant2_fix_breaker && (levant_whichterminal == 5)) && (levant2_pump_primed == 0))
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "Primer Pump: off."
+if ((levant2_fix_breaker && (levant_whichterminal == 5)) && levant2_pump_primed)
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "Primer Pump: on."
+if ((levant_whichterminal == 6) && (levant2_pump_primed == 0))
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "Check Primer Pump!"
+if (((levant_whichterminal == 6) && levant2_pump_primed) && (levant2_conveyors_on == 0))
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "MysTech Conveyance Off"
+if ((levant_whichterminal == 6) && (levant2_conveyors_on == 1))
+  xyprintfx 96, 465, 1, 1, 0.709999978542, 0.119999997318, anox7, "MysTech Conveyance On."
+startswitch {
+  extern AI_GrabEntity PlayerChar0 playerchar0_handle
+  set anox_interface_active = 1
+  set @current_gametime = func_gametime
+  extern CreateAPE2DControl push exitbutt 424 5 width=16 height=16 normal=/gameflow/levant/levant_quitbutton.tga bright=/gameflow/levant/levant_quitbutton_h.tga sequence=75:7506 gamevar=lev_button returnvalue=99
+  gosub 75:7507
+  if (current_panel_status == 0)
+    extern CreateAPE2DControl push activatebutt 202 458 width=55 height=17 nodrawflag=true gamevar=current_panel_clicked returnvalue=1 sequence=75:7508
+  goto 0:0
+}
+
+thinkswitch {
+  if (func_gametime > (@current_gametime + 100)) {
+    set anim_counter = (anim_counter + 1)
+    if (anim_counter > 3)
+      set anim_counter = 0
+    set @current_gametime = func_gametime
+  }
+  gosub 75:7505	              
+  goto 0:0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity playerchar0_handle
+  set anox_interface_active = 0
+  extern RemoveAPE2DControl exitbutt
+  if (current_panel_status == 0)
+    extern RemoveAPE2DControl activatebutt
+  goto 0:0
+}
+
+style "NULL"
+font "$MAINFONT"
+flags passive2d, TRUE
+xpos 192
+ypos 0
+width 288
+height 448
+background "levant/levant_interface1.tga" 
+image "levant/levant_interface2.tga" 0, 256
+if (current_panel_status == 1)
+  image "levant/light_on.tga" 0, 452
+if ((current_panel_status == 2) && levant_showbad)
+  image "levant/light_bad.tga" 0, 452
+image "levant/levant_messagewindow.tga" 91, 460
+if (fought_magmatos)
+  image "levant/level_1_all_on.tga" 7, 23
+if (fought_magmatos)
+  image "levant/level_2_all_on.tga" 7, 128
+if (fought_magmatos)
+  image "levant/level_3_all_on.tga" 7, 256
+image "levant/levant_messagewindow.tga" 39, 4
+
+#window 75:7510
+body "\n\n\n\nNEW WORKER OVERVIEW\n"
+body "Since the new Levant worker turnover rate is somewhat high, this terminal provides information about the workings of the Levant Machinery.\n\n"
+body "READING YOUR PADS\n"
+body "Pads indicate the workings of various machinery: Orange text means \"unpowered\", Gray means \"off\", and Yellow means \"on\". The color of the switch below each Pad will correspond to the state of that pad. Watch their colors carefully. You can only activate a pad's function if its button is gray (unlit).\n\n"
+body "Also, the control pad's function title in the whole big scheme of things will be blinking, so you know where you are, and what is going on.\n\n"
+body "THE UTILITY GENERATOR\n"
+body "This powers the main support systems, like the lights these terminals, and the generator bridge. This is supported by a double-backup system, and has never gone off.\n\n"
+body "THE AUX GENERATOR\n"
+body "This powers important things like the Aux Systems, the Power Bridge, and the main Access Gate to the Lower Levant.\n\n"
+body "LAVATIC PUMP SYSTEMS\n"
+body "These are the heart of the Mysterium Levant, the very machinery that draws the Mystech-laden lava out of the planet's core for sifting and processing. From the Filtration Systems to the MysTech Conveyance system, down to the huge Lavatic Pump itself -- this is what the Levant's all about!\n\n"
+body "Good luck, and try to last the week!"
+xyprintfx 36, 30, 1, 1, 1, 1, albertus, "MYSTERIUM LEVANT"
+startswitch {
+  extern CreateAPE2DControl push exitbutt 424 5 width=16 height=16 normal=/gameflow/levant/levant_quitbutton.tga bright=/gameflow/levant/levant_quitbutton_h.tga sequence=75:7511 gamevar=lev_button returnvalue=99
+}
+
+finishswitch {
+  extern RemoveAPE2DControl exitbutt
+}
+
+style "NULL"
+font "anox7"
+flags passive2d, TRUE
+flags noscroll, TRUE
+xpos 192
+ypos 0
+width 256
+height 480
+background "levant/levant_overview1.tga" 
+image "levant/levant_overview2.tga" 0, 256
+
+#switch 75:8010
+set levant_whichterminal = 1
+goto 75:7500
+
+#switch 75:8020
+set levant_whichterminal = 2
+goto 75:7500
+
+#switch 75:8070
+set levant_whichterminal = 7
+goto 75:7500
+
+#switch 75:8080
+set levant_whichterminal = 8
+goto 75:7500
+
+#switch 75:8030
+set levant_whichterminal = 3
+goto 75:7500
+
+#switch 75:8040
+set levant_whichterminal = 4
+goto 75:7500
+
+#switch 75:8050
+set levant_whichterminal = 5
+goto 75:7500
+
+#switch 75:8060
+set levant_whichterminal = 6
+goto 75:7500
+
+#switch 75:7506
+extern playsound ui/gen/ui_gen_done.wav
+closewindow 75:7500
+goto 0:0
+
+#switch 75:7508
+extern playsound ui/gen/ui_gen_buttonpress.wav
+set current_panel_status = 1
+if ((levant_whichterminal == 1) && (levant1_bridge_extended == 0)) {
+  closewindow 75:7500			                       
+  extern playscene levant_bridge1
+  set levant1_bridge_extended = 1
+} else if ((levant_whichterminal == 2) && (levant1_door_is_open == 0)) {
+  closewindow 75:7500			                       
+  set levant1_door_is_open = 1
+  extern playscene levant1_levgate
+} else if ((levant_whichterminal == 3) && (levant2_bridge_extended == 0)) {
+  closewindow 75:7500			                       
+  set levant2_bridge_extended = 1
+  target levbridge
+} else if ((levant_whichterminal == 4) && (levant2_fix_breaker == 0)) {
+  closewindow 75:7500			                       
+  set levant2_fix_breaker = 1
+  extern remove_from_inventory "MysFac Circuit Breaker"
+  extern stopambient ambi_levant2
+  extern loopambient ambi_levant2_b
+  extern playscene levant2_switch1
+} else if ((levant_whichterminal == 5) && (levant2_pump_primed == 0)) {
+  closewindow 75:7500			                       
+  set levant2_pump_primed = 1
+  extern playscene levant2_switch2
+} else if ((levant_whichterminal == 6) && (levant2_conveyors_on == 0)) {
+  closewindow 75:7500			                       
+  set levant2_conveyors_on = 1
+  extern playscene levant2_switch3
+} else if ((levant_whichterminal == 7) && (levant1_gen2_power == 0)) {
+  closewindow 75:7500			                       
+  set levant1_gen2_power = 1
+  extern playscene levant_generator2
+} else if ((levant_whichterminal == 8) && (levant1_divert == 0)) {
+  closewindow 75:7500			                       
+  set levant1_divert = 1
+  extern playscene levant_switch3
+}
+extern RemoveAPE2DControl activatebutt
+extern playsound ui/gen/ui_gen_goodmove.wav
+goto 0:0
+
+#switch 75:7507
+set current_panel_status = 1
+extern is_in_inventory "MysFac Circuit Breaker" @cb
+if ((levant_whichterminal == 1) && (levant1_bridge_extended == 0)) {
+  set current_panel_status = 0
+} else if ((((levant_whichterminal == 2) && (levant1_door_is_open == 0)) && levant1_gen2_power) && levant1_divert) {
+  set current_panel_status = 0
+} else if ((((levant_whichterminal == 2) && (levant1_door_is_open == 0)) && levant1_gen2_power) && (levant1_divert == 0)) {
+  set current_panel_status = 2
+} else if (((levant_whichterminal == 2) && (levant1_door_is_open == 0)) && (levant1_gen2_power == 0)) {
+  set current_panel_status = 2
+} else if ((levant_whichterminal == 3) && (levant2_bridge_extended == 0)) {
+  set current_panel_status = 0
+} else if (((levant_whichterminal == 4) && (levant2_fix_breaker == 0)) && @cb) {
+  set current_panel_status = 0
+} else if (((levant_whichterminal == 4) && (levant2_fix_breaker == 0)) && (@cb == 0)) {
+  set current_panel_status = 2
+} else if (((levant_whichterminal == 5) && (levant2_pump_primed == 0)) && levant2_fix_breaker) {
+  set current_panel_status = 0
+} else if (((levant_whichterminal == 5) && (levant2_pump_primed == 0)) && (levant2_fix_breaker == 0)) {
+  set current_panel_status = 2
+} else if (((levant_whichterminal == 6) && (levant2_conveyors_on == 0)) && levant2_pump_primed) {
+  set current_panel_status = 0
+} else if (((levant_whichterminal == 6) && (levant2_conveyors_on == 0)) && (levant2_pump_primed == 0)) {
+  set current_panel_status = 2
+} else if ((levant_whichterminal == 7) && (levant1_bypass == 0)) {
+  set current_panel_status = 2
+} else if (((levant_whichterminal == 7) && (levant1_gen2_power == 0)) && levant1_bypass) {
+  set current_panel_status = 0
+} else if (((levant_whichterminal == 8) && (levant1_divert == 0)) && levant1_gen2_power) {
+  set current_panel_status = 0
+} else if (((levant_whichterminal == 8) && (levant1_divert == 0)) && (levant1_gen2_power == 0))
+  set current_panel_status = 2
+goto 0:0
+
+#switch 75:7505
+if (current_panel_status == 2) {
+  set @poo = (@poo + 1)
+  if (@poo > 20) {
+    set @poo = 0
+    set levant_showbad = (1 - levant_showbad)
+    if (levant_showbad) {
+      extern playsound ui/gen/ui_gen_unavailable.wav
+    } else {
+      set @poo2 = (@poo2 + 1)
+      if (@poo2 > 5) {
+        set @poo2 = 0
+        set levant_showgood = (1 - levant_showgood)
+      }
+    }
+  }
+}
+goto 0:0
+
+#switch 75:7511
+extern playsound ui/gen/ui_gen_done.wav
+closewindow 75:7510
+goto 0:0
