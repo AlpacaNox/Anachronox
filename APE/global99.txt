@@ -1,0 +1,4542 @@
+#window 1:86
+title "Debug Menu"
+body "The Debug menu is for testing only. Entering the debug menu during gameplay WILL cause invalidation of future savegames."
+startswitch {
+  console "bind ESCAPE \"invoke 1:87\""
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+choice "View/Edit Player Stats" 1:8600
+choice "View/Edit Inventory" 1:8650
+choice "Edit Party/Money" 1:8850
+choice "View/Edit Battle Weapons / Skills" 1:8900
+choice "Find Location / Goto Location" 1:9100
+choice "Random Game Names" 151:7000
+choice "Exit" 1:87
+
+#window 1:8600
+title "View/Edit Player Stats"
+startswitch {
+  gosub 1:5
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+if (PARTY_BOOTS)
+  choice "Boots" 1:8601
+if (PARTY_GRUMPOS)
+  choice "Grumpos" 1:8602
+if (PARTY_RHO)
+  choice "Rho" 1:8603
+if (PARTY_PAL)
+  choice "Pal" 1:8604
+if (PARTY_DEMOCRATUS)
+  choice "Democratus" 1:8605
+if (PARTY_STILETTO)
+  choice "Stiletto" 1:8606
+if (PARTY_PACO)
+  choice "Paco" 1:8607
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8601
+title "View/Edit Boots' Stats"
+body "\nHitpts:  %d\n", @hp
+body "\nLevel:  %d\n", TempGlobal99Level
+body "\nWorldskill:  %d\n", @WhatWorldSkillLevel
+startswitch {
+  @chartoedit$="Boots" 
+  set @whoseworldskill = 1
+  extern CreateAPE2DControl push plushp 300 70 width=12 height=12 font="goodsym" message="+" gamevar=@blah returnvalue=1 sequence=1:8708 holdfocusflag=false
+  extern CreateAPE2DControl push minushp 320 70 width=12 height=12 font="goodsym" message="-" gamevar=@blah returnvalue=1 sequence=1:8709 holdfocusflag=false
+  extern CreateAPE2DControl edit pluslevel 300 90 width=50 height=12 gamevar=@newlevel$ sequence=1:8710
+  extern CreateAPE2DControl push plusworld 300 110 width=12 height=12 font="goodsym" message="+" gamevar=@whoseworldskill returnvalue=1 sequence=1:8712 holdfocusflag=false
+  extern CreateAPE2DControl push minusworld 320 110 width=12 height=12 font="goodsym" message="-" gamevar=@whoseworldskill returnvalue=1 sequence=1:8713 holdfocusflag=false
+}
+
+thinkswitch {
+  extern GetPlayerCurrentHP boots @hp
+  extern get_world_skill_level picklock @WhatWorldSkillLevel
+  set TempGlobal99Level = L[$@whoseworldskill$]
+}
+
+finishswitch {
+  extern RemoveAPE2DControl plushp
+  extern RemoveAPE2DControl minushp
+  extern RemoveAPE2DControl pluslevel
+  extern RemoveAPE2DControl minuslevel
+  extern RemoveAPE2DControl plusworld
+  extern RemoveAPE2DControl minusworld
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+choice "Player Stats Window" 1:8600
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8602
+title "View/Edit Grumpos' Stats"
+body "\nHitpts:  %d\n", @hp
+body "\nLevel:  %d\n", TempGlobal99Level
+body "\nWorldskill:  %d\n", @WhatWorldSkillLevel
+startswitch {
+  @chartoedit$="Grumpos" 
+  set @whoseworldskill = 2
+  extern CreateAPE2DControl push plushp 300 70 width=12 height=12 font="goodsym" message="+" gamevar=@blah returnvalue=1 sequence=1:8708 holdfocusflag=false
+  extern CreateAPE2DControl push minushp 320 70 width=12 height=12 font="goodsym" message="-" gamevar=@blah returnvalue=1 sequence=1:8709 holdfocusflag=false
+  extern CreateAPE2DControl edit pluslevel 300 90 width=50 height=12 gamevar=@newlevel$ sequence=1:8710
+  extern CreateAPE2DControl push plusworld 300 110 width=12 height=12 font="goodsym" message="+" gamevar=@whoseworldskill returnvalue=2 sequence=1:8712 holdfocusflag=false
+  extern CreateAPE2DControl push minusworld 320 110 width=12 height=12 font="goodsym" message="-" gamevar=@whoseworldskill returnvalue=2 sequence=1:8713 holdfocusflag=false
+}
+
+thinkswitch {
+  extern GetPlayerCurrentHP grumpos @hp
+  extern get_world_skill_level yammer @WhatWorldSkillLevel
+  set TempGlobal99Level = L[$@whoseworldskill$]
+}
+
+finishswitch {
+  extern RemoveAPE2DControl plushp
+  extern RemoveAPE2DControl minushp
+  extern RemoveAPE2DControl pluslevel
+  extern RemoveAPE2DControl minuslevel
+  extern RemoveAPE2DControl plusworld
+  extern RemoveAPE2DControl minusworld
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+choice "Player Stats Window" 1:8600
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8603
+title "View/Edit Rho's Stats"
+body "\nHitpts:  %d\n", @hp
+body "\nLevel:  %d\n", TempGlobal99Level
+body "\nWorldskill:  %d\n", @WhatWorldSkillLevel
+startswitch {
+  @chartoedit$="Rho" 
+  set @whoseworldskill = 3
+  extern CreateAPE2DControl push plushp 300 70 width=12 height=12 font="goodsym" message="+" gamevar=@blah returnvalue=1 sequence=1:8708 holdfocusflag=false
+  extern CreateAPE2DControl push minushp 320 70 width=12 height=12 font="goodsym" message="-" gamevar=@blah returnvalue=1 sequence=1:8709 holdfocusflag=false
+  extern CreateAPE2DControl edit pluslevel 300 90 width=50 height=12 gamevar=@newlevel$ sequence=1:8710
+  extern CreateAPE2DControl push plusworld 300 110 width=12 height=12 font="goodsym" message="+" gamevar=@whoseworldskill returnvalue=3 sequence=1:8712 holdfocusflag=false
+  extern CreateAPE2DControl push minusworld 320 110 width=12 height=12 font="goodsym" message="-" gamevar=@whoseworldskill returnvalue=3 sequence=1:8713 holdfocusflag=false
+}
+
+thinkswitch {
+  extern GetPlayerCurrentHP rho @hp
+  extern get_world_skill_level analyze @WhatWorldSkillLevel
+  set TempGlobal99Level = L[$@whoseworldskill$]
+}
+
+finishswitch {
+  extern RemoveAPE2DControl plushp
+  extern RemoveAPE2DControl minushp
+  extern RemoveAPE2DControl pluslevel
+  extern RemoveAPE2DControl minuslevel
+  extern RemoveAPE2DControl plusworld
+  extern RemoveAPE2DControl minusworld
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+choice "Player Stats Window" 1:8600
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8604
+title "View/Edit Pal's Stats"
+body "\nHitpts:  %d\n", @hp
+body "\nLevel:  %d\n", TempGlobal99Level
+body "\nWorldskill:  %d\n", @WhatWorldSkillLevel
+startswitch {
+  @chartoedit$="Pal" 
+  set @whoseworldskill = 4
+  extern CreateAPE2DControl push plushp 300 70 width=12 height=12 font="goodsym" message="+" gamevar=@blah returnvalue=1 sequence=1:8708 holdfocusflag=false
+  extern CreateAPE2DControl push minushp 320 70 width=12 height=12 font="goodsym" message="-" gamevar=@blah returnvalue=1 sequence=1:8709 holdfocusflag=false
+  extern CreateAPE2DControl edit pluslevel 300 90 width=50 height=12 gamevar=@newlevel$ sequence=1:8710
+  extern CreateAPE2DControl push plusworld 300 110 width=12 height=12 font="goodsym" message="+" gamevar=@whoseworldskill returnvalue=4 sequence=1:8712 holdfocusflag=false
+  extern CreateAPE2DControl push minusworld 320 110 width=12 height=12 font="goodsym" message="-" gamevar=@whoseworldskill returnvalue=4 sequence=1:8713 holdfocusflag=false
+}
+
+thinkswitch {
+  extern GetPlayerCurrentHP pal @hp
+  extern get_world_skill_level comptalk @WhatWorldSkillLevel
+  set TempGlobal99Level = L[$@whoseworldskill$]
+}
+
+finishswitch {
+  extern RemoveAPE2DControl plushp
+  extern RemoveAPE2DControl minushp
+  extern RemoveAPE2DControl pluslevel
+  extern RemoveAPE2DControl minuslevel
+  extern RemoveAPE2DControl plusworld
+  extern RemoveAPE2DControl minusworld
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+choice "Player Stats Window" 1:8600
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8605
+title "View/Edit Democratus' Stats"
+body "\nHitpts:  %d\n", @hp
+body "\nLevel:  %d\n", TempGlobal99Level
+body "\nWorldskill:  %d\n", @WhatWorldSkillLevel
+startswitch {
+  @chartoedit$="Democratus" 
+  set @whoseworldskill = 5
+  extern CreateAPE2DControl push plushp 300 70 width=12 height=12 font="goodsym" message="+" gamevar=@blah returnvalue=1 sequence=1:8708 holdfocusflag=false
+  extern CreateAPE2DControl push minushp 320 70 width=12 height=12 font="goodsym" message="-" gamevar=@blah returnvalue=1 sequence=1:8709 holdfocusflag=false
+  extern CreateAPE2DControl edit pluslevel 300 90 width=50 height=12 gamevar=@newlevel$ sequence=1:8710
+  extern CreateAPE2DControl push plusworld 300 110 width=12 height=12 font="goodsym" message="+" gamevar=@whoseworldskill returnvalue=5 sequence=1:8712 holdfocusflag=false
+  extern CreateAPE2DControl push minusworld 320 110 width=12 height=12 font="goodsym" message="-" gamevar=@whoseworldskill returnvalue=5 sequence=1:8713 holdfocusflag=false
+}
+
+thinkswitch {
+  extern GetPlayerCurrentHP democratus @hp
+  extern get_world_skill_level tractor @WhatWorldSkillLevel
+  set TempGlobal99Level = L[$@whoseworldskill$]
+}
+
+finishswitch {
+  extern RemoveAPE2DControl plushp
+  extern RemoveAPE2DControl minushp
+  extern RemoveAPE2DControl pluslevel
+  extern RemoveAPE2DControl minuslevel
+  extern RemoveAPE2DControl plusworld
+  extern RemoveAPE2DControl minusworld
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+choice "Player Stats Window" 1:8600
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8606
+title "View/Edit Stiletto's Stats"
+body "\nHitpts:  %d\n", @hp
+body "\nLevel:  %d\n", TempGlobal99Level
+body "\nWorldskill:  %d\n", @WhatWorldSkillLevel
+startswitch {
+  @chartoedit$="Stiletto" 
+  set @whoseworldskill = 6
+  extern CreateAPE2DControl push plushp 300 70 width=12 height=12 font="goodsym" message="+" gamevar=@blah returnvalue=1 sequence=1:8708 holdfocusflag=false
+  extern CreateAPE2DControl push minushp 320 70 width=12 height=12 font="goodsym" message="-" gamevar=@blah returnvalue=1 sequence=1:8709 holdfocusflag=false
+  extern CreateAPE2DControl edit pluslevel 300 90 width=50 height=12 gamevar=@newlevel$ sequence=1:8710
+  extern CreateAPE2DControl push plusworld 300 110 width=12 height=12 font="goodsym" message="+" gamevar=@whoseworldskill returnvalue=6 sequence=1:8712 holdfocusflag=false
+  extern CreateAPE2DControl push minusworld 320 110 width=12 height=12 font="goodsym" message="-" gamevar=@whoseworldskill returnvalue=6 sequence=1:8713 holdfocusflag=false
+}
+
+thinkswitch {
+  extern GetPlayerCurrentHP stiletto @hp
+  extern get_world_skill_level throwloonie @WhatWorldSkillLevel
+  set TempGlobal99Level = L[$@whoseworldskill$]
+}
+
+finishswitch {
+  extern RemoveAPE2DControl plushp
+  extern RemoveAPE2DControl minushp
+  extern RemoveAPE2DControl pluslevel
+  extern RemoveAPE2DControl minuslevel
+  extern RemoveAPE2DControl plusworld
+  extern RemoveAPE2DControl minusworld
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+choice "Player Stats Window" 1:8600
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8607
+title "View/Edit Paco's Stats"
+body "\nHitpts:  %d\n", @hp
+body "\nLevel:  %d\n", TempGlobal99Level
+body "\nWorldskill:  %d\n", @WhatWorldSkillLevel
+startswitch {
+  @chartoedit$="Paco" 
+  set @whoseworldskill = 7
+  extern CreateAPE2DControl push plushp 300 70 width=12 height=12 font="goodsym" message="+" gamevar=@blah returnvalue=1 sequence=1:8708 holdfocusflag=false
+  extern CreateAPE2DControl push minushp 320 70 width=12 height=12 font="goodsym" message="-" gamevar=@blah returnvalue=1 sequence=1:8709 holdfocusflag=false
+  extern CreateAPE2DControl edit pluslevel 300 90 width=50 height=12 gamevar=@newlevel$ sequence=1:8710
+  extern CreateAPE2DControl push plusworld 300 110 width=12 height=12 font="goodsym" message="+" gamevar=@whoseworldskill returnvalue=7 sequence=1:8712 holdfocusflag=false
+  extern CreateAPE2DControl push minusworld 320 110 width=12 height=12 font="goodsym" message="-" gamevar=@whoseworldskill returnvalue=7 sequence=1:8713 holdfocusflag=false
+}
+
+thinkswitch {
+  extern GetPlayerCurrentHP paco @hp
+  extern get_world_skill_level ragemight @WhatWorldSkillLevel
+  set TempGlobal99Level = L[$@whoseworldskill$]
+}
+
+finishswitch {
+  extern RemoveAPE2DControl plushp
+  extern RemoveAPE2DControl minushp
+  extern RemoveAPE2DControl pluslevel
+  extern RemoveAPE2DControl minuslevel
+  extern RemoveAPE2DControl plusworld
+  extern RemoveAPE2DControl minusworld
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+choice "Player Stats Window" 1:8600
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8650
+title "View/Edit Inventory"
+body "\n"
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+choice "Items" 1:8655
+choice "Beat Weapons" 1:8660
+choice "MysTech" 1:8665
+choice "Shield" 1:8675
+choice "Aux" 1:8680
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8655
+title "View/Edit Inventory Items"
+body "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+xyprintfx 46, 178, 1, 0, 1, 1, _message, "Add Item"
+xyprintfx 46, 208, 1, 0, 1, 1, _message, "Remove Item"
+if (@debug_item_count)
+  xyprintfx 204, 80, 1, 0, 1, 1, _message, "You have %d", @debug_item_count
+startswitch {
+  set @debug_item_count = 0
+  set @dbgdb_add = 1
+  @dbgdb_name$="Not_Ready" 
+  extern gdb_listbox 170 75 186 100 item @dbgdb_name$
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8656
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8656
+}
+
+thinkswitch {
+  if (@dbgdb_name$ == "Cancel") {
+    closewindow 1:8655
+    gosub 1:8650
+  } else if (@dbgdb_name$ != "Not_Ready") {
+    if (@dbgdb_add == 1) {
+      extern addnew_to_inventory @dbgdb_name$
+      extern is_in_inventory @dbgdb_name$ @debug_item_count
+      @dbgdb_name$="Not_Ready" 
+    }
+    if (@dbgdb_add == 2) {
+      extern remove_from_inventory @dbgdb_name$
+      extern is_in_inventory @dbgdb_name$ @debug_item_count
+      @dbgdb_name$="Not_Ready" 
+    }
+  }
+}
+
+finishswitch {
+  extern RemoveAPE2DControl additem
+  extern RemoveAPE2DControl remitem
+}
+
+font "goodsym"
+flags passive2d, TRUE
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 330
+height 250
+
+#window 1:8660
+title "Add / Remove Beat Weapons"
+body "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+xyprintfx 46, 178, 1, 0, 1, 1, _message, "Add to Inventory"
+xyprintfx 46, 208, 1, 0, 1, 1, _message, "Remove from Inventory"
+if (@debug_item_count)
+  xyprintfx 204, 80, 1, 0, 1, 1, _message, "You have %d", @debug_item_count
+startswitch {
+  set @debug_item_count = 0
+  set @dbgdb_add = 1
+  @dbgdb_name$="Not_Ready" 
+  extern gdb_listbox 170 75 186 100 weapon @dbgdb_name$
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8656
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8656
+}
+
+thinkswitch {
+  if (@dbgdb_name$ == "Cancel") {
+    closewindow 1:8660
+    gosub 1:8650
+  } else if (@dbgdb_name$ != "Not_Ready") {
+    if (@dbgdb_add == 1) {
+      extern addnew_to_inventory @dbgdb_name$
+      extern is_in_inventory @dbgdb_name$ @debug_item_count
+      @dbgdb_name$="Not_Ready" 
+    }
+    if (@dbgdb_add == 2) {
+      extern remove_from_inventory @dbgdb_name$
+      extern is_in_inventory @dbgdb_name$ @debug_item_count
+      @dbgdb_name$="Not_Ready" 
+    }
+  }
+}
+
+finishswitch {
+  extern RemoveAPE2DControl additem
+  extern RemoveAPE2DControl remitem
+}
+
+font "goodsym"
+flags passive2d, TRUE
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 330
+height 250
+
+#window 1:8665
+title "Add / Remove MysTech"
+body "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+xyprintfx 46, 178, 1, 0, 1, 1, _message, "Add MysTech"
+xyprintfx 46, 208, 1, 0, 1, 1, _message, "Remove MysTech"
+if (@debug_item_count)
+  xyprintfx 204, 80, 1, 0, 1, 1, _message, "You have %d", @debug_item_count
+startswitch {
+  set @debug_item_count = 0
+  set @dbgdb_add = 1
+  @dbgdb_name$="Not_Ready" 
+  extern gdb_listbox 170 75 186 100 mystech @dbgdb_name$
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8656
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8656
+}
+
+thinkswitch {
+  if (@dbgdb_name$ == "Cancel") {
+    closewindow 1:8665
+    gosub 1:8650
+  } else if (@dbgdb_name$ != "Not_Ready") {
+    if (@dbgdb_add == 1) {
+      extern addnew_to_inventory @dbgdb_name$
+      extern is_in_inventory @dbgdb_name$ @debug_item_count
+      @dbgdb_name$="Not_Ready" 
+    }
+    if (@dbgdb_add == 2) {
+      extern remove_from_inventory @dbgdb_name$
+      extern is_in_inventory @dbgdb_name$ @debug_item_count
+      @dbgdb_name$="Not_Ready" 
+    }
+  }
+}
+
+finishswitch {
+  extern RemoveAPE2DControl additem
+  extern RemoveAPE2DControl remitem
+}
+
+font "goodsym"
+flags passive2d, TRUE
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 330
+height 250
+
+#window 1:8670
+title "Add / Remove Battleskills"
+body "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+xyprintfx 46, 178, 1, 0, 1, 1, _message, "Add BattleSkill"
+xyprintfx 46, 208, 1, 0, 1, 1, _message, "Remove BattleSkill"
+startswitch {
+  set @debug_item_count = 0
+  set @dbgdb_add = 1
+  @dbgdb_name$="Not_Ready" 
+  extern gdb_listbox 170 75 186 100 battleskill @dbgdb_name$
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8656
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8656
+}
+
+thinkswitch {
+  if (@dbgdb_name$ == "Cancel") {
+    closewindow 1:8670
+    gosub 1:8650
+  } else if (@dbgdb_name$ != "Not_Ready") {
+    if (@dbgdb_add == 1) {
+      extern add_battle_skill @dbgdb_name$
+      @dbgdb_name$="Not_Ready" 
+    }
+    if (@dbgdb_add == 2) {
+      extern remove_battle_skill @dbgdb_name$
+      @dbgdb_name$="Not_Ready" 
+    }
+  }
+}
+
+finishswitch {
+  extern RemoveAPE2DControl additem
+  extern RemoveAPE2DControl remitem
+}
+
+font "goodsym"
+flags passive2d, TRUE
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 330
+height 250
+
+#window 1:8675
+title "Add / Remove Shield"
+body "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+xyprintfx 46, 178, 1, 0, 1, 1, _message, "Add Shield"
+xyprintfx 46, 208, 1, 0, 1, 1, _message, "Remove Shield"
+if (@debug_item_count)
+  xyprintfx 204, 80, 1, 0, 1, 1, _message, "You have %d", @debug_item_count
+startswitch {
+  set @debug_item_count = 0
+  set @dbgdb_add = 1
+  @dbgdb_name$="Not_Ready" 
+  extern gdb_listbox 170 75 186 100 shield @dbgdb_name$
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8656
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8656
+}
+
+thinkswitch {
+  if (@dbgdb_name$ == "Cancel") {
+    closewindow 1:8675
+    gosub 1:8650
+  } else if (@dbgdb_name$ != "Not_Ready") {
+    if (@dbgdb_add == 1) {
+      extern addnew_to_inventory @dbgdb_name$
+      extern is_in_inventory @dbgdb_name$ @debug_item_count
+      @dbgdb_name$="Not_Ready" 
+    }
+    if (@dbgdb_add == 2) {
+      extern remove_from_inventory @dbgdb_name$
+      extern is_in_inventory @dbgdb_name$ @debug_item_count
+      @dbgdb_name$="Not_Ready" 
+    }
+  }
+}
+
+finishswitch {
+  extern RemoveAPE2DControl additem
+  extern RemoveAPE2DControl remitem
+}
+
+font "goodsym"
+flags passive2d, TRUE
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 330
+height 250
+
+#window 1:8680
+title "Add / Remove Aux"
+body "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+xyprintfx 46, 178, 1, 0, 1, 1, _message, "Add Aux"
+xyprintfx 46, 208, 1, 0, 1, 1, _message, "Remove Aux"
+if (@debug_item_count)
+  xyprintfx 204, 80, 1, 0, 1, 1, _message, "You have %d", @debug_item_count
+startswitch {
+  set @debug_item_count = 0
+  set @dbgdb_add = 1
+  @dbgdb_name$="Not_Ready" 
+  extern gdb_listbox 170 75 186 100 aux @dbgdb_name$
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8656
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8656
+}
+
+thinkswitch {
+  if (@dbgdb_name$ == "Cancel") {
+    closewindow 1:8680
+    gosub 1:8650
+  } else if (@dbgdb_name$ != "Not_Ready") {
+    if (@dbgdb_add == 1) {
+      extern addnew_to_inventory @dbgdb_name$
+      extern is_in_inventory @dbgdb_name$ @debug_item_count
+      @dbgdb_name$="Not_Ready" 
+    }
+    if (@dbgdb_add == 2) {
+      extern remove_from_inventory @dbgdb_name$
+      extern is_in_inventory @dbgdb_name$ @debug_item_count
+      @dbgdb_name$="Not_Ready" 
+    }
+  }
+}
+
+finishswitch {
+  extern RemoveAPE2DControl additem
+  extern RemoveAPE2DControl remitem
+}
+
+font "goodsym"
+flags passive2d, TRUE
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 330
+height 250
+
+#window 1:8700
+title "View/Edit Global Variables"
+body "\n"
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+choice "Set Variable" 1:8705
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8705
+title "View/Edit Global Variables"
+body "Enter a variable name, value, select type, and click done.\n"
+body "Currently Entered:\n"
+body "gamevar  (%s)\n", @dbvar$
+body "value    (%s)\n", @dbvarv$
+body "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+body "If creating a string do NOT add the '$' to the end of the variable name!"
+xyprintfx 25, 80, 1, 0, 1, 1, _message, "Enter Gamevar"
+xyprintfx 25, 120, 1, 0, 1, 1, _message, "Enter Value"
+xyprintfx 46, 198, 1, 0, 1, 1, _message, "Number"
+xyprintfx 46, 228, 1, 0, 1, 1, _message, "String"
+startswitch {
+  set @dbvaris = 1
+  extern CreateAPE2DControl edit dbgamevar 175 130 width=165 height=12 gamevar=@dbvar$
+  extern CreateAPE2DControl edit dbgamevarv 175 170 width=165 height=12 gamevar=@dbvarv$
+  extern CreateAPE2DControl push dbnumber 170 228 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbvaris returnvalue=1 sequence=1:8707
+  extern CreateAPE2DControl push dbstring 170 254 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbvaris returnvalue=2 sequence=1:8707
+  extern CreateAPE2DControl push dbdone 175 200 width=100 height=12 font="goodsym" message="Make Var" returnvalue=0 gamevar=@bladyblah sequence=1:8718
+  extern CreateAPE2DControl push dbcancel 290 200 width=60 height=12 font="goodsym" message="Cancel" returnvalue=0 gamevar=@bladyblah sequence=1:8719
+}
+
+finishswitch {
+  extern RemoveAPE2DControl dbgamevar
+  extern RemoveAPE2DControl dbgamevarv
+  extern RemoveAPE2DControl dbstring
+  extern RemoveAPE2DControl dbnumber
+  extern RemoveAPE2DControl dbdone
+  extern RemoveAPE2DControl dbcancel
+}
+
+font "goodsym"
+flags passive2d, TRUE
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+height 320
+
+#window 1:8750
+title "Choose Map"
+body "Pick \"planet:\""
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+choice "(1) Anachronox" 1:8751
+choice "(2) Sender Station" 1:8757
+choice "(3) Sunder" 1:8761
+choice "(4) Democratus Ring" 1:8763
+choice "(5) Verilent Hive" 1:8765
+choice "(6) Hephaestus" 1:8766
+choice "(7) Krapton" 1:8770
+choice "(8) Democratus Surface" 1:8772
+choice "(9) Limbus" 1:8776
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8751
+title "Anachronox"
+body "Choose area:"
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+choice "Bricks North (Tours, Junkyard, Platform)" 1:8752
+choice "Bricks South (Rowdy's, Fountain Spiral, etc.)" 1:8753
+choice "Bricks East (Detta, OneGate)" 1:8754
+choice "Bricks West (Casinox, Tenements, Tunnels)" 1:8755
+choice "Choose Planet Window" 1:8750
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8752
+title "Bricks North"
+body "Choose map:                   from:\n"
+body "\nTours Area (tours)\n"
+body "\nTours Station (tours2)\n"
+body "\nPlatform Area (bricksb)\n"
+body "\nJunkyard Area (hovel)\n\n"
+startswitch {
+  extern CreateAPE2DControl push fromtours2top 280 80 width=60 height=12 font="procharl" message="tours2top" sequence=1:8756 gamevar=@map returnvalue=1
+  extern CreateAPE2DControl push fromtours2 345 80 width=45 height=12 font="procharl" message="tours2" sequence=1:8756 gamevar=@map returnvalue=2
+  extern CreateAPE2DControl push frombricksb 395 80 width=45 height=12 font="procharl" message="bricksb" sequence=1:8756 gamevar=@map returnvalue=3
+  extern CreateAPE2DControl push fromss 305 100 width=15 height=12 font="procharl" message="ss" sequence=1:8756 gamevar=@map returnvalue=4
+  extern CreateAPE2DControl push fromtourstop 325 100 width=60 height=12 font="procharl" message="tourstop" sequence=1:8756 gamevar=@map returnvalue=5
+  extern CreateAPE2DControl push fromtours 390 100 width=40 height=12 font="procharl" message="tours" sequence=1:8756 gamevar=@map returnvalue=6
+  extern CreateAPE2DControl push fromdettas 435 100 width=40 height=12 font="procharl" message="dettas" sequence=1:8756 gamevar=@map returnvalue=7
+  extern CreateAPE2DControl push default 310 120 width=45 height=12 font="procharl" message="default" sequence=1:8756 gamevar=@map returnvalue=8
+  extern CreateAPE2DControl push bricksb 360 120 width=40 height=12 font="procharl" message="tours" sequence=1:8756 gamevar=@map returnvalue=9
+  extern CreateAPE2DControl push frombricksc 405 120 width=45 height=12 font="procharl" message="bricksc" sequence=1:8756 gamevar=@map returnvalue=10
+  extern CreateAPE2DControl push frombricksc2 300 140 width=50 height=12 font="procharl" message="bricksc2" sequence=1:8756 gamevar=@map returnvalue=11
+}
+
+finishswitch {
+  extern RemoveAPE2DControl fromtours2top
+  extern RemoveAPE2DControl fromtours2
+  extern RemoveAPE2DControl frombricksb
+  extern RemoveAPE2DControl fromss
+  extern RemoveAPE2DControl fromtourstop
+  extern RemoveAPE2DControl fromtours
+  extern RemoveAPE2DControl fromdettas
+  extern RemoveAPE2DControl default
+  extern RemoveAPE2DControl bricksb
+  extern RemoveAPE2DControl frombricksc
+  extern RemoveAPE2DControl frombricksc2
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 100
+ypos 32
+width 380
+choice "Anachronox Area Window" 1:8751
+choice "Choose Planet Window" 1:8750
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8753
+title "Bricks South"
+body "Choose map:                          from:\n"
+body "\nRowdy's Bar (rowdys)\n"
+body "\nFountain Spiral (bricksd)\n"
+body "\nWhackmaster Jacks (whacks)\n"
+body "\nZordo's Shop (zordos)\n"
+body "\nMysTech Museum (mmuseum)\n\n"
+startswitch {
+  extern CreateAPE2DControl push default 300 80 width=45 height=12 font="procharl" message="default" sequence=1:8756 gamevar=@map returnvalue=12
+  extern CreateAPE2DControl push fromwhacks 320 100 width=40 height=12 font="procharl" message="whacks" sequence=1:8756 gamevar=@map returnvalue=13
+  extern CreateAPE2DControl push fromrowdys 365 100 width=40 height=12 font="procharl" message="rowdys" sequence=1:8756 gamevar=@map returnvalue=14
+  extern CreateAPE2DControl push frombricksc 410 100 width=45 height=12 font="procharl" message="bricksc" sequence=1:8756 gamevar=@map returnvalue=15
+  extern CreateAPE2DControl push fromzordos 460 100 width=40 height=12 font="procharl" message="zordos" sequence=1:8756 gamevar=@map returnvalue=16
+  extern CreateAPE2DControl push frommmuseum 505 100 width=45 height=12 font="procharl" message="mmuseum" sequence=1:8756 gamevar=@map returnvalue=17
+  extern CreateAPE2DControl push towhacks 350 120 width=45 height=12 font="procharl" message="default" sequence=1:8756 gamevar=@map returnvalue=18
+  extern CreateAPE2DControl push tozordos 300 140 width=45 height=12 font="procharl" message="default" sequence=1:8756 gamevar=@map returnvalue=19
+  extern CreateAPE2DControl push tommuseum 350 160 width=45 height=12 font="procharl" message="default" sequence=1:8756 gamevar=@map returnvalue=20
+}
+
+finishswitch {
+  extern RemoveAPE2DControl default
+  extern RemoveAPE2DControl fromwhacks
+  extern RemoveAPE2DControl fromrowdys
+  extern RemoveAPE2DControl frombricksc
+  extern RemoveAPE2DControl fromzordos
+  extern RemoveAPE2DControl frommmuseum
+  extern RemoveAPE2DControl towhacks
+  extern RemoveAPE2DControl tozordos
+  extern RemoveAPE2DControl tommuseum
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 100
+ypos 32
+width 460
+choice "Anachronox Area Window" 1:8751
+choice "Choose Planet Window" 1:8750
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8754
+title "Bricks East"
+body "Choose map:                       from:\n"
+body "\nDetta's Fortress (fortress) <-- not built yet!\n"
+body "\nOneGate Platform (onegate)\n\n"
+startswitch {
+  extern CreateAPE2DControl push default 340 100 width=45 height=12 font="procharl" message="default" sequence=1:8756 gamevar=@map returnvalue=21
+}
+
+finishswitch {
+  extern RemoveAPE2DControl default
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 100
+ypos 32
+width 420
+choice "Anachronox Area Window" 1:8751
+choice "Choose Planet Window" 1:8750
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8755
+title "Bricks West"
+body "Choose map:                       from:\n"
+body "\nCasinox Overlook (bricksc)\n"
+body "\nCasinox (casinox)\n"
+body "\nTenements (tenements)\n"
+body "\nGhalla's (bricksc2)\n"
+body "\nFrank's Flophouse (franks)\n"
+body "\nTenement 5 (grumpos)\n"
+body "\nUpper Tunnels (mystech1)\n"
+body "\nLower Tunnels (mystech2)\n"
+body "\nUpper Sewagic (sewagic1)\n"
+body "\nLower Sewagic (sewagic2)\n\n"
+startswitch {
+  extern CreateAPE2DControl push tobricksc 340 80 width=50 height=12 font="procharl" message="bricksc2" sequence=1:8756 gamevar=@map returnvalue=22
+  extern CreateAPE2DControl push frombricksd 395 80 width=45 height=12 font="procharl" message="bricksd" sequence=1:8756 gamevar=@map returnvalue=23
+  extern CreateAPE2DControl push frombricksb 445 80 width=45 height=12 font="procharl" message="bricksb" sequence=1:8756 gamevar=@map returnvalue=24
+  extern CreateAPE2DControl push tocasinox 260 100 width=45 height=12 font="procharl" message="default" sequence=1:8756 gamevar=@map returnvalue=25
+  extern CreateAPE2DControl push frombricksc2 300 120 width=50 height=12 font="procharl" message="bricksc2" sequence=1:8756 gamevar=@map returnvalue=26
+  extern CreateAPE2DControl push fromgrumpos 355 120 width=45 height=12 font="procharl" message="grumpos" sequence=1:8756 gamevar=@map returnvalue=27
+  extern CreateAPE2DControl push frommystech1door 405 120 width=70 height=12 font="procharl" message="mystech1door" sequence=1:8756 gamevar=@map returnvalue=28
+  extern CreateAPE2DControl push frommystech1 480 120 width=50 height=12 font="procharl" message="mystech1" sequence=1:8756 gamevar=@map returnvalue=29
+  extern CreateAPE2DControl push fromfranks 535 120 width=40 height=12 font="procharl" message="franks" sequence=1:8756 gamevar=@map returnvalue=30
+  extern CreateAPE2DControl push frombricksc 270 140 width=45 height=12 font="procharl" message="bricksc" sequence=1:8756 gamevar=@map returnvalue=31
+  extern CreateAPE2DControl push fromhovel 320 140 width=40 height=12 font="procharl" message="hovel" sequence=1:8756 gamevar=@map returnvalue=32
+  extern CreateAPE2DControl push fromtenements 365 140 width=60 height=12 font="procharl" message="tenements" sequence=1:8756 gamevar=@map returnvalue=33
+  extern CreateAPE2DControl push tofranks 340 160 width=45 height=12 font="procharl" message="default" sequence=1:8756 gamevar=@map returnvalue=34
+  extern CreateAPE2DControl push togrumpos 300 180 width=45 height=12 font="procharl" message="defualt" sequence=1:856 gamevar=@map returnvalue=35
+  extern CreateAPE2DControl push fromtenementsdoor 330 200 width=80 height=12 font="procharl" message="tenementsdoor" sequence=1:8756 gamevar=@map returnvalue=36
+  extern CreateAPE2DControl push tomystech1 415 200 width=60 height=12 font="procharl" message="tenements" sequence=1:8756 gamevar=@map returnvalue=37
+  extern CreateAPE2DControl push fromsewagic1 480 200 width=50 height=12 font="procharl" message="sewagic1" sequence=1:8756 gamevar=@map returnvalue=38
+  extern CreateAPE2DControl push tomystech2 330 220 width=45 height=12 font="procharl" message="default" sequence=1:8756 gamevar=@map returnvalue=39
+  extern CreateAPE2DControl push tosewagic1 330 240 width=45 height=12 font="procharl" message="default" sequence=1:8756 gamevar=@map returnvalue=40
+  extern CreateAPE2DControl push frommystech2 330 260 width=50 height=12 font="procharl" message="mystech2" sequence=1:8756 gamevar=@map returnvalue=41
+  extern CreateAPE2DControl push tosewagic2 385 260 width=50 height=12 font="procharl" message="sewagic1" sequence=1:8756 gamevar=@map returnvalue=42
+}
+
+finishswitch {
+  extern RemoveAPE2DControl tobricksc
+  extern RemoveAPE2DControl frombricksd
+  extern RemoveAPE2DControl frombricksb
+  extern RemoveAPE2DControl tocasinox
+  extern RemoveAPE2DControl frombricksc2
+  extern RemoveAPE2DControl fromgrumpos
+  extern RemoveAPE2DControl frommystech1door
+  extern RemoveAPE2DControl frommystech1
+  extern RemoveAPE2DControl fromfranks
+  extern RemoveAPE2DControl frombricksc
+  extern RemoveAPE2DControl fromhovel
+  extern RemoveAPE2DControl fromtenements
+  extern RemoveAPE2DControl tofranks
+  extern RemoveAPE2DControl togrumpos
+  extern RemoveAPE2DControl fromtenementsdoor
+  extern RemoveAPE2DControl tomystech1
+  extern RemoveAPE2DControl fromsewagic1
+  extern RemoveAPE2DControl tomystech2
+  extern RemoveAPE2DControl tosewagic1
+  extern RemoveAPE2DControl frommystech2
+  extern RemoveAPE2DControl tosewagic2
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 100
+ypos 32
+width 480
+choice "Anachronox Area Window" 1:8751
+choice "Choose Planet Window" 1:8750
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8757
+title "Sender Station"
+body "Choose area:"
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+choice "SS Proper (Commons, Statation, etc.)" 1:8758
+choice "Underworld (Routubes, Redlight Dist. etc.)" 1:8759
+choice "Choose Planet Window" 1:8750
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8758
+title "SS Proper"
+body "Choose map:                            from:\n"
+body "\nLounge of Commerce (slounge)\n"
+body "\nTheoretical Science Museum (museum)\n"
+body "\nVend-O-Mart (vendomart)\n"
+body "\nSender Station (senderss)\n"
+body "\nSender Commons (scommons)\n"
+body "\n\n"
+body "\nSendormitory (sendormitory)\n\n"
+startswitch {
+  extern CreateAPE2DControl push scommonstolounge 370 80 width=50 height=12 font="procharl" message="scommons" sequence=1:8760 gamevar=@map returnvalue=1
+  extern CreateAPE2DControl push fromvendomart 425 80 width=55 height=12 font="procharl" message="vendomart" sequence=1:8760 gamevar=@map returnvalue=2
+  extern CreateAPE2DControl push tomhall 420 100 width=50 height=12 font="procharl" message="scommons" sequence=1:8760 gamevar=@map returnvalue=3
+  extern CreateAPE2DControl push tomvent 475 100 width=45 height=12 font="procharl" message="to vent" sequence=1:8760 gamevar=@map returnvalue=4
+  extern CreateAPE2DControl push fromscommons 330 120 width=50 height=12 font="procharl" message="scommons" sequence=1:8760 gamevar=@map returnvalue=5
+  extern CreateAPE2DControl push fromscommons1 340 140 width=50 height=12 font="procharl" message="scommons" sequence=1:8760 gamevar=@map returnvalue=6
+  extern CreateAPE2DControl push frombricks 395 140 width=40 height=12 font="procharl" message="bricks" sequence=1:8760 gamevar=@map returnvalue=7
+  extern CreateAPE2DControl push fromrhoshuttle 440 140 width=40 height=12 font="procharl" message="gate6" sequence=1:8760 gamevar=@map returnvalue=8
+  extern CreateAPE2DControl push default 345 160 width=45 height=12 font="procharl" message="default" sequence=1:8760 gamevar=@map returnvalue=9
+  extern CreateAPE2DControl push fromroutubes 395 160 width=50 height=12 font="procharl" message="routubes" sequence=1:8760 gamevar=@map returnvalue=10
+  extern CreateAPE2DControl push fromslounge 450 160 width=45 height=12 font="procharl" message="slounge" sequence=1:8760 gamevar=@map returnvalue=11
+  extern CreateAPE2DControl push frommhall 500 160 width=45 height=12 font="procharl" message="museum" sequence=1:8760 gamevar=@map returnvalue=12
+  extern CreateAPE2DControl push frommvent 300 180 width=60 height=12 font="procharl" message="museumvent" sequence=1:8760 gamevar=@map returnvalue=13
+  extern CreateAPE2DControl push fromsenderss 365 180 width=50 height=12 font="procharl" message="senderss" sequence=1:8760 gamevar=@map returnvalue=14
+  extern CreateAPE2DControl push fromsendormitory 420 180 width=75 height=12 font="procharl" message="sendormitory" sequence=1:8760 gamevar=@map returnvalue=15
+  extern CreateAPE2DControl push toscommons 500 180 width=55 height=12 font="procharl" message="vendomart" sequence=1:8760 gamevar=@map returnvalue=16
+  extern CreateAPE2DControl push tosendormitory 345 200 width=45 height=12 font="procharl" message="default" sequence=1:8760 gamevar=@map returnvalue=17
+}
+
+finishswitch {
+  extern RemoveAPE2DControl scommonstolounge
+  extern RemoveAPE2DControl fromvendomart
+  extern RemoveAPE2DControl tomhall
+  extern RemoveAPE2DControl tomvent
+  extern RemoveAPE2DControl fromscommons
+  extern RemoveAPE2DControl fromscommons1
+  extern RemoveAPE2DControl frombricks
+  extern RemoveAPE2DControl fromrhoshuttle
+  extern RemoveAPE2DControl default
+  extern RemoveAPE2DControl fromroutubes
+  extern RemoveAPE2DControl fromslounge
+  extern RemoveAPE2DControl frommhall
+  extern RemoveAPE2DControl frommvent
+  extern RemoveAPE2DControl fromsenderss
+  extern RemoveAPE2DControl fromsendormitory
+  extern RemoveAPE2DControl toscommons
+  extern RemoveAPE2DControl tosendormitory
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 100
+ypos 32
+width 480
+choice "Sender Station Area Window" 1:8757
+choice "Choose Planet Window" 1:8750
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8759
+title "SS Underworld"
+body "Choose map:                         from:\n"
+body "\nRoutubes 1 (routubes1)\n"
+body "\nRoutubes 2 (routubes2)\n"
+body "\nMug-Mug Villiage (mugmug)\n"
+body "\nRed Light Dist. (redlight)\n"
+body "\nCold Sweat Sex Machine (sexmach)\n"
+body "\nThe Orange Navel (orange)\n"
+body "\nTubby's Grease Shack (tubbys)\n"
+body "\nMadame Coucher's Slutopia (slutopia)\n\n"
+startswitch {
+  extern CreateAPE2DControl push fromscommons 305 80 width=50 height=12 font="procharl" message="scommons" sequence=1:8760 gamevar=@map returnvalue=18
+  extern CreateAPE2DControl push fromroutubes2 360 80 width=55 height=12 font="procharl" message="routubes2" sequence=1:8760 gamevar=@map returnvalue=19
+  extern CreateAPE2DControl push fromroutubes1 305 100 width=55 height=12 font="procharl" message="routubes1" sequence=1:8760 gamevar=@map returnvalue=20
+  extern CreateAPE2DControl push fromredlight 365 100 width=50 height=12 font="procharl" message="redlight" sequence=1:8760 gamevar=@map returnvalue=21
+  extern CreateAPE2DControl push frommugmug 420 100 width=40 height=12 font="procharl" message="mugmug" sequence=1:8760 gamevar=@map returnvalue=22
+  extern CreateAPE2DControl push tomugmug 330 120 width=55 height=12 font="procharl" message="routubes2" sequence=1:8760 gamevar=@map returnvalue=23
+  extern CreateAPE2DControl push toredlight 315 140 width=45 height=12 font="procharl" message="default" sequence=1:8760 gamevar=@map returnvalue=24
+  extern CreateAPE2DControl push fromsexmach 365 140 width=45 height=12 font="procharl" message="sexmach" sequence=1:8760 gamevar=@map returnvalue=25
+  extern CreateAPE2DControl push fromorange 415 140 width=40 height=12 font="procharl" message="orange" sequence=1:8760 gamevar=@map returnvalue=26
+  extern CreateAPE2DControl push fromtubbys 460 140 width=40 height=12 font="procharl" message="tubbys" sequence=1:8760 gamevar=@map returnvalue=27
+  extern CreateAPE2DControl push fromslutopia 505 140 width=50 height=12 font="procharl" message="slutopia" sequence=1:8760 gamevar=@map returnvalue=28
+  extern CreateAPE2DControl push tosexmach 395 160 width=45 height=12 font="procharl" message="default" sequence=1:8760 gamevar=@map returnvalue=29
+  extern CreateAPE2DControl push toorange 330 180 width=45 height=12 font="procharl" message="default" sequence=1:8760 gamevar=@map returnvalue=30
+  extern CreateAPE2DControl push totubbys 365 200 width=45 height=12 font="procharl" message="default" sequence=1:8760 gamevar=@map returnvalue=31
+  extern CreateAPE2DControl push toslutopia 415 220 width=45 height=12 font="procharl" message="default" sequence=1:8760 gamevar=@map returnvalue=32
+}
+
+finishswitch {
+  extern RemoveAPE2DControl fromscommons
+  extern RemoveAPE2DControl fromroutubes2
+  extern RemoveAPE2DControl fromroutubes1
+  extern RemoveAPE2DControl fromredlight
+  extern RemoveAPE2DControl frommugmug
+  extern RemoveAPE2DControl tomugmug
+  extern RemoveAPE2DControl toredlight
+  extern RemoveAPE2DControl fromsexmach
+  extern RemoveAPE2DControl fromorange
+  extern RemoveAPE2DControl fromtubbys
+  extern RemoveAPE2DControl fromslutopia
+  extern RemoveAPE2DControl tosexmach
+  extern RemoveAPE2DControl toorange
+  extern RemoveAPE2DControl totubbys
+  extern RemoveAPE2DControl toslutopia
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 100
+ypos 32
+width 480
+choice "Sender Station Area Window" 1:8757
+choice "Choose Planet Window" 1:8750
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8761
+title "Sunder"
+body "Choose map:                             from:\n"
+body "\nCallosum Starport (starport)\n"
+body "\nDiscount Lab Building (labbuilding)\n"
+body "\nService Tunnels (servicetunnel)\n"
+body "\nDiscount Lab Building area (sunstrip)\n\n"
+startswitch {
+  extern CreateAPE2DControl push frombraintrian 350 80 width=60 height=12 font="procharl" message="braintrian" sequence=1:8762 gamevar=@map returnvalue=1
+  extern CreateAPE2DControl push fromservice 415 80 width=80 height=12 font="procharl" message="servicetunnel" sequence=1:8762 gamevar=@map returnvalue=2
+  extern CreateAPE2DControl push tolab 390 100 width=45 height=12 font="procharl" message="default" sequence=1:8762 gamevar=@map returnvalue=3
+  extern CreateAPE2DControl push fromstarport 375 120 width=50 height=12 font="procharl" message="starport" sequence=1:8762 gamevar=@map returnvalue=4
+  extern CreateAPE2DControl push fromlab 430 120 width=65 height=12 font="procharl" message="labbuilding" sequence=1:8762 gamevar=@map returnvalue=5
+  extern CreateAPE2DControl push tosunfromstar 415 140 width=50 height=12 font="procharl" message="starport" sequence=1:8762 gamevar=@map returnvalue=6
+  extern CreateAPE2DControl push tosunfromlab 470 140 width=65 height=12 font="procharl" message="labbuilding" sequence=1:8762 gamevar=@map returnvalue=7
+}
+
+finishswitch {
+  extern RemoveAPE2DControl frombriantrain
+  extern RemoveAPE2DControl fromservice
+  extern RemoveAPE2DControl tolab
+  extern RemoveAPE2DControl fromstarport
+  extern RemoveAPE2DControl fromlab
+  extern RemoveAPE2DControl tosunfromstar
+  extern RemoveAPE2DControl tosunfromlab
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 100
+ypos 32
+width 480
+choice "Choose Planet Window" 1:8750
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8763
+title "Democratus Ring"
+body "Choose map:                  from:\n"
+body "\nVotowne (votowne)\n"
+body "\nCouncil Chambers (chamber)\n"
+body "\nRepublic Inn (republic)\n"
+body "\nWarship Bay (warshipbay)\n\n"
+startswitch {
+  extern CreateAPE2DControl push fromchamber 270 80 width=45 height=12 font="procharl" message="chamber" sequence=1:8764 gamevar=@map returnvalue=1
+  extern CreateAPE2DControl push fromrepublic 320 80 width=50 height=12 font="procharl" message="republic" sequence=1:8764 gamevar=@map returnvalue=2
+  extern CreateAPE2DControl push fromcinedem 340 100 width=45 height=12 font="procharl" message="cinedem" sequence=1:8764 gamevar=@map returnvalue=3
+  extern CreateAPE2DControl push fromvotowne 390 100 width=45 height=12 font="procharl" message="votowne" sequence=1:8764 gamevar=@map returnvalue=4
+  extern CreateAPE2DControl push fromwarshipbay 440 100 width=65 height=12 font="procharl" message="warshipbay" sequence=1:8764 gamevar=@map returnvalue=5
+  extern CreateAPE2DControl push torepublic 300 120 width=45 height=12 font="procharl" message="default" sequence=1:8764 gamevar=@map returnvalue=6
+  extern CreateAPE2DControl push fromchamber2 320 140 width=45 height=12 font="procharl" message="chamber" sequence=1:8764 gamevar=@map returnvalue=7
+  extern CreateAPE2DControl push shortcut 370 140 width=50 height=12 font="procharl" message="shortcut" sequence=1:8765 gamevar=@map returnvalue=8
+}
+
+finishswitch {
+  extern RemoveAPE2DControl fromchamber
+  extern RemoveAPE2DControl fromrepublic
+  extern RemoveAPE2DControl fromcinedem
+  extern RemoveAPE2DControl fromvotowne
+  extern RemoveAPE2DControl fromwarshipbay
+  extern RemoveAPE2DControl torepublic
+  extern RemoveAPE2DControl fromchamber2
+  extern RemoveAPE2DControl shortcut
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 100
+ypos 32
+width 420
+choice "Choose Planet Window" 1:8750
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8766
+title "Hephaestus"
+body "Choose area:"
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+choice "Above Ground (Ent. Dist, Tower)" 1:8767
+choice "Below Ground (Factory, Levant)" 1:8768
+choice "Choose Planet Window" 1:8750
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8767
+title "Hephaestus, Above Ground"
+body "Choose map:                           from:\n"
+body "\nLanding Platform (hephpoor)\n"
+body "\nEntertainment District (hephaestus)\n"
+body "\nMonestary Tower (hephtower1)\n"
+body "\nUpper Tower (hephtower2)\n\n"
+startswitch {
+  extern CreateAPE2DControl push fromhephaestus 345 80 width=60 height=12 font="procharl" message="hephaestus" sequence=1:8769 gamevar=@map returnvalue=1
+  extern CreateAPE2DControl push fromslevant 410 80 width=45 height=12 font="procharl" message="slevant" sequence=1:8769 gamevar=@map returnvalue=2
+  extern CreateAPE2DControl push fromhephpoor 405 100 width=50 height=12 font="procharl" message="hephpoor" sequence=1:8769 gamevar=@map returnvalue=3
+  extern CreateAPE2DControl push fromhephtower1 460 100 width=60 height=12 font="procharl" message="hephtower1" sequence=1:8769 gamevar=@map returnvalue=4
+  extern CreateAPE2DControl push fromheph 365 120 width=60 height=12 font="procharl" message="hephaestus" sequence=1:8769 gamevar=@map returnvalue=5
+  extern CreateAPE2DControl push fromhephfactory 430 120 width=45 height=12 font="procharl" message="factory" sequence=1:8769 gamevar=@map returnvalue=6
+  extern CreateAPE2DControl push fromhephtower2 480 120 width=60 height=12 font="procharl" message="hephtower2" sequence=1:8769 gamevar=@map returnvalue=7
+  extern CreateAPE2DControl push fromtower1 330 140 width=60 height=12 font="procharl" message="hephtower1" sequence=1:8769 gamevar=@map returnvalue=8
+}
+
+finishswitch {
+  extern RemoveAPE2DControl fromhephaestus
+  extern RemoveAPE2DControl fromlevant
+  extern RemoveAPE2DControl fromhephpoor
+  extern RemoveAPE2DControl fromhephtower1
+  extern RemoveAPE2DControl fromheph
+  extern RemoveAPE2DControl fromhephfactory
+  extern RemoveAPE2DControl fromhephtower2
+  extern RemoveAPE2DControl fromtower1
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 100
+ypos 32
+width 480
+choice "Main Hephaestus Window" 1:8766
+choice "Choose Planet Window" 1:8750
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8768
+title "Hephaestus, Below Ground"
+body "Choose map:                           from:\n"
+body "\nMysFac (hephfactory)\n"
+body "\nPiping Ducts (hephpipes)\n"
+body "\nSluice Gates (hephlava)\n"
+body "\nLevant Enterance (levant1)\n"
+body "\nMysterium Levant (levant2)\n"
+body "\nLevant Pump Area (levant)\n\n"
+startswitch {
+  extern CreateAPE2DControl push fromhephtower1 295 80 width=60 height=12 font="procharl" message="hephtower1" sequence=1:8769 gamevar=@map returnvalue=9
+  extern CreateAPE2DControl push fromhephpipes 360 80 width=55 height=12 font="procharl" message="hephpipes" sequence=1:8769 gamevar=@map returnvalue=10
+  extern CreateAPE2DControl push fromhephlava 425 80 width=50 height=12 font="procharl" message="hephlava" sequence=1:8769 gamevar=@map returnvalue=11
+  extern CreateAPE2DControl push fromlevant1 480 80 width=45 height=12 font="procharl" message="levant1" sequence=1:8769 gamevar=@map returnvalue=12
+  extern CreateAPE2DControl push topipes 310 100 width=45 height=12 font="procharl" message="default" sequence=1:8769 gamevar=@map returnvalue=13
+  extern CreateAPE2DControl push tolava 305 120 width=45 height=12 font="procharl" message="default" sequence=1:8769 gamevar=@map returnvalue=14
+  extern CreateAPE2DControl push fromhephfactory 340 140 width=45 height=12 font="procharl" message="factory" sequence=1:8769 gamevar=@map returnvalue=15
+  extern CreateAPE2DControl push fromlevant2a 390 140 width=45 height=12 font="procharl" message="levant2" sequence=1:8769 gamevar=@map returnvalue=16
+  extern CreateAPE2DControl push fromlevant1a 340 160 width=45 height=12 font="procharl" message="levant1" sequence=1:8769 gamevar=@map returnvalue=17
+  extern CreateAPE2DControl push fromlevant 390 160 width=45 height=12 font="procharl" message="default" sequence=1:8769 gamevar=@map returnvalue=18
+  extern CreateAPE2DControl push tolevant 335 180 width=45 height=12 font="procharl" message="default" sequence=1:8769 gamevar=@map returnvalue=19
+}
+
+finishswitch {
+  extern RemoveAPE2DControl fromhephaestus
+  extern RemoveAPE2DControl fromlevant
+  extern RemoveAPE2DControl fromhephpoor
+  extern RemoveAPE2DControl fromhephtower1
+  extern RemoveAPE2DControl fromheph
+  extern RemoveAPE2DControl fromhephfactory
+  extern RemoveAPE2DControl fromhephtower2
+  extern RemoveAPE2DControl fromtower1
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 100
+ypos 32
+width 480
+choice "Main Hephaestus Window" 1:8766
+choice "Choose Planet Window" 1:8750
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8770
+title "Krapton"
+body "Choose map:                  from:\n"
+body "\nVillain Ship Bay (kraptonbay)\n"
+body "\nVillian Ship Maze (kraptonmaze)\n"
+body "\nVillian Ship Jail (kraptonjail)\n\n"
+startswitch {
+  extern CreateAPE2DControl push shuttlestart 345 80 width=45 height=12 font="procharl" message="shuttle" sequence=1:8771 gamevar=@map returnvalue=1
+  extern CreateAPE2DControl push frombay 395 80 width=60 height=12 font="procharl" message="kraptonbay" sequence=1:8771 gamevar=@map returnvalue=2
+  extern CreateAPE2DControl push default 460 80 width=45 height=12 font="procharl" message="default" sequence=1:8771 gamevar=@map returnvalue=3
+  extern CreateAPE2DControl push tomaze 370 100 width=45 height=12 font="procharl" message="default" sequence=1:8771 gamevar=@map returnvalue=4
+  extern CreateAPE2DControl push tojail 340 120 width=45 height=12 font="procharl" message="default" sequence=1:8771 gamevar=@map returnvalue=5
+}
+
+finishswitch {
+  extern RemoveAPE2DControl shuttlestart
+  extern RemoveAPE2DControl frombay
+  extern RemoveAPE2DControl default
+  extern RemoveAPE2DControl tomaze
+  extern RemoveAPE2DControl tojail
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 100
+ypos 32
+width 420
+choice "Choose Planet Window" 1:8750
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8772
+title "Democratus Surface"
+body "Choose area:"
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+choice "Ballotine/Doren/Whitendon" 1:8773
+choice "Tensil/Commiteon" 1:8774
+choice "Choose Planet Window" 1:8750
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8773
+title "Ballotine/Doren/Whitendon"
+body "Choose map:                            from:\n"
+body "\nBallotine Processing Planet (ballotine)\n"
+body "\nBallotine City (baltown)\n"
+body "\nDoren Station (doren)\n"
+body "\nWaugees Forest (waugees)\n"
+body "\nTown of Whitendon (whitendon)\n"
+body "\nWhitendon White Caves (whitecaves)\n\n"
+startswitch {
+  extern CreateAPE2DControl push toballotine 425 80 width=45 height=12 font="procharl" message="default" sequence=1:8775 gamevar=@map returnvalue=1
+  extern CreateAPE2DControl push tobaltown 310 100 width=45 height=12 font="procharl" message="default" sequence=1:8775 gamevar=@map returnvalue=2
+  extern CreateAPE2DControl push todoren 290 120 width=45 height=12 font="procharl" message="default" sequence=1:8775 gamevar=@map returnvalue=3
+  extern CreateAPE2DControl push towaugees 330 140 width=45 height=12 font="procharl" message="default" sequence=1:8775 gamevar=@map returnvalue=4
+  extern CreateAPE2DControl push towhitendon 370 160 width=45 height=12 font="procharl" message="default" sequence=1:8775 gamevar=@map returnvalue=5
+  extern CreateAPE2DControl push towhitecaves 405 180 width=45 height=12 font="procharl" message="default" sequence=1:8775 gamevar=@map returnvalue=6
+}
+
+finishswitch {
+  extern RemoveAPE2DControl toballotine
+  extern RemoveAPE2DControl tobaltown
+  extern RemoveAPE2DControl todoren
+  extern RemoveAPE2DControl towaugees
+  extern RemoveAPE2DControl towhitendon
+  extern RemoveAPE2DControl towhitecaves
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 100
+ypos 32
+width 480
+choice "Democratus Surface Window" 1:8772
+choice "Choose Planet Window" 1:8750
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8774
+title "Tensil/Commiteon"
+body "Choose map:                            from:\n"
+body "\nTown of Tensil (tensil)\n"
+body "\nTensil Temple (temple)\n"
+body "\nMilitary Compound (commiteon)\n"
+body "\nCommiteon Base (commbase)\n\n"
+startswitch {
+  extern CreateAPE2DControl push totensil 305 80 width=45 height=12 font="procharl" message="default" sequence=1:8775 gamevar=@map returnvalue=7
+  extern CreateAPE2DControl push totemple 300 100 width=45 height=12 font="procharl" message="default" sequence=1:8775 gamevar=@map returnvalue=8
+  extern CreateAPE2DControl push tocommiteon 360 120 width=45 height=12 font="procharl" message="default" sequence=1:8775 gamevar=@map returnvalue=9
+  extern CreateAPE2DControl push tocommbase 340 140 width=45 height=12 font="procharl" message="default" sequence=1:8775 gamevar=@map returnvalue=10
+}
+
+finishswitch {
+  extern RemoveAPE2DControl totensil
+  extern RemoveAPE2DControl totemple
+  extern RemoveAPE2DControl tocommiteon
+  extern RemoveAPE2DControl tocommbase
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 100
+ypos 32
+width 480
+choice "Democratus Surface Window" 1:8772
+choice "Choose Planet Window" 1:8750
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8776
+title "Limbus"
+body "Choose map:                  from:\n"
+body "\nCity of Sesostris (limbus)\n"
+body "\nWilds of Limbus (crevicelanding)\n"
+body "\nSagentane Crevice (crevice)\n\n"
+startswitch {
+  extern CreateAPE2DControl push frombridge 325 80 width=75 height=12 font="procharl" message="limbusbridge" sequence=1:8777 gamevar=@map returnvalue=1
+  extern CreateAPE2DControl push frompillars 405 80 width=45 height=12 font="procharl" message="pillars" sequence=1:8777 gamevar=@map returnvalue=2
+  extern CreateAPE2DControl push fromcrevice 375 100 width=45 height=12 font="procharl" message="crevice" sequence=1:8777 gamevar=@map returnvalue=3
+  extern CreateAPE2DControl push fromlimbus 340 120 width=40 height=12 font="procharl" message="limbus" sequence=1:8777 gamevar=@map returnvalue=4
+  extern CreateAPE2DControl push fromlanding 385 120 width=85 height=12 font="procharl" message="crevicelanding" sequence=1:8777 gamevar=@map returnvalue=5
+}
+
+finishswitch {
+  extern RemoveAPE2DControl frombridge
+  extern RemoveAPE2DControl frompillars
+  extern RemoveAPE2DControl default
+  extern RemoveAPE2DControl fromcrevice
+  extern RemoveAPE2DControl fromlimbus
+  extern RemoveAPE2DControl fromlanding
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 100
+ypos 32
+width 420
+choice "Choose Planet Window" 1:8750
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8800
+title "View/Edit Quest Status"
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+choice "View / Edit Quests" 1:8805
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8805
+title "View/Edit Quest Status"
+body "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+if (@dbquestval == 0)
+  body "This Quest has not started."
+if (@dbquestval == 1)
+  body "This Quest is in progress."
+if (@dbquestval == 2)
+  body "This Quest has been completed!"
+xyprintfx 46, 178, 1, 0, 1, 1, _message, "Add Quest"
+xyprintfx 46, 208, 1, 0, 1, 1, _message, "Complete Quest"
+xyprintfx 46, 238, 1, 0, 1, 1, _message, "Cancel Quest"
+xyprintfx 46, 268, 1, 0, 1, 1, _message, "Check Quest Status"
+startswitch {
+  set @dbgdb_add = 1
+  @dbgdb_name$="Not_Ready" 
+  set @dbquestval = 9
+  extern gdb_listbox 170 75 186 100 quest @dbgdb_name$
+  extern CreateAPE2DControl push addquest 170 208 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8806
+  extern CreateAPE2DControl push complete 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8806
+  extern CreateAPE2DControl push cancelqu 170 268 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=3 sequence=1:8806
+  extern CreateAPE2DControl push isquestd 170 298 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=4 sequence=1:8806
+}
+
+thinkswitch {
+  if (@dbgdb_name$ == "Cancel") {
+    closewindow 1:8805
+    gosub 1:8800
+  } else if (@dbgdb_name$ != "Not_Ready") {
+    if (@dbgdb_add == 1) {
+      extern add_quest @dbgdb_name$
+      @dbgdb_name$="Not_Ready" 
+    }
+    if (@dbgdb_add == 2) {
+      extern complete_quest @dbgdb_name$
+      @dbgdb_name$="Not_Ready" 
+    }
+    if (@dbgdb_add == 3) {
+      extern cancel_quest @dbgdb_name$
+      @dbgdb_name$="Not_Ready" 
+    }
+    if (@dbgdb_add == 4) {
+      extern is_quest_done @dbgdb_name$ @dbquestval
+      @dbgdb_name$="Not_Ready" 
+    }
+  }
+}
+
+finishswitch {
+  extern RemoveAPE2DControl addquest
+  extern RemoveAPE2DControl complete
+  extern RemoveAPE2DControl cancelqu
+  extern RemoveAPE2DControl isquestd
+}
+
+font "goodsym"
+flags passive2d, TRUE
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 330
+height 350
+
+#window 1:8850
+body "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent Funds: %d\nEnter new balance:\n\n\n", @funds
+if (LEAD_BOOTS)
+  xyprintfx 15, 58, 1, 0, 1, 0, goodsym, "Boots"
+if (LEAD_GRUMPOS)
+  xyprintfx 15, 78, 1, 0, 1, 0, goodsym, "Grumpos"
+if (LEAD_RHO)
+  xyprintfx 15, 98, 1, 0, 1, 0, goodsym, "Rho"
+if (LEAD_PAL)
+  xyprintfx 15, 118, 1, 0, 1, 0, goodsym, "Pal"
+if (LEAD_DEMOCRATUS)
+  xyprintfx 15, 138, 1, 0, 1, 0, goodsym, "Democratus"
+if (LEAD_STILETTO)
+  xyprintfx 15, 158, 1, 0, 1, 0, goodsym, "Stiletto"
+if (LEAD_PACO)
+  xyprintfx 15, 178, 1, 0, 1, 0, goodsym, "Paco"
+if ((LEAD_BOOTS == 0) && PARTY_BOOTS)
+  xyprintfx 15, 58, 1, 1, 1, 0, goodsym, "Boots"
+if ((LEAD_GRUMPOS == 0) && PARTY_GRUMPOS)
+  xyprintfx 15, 78, 1, 1, 1, 0, goodsym, "Grumpos"
+if ((LEAD_RHO == 0) && PARTY_RHO)
+  xyprintfx 15, 98, 1, 1, 1, 0, goodsym, "Rho"
+if ((LEAD_PAL == 0) && PARTY_PAL)
+  xyprintfx 15, 118, 1, 1, 1, 0, goodsym, "Pal"
+if ((LEAD_DEMOCRATUS == 0) && PARTY_DEMOCRATUS)
+  xyprintfx 15, 138, 1, 1, 1, 0, goodsym, "Democratus"
+if ((LEAD_STILETTO == 0) && PARTY_STILETTO)
+  xyprintfx 15, 158, 1, 1, 1, 0, goodsym, "Stiletto"
+if ((LEAD_PACO == 0) && PARTY_PACO)
+  xyprintfx 15, 178, 1, 1, 1, 0, goodsym, "Paco"
+if ((LEAD_BOOTS == 0) && (PARTY_BOOTS == 0))
+  xyprintfx 15, 58, 0.5, 1, 1, 1, goodsym, "Boots"
+if ((LEAD_GRUMPOS == 0) && (PARTY_GRUMPOS == 0))
+  xyprintfx 15, 78, 0.5, 1, 1, 1, goodsym, "Grumpos"
+if ((LEAD_RHO == 0) && (PARTY_RHO == 0))
+  xyprintfx 15, 98, 0.5, 1, 1, 1, goodsym, "Rho"
+if ((LEAD_PAL == 0) && (PARTY_PAL == 0))
+  xyprintfx 15, 118, 0.5, 1, 1, 1, goodsym, "Pal"
+if ((LEAD_DEMOCRATUS == 0) && (PARTY_DEMOCRATUS == 0))
+  xyprintfx 15, 138, 0.5, 1, 1, 1, goodsym, "Democratus"
+if ((LEAD_STILETTO == 0) && (PARTY_STILETTO == 0))
+  xyprintfx 15, 158, 0.5, 1, 1, 1, goodsym, "Stiletto"
+if ((LEAD_PACO == 0) && (PARTY_PACO == 0))
+  xyprintfx 15, 178, 0.5, 1, 1, 1, goodsym, "Paco"
+startswitch {
+  set @statechange = 1
+  extern CreateAPE2DControl push boots_addremove 250 88 width=100 height=12 font="goodsym" message="Add/Remove" returnvalue=1 gamevar=@addremove sequence=1:8855
+  extern CreateAPE2DControl push boots_leader 355 88 width=95 height=12 font="goodsym" message="Make Lead" returnvalue=1 gamevar=@makelead sequence=1:8856
+  extern CreateAPE2DControl push grumpos_addremove 250 108 width=100 height=12 font="goodsym" message="Add/Remove" returnvalue=2 gamevar=@addremove sequence=1:8855
+  extern CreateAPE2DControl push grumpos_leader 355 108 width=95 height=12 font="goodsym" message="Make Lead" returnvalue=2 gamevar=@makelead sequence=1:8856
+  extern CreateAPE2DControl push rho_addremove 250 128 width=100 height=12 font="goodsym" message="Add/Remove" returnvalue=4 gamevar=@addremove sequence=1:8855
+  extern CreateAPE2DControl push rho_leader 355 128 width=95 height=12 font="goodsym" message="Make Lead" returnvalue=4 gamevar=@makelead sequence=1:8856
+  extern CreateAPE2DControl push pal_addremove 250 148 width=100 height=12 font="goodsym" message="Add/Remove" returnvalue=3 gamevar=@addremove sequence=1:8855
+  extern CreateAPE2DControl push pal_leader 355 148 width=95 height=12 font="goodsym" message="Make Lead" returnvalue=3 gamevar=@makelead sequence=1:8856
+  extern CreateAPE2DControl push democratus_addremove 250 168 width=100 height=12 font="goodsym" message="Add/Remove" returnvalue=5 gamevar=@addremove sequence=1:8855
+  extern CreateAPE2DControl push democratus_leader 355 168 width=95 height=12 font="goodsym" message="Make Lead" returnvalue=5 gamevar=@makelead sequence=1:8856
+  extern CreateAPE2DControl push stiletto_addremove 250 188 width=100 height=12 font="goodsym" message="Add/Remove" returnvalue=6 gamevar=@addremove sequence=1:8855
+  extern CreateAPE2DControl push stiletto_leader 355 188 width=95 height=12 font="goodsym" message="Make Lead" returnvalue=6 gamevar=@makelead sequence=1:8856
+  extern CreateAPE2DControl push paco_addremove 250 208 width=100 height=12 font="goodsym" message="Add/Remove" returnvalue=7 gamevar=@addremove sequence=1:8855
+  extern CreateAPE2DControl push paco_leader 355 208 width=95 height=12 font="goodsym" message="Make Lead" returnvalue=7 gamevar=@makelead sequence=1:8856
+  extern CreateAPE2DControl edit newmoney 280 230 width=50 height=15 gamevar=@newcash$ sequence=1:8857
+  gosub 1:8859
+}
+
+thinkswitch {
+  extern check_money @funds
+  gosub 1:8851
+  gosub 1:8852
+  gosub 1:8853
+  gosub 1:8854
+}
+
+finishswitch {
+  extern RemoveAPE2DControl boots_addremove
+  extern RemoveAPE2DControl boots_leader
+  extern RemoveAPE2DControl grumpos_addremove
+  extern RemoveAPE2DControl grumpos_leader
+  extern RemoveAPE2DControl rho_addremove
+  extern RemoveAPE2DControl rho_leader
+  extern RemoveAPE2DControl pal_addremove
+  extern RemoveAPE2DControl pal_leader
+  extern RemoveAPE2DControl democratus_addremove
+  extern RemoveAPE2DControl democratus_leader
+  extern RemoveAPE2DControl stiletto_addremove
+  extern RemoveAPE2DControl stiletto_leader
+  extern RemoveAPE2DControl paco_addremove
+  extern RemoveAPE2DControl paco_leader
+  extern RemoveAPE2DControl newmoney
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 100
+ypos 32
+width 420
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8900
+title "View/Edit Battle Skills / Items"
+body "\n"
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+choice "The Works - Complete Battle Package\n" 1:8901
+choice "Beat Weapons" 1:8910
+choice "MysTech" 1:8915
+choice "Battle Skill" 1:8920
+choice "Shield" 1:8925
+choice "Aux" 1:8930
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8901
+title "The Works - Complete Battle Package"
+body "Select a character to give them a complete battle package. (Note: Using a package on a character will make that character the party leader.)\n\n"
+body "\n"
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+if (func_charinparty[boots] > 1)
+  choice "Boots" 1:8902
+if (func_charinparty[grumpos] > 1)
+  choice "Grumpos" 1:8903
+if (func_charinparty[rho] > 1)
+  choice "Rho" 1:8904
+if (func_charinparty[pal] > 1)
+  choice "Pal" 1:8905
+if (func_charinparty[democratus] > 1)
+  choice "Democratus" 1:8906
+if (func_charinparty[stiletto] > 1)
+  choice "Stiletto" 1:8907
+if (func_charinparty[paco] > 1)
+  choice "Paco" 1:8908
+choice "Battle Skills Menu" 1:8900
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8902
+title "Boots - Complete Battle Package"
+body "Bow Before Me.. Weenie Monkeys!\n\n"
+body "You now have a ton of stuff!\n\n"
+startswitch {
+  if (whack_has_taught_you_well == 0) {
+    set whack_has_taught_you_well = 1
+    set gotGun = 1
+  }
+  extern adjust_stat boots nrg 999
+  extern set_party_leader boots
+  extern addnew_to_inventory "Old Vistin Pistol"
+  extern addnew_to_inventory "Vistin ThreeBeam"
+  extern addnew_to_inventory "Vistin Octogun"
+  extern addnew_to_inventory "Stargent Turboblaster"
+  extern addnew_to_inventory "Stargent HandCannon"
+  extern addnew_to_inventory "Stargent Decimator"
+  extern equip_item "Old Vistin Pistol"
+  extern add_battle_skill "FatimaScreen"
+  extern add_battle_skill "FlashBlind"
+  extern add_battle_skill "Cap"
+  extern add_battle_skill "Aerial Trigger"
+  goto 1:8909                                       
+}
+
+font "goodsym"
+flags noscroll, TRUE
+choice "The Works Menu" 1:8901
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8903
+title "Grumpos - Complete Battle Package"
+body "Is there no sick old woman who can stand before me?!?\n\n"
+body "You now have a ton of stuff!\n\n"
+startswitch {
+  extern set_party_leader Grumpos
+  extern addnew_to_inventory "Vistin StaffCap"
+  extern addnew_to_inventory "Vistin Spikehead"
+  extern addnew_to_inventory "Vistin Blader Staffhead"
+  extern addnew_to_inventory "Stargent Staffbeam"
+  extern addnew_to_inventory "Stargent Pummelbeam"
+  extern addnew_to_inventory "Stargent Enerstrike"
+  extern equip_item "Vistin StaffCap"
+  extern add_battle_skill "StaffSweep"
+  extern add_battle_skill "Yammer"
+  extern add_battle_skill "WhiteLight"
+  extern add_battle_skill "HealField"
+  goto 1:8909                                       
+}
+
+font "goodsym"
+flags noscroll, TRUE
+choice "The Works Menu" 1:8901
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8904
+title "Rho - Complete Battle Package"
+body "You better check yo'self before you wreck yo'self.\n\n"
+body "You now have a ton of stuff!\n\n"
+startswitch {
+  extern set_party_leader Rho
+  extern addnew_to_inventory "Moebius Wave"
+  extern addnew_to_inventory "Static Pulse Injector"
+  extern addnew_to_inventory "Cubic Impactor"
+  extern addnew_to_inventory "Tesseract Impactor"
+  extern equip_item "Moebius Wave"
+  extern add_battle_skill "PlasmaWall"
+  extern add_battle_skill "Scanalyze"
+  extern add_battle_skill "Pocket Singularity"
+  extern add_battle_skill "MysShield"
+  goto 1:8909                                       
+}
+
+font "goodsym"
+flags noscroll, TRUE
+choice "The Works Menu" 1:8901
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8905
+title "Pal - Complete Battle Package"
+body "I'll kick that robot from Short Circut's ass!\n\n"
+body "You now have a ton of stuff!\n\n"
+startswitch {
+  extern set_party_leader Pal
+  extern addnew_to_inventory "Cordicorps Spikeclaw"
+  extern addnew_to_inventory "Cordicorps Shockclaw"
+  extern addnew_to_inventory "Ballotine CrazyClaw"
+  extern addnew_to_inventory "Cordicorps Shockshot"
+  extern addnew_to_inventory "Cordicorps Saneslayer"
+  extern equip_item "Cordicorps Spikeclaw"
+  extern add_battle_skill "Windmill Dash"
+  extern add_battle_skill "Teslatus Sphere"
+  extern add_battle_skill "Transfer NRG"
+  extern add_battle_skill "TaserDrain"
+  goto 1:8909                                       
+}
+
+font "goodsym"
+flags noscroll, TRUE
+choice "The Works Menu" 1:8901
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8906
+title "Democratus - Complete Battle Package"
+body "We want the funk, gotta have that funk!\n\n"
+body "You now have a ton of stuff!\n\n"
+startswitch {
+  extern set_party_leader Democratus
+  extern addnew_to_inventory "Planetbeam Crystal"
+  extern addnew_to_inventory "Resonance Crystal"
+  extern addnew_to_inventory "Theta Squarewave Crystal"
+  extern addnew_to_inventory "Cyclic Sensor Array"
+  extern equip_item "Planetbeam Crystal"
+  extern add_battle_skill "Tractorhold"
+  extern add_battle_skill "Stare Down"
+  extern add_battle_skill "LaserArray"
+  extern add_battle_skill "Missile Barrage"
+  goto 1:8909                                       
+}
+
+font "goodsym"
+flags noscroll, TRUE
+choice "The Works Menu" 1:8901
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8907
+title "Stiletto - Complete Battle Package"
+body "What's my name bitch?!?\n\n"
+body "You now have a ton of stuff!\n\n"
+startswitch {
+  extern set_party_leader Stiletto
+  extern addnew_to_inventory "Vistin Double Blades"
+  extern addnew_to_inventory "Stargent Sleepshank"
+  extern addnew_to_inventory "Stargent Bladerangs"
+  extern addnew_to_inventory "Stargent Laserblade"
+  extern equip_item "Stargent Laserblade"
+  extern add_battle_skill "BladeFan"
+  extern add_battle_skill "Charm"
+  extern add_battle_skill "Pain Pirouette"
+  extern add_battle_skill "Stealth"
+  goto 1:8909                                       
+}
+
+font "goodsym"
+flags noscroll, TRUE
+choice "The Works Menu" 1:8901
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8908
+title "Paco - Complete Battle Package"
+body "Yo Quiero a can of whupass?!?\n\n"
+body "You now have a ton of stuff!\n\n"
+startswitch {
+  extern set_party_leader Paco
+  extern addnew_to_inventory "Spinsucker"
+  extern addnew_to_inventory "Phantomfist"
+  extern addnew_to_inventory "Hoppercut"
+  extern addnew_to_inventory "Tumbleslam"
+  extern equip_item "Spinsucker"
+  extern add_battle_skill "RadiusRage"
+  extern add_battle_skill "GroundPound"
+  extern add_battle_skill "ProximaPunch"
+  extern add_battle_skill "FireFury"
+  goto 1:8909                                       
+}
+
+font "goodsym"
+flags noscroll, TRUE
+choice "The Works Menu" 1:8901
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:8910
+title "Add / Remove Beat Weapons"
+body "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+xyprintfx 46, 178, 1, 0, 1, 1, _message, "Add to Inventory"
+xyprintfx 46, 208, 1, 0, 1, 1, _message, "Remove from Inventory"
+startswitch {
+  set @dbgdb_add = 1
+  @dbgdb_name$="Not_Ready" 
+  extern gdb_listbox 170 75 186 100 weapon @dbgdb_name$
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8911
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8911
+}
+
+thinkswitch {
+  if (@dbgdb_name$ == "Cancel") {
+    closewindow 1:8910
+    gosub 1:8900
+  } else if (@dbgdb_name$ != "Not_Ready") {
+    if (@dbgdb_add == 1) {
+      extern addnew_to_inventory @dbgdb_name$
+      @dbgdb_name$="Not_Ready" 
+    }
+    if (@dbgdb_add == 2) {
+      extern remove_from_inventory @dbgdb_name$
+      @dbgdb_name$="Not_Ready" 
+    }
+  }
+}
+
+finishswitch {
+  extern RemoveAPE2DControl additem
+  extern RemoveAPE2DControl remitem
+}
+
+font "goodsym"
+flags passive2d, TRUE
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 330
+height 250
+
+#window 1:8915
+title "Add / Remove MysTech"
+body "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+xyprintfx 46, 178, 1, 0, 1, 1, _message, "Add MysTech"
+xyprintfx 46, 208, 1, 0, 1, 1, _message, "Remove MysTech"
+startswitch {
+  set @dbgdb_add = 1
+  @dbgdb_name$="Not_Ready" 
+  extern gdb_listbox 170 75 186 100 mystech @dbgdb_name$
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8916
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8916
+}
+
+thinkswitch {
+  if (@dbgdb_name$ == "Cancel") {
+    closewindow 1:8915
+    gosub 1:8900
+  } else if (@dbgdb_name$ != "Not_Ready") {
+    if (@dbgdb_add == 1) {
+      extern addnew_to_inventory @dbgdb_name$
+      @dbgdb_name$="Not_Ready" 
+    }
+    if (@dbgdb_add == 2) {
+      extern remove_from_inventory @dbgdb_name$
+      @dbgdb_name$="Not_Ready" 
+    }
+  }
+}
+
+finishswitch {
+  extern RemoveAPE2DControl additem
+  extern RemoveAPE2DControl remitem
+}
+
+font "goodsym"
+flags passive2d, TRUE
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 330
+height 250
+
+#window 1:8920
+title "Add / Remove Battleskills"
+body "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+xyprintfx 46, 178, 1, 0, 1, 1, _message, "Add BattleSkill"
+xyprintfx 46, 208, 1, 0, 1, 1, _message, "Remove BattleSkill"
+startswitch {
+  set @dbgdb_add = 1
+  @dbgdb_name$="Not_Ready" 
+  extern gdb_listbox 170 75 186 100 battleskill @dbgdb_name$
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8921
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8921
+}
+
+thinkswitch {
+  if (@dbgdb_name$ == "Cancel") {
+    closewindow 1:8920
+    gosub 1:8900
+  } else if (@dbgdb_name$ != "Not_Ready") {
+    if (@dbgdb_add == 1) {
+      extern add_battle_skill @dbgdb_name$
+      @dbgdb_name$="Not_Ready" 
+    }
+    if (@dbgdb_add == 2) {
+      extern remove_battle_skill @dbgdb_name$
+      @dbgdb_name$="Not_Ready" 
+    }
+  }
+}
+
+finishswitch {
+  extern RemoveAPE2DControl additem
+  extern RemoveAPE2DControl remitem
+}
+
+font "goodsym"
+flags passive2d, TRUE
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 330
+height 250
+
+#window 1:8925
+title "Add / Remove Shield"
+body "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+xyprintfx 46, 178, 1, 0, 1, 1, _message, "Add Shield"
+xyprintfx 46, 208, 1, 0, 1, 1, _message, "Remove Shield"
+startswitch {
+  set @dbgdb_add = 1
+  @dbgdb_name$="Not_Ready" 
+  extern gdb_listbox 170 75 186 100 shieldcell @dbgdb_name$
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8926
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8926
+}
+
+thinkswitch {
+  if (@dbgdb_name$ == "Cancel") {
+    closewindow 1:8925
+    gosub 1:8900
+  } else if (@dbgdb_name$ != "Not_Ready") {
+    if (@dbgdb_add == 1) {
+      extern addnew_to_inventory @dbgdb_name$
+      @dbgdb_name$="Not_Ready" 
+    }
+    if (@dbgdb_add == 2) {
+      extern remove_from_inventory @dbgdb_name$
+      @dbgdb_name$="Not_Ready" 
+    }
+  }
+}
+
+finishswitch {
+  extern RemoveAPE2DControl additem
+  extern RemoveAPE2DControl remitem
+}
+
+font "goodsym"
+flags passive2d, TRUE
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 330
+height 250
+
+#window 1:8930
+title "Add / Remove Aux"
+body "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+xyprintfx 46, 178, 1, 0, 1, 1, _message, "Add Aux"
+xyprintfx 46, 208, 1, 0, 1, 1, _message, "Remove Aux"
+startswitch {
+  set @dbgdb_add = 1
+  @dbgdb_name$="Not_Ready" 
+  extern gdb_listbox 170 75 186 100 aux @dbgdb_name$
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8931
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8931
+}
+
+thinkswitch {
+  if (@dbgdb_name$ == "Cancel") {
+    closewindow 1:8930
+    gosub 1:8900
+  } else if (@dbgdb_name$ != "Not_Ready") {
+    if (@dbgdb_add == 1) {
+      extern addnew_to_inventory @dbgdb_name$
+      @dbgdb_name$="Not_Ready" 
+    }
+    if (@dbgdb_add == 2) {
+      extern remove_from_inventory @dbgdb_name$
+      @dbgdb_name$="Not_Ready" 
+    }
+  }
+}
+
+finishswitch {
+  extern RemoveAPE2DControl additem
+  extern RemoveAPE2DControl remitem
+}
+
+font "goodsym"
+flags passive2d, TRUE
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 330
+height 250
+
+#window 1:8950
+title "Dump Stats, Vars, Skills and Inventory"
+body "Under construction"
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:9055
+body "Choose a mouse sensitivity a Y Axis sensitivity, and Y Axis control."
+xyprintfx 50, 76, 1, 0, 1, 1, _message, "0.0"
+xyprintfx 50, 106, 1, 0, 1, 1, _message, "0.1"
+xyprintfx 50, 136, 1, 0, 1, 1, _message, "0.2"
+xyprintfx 50, 166, 1, 0, 1, 1, _message, "0.3"
+xyprintfx 50, 196, 1, 0, 1, 1, _message, "0.4"
+xyprintfx 50, 226, 1, 0, 1, 1, _message, "0.5"
+xyprintfx 50, 256, 1, 0, 1, 1, _message, "0.6"
+xyprintfx 50, 286, 1, 0, 1, 1, _message, "0.8"
+xyprintfx 50, 316, 1, 0, 1, 1, _message, "1.0"
+xyprintfx 50, 346, 1, 0, 1, 1, _message, "1.2"
+xyprintfx 150, 76, 1, 0, 1, 1, _message, "0.6"
+xyprintfx 150, 106, 1, 0, 1, 1, _message, "0.7"
+xyprintfx 150, 136, 1, 0, 1, 1, _message, "0.8"
+xyprintfx 150, 166, 1, 0, 1, 1, _message, "0.9"
+xyprintfx 150, 196, 1, 0, 1, 1, _message, "1.0"
+xyprintfx 150, 226, 1, 0, 1, 1, _message, "1.1"
+xyprintfx 150, 256, 1, 0, 1, 1, _message, "1.2"
+xyprintfx 150, 286, 1, 0, 1, 1, _message, "1.3"
+xyprintfx 150, 316, 1, 0, 1, 1, _message, "1.4"
+xyprintfx 150, 346, 1, 0, 1, 1, _message, "1.5"
+xyprintfx 220, 106, 1, 0, 1, 1, _message, "Regular"
+xyprintfx 220, 166, 1, 0, 1, 1, _message, "Invert"
+xyprintfx 62, 376, 1, 0, 1, 1, _message, "Click Here When Done"
+xyprintfx 28, 59, 1, 0, 1, 1, _message, "X Axis"
+xyprintfx 128, 59, 1, 0, 1, 1, _message, "Y Axis"
+if (@sensitivity == 0)
+  xyprintfx 3, 76, 1, 0, 1, 1, _message, "*"
+if (@sensitivity == 0.10000000149)
+  xyprintfx 3, 106, 1, 0, 1, 1, _message, "*"
+if (@sensitivity == 0.20000000298)
+  xyprintfx 3, 136, 1, 0, 1, 1, _message, "*"
+if (@sensitivity == 0.300000011921)
+  xyprintfx 3, 166, 1, 0, 1, 1, _message, "*"
+if (@sensitivity == 0.40000000596)
+  xyprintfx 3, 196, 1, 0, 1, 1, _message, "*"
+if (@sensitivity == 0.5)
+  xyprintfx 3, 226, 1, 0, 1, 1, _message, "*"
+if (@sensitivity == 0.600000023842)
+  xyprintfx 3, 256, 1, 0, 1, 1, _message, "*"
+if (@sensitivity == 0.800000011921)
+  xyprintfx 3, 286, 1, 0, 1, 1, _message, "*"
+if (@sensitivity == 1)
+  xyprintfx 3, 316, 1, 0, 1, 1, _message, "*"
+if (@sensitivity == 1.20000004768)
+  xyprintfx 3, 346, 1, 0, 1, 1, _message, "*"
+if (@DBMousepos2 == 0.600000023842)
+  xyprintfx 103, 76, 1, 0, 1, 1, _message, "*"
+if (@DBMousepos2 == 0.699999988079)
+  xyprintfx 103, 106, 1, 0, 1, 1, _message, "*"
+if (@DBMousepos2 == 0.800000011921)
+  xyprintfx 103, 136, 1, 0, 1, 1, _message, "*"
+if (@DBMousepos2 == 0.899999976158)
+  xyprintfx 103, 166, 1, 0, 1, 1, _message, "*"
+if (@DBMousepos2 == 1)
+  xyprintfx 103, 196, 1, 0, 1, 1, _message, "*"
+if (@DBMousepos2 == 1.10000002384)
+  xyprintfx 103, 226, 1, 0, 1, 1, _message, "*"
+if (@DBMousepos2 == 1.20000004768)
+  xyprintfx 103, 256, 1, 0, 1, 1, _message, "*"
+if (@DBMousepos2 == 1.29999995232)
+  xyprintfx 103, 286, 1, 0, 1, 1, _message, "*"
+if (@DBMousepos2 == 1.39999997616)
+  xyprintfx 103, 316, 1, 0, 1, 1, _message, "*"
+if (@DBMousepos2 == 1.5)
+  xyprintfx 103, 346, 1, 0, 1, 1, _message, "*"
+if (@DBMousepos2 == -0.600000)
+  xyprintfx 103, 76, 1, 0, 1, 1, _message, "*"
+if (@DBMousepos2 == -0.700000)
+  xyprintfx 103, 106, 1, 0, 1, 1, _message, "*"
+if (@DBMousepos2 == -0.800000)
+  xyprintfx 103, 136, 1, 0, 1, 1, _message, "*"
+if (@DBMousepos2 == -0.900000)
+  xyprintfx 103, 166, 1, 0, 1, 1, _message, "*"
+if (@DBMousepos2 == -1.000000)
+  xyprintfx 103, 196, 1, 0, 1, 1, _message, "*"
+if (@DBMousepos2 == -1.100000)
+  xyprintfx 103, 226, 1, 0, 1, 1, _message, "*"
+if (@DBMousepos2 == -1.200000)
+  xyprintfx 103, 256, 1, 0, 1, 1, _message, "*"
+if (@DBMousepos2 == -1.300000)
+  xyprintfx 103, 286, 1, 0, 1, 1, _message, "*"
+if (@DBMousepos2 == -1.400000)
+  xyprintfx 103, 316, 1, 0, 1, 1, _message, "*"
+if (@DBMousepos2 == -1.500000)
+  xyprintfx 103, 346, 1, 0, 1, 1, _message, "*"
+startswitch {
+  extern CreateAPE2DControl push mousesens1 211 107 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSens returnvalue=1
+  extern CreateAPE2DControl push mousesens2 211 137 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSens returnvalue=2
+  extern CreateAPE2DControl push mousesens3 211 167 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSens returnvalue=3
+  extern CreateAPE2DControl push mousesens4 211 197 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSens returnvalue=4
+  extern CreateAPE2DControl push mousesens5 211 227 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSens returnvalue=5
+  extern CreateAPE2DControl push mousesens6 211 257 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSens returnvalue=6
+  extern CreateAPE2DControl push mousesens7 211 287 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSens returnvalue=7
+  extern CreateAPE2DControl push mousesens8 211 317 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSens returnvalue=8
+  extern CreateAPE2DControl push mousesens9 211 347 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSens returnvalue=9
+  extern CreateAPE2DControl push mousesens10 211 377 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSens returnvalue=10
+  extern CreateAPE2DControl push mousesensy1 311 107 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSensy returnvalue=1
+  extern CreateAPE2DControl push mousesensy2 311 137 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSensy returnvalue=2
+  extern CreateAPE2DControl push mousesensy3 311 167 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSensy returnvalue=3
+  extern CreateAPE2DControl push mousesensy4 311 197 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSensy returnvalue=4
+  extern CreateAPE2DControl push mousesensy5 311 227 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSensy returnvalue=5
+  extern CreateAPE2DControl push mousesensy6 311 257 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSensy returnvalue=6
+  extern CreateAPE2DControl push mousesensy7 311 287 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSensy returnvalue=7
+  extern CreateAPE2DControl push mousesensy8 311 317 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSensy returnvalue=8
+  extern CreateAPE2DControl push mousesensy9 311 347 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSensy returnvalue=9
+  extern CreateAPE2DControl push mousesensy10 311 377 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSensy returnvalue=10
+  extern CreateAPE2DControl push mousepos1 411 167 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMousepos returnvalue=1 sequence=1:9058
+  extern CreateAPE2DControl push mousepos2 411 227 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMousepos returnvalue=-1 sequence=1:9058
+  set @DBMousepos = func_cvar[m_pitch]
+  extern CreateAPE2DControl push mousesensdn 192 407 width=341 height=14 gamevar=@DBMouseSensDN returnvalue=1 nodrawflag=true
+  gosub 1:9058
+  gosub 1:9056
+}
+
+thinkswitch {
+  set @DBMousepos2 = func_cvar[m_pitch]
+  set @sensitivity = func_cvar[sensitivity]
+  if (@DBMouseSens > 0) {
+    gosub 1:9056
+    console "sensitivity %f", @DBMouseSens2
+  }
+  if (@DBMouseSensy > 0) {
+    gosub 1:9060
+    set @DBMouseSensy2 = (@DBMouseSensy2 * @DBMousevert)
+    console "m_pitch %f", @DBMouseSensy2
+  }
+  if (@DBMouseSensDN == 1)
+    closewindow 1:9055
+}
+
+finishswitch {
+  extern RemoveAPE2DControl mousesens1
+  extern RemoveAPE2DControl mousesens2
+  extern RemoveAPE2DControl mousesens3
+  extern RemoveAPE2DControl mousesens4
+  extern RemoveAPE2DControl mousesens5
+  extern RemoveAPE2DControl mousesens6
+  extern RemoveAPE2DControl mousesens7
+  extern RemoveAPE2DControl mousesens8
+  extern RemoveAPE2DControl mousesens9
+  extern RemoveAPE2DControl mousesens10
+  extern RemoveAPE2DControl mousesensdn
+  extern RemoveAPE2DControl mousepos1
+  extern RemoveAPE2DControl mousepos2
+  set @DBMouseSensDN = 0
+  gosub 1:9059
+}
+
+font "goodsym"
+flags passive2d, TRUE
+flags noscroll, TRUE
+xpos 192
+ypos 32
+width 341
+height 390
+
+#window 1:9100
+title "Find Location / Goto Location"
+body "\n"
+body "You are at \nX(%d) Y(%d) Z(%d)\n\n", @dbyouatx, @dbyouaty, @dbyouatz
+body "\n\n\n\n\n"
+body "Click Below to go to\n"
+body "X(%d) Y(%d) Z(%d)\n\n", @dbgotox2, @dbgotoy2, @dbgotoz2
+body "\n\n\n\n\n\n\n"
+xyprintfx 40, 80, 1, 0, 1, 1, _message, "X"
+xyprintfx 105, 80, 1, 0, 1, 1, _message, "Y"
+xyprintfx 180, 80, 1, 0, 1, 1, _message, "Z"
+startswitch {
+  extern AI_GetPlayerLocation @dbyouatx @dbyouaty @dbyouatz
+  extern CreateAPE2DControl edit dbgotoX 175 130 width=65 height=12 gamevar=@dbgotoX$ sequence=1:9102
+  extern CreateAPE2DControl edit dbgotoY 250 130 width=65 height=12 gamevar=@dbgotoy$ sequence=1:9102
+  extern CreateAPE2DControl edit dbgotoZ 325 130 width=65 height=12 gamevar=@dbgotoz$ sequence=1:9102
+  extern CreateAPE2DControl push dbgoto 175 180 width=100 height=12 font="goodsym" message="Go There" returnvalue=0 gamevar=@bladyblah sequence=1:9103
+}
+
+thinkswitch {
+  extern AI_GetPlayerLocation @dbyouatx @dbyouaty @dbyouatz
+}
+
+finishswitch {
+  extern RemoveAPE2DControl dbgotoX
+  extern RemoveAPE2DControl dbgotoY
+  extern RemoveAPE2DControl dbgotoZ
+  extern RemoveAPE2DControl dbgoto
+}
+
+font "goodsym"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:6000
+title "START AT STORY SECTION (ASSUMES YOU JUST RAN ANOX)"
+body "Choose place to start:"
+startswitch {
+  set STARTED_WITH_STORY_SECTION = 1
+}
+
+font "_anox6"
+flags noscroll, TRUE
+xpos 160
+ypos 32
+width 320
+choice "Start Game with Full Cine" 1:6005
+choice "ROWDYS: Start Game with Half Cine" 1:6010
+choice "TENEMENTS: Just got Grumpos" 1:6020
+choice "MYSTECH1: Start of Tunnels" 1:6030
+choice "TENEMENTS: Need to go to SS, then Sunder" 1:6040
+choice "STARPORT: Just arrived" 1:6045
+choice "VOTOWNE: Just arrived" 1:6050
+choice "WARSHIP BAY: Battling to fighter" 1:6060
+choice "VERILENT HIVE: Go stop missiles" 1:6080
+choice "SS PART 2: PAL goes for TDD" 1:6090
+choice "HEPHAESTUS: Just arrived" 1:6100
+choice "HEPHAESTUS: Into the Levant" 1:6110
+choice "SLOUNGE: About to get ambushed by Krapton" 1:6120
+choice "WHITENDON: Chose Boots, Paco, PAL" 1:6130
+choice "WHITENDON: Chose Boots, Paco, Stiletto" 1:6140
+choice "WHITENDON: Chose Boots, Paco, Rho" 1:6150
+choice "SLOUNGE: Need to go to Limbus" 1:6160
+choice "BRICKSB: About to go get Detta" 1:6170
+choice "Main Menu" 1:86
+choice "Exit" 1:87
+
+#window 1:3333
+title "BEAM VALUE INFO"
+body "Input Value: %d\n", @savebv
+body "Shrink: %d\n", @beam_shrink
+body "Fade: %d\n", @beam_fade
+body "Particle: %d\n", @beam_particle
+body "Glow: %d\n", @beam_glow
+body "Grow: %d\n", @beam_grow
+body "Lightning: %d\n", @beam_lightning
+body "Two Radii: %d\n", @beam_2radius
+body "Alpha Left: %d\n", @beam_alphaleft
+body "Alpha Right: %d\n", @beam_alpharight
+body "Infinite: %d\n", @beam_infinite
+xyprintfx 224, 16, 1, 1, 1, 1, _anox10, "Enter value."
+startswitch {
+  extern CreateAPE2DControl edit beamedit 350 68 width=50 height=20 gamevar=@newbeam$
+  extern CreateAPE2DControl push exitbeamedit 350 92 width=50 height=20 font=_anox10 message="Exit" holdfocusflag=false sequence=1:3335
+  set @savebv = 0
+}
+
+thinkswitch {
+  set @bv = func_atof[@newbeam$]
+  if (@bv == @savebv)
+    goto 0:0
+  set @savebv = @bv
+  set @beam_infinite = func_div[$@bv$,8192]
+  set @bv = func_mod[$@bv$,8192]
+  set @beam_alpharight = func_div[$@bv$,4096]
+  set @bv = func_mod[$@bv$,4096]
+  set @beam_alphaleft = func_div[$@bv$,2048]
+  set @bv = func_mod[$@bv$,2048]
+  set @beam_2radius = func_div[$@bv$,1024]
+  set @bv = func_mod[$@bv$,1024]
+  set @beam_lightning = func_div[$@bv$,512]
+  set @bv = func_mod[$@bv$,512]
+  set @beam_grow = func_div[$@bv$,64]
+  set @bv = func_mod[$@bv$,64]
+  set @beam_glow = func_div[$@bv$,32]
+  set @bv = func_mod[$@bv$,32]
+  set @beam_particle = func_div[$@bv$,8]
+  set @bv = func_mod[$@bv$,8]
+  set @beam_fade = func_div[$@bv$,2]
+  set @bv = func_mod[$@bv$,2]
+  set @beam_shrink = @bv
+}
+
+finishswitch {
+  extern RemoveApe2DControl beamedit
+  extern RemoveApe2DControl exitbeamedit
+  goto 1:86
+}
+
+font "_anox10"
+flags noscroll, TRUE
+xpos 100
+ypos 32
+width 420
+
+#window 151:7000
+title "MINTENDO PRESENTS:"
+if (firstMovieWord == 0)
+  body "Rolling "
+if (firstMovieWord == 1)
+  body "Thunder "
+if (firstMovieWord == 2)
+  body "Danger "
+if (firstMovieWord == 3)
+  body "Screaming "
+if (firstMovieWord == 4)
+  body "Sudden "
+if (firstMovieWord == 5)
+  body "Hyper "
+if (firstMovieWord == 6)
+  body "Flying "
+if (firstMovieWord == 7)
+  body "Burning "
+if (firstMovieWord == 8)
+  body "Fire "
+if (firstMovieWord == 9)
+  body "Shrieking "
+if (firstMovieWord == 10)
+  body "Shocking "
+if (firstMovieWord == 11)
+  body "Destruction "
+if (firstMovieWord == 12)
+  body "Fatal "
+if (firstMovieWord == 13)
+  body "Final "
+if (firstMovieWord == 14)
+  body "Furious "
+if (firstMovieWord == 15)
+  body "Battle "
+if (firstMovieWord == 16)
+  body "Super "
+if (firstMovieWord == 17)
+  body "Double "
+if (firstMovieWord == 18)
+  body "Power "
+if (firstMovieWord == 19)
+  body "Fighting "
+if (firstMovieWord == 20)
+  body "Raging "
+if (firstMovieWord == 21)
+  body "Dungeon "
+if (firstMovieWord == 22)
+  body "Galactic "
+if (firstMovieWord == 23)
+  body "Lord of "
+if (firstMovieWord == 24)
+  body "Crazy "
+if (firstMovieWord == 25)
+  body "Soul "
+if (firstMovieWord == 26)
+  body "Shadow "
+if (firstMovieWord == 27)
+  body "Guardian "
+if (firstMovieWord == 28)
+  body "Mega "
+if (firstMovieWord == 29)
+  body "Phantom "
+if (firstMovieWord == 30)
+  body "Blue "
+if (firstMovieWord == 31)
+  body "Red "
+if (firstMovieWord == 32)
+  body "Golden "
+if (firstMovieWord == 33)
+  body "Silver "
+if (firstMovieWord == 34)
+  body "Black "
+if (firstMovieWord == 35)
+  body "Strange "
+if (firstMovieWord == 36)
+  body "Mysterious "
+if (firstMovieWord == 37)
+  body "Sorcerer "
+if (firstMovieWord == 38)
+  body "Magic "
+if (firstMovieWord == 39)
+  body "Amazing "
+if (firstMovieWord == 40)
+  body "Fearless "
+if (firstMovieWord == 41)
+  body "Fantastic "
+if (firstMovieWord == 42)
+  body "The "
+if (firstMovieWord == 43)
+  body "Lost "
+if (firstMovieWord == 44)
+  body "Hidden "
+if (firstMovieWord == 45)
+  body "Secret "
+if (firstMovieWord == 46)
+  body "Psycho "
+if (firstMovieWord == 47)
+  body "Solar "
+if (firstMovieWord == 48)
+  body "Space "
+if (firstMovieWord == 49)
+  body "Moon "
+if (firstMovieWord == 50)
+  body "Hard "
+if (firstMovieWord == 51)
+  body "Haunted "
+if (firstMovieWord == 52)
+  body "Big "
+if (firstMovieWord == 53)
+  body "Mutant "
+if (firstMovieWord == 54)
+  body "Sea "
+if (firstMovieWord == 55)
+  body "Aqua "
+if (firstMovieWord == 56)
+  body "Air "
+if (firstMovieWord == 57)
+  body "Earth "
+if (firstMovieWord == 58)
+  body "Rear "
+if (firstMovieWord == 59)
+  body "Atomic "
+if (firstMovieWord == 60)
+  body "Shooting "
+if (firstMovieWord == 61)
+  body "Road "
+if (firstMovieWord == 62)
+  body "Night "
+if (firstMovieWord == 63)
+  body "Star "
+if (firstMovieWord == 64)
+  body "Stellar "
+if (firstMovieWord == 65)
+  body "Monkey "
+if (secondMovieWord == 0)
+  body "Fight"
+if (secondMovieWord == 1)
+  body "Rangers"
+if (secondMovieWord == 2)
+  body "Race"
+if (secondMovieWord == 3)
+  body "Sergeants"
+if (secondMovieWord == 4)
+  body "Thunder"
+if (secondMovieWord == 5)
+  body "Lightning"
+if (secondMovieWord == 6)
+  body "Frenzy"
+if (secondMovieWord == 7)
+  body "Assault"
+if (secondMovieWord == 8)
+  body "Challenge"
+if (secondMovieWord == 9)
+  body "Battle"
+if (secondMovieWord == 10)
+  body "Alley"
+if (secondMovieWord == 11)
+  body "Derby"
+if (secondMovieWord == 12)
+  body "Fist"
+if (secondMovieWord == 13)
+  body "Terror"
+if (secondMovieWord == 14)
+  body "Squad"
+if (secondMovieWord == 15)
+  body "Strike"
+if (secondMovieWord == 16)
+  body "Run"
+if (secondMovieWord == 17)
+  body "Fury"
+if (secondMovieWord == 18)
+  body "Dragon"
+if (secondMovieWord == 19)
+  body "Brothers"
+if (secondMovieWord == 20)
+  body "Rampage"
+if (secondMovieWord == 21)
+  body "Dungeon"
+if (secondMovieWord == 22)
+  body "Castle"
+if (secondMovieWord == 23)
+  body "Master"
+if (secondMovieWord == 24)
+  body "Warriors"
+if (secondMovieWord == 25)
+  body "Agents"
+if (secondMovieWord == 26)
+  body "Star"
+if (secondMovieWord == 27)
+  body "World"
+if (secondMovieWord == 28)
+  body "Engines"
+if (secondMovieWord == 29)
+  body "Wheels"
+if (secondMovieWord == 30)
+  body "Guardian"
+if (secondMovieWord == 31)
+  body "Magic"
+if (secondMovieWord == 32)
+  body "Vengeance"
+if (secondMovieWord == 33)
+  body "Lair"
+if (secondMovieWord == 34)
+  body "Zone"
+if (secondMovieWord == 35)
+  body "Island"
+if (secondMovieWord == 36)
+  body "Riot"
+if (secondMovieWord == 37)
+  body "Space"
+if (secondMovieWord == 38)
+  body "Invaders"
+if (secondMovieWord == 39)
+  body "Sword"
+if (secondMovieWord == 40)
+  body "Gunner"
+if (secondMovieWord == 41)
+  body "Chase"
+if (secondMovieWord == 42)
+  body "Attack"
+if (secondMovieWord == 43)
+  body "Lords"
+if (secondMovieWord == 44)
+  body "Combat"
+if (secondMovieWord == 45)
+  body "Ball"
+if (secondMovieWord == 46)
+  body "Command"
+if (secondMovieWord == 47)
+  body "Gods"
+if (secondMovieWord == 48)
+  body "Runner"
+if (secondMovieWord == 49)
+  body "Patrol"
+if (secondMovieWord == 50)
+  body "Rider"
+if (thirdMovieWord == 1)
+  body " Complete"
+if (thirdMovieWord == 2)
+  body " Solid"
+if (thirdMovieWord == 3)
+  body " Alpha"
+if (thirdMovieWord == 4)
+  body " Extreme"
+if (thirdMovieWord == 5)
+  body " Plus"
+if (thirdMovieWord == 6)
+  body ": Collector's Edition"
+if (thirdMovieWord == 7)
+  body " Platinum"
+if (thirdMovieWord == 8)
+  body " Returns"
+if (doesItHaveX)
+  body " X"
+if (isItASequel)
+  body " II"
+body "\n\nPress Enter for more."
+startswitch {
+  set firstMovieWord = func_drand[1,65]
+  set secondMovieWord = func_drand[1,50]
+  set thirdMovieWord = 0
+  if (RANDOM > 90)
+    set thirdMovieWord = func_drand[1,8]
+  set doesItHaveX = func_div[$RANDOM$,85]
+  set isItASequel = func_div[$RANDOM$,81]
+  console "bind ENTER invoke 151:7001"
+  goto 0:0
+}
+
+thinkswitch {
+  goto 0:0
+}
+
+style "style_simplebox"
+font "comicfont_white"
+xpos 64
+ypos 112
+width 512
+height 256
+background "graphics/black.bmp" stretch
+
+#switch 1:87
+console "bind ESCAPE mainmenu"
+if (@debug_window) {
+  closewindow 1:$@debug_window$
+} else
+  console "ui_closeallwindows"
+goto 0:0
+
+#switch 1:8708
+set @temphp = (@hp + 3)
+extern SetPlayerCurrentHP @chartoedit$ @temphp
+
+#switch 1:8709
+if (@hp == 1) {
+  console "echo =====> Hitpts can't be below 1! <====="
+  goto 0:0
+}
+set @temphp = (@hp - 3)
+extern SetPlayerCurrentHP @chartoedit$ @temphp
+
+#switch 1:8710
+set L[$@whoseworldskill$] = func_atof[@newlevel$]
+set TempGlobal99Level = L[$@whoseworldskill$]
+extern forceplayerlevel @chartoedit$ TempGlobal99Level
+
+#switch 1:8711
+set L[$@whoseworldskill$] = (L[$@whoseworldskill$] - 1)
+set TempGlobal99Level = L[$@whoseworldskill$]
+if (TempGlobal99Level <= 0)
+  set L[$@whoseworldskill$] = 1
+set TempGlobal99Level = L[$@whoseworldskill$]
+extern forceplayerlevel @chartoedit$ TempGlobal99Level
+
+#switch 1:8712
+if (@whoseworldskill == 1) {
+  extern get_world_skill_level picklock @WSkillStepUp
+  set @WSkillStepUp = (@WSkillStepUp + 1)
+  extern set_world_skill_level picklock @WSkillStepUp
+}
+if (@whoseworldskill == 2) {
+  extern get_world_skill_level yammer @WSkillStepUp
+  set @WSkillStepUp = (@WSkillStepUp + 1)
+  extern set_world_skill_level yammer @WSkillStepUp
+}
+if (@whoseworldskill == 3) {
+  extern get_world_skill_level analyze @WSkillStepUp
+  set @WSkillStepUp = (@WSkillStepUp + 1)
+  extern set_world_skill_level analyze @WSkillStepUp
+}
+if (@whoseworldskill == 4) {
+  extern get_world_skill_level comptalk @WSkillStepUp
+  set @WSkillStepUp = (@WSkillStepUp + 1)
+  extern set_world_skill_level comptalk @WSkillStepUp
+}
+if (@whoseworldskill == 5) {
+  extern get_world_skill_level tractor @WSkillStepUp
+  set @WSkillStepUp = (@WSkillStepUp + 1)
+  extern set_world_skill_level tractor @WSkillStepUp
+}
+if (@whoseworldskill == 6) {
+  extern get_world_skill_level throwloonie @WSkillStepUp
+  set @WSkillStepUp = (@WSkillStepUp + 1)
+  extern set_world_skill_level throwloonie @WSkillStepUp
+}
+if (@whoseworldskill == 7) {
+  extern get_world_skill_level ragemight @WSkillStepUp
+  set @WSkillStepUp = (@WSkillStepUp + 1)
+  extern set_world_skill_level ragemight @WSkillStepUp
+}
+
+#switch 1:8713
+if (@whoseworldskill == 1) {
+  extern get_world_skill_level picklock @WSkillStepUp
+  set @WSkillStepUp = (@WSkillStepUp - 1)
+  extern set_world_skill_level picklock @WSkillStepUp
+}
+if (@whoseworldskill == 2) {
+  extern get_world_skill_level yammer @WSkillStepUp
+  set @WSkillStepUp = (@WSkillStepUp - 1)
+  extern set_world_skill_level yammer @WSkillStepUp
+}
+if (@whoseworldskill == 3) {
+  extern get_world_skill_level analyze @WSkillStepUp
+  set @WSkillStepUp = (@WSkillStepUp - 1)
+  extern set_world_skill_level analyze @WSkillStepUp
+}
+if (@whoseworldskill == 4) {
+  extern get_world_skill_level comptalk @WSkillStepUp
+  set @WSkillStepUp = (@WSkillStepUp - 1)
+  extern set_world_skill_level comptalk @WSkillStepUp
+}
+if (@whoseworldskill == 5) {
+  extern get_world_skill_level tractor @WSkillStepUp
+  set @WSkillStepUp = (@WSkillStepUp - 1)
+  extern set_world_skill_level tractor @WSkillStepUp
+}
+if (@whoseworldskill == 6) {
+  extern get_world_skill_level throwloonie @WSkillStepUp
+  set @WSkillStepUp = (@WSkillStepUp - 1)
+  extern set_world_skill_level throwloonie @WSkillStepUp
+}
+if (@whoseworldskill == 7) {
+  extern get_world_skill_level ragemight @WSkillStepUp
+  set @WSkillStepUp = (@WSkillStepUp - 1)
+  extern set_world_skill_level ragemight @WSkillStepUp
+}
+
+#switch 1:8656
+if (@dbgdb_add == 1) {
+  extern RemoveAPE2DControl additem
+  extern RemoveAPE2DControl remitem
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8656
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8656
+}
+if (@dbgdb_add == 2) {
+  extern RemoveAPE2DControl remitem
+  extern RemoveAPE2DControl additem
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8656
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8656
+}
+goto 0:0
+
+#switch 1:8706
+
+#switch 1:8707
+if (@dbvaris == 1) {
+  extern RemoveAPE2DControl dbstring
+  extern RemoveAPE2DControl dbnumber
+  extern CreateAPE2DControl push dbnumber 170 228 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbvaris returnvalue=1 sequence=1:8707
+  extern CreateAPE2DControl push dbstring 170 254 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbvaris returnvalue=2 sequence=1:8707
+}
+if (@dbvaris == 2) {
+  extern RemoveAPE2DControl dbstring
+  extern RemoveAPE2DControl dbnumber
+  extern CreateAPE2DControl push dbnumber 170 228 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbvaris returnvalue=1 sequence=1:8707
+  extern CreateAPE2DControl push dbstring 170 254 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbvaris returnvalue=2 sequence=1:8707
+}
+goto 0:0
+
+#switch 1:8718
+if (@dbvaris == 1) {
+  set @dbvarv = func_atof[@dbvarv$]
+  console "gamevar %s %f", @dbvar$, @dbvarv
+  closewindow 1:8705
+  gosub 1:8700
+}
+if (@dbvaris == 2) {
+  console "gamevar %s$ %s", @dbvar$, @dbvarv$
+  closewindow 1:8705
+  gosub 1:8700
+}
+
+#switch 1:8719
+closewindow 1:8705
+gosub 1:8700
+
+#switch 1:8756
+console "ui_closeallwindows"
+if (@map < 16) {
+  if (@map == 1)
+    console "map tours fromtours2top"
+  if (@map == 2)
+    console "map tours fromtours2"
+  if (@map == 3)
+    console "map tours frombricksb"
+  if (@map == 4)
+    console "map tours2 fromss"
+  if (@map == 5)
+    console "map tours2 fromtourstop"
+  if (@map == 6)
+    console "map tours2 fromtours"
+  if (@map == 7)
+    console "map tours2 fromdettas"
+  if (@map == 8)
+    console "map bricksb"
+  if (@map == 9)
+    console "map bricksb fromtours"
+  if (@map == 10)
+    console "map bricksb frombricksc"
+  if (@map == 11)
+    console "map hovel frombricksc2"
+  if (@map == 12)
+    console "map rowdys"
+  if (@map == 13)
+    console "map bricksd fromwhacks"
+  if (@map == 14)
+    console "map bricksd fromrowdys"
+  if (@map == 15)
+    console "map bricksd frombricksc"
+} else if (@map < 32)
+  if (@map == 16)
+    console "map bricksd fromzordos"
+if (@map == 17)
+  console "map bricksd frommmuseum"
+if (@map == 18)
+  console "map whacks"
+if (@map == 19)
+  console "map zordos"
+if (@map == 20)
+  console "map mmuseum"
+if (@map == 21)
+  console "map onegate"
+if (@map == 22)
+  console "map bricksc frombricksc2"
+if (@map == 23)
+  console "map bricksc frombricksd"
+if (@map == 24)
+  console "map bricksc frombricksb"
+if (@map == 25)
+  console "map casinox"
+if (@map == 26)
+  console "map tenements frombricksc2"
+if (@map == 27)
+  console "map tenements fromgrumpos"
+if (@map == 28)
+  console "map tenements frommystech1door"
+if (@map == 29)
+  console "map tenements frommystech1"
+if (@map == 30)
+  console "map tenements fromfranks"
+if (@map == 31) {
+  console "map bricksc2 frombricksc"
+} else {
+  if (@map == 32)
+    console "map bricksc2 fromhovel"
+  if (@map == 33)
+    console "map bricksc2 fromtenements"
+  if (@map == 34)
+    console "map franks"
+  if (@map == 35)
+    console "map grumpos"
+  if (@map == 36)
+    console "map mystech1 fromtenementsdoor"
+  if (@map == 37)
+    console "map mystech1 fromtenements"
+  if (@map == 38)
+    console "map mystech1 fromsewagic1"
+  if (@map == 39)
+    console "map mystech2"
+  if (@map == 40)
+    console "map sewagic1"
+  if (@map == 41)
+    console "map sewagic2 frommystech2"
+  if (@map == 42)
+    console "map sewagic2 fromsewagic1"
+}
+
+#switch 1:8760
+console "ui_closeallwindows"
+if (@map < 16) {
+  if (@map == 1)
+    console "map slounge scommonstolounge"
+  if (@map == 2)
+    console "map slounge fromvendomart"
+  if (@map == 3)
+    console "map museum scommons2hall"
+  if (@map == 4)
+    console "map museum scommons2vent"
+  if (@map == 5)
+    console "map vendomart"
+  if (@map == 6)
+    console "map senderss fromscommons1"
+  if (@map == 7)
+    console "map senderss frombricks"
+  if (@map == 8)
+    console "map senderss fromrhoshuttle"
+  if (@map == 9)
+    console "map scommons"
+  if (@map == 10)
+    console "map scommons fromroutubes"
+  if (@map == 11)
+    console "map scommons sloungetoscommons"
+  if (@map == 12)
+    console "map scommons hall2scommons"
+  if (@map == 13)
+    console "map scommons vent2scommons"
+  if (@map == 14)
+    console "map scommons fromsenderss1"
+  if (@map == 15)
+    console "map scommons fromsendormitory"
+} else {
+  if (@map == 16)
+    console "map scommons fromvendomart"
+  if (@map == 17)
+    console "map sendormitory"
+  if (@map == 18)
+    console "map routubes1 fromscommons"
+  if (@map == 19)
+    console "map routubes1 fromroutubes2"
+  if (@map == 20)
+    console "map routubes2 fromroutubes1"
+  if (@map == 21)
+    console "map routubes2 fromredlight"
+  if (@map == 22)
+    console "map routubes2 frommugmug"
+  if (@map == 24)
+    console "map redlight"
+  if (@map == 25)
+    console "map redlight fromsexmach"
+  if (@map == 26)
+    console "map redlight fromorange"
+  if (@map == 27)
+    console "map redlight fromtubbys"
+  if (@map == 28)
+    console "map redlight fromslutopia"
+  if (@map == 29)
+    console "map sexmach"
+  if (@map == 30)
+    console "map orange"
+  if (@map == 31)
+    console "map tubbys"
+  if (@map == 32)
+    console "map slutopia"
+}
+
+#switch 1:8762
+console "ui_closeallwindows"
+if (@map == 1)
+  console "map starport frombraintrain"
+if (@map == 2)
+  console "map starport fromservice"
+if (@map == 3)
+  console "map labbuilding"
+if (@map == 4)
+  console "map servicetunnel fromstarport"
+if (@map == 5)
+  console "map servicetunnel fromlabbuilding"
+if (@map == 6)
+  console "map sunstrip fromstarport"
+if (@map == 7)
+  console "map sunstrip fromlabbuilding"
+
+#switch 1:8764
+console "ui_closeallwindows"
+if (@map == 1)
+  console "map votowne fromchamber"
+if (@map == 2)
+  console "map votowne fromrepublic"
+if (@map == 3)
+  console "map chamber fromcinedem"
+if (@map == 4)
+  console "map chamber fromvotowne2"
+if (@map == 5)
+  console "map chamber fromwarshipbay"
+if (@map == 6)
+  console "map republic"
+if (@map == 7)
+  console "map warshipbay fromchamber2"
+if (@map == 8)
+  console "map warshipbay shortcut"
+
+#switch 1:8765
+console "map hive"
+
+#switch 1:8769
+console "ui_closeallwindows"
+if (@map == 1)
+  console "map hephpoor fromhephaestus"
+if (@map == 2)
+  console "map hephpoor fromslevant"
+if (@map == 3)
+  console "map hephaestus fromhephpoor"
+if (@map == 4)
+  console "map hephaestus fromhephtower1"
+if (@map == 5)
+  console "map hephtower1 fromhephaestus"
+if (@map == 6)
+  console "map hephtower1 fromhephfactory"
+if (@map == 7)
+  console "map hephtower1 fromhephtower2"
+if (@map == 8)
+  console "map hephtower2"
+if (@map == 9)
+  console "map hephfactory fromhephtower1"
+if (@map == 10)
+  console "map hephfactory fromhephpipes"
+if (@map == 11)
+  console "map hephfactory fromhephlava"
+if (@map == 12)
+  console "map hephfactory fromlevant1"
+if (@map == 13)
+  console "map hephpipes"
+if (@map == 14)
+  console "map hephlava"
+if (@map == 15)
+  console "map levant1 fromhephfactory"
+if (@map == 16)
+  console "map levant1 fromlevant2a"
+if (@map == 17)
+  console "map levant2 fromlevant1a"
+if (@map == 18)
+  console "map levant2"
+if (@map == 19)
+  console "map levant"
+
+#switch 1:8771
+console "ui_closeallwindows"
+if (@map == 1)
+  console "map kraptonbay kraptonshuttlestart"
+if (@map == 2)
+  console "map kraptonbay kraptonmazetokraptonbay"
+if (@map == 3)
+  console "map kraptonbay"
+if (@map == 4)
+  console "map kraptonmaze"
+if (@map == 5)
+  console "map kraptonjail"
+
+#switch 1:8775
+console "ui_closeallwindows"
+if (@map == 1)
+  console "map ballotine"
+if (@map == 2)
+  console "map baltown"
+if (@map == 3)
+  console "map doren"
+if (@map == 4)
+  console "map waukees"
+if (@map == 5)
+  console "map whitendon"
+if (@map == 6)
+  console "map whitecaves-a"
+if (@map == 7)
+  console "map tensil"
+if (@map == 8)
+  console "map temple"
+if (@map == 9)
+  console "map commiteon"
+if (@map == 10)
+  console "map commbase"
+
+#switch 1:8777
+console "ui_closeallwindows"
+if (@map == 1)
+  console "map limbus limbusbridgetolimbus"
+if (@map == 2)
+  console "map limbus pillars2limbus"
+if (@map == 3)
+  console "map crevicelanding crevice2crevicelanding"
+if (@map == 4)
+  console "map crevice limbustocrevice"
+if (@map == 5)
+  console "map crevice crevicelanding2crevice"
+
+#switch 1:8806
+if (@dbgdb_add == 1) {
+  set @dbquestval = 9
+  extern RemoveAPE2DControl addquest
+  extern RemoveAPE2DControl complete
+  extern RemoveAPE2DControl cancelqu
+  extern RemoveAPE2DControl isquestd
+  extern CreateAPE2DControl push addquest 170 208 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8806
+  extern CreateAPE2DControl push complete 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8806
+  extern CreateAPE2DControl push cancelqu 170 268 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=3 sequence=1:8806
+  extern CreateAPE2DControl push isquestd 170 298 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=4 sequence=1:8806
+}
+if (@dbgdb_add == 2) {
+  set @dbquestval = 9
+  extern RemoveAPE2DControl addquest
+  extern RemoveAPE2DControl complete
+  extern RemoveAPE2DControl cancelqu
+  extern RemoveAPE2DControl isquestd
+  extern CreateAPE2DControl push addquest 170 208 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8806
+  extern CreateAPE2DControl push complete 170 238 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8806
+  extern CreateAPE2DControl push cancelqu 170 268 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=3 sequence=1:8806
+  extern CreateAPE2DControl push isquestd 170 298 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=4 sequence=1:8806
+}
+if (@dbgdb_add == 3) {
+  set @dbquestval = 9
+  extern RemoveAPE2DControl addquest
+  extern RemoveAPE2DControl complete
+  extern RemoveAPE2DControl cancelqu
+  extern RemoveAPE2DControl isquestd
+  extern CreateAPE2DControl push addquest 170 208 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8806
+  extern CreateAPE2DControl push complete 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8806
+  extern CreateAPE2DControl push cancelqu 170 268 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=3 sequence=1:8806
+  extern CreateAPE2DControl push isquestd 170 298 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=4 sequence=1:8806
+}
+if (@dbgdb_add == 4) {
+  extern RemoveAPE2DControl addquest
+  extern RemoveAPE2DControl complete
+  extern RemoveAPE2DControl cancelqu
+  extern RemoveAPE2DControl isquestd
+  extern CreateAPE2DControl push addquest 170 208 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8806
+  extern CreateAPE2DControl push complete 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8806
+  extern CreateAPE2DControl push cancelqu 170 268 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=3 sequence=1:8806
+  extern CreateAPE2DControl push isquestd 170 298 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=4 sequence=1:8806
+}
+goto 0:0
+
+#switch 1:8851
+gosub 1:5
+if (party_population > 2) {
+  if ((PARTY_BOOTS == 0) && @boots_ar_on) {
+    extern ModifyAPE2DControl boots_addremove dimflag=true
+    set @boots_ar_on = 0
+  }
+  if ((PARTY_GRUMPOS == 0) && @grumpos_ar_on) {
+    extern ModifyAPE2DControl grumpos_addremove dimflag=true
+    set @grumpos_ar_on = 0
+  }
+  if ((PARTY_RHO == 0) && @rho_ar_on) {
+    extern ModifyAPE2DControl rho_addremove dimflag=true
+    set @rho_ar_on = 0
+  }
+  if ((PARTY_PAL == 0) && @pal_ar_on) {
+    extern ModifyAPE2DControl pal_addremove dimflag=true
+    set @pal_ar_on = 0
+  }
+  if ((PARTY_DEMOCRATUS == 0) && @democratus_ar_on) {
+    extern ModifyAPE2DControl democratus_addremove dimflag=true
+    set @democratus_ar_on = 0
+  }
+  if ((PARTY_STILETTO == 0) && @stiletto_ar_on) {
+    extern ModifyAPE2DControl stiletto_addremove dimflag=true
+    set @stiletto_ar_on = 0
+  }
+  if ((PARTY_PACO == 0) && @paco_ar_on) {
+    extern ModifyAPE2DControl paco_addremove dimflag=true
+    set @paco_ar_on = 0
+  }
+}
+if (@boots_ar_on && LEAD_BOOTS) {
+  extern ModifyAPE2DControl boots_addremove dimflag=true
+  set @boots_ar_on = 0
+}
+if (LEAD_GRUMPOS && @grumpos_ar_on) {
+  extern ModifyAPE2DControl grumpos_addremove dimflag=true
+  set @grumpos_ar_on = 0
+}
+if (LEAD_RHO && @rho_ar_on) {
+  extern ModifyAPE2DControl rho_addremove dimflag=true
+  set @rho_ar_on = 0
+}
+if (LEAD_PAL && @pal_ar_on) {
+  extern ModifyAPE2DControl pal_addremove dimflag=true
+  set @pal_ar_on = 0
+}
+if (LEAD_DEMOCRATUS && @democratus_ar_on) {
+  extern ModifyAPE2DControl democratus_addremove dimflag=true
+  set @democratus_ar_on = 0
+}
+if (LEAD_STILETTO && @stiletto_ar_on) {
+  extern ModifyAPE2DControl stiletto_addremove dimflag=true
+  set @stiletto_ar_on = 0
+}
+if (LEAD_PACO && @paco_ar_on) {
+  extern ModifyAPE2DControl paco_addremove dimflag=true
+  set @paco_ar_on = 0
+}
+
+#switch 1:8852
+gosub 1:5
+if (@boots_ml_on && (LEAD_BOOTS || (PARTY_BOOTS == 0))) {
+  extern ModifyAPE2DControl boots_leader dimflag=true
+  set @boots_ml_on = 0
+}
+if (@grumpos_ml_on && (LEAD_GRUMPOS || (PARTY_GRUMPOS == 0))) {
+  extern ModifyAPE2DControl grumpos_leader dimflag=true
+  set @grumpos_ml_on = 0
+}
+if (@rho_ml_on && (LEAD_RHO || (PARTY_RHO == 0))) {
+  extern ModifyAPE2DControl rho_leader dimflag=true
+  set @rho_ml_on = 0
+}
+if (@pal_ml_on && (LEAD_PAL || (PARTY_PAL == 0))) {
+  extern ModifyAPE2DControl pal_leader dimflag=true
+  set @pal_ml_on = 0
+}
+if (@democratus_ml_on && (LEAD_DEMOCRATUS || (PARTY_DEMOCRATUS == 0))) {
+  extern ModifyAPE2DControl democratus_leader dimflag=true
+  set @democratus_ml_on = 0
+}
+if (@stiletto_ml_on && (LEAD_STILETTO || (PARTY_STILETTO == 0))) {
+  extern ModifyAPE2DControl stiletto_leader dimflag=true
+  set @stiletto_ml_on = 0
+}
+if (@paco_ml_on && (LEAD_PACO || (PARTY_PACO == 0))) {
+  extern ModifyAPE2DControl paco_leader dimflag=true
+  set @paco_ml_on = 0
+}
+
+#switch 1:8853
+gosub 1:5
+if (((LEAD_BOOTS == 0) && (@boots_ar_on == 0)) && ((party_population < 3) || PARTY_BOOTS)) {
+  extern ModifyAPE2DControl boots_addremove dimflag=false
+  set @boots_ar_on = 1
+}
+if (((LEAD_GRUMPOS == 0) && (@grumpos_ar_on == 0)) && ((party_population < 3) || PARTY_GRUMPOS)) {
+  extern ModifyAPE2DControl grumpos_addremove dimflag=false
+  set @grumpos_ar_on = 1
+}
+if (((LEAD_RHO == 0) && (@rho_ar_on == 0)) && ((party_population < 3) || PARTY_RHO)) {
+  extern ModifyAPE2DControl rho_addremove dimflag=false
+  set @rho_ar_on = 1
+}
+if (((LEAD_PAL == 0) && (@pal_ar_on == 0)) && ((party_population < 3) || PARTY_PAL)) {
+  extern ModifyAPE2DControl pal_addremove dimflag=false
+  set @pal_ar_on = 1
+}
+if (((LEAD_DEMOCRATUS == 0) && (@democratus_ar_on == 0)) && ((party_population < 3) || PARTY_DEMOCRATUS)) {
+  extern ModifyAPE2DControl democratus_addremove dimflag=false
+  set @democratus_ar_on = 1
+}
+if (((LEAD_STILETTO == 0) && (@stiletto_ar_on == 0)) && ((party_population < 3) || PARTY_STILETTO)) {
+  extern ModifyAPE2DControl stiletto_addremove dimflag=false
+  set @stiletto_ar_on = 1
+}
+if (((LEAD_PACO == 0) && (@paco_ar_on == 0)) && ((party_population < 3) || PARTY_PACO)) {
+  extern ModifyAPE2DControl paco_addremove dimflag=false
+  set @paco_ar_on = 1
+}
+
+#switch 1:8854
+gosub 1:5
+if ((@boots_ml_on == 0) && ((LEAD_BOOTS == 0) && PARTY_BOOTS)) {
+  extern ModifyAPE2DControl boots_leader dimflag=false
+  set @boots_ml_on = 1
+}
+if ((@grumpos_ml_on == 0) && ((LEAD_GRUMPOS == 0) && PARTY_GRUMPOS)) {
+  extern ModifyAPE2DControl grumpos_leader dimflag=false
+  set @grumpos_ml_on = 1
+}
+if ((@rho_ml_on == 0) && ((LEAD_RHO == 0) && PARTY_RHO)) {
+  extern ModifyAPE2DControl rho_leader dimflag=false
+  set @rho_ml_on = 1
+}
+if ((@pal_ml_on == 0) && ((LEAD_PAL == 0) && PARTY_PAL)) {
+  extern ModifyAPE2DControl pal_leader dimflag=false
+  set @pal_ml_on = 1
+}
+if ((@democratus_ml_on == 0) && ((LEAD_DEMOCRATUS == 0) && PARTY_DEMOCRATUS)) {
+  extern ModifyAPE2DControl democratus_leader dimflag=false
+  set @democratus_ml_on = 1
+}
+if ((@stiletto_ml_on == 0) && ((LEAD_STILETTO == 0) && PARTY_STILETTO)) {
+  extern ModifyAPE2DControl stiletto_leader dimflag=false
+  set @stiletto_ml_on = 1
+}
+if ((@paco_ml_on == 0) && ((LEAD_PACO == 0) && PARTY_PACO)) {
+  extern ModifyAPE2DControl paco_leader dimflag=false
+  set @paco_ml_on = 1
+}
+
+#switch 1:8855
+gosub 1:5
+set @statechange = 1
+if ((@addremove == 1) && (PARTY_BOOTS == 0)) {
+  extern add_npc_to_party Boots
+} else if (@addremove == 1)
+  extern remove_npc_from_party Boots 1
+if ((@addremove == 2) && (PARTY_GRUMPOS == 0)) {
+  extern add_npc_to_party Grumpos
+} else if (@addremove == 2)
+  extern remove_npc_from_party Grumpos 1
+if ((@addremove == 4) && (PARTY_RHO == 0)) {
+  extern add_npc_to_party Rho
+} else if (@addremove == 4)
+  extern remove_npc_from_party Rho 1
+if ((@addremove == 3) && (PARTY_PAL == 0)) {
+  extern add_npc_to_party Pal
+} else if (@addremove == 3)
+  extern remove_npc_from_party Pal 1
+if ((@addremove == 5) && (PARTY_DEMOCRATUS == 0)) {
+  extern add_npc_to_party Democratus
+} else if (@addremove == 5)
+  extern remove_npc_from_party Democratus 1
+if ((@addremove == 6) && (PARTY_STILETTO == 0)) {
+  extern add_npc_to_party Stiletto
+} else if (@addremove == 6)
+  extern remove_npc_from_party Stiletto 1
+if ((@addremove == 7) && (PARTY_PACO == 0)) {
+  extern add_npc_to_party Paco
+} else if (@addremove == 7)
+  extern remove_npc_from_party Paco 1
+
+#switch 1:8856
+set @statechange = 1
+if (@makelead == 1)
+  extern set_party_leader Boots
+if (@makelead == 2)
+  extern set_party_leader Grumpos
+if (@makelead == 4)
+  extern set_party_leader Rho
+if (@makelead == 3)
+  extern set_party_leader Pal
+if (@makelead == 5)
+  extern set_party_leader Democratus
+if (@makelead == 6)
+  extern set_party_leader Stiletto
+if (@makelead == 7)
+  extern set_party_leader Paco
+
+#switch 1:8857
+set @cash = func_atof[@newcash$]
+extern set_money @cash
+
+#switch 1:8859
+set @boots_ar_on = 1
+set @boots_ml_on = 1
+set @grumpos_ar_on = 1
+set @grumpos_ml_on = 1
+set @rho_ar_on = 1
+set @rho_ml_on = 1
+set @pal_ar_on = 1
+set @pal_ml_on = 1
+set @democratus_ar_on = 1
+set @democratus_ml_on = 1
+set @stiletto_ar_on = 1
+set @stiletto_ml_on = 1
+set @paco_ar_on = 1
+set @paco_ml_on = 1
+
+#switch 1:8909
+extern addnew_to_inventory "Firestorm"
+extern addnew_to_inventory "PoisonTempest"
+extern addnew_to_inventory "NutsSlapshot"
+extern addnew_to_inventory "FreezySlicer"
+extern addnew_to_inventory "PsySummon"
+extern addnew_to_inventory "SlowVicer"
+extern addnew_to_inventory "WinkyTornado"
+extern addnew_to_inventory "Baneslaught"
+extern addnew_to_inventory "Firestorm Harmonic"
+extern addnew_to_inventory "PoisonTempest Harmonic"
+extern addnew_to_inventory "NutsSlapshot Harmonic"
+extern addnew_to_inventory "FreezySlicer Harmonic"
+extern addnew_to_inventory "PsySummon Harmonic"
+extern addnew_to_inventory "SlowVicer Harmonic"
+extern addnew_to_inventory "WinkyTornado Harmonic"
+extern addnew_to_inventory "Baneslaught Harmonic"
+gosub 1:8917                                      
+gosub 1:8918                                     
+extern addnew_to_inventory "HealGrease" 10
+extern addnew_to_inventory "HealGrease Plus" 10
+extern addnew_to_inventory "HealGrease Complete" 10
+extern addnew_to_inventory "Sender Standard Shieldcell"
+extern addnew_to_inventory "Bindlebag" 20
+extern addnew_to_inventory "BlastSack" 20
+extern equip_item "Sender Standard Shieldcell"
+
+#switch 1:8917
+set @RandomMystech = func_drand[1,16]
+if (@RandomMystech == 1)
+  extern equip_item "Firestorm"
+if (@RandomMystech == 2)
+  extern equip_item "PoisonTempest"
+if (@RandomMystech == 3)
+  extern equip_item "NutsSlapshot"
+if (@RandomMystech == 4)
+  extern equip_item "FreezySlicer"
+if (@RandomMystech == 5)
+  extern equip_item "PsySummon"
+if (@RandomMystech == 6)
+  extern equip_item "SlowVicer"
+if (@RandomMystech == 7)
+  extern equip_item "WinkyTornado"
+if (@RandomMystech == 8)
+  extern equip_item "Baneslaught"
+if (@RandomMystech == 9)
+  extern equip_item "Firestorm Harmonic"
+if (@RandomMystech == 10)
+  extern equip_item "PoisonTempest Harmonic"
+if (@RandomMystech == 11)
+  extern equip_item "NutsSlapshot Harmonic"
+if (@RandomMystech == 12)
+  extern equip_item "FreezySlicer Harmonic"
+if (@RandomMystech == 13)
+  extern equip_item "PsySummon Harmonic"
+if (@RandomMystech == 14)
+  extern equip_item "SlowVicer Harmonic"
+if (@RandomMystech == 15)
+  extern equip_item "WinkyTornado Harmonic"
+if (@RandomMystech == 16)
+  extern equip_item "Baneslaught Harmonic"
+goto 0:0
+
+#switch 1:8918
+extern addnew_to_inventory "Glodent" 10
+extern addnew_to_inventory "Bag o' Glodents" 10
+extern addnew_to_inventory "Glodent Colony" 10
+extern addnew_to_inventory "TimeMinder Tear" 10
+
+#switch 1:8911
+if (@dbgdb_add == 1) {
+  extern RemoveAPE2DControl additem
+  extern RemoveAPE2DControl remitem
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8911
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8911
+}
+if (@dbgdb_add == 2) {
+  extern RemoveAPE2DControl remitem
+  extern RemoveAPE2DControl additem
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8911
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8911
+}
+goto 0:0
+
+#switch 1:8916
+if (@dbgdb_add == 1) {
+  extern RemoveAPE2DControl additem
+  extern RemoveAPE2DControl remitem
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8916
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8916
+}
+if (@dbgdb_add == 2) {
+  extern RemoveAPE2DControl remitem
+  extern RemoveAPE2DControl additem
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8916
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8916
+}
+goto 0:0
+
+#switch 1:8921
+if (@dbgdb_add == 1) {
+  extern RemoveAPE2DControl additem
+  extern RemoveAPE2DControl remitem
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8921
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8921
+}
+if (@dbgdb_add == 2) {
+  extern RemoveAPE2DControl remitem
+  extern RemoveAPE2DControl additem
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8921
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8921
+}
+goto 0:0
+
+#switch 1:8926
+if (@dbgdb_add == 1) {
+  extern RemoveAPE2DControl additem
+  extern RemoveAPE2DControl remitem
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8926
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8926
+}
+if (@dbgdb_add == 2) {
+  extern RemoveAPE2DControl remitem
+  extern RemoveAPE2DControl additem
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8926
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8926
+}
+goto 0:0
+
+#switch 1:8931
+if (@dbgdb_add == 1) {
+  extern RemoveAPE2DControl additem
+  extern RemoveAPE2DControl remitem
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8931
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8931
+}
+if (@dbgdb_add == 2) {
+  extern RemoveAPE2DControl remitem
+  extern RemoveAPE2DControl additem
+  extern CreateAPE2DControl push additem 170 208 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@dbgdb_add returnvalue=1 sequence=1:8931
+  extern CreateAPE2DControl push remitem 170 238 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@dbgdb_add returnvalue=2 sequence=1:8931
+}
+goto 0:0
+
+#switch 1:9000
+goto 1:860		              
+
+#switch 1:9050
+goto 1:9055
+
+#switch 1:9056
+if (@DBMouseSens == 1) {
+  set @DBMouseSens2 = 0
+  gosub 1:9057
+  extern RemoveAPE2DControl mousesens1
+  extern CreateAPE2DControl push mousesens1 211 107 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMouseSens returnvalue=1
+  set @dbmsld = 1
+}
+if (@DBMouseSens == 2) {
+  set @DBMouseSens2 = 0.10000000149
+  gosub 1:9057
+  extern RemoveAPE2DControl mousesens2
+  extern CreateAPE2DControl push mousesens2 211 137 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMouseSens returnvalue=2
+  set @dbmsld = 2
+}
+if (@DBMouseSens == 3) {
+  set @DBMouseSens2 = 0.20000000298
+  gosub 1:9057
+  extern RemoveAPE2DControl mousesens3
+  extern CreateAPE2DControl push mousesens3 211 167 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMouseSens returnvalue=3
+  set @dbmsld = 3
+}
+if (@DBMouseSens == 4) {
+  set @DBMouseSens2 = 0.300000011921
+  gosub 1:9057
+  extern RemoveAPE2DControl mousesens4
+  extern CreateAPE2DControl push mousesens4 211 197 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMouseSens returnvalue=4
+  set @dbmsld = 4
+}
+if (@DBMouseSens == 5) {
+  set @DBMouseSens2 = 0.40000000596
+  gosub 1:9057
+  extern RemoveAPE2DControl mousesens5
+  extern CreateAPE2DControl push mousesens5 211 227 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMouseSens returnvalue=5
+  set @dbmsld = 5
+}
+if (@DBMouseSens == 6) {
+  set @DBMouseSens2 = 0.5
+  gosub 1:9057
+  extern RemoveAPE2DControl mousesens6
+  extern CreateAPE2DControl push mousesens6 211 257 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMouseSens returnvalue=6
+  set @dbmsld = 6
+}
+if (@DBMouseSens == 7) {
+  set @DBMouseSens2 = 0.600000023842
+  gosub 1:9057
+  extern RemoveAPE2DControl mousesens7
+  extern CreateAPE2DControl push mousesens7 211 287 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMouseSens returnvalue=7
+  set @dbmsld = 7
+}
+if (@DBMouseSens == 8) {
+  set @DBMouseSens2 = 0.800000011921
+  gosub 1:9057
+  extern RemoveAPE2DControl mousesens8
+  extern CreateAPE2DControl push mousesens8 211 317 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMouseSens returnvalue=8
+  set @dbmsld = 8
+}
+if (@DBMouseSens == 9) {
+  set @DBMouseSens2 = 1
+  gosub 1:9057
+  extern RemoveAPE2DControl mousesens9
+  extern CreateAPE2DControl push mousesens9 211 347 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMouseSens returnvalue=9
+  set @dbmsld = 9
+}
+if (@DBMouseSens == 10) {
+  set @DBMouseSens2 = 1.20000004768
+  gosub 1:9057
+  extern RemoveAPE2DControl mousesens10
+  extern CreateAPE2DControl push mousesens10 211 377 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMouseSens returnvalue=10
+  set @dbmsld = 10
+}
+goto 0:0
+
+#switch 1:9057
+if (@dbmsld == 1) {
+  extern RemoveAPE2DControl mousesens1
+  extern CreateAPE2DControl push mousesens1 211 107 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSens returnvalue=1
+}
+if (@dbmsld == 2) {
+  extern RemoveAPE2DControl mousesens2
+  extern CreateAPE2DControl push mousesens2 211 137 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSens returnvalue=2
+}
+if (@dbmsld == 3) {
+  extern RemoveAPE2DControl mousesens3
+  extern CreateAPE2DControl push mousesens3 211 167 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSens returnvalue=3
+}
+if (@dbmsld == 4) {
+  extern RemoveAPE2DControl mousesens4
+  extern CreateAPE2DControl push mousesens4 211 197 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSens returnvalue=4
+}
+if (@dbmsld == 5) {
+  extern RemoveAPE2DControl mousesens5
+  extern CreateAPE2DControl push mousesens5 211 227 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSens returnvalue=5
+}
+if (@dbmsld == 6) {
+  extern RemoveAPE2DControl mousesens6
+  extern CreateAPE2DControl push mousesens6 211 257 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSens returnvalue=6
+}
+if (@dbmsld == 7) {
+  extern RemoveAPE2DControl mousesens7
+  extern CreateAPE2DControl push mousesens7 211 287 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSens returnvalue=7
+}
+if (@dbmsld == 8) {
+  extern RemoveAPE2DControl mousesens8
+  extern CreateAPE2DControl push mousesens8 211 317 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSens returnvalue=8
+}
+if (@dbmsld == 9) {
+  extern RemoveAPE2DControl mousesens9
+  extern CreateAPE2DControl push mousesens9 211 347 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSens returnvalue=9
+}
+if (@dbmsld == 10) {
+  extern RemoveAPE2DControl mousesens10
+  extern CreateAPE2DControl push mousesens10 211 377 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSens returnvalue=10
+}
+
+#switch 1:9058
+if (@DBMousepos > 0) {
+  extern RemoveAPE2DControl mousepos1
+  extern RemoveAPE2DControl mousepos2
+  extern CreateAPE2DControl push mousepos1 411 167 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMousepos returnvalue=1 sequence=1:9058
+  extern CreateAPE2DControl push mousepos2 411 227 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMousepos returnvalue=-1 sequence=1:9058
+  set @DBMousevert = 1
+}
+if (@DBMousepos < 0) {
+  extern RemoveAPE2DControl mousepos1
+  extern RemoveAPE2DControl mousepos2
+  extern CreateAPE2DControl push mousepos1 411 167 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMousepos returnvalue=1 sequence=1:9058
+  extern CreateAPE2DControl push mousepos2 411 227 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMousepos returnvalue=-1 sequence=1:9058
+  console "m_pitch %f", @DBMousepos
+  set @DBMousevert = -1.000000
+}
+
+#switch 1:9059
+extern RemoveAPE2DControl mousesensy1
+extern RemoveAPE2DControl mousesensy2
+extern RemoveAPE2DControl mousesensy3
+extern RemoveAPE2DControl mousesensy4
+extern RemoveAPE2DControl mousesensy5
+extern RemoveAPE2DControl mousesensy6
+extern RemoveAPE2DControl mousesensy7
+extern RemoveAPE2DControl mousesensy8
+extern RemoveAPE2DControl mousesensy9
+extern RemoveAPE2DControl mousesensy10
+
+#switch 1:9060
+if (@DBMouseSensy == 1) {
+  set @DBMouseSensy2 = 0.600000023842
+  gosub 1:9061
+  extern RemoveAPE2DControl mousesensy1
+  extern CreateAPE2DControl push mousesensy1 311 107 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMouseSensy returnvalue=1
+  set @dbmsldy = 1
+}
+if (@DBMouseSensy == 2) {
+  set @DBMouseSensy2 = 0.699999988079
+  gosub 1:9061
+  extern RemoveAPE2DControl mousesensy2
+  extern CreateAPE2DControl push mousesensy2 311 137 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMouseSensy returnvalue=2
+  set @dbmsldy = 2
+}
+if (@DBMouseSensy == 3) {
+  set @DBMouseSensy2 = 0.800000011921
+  gosub 1:9061
+  extern RemoveAPE2DControl mousesensy3
+  extern CreateAPE2DControl push mousesensy3 311 167 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMouseSensy returnvalue=3
+  set @dbmsldy = 3
+}
+if (@DBMouseSensy == 4) {
+  set @DBMouseSensy2 = 0.899999976158
+  gosub 1:9061
+  extern RemoveAPE2DControl mousesensy4
+  extern CreateAPE2DControl push mousesensy4 311 197 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMouseSensy returnvalue=4
+  set @dbmsldy = 4
+}
+if (@DBMouseSensy == 5) {
+  set @DBMouseSensy2 = 1
+  gosub 1:9061
+  extern RemoveAPE2DControl mousesensy5
+  extern CreateAPE2DControl push mousesensy5 311 227 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMouseSensy returnvalue=5
+  set @dbmsldy = 5
+}
+if (@DBMouseSensy == 6) {
+  set @DBMouseSensy2 = 1.10000002384
+  gosub 1:9061
+  extern RemoveAPE2DControl mousesensy6
+  extern CreateAPE2DControl push mousesensy6 311 257 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMouseSensy returnvalue=6
+  set @dbmsldy = 6
+}
+if (@DBMouseSensy == 7) {
+  set @DBMouseSensy2 = 1.20000004768
+  gosub 1:9061
+  extern RemoveAPE2DControl mousesensy7
+  extern CreateAPE2DControl push mousesensy7 311 287 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMouseSensy returnvalue=7
+  set @dbmsldy = 7
+}
+if (@DBMouseSensy == 8) {
+  set @DBMouseSensy2 = 1.29999995232
+  gosub 1:9061
+  extern RemoveAPE2DControl mousesensy8
+  extern CreateAPE2DControl push mousesensy8 311 317 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMouseSensy returnvalue=8
+  set @dbmsldy = 8
+}
+if (@DBMouseSensy == 9) {
+  set @DBMouseSensy2 = 1.39999997616
+  gosub 1:9061
+  extern RemoveAPE2DControl mousesensy9
+  extern CreateAPE2DControl push mousesensy9 311 347 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMouseSensy returnvalue=9
+  set @dbmsldy = 9
+}
+if (@DBMouseSensy == 10) {
+  set @DBMouseSensy2 = 1.5
+  gosub 1:9061
+  extern RemoveAPE2DControl mousesensy10
+  extern CreateAPE2DControl push mousesensy10 311 377 width=20 height=20 normal=/gameflow/debug/xbox2.tga gamevar=@DBMouseSensy returnvalue=10
+  set @dbmsldy = 10
+}
+goto 0:0
+
+#switch 1:9061
+if (@dbmsldy == 1) {
+  extern RemoveAPE2DControl mousesensy1
+  extern CreateAPE2DControl push mousesensy1 311 107 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSensy returnvalue=1
+}
+if (@dbmsldy == 2) {
+  extern RemoveAPE2DControl mousesensy2
+  extern CreateAPE2DControl push mousesensy2 311 137 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSensy returnvalue=2
+}
+if (@dbmsldy == 3) {
+  extern RemoveAPE2DControl mousesensy3
+  extern CreateAPE2DControl push mousesensy3 311 167 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSensy returnvalue=3
+}
+if (@dbmsldy == 4) {
+  extern RemoveAPE2DControl mousesensy4
+  extern CreateAPE2DControl push mousesensy4 311 197 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSensy returnvalue=4
+}
+if (@dbmsldy == 5) {
+  extern RemoveAPE2DControl mousesensy5
+  extern CreateAPE2DControl push mousesensy5 311 227 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSensy returnvalue=5
+}
+if (@dbmsldy == 6) {
+  extern RemoveAPE2DControl mousesensy6
+  extern CreateAPE2DControl push mousesensy6 311 257 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSensy returnvalue=6
+}
+if (@dbmsldy == 7) {
+  extern RemoveAPE2DControl mousesensy7
+  extern CreateAPE2DControl push mousesensy7 311 287 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSensy returnvalue=7
+}
+if (@dbmsldy == 8) {
+  extern RemoveAPE2DControl mousesensy8
+  extern CreateAPE2DControl push mousesensy8 311 317 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSensy returnvalue=8
+}
+if (@dbmsldy == 9) {
+  extern RemoveAPE2DControl mousesensy9
+  extern CreateAPE2DControl push mousesensy9 311 347 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSensy returnvalue=9
+}
+if (@dbmsldy == 10) {
+  extern RemoveAPE2DControl mousesensy10
+  extern CreateAPE2DControl push mousesensy10 311 377 width=20 height=20 normal=/gameflow/debug/xbox1.tga gamevar=@DBMouseSensy returnvalue=10
+}
+
+#switch 1:9102
+set @dbgotox2 = func_atof[@dbgotoX$]
+set @dbgotoy2 = func_atof[@dbgotoY$]
+set @dbgotoz2 = func_atof[@dbgotoZ$]
+goto 0:0
+
+#switch 1:9103
+console "goto %f %f %f", @dbgotox2, @dbgotoy2, @dbgotoz2
+
+#switch 1:6005
+set anox_game_not_in_progress = 0
+set gamestart = 1
+console "map sphere"
+goto 0:0
+
+#switch 1:6010
+set anox_game_not_in_progress = 0
+set gamestart = 1
+console "map rowdys"
+
+#switch 1:6020
+set GOT_GRUMPOS = 1
+set ADDED_GRUMPOS = 1
+set MET_VALESTA = 1
+set GOTGUN = 1
+set MET_DEANAMO = 1
+set BRAZZ1 = 1
+extern addnew_to_inventory "Old Vistin Pistol"
+extern equip_item "Old Vistin Pistol"
+extern add_npc_to_party Grumpos
+extern addnew_to_inventory "Vistin StaffCap"
+extern set_party_leader grumpos
+extern equip_item "Vistin Staffcap"
+extern set_party_leader boots
+extern addnew_to_inventory "HealGrease" 5
+extern add_quest "Get Into MysTech Tunnels"
+extern add_battle_skill FatimaScreen
+console "map tenements"
+set INV_LINGUINATOR = 1
+extern addnew_to_inventory "Cordicom Linguinator"
+extern setpartylevel 5
+goto 0:0
+
+#switch 1:6030
+set GOT_GRUMPOS = 1
+set ADDED_GRUMPOS = 1
+set MET_VALESTA = 1
+set GOTGUN = 1
+set MET_DEANAMO = 1
+set BRAZZ1 = 1
+extern addnew_to_inventory "Old Vistin Pistol"
+extern equip_item "Old Vistin Pistol"
+extern add_npc_to_party Grumpos
+extern addnew_to_inventory "Vistin StaffCap"
+extern set_party_leader grumpos
+extern equip_item "Vistin Staffcap"
+extern set_party_leader boots
+extern addnew_to_inventory "HealGrease" 5
+extern add_quest "Explore MysTech Tunnels"
+extern add_battle_skill FatimaScreen
+console "map mystech1 fromtenements"
+set INV_LINGUINATOR = 1
+extern addnew_to_inventory "Cordicom Linguinator"
+extern setpartylevel 10
+goto 0:0
+
+#switch 1:6040
+set GOT_GRUMPOS = 1
+set ADDED_GRUMPOS = 1
+set MET_VALESTA = 1
+set GOTGUN = 1
+set MET_DEANAMO = 1
+set MET_DETTA = 1
+set BRAZZ1 = 1
+extern addnew_to_inventory "Old Vistin Pistol"
+extern equip_item "Old Vistin Pistol"
+extern add_npc_to_party Grumpos
+extern addnew_to_inventory "Vistin StaffCap"
+extern set_party_leader grumpos
+extern equip_item "Vistin Staffcap"
+extern set_party_leader boots
+extern addnew_to_inventory "HealGrease" 10
+extern add_quest "Find Rho Bowman"
+extern add_quest "Get PAL Battery"
+extern add_battle_skill FatimaScreen
+extern add_battle_skill Yammer
+console "map tenements frommystech1"
+set INV_LINGUINATOR = 1
+extern addnew_to_inventory "Cordicom Linguinator"
+extern setpartylevel 10
+goto 0:0
+
+#switch 1:6045
+set GOT_GRUMPOS = 1
+set ADDED_GRUMPOS = 1
+set MET_VALESTA = 1
+set GOTGUN = 1
+set MET_DEANAMO = 1
+set MET_DETTA = 1
+set BRAZZ1 = 1
+extern addnew_to_inventory "Vistin ThreeBeam"
+extern equip_item "Vistin ThreeBeam"
+extern add_npc_to_party Grumpos
+extern add_npc_to_party PAL
+extern addnew_to_inventory "Vistin Spikehead"
+extern set_party_leader grumpos
+extern equip_item "Vistin Spikehead"
+extern addnew_to_inventory "Cordicorps Spikeclaw"
+extern set_party_leader pal
+extern equip_item "Cordicorps Spikeclaw"
+extern set_party_leader boots
+extern addnew_to_inventory "HealGrease" 10
+extern add_quest "Find Rho On Sunder"
+extern add_battle_skill FatimaScreen
+extern add_battle_skill Yammer
+extern add_battle_skill Windmill Dash
+console "map starport"
+extern setpartylevel 15
+set INV_LINGUINATOR = 1
+extern addnew_to_inventory "Cordicom Linguinator"
+goto 0:0
+
+#switch 1:6050
+set GOT_GRUMPOS = 1
+set ADDED_GRUMPOS = 1
+set MET_VALESTA = 1
+set GOTGUN = 1
+set MET_DEANAMO = 1
+set MET_DETTA = 1
+set FATIMA_VOTOWNE = 1
+set BOOTS_IN_PARTY = 1
+extern addnew_to_inventory "Vistin ThreeBeam"
+extern equip_item "Vistin ThreeBeam"
+extern add_npc_to_party Grumpos
+extern add_npc_to_party rho
+extern addnew_to_inventory "Vistin Blader Staffhead"
+extern set_party_leader grumpos
+extern equip_item "Vistin Blader Staffhead"
+extern addnew_to_inventory "Moebius Wave"
+extern set_party_leader rho
+extern equip_item "Moebius Wave"
+extern addnew_to_inventory "Fireslag"
+extern equip_item "Fireslag"
+extern addnew_to_inventory "Callossum Shieldcell"
+extern equip_item "Callossum Shieldcell"
+extern set_party_leader boots
+extern addnew_to_inventory "HealGrease" 10
+extern addnew_to_inventory "HealGrease Plus" 5
+extern add_quest "Democratus Unknown"
+extern add_battle_skill FatimaScreen
+extern add_battle_skill Yammer
+extern add_battle_skill Windmill Dash
+goto 1:6051
+
+#switch 1:6051
+extern add_battle_skill PlasmaWall
+extern add_money 50
+set MYSTECH_ACTIVE = 1
+extern remove_npc_from_party Grumpos
+extern remove_npc_from_party rho
+extern add_npc_to_party pal
+extern addnew_to_inventory "Cordicorps Spikeclaw"
+extern set_party_leader pal
+extern equip_item "Cordicorps Spikeclaw"
+extern remove_npc_from_party pal
+set INV_LINGUINATOR = 1
+extern addnew_to_inventory "Cordicom Linguinator"
+extern setpartylevel 20
+console "map chamber"
+
+#switch 1:6060
+set GOT_GRUMPOS = 1
+set ADDED_GRUMPOS = 1
+set MET_VALESTA = 1
+set GOTGUN = 1
+set MET_DEANAMO = 1
+set MET_DETTA = 1
+set MYSTECH_ACTIVE = 1
+set MYSTECH_ONLY = 1
+set BRAZZ1 = 1
+extern addnew_to_inventory "Vistin ThreeBeam"
+extern equip_item "Vistin ThreeBeam"
+extern add_npc_to_party Grumpos
+extern add_npc_to_party rho
+extern addnew_to_inventory "Vistin Blader Staffhead"
+extern set_party_leader grumpos
+extern equip_item "Vistin Blader Staffhead"
+extern addnew_to_inventory "Moebius Wave"
+extern set_party_leader rho
+extern equip_item "Moebius Wave"
+extern addnew_to_inventory "Fireslag"
+extern equip_item "Fireslag"
+extern set_party_leader boots
+extern addnew_to_inventory "Bag o' Glodents" 4
+extern addnew_to_inventory "HealGrease" 10
+extern addnew_to_inventory "HealGrease Plus" 5
+extern add_quest "Get to Democratus Fighter"
+extern add_battle_skill FatimaScreen
+extern add_battle_skill Yammer
+extern add_battle_skill PlasmaWall
+goto 1:6061
+
+#switch 1:6061
+set INV_LINGUINATOR = 1
+extern addnew_to_inventory "Cordicom Linguinator"
+extern setpartylevel 25
+console "map warshipbay"
+
+#switch 1:6070
+set GOT_GRUMPOS = 1
+set ADDED_GRUMPOS = 1
+set MET_VALESTA = 1
+set GOTGUN = 1
+set MET_DEANAMO = 1
+set MET_DETTA = 1
+set MYSTECH_ACTIVE = 1
+set MYSTECH_ONLY = 1
+set BRAZZ1 = 1
+extern addnew_to_inventory "Vistin ThreeBeam"
+extern equip_item "Vistin ThreeBeam"
+extern add_npc_to_party Grumpos
+extern add_npc_to_party rho
+extern addnew_to_inventory "Vistin Blader Staffhead"
+extern set_party_leader grumpos
+extern equip_item "Vistin Blader Staffhead"
+extern addnew_to_inventory "Static Pulse Injector"
+extern set_party_leader rho
+extern equip_item "Static Pulse Injector"
+extern addnew_to_inventory "Fireslag"
+extern equip_item "Fireslag"
+extern set_party_leader boots
+extern addnew_to_inventory "Bag o' Glodents" 4
+extern addnew_to_inventory "HealGrease" 10
+extern addnew_to_inventory "HealGrease Plus" 8
+extern add_quest "Get to Democratus Fighter"
+extern add_battle_skill FatimaScreen
+extern add_battle_skill Yammer
+extern add_battle_skill PlasmaWall
+goto 1:6071
+
+#switch 1:6071
+extern setpartylevel 27
+set INV_LINGUINATOR = 1
+extern addnew_to_inventory "Cordicom Linguinator"
+console "map warshipbay"
+
+#switch 1:6080
+set GOT_GRUMPOS = 1
+set ADDED_GRUMPOS = 1
+set MET_VALESTA = 1
+set GOTGUN = 1
+set MET_DEANAMO = 1
+set MET_DETTA = 1
+set MYSTECH_ACTIVE = 1
+set MYSTECH_ONLY = 1
+set BRAZZ1 = 1
+extern addnew_to_inventory "Vistin ThreeBeam"
+extern equip_item "Vistin ThreeBeam"
+extern add_npc_to_party Grumpos
+extern add_npc_to_party rho
+extern addnew_to_inventory "Vistin Blader Staffhead"
+extern set_party_leader grumpos
+extern equip_item "Vistin Blader Staffhead"
+extern addnew_to_inventory "Static Pulse Injector"
+extern set_party_leader rho
+extern equip_item "Static Pulse Injector"
+extern set_party_leader boots
+extern addnew_to_inventory "Bag o' Glodents" 4
+extern addnew_to_inventory "HealGrease" 10
+extern addnew_to_inventory "HealGrease Plus" 8
+extern add_quest "Find Central Controller"
+extern add_battle_skill FatimaScreen
+extern add_battle_skill Yammer
+extern add_battle_skill PlasmaWall
+goto 1:6081
+
+#switch 1:6081
+extern setpartylevel 30
+set INV_LINGUINATOR = 1
+extern addnew_to_inventory "Cordicom Linguinator"
+console "map hive"
+goto 0:0
+
+#switch 1:6090
+set GOT_FTM = 1
+set MYSTECH_ONLY = 1
+set MYSTECH_ACTIVE = 1
+set GOT_GRUMPOS = 1
+set ADDED_GRUMPOS = 1
+set MET_VALESTA = 1
+set GOTGUN = 1
+set MET_DEANAMO = 1
+set MET_DETTA = 1
+set BRAZZ1 = 1
+set PLAY_GOT_FTM = 1
+extern add_npc_to_party PAL
+extern addnew_to_inventory "Cordicorps Spikeclaw"
+extern set_party_leader pal
+extern equip_item "Cordicorps Spikeclaw"
+extern remove_npc_from_party boots
+extern addnew_to_inventory "Bag o' Glodents" 4
+extern addnew_to_inventory "HealGrease" 10
+extern add_quest "Need To Get TDD"
+extern add_battle_skill Windmill Dash
+extern setpartylevel 35
+set INV_LINGUINATOR = 1
+extern addnew_to_inventory "Cordicom Linguinator"
+console "map slounge"
+
+#switch 1:6100
+set MYSTECH_ONLY = 1
+set MYSTECH_ACTIVE = 1
+set POST_HIVE = 1
+set GOT_GRUMPOS = 1
+set ADDED_GRUMPOS = 1
+set MET_VALESTA = 1
+set GOTGUN = 1
+set MET_DEANAMO = 1
+set MET_DETTA = 1
+set BRAZZ1 = 1
+extern addnew_to_inventory "Vistin Octogun"
+extern equip_item "Vistin Octogun"
+extern addnew_to_inventory "Bag o' Glodents" 4
+extern addnew_to_inventory "HealGrease" 10
+extern add_npc_to_party rho
+extern addnew_to_inventory "Cubic Impactor"
+extern set_party_leader rho
+extern addnew_to_inventory "Poisoner"
+extern equip_item "Poisoner"
+goto 1:6101
+
+#switch 1:6101
+set INV_LINGUINATOR = 1
+extern addnew_to_inventory "Cordicom Linguinator"
+set RHO_IN_PARTY = 1
+set GRUMPOS_IN_PARTY = 1
+extern add_npc_to_party grumpos
+extern addnew_to_inventory "Vistin Blader Staffhead"
+extern set_party_leader Grumpos
+extern equip_item "Vistin Blader Staffhead"
+extern add_quest "Get In Tower"
+extern set_party_leader boots
+goto 1:6102
+
+#switch 1:6102
+extern add_battle_skill FatimaScreen
+extern add_battle_skill FlashBlind
+extern add_battle_skill Yammer
+extern add_battle_skill StaffSweep
+extern add_battle_skill Windmill Dash
+extern add_battle_skill Teslatus Sphere
+extern add_battle_skill PlasmaWall
+extern add_battle_skill MysShield
+extern add_battle_skill Pain Pirouette
+extern setpartylevel 40
+console "map hephpoor fromslevant"
+
+#switch 1:6110
+set MYSTECH_ACTIVE = 1
+set GOT_GRUMPOS = 1
+set ADDED_GRUMPOS = 1
+set MET_VALESTA = 1
+set GOTGUN = 1
+set MET_DEANAMO = 1
+set MET_DETTA = 1
+set MYSTECH_ONLY = 0
+set ELEMENTOR_ACTIVE = 1
+set BRICKS_C_BEAT_JOE = 1
+set GRUMPOS_RETIRED = 1
+set BRAZZ1 = 1
+extern addnew_to_inventory "Vistin Octogun"
+extern equip_item "Vistin Octogun"
+extern add_npc_to_party Grumpos
+extern add_npc_to_party rho
+extern addnew_to_inventory "Stargent Staffbeam"
+extern set_party_leader grumpos
+extern equip_item "Stargent Staffbeam"
+extern addnew_to_inventory "Bane"
+extern equip_item "Bane"
+extern addnew_to_inventory "Cubic Impactor"
+extern set_party_leader rho
+extern addnew_to_inventory "Poisoner"
+extern equip_item "Poisoner"
+extern equip_item "Cubic Impactor"
+extern set_party_leader boots
+extern addnew_to_inventory "Freezo"
+extern equip_item "Freezo"
+goto 1:6111
+
+#switch 1:6111
+set INV_LINGUINATOR = 1
+extern addnew_to_inventory "Cordicom Linguinator"
+extern addnew_to_inventory "HealGrease" 10
+extern addnew_to_inventory "HealGrease Plus" 8
+extern addnew_to_inventory "Bag o' Glodents" 4
+extern add_quest "Brave the Levant"
+extern add_battle_skill FatimaScreen
+extern add_battle_skill FlashBlind
+extern add_battle_skill Yammer
+extern add_battle_skill StaffSweep
+extern add_battle_skill Windmill Dash
+extern add_battle_skill Teslatus Sphere
+extern add_battle_skill PlasmaWall
+extern add_battle_skill MysShield
+extern add_battle_skill Pain Pirouette
+extern setpartylevel 40
+console "map levant1"
+goto 0:0
+
+#switch 1:6120
+set MYSTECH_ACTIVE = 1
+set GOT_GRUMPOS = 1
+set ADDED_GRUMPOS = 1
+set MET_VALESTA = 1
+set GOTGUN = 1
+set MET_DEANAMO = 1
+set MET_DETTA = 1
+set MYSTECH_ONLY = 0
+set ELEMENTOR_ACTIVE = 1
+set BRICKS_C_BEAT_JOE = 1
+set GRUMPOS_RETIRED = 1
+set PRE_KRAPTON = 1
+set GOT_FTM = 1
+set BRAZZ1 = 1
+set GOT_FTM = 1
+set wibble1 = 1
+extern addnew_to_inventory "Vistin Octogun"
+extern equip_item "Vistin Octogun"
+extern add_npc_to_party stiletto
+extern add_npc_to_party Democratus
+extern addnew_to_inventory "Vistin Double Blades"
+extern set_party_leader stiletto
+extern addnew_to_inventory "SlowSpout"
+extern equip_item "SlowSpout"
+goto 1:6121
+
+#switch 1:6121
+set INV_LINGUINATOR = 1
+extern addnew_to_inventory "Cordicom Linguinator"
+extern equip_item "Vistin Double Blades"
+extern addnew_to_inventory "Planetbeam Crystal"
+extern set_party_leader democratus
+extern equip_item "Planetbeam Crystal"
+extern addnew_to_inventory "Winkywind"
+extern equip_item "Winkywind"
+extern set_party_leader boots
+extern addnew_to_inventory "FreezeZone"
+extern equip_item "FreezeZone"
+extern addnew_to_inventory "Bag o' Glodents" 4
+extern addnew_to_inventory "HealGrease" 10
+extern addnew_to_inventory "HealGrease Plus" 8
+extern add_quest "Go To Limbus"
+extern remove_npc_from_party Democratus
+extern remove_npc_from_party stiletto
+goto 1:6122
+
+#switch 1:6122
+extern add_battle_skill FatimaScreen
+extern add_battle_skill FlashBlind
+extern add_battle_skill Cap
+extern add_battle_skill Yammer
+extern add_battle_skill StaffSweep
+extern add_battle_skill Windmill Dash
+extern add_battle_skill Teslatus Sphere
+extern add_battle_skill PlasmaWall
+extern add_battle_skill MysShield
+extern add_battle_skill Pain Pirouette
+extern setpartylevel 45
+console "map slounge frommysterium"
+goto 0:0
+
+#switch 1:6130
+set MYSTECH_ACTIVE = 1
+set POST_HIVE = 1
+set GOT_GRUMPOS = 1
+set ADDED_GRUMPOS = 1
+set MET_VALESTA = 1
+set GOTGUN = 1
+set MET_DEANAMO = 1
+set MET_DETTA = 1
+set MYSTECH_ONLY = 0
+set ELEMENTOR_ACTIVE = 1
+set BRICKS_C_BEAT_JOE = 1
+set GRUMPOS_RETIRED = 1
+set BRAZZ1 = 1
+set GOT_FTM = 1
+set third_party_member = 3
+extern addnew_to_inventory "Vistin Octogun"
+extern equip_item "Vistin Octogun"
+extern add_npc_to_party paco
+extern add_npc_to_party pal
+extern addnew_to_inventory "Cordicorps Shockclaw"
+extern set_party_leader pal
+extern equip_item "Cordicorps Shockclaw"
+extern addnew_to_inventory "NutsWalker"
+extern equip_item "NutsWalker"
+extern addnew_to_inventory "Spinsucker"
+extern set_party_leader paco
+extern equip_item "Spinsucker"
+extern addnew_to_inventory "Firespire"
+extern equip_item "Firespire"
+goto 1:6131
+
+#switch 1:6131
+set INV_LINGUINATOR = 1
+extern addnew_to_inventory "Cordicom Linguinator"
+extern set_party_leader boots
+extern remove_npc_from_party paco
+extern remove_npc_from_party pal
+extern addnew_to_inventory "Bag o' Glodents" 4
+extern addnew_to_inventory "HealGrease" 10
+extern addnew_to_inventory "HealGrease Plus" 8
+extern add_battle_skill FatimaScreen
+extern add_battle_skill FlashBlind
+extern add_battle_skill Cap
+extern add_battle_skill Yammer
+extern add_battle_skill StaffSweep
+extern add_battle_skill Windmill Dash
+extern add_battle_skill Teslatus Sphere
+extern add_battle_skill PlasmaWall
+extern add_battle_skill MysShield
+extern add_battle_skill Pain Pirouette
+extern setpartylevel 50
+console "map whitendon"
+goto 0:0
+
+#switch 1:6140
+set MYSTECH_ACTIVE = 1
+set POST_HIVE = 1
+set GOT_GRUMPOS = 1
+set ADDED_GRUMPOS = 1
+set MET_VALESTA = 1
+set GOTGUN = 1
+set MET_DEANAMO = 1
+set MET_DETTA = 1
+set MYSTECH_ONLY = 0
+set ELEMENTOR_ACTIVE = 1
+set BRICKS_C_BEAT_JOE = 1
+set GOT_FTM = 1
+set GRUMPOS_RETIRED = 1
+set BRAZZ1 = 1
+set third_party_member = 6
+extern addnew_to_inventory "Vistin Octogun"
+extern equip_item "Vistin Octogun"
+extern add_npc_to_party paco
+extern add_npc_to_party stiletto
+extern addnew_to_inventory "Vistin Double Blades"
+extern set_party_leader stiletto
+extern equip_item "Vistin Double Blades"
+extern addnew_to_inventory "SlowStrike"
+extern equip_item "SlowStrike"
+extern addnew_to_inventory "Spinsucker"
+goto 1:6141
+
+#switch 1:6141
+set INV_LINGUINATOR = 1
+extern addnew_to_inventory "Cordicom Linguinator"
+extern set_party_leader paco
+extern equip_item "Spinsucker"
+extern addnew_to_inventory "Fireslag"
+extern equip_item "Fireslag"
+extern set_party_leader boots
+extern remove_npc_from_party paco
+extern remove_npc_from_party stiletto
+extern addnew_to_inventory "Bag o' Glodents" 4
+extern addnew_to_inventory "HealGrease" 10
+extern addnew_to_inventory "HealGrease Plus" 8
+extern add_battle_skill FatimaScreen
+extern add_battle_skill FlashBlind
+extern add_battle_skill Cap
+extern add_battle_skill Yammer
+extern add_battle_skill StaffSweep
+extern add_battle_skill Windmill Dash
+extern add_battle_skill Teslatus Sphere
+extern add_battle_skill PlasmaWall
+extern add_battle_skill MysShield
+extern add_battle_skill Pain Pirouette
+extern setpartylevel 50
+console "map whitendon"
+
+#switch 1:6150
+set MYSTECH_ACTIVE = 1
+set POST_HIVE = 1
+set GOT_GRUMPOS = 1
+set ADDED_GRUMPOS = 1
+set MET_VALESTA = 1
+set GOTGUN = 1
+set MET_DEANAMO = 1
+set MET_DETTA = 1
+set MYSTECH_ONLY = 0
+set BRAZZ1 = 1
+set GOT_FTM = 1
+set ELEMENTOR_ACTIVE = 1
+set BRICKS_C_BEAT_JOE = 1
+set GRUMPOS_RETIRED = 1
+set third_party_member = 4
+extern addnew_to_inventory "Stargent Turboblaster"
+extern equip_item "Stargent Turboblaster"
+extern add_npc_to_party paco
+extern add_npc_to_party rho
+extern addnew_to_inventory "Cubic Impactor"
+extern set_party_leader rho
+extern equip_item "Cubic Impactor"
+extern addnew_to_inventory "PoisonBeams"
+extern equip_item "PoisonBeams"
+extern addnew_to_inventory "Spinsucker"
+extern set_party_leader paco
+extern equip_item "Spinsucker"
+extern addnew_to_inventory "Firecage"
+extern equip_item "Firecage"
+goto 1:6151
+
+#switch 1:6151
+set INV_LINGUINATOR = 1
+extern addnew_to_inventory "Cordicom Linguinator"
+extern set_party_leader boots
+extern remove_npc_from_party paco
+extern remove_npc_from_party rho
+extern addnew_to_inventory "Bag o' Glodents" 4
+extern addnew_to_inventory "HealGrease" 10
+extern addnew_to_inventory "HealGrease Plus" 8
+extern add_battle_skill FatimaScreen
+extern add_battle_skill FlashBlind
+extern add_battle_skill Cap
+extern add_battle_skill Yammer
+extern add_battle_skill StaffSweep
+extern add_battle_skill Windmill Dash
+extern add_battle_skill Teslatus Sphere
+extern add_battle_skill PlasmaWall
+extern add_battle_skill MysShield
+extern add_battle_skill Pain Pirouette
+extern setpartylevel 50
+console "map whitendon"
+
+#switch 1:6160
+set MYSTECH_ACTIVE = 1
+set GOT_GRUMPOS = 1
+set ADDED_GRUMPOS = 1
+set MET_VALESTA = 1
+set GOTGUN = 1
+set MET_DEANAMO = 1
+set MET_DETTA = 1
+set MYSTECH_ONLY = 0
+set ELEMENTOR_ACTIVE = 1
+set BRICKS_C_BEAT_JOE = 1
+set GRUMPOS_RETIRED = 1
+set PRE_LIMBUS = 1
+set play_probe_intro = 1
+extern add_quest "Go To Limbus"
+extern addnew_to_inventory "Stargent Turboblaster"
+extern addnew_to_inventory "Sender Standard Shieldcell"
+extern equip_item "Stargent Turboblaster"
+extern add_npc_to_party paco
+extern add_npc_to_party rho
+extern addnew_to_inventory "Cubic Impactor"
+extern set_party_leader rho
+extern equip_item "Cubic Impactor"
+extern equip_item "Sender Standard Shieldcell"
+extern addnew_to_inventory "PoisonBeams"
+extern equip_item "PoisonBeams"
+extern addnew_to_inventory "Phantomfist"
+extern set_party_leader paco
+extern addnew_to_inventory "Firecage"
+goto 1:6161
+
+#switch 1:6161
+extern equip_item "Firecage"
+extern equip_item "Phantomfist"
+set INV_LINGUINATOR = 1
+extern addnew_to_inventory "Cordicom Linguinator"
+extern set_party_leader boots
+extern addnew_to_inventory "Bag o' Glodents" 4
+extern addnew_to_inventory "HealGrease" 10
+extern addnew_to_inventory "HealGrease Plus" 8
+extern addnew_to_inventory "HealGrease Complete" 2
+extern add_battle_skill FatimaScreen
+extern add_battle_skill FlashBlind
+extern add_battle_skill Cap
+extern add_battle_skill Yammer
+extern add_battle_skill StaffSweep
+extern add_battle_skill Windmill Dash
+extern add_battle_skill Teslatus Sphere
+extern add_battle_skill PlasmaWall
+extern add_battle_skill MysShield
+extern add_battle_skill Pain Pirouette
+extern add_battle_skill RadiusRage
+extern setpartylevel 55
+extern remove_npc_from_party rho
+extern remove_npc_from_party paco
+console "map slounge frommysterium"
+goto 0:0
+
+#switch 1:6170
+set MYSTECH_ACTIVE = 1
+set POST_HIVE = 1
+set GOT_GRUMPOS = 1
+set ADDED_GRUMPOS = 1
+set MET_VALESTA = 1
+set GOTGUN = 1
+set MET_DEANAMO = 1
+set MET_DETTA = 1
+set MYSTECH_ONLY = 0
+set ELEMENTOR_ACTIVE = 1
+set BRICKS_C_BEAT_JOE = 1
+set GRUMPOS_RETIRED = 1
+extern addnew_to_inventory "Stargent HandCannon"
+extern equip_item "Stargent HandCannon"
+extern add_npc_to_party stiletto
+extern add_npc_to_party rho
+extern addnew_to_inventory "Tesseract Impactor"
+extern set_party_leader rho
+extern equip_item "Tesseract Impactor"
+extern addnew_to_inventory "PoisonBeams"
+extern equip_item "PoisonBeams"
+extern addnew_to_inventory "Hoppercut"
+extern set_party_leader paco
+extern addnew_to_inventory "Firecage"
+extern equip_item "Firecage"
+extern equip_item "Hoppercut"
+extern set_party_leader boots
+set INV_LINGUINATOR = 1
+extern addnew_to_inventory "Cordicom Linguinator"
+goto 1:6171
+
+#switch 1:6171
+set BRAZZ1 = 1
+set GOT_FTM = 1
+extern remove_npc_from_party stiletto
+extern remove_npc_from_party rho
+extern addnew_to_inventory "HealGrease" 10
+extern addnew_to_inventory "Bag o' Glodents" 4
+extern addnew_to_inventory "HealGrease Plus" 8
+extern addnew_to_inventory "HealGrease Complete" 10
+extern add_battle_skill FatimaScreen
+extern add_battle_skill FlashBlind
+extern add_battle_skill Cap
+extern add_battle_skill Yammer
+extern add_battle_skill StaffSweep
+extern add_battle_skill Windmill Dash
+extern add_battle_skill Teslatus Sphere
+extern add_battle_skill PlasmaWall
+extern add_battle_skill MysShield
+extern add_battle_skill Pain Pirouette
+extern add_battle_skill Charm
+extern add_battle_skill RadiusRage
+extern set_world_skill_level picklock 2
+extern set_world_skill_level throwloonie 2
+extern set_world_skill_level analyze 2
+extern setpartylevel 60
+console "map bricksb"
+goto 0:0
+
+#switch 1:3335
+closewindow 1:3333
+
+#switch 1:450
+set k = 0
+set l = 0
+set m = 1
+set set_to = 457
+goto 1:452
+
+#switch 1:452
+while (k < 27) {
+  while (l < 27) {
+    while (m < 27) {
+      @add$="" 
+      if (k > 0) {
+        set @add = k
+        gosub 1:451		               
+      }
+      if (l > 0) {
+        set @add = l
+        gosub 1:451		               
+      }
+      set @add = m
+      gosub 1:451		               
+      console "gamevar %s %d", @add$, set_to
+      echo "Doing gamevar %s", @add$
+      set m = (m + 1)
+    }
+    set m = 1
+    set l = (l + 1)
+  }
+  set l = 1
+  set k = (k + 1)
+}
+goto 0:0
+
+#switch 1:454
+set k = 0
+set l = 0
+set m = 1
+set set_to = 0
+goto 1:452
+
+#switch 1:451
+if (@add == 1) {
+  @letter$="a" 
+} else if (@add == 2) {
+  @letter$="b" 
+} else if (@add == 3) {
+  @letter$="c" 
+} else if (@add == 4) {
+  @letter$="d" 
+} else if (@add == 5) {
+  @letter$="e" 
+} else if (@add == 6) {
+  @letter$="f" 
+} else if (@add == 7) {
+  @letter$="g" 
+} else if (@add == 8) {
+  @letter$="h" 
+} else if (@add == 9) {
+  @letter$="i" 
+} else if (@add == 10) {
+  @letter$="j" 
+} else if (@add == 11) {
+  @letter$="k" 
+} else if (@add == 12) {
+  @letter$="l" 
+} else if (@add == 13) {
+  @letter$="m" 
+} else if (@add == 14) {
+  @letter$="n" 
+} else if (@add == 15) {
+  @letter$="o" 
+} else if (@add == 16) {
+  @letter$="p" 
+} else if (@add == 17) {
+  @letter$="q" 
+} else if (@add == 18) {
+  @letter$="r" 
+} else if (@add == 19) {
+  @letter$="s" 
+} else if (@add == 20) {
+  @letter$="t" 
+} else if (@add == 21) {
+  @letter$="u" 
+} else if (@add == 22) {
+  @letter$="v" 
+} else if (@add == 23) {
+  @letter$="w" 
+} else if (@add == 24) {
+  @letter$="x" 
+} else if (@add == 25) {
+  @letter$="y" 
+} else if (@add == 26)
+  @letter$="z" 
+@add$="%s_%s" , @letter$, @add$
+goto 0:0
+
+#switch 1:455
+gosub 1:4550         
+gosub 1:4551           
+gosub 1:4552       
+
+#switch 1:4550
+extern add_npc_to_party Boots
+extern set_party_leader boots
+extern addnew_to_inventory "Stargent Decimator"
+extern addnew_to_inventory "Old Vistin Pistol"
+extern addnew_to_inventory "Vistin ThreeBeam"
+extern addnew_to_inventory "Vistin Octogun"
+extern addnew_to_inventory "Stargent Turboblaster"
+extern addnew_to_inventory "Stargent HandCannon"
+extern equip_item "Old Vistin Pistol"
+extern add_battle_skill "MultiShot"
+extern add_battle_skill "FlashBlind"
+extern add_battle_skill "Cap"
+extern add_battle_skill "FatimaScreen"
+extern SetPlayerCurrentHP boots 9999
+extern forceplayerlevel boots 50
+goto 1:8909                                       
+
+#switch 1:4551
+extern add_npc_to_party Grumpos
+extern set_party_leader Grumpos
+extern addnew_to_inventory "Stargent Enerstrike"
+extern addnew_to_inventory "Vistin StaffCap"
+extern addnew_to_inventory "Vistin Spikehead"
+extern addnew_to_inventory "Vistin Blader Staffhead"
+extern addnew_to_inventory "Stargent Staffbeam"
+extern addnew_to_inventory "Stargent Pummelbeam"
+extern equip_item "Vistin StaffCap"
+extern add_battle_skill "StaffSweep"
+extern add_battle_skill "Yammer"
+extern add_battle_skill "WhiteLight"
+extern add_battle_skill "MysSphere"
+extern SetPlayerCurrentHP grumpos 9999
+extern forceplayerlevel grumpos 50
+goto 1:8909                                       
+
+#switch 1:4552
+extern add_npc_to_party Rho
+extern set_party_leader Rho
+extern addnew_to_inventory "Tesseract Impactor"
+extern addnew_to_inventory "Moebius Wave"
+extern addnew_to_inventory "Static Pulse Injector"
+extern addnew_to_inventory "Cubic Impactor"
+extern equip_item "Moebius Wave"
+extern add_battle_skill "PlasmaWall"
+extern add_battle_skill "Scanalyze"
+extern add_battle_skill "Pocket Singularity"
+extern add_battle_skill "HealField"
+extern SetPlayerCurrentHP rho 9999
+extern forceplayerlevel rho 50
+goto 1:8909                                       

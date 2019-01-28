@@ -1,0 +1,1127 @@
+#window 1:2222
+title "Paco"
+body "It seems scared of me."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @hTimeMinder gest_a 1 0 0
+  set anox_last_used_timeminder = func_gametime
+}
+
+finishswitch {
+  extern ANIM_PlayAnim @hTimeMinder amb_a 1 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 1:2223
+
+#window 2500:2501
+xyprintfx 600, 468, fraction, 1, 0, 1, _alt256, "%d:%.2d", minutes, seconds
+thinkswitch {
+  set seconds = (func_gametime / 1000)
+  set minutes = (func_gametime / 60000)
+  set seconds = func_mod[ seconds, 60 ]
+  set fraction = func_mod[ func_gametime, 1000 ]
+  set fraction = (0.0010000000475 * (1000 - fraction))
+}
+
+style "NULL"
+xpos 0
+ypos 0
+width 640
+height 480
+
+#window 986:7
+if (anox_manner_of_death == 1)
+  xyprintfx 200, 392, 1, 1, 1, 0, anoxthin, "Party killed in Battle"
+if (anox_manner_of_death == 2)
+  xyprintfx 200, 392, 1, 1, 1, 0, anoxthin, "Killed in Boss Battle"
+if (anox_manner_of_death == 3)
+  xyprintfx 200, 392, 1, 1, 1, 0, anoxthin, "Party killed itself in Battle"
+if (anox_manner_of_death == 4)
+  xyprintfx 200, 392, 1, 1, 1, 0, anoxthin, "Party exploded, then drowned"
+if (anox_manner_of_death == 5)
+  xyprintfx 200, 392, 1, 1, 1, 0, anoxthin, "Party killed in Sunder split"
+if (anox_manner_of_death > 5)
+  xyprintfx 200, 392, 1, 1, 1, 0, anoxthin, "CRAZY IMPOSSIBLE DEATH!"
+cam left fov(90) restore zip
+finishswitch {
+  echo "@@@@@@@@@@@@@@@@ GOT HERE, WHY NO MAIN MENU!!! @@@@@@@@@@@@@@@@@"
+  set anox_game_not_in_progress = 1
+  set anox_interface_active = 0
+  set gamestart = 0
+  console "mainmenu universe"
+}
+
+style "NULL"
+font "_anox10"
+xpos 0
+ypos 0
+width 640
+height 480
+background "joeyproc/iform_menu.atd" 
+image "joeyproc/iform_menu.atd" 128, 0
+image "joeyproc/iform_menu.atd" 256, 0
+image "joeyproc/iform_menu.atd" 384, 0
+image "joeyproc/iform_menu.atd" 512, 0
+image "joeyproc/iform_menu.atd" 0, 128
+image "joeyproc/iform_menu.atd" 128, 128
+image "joeyproc/iform_menu.atd" 256, 128
+image "joeyproc/iform_menu.atd" 384, 128
+image "joeyproc/iform_menu.atd" 512, 128
+image "joeyproc/iform_menu.atd" 0, 256
+image "joeyproc/iform_menu.atd" 128, 256
+image "joeyproc/iform_menu.atd" 256, 256
+image "joeyproc/iform_menu.atd" 384, 256
+image "joeyproc/iform_menu.atd" 512, 256
+image "joeyproc/iform_menu.atd" 0, 384
+image "joeyproc/iform_menu.atd" 128, 384
+image "joeyproc/iform_menu.atd" 256, 384
+image "joeyproc/iform_menu.atd" 384, 384
+image "joeyproc/iform_menu.atd" 512, 384
+image "MainMenu/mm_upleft.tga" 116, 50
+image "MainMenu/mm_upright.tga" 372, 50
+image "MainMenu/mm_downleft.tga" 116, 306
+image "MainMenu/mm_downright.tga" 372, 306
+if (anox_manner_of_death == 1)
+  image "gameover/gameover_battle.tga" 178, 186
+if (anox_manner_of_death == 2)
+  image "gameover/gameover_bosskill.tga" 178, 186
+if (anox_manner_of_death == 3)
+  image "gameover/gameover_selfkill.tga" 178, 186
+if (anox_manner_of_death == 4)
+  image "gameover/gameover_sewagic.tga" 178, 186
+if (anox_manner_of_death == 5)
+  image "gameover/gameover_split.tga" 178, 186
+image "MainMenu/mm_t_gameover.tga" 275, 124
+
+#window 1000:5
+if (TIMED_MESSAGE == 1)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Fatima Info updated."
+if (TIMED_MESSAGE == 2)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Elevator called."
+if (TIMED_MESSAGE == 3)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Ticket Processed.  Thank you."
+if (TIMED_MESSAGE == 4)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "You need a ticket to pass this gate."
+if (TIMED_MESSAGE == 5)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "(%s can't do anything with that.)", TimedMessageChar0$
+if (TIMED_MESSAGE == 6)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "%s got Silver VoteNote Card.", TimedMessageChar0$
+if (TIMED_MESSAGE == 7)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "%s got Gold Council Ally Card!", TimedMessageChar0$
+if (TIMED_MESSAGE == 8)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "(%s is not skilled enough...yet.)", TimedMessageChar0$
+if (TIMED_MESSAGE == 9)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "%s uses MysFac Security Card.", TimedMessageChar0$
+if (TIMED_MESSAGE == 10)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "%s doesn't have a security card.", TimedMessageChar0$
+if (TIMED_MESSAGE == 11)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "No previous message to display."
+if (TIMED_MESSAGE == 12)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Fatima Goals updated. (Press F1)"
+if (TIMED_MESSAGE == 13)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "(Press F1 to use Fatima)"
+if (TIMED_MESSAGE == 14)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "It appears to be broken."
+if (TIMED_MESSAGE == 15)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "(Rho's hands are full.)"
+if (TIMED_MESSAGE == 16)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "%s doesn't have anything to put there.", TimedMessageChar0$
+if (TIMED_MESSAGE == 17)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "The frequency is too high to insert anything."
+if (TIMED_MESSAGE == 18)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "(%s has no reason to mess with that.)", TimedMessageChar0$
+if (TIMED_MESSAGE == 19)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "(Interesting, but let's stick to our immediate goals, %s.)", TimedMessageChar0$
+if (TIMED_MESSAGE == 20)
+  xyprintfx @timed_message_got_x, 410, timed_alpha, 1, 1, 1, _message, "%s got %s.", TimedMessageChar0$, got_object$
+if (TIMED_MESSAGE == 21)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "%s found nothing.", TimedMessageChar0$
+if (TIMED_MESSAGE == 22)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "(Hold down CTRL key and click on it.)"
+if (TIMED_MESSAGE == 23)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "(%s got confused.)", TimedMessageChar0$
+if (TIMED_MESSAGE == 24)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "(It's locked.)"
+if (TIMED_MESSAGE == 25)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Sulfuron gas detected. Toxicity meter engaged."
+if (TIMED_MESSAGE == 26)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "This platform is for One Gate only."
+if (TIMED_MESSAGE == 27)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "This platform is for Sender Station only."
+if (TIMED_MESSAGE == 28)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "The generator is running."
+if (TIMED_MESSAGE == 29)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "The generator is destroyed."
+if (TIMED_MESSAGE == 30)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "NO MESSAGE IN THIS SLOT."
+if (TIMED_MESSAGE == 31)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Seems interesting."
+if (TIMED_MESSAGE == 32)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Seems interesting."
+if (TIMED_MESSAGE == 33)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Seems interesting."
+if (TIMED_MESSAGE == 34)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Seems interesting."
+if (TIMED_MESSAGE == 35)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Seems interesting."
+if (TIMED_MESSAGE == 36)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Seems interesting."
+if (TIMED_MESSAGE == 37)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Seems interesting."
+if (TIMED_MESSAGE == 40)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "You don't have any pale berries to soak."
+if (TIMED_MESSAGE == 41)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "The alarm is already on."
+if (TIMED_MESSAGE == 42)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "%s, you're too close!", TimedMessageChar0$
+if (TIMED_MESSAGE == 43)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "%s, you're too far away!", TimedMessageChar0$
+if (TIMED_MESSAGE == 44)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "(Hold down CTRL key and click on victim)"
+if (TIMED_MESSAGE == 45)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "(Press F11 to use the camera)"
+if (TIMED_MESSAGE == 46)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Got 50 loonies."
+if (TIMED_MESSAGE == 47)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Got Wrinkled Dry Cleaning Bill."
+if (TIMED_MESSAGE == 48)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Got Certificate of Authenticity."
+if (TIMED_MESSAGE == 49)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "There is already a gem shard there."
+if (TIMED_MESSAGE == 50)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Found all four plan pieces!"
+if (TIMED_MESSAGE == 51)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "You don't have a camera."
+if (TIMED_MESSAGE == 52)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Only Boots may use the camera."
+if (TIMED_MESSAGE == 53)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Party fully healed."
+if (TIMED_MESSAGE == 54)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Too far up!"
+if (TIMED_MESSAGE == 55)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Too far down!"
+if (TIMED_MESSAGE == 56)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "Game registered in APE Arcade!"
+if (TIMED_MESSAGE == 69)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "(%s has rectal itch.)", TimedMessageChar0$
+if (TIMED_MESSAGE == 88)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "You're searching through the code, aren't you?"
+if (TIMED_MESSAGE == 99)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "%s", timed_message$
+if ((TIMED_MESSAGE == -1.000000) && KIDZ)
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "ERROR: TimedMessage called with no input value."
+if ((TIMED_MESSAGE == -1.000000) && (KIDZ == 0))
+  xyprintfx 8, 5, timed_alpha, 0.5, 1, 1, _main12, "ERROR: TimedMessage called with no input value. Ass."
+if (TIMED_MESSAGE == 1000)
+  xyprintfx 226, 54, timed_alpha, 0.800000011921, 0.800000011921, 0.800000011921, anoxthin, "(Press F1 to use Fatima)"
+if (TIMED_MESSAGE == 1001)
+  xyprintfx 226, 48, timed_alpha, 0.800000011921, 0.800000011921, 0.800000011921, anoxthin, "Hold down CTRL key."
+if (TIMED_MESSAGE == 1001)
+  xyprintfx 226, 60, timed_alpha, 0.800000011921, 0.800000011921, 0.800000011921, anoxthin, "Then click on door."
+if (TIMED_MESSAGE == 1002)
+  xyprintfx 226, 54, timed_alpha, 0.800000011921, 0.800000011921, 0.800000011921, anoxthin, "(Press F5 to Equip)"
+if (TIMED_MESSAGE == 1003)
+  xyprintfx 226, 54, timed_alpha, 0.800000011921, 0.800000011921, 0.800000011921, anoxthin, "(Press F5 to Use item)"
+if (TIMED_MESSAGE == 1004)
+  xyprintfx 226, 54, timed_alpha, 0.800000011921, 0.800000011921, 0.800000011921, anoxthin, "(Press TAB for new leader.)"
+if (TIMED_MESSAGE == 1005)
+  xyprintfx 226, 54, timed_alpha, 0.800000011921, 0.800000011921, 0.800000011921, anoxthin, "(Press F11 to use Aspirator.)"
+startswitch {
+  set timed_message_active = 1
+  unset TimedMessageChar0$=PlayerChar0$ 
+  set timedLastMS = func_GameTime
+  set timedCurrentMS = timedLastMS
+  if ((timed_message_timer == 0) && (TIMED_MESSAGE < 1000))
+    set timed_message_timer = 90
+  if ((timed_message_timer == 0) && (TIMED_MESSAGE >= 1000))
+    set timed_message_timer = 90
+  set timed_alpha = 0
+  if (timed_message == 0)
+    set timed_message = -1.000000
+  if (((timed_message > 0) && (timed_message < 1000)) && (timed_message != 20)) {
+    extern playsound ui/gen/ui_gen_alert.wav
+  } else if (timed_message == 20) {
+    extern playsound player/player_getitem.wav
+  } else if ((timed_message < 0) || (timed_message >= 1000))
+    extern playsound ui/gen/ui_gen_alert.wav
+  if (timed_message == 20) {
+    extern string_length got_object$ @ourlen
+    set @ourlen = ((@ourlen + 6) + 6)
+    set @timed_message_got_x = (320 - (@ourlen * 6))
+    if (@timed_message_got_x < 8)
+      set @timed_message_got_x = 8
+  }
+  goto 0:0
+}
+
+thinkswitch {
+  set timedCurrentMS = func_GameTime
+  set timedDelta = (timedCurrentMS - timedLastMS)
+  if (timedDelta < 50)
+    goto 0:0
+  set timedLastMS = timedCurrentMS
+  set timed_message_timer = (timed_message_timer - 1)
+  if (timed_message_timer > 61) {
+    set timed_alpha = ((120 - timed_message_timer) / 20)
+  } else if ((timed_message_timer <= 61) && (timed_message_timer >= 20)) {
+    set timed_alpha = 1
+  } else if (timed_message_timer < 20)
+    set timed_alpha = (timed_message_timer / 20)
+  if (timed_message_timer == 0)
+    closewindow 1000:5
+  goto 0:0
+}
+
+finishswitch {
+  if (@Message_Window_Overide == 0) {
+    set timed_message_timer = 0
+    set last_timed_message = TIMED_MESSAGE
+    set TIMED_MESSAGE = 0
+    set timedLastMS = 0
+    set timedCurrentMS = 0
+    set timedDelta = 0
+    set timed_message_active = 0
+  }
+  if (@Message_Window_Overide == 1)
+    set @Message_Window_Overide = 0
+  goto 0:0
+}
+
+style "NULL"
+font "_main12"
+flags passive, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 16
+ypos 16
+width 640
+if ((timed_message && (timed_message < 1000)) && (timed_message != 20))
+  background "graphics/messagebar_left.pcx" 
+if ((timed_message && (timed_message < 1000)) && (timed_message != 20))
+  image "graphics/messagebar_middle.pcx" 32, 0
+if ((timed_message && (timed_message < 1000)) && (timed_message != 20))
+  image "graphics/messagebar_middle.pcx" 96, 0
+if ((timed_message && (timed_message < 1000)) && (timed_message != 20))
+  image "graphics/messagebar_middle.pcx" 160, 0
+if ((timed_message && (timed_message < 1000)) && (timed_message != 20))
+  image "graphics/messagebar_middle.pcx" 224, 0
+if ((timed_message && (timed_message < 1000)) && (timed_message != 20))
+  image "graphics/messagebar_middle.pcx" 288, 0
+if ((timed_message && (timed_message < 1000)) && (timed_message != 20))
+  image "graphics/messagebar_middle.pcx" 352, 0
+if ((timed_message && (timed_message < 1000)) && (timed_message != 20))
+  image "graphics/messagebar_middle.pcx" 416, 0
+if ((timed_message && (timed_message < 1000)) && (timed_message != 20))
+  image "graphics/messagebar_middle.pcx" 480, 0
+if ((timed_message && (timed_message < 1000)) && (timed_message != 20))
+  image "graphics/messagebar_middle.pcx" 544, 0
+if ((timed_message && (timed_message < 1000)) && (timed_message != 20))
+  image "graphics/messagebar_right.pcx" 576, 0
+if (timed_message >= 1000)
+  image "graphics/message.pcx" 100, 0
+if (timed_message >= 1000)
+  image "graphics/message2.pcx" 228, 0
+
+#window 3000:2
+if ((player == 1) && (world_skill_level == 1))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "PICK LOCK"
+if ((player == 2) && (world_skill_level == 1))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "YAMMER"
+if ((player == 3) && (world_skill_level == 1))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "COMPTALK"
+if ((player == 4) && (world_skill_level == 1))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "ANALYZE"
+if ((player == 6) && (world_skill_level == 1))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "THROW LOONIE"
+if ((player == 5) && (world_skill_level == 1))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "TRACTOR"
+if ((player == 7) && (world_skill_level == 1))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "RAGEMIGHT"
+if ((player == 1) && (world_skill_level == 2))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "@ PICK LOCK"
+if ((player == 2) && (world_skill_level == 2))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "@ YAMMER"
+if ((player == 3) && (world_skill_level == 2))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "@ COMPTALK"
+if ((player == 4) && (world_skill_level == 2))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "@ ANALYZE"
+if ((player == 6) && (world_skill_level == 2))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "@ THROW LOONIE"
+if ((player == 5) && (world_skill_level == 2))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "@ TRACTOR"
+if ((player == 7) && (world_skill_level == 2))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "@ RAGEMIGHT"
+startswitch {
+  set wslastMS = func_GameTime
+  set wscurrentMS = wslastMS
+  set skillTop = 568
+  set wordTop = (skillTop + 8)
+  set picTop = (skillTop - 87)
+  set barTop = (skillTop - 23)
+  gosub 3000:6
+  set wordAlpha = 0
+  if (player == 0)
+    set player = 1
+  set little_timer = 90
+  if (player == 1) {
+    extern get_world_skill_level picklock world_skill_Level
+  } else if (player == 2) {
+    extern get_world_skill_level yammer world_skill_Level
+  } else if (player == 3) {
+    extern get_world_skill_level comptalk world_skill_Level
+  } else if (player == 4) {
+    extern get_world_skill_level analyze world_skill_Level
+  } else if (player == 5) {
+    extern get_world_skill_level tractor world_skill_Level
+  } else if (player == 6) {
+    extern get_world_skill_level throwloonie world_skill_Level
+  } else if (player == 7)
+    extern get_world_skill_level ragemight world_skill_Level
+  extern playsound ui/skill/do_worldskill.wav
+  goto 0:0
+}
+
+thinkswitch {
+  set wscurrentMS = func_GameTime
+  set wsdelta = (wscurrentMS - wslastMS)
+  if (wsdelta < 50)
+    goto 0:0
+  set wslastMS = wscurrentMS
+  set wsdelta = (wsdelta - 50)
+  set wslastMS = (wscurrentMS - wsdelta)
+  if ((anox_worldskill_active == 0) && (little_timer > 60)) {
+    set little_timer = (90 - little_timer)
+  } else if ((anox_worldskill_active == 0) && (little_timer > 30))
+    set little_timer = 12
+  if (little_timer) {
+    if ((bigskillwindow == 0) || (little_timer > 60))
+      set little_timer = (little_timer - 1)
+    if (little_timer == 0)
+      closewindow 3000:2
+    if (little_timer >= 60)
+      set wordAlpha = (wordAlpha + 0.0299999993294)
+    if (little_timer >= 78)
+      set skillTop = (skillTop - 12)
+    if (little_timer < 12)
+      set skillTop = (skillTop + 12)
+    set wordTop = (skillTop + 8)
+    set picTop = (skillTop - 87)
+    set barTop = (skillTop - 23)
+    if (little_timer < 30)
+      set wordAlpha = (wordAlpha - 0.0299999993294)
+    if (wordAlpha < 0)
+      set wordAlpha = 0
+  }
+  goto 0:0
+}
+
+finishswitch {
+  goto 0:0
+}
+
+style "NULL"
+font "_message"
+flags passive, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 16
+ypos 16
+width 576
+if (bigSkillWindow)
+  image "skill/skilleft.tga" 0, 128
+image "skill/wordbar.tga" 128, barTop
+if (player == 1)
+  image "skill/status_lockpick.tga" 248, skillTop
+if (player == 1)
+  image "skill/skl_boots.tga" 0, picTop
+if (player == 2)
+  image "skill/status_yammer.tga" 248, skillTop
+if (player == 2)
+  image "skill/skl_grumpos.tga" 0, picTop
+if (player == 3)
+  image "skill/status_comptalk.tga" 248, skillTop
+if (player == 3)
+  image "skill/skl_pal.tga" 0, picTop
+if (player == 4)
+  image "skill/status_analyze.tga" 248, skillTop
+if (player == 4)
+  image "skill/skl_rho.tga" 0, picTop
+if (player == 6)
+  image "skill/status_throwloonie.tga" 248, skillTop
+if (player == 6)
+  image "skill/skl_stiletto.tga" 0, picTop
+if (player == 5)
+  image "skill/status_tractor.tga" 248, skillTop
+if (player == 5)
+  image "skill/skl_demo.tga" 0, picTop
+if (player == 7)
+  image "skill/status_ragemight.tga" 248, skillTop
+if (player == 7)
+  image "skill/skl_paco.tga" 0, picTop
+
+#window 3000:10
+if ((player == 1) && (world_skill_level == 1))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "PICK LOCK"
+if ((player == 2) && (world_skill_level == 1))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "YAMMER"
+if ((player == 3) && (world_skill_level == 1))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "COMPTALK"
+if ((player == 4) && (world_skill_level == 1))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "ANALYZE"
+if ((player == 6) && (world_skill_level == 1))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "THROW LOONIE"
+if ((player == 5) && (world_skill_level == 1))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "TRACTOR"
+if ((player == 7) && (world_skill_level == 1))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "RAGEMIGHT"
+if ((player == 1) && (world_skill_level == 2))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "@ PICK LOCK"
+if ((player == 2) && (world_skill_level == 2))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "@ YAMMER"
+if ((player == 3) && (world_skill_level == 2))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "@ COMPTALK"
+if ((player == 4) && (world_skill_level == 2))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "@ ANALYZE"
+if ((player == 6) && (world_skill_level == 2))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "@ THROW LOONIE"
+if ((player == 5) && (world_skill_level == 2))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "@ TRACTOR"
+if ((player == 7) && (world_skill_level == 2))
+  xyprintfx 140, wordTop, wordAlpha, 0.600000023842, 0.899999976158, 1, albertus, "@ RAGEMIGHT"
+if (@upgradesound && (little_timer > 12))
+  xyprintfx 140, 380, wordAlpha, 1, 1, 1, _message, "Attained Master Level!"
+startswitch {
+  set wslastMS = func_GameTime
+  set wscurrentMS = wslastMS
+  set skillTop = 568
+  set wordTop = (skillTop + 8)
+  set picTop = (skillTop - 87)
+  set barTop = (skillTop - 23)
+  gosub 3000:6
+  set wordAlpha = 0
+  if (player == 0)
+    set player = 1
+  set little_timer = 90
+  if (player == 1) {
+    extern get_world_skill_level picklock world_skill_Level
+  } else if (player == 2) {
+    extern get_world_skill_level yammer world_skill_Level
+  } else if (player == 3) {
+    extern get_world_skill_level comptalk world_skill_Level
+  } else if (player == 4) {
+    extern get_world_skill_level analyze world_skill_Level
+  } else if (player == 5) {
+    extern get_world_skill_level tractor world_skill_Level
+  } else if (player == 6) {
+    extern get_world_skill_level throwloonie world_skill_Level
+  } else if (player == 7)
+    extern get_world_skill_level ragemight world_skill_Level
+  extern playsound ui/skill/ui_skill_masterlevel.wav
+  goto 0:0
+}
+
+thinkswitch {
+  set wscurrentMS = func_GameTime
+  set wsdelta = (wscurrentMS - wslastMS)
+  if (wsdelta < 50)
+    goto 0:0
+  set wslastMS = wscurrentMS
+  set wsdelta = (wsdelta - 50)
+  set wslastMS = (wscurrentMS - wsdelta)
+  if (little_timer) {
+    if ((bigskillwindow == 0) || (little_timer > 60))
+      set little_timer = (little_timer - 1)
+    if (little_timer == 0)
+      closewindow 3000:2
+    if ((little_timer == 60) && (@upgradesound == 0)) {
+      set @upgradesound = 1
+      extern playsound ui/skill/ui_skill_success.wav
+      if (player == 1) {
+        extern set_world_skill_level picklock 2
+      } else if (player == 2) {
+        extern set_world_skill_level yammer 2
+      } else if (player == 3) {
+        extern set_world_skill_level comptalk 2
+      } else if (player == 4) {
+        extern set_world_skill_level analyze 2
+      } else if (player == 5) {
+        extern set_world_skill_level tractor 2
+      } else if (player == 6) {
+        extern set_world_skill_level throwloonie 2
+      } else if (player == 7)
+        extern set_world_skill_level ragemight 2
+      set world_skill_level = (world_skill_level + 1)
+    }
+    if (little_timer >= 60)
+      set wordAlpha = (wordAlpha + 0.0299999993294)
+    if (little_timer >= 78)
+      set skillTop = (skillTop - 12)
+    if (little_timer <= 0)
+      closewindow 3000:10		              
+    if (little_timer < 12)
+      set skillTop = (skillTop + 12)
+    set wordTop = (skillTop + 8)
+    set picTop = (skillTop - 87)
+    set barTop = (skillTop - 23)
+    if (little_timer < 30)
+      set wordAlpha = (wordAlpha - 0.0299999993294)
+    if (wordAlpha < 0)
+      set wordAlpha = 0
+  }
+  goto 0:0
+}
+
+finishswitch {
+  set @upgradesound = 0
+  goto 0:0
+}
+
+style "NULL"
+font "_message"
+flags passive, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 16
+ypos 16
+width 576
+image "skill/wordbar.tga" 128, barTop
+if (player == 1)
+  image "skill/status_lockpick.tga" 288, skillTop
+if (player == 1)
+  image "skill/skl_boots.tga" 0, picTop
+if (player == 2)
+  image "skill/status_yammer.tga" 248, skillTop
+if (player == 2)
+  image "skill/skl_grumpos.tga" 0, picTop
+if (player == 3)
+  image "skill/status_comptalk.tga" 248, skillTop
+if (player == 3)
+  image "skill/skl_pal.tga" 0, picTop
+if (player == 4)
+  image "skill/status_analyze.tga" 248, skillTop
+if (player == 4)
+  image "skill/skl_rho.tga" 0, picTop
+if (player == 6)
+  image "skill/status_throwloonie.tga" 248, skillTop
+if (player == 6)
+  image "skill/skl_stiletto.tga" 0, picTop
+if (player == 5)
+  image "skill/status_tractor.tga" 248, skillTop
+if (player == 5)
+  image "skill/skl_demo.tga" 0, picTop
+if (player == 7)
+  image "skill/status_ragemight.tga" 248, skillTop
+if (player == 7)
+  image "skill/skl_paco.tga" 0, picTop
+
+#window 101:4
+xyprintfx 40, 12, 0.600000023842, 1, 1, 1, _anox6, "CAMERA CONTROLS"
+xyprintfx 40, 32, 0.600000023842, 0, 1, 0.800000011921, _anox6, "Left/Right"
+xyprintfx 40, 52, 0.600000023842, 0, 1, 0.800000011921, _anox6, "Forward/Back"
+xyprintfx 40, 72, 0.600000023842, 0, 1, 0.800000011921, _anox6, "Space"
+xyprintfx 40, 92, 0.600000023842, 0, 1, 0.800000011921, _anox6, "Mouse"
+xyprintfx 40, 112, 0.600000023842, 0, 1, 0.800000011921, _anox6, "ESC"
+xyprintfx 40, 132, 0.600000023842, 0, 1, 0.800000011921, _anox6, "Delete"
+xyprintfx 40, 152, 0.600000023842, 0, 1, 0.800000011921, _anox6, "?"
+xyprintfx 130, 32, 0.600000023842, 0, 1, 0.800000011921, _anox6, "Choose slot"
+xyprintfx 130, 52, 0.600000023842, 0, 1, 0.800000011921, _anox6, "Zoom in/out"
+xyprintfx 130, 72, 0.600000023842, 0, 1, 0.800000011921, _anox6, "Take picture"
+xyprintfx 130, 92, 0.600000023842, 0, 1, 0.800000011921, _anox6, "Aim camera"
+xyprintfx 130, 112, 0.600000023842, 0, 1, 0.800000011921, _anox6, "Exit camera"
+xyprintfx 130, 132, 0.600000023842, 0, 1, 0.800000011921, _anox6, "Delete photo"
+xyprintfx 130, 152, 0.600000023842, 0, 1, 0.800000011921, _anox6, "Controls list"
+style "style_bg"
+font "_anox6"
+flags passive, TRUE
+xpos 200
+ypos 150
+width 240
+height 180
+
+#window 30:1001
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "No bugs are coming out."
+if (func_charinparty[grumpos] == 3)
+  body "Come out, ya damn bugs! Nothin'."
+if (func_charinparty[stiletto] == 3)
+  body "No bugs seem to be coming out."
+if (func_charinparty[rho] == 3)
+  body "I detect no insects on the outside."
+if (func_charinparty[democratus] == 3)
+  body "We see no insects there."
+if (func_charinparty[paco] == 3)
+  body "Hmm. No insects."
+if (func_charinparty[pal] == 3)
+  body "There's no insects there. Dang dab it."
+cam bugmound restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 30:1002
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "No can do. No room in our bugbox."
+if (func_charinparty[grumpos] == 3)
+  body "Guess I shoulda stolen a bigger box. No room."
+if (func_charinparty[stiletto] == 3)
+  body "Our bugbox is full."
+if (func_charinparty[rho] == 3)
+  body "We have a full bugbox. We can pick up no more."
+if (func_charinparty[democratus] == 3)
+  body "We vote that trying to squish another bug in the box. Would be hazardous. And disgusting, adds Halpern, yes."
+if (func_charinparty[paco] == 3)
+  body "Hmm. No room in our bugbox."
+if (func_charinparty[pal] == 3)
+  body "Man, our bugbox is full ta-brimmin'!"
+cam bugmound restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 30:1003
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "Hey, I got a %s.", @getbug_type$
+if (func_charinparty[grumpos] == 3)
+  body "Come here, ya dang %s! Ha! Gotcha!", @getbug_type$
+if (func_charinparty[stiletto] == 3)
+  body "I got a little %s.", @getbug_type$
+if (func_charinparty[rho] == 3)
+  body "Ah, here's a nice %s.", @getbug_type$
+if (func_charinparty[democratus] == 3)
+  body "We voted on the one on the left. Yes. Good. %s acquired.", @getbug_type$
+if (func_charinparty[paco] == 3)
+  body "I choose this little %s. Yes.", @getbug_type$
+if (func_charinparty[pal] == 3)
+  body "I got a %s!  Lookit! Cool-o-daddo!", @getbug_type$
+cam bugmound restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 30:1004
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "Bleah. Bugs are crawling on that thing."
+if (func_charinparty[grumpos] == 3)
+  body "Those are those bugs that eat my cereal. Little problems!"
+if (func_charinparty[stiletto] == 3)
+  body "Not into insects that much... thanks."
+if (func_charinparty[rho] == 3)
+  body "I am a physicist, not an entymologist."
+if (func_charinparty[democratus] == 3)
+  body "We detect many chitinous lifeforms."
+if (func_charinparty[paco] == 3)
+  body "Hmm. That is a hive of insects."
+if (func_charinparty[pal] == 3)
+  body "Man, I don't like bugs much. They creep me out."
+cam bugmound restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 30:2001
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "No way. No petals to pick."
+if (func_charinparty[grumpos] == 3)
+  body "There's no damn petals on this thing!"
+if (func_charinparty[stiletto] == 3)
+  body "I don't see any petals."
+if (func_charinparty[rho] == 3)
+  body "I discern no petals on this Lifeflower."
+if (func_charinparty[democratus] == 3)
+  body "We see no petals on our screens."
+if (func_charinparty[paco] == 3)
+  body "No, there are no petals there."
+if (func_charinparty[pal] == 3)
+  body "Hey, there's no dang petals on that thing!"
+cam bugmound restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 30:2003
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "All right. A petal."
+if (func_charinparty[grumpos] == 3)
+  body "Yeah, I got a dang petal. Ooh, pretty."
+if (func_charinparty[stiletto] == 3)
+  body "A petal from a Lifeflower. Got it."
+if (func_charinparty[rho] == 3)
+  body "A Lifeflower petal. A good sample, too."
+if (func_charinparty[democratus] == 3)
+  body "We have Tractored in a fine petal. We all like it."
+if (func_charinparty[paco] == 3)
+  body "I pick a pet--oh, I crushed it.  Okay, I got one."
+if (func_charinparty[pal] == 3)
+  body "Hey, this petal looks pretty cool!"
+cam bugmound restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#switch 1:3
+set @hTimeMinder = func_cursorentity
+set @current_timeminder_delta = ((func_gametime - anox_last_used_timeminder) / 60000)
+if (((func_charinparty[paco] == 3) && (@current_timeminder_delta > 30)) && (@pacoGotTM == 0))
+  goto 1:2222	                   
+set anox_using_timeminder = 1
+console "mainmenu universe 3"
+goto 0:0
+
+#switch 1:2223
+set @pacoGotTM = 1
+extern addnew_to_inventory "TimeMinder Tear"
+set timed_message = 20
+got_object$="TimeMinder Tear" 
+gosub 1000:1
+goto 0:0
+
+#switch 42:43
+console "gl_fog 0.001 0 0 1"
+
+#switch 42:42
+console "gl_fog 0.001 1 0 0"
+
+#switch 2500:2500
+if (showGameTimer) {
+  set showGameTimer = 0
+  closewindow 2500:2501
+} else {
+  set showGameTimer = 1
+  goto 2500:2501
+}
+
+#switch 980:1
+if (anox_shift_active == 1)
+  goto 25:8000                                                           
+if (anox_interface_active == 1)
+  goto 0:0
+extern checkgamestate @gc
+if (@gc == 0)
+  goto 0:0
+extern set_party_leader next
+goto 0:0
+
+#switch 986:9
+closewindow 986:7
+goto 0:0
+
+#switch 986:1
+if (anox_manner_of_death > 3) {
+  extern pauselevelmusic
+  extern playsound ../music/mp3/anoxlose.mp3
+}
+set anox_game_not_in_progress = 1
+if (anox_manner_of_death == 0)
+  set anox_manner_of_death = 1
+goto 986:7
+
+#switch 986:2
+extern playsound ../music/mp3/anoxlose.mp3
+if (anox_manner_of_death == 0)
+  set anox_manner_of_death = 1
+goto 0:0
+
+#switch 986:3
+goto 0:0
+
+#switch 986:4
+console "map black cinematic"
+goto 0:0
+
+#switch 986:5
+extern RemoveAPE2DControl loadbutton
+extern RemoveAPE2DControl exitbutton
+set go_result = 1
+closewindow 986:1 
+goto 0:0
+
+#switch 986:6
+extern RemoveAPE2DControl loadbutton
+extern RemoveAPE2DControl exitbutton
+set go_result = 2
+closewindow 986:1 
+goto 0:0
+
+#switch 1000:1
+if (timed_message_active)
+  gosub 1000:20
+goto 1000:5
+
+#switch 1000:8
+extern checkgamestate @poop
+if (@poop != 1)
+  goto 0:0
+set timed_message = last_timed_message
+if (timed_message == 0)
+  set timed_message = 11
+gosub 1000:1
+goto 0:0
+
+#switch 1000:10
+set last_timed_message = (last_timed_message + 1)
+set timed_message = last_timed_message
+gosub 1000:1
+if (last_timed_message == 37)
+  set last_timed_message = 1
+goto 0:0
+
+#switch 1000:20
+set @Message_Window_Overide = 1
+closewindow 1000:5
+set timed_message_timer = 0
+set last_timed_message = TIMED_MESSAGE
+set timedLastMS = 0
+set timedCurrentMS = 0
+set timedDelta = 0
+set timed_message_active = 0
+
+#switch 2500:1
+extern checkgamestate @poop
+if (@poop != 1)
+  goto 0:0
+if (anox_interface_active == 1)
+  goto 0:0
+gosub 3000:6
+if (player != world_skill_player)
+  goto 3000:7
+goto 3000:2
+
+#switch 3000:7
+set timed_message = 5
+gosub 1000:1
+goto 0:0
+
+#switch 3000:8
+set timed_message = 8
+gosub 1000:1
+goto 0:0
+
+#switch 2000:1
+extern checkgamestate @poop
+if (@poop != 1)
+  goto 0:0
+if (anox_interface_active == 1)
+  goto 0:0
+set bigskillwindow = 0
+goto 3000:2
+
+#switch 3000:1
+set bigskillwindow = 1
+goto 3000:2
+
+#switch 3000:6
+if (func_charinparty[boots] == 3) {
+  set player = 1
+} else if (func_charinparty[grumpos] == 3) {
+  set player = 2
+} else if (func_charinparty[pal] == 3) {
+  set player = 3
+} else if (func_charinparty[rho] == 3) {
+  set player = 4
+} else if (func_charinparty[stiletto] == 3) {
+  set player = 6
+} else if (func_charinparty[democratus] == 3) {
+  set player = 5
+} else if (func_charinparty[paco] == 3)
+  set player = 7
+goto 0:0
+
+#switch 101:1
+if (anox_game_not_in_progress || (anox_interface_active == 1))
+  goto 0:0
+extern checkgamestate @poop
+if (@poop != 1)
+  goto 0:0
+extern is_in_inventory "Cordicam Digital Camera" result
+if (result == 0)
+  goto 101:2
+if (func_charinparty[boots] != 3)
+  goto 101:3
+console "photo_toggle"
+
+#switch 101:2
+set timed_message = 51
+gosub 1000:1
+goto 0:0
+
+#switch 101:3
+set timed_message = 52
+gosub 1000:1
+goto 0:0
+
+#switch 1:5
+set LEAD_BOOTS = 0
+set LEAD_GRUMPOS = 0
+set LEAD_PAL = 0
+set LEAD_RHO = 0
+set LEAD_DEMOCRATUS = 0
+set LEAD_STILETTO = 0
+set LEAD_PACO = 0
+set PARTY_BOOTS = 0
+set PARTY_GRUMPOS = 0
+set PARTY_PAL = 0
+set PARTY_RHO = 0
+set PARTY_DEMOCRATUS = 0
+set PARTY_STILETTO = 0
+set PARTY_PACO = 0
+if (func_charinparty[boots] == 3) {
+  set LEAD_BOOTS = 1
+  set leader = 1
+} else if (func_charinparty[grumpos] == 3) {
+  set LEAD_GRUMPOS = 1
+  set leader = 2
+} else if (func_charinparty[pal] == 3) {
+  set LEAD_PAL = 1
+  set leader = 3
+} else if (func_charinparty[rho] == 3) {
+  set LEAD_RHO = 1
+  set leader = 4
+} else if (func_charinparty[democratus] == 3) {
+  set LEAD_DEMOCRATUS = 1
+  set leader = 5
+} else if (func_charinparty[stiletto] == 3) {
+  set LEAD_STILETTO = 1
+  set leader = 6
+} else if (func_charinparty[paco] == 3) {
+  set LEAD_PACO = 1
+  set leader = 7
+}
+if (func_charinparty[boots] > 1)
+  set PARTY_BOOTS = 1
+if (func_charinparty[grumpos] > 1)
+  set PARTY_GRUMPOS = 1
+if (func_charinparty[pal] > 1)
+  set PARTY_PAL = 1
+if (func_charinparty[rho] > 1)
+  set PARTY_RHO = 1
+if (func_charinparty[democratus] > 1)
+  set PARTY_DEMOCRATUS = 1
+if (func_charinparty[stiletto] > 1)
+  set PARTY_STILETTO = 1
+if (func_charinparty[paco] > 1)
+  set PARTY_PACO = 1
+set party_population = ((((((PARTY_BOOTS + PARTY_GRUMPOS) + PARTY_PAL) + PARTY_RHO) + PARTY_DEMOCRATUS) + PARTY_STILETTO) + PARTY_PACO)
+goto 0:0
+
+#switch 30:1000
+if (ELEMENTOR_ACTIVE == 0)
+  goto 30:1004
+extern getbug
+if (@getbug_result == 1) {
+  goto 30:1001
+} else if (@getbug_result == 2) {
+  goto 30:1002
+} else
+  goto 30:1003
+
+#switch 30:2000
+extern getflower
+if (@getflower_result == 1) {
+  goto 30:2001
+} else
+  goto 30:2003
+
+#switch 500:1
+goto 0:0
+if (PRE_DETTA) {
+  extern setmasterlevel 42
+} else if (PRE_LIMBUS) {
+  extern setmasterlevel 33
+} else if (PRE_KRAPTON) {
+  extern setmasterlevel 25
+} else if (ELEMENTOR_ACTIVE && (GOT_FTM == 0)) {
+  extern setmasterlevel 23
+} else if ((ELEMENTOR_ACTIVE == 0) && GOT_FTM) {
+  extern setmasterlevel 22
+} else if (POST_HIVE) {
+  extern setmasterlevel 18
+} else if (MYSTECH_ACTIVE) {
+  extern setmasterlevel 16
+} else if (MET_DETTA) {
+  extern setmasterlevel 12
+} else if (GOT_GRUMPOS) {
+  extern setmasterlevel 7
+} else if (MET_GRUMPOS)
+  extern setmasterlevel 3
+goto 0:0
+
+#switch 999:9264
+extern playlevelmusic mp3/theme/anoxtheme.mp3
+set anox_play_end_credits = 1
+console "mainmenu credits"
+goto 0:0
+
+#switch 600:1
+extern get_party_order @one$ @two$ @three$
+if (@one$ != "") {
+  extern GetPlayerCurrentHP @one$ @playerhealth
+  set @playerhealth = 99999
+  extern SetPlayerCurrentHP @one$ @playerhealth
+  extern GetPlayerCurrentHP @one$ @playerhealth
+  if ((@one$ == "boots") || (@one$ == "Boots")) {
+    set @playerhealth = (@playerhealth - 1)
+    extern SetPlayerCurrentHP @one$ @playerhealth
+  }
+}
+if (@two$ != "") {
+  extern GetPlayerCurrentHP @two$ @playerhealth
+  set @playerhealth = 99999
+  extern SetPlayerCurrentHP @two$ @playerhealth
+  if ((@two$ == "boots") || (@two$ == "Boots")) {
+    set @playerhealth = (@playerhealth - 1)
+    extern SetPlayerCurrentHP @one$ @playerhealth
+  }
+}
+if (@three$ != "") {
+  extern GetPlayerCurrentHP @three$ @playerhealth
+  set @playerhealth = 99999
+  extern SetPlayerCurrentHP @three$ @playerhealth
+  if ((@three$ == "boots") || (@three$ == "Boots")) {
+    set @playerhealth = (@playerhealth - 1)
+    extern SetPlayerCurrentHP @one$ @playerhealth
+  }
+}
+goto 0:0
+
+#switch 600:2
+extern AI_GetEdictNumber PlayerChar0 @p0
+extern adjust_nrg @p0 9999
+if (func_charinparty[boots] == 3)
+  extern adjust_nrg @p0 -1
+extern AI_GetEdictNumber PlayerChar1 @p1
+if (@p1 != -1.000000)
+  extern adjust_nrg @p1 9999
+extern AI_GetEdictNumber PlayerChar2 @p2
+if (@p2 != -1.000000)
+  extern adjust_nrg @p2 9999
+goto 0:0
+
+#switch 600:3
+gosub 600:1
+gosub 600:2
+goto 0:0

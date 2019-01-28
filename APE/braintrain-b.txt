@@ -1,0 +1,15 @@
+#switch 216:1
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .7 .7 1
+set CURRENT_BANK = 216
+extern playlevelmusic ""
+if (PLAY_SUNDER_INTRO)
+  goto 216:0005
+goto 0:0
+
+#switch 216:5
+set PLAY_SUNDER_INTRO = 0
+set BEEN_TO_SUNDER = 1
+set NEED_TO_GO_TO_SUNDER = 0
+console "set storysave \"To Sunder|Touching Down on Sunder\""
+extern playscene braintrain-b_arriving

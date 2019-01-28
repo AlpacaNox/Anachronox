@@ -1,0 +1,911 @@
+#window 1:860
+title "HANDY ANOX DEBUG MENU"
+startswitch {
+  set debug_up = 1
+}
+
+finishswitch {
+  set debug_up = 0
+}
+
+font "goodsym"
+xpos 160
+ypos 32
+width 320
+choice "Map TEST" 1:6627
+choice "Go to Bricks Map..." 1:6700
+choice "Go to SS/Sunder Map..." 1:6701
+choice "Go to Democratus/Hive Map..." 1:6702
+choice "Go to Hephaestus Map..." 1:6703
+choice "Go to Krapton/Limbus Map..." 1:6704
+choice "New Game (no intro)" 1:6705
+choice "Go to Story Section..." 1:6706
+choice "Add/Remove Party Members" 1:6707
+choice "GIVE ME 5000 BUCKS!" 1:6600
+choice "Steal 5000 BUCKS from me!" 1:6801
+choice "Right from mommy---Boots' Care Package (c)" 1:6720
+choice "Add Beat Weapons for Battle" 1:6800
+choice "Give me a MysDevice." 1:6709
+choice "Playtest from AnoxTours" 1:6710
+choice "Do Random Game Names" 1:6770
+choice "Dude, I give up--wake me in 30." 1:6780
+choice "Robert's Happy Quest Status" 1:6810
+choice "New Debug Menu" 1:7002
+choice "Set New Controls!" 1:6840
+choice "Exit" 0:0
+
+#window 1:6700
+title "BRICKS MAPS"
+style "NULL"
+font "goodsym"
+xpos 160
+ypos 64
+width 320
+background "backdrop.bmp" stretch
+choice "BricksD" 1:6601
+choice "BricksC" 1:6602
+choice "BricksC2" 1:6603
+choice "Whacks" 1:6604
+choice "Zordo's" 1:6605
+choice "MysTech Museum" 1:6606
+choice "Frank's" 1:6607
+choice "Tenements" 1:6619
+choice "Grumpos" 1:6620
+choice "Junkyard" 1:6621
+choice "Tours" 1:6608
+choice "Tours2" 1:6609
+choice "MysTech1" 1:6610
+choice "MysTech2" 1:6611
+choice "Sewagic1" 1:6612
+choice "MAIN MENU" 1:860
+choice "Exit" 0:0
+
+#window 1:6701
+title "SS/SUNDER MAPS"
+style "NULL"
+font "goodsym"
+xpos 160
+ypos 64
+width 320
+background "backdrop.bmp" stretch
+choice "SenderSS" 1:6613
+choice "Scommons" 1:6614
+choice "Routubes1" 1:6615
+choice "Routubes2" 1:6616
+choice "RedLight" 1:6617
+choice "Sex Machine" 1:6618
+choice "SSTS Museum" 1:6623
+choice "Starport" 1:6625
+choice "Lab Building" 1:6626
+choice "MAIN MENU" 1:860
+choice "Exit" 0:0
+
+#window 1:6702
+title "DEMOCRATUS/HIVE MAPS"
+body "Coming soon..."
+style "NULL"
+font "goodsym"
+xpos 160
+ypos 64
+width 320
+background "backdrop.bmp" stretch
+choice "MAIN MENU" 1:860
+choice "Exit" 0:0
+
+#window 1:6703
+title "HEPHAESTUS MAPS"
+body "Coming soon..."
+style "NULL"
+font "goodsym"
+xpos 160
+ypos 64
+width 320
+background "backdrop.bmp" stretch
+choice "MAIN MENU" 1:860
+choice "Exit" 0:0
+
+#window 1:6704
+title "KRAPTON/LIMBUS MAPS"
+body "Coming soon..."
+style "NULL"
+font "goodsym"
+xpos 160
+ypos 64
+width 320
+background "backdrop.bmp" stretch
+choice "MAIN MENU" 1:860
+choice "Exit" 0:0
+
+#window 1:6706
+title "STORY SECTION MENU"
+body "(Work In Progress)"
+style "NULL"
+font "goodsym"
+xpos 160
+ypos 64
+width 320
+background "backdrop.bmp" stretch
+choice "Start Game with Cine" 1:6640
+choice "Just before leaving for Sender Station" 1:6642
+choice "Big climactic boss scene when everyone dies" 1:6641
+choice "MAIN MENU" 1:860
+choice "Exit" 0:0
+
+#window 1:6707
+title "ADD/REMOVE PARTY MEMBERS"
+body "Party: "
+if (func_charinparty[boots] > 1)
+  body "Boots "
+if (func_charinparty[grumpos] > 1)
+  body "Grumpos "
+if (func_charinparty[pal] > 1)
+  body "PAL "
+if (func_charinparty[rho] > 1)
+  body "Rho "
+if (func_charinparty[paco] > 1)
+  body "Paco "
+if (func_charinparty[stiletto] > 1)
+  body "Stiletto "
+if (func_charinparty[democratus] > 1)
+  body "Democratus "
+body "\nChoose character to add:"
+startswitch {
+  gosub 1:5 
+}
+
+style "NULL"
+font "goodsym"
+xpos 160
+ypos 64
+width 320
+background "backdrop.bmp" stretch
+if ((party_population < 3) && (func_charinparty[boots] < 2))
+  choice "Add Boots" 1:6749
+if ((party_population < 3) && (func_charinparty[grumpos] < 2))
+  choice "Add Grumpos" 1:6750
+if ((party_population < 3) && (func_charinparty[pal] < 2))
+  choice "Add PAL" 1:6751
+if ((party_population < 3) && (func_charinparty[rho] < 2))
+  choice "Add Rho" 1:6752
+if ((party_population < 3) && (func_charinparty[paco] < 2))
+  choice "Add Paco" 1:6753
+if ((party_population < 3) && (func_charinparty[stiletto] < 2))
+  choice "Add Stiletto" 1:6754
+if ((party_population < 3) && (func_charinparty[democratus] < 2))
+  choice "Add Democratus" 1:6755
+if (func_charinparty[boots] == 2)
+  choice "Remove Boots" 1:6756
+if (func_charinparty[grumpos] == 2)
+  choice "Remove Grumpos" 1:6757
+if (func_charinparty[pal] == 2)
+  choice "Remove PAL" 1:6758
+if (func_charinparty[rho] == 2)
+  choice "Remove Rho" 1:6759
+if (func_charinparty[paco] == 2)
+  choice "Remove Paco" 1:6760
+if (func_charinparty[stiletto] == 2)
+  choice "Remove Stiletto" 1:6761
+if (func_charinparty[democratus] == 2)
+  choice "Remove Democratus" 1:6762
+choice "MAIN MENU" 1:860
+choice "Exit" 0:0
+
+#window 1:6800
+title "Add Base Weapons"
+body "The character that you add weapons too must be the leader"
+font "goodsym"
+xpos 160
+ypos 32
+width 320
+choice "I am Boots, give me a pistol" 1:6803
+choice "I am Grumpos, give me my staff" 1:6804
+choice "Back to Main Menu" 1:66
+
+#window 1:6805
+title "Oops"
+body "The character you selected is not currently the leader."
+font "goodsym"
+xpos 160
+ypos 32
+width 320
+choice "Back to Weapons Menu" 1:6800
+choice "MAIN MENU" 1:860
+
+#window 1:6641
+body "Just kidding."
+style "NULL"
+font "goodsym"
+xpos 160
+ypos 128
+width 320
+background "backdrop.bmp" stretch
+nextwindow 1:860
+
+#window 1:6810
+body "Check status on:"
+style "NULL"
+font "goodsym"
+background "backdrop.bmp" stretch
+choice "Anachronox" 1:6815
+choice "Sender Station" 1:6820
+choice "Sunder" 1:6825
+choice "Democratus" 1:6830
+choice "Hephaestus" 1:6835
+
+#window 1:6815
+body "Find A Job: %d\n", @quest1
+body "Talk To Valesta: %d\n", @quest2
+body "Talk To Deanamo: %d\n", @quest3
+body "Find Grumpos: %d\n", @quest4
+body "Get Hired By Grumpos: %d\n", @quest5
+body "Get Grumpos Items: %d\n", @quest6
+body "Get Tree: %d\n", @quest7
+body "Clue To Tree: %d\n", @quest8
+body "Got Tree: %d\n", @quest9
+body "Get Symbol: %d\n", @quest10
+body "Click for more...."
+startswitch {
+  extern is_quest_done "Find A Job" @quest1
+  extern is_quest_done "Talk To Valesta" @quest2
+  extern is_quest_done "Talk To Deanamo" @quest3
+  extern is_quest_done "Find Grumpos" @quest4
+  extern is_quest_done "Get Hired By Grumpos" @quest5
+  extern is_quest_done "Get Grumpos Items" @quest6
+  extern is_quest_done "Get Tree" @quest7
+  extern is_quest_done "Clue To Tree" @quest8
+  extern is_quest_done "Got Tree" @quest9
+  extern is_quest_done "Get Symbol" @quest10
+}
+
+style "NULL"
+font "goodsym"
+background "backdrop.bmp" stretch
+nextwindow 1:6816
+
+#window 1:6816
+body "Clue To Symbol: %d\n", @quest11
+body "Know Which Symbol: %d\n", @quest12
+body "Got Symbol: %d\n", @quest13
+body "Get Helmet: %d\n", @quest14
+body "Clue To Helmet: %d\n", @quest15
+body "Got Helmet: %d\n", @quest16
+body "Get Stuff To Grumpos: %d\n", @quest17
+body "Get Into MysTech Tunnels: %d\n", @quest18
+body "Where Are MysTech Tunnels: %d\n", @quest19
+body "Got Linguinator: %d\n", @quest20
+body "Click for more...."
+startswitch {
+  extern is_quest_done "Clue To Symbol" @quest11
+  extern is_quest_done "Know Which Symbol" @quest12
+  extern is_quest_done "Got Symbol" @quest13
+  extern is_quest_done "Get Helmet" @quest14
+  extern is_quest_done "Clue To Helmet" @quest15
+  extern is_quest_done "Got Helmet" @quest16
+  extern is_quest_done "Get Stuff To Grumpos" @quest17
+  extern is_quest_done "Get Into MysTech Tunnels" @quest18
+  extern is_quest_done "Where Are MysTech Tunnels" @quest19
+  extern is_quest_done "Got Linguinator" @quest20
+}
+
+style "NULL"
+font "goodsym"
+background "backdrop.bmp" stretch
+nextwindow 1:6817
+
+#window 1:6817
+body "Talk To Conrad: %d\n", @quest21
+body "Talk To Yerocan: %d\n", @quest22
+body "Plans To Conrad: %d\n", @quest23
+body "Find More Info On Eddie: %d\n", @quest24
+body "Eddie Knows Tunnels: %d\n", @quest25
+body "Find Lucko: %d\n", @quest26
+body "Know Where Eddie Is: %d\n", @quest27
+body "Know About Sock: %d\n", @quest28
+body "Have Sock For Eddie: %d\n", @quest29
+body "Know How To Get Past Guard: %d\n", @quest30
+body "Click for more...."
+startswitch {
+  extern is_quest_done "Talk To Conrad" @quest21
+  extern is_quest_done "Talk To Yerocan" @quest22
+  extern is_quest_done "Plans To Conrad" @quest23
+  extern is_quest_done "Find More Info On Eddie" @quest24
+  extern is_quest_done "Eddie Knows Tunnels" @quest25
+  extern is_quest_done "Find Lucko" @quest26
+  extern is_quest_done "Know Where Eddie Is" @quest27
+  extern is_quest_done "Know About Sock" @quest28
+  extern is_quest_done "Have Sock For Eddie" @quest29
+  extern is_quest_done "Know How To Get Past Guard" @quest30
+}
+
+style "NULL"
+font "goodsym"
+background "backdrop.bmp" stretch
+nextwindow 1:6818
+
+#window 1:6818
+body "Explore The Tunnels: %d\n", @quest31
+body "Leave The Tunnels: %d\n", @quest32
+body "Find Rho Bowman: %d\n", @quest33
+body "Get To Sender Station: %d\n", @quest34
+body "Get PAL Battery: %d\n", @quest35
+startswitch {
+  extern is_quest_done "Explore The Tunnels" @quest31
+  extern is_quest_done "Leave The Tunnels" @quest32
+  extern is_quest_done "Find Rho Bowman" @quest33
+  extern is_quest_done "Get To Sender Station" @quest34
+  extern is_quest_done "Get PAL Battery" @quest35
+}
+
+style "NULL"
+font "goodsym"
+background "backdrop.bmp" stretch
+
+#window 1:6820
+body "Get To Sunder: %d\n", @quest1
+body "Get Two Tickets To Sunder: %d\n", @quest2
+body "Get One Ticket To Sunder: %d\n", @quest3
+body "Get On Sunder Shuttle No Know: %d\n", @quest4
+body "Get On Sunder Shuttle Do Know: %d\n", @quest5
+body "Get Bast Sunder Shuttle Door: %d\n", @quest6
+body "Look Like Scientists: %d\n", @quest7
+body "Get Past Brain Bouncer: %d\n", @quest8
+body "Where Shuttle Is: %d\n", @quest9
+body "Need To Get FTM: %d\n", @quest10
+body "Click for more...."
+startswitch {
+  extern is_quest_done "Get To Sunder" @quest1
+  extern is_quest_done "Get Two Tickets To Sunder" @quest2
+  extern is_quest_done "Get One Ticket To Sunder" @quest3
+  extern is_quest_done "Get On Sunder Shuttle No Know" @quest4
+  extern is_quest_done "Get On Sunder Shuttle Do Know" @quest5
+  extern is_quest_done "Get Bast Sunder Shuttle Door" @quest6
+  extern is_quest_done "Look Like Scientists" @quest7
+  extern is_quest_done "Get Past Brain Bouncer" @quest8
+  extern is_quest_done "Where Shuttle Is" @quest9
+  extern is_quest_done "Need To Get FTM" @quest10
+}
+
+style "NULL"
+font "goodsym"
+background "backdrop.bmp" stretch
+nextwindow 1:6821
+
+#window 1:6821
+body "Need To Talk To Kevester: %d\n", @quest11
+body "Need To Talk To Sam: %d\n", @quest12
+body "Know Where Kevester Is: %d\n", @quest13
+body "Need Kevester Ring: %d\n", @quest14
+body "Return Kevester Ring: %d\n", @quest15
+body "Talk To Phunkee: %d\n", @quest16
+body "Need To Get TDD: %d\n", @quest17
+startswitch {
+  extern is_quest_done "Need To Talk To Kevester" @quest11
+  extern is_quest_done "Need To Talk To Sam" @quest12
+  extern is_quest_done "Know Where Kevester Is" @quest13
+  extern is_quest_done "Need Kevester Ring" @quest14
+  extern is_quest_done "Return Kevester Ring" @quest15
+  extern is_quest_done "Talk To Phunkee" @quest16
+  extern is_quest_done "Need To Get TDD" @quest17
+}
+
+style "NULL"
+font "goodsym"
+background "backdrop.bmp" stretch
+
+#window 1:6825
+body "Find Rho On Sunder: %d\n", @quest1
+body "Get To Rho: %d\n", @quest2
+body "Get Starport Clearance: %d\n", @quest3
+body "Get Off Sunder: %d\n", @quest4
+body "Get Rho Shuttle Keycard: %d\n", @quest5
+body "Get To Starport Gate: %d\n", @quest6
+startswitch {
+  extern is_quest_done "Find Rho On Sunder" @quest1
+  extern is_quest_done "Get To Rho" @quest2
+  extern is_quest_done "Get Starport Clearance" @quest3
+  extern is_quest_done "Get Off Sunder" @quest4
+  extern is_quest_done "Get Rho Shuttle Keycard" @quest5
+  extern is_quest_done "Get To Starport Gate" @quest6
+}
+
+style "NULL"
+font "goodsym"
+background "backdrop.bmp" stretch
+
+#window 1:6830
+body "Democratus Unknown: %d\n", @quest1
+body "Democratus Known: %d\n", @quest2
+body "Need To Vote: %d\n", @quest3
+body "Need To Vote Again: %d\n", @quest4
+body "Need To Register: %d\n", @quest5
+body "Need To Know Council Votes: %d\n", @quest6
+body "Need To Know All Council Votes: %d\n", @quest7
+body "What is Proposition 1 Vote: %d\n", @quest8
+body "Find Brady Day: %d\n", @quest9
+body "Know Proposition 1 Vote: %d\n", @quest10
+body "Click for more...."
+startswitch {
+  extern is_quest_done "Democratus Unknown" @quest1
+  extern is_quest_done "Democratus Known" @quest2
+  extern is_quest_done "Need To Vote" @quest3
+  extern is_quest_done "Need To Vote Again" @quest4
+  extern is_quest_done "Need To Register" @quest5
+  extern is_quest_done "Need To Know Council Votes" @quest6
+  extern is_quest_done "Need To Know All Council Votes" @quest7
+  extern is_quest_done "What is Proposition 1 Vote" @quest8
+  extern is_quest_done "Find Brady Day" @quest9
+  extern is_quest_done "Know Proposition 1 Vote" @quest10
+}
+
+style "NULL"
+font "goodsym"
+background "backdrop.bmp" stretch
+nextwindow 1:6831
+
+#window 1:6831
+body "What is Proposition 2 Vote: %d\n", @quest11
+body "Know Proposition 2 Vote: %d\n", @quest12
+body "What is Proposition 3 Vote: %d\n", @quest13
+body "Know Proposition 3 Vote: %d\n", @quest14
+body "What is Proposition 4 Vote: %d\n", @quest15
+body "Find Halpern Assistant: %d\n", @quest16
+body "Know Proposition 4 Vote: %d\n", @quest17
+body "What is Propositon 5 Vote: %d\n", @quest18
+body "Know Propositon 5 Vote: %d\n", @quest19
+body "What is Propositon 6 Vote: %d\n", @quest20
+body "Click for more...."
+startswitch {
+  extern is_quest_done "What is Proposition 2 Vote" @quest11
+  extern is_quest_done "Know Proposition 2 Vote" @quest12
+  extern is_quest_done "What is Proposition 3 Vote" @quest13
+  extern is_quest_done "Know Proposition 3 Vote" @quest14
+  extern is_quest_done "What is Proposition 4 Vote" @quest15
+  extern is_quest_done "Find Halpern Assistant" @quest16
+  extern is_quest_done "Know Proposition 4 Vote" @quest17
+  extern is_quest_done "What is Propositon 5 Vote" @quest18
+  extern is_quest_done "Know Propositon 5 Vote" @quest19
+  extern is_quest_done "What is Propositon 6 Vote" @quest20
+}
+
+style "NULL"
+font "goodsym"
+background "backdrop.bmp" stretch
+nextwindow 1:6832
+
+#window 1:6832
+body "Know Proposition 6 Vote: %d\n", @quest21
+body "What is Propositon 7 Vote: %d\n", @quest22
+body "Find Dass Daskan: %d\n", @quest23
+body "Find Dass Daskan With Map: %d\n", @quest24
+body "Know Propositon 7 Vote: %d\n", @quest25
+body "What is Propositon 8 Vote: %d\n", @quest26
+body "Know Propositon 8 Vote: %d\n", @quest27
+body "Need To Use Vote Knowledge: %d\n", @quest28
+body "Need To Use Ally Card: %d\n", @quest29
+startswitch {
+  extern is_quest_done "Know Proposition 6 Vote" @quest21
+  extern is_quest_done "What is Propositon 7 Vote" @quest22
+  extern is_quest_done "Find Dass Daskan" @quest23
+  extern is_quest_done "Find Dass Daskan With Map" @quest24
+  extern is_quest_done "Know Propositon 7 Vote" @quest25
+  extern is_quest_done "What is Propositon 8 Vote" @quest26
+  extern is_quest_done "Know Propositon 8 Vote" @quest27
+  extern is_quest_done "Need To Use Vote Knowledge" @quest28
+  extern is_quest_done "Need To Use Ally Card" @quest29
+}
+
+style "NULL"
+font "goodsym"
+background "backdrop.bmp" stretch
+
+#window 1:6835
+body "Get In Tower: %d\n", @quest1
+body "Find 3 Keys: %d\n", @quest2
+body "Find Brother Flammarion: %d\n", @quest3
+body "Pissed Flammarion: %d\n", @quest4
+body "Follow Abbot: %d\n", @quest5
+body "Malloy Fingered: %d\n", @quest6
+body "Angela Fingered: %d\n", @quest7
+body "Liseria Fingered: %d\n", @quest8
+body "Thomas Fingered: %d\n", @quest9
+body "Grit Clue: %d\n", @quest10
+body "Click for more...."
+startswitch {
+  extern is_quest_done "Get In Tower" @quest1
+  extern is_quest_done "Find 3 Keys" @quest2
+  extern is_quest_done "Find Brother Flammarion" @quest3
+  extern is_quest_done "Pissed Flammarion" @quest4
+  extern is_quest_done "Follow Abbot" @quest5
+  extern is_quest_done "Malloy Fingered" @quest6
+  extern is_quest_done "Angela Fingered" @quest7
+  extern is_quest_done "Liseria Fingered" @quest8
+  extern is_quest_done "Thomas Fingered" @quest9
+  extern is_quest_done "Grit Clue" @quest10
+}
+
+style "NULL"
+font "goodsym"
+background "backdrop.bmp" stretch
+nextwindow 1:6836
+
+#window 1:6836
+body "Help For Angela: %d\n", @quest11
+body "Help For Liseria: %d\n", @quest12
+body "Help For Thomas: %d\n", @quest13
+body "Find Felicia: %d\n", @quest14
+body "Find Gray: %d\n", @quest15
+body "Find Donald: %d\n", @quest16
+body "Search Room 3: %d\n", @quest17
+body "Get Fluid: %d\n", @quest18
+body "4 Filters: %d\n", @quest19
+body "3 Filters: %d\n", @quest20
+body "2 Filters: %d\n", @quest21
+body "1 Filter: %d\n", @quest22
+startswitch {
+  extern is_quest_done "Help For Angela" @quest11
+  extern is_quest_done "Help For Liseria" @quest12
+  extern is_quest_done "Help For Thomas" @quest13
+  extern is_quest_done "Find Felicia" @quest14
+  extern is_quest_done "Find Gray" @quest15
+  extern is_quest_done "Find Donald" @quest16
+  extern is_quest_done "Search Room 3" @quest17
+  extern is_quest_done "Get Fluid" @quest18
+  extern is_quest_done "4 Filters" @quest19
+  extern is_quest_done "3 Filters" @quest20
+  extern is_quest_done "2 Filters" @quest21
+  extern is_quest_done "1 Filter" @quest22
+}
+
+style "NULL"
+font "goodsym"
+background "backdrop.bmp" stretch
+
+#window 1:6840
+body "Whatcha wana tweak? \n\n"
+style "NULL"
+font "goodsym"
+background "backdrop.bmp" stretch
+choice "Sensitivy" 1:6841
+choice "Reverse Axis" 1:6842
+
+#window 1:6841
+body "Choose a sensitivity. \n It is currently (%s)", sensitivity
+xyprintfx 50, 76, 1, 0, 1, 1, _message, "0.5"
+xyprintfx 50, 106, 1, 0, 1, 1, _message, "1.0"
+xyprintfx 50, 136, 1, 0, 1, 1, _message, "1.5"
+xyprintfx 50, 166, 1, 0, 1, 1, _message, "2.0"
+xyprintfx 50, 196, 1, 0, 1, 1, _message, "2.5"
+xyprintfx 50, 226, 1, 0, 1, 1, _message, "3.0"
+xyprintfx 50, 256, 1, 0, 1, 1, _message, "3.5"
+xyprintfx 50, 286, 1, 0, 1, 1, _message, "4.0"
+xyprintfx 50, 316, 1, 0, 1, 1, _message, "4.5"
+xyprintfx 50, 346, 1, 0, 1, 1, _message, "5.0"
+xyprintfx 50, 376, 1, 0, 1, 1, _message, "Click Here When Done"
+startswitch {
+  gosub 1:6842
+  gosub 1:6843
+  extern CreateAPE2DControl push mousesens1 211 107 width=20 height=20 normal=/graphics/interface/mainmenu/xbox$msbox1$.tga gamevar=DBMouseSens returnvalue=1
+  extern CreateAPE2DControl push mousesens2 211 137 width=20 height=20 normal=/graphics/interface/mainmenu/xboxoff.tga gamevar=DBMouseSens returnvalue=2
+  extern CreateAPE2DControl push mousesens3 211 167 width=20 height=20 normal=/graphics/interface/mainmenu/xboxoff.tga gamevar=DBMouseSens returnvalue=3
+  extern CreateAPE2DControl push mousesens4 211 197 width=20 height=20 normal=/graphics/interface/mainmenu/xboxoff.tga gamevar=DBMouseSens returnvalue=4
+  extern CreateAPE2DControl push mousesens5 211 227 width=20 height=20 normal=/graphics/interface/mainmenu/xboxoff.tga gamevar=DBMouseSens returnvalue=5
+  extern CreateAPE2DControl push mousesens6 211 257 width=20 height=20 normal=/graphics/interface/mainmenu/xboxoff.tga gamevar=DBMouseSens returnvalue=6
+  extern CreateAPE2DControl push mousesens7 211 287 width=20 height=20 normal=/graphics/interface/mainmenu/xboxoff.tga gamevar=DBMouseSens returnvalue=7
+  extern CreateAPE2DControl push mousesens8 211 317 width=20 height=20 normal=/graphics/interface/mainmenu/xboxoff.tga gamevar=DBMouseSens returnvalue=8
+  extern CreateAPE2DControl push mousesens9 211 347 width=20 height=20 normal=/graphics/interface/mainmenu/xboxoff.tga gamevar=DBMouseSens returnvalue=9
+  extern CreateAPE2DControl push mousesens10 211 377 width=20 height=20 normal=/graphics/interface/mainmenu/xboxoff.tga gamevar=DBMouseSens returnvalue=10
+  extern CreateAPE2DControl push mousesensdn 192 407 width=241 height=14 gamevar=DBMouseSensDN returnvalue=1 nodrawflag=true
+}
+
+thinkswitch {
+  if (DBMouseSens > 0)
+    set sensitivity = DBMouseSens
+  if (DBMouseSensDN == 1)
+    closewindow 1:6841
+  gosub 1:6842
+  gosub 1:6843
+}
+
+finishswitch {
+  extern RemoveAPE2DControl mousesens1
+  extern RemoveAPE2DControl mousesens2
+  extern RemoveAPE2DControl mousesens3
+  extern RemoveAPE2DControl mousesens4
+  extern RemoveAPE2DControl mousesens5
+  extern RemoveAPE2DControl mousesens6
+  extern RemoveAPE2DControl mousesens7
+  extern RemoveAPE2DControl mousesens8
+  extern RemoveAPE2DControl mousesens9
+  extern RemoveAPE2DControl mousesens10
+  extern RemoveAPE2DControl mousesensdn
+  set DBMouseSensDN = 0
+}
+
+style "NULL"
+font "goodsym"
+flags passive2d, TRUE
+xpos 192
+ypos 32
+width 241
+height 390
+background "backdrop.bmp" stretch
+
+#switch 1:6705
+set CURRENT_PLANET = 1
+set MYSTECH_ACTIVE = 0
+set MET_VALESTA = 0
+set MET_GRUMPOS = 0
+console "map rowdys"
+goto 0:0
+
+#switch 1:6708
+loadape "pooper"
+goto 50000:1
+goto 0:0
+
+#switch 1:6711
+loadape "bugaboo"
+goto 50000:1
+goto 0:0
+
+#switch 1:6709
+extern addnew_to_inventory MysDevice
+
+#switch 1:6710
+extern add_npc_to_party Grumpos
+extern add_money 5000
+set INV_LINGUINATOR = 1
+set MET_DETTA = 1
+set NEED_TO_GO_TO_SUNDER = 1
+set GOTGUN = 1
+set PAL_NEEDS_BATTERY = 1
+console "map tours2 fromtours"
+
+#switch 1:6749
+extern add_npc_to_party Boots
+goto 1:6707
+
+#switch 1:6750
+extern add_npc_to_party Grumpos
+goto 1:6707
+
+#switch 1:6751
+extern add_npc_to_party PAL
+goto 1:6707
+
+#switch 1:6752
+extern add_npc_to_party Rho
+goto 1:6707
+
+#switch 1:6753
+extern add_npc_to_party Paco
+goto 1:6707
+
+#switch 1:6754
+extern add_npc_to_party Stiletto
+goto 1:6707
+
+#switch 1:6755
+extern add_npc_to_party Democratus
+goto 1:6707
+
+#switch 1:6756
+extern remove_npc_from_party Boots 1
+goto 1:6707
+
+#switch 1:6757
+extern remove_npc_from_party Grumpos 1
+goto 1:6707
+
+#switch 1:6758
+extern remove_npc_from_party PAL 1
+
+#switch 1:6759
+extern remove_npc_from_party Rho 1
+goto 1:6707
+
+#switch 1:6760
+extern remove_npc_from_party Paco 1
+goto 1:6707
+
+#switch 1:6761
+extern remove_npc_from_party Stiletto 1
+goto 1:6707
+
+#switch 1:6762
+extern remove_npc_from_party Democratus 1
+goto 1:6707
+
+#switch 1:6770
+loadape "rndgame"
+goto 2:1
+
+#switch 1:6780
+loadape "ac"
+goto 2:8000
+
+#switch 1:6803
+if (func_charinparty[boots] != 3)
+  goto 1:6805
+extern addnew_to_inventory "Old Vistin Pistol"
+extern equip_item "Old Vistin Pistol"
+goto 0:0
+
+#switch 1:6804
+if (func_charinparty[grumpos] != 3)
+  goto 1:6805
+extern addnew_to_inventory "Vistin StaffCap"
+extern equip_item "Vistin StaffCap"
+goto 0:0
+
+#switch 1:6720
+extern addnew_to_inventory "Old Vistin Pistol"
+extern equip_item "Old Vistin Pistol"
+extern addnew_to_inventory "Shield1"
+extern equip_item "Shield1"
+extern addnew_to_inventory "MysDevice"
+extern equip_item "MysDevice"
+extern add_battle_skill "FlashBlind"
+goto 0:0
+
+#switch 1:6801
+extern remove_money 5000
+goto 0:0
+
+#switch 1:6600
+extern add_money 5000
+goto 0:0
+
+#switch 1:6601
+console "gamevar CURRENT_PLANET 1; map bricksd"
+goto 0:0
+
+#switch 1:6602
+console "gamevar CURRENT_PLANET 1; map bricksc"
+goto 0:0
+
+#switch 1:6603
+console "gamevar CURRENT_PLANET 1; map bricksc2"
+goto 0:0
+
+#switch 1:6604
+console "gamevar CURRENT_PLANET 1; map whacks"
+goto 0:0
+
+#switch 1:6605
+console "gamevar CURRENT_PLANET 1; map zordos"
+goto 0:0
+
+#switch 1:6606
+console "gamevar CURRENT_PLANET 1; map mmuseum"
+goto 0:0
+
+#switch 1:6607
+console "gamevar CURRENT_PLANET 1; map franks"
+goto 0:0
+
+#switch 1:6608
+console "gamevar CURRENT_PLANET 1; map tours"
+goto 0:0
+
+#switch 1:6609
+console "gamevar CURRENT_PLANET 1; map tours2 fromtours"
+goto 0:0
+
+#switch 1:6610
+console "gamevar CURRENT_PLANET 1; map mystech1"
+goto 0:0
+
+#switch 1:6611
+console "gamevar CURRENT_PLANET 1; map mystech2"
+goto 0:0
+
+#switch 1:6612
+console "gamevar CURRENT_PLANET 1; map sewagic1"
+goto 0:0
+
+#switch 1:6613
+console "gamevar CURRENT_PLANET 2; map senderss"
+goto 0:0
+
+#switch 1:6614
+console "gamevar CURRENT_PLANET 2; map scommons"
+goto 0:0
+
+#switch 1:6615
+console "gamevar CURRENT_PLANET 2; map routubes1"
+goto 0:0
+
+#switch 1:6616
+console "gamevar CURRENT_PLANET 2; map routubes2"
+goto 0:0
+
+#switch 1:6617
+console "gamevar CURRENT_PLANET 2; map redlight"
+goto 0:0
+
+#switch 1:6618
+console "gamevar CURRENT_PLANET 2; map sexmach"
+goto 0:0
+
+#switch 1:6619
+console "gamevar CURRENT_PLANET 1; map tenements"
+goto 0:0
+
+#switch 1:6620
+console "gamevar CURRENT_PLANET 1; map grumpos"
+goto 0:0
+
+#switch 1:6621
+console "gamevar CURRENT_PLANET 1; map hovel"
+goto 0:0
+
+#switch 1:6623
+console "gamevar CURRENT_PLANET 2; map museum"
+goto 0:0
+
+#switch 1:6625
+console "gamevar CURRENT_PLANET 3; map starport"
+goto 0:0
+
+#switch 1:6626
+console "gamevar CURRENT_PLANET 3; map labbuilding"
+goto 0:0
+
+#switch 1:6627
+console "gamevar CURRENT_PLANET 1; map test"
+goto 0:0
+
+#switch 1:6640
+console "gamevar gamestart 1; map sphere"
+goto 0:0
+
+#switch 1:6642
+extern add_npc_to_party Grumpos
+extern addnew_to_inventory "Old Vistin Pistol"
+extern equip_item "Old Vistin Pistol"
+extern add_money 5000
+set GOT_GRUMPOS = 1
+set INV_LINGUINATOR = 1
+set MET_DETTA = 1
+set CURRENT_PLANET = 1
+set STONE_TAKEN = 1
+console "map tours2 fromtours"
+goto 0:0
+
+#switch 1:6842
+msbox1$="off" 
+msbox2$="off" 
+msbox3$="off" 
+msbox4$="off" 
+msbox5$="off" 
+msbox6$="off" 
+msbox7$="off" 
+msbox8$="off" 
+msbox9$="off" 
+msbox10$="off" 
+
+#switch 1:6843
+if (DBMouseSens == 1)
+  msbox1$="on" 
+if (DBMouseSens == 2)
+  msbox2$="on" 
+if (DBMouseSens == 3)
+  msbox3$="on" 
+if (DBMouseSens == 4)
+  msbox4$="on" 
+if (DBMouseSens == 5)
+  msbox5$="on" 
+if (DBMouseSens == 6)
+  msbox6$="on" 
+if (DBMouseSens == 7)
+  msbox7$="on" 
+if (DBMouseSens == 8)
+  msbox8$="on" 
+if (DBMouseSens == 9)
+  msbox9$="on" 
+if (DBMouseSens == 10)
+  msbox10$="on" 
+
+#switch 1:7002
+goto 1:86

@@ -1,0 +1,917 @@
+#window 54:105
+title "Dr. Schooten"
+body "Hey, if anyone ever attacks you, try scooping their eyes out with your thumbs."
+cam left from(PlayerChar0) to(schooten) restore zip
+talk_ex schooten toko gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0106
+
+#window 54:106
+title "Dr. Toko"
+body "Uh...."
+cam left from(PlayerChar0) to(toko) restore zip
+talk_ex schooten toko amb_a gest_c stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:110
+title "Dr. Schooten"
+body "I've had feelings for Doctor Toko for several months now. Ever since we sat next to each other at the Physics Seminar on Asagan IV, she's all I can think about."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0111
+
+#window 54:111
+title "Dr. Schooten"
+body "But she broke up with her boyfriend just last week, and now Cavendish is already moving in for the kill."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0112
+
+#window 54:112
+title "Dr. Schooten"
+body "Listen to me. I sound like a moron."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0113
+
+#window 54:113
+title "Dr. Schooten"
+body "I've never had a jealous bone in my body, but I'm suddenly flush with emotion and telling complete strangers about it."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0114
+
+#window 54:114
+title "Dr. Schooten"
+body "I can't help it. I've never wanted anything more than I want her."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0115
+
+#window 54:115
+title "Dr. Schooten"
+body "Where the hell are those damn peanuts!?"
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  set Schooten1 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:120
+title "Dr. Schooten"
+body "Look at me. Reduced to a gibbering jackass over a bag of peanuts."
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  set Schooten1 = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:125
+title "Dr. Schooten"
+body "My kingdom for a bag of peanuts!"
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  if ((Labbe1 > 0) && (BT_PEANUTS > 1))
+    goto 54:1301
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:130
+title "Dr. Schooten"
+body "Follow me."
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:205
+title "Dr. Cavendish"
+body "I wonder what the in-flight movie is? I hope it's Biomechanical Cell Division II."
+cam left from(PlayerChar0) to(cavendish) restore zip
+talk_ex cavendish toko gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0206
+
+#window 54:206
+title "Dr. Toko"
+body "Hahahahaha!"
+cam left from(PlayerChar0) to(toko) restore zip
+talk_ex cavendish toko amb_a gest_d stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:210
+title "Dr. Cavendish"
+body "Doctor Schooten has been acting rather odd lately, hasn't he?"
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  if ((Labbe1 > 0) && (BT_PEANUTS > 1))
+    goto 54:1301
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:305
+title "Dr. Meziriac"
+body "I've been collecting soil samples from volcanoes on Hephaestus. There's been unusual tectonic activity on that planet for years."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0306
+
+#window 54:306
+title "Dr. Pfaff"
+body "Maybe it has something to do with the heavy amount of MysTech that turns up in the lava."
+cam left from(PlayerChar0) to(pfaff) restore zip
+talk_ex meziriac pfaff amb_a gest_g stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0307
+
+#window 54:307
+title "Dr. Meziriac"
+body "Gee, you think?"
+cam left from(PlayerChar0) to(meziriac) restore zip
+talk_ex meziriac pfaff gest_g amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0308
+
+#window 54:308
+title "Dr. Meziriac"
+body "How alien art ended up circulating in the planet's tectonic cycle is beyond me."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:310
+title "Dr. Meziriac"
+body "Hey, you look nice enough. I'm going to let you in on a little secret."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0311
+
+#window 54:311
+title "Dr. Meziriac"
+body "Don't look too excited. It's about me."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0312
+
+#window 54:312
+title "Dr. Meziriac"
+body "People ask me why I got into volcanology in the first place. Most of my colleagues will tell you it's because volcanoes reveal the character of the planet. Some are concerned with saving lives by remote sensing of eruptions. But me?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0313
+
+#window 54:313
+title "Dr. Meziriac"
+body "You wanna know why I got into volcanoes?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0314
+
+#window 54:314
+title "Dr. Meziriac"
+body "I love it when they erupt and go \"Fzfzfzfzfzssssshhhhhh!!!\""
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:320
+title "Dr. Meziriac"
+body "Tell anyone and I'll kill you."
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  if ((Labbe1 > 0) && (BT_PEANUTS > 1))
+    goto 54:1301
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:405
+title "Dr. Pfaff"
+body "He's into dirt. I'm into water. I've spent the last two years in the ocean depths of Tentac X where we're still discovering sentient creatures."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0406
+
+#window 54:406
+title "Dr. Pfaff"
+body "Parts of the ocean on Tentac X are so deep it takes six months to depressurize from an expedition. That's what I've been doing this year."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0407
+
+#window 54:407
+title "Dr. Pfaff"
+body "Depressurizing."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0410
+
+#window 54:410
+title "Dr. Pfaff"
+body "I still can't hear anything out of my left ear."
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  if ((Labbe1 > 0) && (BT_PEANUTS > 1))
+    goto 54:1301
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:505
+title "Dr. Varignon"
+body "There have been reports of huge, biomechanical vultures feeding off space debri in this sector. If we're lucky we'll see one."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:510
+title "Dr. Varignon"
+body "Keep an eye open."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if ((Labbe1 > 0) && (BT_PEANUTS > 1))
+    goto 54:1301
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:605
+title "Dr. Toko"
+body "I want some peanuts. You want some peanuts?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0611
+
+#window 54:611
+title "Dr. Schooten"
+body "I'll get it for you!"
+cam left from(PlayerChar0) to(schooten) restore zip
+talk_ex toka schooten amb_a talk_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0612
+
+#window 54:615
+title "Dr. Toko"
+body "It's a bit claustrophobic in this corner, isn't it?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:620
+title "Dr. Toko"
+body "Where did Doctor Schooten go?"
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  if ((Labbe1 > 0) && (BT_PEANUTS > 1))
+    goto 54:1301
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:805
+title "Dr. Labbe"
+body "I hoped you would come over here. I noticed you wearing a Cordicom Linguinator. I've been working on a side project that might just interest you...."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0806
+
+#window 54:806
+title "Dr. Labbe"
+body "You see, most consumer linguinators on the market today are incredibly clumsy, especially that Cordicom knock-off you're wearing. The translations are ungrammatical, and unknown slang even causes certain models to crash."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0807
+
+#window 54:807
+title "Dr. Labbe"
+body "Most importantly, if you come across languages that aren't already pre-programmed into the conversion module, you're sick outta luck."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0808
+
+#window 54:808
+title "Dr. Labbe"
+body "Now just imagine the Rosetta Stone of linguinators... one that translates alien languages that are not in the linguinator translation table. Here's how it works."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0809
+
+#window 54:809
+title "Dr. Labbe"
+body "First the unknown language is run through a series of very complicated algorithms which check for recurring phonetic patterns and cross-reference them against the Berzak-Fillini lingua cipher. Then the actuator spits out an on-the-fly translation."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0810
+
+#window 54:810
+title "Dr. Labbe"
+body "Simple in theory, yet it took fifteen painstaking years of development."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:0811
+
+#window 54:811
+title "Dr. Labbe"
+body "Here, plug this adapter into your linguinator. Do me a favor and report any bugs you might encounter."
+cam left restore zip
+talk npc amb_h stay
+finishswitch {
+  extern addnew_to_inventory "Labbe Linguinator Adapter"
+  set timed_message = 20
+  got_object$="Labbe Linguinator Adapter" 
+  gosub 1000:1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:815
+title "Dr. Labbe"
+body "This breakthrough is going to win me the Wedin-Harmony Prize for Science."
+cam left restore zip
+talk npc amb_h stay
+finishswitch {
+  if ((Labbe1 > 0) && (BT_PEANUTS > 1))
+    goto 54:1301
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:820
+title "Dr. Labbe"
+body "Is your owner wearing a linguinator in his ear? Mind if I talk to him?"
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:825
+title "Dr. Labbe"
+body "Your owner's gonna be the most fluent listener in the galaxy now."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:1005
+title "Dr. Einbert Alstein"
+body "Must think harder..."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:1010
+title "Dr. Einbert Alstein"
+body "Must... think... harder!"
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:1015
+title "Dr. Einbert Alstein"
+body "Stop it."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:1105
+title "Dr. Torricelli"
+body "I hope you like talking to people."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:1106
+
+#window 54:1106
+title "Dr. Torricelli"
+body "It's funny. You've got one of those faces. You make me want to talk to you. I bet you get a lot of that... strangers telling you secrets they wouldn't tell their own therapists."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:1110
+title "Dr. Torricelli"
+body "Do you think I look like a movie star?"
+cam left restore zip
+talk npc amb_h stay
+finishswitch {
+  if ((Labbe1 > 0) && (BT_PEANUTS > 1))
+    goto 54:1301
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:1205
+title "Dr. Bitt-Ya"
+body "Wait... don't say anything..."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:1206
+
+#window 54:1206
+title "Dr. Bitt-Ya"
+body "I'm not feeling too well."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:1207
+
+#window 54:1207
+title "Dr. Bitt-Ya"
+body "Sender spike travel makes me sick."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:1210
+title "Dr. Bitt-Ya"
+body "Stop it. You're going to make me throw up."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:1215
+title "Dr. Bitt-Ya"
+body "Stop it."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if ((Labbe1 > 0) && (BT_PEANUTS > 1))
+    goto 54:1301
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:1301
+title "Captain Paylin"
+body "We're on final approach to Callosum Starport where they're enjoying partly cloudy skies and a high of 82 degrees."
+cam left from(-3559 -3927 -3534) to(toko) fov(90) far(100) near(30) fwd(40) speed(10000) lift(62) lag(10000) occlude(no) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:1302
+
+#window 54:1302
+title "Captain Paylin"
+body "We hope you enjoy your stay on Sunder, and we thank for flying on the Brain Train."
+cam left from(-3559 -3927 -3534) to(toko) fov(90) far(100) near(30) fwd(40) speed(10000) lift(62) lag(10000) occlude(no) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 54:1305
+
+#window 54:4000
+title "%s", PlayerChar0$
+if (@xx == 1)
+  body "Cargo doors. They open to space. I prefer air."
+if (@xx == 2)
+  body "I like staying IN the ship."
+if (@xx == 3)
+  body "That's a cargo door. Yup."
+startswitch {
+  set @xx = func_drand[1,3]
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 54:4001
+title "%s", PlayerChar0$
+body "Nah.  Just got here."
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 54:4010
+title "%s", PlayerChar0$
+if (@poops == 1)
+  body "That's the exit. We're in space."
+if (@poops == 2)
+  body "Exits are usually closed during space flight."
+if (@poops == 3)
+  body "Let's stay inside while the temperature is 4 Kelvin."
+startswitch {
+  set @poops = func_drand[1,3]
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#switch 54:1
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+extern remove_from_inventory "Sunder Shuttle Ticket" 2
+set CURRENT_PLANET = 3
+set CURRENT_BANK = 54
+extern setmasterlevel 12
+console "stopmusic"
+extern playlevelmusic mp3/braintrain/braintraintheme.mp3
+if (BRAINTRAIN_INTRO)
+  goto 54:0005
+goto 0:0
+
+#switch 54:5
+set BRAINTRAIN_INTRO 0 = (1 + 0)
+extern playscene braintrain_leaving
+
+#switch 54:101
+if (Schooten1 > 1)
+  goto 54:0125
+if (Schooten1 > 0)
+  goto 54:0120
+if (BT_PEANUTS > 1)
+  goto 54:0110
+if (BT_PEANUTS > 0)
+  goto 54:0130
+goto 54:0105                                 
+
+#switch 54:201
+if (BT_PEANUTS > 0)
+  goto 54:0210
+goto 54:0205                                 
+
+#switch 54:301
+set Meziriac1 = (Meziriac1 + 1)
+if (Meziriac1 > 2)
+  goto 54:0320
+if (Meziriac1 > 1)
+  goto 54:0310
+goto 54:0305                                 
+
+#switch 54:401
+set Pfaff1 = (Pfaff1 + 1)
+if (Pfaff1 > 1)
+  goto 54:0410
+goto 54:0405                                 
+
+#switch 54:501
+set Varignon1 = (Varignon1 + 1)
+if (Varignon1 > 1)
+  goto 54:0510
+goto 54:0505                                 
+
+#switch 54:601
+if (BT_PEANUTS > 1)
+  goto 54:0620
+if (BT_PEANUTS > 0)
+  goto 54:0615
+goto 54:0605
+
+#switch 54:612
+extern AI_GrabEntity schooten schooten_handle
+extern AI_Path schooten_handle schooten_path1
+extern AI_ReleaseEntity schooten_handle
+set BT_PEANUTS = 1
+
+#switch 54:801
+if ((func_charinparty[pal] == 3) && (Labbe1 > 0))
+  goto 54:0825
+if (func_charinparty[pal] == 3)
+  goto 54:0820
+set Labbe1 = (Labbe1 + 1)
+if (Labbe1 > 1)
+  goto 54:0815
+goto 54:0805                                 
+
+#switch 54:1001
+set Einbert1 = (Einbert1 + 1)
+if (Einbert1 > 2)
+  goto 54:1015
+if (Einbert1 > 1)
+  goto 54:1010
+goto 54:1005                                 
+
+#switch 54:1101
+set Torricelli1 = (Torricelli1 + 1)
+if (func_charinparty[pal] == 3)
+  goto 54:1110
+if (Torricelli1 > 1)
+  goto 54:1110
+goto 54:1105                                 
+
+#switch 54:1201
+set Bitt1 = (Bitt1 + 1)
+if (Bitt1 > 2)
+  goto 54:1215
+if (Bitt1 > 1)
+  goto 54:1210
+goto 54:1205                                 
+
+#switch 54:1305
+set PLAY_SUNDER_INTRO = 1
+set FATIMA_FIND_RHO = 1
+extern playscene braintrain_fadeout

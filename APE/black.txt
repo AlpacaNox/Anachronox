@@ -1,0 +1,59 @@
+#window 111:1
+startswitch {
+  set anox_game_not_in_progress = 1
+  set frameDelay = 3
+  goto 0:0
+}
+
+thinkswitch {
+  set frameDelay = (frameDelay - 1)
+  if (frameDelay <= 0) {
+    extern playlevelmusic mp3/theme/anoxtheme.mp3
+    closewindow 111:1
+  }
+}
+
+finishswitch {
+  if (anox_startup == 0) {
+    set anox_startup = 1
+    set anox_game_not_in_progress = 1
+    console "pushbind"
+    console "unbindall"
+    console "bind mouse1 \"invoke 111:5\""
+    console "bind space \"invoke 111:5\""
+    console "bind ESCAPE \"invoke 111:5\""
+    extern loopscene black_intro
+    goto 0:0
+  } else if ((anox_interface_active == 0) && (gamestart == 0)) {
+    set anox_game_not_in_progress = 1
+    console "mainmenu"
+  }
+  goto 0:0
+}
+
+style "NULL"
+flags passive, TRUE
+
+#window 111:10
+startswitch {
+  set @poo = func_gametime
+  goto 0:0
+}
+
+thinkswitch {
+  if (func_gametime > (@poo + 100))
+    closewindow 111:10
+  goto 0:0
+}
+
+finishswitch {
+  goto 111:4
+}
+
+style "NULL"
+
+#switch 111:5
+console "popbind"
+extern stopscene black_intro
+extern APE_stopallsounds
+goto 111:10                                                 

@@ -1,0 +1,1248 @@
+#window 94:7
+startswitch {
+  echo "[-- Delay Timer Was Run --]"
+  set @CodeDelayTimer = func_gametime
+}
+
+thinkswitch {
+  if (func_gametime >= (@CodeDelayTimer + 30))
+    closewindow 94:7
+}
+
+finishswitch {
+  if (@Crevice_PostBattleDelay1 == 1) {
+    echo "[-- Stage 1 Was Run --]"
+    set @Crevice_PostBattleDelay1 = 0
+    if (boots_at_cliff == 1) {
+      extern add_npc_to_party boots
+      extern set_party_leader boots
+    } else if (pal_at_cliff == 1) {
+      extern add_npc_to_party pal
+      extern set_party_leader pal
+    } else if (rho_at_cliff == 1) {
+      extern add_npc_to_party rho
+      extern set_party_leader rho
+    } else if (democratus_at_cliff == 1) {
+      extern add_npc_to_party democratus
+      extern set_party_leader democratus
+    } else if (stiletto_at_cliff == 1) {
+      extern add_npc_to_party stiletto
+      extern set_party_leader stiletto
+    } else if (paco_at_cliff == 1) {
+      extern add_npc_to_party paco
+      extern set_party_leader paco
+    }
+    gosub 94:4
+  }
+  if (@Crevice_PostBattleDelay2 == 1) {
+    echo "[-- Stage 2 Was Run --]"
+    set @Crevice_PostBattleDelay2 = 0
+    if (func_charinparty[boots] == 2) {
+      extern remove_npc_from_party boots 1
+    } else if (func_charinparty[pal] == 2) {
+      extern remove_npc_from_party pal 1
+    } else if (func_charinparty[rho] == 2) {
+      extern remove_npc_from_party rho 1
+    } else if (func_charinparty[democratus] == 2) {
+      extern remove_npc_from_party democratus 1
+    } else if (func_charinparty[stiletto] == 2) {
+      extern remove_npc_from_party stiletto 1
+    } else if (func_charinparty[paco] == 2)
+      extern remove_npc_from_party paco 1
+    gosub 94:5
+  }
+  if (@Crevice_PostBattleDelay3 == 1) {
+    echo "[-- Stage 3 Was Run --] (If This Runs, Life Is Good)"
+    set Battle_Cliff = 1
+    console "map limbus cinematic"
+    set @Crevice_PostBattleDelay3 = 0
+  }
+}
+
+style "null"
+flags passive, TRUE
+
+#window 94:105
+title "Sathcarpintergorque"
+body "This is the BRIDGE OF BETRAYAL."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern complete_quest "Find Bridge"
+  set foundbridge = 1
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:0106
+
+#window 94:106
+title "Sathcarpintergorque"
+body "Our greatest craftsmen and artisans labored decades to craft this monument to Limbusonian ingenuity and perseverance."
+cam left from(30 2071 3211) to(78 2041 3181) fov(90) far(64) near(30) fwd(40) speed(500) lift(62) lag(500) occlude(no) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:0107
+
+#window 94:107
+title "Sathcarpintergorque"
+body "It is also a key location in the upcoming battle. Any enemies that the Lance of the Vigil fails to shoot down will make their way to this bridge."
+cam left from(30 2071 3211) to(78 2041 3181) fov(90) far(64) near(30) fwd(40) speed(500) lift(62) lag(500) occlude(no) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:0108
+
+#window 94:108
+title "Sathcarpintergorque"
+body "The good news is that this bottleneck is the only way to breach the city gates. The bad news is that you destroyed our only means of defending it... the Sagen-Kra."
+cam left from(30 2071 3211) to(85 2088 3183) fov(90) far(64) near(30) fwd(40) speed(500) lift(62) lag(500) occlude(no) restore zip
+talk npc talk_a stay
+finishswitch {
+  if (((foundpillars + foundbridge) + foundcliff) == 3) {
+    if (func_charinparty[boots] == 3) {
+      set boots_at_bridge = 1
+    } else if (func_charinparty[grumpos] == 3) {
+      set grumpos_at_bridge = 1
+    } else if (func_charinparty[pal] == 3) {
+      set pal_at_bridge = 1
+    } else if (func_charinparty[rho] == 3) {
+      set rho_at_bridge = 1
+    } else if (func_charinparty[democratus] == 3) {
+      set democratus_at_bridge = 1
+    } else if (func_charinparty[stiletto] == 3) {
+      set stiletto_at_bridge = 1
+    } else if (func_charinparty[paco] == 3)
+      set paco_at_bridge = 1
+    set limbus_battle_started = 1
+    set Battle_Gun = 1
+    set rinqui_off = 1
+    goto 94:0170
+  }
+  goto 94:0165
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 94:109
+title "Sathcarpintergorque"
+body "One of you must stay here and help defend this key position. Who shall it be?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if (func_charinparty[boots] >= 2)
+    set bridge_boots = 1
+  if (func_charinparty[pal] >= 2)
+    set bridge_pal = 1
+  if (func_charinparty[rho] >= 2)
+    set bridge_rho = 1
+  if (func_charinparty[democratus] >= 2)
+    set bridge_democratus = 1
+  if (func_charinparty[stiletto] >= 2)
+    set bridge_stiletto = 1
+  if (func_charinparty[paco] >= 2)
+    set bridge_paco = 1
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:0111
+
+#window 94:111
+title "%s", PlayerChar0$
+if (func_charinparty[democratus] != 3)
+  body "We're all pretty good fighters."
+if (func_charinparty[democratus] == 3)
+  body "We are all excellent fighters."
+cam to(player) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (func_charinparty[democratus] != 3)
+  choice "I volunteer myself." 94:115
+if (func_charinparty[democratus] == 3)
+  choice "We volunteer ourselves." 94:115
+if (func_charinparty[boots] == 2)
+  choice "Our detective, \"Sly\" Boots, is up to the challenge." 94:120
+if (func_charinparty[pal] == 2)
+  choice "Your best hope rests in the steel hands of PAL-18." 94:125
+if (func_charinparty[rho] == 2)
+  choice "You can depend on our scientist, Dr. Rho Bowman." 94:130
+if (func_charinparty[democratus] == 2)
+  choice "The trustworthy Planet Democratus won't fail you." 94:135
+if (func_charinparty[stiletto] == 2)
+  choice "Stiletto Anyway is always ready for a good fight." 94:140
+if (func_charinparty[paco] == 2)
+  choice "You can trust Paco \"El Puno\" Estrella to save the day." 94:145
+
+#window 94:120
+title "Boots"
+body "Can I quote you on that?"
+cam right to(boots) restore zip
+talk npc talk_a stay
+finishswitch {
+  extern remove_npc_from_party Boots
+  set boots_at_bridge = 1
+  if (Sath2 > 0) {
+    goto 94:0152
+  } else
+    goto 94:0150
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 94:125
+title "PAL-18"
+body "Me--?!"
+cam right to(pal) restore zip
+talk npc talk_a stay
+finishswitch {
+  extern remove_npc_from_party pal
+  set pal_at_bridge = 1
+  if (Sath2 > 0) {
+    goto 94:0152
+  } else
+    goto 94:0150
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:0150
+
+#window 94:130
+title "Rho Bowman"
+body "I'm flattered."
+cam right to(rho) restore zip
+talk npc talk_a stay
+finishswitch {
+  extern remove_npc_from_party rho
+  set rho_at_bridge = 1
+  if (Sath2 > 0) {
+    goto 94:0152
+  } else
+    goto 94:0150
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:0150
+
+#window 94:135
+title "Democratus"
+body "We would be honored to serve the universe."
+cam right to(democratus) restore zip
+talk npc talk_a stay
+finishswitch {
+  extern remove_npc_from_party democratus
+  set democratus_at_bridge = 1
+  if (Sath2 > 0) {
+    goto 94:0152
+  } else
+    goto 94:0150
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:0150
+
+#window 94:140
+title "Stiletto"
+body "You better believe it."
+cam right to(stiletto) restore zip
+talk npc talk_a stay
+finishswitch {
+  extern remove_npc_from_party stiletto
+  set stiletto_at_bridge = 1
+  if (Sath2 > 0) {
+    goto 94:0152
+  } else
+    goto 94:0150
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 94:145
+title "Paco \"El Puño\" Estrella"
+body "I am here."
+cam right to(paco) restore zip
+talk npc talk_a stay
+finishswitch {
+  extern remove_npc_from_party paco
+  set paco_at_bridge = 1
+  if (Sath2 > 0) {
+    goto 94:0152
+  } else
+    goto 94:0150
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:0150
+
+#window 94:150
+title "Sathcarpintergorque"
+body "Excellent. We shall put two of our fiercest warriors under your command. Use them wisely."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Sath2 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:0151
+
+#window 94:151
+title "Sathcarpintergorque"
+body "If this position is breached, the Dark Servants will have access to the city and will attempt to commandeer the Lance of the Vigil. That cannot be allowed to happen."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Sath2 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:0153
+
+#window 94:152
+title "Sathcarpintergorque"
+body "Your indecisiveness does not put me at ease."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 94:153
+title "Sathcarpintergorque"
+body "Good luck."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (((foundpillars + foundbridge) + foundcliff) == 3) {
+    if (func_charinparty[boots] == 3) {
+      set boots_at_bridge = 1
+    } else if (func_charinparty[grumpos] == 3) {
+      set grumpos_at_bridge = 1
+    } else if (func_charinparty[pal] == 3) {
+      set pal_at_bridge = 1
+    } else if (func_charinparty[rho] == 3) {
+      set rho_at_bridge = 1
+    } else if (func_charinparty[democratus] == 3) {
+      set democratus_at_bridge = 1
+    } else if (func_charinparty[stiletto] == 3) {
+      set stiletto_at_bridge = 1
+    } else if (func_charinparty[paco] == 3)
+      set paco_at_bridge = 1
+    set limbus_battle_started = 1
+    set rinqui_off = 1
+    goto 94:0170
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 94:155
+title "Sathcarpintergorque"
+body "Would you like to change who will defend this position?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Yes." 94:160
+choice "No." 94:151
+nextwindow 94:0160
+
+#window 94:160
+title "Sathcarpintergorque"
+body "Then who is a better choice to fortify the bridge?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if ((bridge_boots == 1) && (func_charinparty[boots] == 1)) {
+    extern add_npc_to_party boots
+    set boots_at_bridge = 0
+  }
+  if ((bridge_pal == 1) && (func_charinparty[pal] == 1)) {
+    extern add_npc_to_party pal
+    set pal_at_bridge = 0
+  }
+  if ((bridge_rho == 1) && (func_charinparty[rho] == 1)) {
+    extern add_npc_to_party rho
+    set rho_at_bridge = 0
+  }
+  if ((bridge_democratus == 1) && (func_charinparty[democratus] == 1)) {
+    extern add_npc_to_party democratus
+    set democratus_at_bridge = 0
+  }
+  if ((bridge_stiletto == 1) && (func_charinparty[stiletto] == 1)) {
+    extern add_npc_to_party stiletto
+    set stiletto_at_bridge = 0
+  }
+  if ((bridge_paco == 1) && (func_charinparty[paco] == 1)) {
+    extern add_npc_to_party paco
+    set paco_at_bridge = 0
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (func_charinparty[democratus] != 3)
+  choice "I volunteer myself." 94:115
+if (func_charinparty[democratus] == 3)
+  choice "We volunteer ourselves." 94:115
+if (func_charinparty[boots] == 2)
+  choice "Our detective, \"Sly\" Boots, is up to the challenge." 94:120
+if (func_charinparty[pal] == 2)
+  choice "Your best hope rests in the steel hands of PAL-18." 94:125
+if (func_charinparty[rho] == 2)
+  choice "You can depend on our scientist, Dr. Rho Bowman." 94:130
+if (func_charinparty[democratus] == 2)
+  choice "The trustworthy Planet Democratus won't fail you." 94:135
+if (func_charinparty[stiletto] == 2)
+  choice "Stiletto Anyway is always ready for a good fight." 94:140
+if (func_charinparty[paco] == 2)
+  choice "You can trust Paco \"El Puno\" Estrella to save the day." 94:145
+
+#window 94:165
+title "Sathcarpintergorque"
+body "One of you must stay here and help defend this key position. Who shall it be?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if (func_charinparty[boots] >= 2)
+    set bridge_boots = 1
+  if (func_charinparty[pal] >= 2)
+    set bridge_pal = 1
+  if (func_charinparty[rho] >= 2)
+    set bridge_rho = 1
+  if (func_charinparty[democratus] >= 2)
+    set bridge_democratus = 1
+  if (func_charinparty[stiletto] >= 2)
+    set bridge_stiletto = 1
+  if (func_charinparty[paco] >= 2)
+    set bridge_paco = 1
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:0111
+
+#window 94:171
+title "Sathcarpintergorque [TEMP]"
+body "You will meet the Dark Servants and defeat them in combat."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:0172
+
+#window 94:172
+title "Sathcarpintergorque [TEMP]"
+body "Then there will be a wonderful cinematic in which our leader tells you the story behind the gate. There are warring aliens from the universe after our own called the Vyre (the good guys, Order) and the Chatagra (the bad guys, Chaos)."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:0173
+
+#window 94:173
+title "Sathcarpintergorque [TEMP]"
+body "You must go to The Bricks and aid Roweidekhalicon, a fellow member of the Vigil who has been on a life-long search for the Echo Gate. He owns a drinking establishment in South Anachronox."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (BOOTS_IN_PARTY == 1) {
+    extern add_npc_to_party boots
+    set boots_at_bridge = 0
+    set boots_at_cliff = 0
+    set boots_at_gun = 0
+  }
+  if (PAL_IN_PARTY == 1) {
+    extern add_npc_to_party pal
+    set pal_at_bridge = 0
+    set pal_at_cliff = 0
+    set pal_at_gun = 0
+  }
+  if (RHO_IN_PARTY == 1) {
+    extern add_npc_to_party rho
+    set rho_at_bridge = 0
+    set rho_at_cliff = 0
+    set rho_at_gun = 0
+  }
+  if (DEMOCRATUS_IN_PARTY == 1) {
+    extern add_npc_to_party democratus
+    set democratus_at_bridge = 0
+    set democratus_at_cliff = 0
+    set democratus_at_gun = 0
+  }
+  if (STILETTO_IN_PARTY == 1) {
+    extern add_npc_to_party stiletto
+    set stiletto_at_bridge = 0
+    set stiletto_at_cliff = 0
+    set stiletto_at_gun = 0
+  }
+  if (PACO_IN_PARTY == 1) {
+    extern add_npc_to_party paco
+    set paco_at_bridge = 0
+    set paco_at_cliff = 0
+    set paco_at_gun = 0
+  }
+  extern add_quest "Find Rowdy"
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:0174
+
+#window 94:174
+title "Sathcarpintergorque [TEMP]"
+body "Okay, so... get outta here. Get your butt back to Anachronox."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set TempAlphaLimbus = 1
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 94:401
+title "Genjanvigelpinphin"
+body "Below us is a chasm so deep that it would take one minute to hit bottom if you fell over the edge."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 94:505
+title "Jinporhorjansathmon"
+body "Roles. To play them is to participate in the story woven into the fabric of life."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:0510
+
+#window 94:510
+title "Jinporhorjansathmon"
+body "Whether we play the fool or the lover, hero or villain, we paint broad strokes of purpose with every word we utter, every action we take, across the face of reality in a sweeping gesture of drama."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:0515
+
+#window 94:515
+title "Jinporhorjansathmon"
+body "We live, love, breathe and die for one person: to play our proper roles in the service of story."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 94:520
+title "Jinporhorjansathmon"
+body "Your role today is that of hero. You will not break character. You will not show fear on your face."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:0525
+
+#window 94:525
+title "Jinporhorjansathmon"
+body "Every death, if it is meant for you, will be a wonderful moment of drama."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:0530
+
+#window 94:530
+title "Jinporhorjansathmon"
+body "Make it real. Live your death."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 94:905
+title "Merquorinmanzingen"
+body "Smell it."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:0910
+
+#window 94:910
+title "Merquorinmanzingen"
+body "Lives lost. Death, dirt, and dust."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 94:915
+title "Merquorinmanzingen"
+body "Now begins the long, arduous process of preparing my fallen brothers for burial."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:0920
+
+#window 94:920
+title "Merquorinmanzingen"
+body "Each body is plunged into a tub of funereal oil and soaked for three days. Their skin tightens, allowing our sepulchral artists to paint the life story of the deceased on the body."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 94:925
+title "Merquorinmanzingen"
+body "I must work quickly, before the beasts of the crevice come to claim an easy meal."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 94:1010
+title "Rimiterquizinthon"
+body "Do you feel the warm air of the crevice? Even as we speak, the bodies of the Dark Servants are slowly cooking within the oven of their armor."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:1015
+
+#window 94:1015
+title "Rimiterquizinthon"
+body "The crevice vultures will have a hot lunch this day."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 94:1105
+title "Jankothmerjinzinshelle"
+body "They tell me lies. They tell me I'll be part of a grand story. They tell me I'll serve a greater good by sacrificing my life."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:1110
+
+#window 94:1110
+title "Jankothmerjinzinshelle"
+body "But what greater good is there than living life, breathing the air, and experiencing love and hearth?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:1115
+
+#window 94:1115
+title "Jankothmerjinzinshelle"
+body "You think it was easy watching my brothers-in-arms slaughter themselves for nothing? What good did it serve? What grand story was written here today? What monumental--"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:1120
+
+#window 94:1120
+title "Jankothmerjinzinshelle"
+body "Wait, you just want my underplate?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 94:1125
+
+#window 94:1125
+title "Jankothmerjinzinshelle"
+body "Sure. As long as you report me dead."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern addnew_to_inventory "Twin-Scaled Underplate"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 94:1130
+title "Jankothmerjinzinshelle"
+body "Hey, can I hitch a ride with you guys?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 5001:1
+title "Boots"
+if (limbus_battle_started == 0)
+  body "No worries."
+if (limbus_battle_started)
+  body "That was easy. Let's cook."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (limbus_battle_started) {
+    extern add_npc_to_party Boots
+    set boots_at_bridge = 0
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 5003:1
+title "PAL-18"
+if (limbus_battle_started == 0)
+  body "No pressure."
+if (limbus_battle_started == 1)
+  body "We did it, man!"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (limbus_battle_started) {
+    extern add_npc_to_party PAL
+    set pal_at_bridge = 0
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 5004:1
+title "Rho Bowman"
+if (limbus_battle_started == 0)
+  body "Wish me luck."
+if (limbus_battle_started == 1)
+  body "We survived. I can't believe it."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (limbus_battle_started) {
+    extern add_npc_to_party Rho
+    set rho_at_bridge = 0
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 5005:1
+title "Democratus"
+if (limbus_battle_started == 0)
+  body "We will not fail."
+if (limbus_battle_started == 1)
+  body "We are victorious! Aren't we, gentlemen?"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (limbus_battle_started) {
+    extern add_npc_to_party Democratus
+    set democratus_at_bridge = 0
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 5006:1
+title "Stiletto"
+if (limbus_battle_started == 0)
+  body "No sweat."
+if (limbus_battle_started == 1)
+  body "Carved 'em up. Let's go."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (limbus_battle_started) {
+    extern add_npc_to_party Stiletto
+    set stiletto_at_bridge = 0
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 5007:1
+title "Paco \"El Puño\" Estrella"
+if (limbus_battle_started == 0)
+  body "Rage On."
+if (limbus_battle_started == 1)
+  body "Rage Off. Let us go."
+body "Rage On."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (limbus_battle_started) {
+    extern add_npc_to_party Paco
+    set paco_at_bridge = 0
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#switch 94:1
+set CURRENT_PLANET = 9
+set CURRENT_BANK = 94
+if (Battle_Bridge == 1) {
+  extern applylevelconfiguration crevice_second
+} else
+  extern applylevelconfiguration crevice_first
+extern playlevelmusic mp3/limbus/limbuscrevice.mp3
+BattleMusicOverride$="mp3/limbus/Limbuscrevicebattle.mp3" 
+if (battle_alldone == 1) {
+  extern AI_GrabEntity @dead_soldier1 @dead_soldier1_handle
+  extern ANIM_PlayAnim @dead_soldier1_handle die_a 0 1 1
+  extern AI_GrabEntity @dead_soldier2 @dead_soldier2_handle
+  extern ANIM_PlayAnim @dead_soldier2_handle die_a 0 1 1
+  extern AI_GrabEntity @dead_soldier3 @dead_soldier3_handle
+  extern ANIM_PlayAnim @dead_soldier3_handle die_a 0 1 1
+  extern AI_GrabEntity @dead_soldier4 @dead_soldier4_handle
+  extern ANIM_PlayAnim @dead_soldier4_handle die_a 0 1 1
+  extern AI_GrabEntity @dead_soldier5 @dead_soldier5_handle
+  extern ANIM_PlayAnim @dead_soldier5_handle die_a 0 1 1
+  extern AI_GrabEntity @dead_soldier6 @dead_soldier6_handle
+  extern ANIM_PlayAnim @dead_soldier6_handle die_a 0 1 1
+}
+if (limbus_battle_started == 1) {
+  extern AI_GrabEntity gweapon_deadkor deaddude_handle
+  extern ANIM_PlayAnim deaddude_handle die_a 0 0 1
+  extern AI_ReleaseEntity deaddude_handle
+}
+extern AI_SpawnEntity @ob_clip_handle_1 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_1 -2556 3388 3032
+extern AI_SpawnEntity @ob_clip_handle_2 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_2 -2991 210 2980
+gosub 94:10
+
+#switch 94:10
+if ((Battle_Bridge == 1) && (Battle_Cliff == 0)) {
+  if (boots_at_bridge == 1) {
+    extern add_npc_to_party boots
+    extern set_party_leader boots
+  } else if (pal_at_bridge == 1) {
+    extern add_npc_to_party pal
+    extern set_party_leader pal
+  } else if (rho_at_bridge == 1) {
+    extern add_npc_to_party rho
+    extern set_party_leader rho
+  } else if (democratus_at_bridge == 1) {
+    extern add_npc_to_party democratus
+    extern set_party_leader democratus
+  } else if (stiletto_at_bridge == 1) {
+    extern add_npc_to_party stiletto
+    extern set_party_leader stiletto
+  } else if (paco_at_bridge == 1) {
+    extern add_npc_to_party paco
+    extern set_party_leader paco
+  }
+  if (func_charinparty[boots] == 2) {
+    extern remove_npc_from_party boots 1
+  } else if (func_charinparty[pal] == 2) {
+    extern remove_npc_from_party pal 1
+  } else if (func_charinparty[rho] == 2) {
+    extern remove_npc_from_party rho 1
+  } else if (func_charinparty[democratus] == 2) {
+    extern remove_npc_from_party democratus 1
+  } else if (func_charinparty[stiletto] == 2) {
+    extern remove_npc_from_party stiletto 1
+  } else if (func_charinparty[paco] == 2)
+    extern remove_npc_from_party paco 1
+  set limbus_gate_down = 1
+  console "battlestart 9"
+}
+goto 0:0
+
+#switch 94:2
+set @Crevice_PostBattleDelay1 = 1
+goto 94:7                          
+
+#switch 94:4
+set @Crevice_PostBattleDelay2 = 1
+goto 94:7                         
+
+#switch 94:5
+set @Crevice_PostBattleDelay3 = 1
+goto 94:7                         
+
+#switch 94:101
+if (Sath1 < 2)
+  set Sath1 = (Sath1 + 1)
+if ((TempAlphaLimbus == 1) || (limbus_battle_started == 1))
+  goto 94:0174
+if (Sath1 > 1)
+  goto 94:0155			                 
+goto 94:0105                                 
+
+#switch 94:115
+if ((func_charinparty[boots] == 3) && (func_charinparty[rho] == 2)) {
+  extern set_party_leader rho
+  extern remove_npc_from_party Boots
+  set boots_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[boots] == 3) && (func_charinparty[stiletto] == 2)) {
+  extern set_party_leader stiletto
+  extern remove_npc_from_party Boots
+  set boots_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[boots] == 3) && (func_charinparty[pal] == 2)) {
+  extern set_party_leader pal
+  extern remove_npc_from_party Boots
+  set boots_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[boots] == 3) && (func_charinparty[paco] == 2)) {
+  extern set_party_leader paco
+  extern remove_npc_from_party Boots
+  set boots_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[boots] == 3) && (func_charinparty[democratus] == 2)) {
+  extern set_party_leader democratus
+  extern remove_npc_from_party Boots
+  set boots_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[pal] == 3) && (func_charinparty[boots] == 2)) {
+  extern set_party_leader boots
+  extern remove_npc_from_party pal
+  set pal_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[pal] == 3) && (func_charinparty[rho] == 2)) {
+  extern set_party_leader rho
+  extern remove_npc_from_party pal
+  set pal_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[pal] == 3) && (func_charinparty[stiletto] == 2)) {
+  extern set_party_leader stiletto
+  extern remove_npc_from_party pal
+  set pal_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[pal] == 3) && (func_charinparty[paco] == 2)) {
+  extern set_party_leader paco
+  extern remove_npc_from_party pal
+  set pal_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[pal] == 3) && (func_charinparty[democratus] == 2)) {
+  extern set_party_leader democratus
+  extern remove_npc_from_party pal
+  set pal_at_bridge = 1
+  goto 94:0150
+}
+goto 94:0116
+
+#switch 94:116
+if ((func_charinparty[rho] == 3) && (func_charinparty[boots] == 2)) {
+  extern set_party_leader boots
+  extern remove_npc_from_party rho
+  set rho_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[rho] == 3) && (func_charinparty[stiletto] == 2)) {
+  extern set_party_leader stiletto
+  extern remove_npc_from_party rho
+  set rho_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[rho] == 3) && (func_charinparty[pal] == 2)) {
+  extern set_party_leader pal
+  extern remove_npc_from_party rho
+  set rho_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[rho] == 3) && (func_charinparty[paco] == 2)) {
+  extern set_party_leader paco
+  extern remove_npc_from_party rho
+  set rho_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[rho] == 3) && (func_charinparty[democratus] == 2)) {
+  extern set_party_leader democratus
+  extern remove_npc_from_party rho
+  set rho_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[democratus] == 3) && (func_charinparty[boots] == 2)) {
+  extern set_party_leader boots
+  extern remove_npc_from_party democratus
+  set democratus_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[democratus] == 3) && (func_charinparty[rho] == 2)) {
+  extern set_party_leader rho
+  extern remove_npc_from_party democratus
+  set democratus_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[democratus] == 3) && (func_charinparty[stiletto] == 2)) {
+  extern set_party_leader stiletto
+  extern remove_npc_from_party democratus
+  set democratus_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[democratus] == 3) && (func_charinparty[pal] == 2)) {
+  extern set_party_leader pal
+  extern remove_npc_from_party democratus
+  set democratus_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[democratus] == 3) && (func_charinparty[paco] == 2)) {
+  extern set_party_leader paco
+  extern remove_npc_from_party democratus
+  set democratus_at_bridge = 1
+  goto 94:0150
+}
+goto 94:0117
+
+#switch 94:117
+if ((func_charinparty[stiletto] == 3) && (func_charinparty[boots] == 2)) {
+  extern set_party_leader boots
+  extern remove_npc_from_party stiletto
+  set stiletto_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[stiletto] == 3) && (func_charinparty[rho] == 2)) {
+  extern set_party_leader rho
+  extern remove_npc_from_party stiletto
+  set stiletto_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[stiletto] == 3) && (func_charinparty[pal] == 2)) {
+  extern set_party_leader pal
+  extern remove_npc_from_party stiletto
+  set stiletto_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[stiletto] == 3) && (func_charinparty[paco] == 2)) {
+  extern set_party_leader paco
+  extern remove_npc_from_party stiletto
+  set stiletto_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[stiletto] == 3) && (func_charinparty[democratus] == 2)) {
+  extern set_party_leader democratus
+  extern remove_npc_from_party stiletto
+  set stiletto_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[paco] == 3) && (func_charinparty[boots] == 2)) {
+  extern set_party_leader boots
+  extern remove_npc_from_party paco
+  set paco_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[paco] == 3) && (func_charinparty[rho] == 2)) {
+  extern set_party_leader rho
+  extern remove_npc_from_party paco
+  set paco_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[paco] == 3) && (func_charinparty[stiletto] == 2)) {
+  extern set_party_leader stiletto
+  extern remove_npc_from_party paco
+  set paco_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[paco] == 3) && (func_charinparty[pal] == 2)) {
+  extern set_party_leader pal
+  extern remove_npc_from_party paco
+  set paco_at_bridge = 1
+  goto 94:0150
+} else if ((func_charinparty[paco] == 3) && (func_charinparty[democratus] == 2)) {
+  extern set_party_leader democratus
+  extern remove_npc_from_party paco
+  set paco_at_bridge = 1
+  goto 94:0150
+}
+
+#switch 94:170
+console "set storysave \"Limbus Battle|The Battle for Limbus\""
+console "map limbus cinematic"
+
+#switch 94:9001
+goto 94:0201
+
+#switch 94:9002
+goto 94:0201
+
+#switch 94:9003
+goto 94:0201
+
+#switch 94:9004
+goto 94:0201
+
+#switch 94:9005
+goto 94:0201
+
+#switch 94:9006
+goto 94:0201
+
+#switch 94:501
+if (talk_jinpor)
+  goto 94:0520
+set talk_jinpor = 1
+goto 94:0505
+
+#switch 94:601
+extern AI_GrabEntity bridge_soldier1 @soldier_handle1
+extern ANIM_PlayAnim @soldier_handle1 gest_b 0 1 0
+extern AI_ReleaseEntity @soldier_handle1
+
+#switch 94:701
+extern AI_GrabEntity bridge_soldier2 @soldier_handle2
+extern ANIM_PlayAnim @soldier_handle2 gest_b 0 1 0
+extern AI_ReleaseEntity @soldier_handle2
+
+#switch 94:801
+extern AI_GrabEntity bridge_soldier3 @soldier_handle3
+extern ANIM_PlayAnim @soldier_handle3 gest_b 0 1 0
+extern AI_ReleaseEntity @soldier_handle3
+
+#switch 94:901
+if (talk_merquo < 3)
+  set talk_merquo = (talk_merquo + 1)
+if (talk_merquo == 1)
+  goto 94:0905
+if (talk_merquo == 2)
+  goto 94:0915
+if (talk_merquo == 3)
+  goto 94:0925
+
+#switch 94:1001
+set talk_rimi = (1 - talk_rimi)
+if (talk_rimi)
+  goto 94:1010
+goto 94:1015
+
+#switch 94:1101
+if (talk_jankoth == 1)
+  goto 94:1130
+set talk_jankoth = 1
+goto 94:1105
+
+#switch 94:9999
+if (limbus_gate_down)
+  goto 0:0
+set limbus_gate_down = 1
+set play_limbus_intro = 1
+console "battlestart 99"
+goto 0:0

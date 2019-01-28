@@ -1,0 +1,377 @@
+#window 77:110
+startswitch {
+  extern ANIM_PlayAnim boots_handle gest_a 0 1 0
+  set @timer = func_gametime
+}
+
+thinkswitch {
+  set @time = (func_gametime - @timer)
+  if (@time > 1000)
+    closewindow 77:0110
+}
+
+finishswitch {
+  extern ANIM_MakeSmart boots_handle
+  extern AI_ReleaseEntity boots_handle
+  target siphon1
+  set DONE_FILTER_ONE = 1
+  if (ONE_FILTER) {
+    set ONE_FILTER = 0
+    set DID_FILTERS = 1
+    extern complete_quest "1 Filter"
+    goto 77:0501
+  }
+  if (TWO_FILTERS) {
+    set ONE_FILTER = 1
+    set TWO_FILTERS = 0
+    extern complete_quest "2 Filters"
+    extern add_quest "1 Filter"
+  }
+  if (THREE_FILTERS) {
+    set TWO_FILTERS = 1
+    set THREE_FILTERS = 0
+    extern complete_quest "3 Filters"
+    extern add_quest "2 Filters"
+  }
+  if (FOUR_FILTERS) {
+    set THREE_FILTERS = 1
+    set FOUR_FILTERS = 0
+    extern complete_quest "4 Filters"
+    extern add_quest "3 Filters"
+  }
+}
+
+style "NULL"
+flags passive, TRUE
+
+#window 77:120
+startswitch {
+  extern ANIM_PlayAnim boots_handle gest_a 0 1 0
+  set @timer = func_gametime
+}
+
+thinkswitch {
+  set @time = (func_gametime - @timer)
+  if (@time > 1000)
+    closewindow 77:0120
+}
+
+finishswitch {
+  extern ANIM_MakeSmart boots_handle
+  extern AI_ReleaseEntity boots_handle
+  target siphon2
+  set DONE_FILTER_TWO = 1
+  if (ONE_FILTER) {
+    set ONE_FILTER = 0
+    set DID_FILTERS = 1
+    extern complete_quest "1 Filter"
+    goto 77:0501
+  }
+  if (TWO_FILTERS) {
+    set ONE_FILTER = 1
+    set TWO_FILTERS = 0
+    extern complete_quest "2 Filters"
+    extern add_quest "1 Filter"
+  }
+  if (THREE_FILTERS) {
+    set TWO_FILTERS = 1
+    set THREE_FILTERS = 0
+    extern complete_quest "3 Filters"
+    extern add_quest "2 Filters"
+  }
+  if (FOUR_FILTERS) {
+    set THREE_FILTERS = 1
+    set FOUR_FILTERS = 0
+    extern complete_quest "4 Filters"
+    extern add_quest "3 Filters"
+  }
+}
+
+style "NULL"
+flags passive, TRUE
+
+#window 77:130
+startswitch {
+  extern ANIM_PlayAnim boots_handle gest_a 0 1 0
+  set @timer = func_gametime
+}
+
+thinkswitch {
+  set @time = (func_gametime - @timer)
+  if (@time > 1000)
+    closewindow 77:0130
+}
+
+finishswitch {
+  extern ANIM_MakeSmart boots_handle
+  extern AI_ReleaseEntity boots_handle
+  target siphon3
+  set DONE_FILTER_THREE = 1
+  if (ONE_FILTER) {
+    set ONE_FILTER = 0
+    set DID_FILTERS = 1
+    extern complete_quest "1 Filter"
+    goto 77:0501
+  }
+  if (TWO_FILTERS) {
+    set ONE_FILTER = 1
+    set TWO_FILTERS = 0
+    extern complete_quest "2 Filters"
+    extern add_quest "1 Filter"
+  }
+  if (THREE_FILTERS) {
+    set TWO_FILTERS = 1
+    set THREE_FILTERS = 0
+    extern complete_quest "3 Filters"
+    extern add_quest "2 Filters"
+  }
+  if (FOUR_FILTERS) {
+    set THREE_FILTERS = 1
+    set FOUR_FILTERS = 0
+    extern complete_quest "4 Filters"
+    extern add_quest "3 Filters"
+  }
+}
+
+style "NULL"
+flags passive, TRUE
+
+#window 77:140
+startswitch {
+  extern ANIM_PlayAnim boots_handle gest_a 0 1 0
+  set @timer = func_gametime
+}
+
+thinkswitch {
+  set @time = (func_gametime - @timer)
+  if (@time > 1000)
+    closewindow 77:0140
+}
+
+finishswitch {
+  extern ANIM_MakeSmart boots_handle
+  extern AI_ReleaseEntity boots_handle
+  target siphon4
+  set DONE_FILTER_FOUR = 1
+  if (ONE_FILTER) {
+    set ONE_FILTER = 0
+    set DID_FILTERS = 1
+    extern complete_quest "1 Filter"
+    goto 77:0501
+  }
+  if (TWO_FILTERS) {
+    set ONE_FILTER = 1
+    set TWO_FILTERS = 0
+    extern complete_quest "2 Filters"
+    extern add_quest "1 Filter"
+  }
+  if (THREE_FILTERS) {
+    set TWO_FILTERS = 1
+    set THREE_FILTERS = 0
+    extern complete_quest "3 Filters"
+    extern add_quest "2 Filters"
+  }
+  if (FOUR_FILTERS) {
+    set THREE_FILTERS = 1
+    set FOUR_FILTERS = 0
+    extern complete_quest "4 Filters"
+    extern add_quest "3 Filters"
+  }
+}
+
+style "NULL"
+flags passive, TRUE
+
+#window 77:201
+thinkswitch {
+  if (DID_FILTERS)
+    closewindow 77:0201
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+if (((ONE_FILTER || TWO_FILTERS) || THREE_FILTERS) || FOUR_FILTERS)
+  image "graphics/filter.tga" 10, 10
+if ((TWO_FILTERS || THREE_FILTERS) || FOUR_FILTERS)
+  image "graphics/filter.tga" 84, 10
+if (THREE_FILTERS || FOUR_FILTERS)
+  image "graphics/filter.tga" 158, 10
+if (FOUR_FILTERS)
+  image "graphics/filter.tga" 232, 10
+
+#window 77:301
+style "NULL"
+xpos 192
+ypos 112
+background "graphics/hephpipes.tga" 
+
+#window 77:501
+title "Boots"
+body "Fourth and last. That about does it."
+finishswitch {
+  closewindow 77:0201 
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+width 580
+
+#window 77:8004
+if (toxic_level < 10)
+  xyprintfx 518, 40, 1, 1, 1, 1, _bigfont, "%d&", toxic_level
+if ((toxic_level >= 10) && (toxic_level < 50))
+  xyprintfx 502, 40, 1, 1, 1, 0, _bigfont, "%d&", toxic_level
+if ((toxic_level >= 50) && (toxic_level < 100))
+  xyprintfx 502, 40, 1, 1, 0.5, 0, _bigfont, "%d&", toxic_level
+if (toxic_level >= 100)
+  xyprintfx 486, 40, 1, 1, 0.10000000149, 0.10000000149, _bigfont, "%d&", toxic_level
+xyprintfx 96, 40, 1, 1, 1, 1, _bigfont, "%d", player_hp
+if (poisoning && (anox_worldskill_active == 0))
+  xyprintfx 278, 40, poison_alpha, 1, 1, 0, _message, "POISON"
+if ((aspirator_not_ready == 0) && (anox_worldskill_active == 0))
+  xyprintfx 240, 20, 1, 1, 1, 0, _standardthin, "Press F11 to use Aspirator"
+if (aspirator_not_ready && (anox_worldskill_active == 0))
+  xyprintfx 260, 20, 1, 1, 1, 0, _standardthin, "Aspirator recharging"
+if (player_hp == 0)
+  xyprintfx 240, 0, 1, 1, 1, 0, _message, "BOOTS IS DEAD"
+startswitch {
+  extern GetPlayerCurrentHP Boots player_HP
+  set aspirator_not_ready = 0
+  set toxic_level = 0
+  set tgame_ms = func_GameTime
+  set tlast_ms = tgame_ms
+  set timed_message = 25
+  gosub 1000:1
+  set poison_alpha = 0.10000000149
+  set poison_delta = 0.10000000149
+  set poisoning = 1
+  console "pushbind"
+  console "bind F11 invoke 77:9050"
+  goto 0:0
+}
+
+thinkswitch {
+  set tgame_ms = func_gametime
+  if ((tgame_ms - tlast_ms) < 10)
+    goto 0:0
+  set tlast_ms = tgame_ms
+  set poison_alpha = (poison_alpha + poison_delta)
+  if ((poison_alpha >= 1) || (poison_alpha <= 0.10000000149))
+    set poison_delta = (-1.000000 * poison_delta)
+  if (aspirator_not_ready)
+    set aspirator_not_ready = (aspirator_not_ready - 1)
+  if ((poison_alpha >= 1) && (@fatima_is_yapping == 0)) {
+    set toxic_level = (toxic_level + 1)
+    if (toxic_level > 200)
+      set toxic_level = 200
+    if (toxic_level <= 99)
+      goto 0:0
+    set player_hp = (player_hp - (toxic_level - 99))
+    if (player_hp <= 0)
+      set player_hp = 1
+    extern SetPlayerCurrentHP Boots player_HP
+    extern playsound player/player_boots_hurt.wav
+  }
+  goto 0:0
+}
+
+finishswitch {
+  console "popbind"
+  goto 0:0
+}
+
+style "NULL"
+font "_message"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 32
+width 640
+height 128
+image "hephgame/toxic.pcx" 560, 32
+image "hephgame/icon_boots.pcx" 16, 16
+
+#switch 77:1
+set CURRENT_PLANET = 6
+set CURRENT_BANK = 77
+gosub 500:1                                  
+extern playlevelmusic mp3/bricks/bricks_normalug_1_0.mp3
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 .7 .6
+goto 77:0201
+
+#switch 77:101
+if (DONE_FILTER_ONE)
+  goto 0:0
+extern AI_GrabEntity boots boots_handle
+extern AI_Path boots_handle bysiphon1
+
+#switch 77:102
+if (DONE_FILTER_TWO)
+  goto 0:0
+extern AI_GrabEntity boots boots_handle
+extern AI_Path boots_handle bysiphon2
+
+#switch 77:103
+if (DONE_FILTER_THREE)
+  goto 0:0
+extern AI_GrabEntity boots boots_handle
+extern AI_GrabEntity bysiphon3 bysiphon3_handle
+extern AI_GrabEntity bysiphon3_b bysiphon3_b_handle
+extern AI_DistanceSquared3d @path1 boots_handle bysiphon3_handle
+extern AI_DistanceSquared3d @path2 boots_handle bysiphon3_b_handle
+extern AI_ReleaseEntity bysiphon3_handle
+extern AI_ReleaseEntity bysiphon3_b_handle
+if (@path2 > @path1)
+  extern AI_Path boots_handle bysiphon3
+if (@path1 > @path2)
+  extern AI_Path boots_handle bysiphon3_b
+
+#switch 77:104
+if (DONE_FILTER_FOUR)
+  goto 0:0
+extern AI_GrabEntity boots boots_handle
+extern AI_Path boots_handle bysiphon4
+
+#switch 77:1000
+closewindow 77:8004
+extern playscene hephpipes_goingup
+
+#switch 77:401
+extern AI_FindEntity boots_handle boots
+extern ANIM_PlayAnim boots_handle gest_a 0 1 0
+
+#switch 77:8000
+goto 77:8005
+
+#switch 77:8005
+if (hephlava_meter_active)
+  goto 0:0
+set hephlava_meter_active = 1
+set timed_message = 1005
+gosub 1000:1
+goto 77:8004
+
+#switch 77:8630
+if (@HLAVA_YouAreDead == 1)
+  goto 0:0
+set @HLAVA_YouAreDead = 1
+closewindow 77:8004                            
+closewindow 77:3150                                                      
+set anox_manner_of_death = 9
+goto 986:1
+
+#switch 77:9050
+if (anox_interface_active)
+  goto 0:0
+if (aspirator_not_ready) {
+  extern playsound ui/gen/ui_gen_failure.wav
+  goto 0:0
+}
+set toxic_level = 0
+extern playsound games/hephgame/games_hephgame_aspirator.wav
+set aspirator_not_ready = 200
+goto 0:0

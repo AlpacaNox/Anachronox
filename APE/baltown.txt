@@ -1,0 +1,581 @@
+#window 84:105
+title "Leila"
+body "Oh, aren't you a cute, little robot? Where did you come from? Aren't you adorable?"
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0106
+
+#window 84:106
+title "Leila"
+body "Don't look at my face. This isn't really what I look like. Honest it's not. I was pretty once...."
+talk_ex leila claude gest_c amb_e stay stay
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0107
+
+#window 84:107
+title "Leila"
+body "I'm changing... just like everyone else in town. Claude, Evan and I are the only ones left. They're inside deciding our future right now."
+cam left restore zip
+talk npc talk_b stay
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 84:110
+title "Leila"
+body "There's gotta be something we can do. I don't want to turn into a... monster."
+cam left restore zip
+talk npc talk_b stay
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 84:205
+title "Evan Therdy"
+body "People in the later stages of the transformation are unrecognizable. I think one reason they leave town is they don't want anyone to see what they've turned into."
+cam left restore zip
+talk npc amb_i stay
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0206
+
+#window 84:206
+title "Evan Therdy"
+body "I wonder if they've all gone to the same place. Maybe they're having a party somewhere."
+talk npc amb_i stay
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 84:210
+title "Evan Therdy"
+body "The metamorphosis is painful. Every morning I check to see what parts of my body have enlarged, disappeared, or fused together...."
+cam left restore zip
+talk npc amb_i stay
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0211
+
+#window 84:211
+title "Evan Therdy"
+body "Yesterday, I woke up and found out my hand is developing webbing. Leila asks me to scratch her back with it. She says it feels good. I think it's gross."
+talk npc amb_i stay
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 84:215
+title "Evan Therdy"
+body "My eyeball fell out two weeks ago while I was enjoying some soup. I sneezed. There was a splash."
+cam left restore zip
+talk npc amb_i stay
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0216
+
+#window 84:216
+title "Evan Therdy"
+body "Claude finished the soup for me. He said it did wonders for the seasoning."
+talk npc amb_i stay
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 84:220
+title "Evan Therdy"
+body "Leila's a would-be poet. She writes the worst poetry you can imagine. The other day, she read me one called \"Acid Rain\". It was awful, but it broke my heart. She's taking the mutation pretty hard."
+cam left restore zip
+talk npc amb_i stay
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0221
+
+#window 84:221
+title "Evan Therdy"
+body "Not that I'm a paragon of calmness or anything. I cry my guts out every few hours. I just wanna wake up from this nightmare."
+talk npc amb_i stay
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 84:225
+title "Evan Therdy"
+body "In a few weeks, I'll leave this place to complete the transformation by myself... like an old dog wandering off to die."
+cam left restore zip
+talk npc amb_i stay
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0226
+
+#window 84:226
+title "Evan Therdy"
+body "Will I remember who I was?"
+talk npc amb_i stay
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 84:230
+title "Evan Therdy"
+body "This sucks. I don't wanna be here anymore."
+cam left restore zip
+talk npc amb_i stay
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 84:305
+title "Claude"
+body "Where did you come from, little guy? Ain't you got somewhere better to be? Ain't nothing in this town but us mutating freaks."
+cam left from(-49.19 2345.56 268.31) to(-37.81 2298.09 226.92) fov(90) fwd(0) lift(0) restore zip
+startswitch {
+  extern AI_GrabEntity claude claude_handle
+  extern ANIM_PlayAnim claude_handle amb_e 1 0 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity claude_handle
+}
+
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 84:310
+title "Claude"
+body "Just six months ago this was a bustling blue-collar town. We had lots of work coming down the pike... mostly at the chemical refinery a mile upriver."
+cam left from(-49.19 2345.56 268.31) to(-37.81 2298.09 226.92) fov(90) fwd(0) lift(0) restore zip
+startswitch {
+  extern AI_GrabEntity claude claude_handle
+  extern ANIM_PlayAnim claude_handle amb_e 1 0 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity claude_handle
+}
+
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0311
+
+#window 84:311
+title "Claude"
+body "It was a pretty high-tech facility. The scientists up in Tantasol came up with a refinery process that purifies chemical waste into usable fuel. Nobody was surprised when we got the contract to work on Emperor Ducalion's new battle cruiser."
+startswitch {
+  extern AI_GrabEntity claude claude_handle
+  extern ANIM_PlayAnim claude_handle amb_e 1 0 0
+}
+
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0312
+
+#window 84:312
+title "Claude"
+body "Then one day, we stopped getting supplies and schedule updates. All contact with The Ring was cut off. Word spread that there was a catastrophe on Tantasol. Work at the refinery came to a grinding halt."
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0313
+
+#window 84:313
+title "Claude"
+body "Those were hard times. Everyone was scrambling for answers. You could feel the happy walls of our community crumbling."
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0314
+
+#window 84:314
+title "Claude"
+body "Then the sludge came bubbling down the river one day and never stopped. People were getting nauseous. Children were losing their hair. We sent a party up to the abandoned factory, assuming something was wrong with the drainage systems."
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0315
+
+#window 84:315
+title "Claude"
+body "It turns out central computer was pumping unrefined chemical waste into the factory's drainage pools and emptying them out into the Ballotine River. Our security overrides weren't working. So we were stuck."
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0316
+
+#window 84:316
+title "Claude"
+body "Over the course of a few weeks, people began changing. My wife was one of the first to be affected. I watched her skin slowly turn green... first in patches, then all over. Her muscles hardened. Thick cartilage developed all over her body."
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0317
+
+#window 84:317
+title "Claude"
+body "Three weeks into the transformation and I couldn't even recognize her anymore. Soon she developed the impulse to leave town. So that's what she did. Along with the rest of the town."
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0318
+
+#window 84:318
+title "Claude"
+body "Evan, Leila, and I were the last ones to develop symptoms. So here we are... waiting for the end."
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0319
+
+#window 84:319
+title "Claude"
+body "Hey, Evan... I've been telling this little robot my sob story."
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0320
+
+#window 84:320
+title "Claude"
+body "Okay, kid... monologue over."
+finishswitch {
+  extern AI_ReleaseEntity claude_handle
+}
+
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 84:325
+title "Claude"
+body "We've got four options...."
+cam left from(-49.19 2345.56 268.31) to(-37.81 2298.09 226.92) fov(90) fwd(0) lift(0) restore zip
+startswitch {
+  extern AI_GrabEntity claude claude_handle
+  extern ANIM_PlayAnim claude_handle amb_e 1 0 0
+}
+
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0326
+
+#window 84:326
+title "Claude"
+body "We can return to the factory and see if we missed something. The manual emergency shut-off valve is in Pool 3, but we couldn't get to it."
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0327
+
+#window 84:327
+title "Claude"
+body "Or we can leave the city in hopes that proximity to the ooze is causing the transformation. Maybe if we get far enough away, we'll stop changing."
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0328
+
+#window 84:328
+title "Claude"
+body "Or we can just wait here and slowly turn into one of those things."
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0329
+
+#window 84:329
+title "Claude"
+body "Or..."
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 84:0330
+
+#window 84:330
+title "Claude"
+body "Or I can do us a favor and put us all out of our misery."
+finishswitch {
+  extern is_quest_done "Find Emergency Shutoff" @questdone
+  if (@questdone < 1) {
+    extern add_quest "Find Emergency Shutoff"
+    extern add_quest "Shutoff in Pool 3"
+  }
+  extern AI_ReleaseEntity claude_handle
+  extern cam_restore
+}
+
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 84:335
+title "Claude"
+body "Bottle of whiskey would be good around now."
+cam left from(-49.19 2345.56 268.31) to(-37.81 2298.09 226.92) fov(90) fwd(0) lift(0) restore zip
+style "NULL"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 84:1000
+body "PAL-18"
+if ((PALCount > 1) && (PALCount < 1000))
+  xyprintfx 40, 40, 0.800000011921, 1, 1, 1, palsmall, "ANALYSIS:"
+if ((PALCount > 4) && (PALCount < 1000))
+  xyprintfx 40, 52, 0.800000011921, 1, 1, 1, palsmall, "CHEMICAL WASTE"
+if ((PALCount > 12) && (PALCount < 1000))
+  xyprintfx 40, 64, 0.800000011921, 1, 1, 1, palsmall, "POISONOUS TO LIVING ORGANISMS"
+if ((PALCount > 40) && (PALCount < 1000))
+  xyprintfx 40, 200, 0.800000011921, 1, 1, 1, palsmall, "DANGER LEVEL:"
+if ((PALCount > 50) && (PALCount < 1000))
+  xyprintfx 40, 212, 0.800000011921, 1, 1, 1, palsmall, "HIGH"
+if ((PALCount > 60) && (PALCount < 1000))
+  xyprintfx 40, 224, 0.800000011921, 1, 1, 1, palsmall, "CORROSIVE SUBLIMATE"
+if ((PALCount > 80) && (PALCount < 1000))
+  xyprintfx 40, 248, 0.800000011921, 1, 1, 1, palsmall, "AVOID CONTACT BETWEEN CHEMICAL WASTE AND PAL-18 CASING"
+if (PALCount > 1000)
+  xyprintfx 40, 40, 0.800000011921, 1, 1, 1, palsmall, "CONSTRUCTS:"
+if (PALCount > 1010)
+  xyprintfx 40, 64, 0.800000011921, 1, 1, 1, palsmall, "FENCE, VULCANIZED STEEL"
+if (PALCount > 1030)
+  xyprintfx 40, 76, 0.800000011921, 1, 1, 1, palsmall, "ELECTRICITY USE"
+if (PALCount > 1050)
+  xyprintfx 40, 88, 0.800000011921, 1, 1, 1, palsmall, "C-CLASS CIVILIZATION"
+if (PALCount > 1060)
+  xyprintfx 40, 148, 0.800000011921, 1, 1, 1, palsmall, "ASSIGNMENT:"
+if ((PALCount > 1070) && (PalCount < 1085))
+  xyprintfx 40, 160, 0.800000011921, 1, 1, 1, palsmall, "INVESTIGATE WITH CAUTION"
+if ((PALCount > 1095) && (Palcount < 1110))
+  xyprintfx 40, 160, 0.800000011921, 1, 1, 1, palsmall, "INVESTIGATE WITH CAUTION"
+if (PALCount > 1120)
+  xyprintfx 40, 160, 0.800000011921, 1, 1, 1, palsmall, "INVESTIGATE WITH CAUTION"
+startswitch {
+  set plastMS = func_GameTime
+  set pcurrentMS = plastMS
+  set palsectics = 20
+  goto 0:0
+}
+
+thinkswitch {
+  set pcurrentMS = func_GameTime
+  set pdelta = (pcurrentMS - plastMS)
+  if (pdelta < 50)
+    goto 0:0
+  set plastMS = pcurrentMS
+  set PALCount = (PALCount + 1)
+  set palsectics = (palsectics - 1)
+  if (Palsectics == 0) {
+    set palTimer = (palTimer + 1)
+    set PALsectics = 20
+  }
+  if ((PALTimer == 8) || (palTimer == 64))
+    closewindow 84:1000
+  goto 0:0
+}
+
+finishswitch {
+  goto 0:0
+}
+
+style "NULL"
+font "palbig"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 640
+if (PALCount == 1)
+  image "ballotine/pal_dispopen1.pcx" 400, 40
+if (PALCount == 2)
+  image "ballotine/pal_dispopen2.pcx" 400, 40
+if (PALCount == 3)
+  image "ballotine/pal_dispopen3.pcx" 400, 40
+if (PALCount == 4)
+  image "ballotine/pal_dispopen4.pcx" 400, 40
+if (PALCount > 4)
+  image "ballotine/pal_display.pcx" 400, 40
+if ((((PALCount == 4) || (PAlCount == 12)) || (PAlCount == 20)) || (PAlCount == 28))
+  image "ballotine/atom01.tga" 416, 56
+if ((((PALCount == 5) || (PAlCount == 13)) || (PAlCount == 21)) || (PAlCount == 29))
+  image "ballotine/atom02.tga" 416, 56
+if ((((PALCount == 6) || (PAlCount == 14)) || (PAlCount == 22)) || (PAlCount == 30))
+  image "ballotine/atom03.tga" 416, 56
+if ((((PALCount == 7) || (PAlCount == 15)) || (PAlCount == 23)) || (PAlCount == 31))
+  image "ballotine/atom04.tga" 416, 56
+if ((((PALCount == 8) || (PAlCount == 16)) || (PAlCount == 24)) || (PAlCount == 32))
+  image "ballotine/atom05.tga" 416, 56
+if ((((PALCount == 9) || (PAlCount == 17)) || (PAlCount == 25)) || (PAlCount == 33))
+  image "ballotine/atom06.tga" 416, 56
+if ((((PALCount == 10) || (PAlCount == 18)) || (PAlCount == 26)) || (PAlCount == 34))
+  image "ballotine/atom07.tga" 416, 56
+if ((((PALCount == 11) || (PAlCount == 19)) || (PAlCount == 27)) || (PAlCount == 35))
+  image "ballotine/atom08.tga" 416, 56
+if ((PALCount > 50) && (PALCount < 1000))
+  image "ballotine/pal_corrosive.pcx" 400, 40
+if ((PALCount > 1000) && (PalCount < 1030))
+  image "ballotine/pal_chain.pcx" 400, 40
+if (PALCount > 1030)
+  image "ballotine/pal_electricity.pcx" 400, 40
+
+#window 84:2005
+title "PAL-18"
+body "No way I'm going up an old, creaky elevator until I know where it's goin'!"
+cam left from(PlayerChar0) to(84:2001) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 pal_handle
+  extern AI_WaitAndFace pal_handle -1 84:2001
+  extern ANIM_PlayAnim pal_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity pal_handle
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#switch 84:101
+set Leila1 = (Leila1 + 1)
+if (Leila1 > 1)
+  goto 84:0110
+goto 84:0105                                 
+
+#switch 84:201
+set Evan1 = (Evan1 + 1)
+if (Evan1 > 5)
+  goto 84:0230
+if (Evan1 > 4)
+  goto 84:0225
+if (Evan1 > 3)
+  goto 84:0220
+if (Evan1 > 2)
+  goto 84:0215
+if (Evan1 > 1)
+  goto 84:0210
+goto 84:0205                                 
+
+#switch 84:301
+set Claude1 = (Claude1 + 1)
+if (Claude1 > 3)
+  goto 84:0335
+if (Claude1 > 2)
+  goto 84:0325
+if (Claude1 > 1)
+  goto 84:0310
+goto 84:0305                                 
+
+#switch 84:1
+set CURRENT_PLANET = 8
+set CURRENT_BANK = 84
+extern setmasterlevel 33
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .8 1 .8
+if (play_pal || start_palintro)
+  extern playscene baltown_scene77b
+extern playlevelmusic "mp3/Democratus/DemocDungeonFinal.mp3"
+goto 0:0
+
+#switch 84:2
+console "map ballotine"
+goto 0:0
+
+#switch 84:100
+set paltimer = 0
+set palcount = 0
+goto 84:1000
+
+#switch 84:200
+set paltimer = 50
+set palcount = 1000
+goto 84:1000
+
+#switch 84:2001
+extern is_quest_done "Find Emergency Shutoff" @phillipLau
+if (@phillipLau == 1) {
+  extern playscene baltown_elevup
+  goto 0:0
+}
+goto 84:2005

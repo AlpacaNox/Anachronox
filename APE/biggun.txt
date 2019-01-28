@@ -1,0 +1,556 @@
+#window 666:100
+startswitch {
+  set @pootime = func_gametime
+}
+
+thinkswitch {
+  if (func_gametime > (@pootime + 250))
+    closewindow 666:100
+}
+
+finishswitch {
+  goto 666:999 
+}
+
+style "null"
+flags passive, TRUE
+
+#window 666:999
+xyprintfx 614, 18, 1, 1, 0.600000023842, 0.600000023842, prochars4, "%s", BGAScore$
+xyprintfx 14, 18, 1, 1, 0.600000023842, 0.600000023842, prochars4, "%s", BGBScore$
+startswitch {
+  extern AI_GrabEntity PlayerChar0 Player_Hvar
+  gosub 666:45
+  set anox_interface_active = 1
+  set BGEHCount = 0
+  set BGSCORE = 0
+  set BGProjBeam = 1
+  set BG_TimeTrapper = (func_gametime + 500)
+  set BG_PlayerMoved = 0
+  set MouseTrap = 1
+  set StartCharge = 0
+  set ChargeNext = 0
+  set Meter_Count = 0
+  set BG_ProjectileSpeed = 2200
+  set AlienSpawnTime = 0
+  set AlienSpawnTimeDelay = 2000
+  set CurrentAliens = 0
+  set MaxAliensAtOnce = 1
+  set BG_Aliens = 12
+  set BG_Total_Aliens = 0
+  gosub 666:15
+  gosub 666:16
+  gosub 666:17
+  extern loopambient ambi_limbus
+}
+
+thinkswitch {
+  if ((BG_TimeTrapper < func_gametime) && (BG_PlayerMoved == 0)) {
+    extern AI_SetXYZ Player_Hvar -2353 -3335 60.69
+    set BG_PlayerMoved = 1
+    gosub 666:50
+  }
+  if (BGMainThinkTimer < func_maptime) {
+    if (Penis == 1)
+      goto 0:0
+    gosub 666:11
+    if (Penis == 2)
+      goto 0:0
+    gosub 666:5
+    set BGMainThinkTimer = (func_maptime + 100)
+  }
+  if (BG_Aliens <= 0) {
+    set BGTrapEnd = 0
+    gosub 666:18
+    if ((BGTrapEnd == 0) || (killgun == 1))
+      closewindow 666:999
+  }
+  if (BGSCORE > 0) {
+    set AlienSpawnTimeDelay = ((1.10000002384 - ((BGSCORE * 100) / (12 * 100))) * 1000)
+    set MaxAliensAtOnce = (((BGSCORE * 100) / (12 * 100)) * 5)
+  }
+  if (MaxAliensAtOnce < 1)
+    set MaxAliensAtOnce = 1
+  gosub 666:12
+  gosub 666:35
+  gosub 666:4
+  set MainThinkCounter = (MainThinkCounter + 1)
+}
+
+finishswitch {
+  console "reset specialoff"
+  console "caminit"
+  console "fov 90"
+  console "forcecursormode 0"
+  console "m_yaw 0.022"
+  set anox_interface_active = 0
+  set anox_no_save = 0
+  extern AI_ReleaseEntity Player_Hvar
+  extern AI_DestroyEntity BigGun
+  set BG_ALIENS_LEFT = BGMissed
+  gosub 666:47
+  gosub 666:49
+  extern applylevelconfiguration big_gun
+  extern add_quest "Big Gun"
+  extern complete_quest "Big Gun"
+  set Battle_Bridge = 1
+  if (boots_at_gun == 1)
+    extern playscene limbus_scene86b_boots
+  if (pal_at_gun == 1)
+    extern playscene limbus_scene86b_pal
+  if (rho_at_gun == 1)
+    extern playscene limbus_scene86b_rho
+  if (democratus_at_gun == 1)
+    extern playscene limbus_scene86b_democratus
+  if (stiletto_at_gun == 1)
+    extern playscene limbus_scene86b_stiletto
+  if (paco_at_gun == 1)
+    extern playscene limbus_scene86b_paco
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 640
+height 480
+
+#switch 666:47
+set x = (32 - 1)
+while (x >= 0) {
+  if (F[$x$]) {
+    extern PARTICLE_StopAllEffects F[$x$]
+    extern AI_DestroyEntity F[$x$]
+  }
+  set G[$x$] = 0
+  set F[$x$] = 0
+  set BGEHCount = (BGEHCount - 1)
+  set x = (x - 1)
+}
+
+#switch 666:19
+set x = (32 - 1)
+while (x >= 0) {
+  set G[$x$] = 0
+  set F[$x$] = 0
+  set C[$x$] = 0
+  set K[$x$] = 0
+  set x = (x - 1)
+}
+
+#switch 666:11
+set x = (32 - 1)
+set Loops_EH = 0
+set Parts_Dest = 0
+while (x >= 0) {
+  if (((G[$x$] < func_gametime) && (G[$x$] > 0)) && (BGEHCount > 0)) {
+    if (F[$x$] > 0) {
+      extern PARTICLE_StopAllEffects F[$x$]
+      set @Temphandle = F[$BGEHCount$]
+      extern AI_SetXYZ @Temphandle 0 0 0
+      set Parts_Dest = (Parts_Dest + 1)
+    }
+    set G[$x$] = 0
+    set BGEHCount = (BGEHCount - 1)
+  } else if ((C[$x$] > 0) && (C[$x$] < func_gametime)) {
+    if (K[$x$] == 2) {
+      extern NPSimple boomhandle "NoelWork/ExpShip"
+      extern playsound games/BigGun/games_biggun_gunexplosion_01.wav BigGun 1.0 1.0
+    } else {
+      extern NPSimple boomhandle "NoelWork/bg_bullet_exp"
+      extern playsound games/BigGun/games_biggun_gunmiss_01.wav BigGun 1.0 1.0
+    }
+    set C[$x$] = 0
+    set K[$x$] = 0
+  }
+  set x = (x - 1)
+  set Loops_EH = (Loops_EH + 1)
+}
+echo "Spent %d loops and %d destroyed ents in the explosion handler!\n", Loops_EH, Parts_Dest
+
+#switch 666:10
+set x = 0
+set Sort = 0
+while (Sort < 32)
+  if ((G[$Sort$] == 0) && (C[$Sort$] == 0)) {
+    set x = Sort
+    set Sort = 100000000
+  } else
+    set Sort = (Sort + 1)
+if ((BGEHCount < 32) && (x < 32)) {
+  if (F[$x$] == 0) {
+    extern AI_SpawnEntity boomhandle tg_boom
+    set F[$x$] = boomhandle
+  } else
+    set boomhandle = F[$x$]
+  extern AI_SetXYZ boomhandle pX pY pZ
+  set BGEHCount = (BGEHCount + 1)
+  set G[$x$] = (func_gametime + 2000)
+  set K[$x$] = BG_LaserExplosionType
+  set C[$x$] = (func_gametime + 20)
+  extern NPKill boomhandle
+}
+
+#switch 666:8
+extern AI_GetXYZ collideb pX pY pZ
+set BG_LaserExplosionType = 1
+gosub 666:10
+extern AI_DestroyEntity collideb
+echo "collideb = %i", collideb
+
+#switch 666:9
+extern AI_GetXYZ collideb pX pY pZ
+extern AI_DestroyEntity collideb
+extern AI_SetXYZ collidea 20000 20000 20000
+extern stopsound games/BigGun/games_biggun_shuttle_ambient.wav collidea
+set BG_LaserExplosionType = 2
+gosub 666:10
+if (CurrentAliens > 0)
+  set CurrentAliens = (CurrentAliens - 1)
+if (BG_Aliens > 0)
+  set BG_Aliens = (BG_Aliens - 1)
+set BGSCORE = (BGSCORE + 1)
+
+#switch 666:30
+extern stopambient guntest_noel
+set B[1] = 0
+gosub 666:9
+
+#switch 666:31
+extern stopambient guntest_noel2
+set B[2] = 0
+gosub 666:9
+
+#switch 666:32
+extern stopambient guntest_noel3
+set B[3] = 0
+gosub 666:9
+
+#switch 666:33
+extern stopambient guntest_noel4
+set B[4] = 0
+gosub 666:9
+
+#switch 666:34
+extern stopambient guntest_noel5
+set B[5] = 0
+gosub 666:9
+
+#switch 666:5
+if ((CurrentAliens < MaxAliensAtOnce) && (AlienSpawnTime < func_maptime)) {
+  set BGRand = func_drand[1,5]
+  set x = B[$BGRand$]
+  echo "Within AlienHandler and got %d for the random number with %d handler being in state %d", BGRand, BGRand, x
+  if ((x == 0) && (BG_Total_Aliens < 12)) {
+    echo "Spawning an alien!"
+    set CurrentAliens = (CurrentAliens + 1)
+    set B[$BGRand$] = 1
+    set AlienSpawnTime = (func_maptime + AlienSpawnTimeDelay)
+    set BG_Total_Aliens = (BG_Total_Aliens + 1)
+    if (BGRand == 1) {
+      extern playambient "guntest_noel" 0 666:40
+      extern AI_FindEntity BG_TempShip ob_kor_dropship1
+    } else if (BGRand == 2) {
+      extern playambient "guntest_noel2" 0 666:41
+      extern AI_FindEntity BG_TempShip ob_kor_dropship2
+    } else if (BGRand == 3) {
+      extern playambient "guntest_noel3" 0 666:42
+      extern AI_FindEntity BG_TempShip ob_kor_dropship3
+    } else if (BGRand == 4) {
+      extern playambient "guntest_noel4" 0 666:43
+      extern AI_FindEntity BG_TempShip ob_kor_dropship4
+    } else {
+      extern playambient "guntest_noel5" 0 666:44
+      extern AI_FindEntity BG_TempShip ob_kor_dropship5
+    }
+    extern loopsound games/BigGun/games_biggun_shuttle_ambient.wav BG_TempShip 0.35 1.0
+    console "echo ***Adding Alien %d to Queue***", BGRand
+  } else
+    set AlienSpawnTime = (func_maptime + (AlienSpawnTimeDelay * 0.5))
+}
+
+#switch 666:6
+set BGMissed = (BGMissed + 1)
+if (CurrentAliens > 0)
+  set CurrentAliens = (CurrentAliens - 1)
+if (BG_Aliens > 0)
+  set BG_Aliens = (BG_Aliens - 1)
+extern playsound games/BigGun/games_biggun_alarm_missed.wav BigGun 0.95 1.0
+extern AI_SetXYZ BG_TempShip 20000 20000 20000
+extern stopsound games/BigGun/games_biggun_shuttle_ambient.wav collidea
+
+#switch 666:40
+extern stopambient guntest_noel
+set B[1] = 0
+extern AI_FindEntity BG_TempShip ob_kor_dropship1
+goto 666:6
+
+#switch 666:41
+extern stopambient guntest_noel2
+set B[2] = 0
+extern AI_FindEntity BG_TempShip ob_kor_dropship2
+goto 666:6
+
+#switch 666:42
+extern stopambient guntest_noel3
+set B[3] = 0
+extern AI_FindEntity BG_TempShip ob_kor_dropship3
+goto 666:6
+
+#switch 666:43
+extern stopambient guntest_noel4
+set B[4] = 0
+extern AI_FindEntity BG_TempShip ob_kor_dropship4
+goto 666:6
+
+#switch 666:44
+extern stopambient guntest_noel5
+set B[5] = 0
+extern AI_FindEntity BG_TempShip ob_kor_dropship5
+goto 666:6
+
+#switch 666:48
+if (T_Invert == 0) {
+  console "m_pitch -0.022"
+  set T_Invert = 1
+} else {
+  console "m_pitch 0.022"
+  set T_Invert = 0
+}
+
+#switch 666:37
+extern AI_GetXYZ BigGun pX pY pZ
+extern AI_SpawnEntity NewLaser ob_fireball
+extern AI_GetViewForward vX vY vZ
+set X = (pX + (vX * 25))
+set Y = (pY + (vY * 25))
+set Z = (pZ + (vZ * -10.000000))
+extern AI_SetXYZ NewLaser X Y Z
+extern VecToAngles vX vY vZ pitch yaw roll
+extern AI_SetPitch NewLaser pitch
+extern AI_SetYaw NewLaser yaw
+extern AI_SetRoll NewLaser roll
+set vX = (vX * BG_ProjectileSpeed)
+set vY = (vY * BG_ProjectileSpeed)
+set vZ = (vZ * BG_ProjectileSpeed)
+extern AI_SetVelocityXYZ NewLaser vX vY vZ
+extern NPSimple NewLaser "NoelWork/biggun_bullettrail"
+extern playsound games/BigGun/games_biggun_gunfiring_05.wav BigGun 1.0 0.50
+set BGProjBeam = 0
+set BGProj_Timer = (func_gametime + 100)
+
+#switch 666:4
+set MouseButton = func_mouseb
+if (((MouseButton > 0) && (MouseTrap == 1)) && (CoolDown == 0)) {
+  set MouseTrap = 0
+  set StartCharge = 1
+  gosub 666:37
+  extern ANIM_Stop BigGun
+  extern ANIM_PlaySequence BigGun gest_a
+}
+if (((((StartCharge == 0) && (MouseTrap == 0)) && (MouseTimer < func_gametime)) && (MouseButton == 0)) && (CoolDown == 0))
+  set MouseTrap = 1
+
+#switch 666:7
+set @Mwid = 15
+set @MDist = 25
+set @MTall = 20
+set Meter_Count = (Meter_Count - 1)
+set W = (10.8571424484 * Meter_Count)
+extern UI_FillRect X Y W 25 124 0 0 255
+if (@Fizzle == 0) {
+  extern AI_GetXYZ BigGun pX pY pZ
+  extern AI_SpawnEntity Steam1 ob_fireball
+  extern AI_SpawnEntity Steam2 ob_fireball
+  extern AI_GetFRU BigGun fX fY fZ rX rY rZ uX uY uZ
+  set X = ((pX + (rX * @Mwid)) + (fX * @MDist))
+  set Y = ((pY + (rY * @Mwid)) + (fY * @MDist))
+  set Z = (pZ - @MTall)
+  extern AI_SetXYZ Steam1 X Y Z
+  set X = ((pX - (rX * @Mwid)) + (fX * @MDist))
+  set Y = ((pY - (rY * @Mwid)) + (fY * @MDist))
+  set Z = (pZ - @MTall)
+  extern AI_SetXYZ Steam2 X Y Z
+  extern NPSimple Steam1 "NoelWork/biggun_steam_left"
+  extern NPSimple Steam2 "NoelWork/biggun_steam_right"
+  extern playsound games/BigGun/games_biggun_steamburst_04.wav BigGun 1.0 1.0
+  set @Fizzle = 1
+} else if (@Fizzle == 1) {
+  extern AI_GetXYZ BigGun pX pY pZ
+  extern AI_GetFRU BigGun fX fY fZ rX rY rZ uX uY uZ
+  set X = ((pX + (rX * @Mwid)) + (fX * @MDist))
+  set Y = ((pY + (rY * @Mwid)) + (fY * @MDist))
+  set Z = (pZ - @MTall)
+  extern AI_SetXYZ Steam1 X Y Z
+  set X = ((pX - (rX * @Mwid)) + (fX * @MDist))
+  set Y = ((pY - (rY * @Mwid)) + (fY * @MDist))
+  set Z = (pZ - @MTall)
+  extern AI_SetXYZ Steam2 X Y Z
+}
+if (Meter_Count <= 0) {
+  set CoolDown = 0
+  set MouseTrap = 1
+  extern playsound %BGSND_GUNREADY% BigGun 1.0 1.0
+  set @Fizzle = 0
+  extern AI_DestroyEntity Steam1
+  extern AI_DestroyEntity Steam2
+} else
+  set CoolTimer = (func_gametime + 200)
+
+#switch 666:14
+set X = 210
+set Y = 412
+if ((Meter_Count < 10) && (CoolDown == 0)) {
+  set Red = 0
+  set Green = 255
+} else if ((Meter_Count < 15) && (CoolDown == 0)) {
+  set Red = 128
+  set Green = 128
+} else if ((Meter_Count < 21) || (CoolDown == 1))
+  if (CoolDown == 1) {
+    set Red = 255
+    set Green = 0
+  } else {
+    set Red = 200
+    set Green = 50
+  }
+if ((StartCharge == 1) && (CoolDown == 0)) {
+  if (Meter_Count >= 20) {
+    set StartCharge = 0
+    set MouseTrap = 0
+    set CoolDown = 1
+    extern playsound games/BigGun/games_biggun_gunoverheat_loop_01.wav BigGun 0.75 1.0
+  } else {
+    set Meter_Count = (Meter_Count + 2)
+    if (Meter_Count > 21)
+      set Meter_Count = 21
+    set W = (10.8571424484 * Meter_Count)
+    set StartCharge = 0
+    set MouseTimer = (func_gametime + 90)
+  }
+  extern UI_FillRect X Y W 25 124 0 Green Red
+} else if ((CoolDown == 1) && (CoolTimer < func_gametime)) {
+  gosub 666:7
+} else if (StartCharge == 0) {
+  set W = (10.8571424484 * Meter_Count)
+  if ((Meter_Count > 0) && (@NextCool < func_gametime)) {
+    set Meter_Count = (Meter_Count - 1)
+    set @NextCool = (func_gametime + (((Meter_Count / 21) * 300) + 200))
+  }
+  extern UI_FillRect X Y W 25 124 0 Green Red
+}
+
+#switch 666:12
+BGAScore$="%d" , BGSCORE
+BGBScore$="%d" , BGMissed
+extern DrawPic @pic_bottom$ 1 352
+if (CoolDown == 0) {
+  extern DrawPic @pic_go$ 272 450
+} else
+  extern DrawPic @pic_stop$ 272 450
+extern DrawPic @pic_left$ 1 1
+extern DrawPic @pic_right$ 576 1
+gosub 666:14
+extern DrawPic @pic_overlay$ 207 410
+
+#switch 666:18
+set x = 0
+while (x < 20) {
+  if (B[$x$] > 0)
+    set BGTrapEnd = 1
+  set x = (x + 1)
+}
+
+#switch 666:35
+extern AI_GetViewAngles BG_Yaw BG_Pitch BG_Roll
+extern ENT_InstantYPR BigGun BG_Yaw BG_Pitch 0
+if (((OLD_BG_Pitch != BG_Pitch) || (OLD_BG_Yaw != BG_Yaw)) && (BG_MOVE_TIMER < func_gametime)) {
+  extern playsound games/BigGun/games_biggun_gunmovement_loop_02.wav BigGun 0.85 1.0
+  set BG_MOVE_TIMER = (func_gametime + 350)
+} else if (BG_MOVE_TIMER < func_gametime)
+  extern stopsound games/BigGun/games_biggun_gunmovement_loop_02.wav 0
+set OLD_BG_Pitch = BG_Pitch
+set OLD_BG_Yaw = BG_Yaw
+
+#switch 666:15
+extern SetCollisionCallback worldspawn ob_fireball	666:8
+extern SetCollisionCallback  ob_kor_dropship1 ob_fireball  666:30
+extern SetCollisionCallback  ob_kor_dropship2 ob_fireball  666:31
+extern SetCollisionCallback  ob_kor_dropship3 ob_fireball  666:32
+extern SetCollisionCallback  ob_kor_dropship4 ob_fireball  666:33
+extern SetCollisionCallback  ob_kor_dropship5 ob_fireball  666:34
+set MainThinkCounter = 0
+set BGMainThinkTimer = (func_maptime + 150)
+gosub 666:19
+
+#switch 666:16
+extern RegisterPic @pic_overlay$ /gameflow/biggun/grill.tga
+extern RegisterPic @pic_bottom$  /gameflow/biggun/bottomd.tga
+extern RegisterPic @pic_left$	 /gameflow/biggun/bg_left_scored.tga
+extern RegisterPic @pic_right$   /gameflow/biggun/bg_right_scored.tga
+extern RegisterPic @pic_go$		 /gameflow/biggun/go.tga
+extern RegisterPic @pic_stop$	 /gameflow/biggun/stop.tga
+set T_Invert = 1
+console "bind i invoke 666:48"
+set anox_no_save = 1
+
+#switch 666:17
+set x = 0
+while (x < 20) {
+  set B[$x$] = 0
+  set H[$x$] = 0
+  set A[$x$] = 0
+  set x = (x + 1)
+}
+
+#switch 666:50
+console "camkill"
+console "reset specialon"
+console "fov 90"
+console "+mlook"
+console "m_pitch 0.022"
+console "caminit firstperson"
+console "firstperson_yawbounds 40 200"
+console "firstperson_pitchbounds -55 55"
+console "forcecursormode 1"
+
+#switch 666:45
+extern AI_GetXYZ Player_Hvar pX pY pZ
+extern AI_GetFRU Player_Hvar fX fY fZ rX rY rZ uX uY uZ
+set X = pX
+set Y = pY
+set Z = (pZ + 72)
+extern AI_SpawnEntity BigGun ob_biggun_gun
+extern AI_SetXYZ BigGun -2353 -3335 82
+
+#switch 666:49
+set MouseButton = 0
+set AlienCount = 0
+set CurrentAliens = 0
+set AlienSpawnTime = 0
+set AlienSpawnTimeDelay = 0
+set MouseTrap = 0
+set StartCharge = 0
+set ChargeNext = 0
+set MaxAliensAtOnce = 0
+set BG_Aliens = 0
+set BG_Total_Aliens = 0
+set BGMissed = 0
+set BGSCORE = 0
+set BGEHCount = 0
+set x = 0
+set y = 0
+set GunSeat = 0
+set pX = 0
+set pY = 0
+set pZ = 0
+set BGRand = 0
+set Meter_Count = 0
+set vX = 0
+set vY = 0
+set vZ = 0
+set pitch = 0
+set yaw = 0
+set roll = 0
+set NewLaser = 0
+set BGTrapEnd = 0

@@ -1,0 +1,765 @@
+#window 62:2105
+startswitch {
+  set @CineDM_MapTimer = func_gametime
+}
+
+thinkswitch {
+  if (func_gametime >= (@CineDM_MapTimer + 100))
+    closewindow 62:2105
+}
+
+finishswitch {
+  console "map chamber"
+}
+
+style "null"
+flags passive, TRUE
+
+#window 62:1001
+title "Dr. Rho Bowman"
+body "I can't believe it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1005
+title "Dr. Rho Bowman"
+body "The greatest minds of our galaxy..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1010
+title "Dr. Rho Bowman"
+body "                                        all dead and gone."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1015
+title "Dr. Rho Bowman"
+body "Gentlemen... science was just set back a hundred years."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1020
+title "Boots"
+body "Oh, cry me a river, sister."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1025
+title "Boots"
+body "YOU blew up the planet with that little experiment of yours."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1030
+title "Dr. Rho Bowman"
+body "You don't know what you're talking about."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1035
+title "Dr. Rho Bowman"
+body "That MysTech you saw was responding to the spatial disturbance that split the planet in half. Nothing more."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1040
+title "Grumpos"
+body "She's right, ace. Shut up and stop trying to look smart."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1045
+title "Grumpos"
+body "We've got bigger problems."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1050
+title "Dr. Rho Bowman"
+body "Engines are dead..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1065
+title "Dr. Rho Bowman"
+body "...navigation's kaput, and who knows where that Sender Spike put us."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1070
+title "Dr. Rho Bowman"
+body "I can re-route auxiliaries to pump up life support, but that'll only buy us about two weeks."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1075
+title "Dr. Rho Bowman"
+body "With any luck, we'll drift into a populated system before food runs out."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1080
+title "PAL-18"
+body "Whatta we gonna do until then, ma'am?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1085
+title "Dr. Rho Bowman"
+body "Try not to go crazy."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1090
+title "DAY 1"
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 140
+ypos 200
+width 580
+
+#window 62:1095
+title "Dr. Rho Bowman"
+body "Is it Ujal?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1100
+title "Grumpos"
+body "No, no! He said it wasn't in the Wu-Chan system."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1105
+title "Boots"
+body "Ha! That's twenty questions. You guys lose!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1110
+title "Dr. Rho Bowman"
+body "So what was it?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1115
+title "Boots"
+body "Anachronox!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1120
+title "Boots"
+body "                   Man, you guys are dumb."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1125
+title "Dr. Rho Bowman"
+body "But... you said it started with a 'U'."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1130
+title "Boots"
+body "Yeah, I know."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1135
+title "DAY 2"
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 140
+ypos 200
+width 580
+
+#window 62:1140
+title "Dr. Rho Bowman"
+body "We cried for a while. And I said, \"If you don't think it's love, then leave.\""
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1145
+title "Fatima"
+body "And was it love?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1150
+title "Dr. Rho Bowman"
+body "The exact words were: \"It's love. But it's not IN love.\""
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1151
+title "Fatima"
+body "Ugh."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1155
+title "DAY 4"
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 140
+ypos 200
+width 580
+
+#window 62:1160
+title "SFX"
+body "CLAPPING"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1165
+title "Grumpos"
+body "Very nice."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1170
+title "DAY 6"
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 140
+ypos 200
+width 580
+
+#window 62:1175
+title "PAL-18"
+body "Are you sad?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1180
+title "Dr. Rho Bowman"
+body "I'm alright, PAL."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1185
+title "PAL-18"
+body "But you don't have a home anymore."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1190
+title "Dr. Rho Bowman"
+body "I haven't had a home since I was sixteen."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1192
+title "Dr. Rho Bowman"
+body "                                                    I'm okay, PAL. Really."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1195
+title "PAL-18"
+body "Fine..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1200
+title "PAL-18"
+if (KIDZ == 0)
+  body "            bitch."
+if (KIDZ == 1)
+  body "            witch."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1205
+title "DAY 9"
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 140
+ypos 200
+width 580
+
+#window 62:1210
+title "Fatima"
+body "Day nine? Bust out the violins."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1215
+title "Fatima"
+body "                                      Try day three hundred."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1220
+title "DAY 13"
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 140
+ypos 200
+width 580
+
+#window 62:1225
+title "SFX"
+body "CLANK."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1230
+title "DAY 17"
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 140
+ypos 200
+width 580
+
+#window 62:1235
+title "Grumpos"
+body "Look, you left a sock over there,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1237
+title "Grumpos"
+body "                                        over there...."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1240
+title "Grumpos"
+body "Is it so hard to pick up after yourself?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1245
+title "Boots"
+body "What, I was gonna pick it up tomorrow!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1250
+title "Grumpos"
+body "Tomorrow?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1255
+title "Grumpos"
+body "               Tomorrow?!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1260
+title "Grumpos"
+body "                               You son of a..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1265
+title "PAL-18"
+body "Should we stop them, ma'am?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1270
+title "Dr. Rho Bowman"
+body "Let them kill each other."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1275
+title "Grumpos"
+body "Eat it! EAT IT!!!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1280
+title "SFX"
+body "Loud CLANK"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1285
+title "Boots"
+body "Mwah! Mwah!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1290
+title "Boots"
+body "Uh... hi."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1295
+title "Boots"
+body "Step back, sister."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1300
+title "Dr. Rho Bowman"
+body "Are you kidding?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 62:1305
+title "Dr. Rho Bowman"
+body "                     I've been waiting a long time for this."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 62:1
+extern pauselevelmusic
+gosub 62:3000
+if (DEMO_MODE_ENABLED || START_CINEDEM_CINE)
+  goto 62:2001
+goto 0:0
+
+#switch 62:2001
+extern applylevelconfiguration cinedem
+set INV_LABCOATS = 0
+set SPLIT_SUNDER = 0
+set START_SUNDERESCAPE = 0
+set START_CINEDEM_CINE = 0
+set MYSTECH_ACTIVE = 1
+set FATIMA_VOTOWNE = 1
+set BOOTS_IN_PARTY = 1
+set GRUMPOS_IN_PARTY = 0
+set PAL_IN_PARTY = 0
+set RHO_IN_PARTY = 0
+extern ape_stopallsounds
+gosub 62:1310
+console "battlestart 0"
+
+#switch 62:1310
+extern set_party_leader Rho
+extern addnew_to_inventory "Moebius Wave"
+extern equip_item "Moebius Wave"
+extern addnew_to_inventory "Fireslag"
+extern equip_item "Fireslag"
+extern add_battle_skill "PlasmaWall"
+extern forceplayerlevel Rho 13
+BattleMusicOverride$="mp3/democratus/DemocBattleLoop.mp3" 
+gosub 600:3		               
+goto 0:0
+
+#switch 20062:1
+goto 0:0
+
+#switch 20062:2
+goto 0:0
+
+#switch 20062:3
+goto 0:0
+
+#switch 62:1405
+goto 0:0
+
+#switch 62:2100
+extern set_party_leader boots
+extern remove_npc_from_party Rho
+extern remove_npc_from_party Grumpos
+extern add_quest "Democratus Unknown"
+goto 62:2105
+
+#switch 62:3000
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+
+#switch 62:1307

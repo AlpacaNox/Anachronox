@@ -1,0 +1,766 @@
+#window 4004:8001
+if (@have_distractor)
+  xyprintfx 10, 260, @aux_alpha, 0.300000011921, 1, 0.800000011921, _message, "Distractor Band active"
+if (@have_doubletime)
+  xyprintfx 0, 276, @aux_alpha, 0.300000011921, 1, 0.800000011921, _message, "DoubleTime Bracer active"
+if (anox_worldskill_successful)
+  xyprintfx 200, 124, 1, 0.300000011921, 1, 0.300000011921, _message, "SUCCESS!"
+if (an_finished && (anox_worldskill_successful == 0))
+  xyprintfx 203, 124, 1, 0.300000011921, 1, 0.300000011921, _message, "FAILURE!"
+startswitch {
+  extern pauselevelmusic
+  extern loopsound ../music/mp3/worldskill.mp3
+  set anox_worldskill_successful = 0
+  set an_finished = 0
+  extern is_equipped "Distractor Band" @have_distractor
+  extern is_equipped "DoubleTime Bracer" @have_doubletime
+  if (an_counter_time == 0)
+    set an_counter_time = 30
+  extern get_world_skill_level analyze @an
+  if ((@an == 1) && (ws_skill_level == 2)) {
+    set timed_message = 99
+    timed_message$="You are not skilled enough to Analyze this." 
+    gosub 1000:1
+  }
+  if (@an != 2) {
+    set rho_is_master = 0
+    set an_order = 6
+    set an_max_choice = 3
+  } else {
+    set rho_is_master = 1
+    set an_order = 6
+    set an_max_choice = 6
+  }
+  set cursormode = 1
+  set an_currentMS = func_gametime
+  set an_lastMS = an_currentMS
+  gosub 4004:8005
+  gosub 4004:8006
+  set an_paused = 0
+  if ((ws_skill_level == 1) && (Analyze_First_Time1 == 0)) {
+    set Analyze_First_Time1 = 1
+    gosub 4004:8011
+  }
+  if ((ws_skill_level == 2) && (Analyze_First_Time2 == 0)) {
+    set Analyze_First_Time2 = 1
+    gosub 4004:8011
+  }
+  goto 0:0
+}
+
+thinkswitch {
+  if (an_paused == 1)
+    goto 0:0
+  set @aux_alpha = (@aux_alpha + @aux_delta)
+  if (@aux_alpha >= 1) {
+    set @aux_delta = -0.050000
+  } else if (@aux_alpha <= 0.20000000298)
+    set @aux_delta = 0.0500000007451
+  set anim_wait = (anim_wait + 1)
+  if (anim_wait == 5) {
+    set anim_cycle = (anim_cycle + 1)
+    if (anim_cycle == 4)
+      set anim_cycle = 0
+    set anim_wait = 0
+  }
+  set an_currentMS = func_gametime
+  if ((an_currentMS - an_lastMS) > ((2000 + (2000 * @have_doubletime)) + (10000 * @have_distractor)))
+    if (an_finished == 0) {
+      set an_counter_time = (an_counter_time - 1)
+      set an_lastMS = an_currentMS
+      if ((an_counter_time > 5) && (@have_distractor == 0)) {
+        extern playsound ui/gen/button5.wav
+      } else if ((an_counter_time > 5) && @have_distractor) {
+        extern playsound ui/gen/ui_gen_backdoor.wav
+      } else
+        extern playsound ui/gen/ui_gen_last10secs.wav
+      if (an_counter_time <= 0) {
+        extern playsound ui/gen/ui_gen_error.wav
+        goto 4004:8010
+      }
+    }
+  if (an_finished) {
+    set an_finished = (an_finished - 1)
+    if (an_finished == 0)
+      closewindow 4004:8001
+  }
+  goto 0:0
+}
+
+finishswitch {
+  extern stopsound ../music/mp3/worldskill.mp3
+  extern resumelevelmusic
+  set an_counter_time = 0
+  extern RemoveAPE2DControl conv1
+  extern RemoveAPE2DControl conv2
+  extern RemoveAPE2DControl conv3
+  extern RemoveAPE2DControl conv4
+  extern RemoveAPE2DControl conv5
+  extern RemoveAPE2DControl conv6
+  extern RemoveAPE2DControl askbutt
+  extern RemoveAPE2DControl exitbutt
+  extern RemoveAPE2DControl removebutt
+  extern set2dcursor default
+  unset ws_time
+  unset ws_difficulty
+  set ws_doing_wskill = 0
+  set ws_analyze_active = 0
+  goto 0:0
+}
+
+style "NULL"
+font "_anox10"
+flags passive2d, TRUE
+xpos 64
+ypos 112
+width 512
+height 256
+background "an/rho_back1.png" 
+image "an/rho_back2.png" 256, 0
+image "an/an_tile_$L[1]$.png" 11, 52
+image "an/an_tile_$L[2]$.png" 81, 52
+image "an/an_tile_$L[3]$.png" 151, 52
+image "an/an_tile_$L[4]$.png" 221, 52
+image "an/an_tile_$L[5]$.png" 291, 52
+image "an/an_tile_$L[6]$.png" 361, 52
+image "an/an_tile_$L[7]$.png" 431, 52
+if (an_current_place == 0)
+  image "an/an_tile_99_h.atd" 81, 52
+if (an_current_place == 1)
+  image "an/an_tile_99_h.atd" 151, 52
+if (an_current_place == 2)
+  image "an/an_tile_99_h.atd" 221, 52
+if (an_current_place == 3)
+  image "an/an_tile_99_h.atd" 291, 52
+if (an_current_place == 4)
+  image "an/an_tile_99_h.atd" 361, 52
+if (an_current_place == 5)
+  image "an/an_tile_99_h.atd" 431, 52
+image "an/an_convert_h.png" 45, 116
+if (an_current_place < 1)
+  image "an/an_convert.png" 115, 116
+if (an_current_place >= 1)
+  image "an/an_convert_h.png" 115, 116
+if (an_current_place < 2)
+  image "an/an_convert.png" 185, 116
+if (an_current_place >= 2)
+  image "an/an_convert_h.png" 185, 116
+if (an_current_place < 3)
+  image "an/an_convert.png" 255, 116
+if (an_current_place >= 3)
+  image "an/an_convert_h.png" 255, 116
+if (an_current_place < 4)
+  image "an/an_convert.png" 325, 116
+if (an_current_place >= 4)
+  image "an/an_convert_h.png" 325, 116
+if (an_current_place < 5)
+  image "an/an_convert.png" 395, 116
+if (an_current_place >= 5)
+  image "an/an_convert_h.png" 395, 116
+if (F[1] > 0)
+  image "an/convert/tilec_$F[1]$.png" 45, 125
+if (F[1] > 0)
+  image "an/convert/tilec_arrow.png" 45, 125
+if (G[1] > 0)
+  image "an/convert/tilec_$G[1]$.png" 77, 125
+if (an_current_place == 0)
+  image "an/convert/tilec_9999_h.png" 45, 125
+if (F[2] > 0)
+  image "an/convert/tilec_$F[2]$.png" 115, 125
+if (F[2] > 0)
+  image "an/convert/tilec_arrow.png" 45, 125
+if (G[2] > 0)
+  image "an/convert/tilec_$G[2]$.png" 147, 125
+if (an_current_place < 1)
+  image "an/convert/tilec_9999.png" 115, 125
+if (an_current_place == 1)
+  image "an/convert/tilec_9999_h.png" 115, 125
+if (F[3] > 0)
+  image "an/convert/tilec_$F[3]$.png" 185, 125
+if (F[3] > 0)
+  image "an/convert/tilec_arrow.png" 45, 125
+if (G[3] > 0)
+  image "an/convert/tilec_$G[3]$.png" 217, 125
+if (an_current_place < 2)
+  image "an/convert/tilec_9999.png" 185, 125
+if (an_current_place == 2)
+  image "an/convert/tilec_9999_h.png" 185, 125
+if (F[4] > 0)
+  image "an/convert/tilec_$F[4]$.png" 255, 125
+if (F[4] > 0)
+  image "an/convert/tilec_arrow.png" 45, 125
+if (G[4] > 0)
+  image "an/convert/tilec_$G[4]$.png" 287, 125
+if (an_current_place < 3)
+  image "an/convert/tilec_9999.png" 255, 125
+if (an_current_place == 3)
+  image "an/convert/tilec_9999_h.png" 255, 125
+if (F[5] > 0)
+  image "an/convert/tilec_$F[5]$.png" 325, 125
+if (F[5] > 0)
+  image "an/convert/tilec_arrow.png" 45, 125
+if (G[5] > 0)
+  image "an/convert/tilec_$G[5]$.png" 357, 125
+if (an_current_place < 4)
+  image "an/convert/tilec_9999.png" 325, 125
+if (an_current_place == 4)
+  image "an/convert/tilec_9999_h.png" 325, 125
+if (F[6] > 0)
+  image "an/convert/tilec_$F[6]$.png" 395, 125
+if (F[6] > 0)
+  image "an/convert/tilec_arrow.png" 45, 125
+if (G[6] > 0)
+  image "an/convert/tilec_$G[6]$.png" 427, 125
+if (an_current_place < 5)
+  image "an/convert/tilec_9999.png" 395, 125
+if (an_current_place == 5)
+  image "an/convert/tilec_9999_h.png" 395, 125
+if (H[1] > 0)
+  image "an/convert/tilec_$H[1]$.png" 45, 213
+if (H[1] > 0)
+  image "an/convert/tilec_arrow.png" 45, 213
+if (I[1] > 0)
+  image "an/convert/tilec_$I[1]$.png" 77, 213
+if (H[1] == 0)
+  image "an/convert/tilec_9999.png" 45, 213
+if (H[2] > 0)
+  image "an/convert/tilec_$H[2]$.png" 115, 213
+if (H[2] > 0)
+  image "an/convert/tilec_arrow.png" 115, 213
+if (I[2] > 0)
+  image "an/convert/tilec_$I[2]$.png" 147, 213
+if (H[2] == 0)
+  image "an/convert/tilec_9999.png" 115, 213
+if (H[3] > 0)
+  image "an/convert/tilec_$H[3]$.png" 185, 213
+if (H[3] > 0)
+  image "an/convert/tilec_arrow.png" 185, 213
+if (I[3] > 0)
+  image "an/convert/tilec_$I[3]$.png" 217, 213
+if (H[3] == 0)
+  image "an/convert/tilec_9999.png" 185, 213
+if (H[4] > 0)
+  image "an/convert/tilec_$H[4]$.png" 255, 213
+if (H[4] > 0)
+  image "an/convert/tilec_arrow.png" 255, 213
+if (I[4] > 0)
+  image "an/convert/tilec_$I[4]$.png" 287, 213
+if (H[4] == 0)
+  image "an/convert/tilec_9999.png" 255, 213
+if (H[5] > 0)
+  image "an/convert/tilec_$H[5]$.png" 325, 213
+if (H[5] > 0)
+  image "an/convert/tilec_arrow.png" 325, 213
+if (I[5] > 0)
+  image "an/convert/tilec_$I[5]$.png" 357, 213
+if (H[5] == 0)
+  image "an/convert/tilec_9999.png" 325, 213
+if (H[6] > 0)
+  image "an/convert/tilec_$H[6]$.png" 395, 213
+if (H[6] > 0)
+  image "an/convert/tilec_arrow.png" 395, 213
+if (I[6] > 0)
+  image "an/convert/tilec_$I[6]$.png" 427, 213
+if (H[6] == 0)
+  image "an/convert/tilec_9999.png" 395, 213
+if (an_counter_time > 0)
+  image "an/an_timeblip.png" 8, 31
+if (an_counter_time > 1)
+  image "an/an_timeblip.png" 24, 31
+if (an_counter_time > 2)
+  image "an/an_timeblip.png" 40, 31
+if (an_counter_time > 3)
+  image "an/an_timeblip.png" 56, 31
+if (an_counter_time > 4)
+  image "an/an_timeblip.png" 72, 31
+if (an_counter_time > 5)
+  image "an/an_timeblip.png" 88, 31
+if (an_counter_time > 6)
+  image "an/an_timeblip.png" 104, 31
+if (an_counter_time > 7)
+  image "an/an_timeblip.png" 120, 31
+if (an_counter_time > 8)
+  image "an/an_timeblip.png" 136, 31
+if (an_counter_time > 9)
+  image "an/an_timeblip.png" 152, 31
+if (an_counter_time > 10)
+  image "an/an_timeblip.png" 168, 31
+if (an_counter_time > 11)
+  image "an/an_timeblip.png" 184, 31
+if (an_counter_time > 12)
+  image "an/an_timeblip.png" 200, 31
+if (an_counter_time > 13)
+  image "an/an_timeblip.png" 216, 31
+if (an_counter_time > 14)
+  image "an/an_timeblip.png" 232, 31
+if (an_counter_time > 15)
+  image "an/an_timeblip.png" 248, 31
+if (an_counter_time > 16)
+  image "an/an_timeblip.png" 264, 31
+if (an_counter_time > 17)
+  image "an/an_timeblip.png" 280, 31
+if (an_counter_time > 18)
+  image "an/an_timeblip.png" 296, 31
+if (an_counter_time > 19)
+  image "an/an_timeblip.png" 312, 31
+if (an_counter_time > 20)
+  image "an/an_timeblip.png" 328, 31
+if (an_counter_time > 21)
+  image "an/an_timeblip.png" 344, 31
+if (an_counter_time > 22)
+  image "an/an_timeblip.png" 360, 31
+if (an_counter_time > 23)
+  image "an/an_timeblip.png" 376, 31
+if (an_counter_time > 24)
+  image "an/an_timeblip.png" 392, 31
+if (an_counter_time > 25)
+  image "an/an_timeblip.png" 408, 31
+if (an_counter_time > 26)
+  image "an/an_timeblip.png" 424, 31
+if (an_counter_time > 27)
+  image "an/an_timeblip.png" 440, 31
+if (an_counter_time > 28)
+  image "an/an_timeblip.png" 456, 31
+if (an_counter_time > 29)
+  image "an/an_timeblip.png" 472, 31
+
+#window 4004:9005
+title "Rho Bowman's Analyze"
+body "Analyze simulates the thought-connecting process of Rho's brain as she figures out a diagram or machine. "
+body "You must select the converters below in the correct order to convert the initial shape and color to the end shape and color. "
+body "Some converters insist on a specific shape and color to convert from."
+body "\n\nSo watch out!"
+startswitch {
+  extern RemoveAPE2DControl askbutt
+  extern RemoveAPE2DControl exitbutt
+}
+
+finishswitch {
+  extern CreateAPE2DControl push askbutt 521 115 width=23 height=21 normal=/gameflow/an/an_ask.png bright=/gameflow/an/an_ask_h.png gamevar=wt returnvalue=1 holdfocusflag=false sequence=4004:8011
+  extern CreateAPE2DControl push exitbutt 548 115 width=23 height=21 normal=/gameflow/an/an_quit.png bright=/gameflow/an/an_quit_h.png gamevar=wt returnvalue=2 holdfocusflag=false sequence=4004:8012
+  set an_paused = 0
+}
+
+style "NULL"
+font "anox10black"
+flags noscroll, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 64
+ypos 112
+width 512
+height 256
+background "an/an_askback1.png" 
+image "an/an_askback2.png" 256, 0
+image "an/an_rhopic.png" 384, 128
+
+#window 4004:9010
+title "Rho Bowman's Master Analyze"
+body "Analyze simulates the thought-connecting process of Rho's brain as she figures out a diagram or machine. "
+body "You must select the converters below in the correct order to convert the initial shape and color to the end shape and color. "
+body "Some converters insist on a specific shape and color to convert from.\n\n"
+if (@an == 1)
+  body "Having trouble with some shapes? Maybe Rho needs to improve her analytical skills.\n\n"
+body "\n\nSo watch out!"
+startswitch {
+  extern RemoveAPE2DControl askbutt
+  extern RemoveAPE2DControl exitbutt
+}
+
+finishswitch {
+  extern CreateAPE2DControl push askbutt 521 115 width=23 height=21 normal=/gameflow/an/an_ask.png bright=/gameflow/an/an_ask_h.png gamevar=wt returnvalue=1 holdfocusflag=false sequence=4004:8011
+  extern CreateAPE2DControl push exitbutt 548 115 width=23 height=21 normal=/gameflow/an/an_quit.png bright=/gameflow/an/an_quit_h.png gamevar=wt returnvalue=2 holdfocusflag=false sequence=4004:8012
+  set an_paused = 0
+}
+
+style "NULL"
+font "anox10black"
+flags noscroll, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 64
+ypos 112
+width 512
+height 256
+background "an/an_askback1.png" 
+image "an/an_askback2.png" 256, 0
+image "an/an_rhopic.png" 384, 128
+
+#switch 4004:8005
+set c = 1
+while (c < 8) {
+  if (c <= an_order) {
+    set H[$c$] = 0
+    set I[$c$] = 0
+    set F[$c$] = 0
+    set G[$c$] = 0
+  } else {
+    set H[$c$] = -1.000000
+    set I[$c$] = -1.000000
+    set F[$c$] = -1.000000
+    set G[$c$] = -1.000000
+  }
+  set c = (c + 1)
+}
+set an_current_place = 0
+set anim_cycle = 0
+set @aux_alpha = 0.20000000298
+set @aux_delta = 0.0500000007451
+set an_shape_count = 0
+set an_color_count = 0
+gosub 4004:8013
+goto 0:0
+
+#switch 4004:8013
+set c = 1
+while (c < 8) {
+  set L[$c$] = 99
+  set E[$c$] = -1.000000
+  set c = (c + 1)
+}
+set an_choice_limit = 50
+gosub 4004:8014
+if ((rho_is_master == 0) && (ws_skill_level == 2)) {
+  set an_shape = func_drand[4,6]
+  set an_color = func_drand[4,6]
+}
+set E[1] = ((an_shape * 10) + an_color)
+set solcount = 1
+while (solcount <= an_order) {
+  set rr = RANDOM
+  if (((rr > an_choice_limit) && (an_shape_count <= 3)) || (an_color_count >= 3)) {
+    set got_legal_one = 0
+    while (got_legal_one == 0) {
+      gosub 4004:8015		               
+      gosub 4004:8029		                    
+    }
+    set an_shape_count = (an_shape_count + 1)
+  } else {
+    set got_legal_one = 0
+    while (got_legal_one == 0) {
+      gosub 4004:8016		                  
+      gosub 4004:8029		                         
+    }
+    set an_color_count = (an_color_count + 1)
+  }
+  set solcount = (solcount + 1)
+}
+set gumpoppa = (an_order + 1)
+set L[1] = E[1]
+set L[$gumpoppa$] = E[$gumpoppa$]
+gosub 4004:8018
+set c = 1
+while (c <= an_order) {
+  set J[$c$] = c
+  set K[$c$] = -1.000000
+  set c = (c + 1)
+}
+goto 0:0
+
+#switch 4004:8029
+set foo = 1
+while (foo <= (solcount - 1)) {
+  if ((H[$foo$] == H[$solcount$]) && (I[$foo$] == I[$solcount$])) {
+    set foo = solcount
+    goto 0:0
+  }
+  set foo = (foo + 1)
+}
+set got_legal_one = 1
+goto 0:0
+
+#switch 4004:8014
+set an_color = current_color
+set an_shape = current_shape
+while ((an_color == current_color) || (an_shape == current_shape)) {
+  set an_color = func_drand[1,$an_max_choice$]
+  set an_shape = func_drand[1,$an_max_choice$]
+}
+set an_data = ((an_shape * 10) + an_color)
+goto 0:0
+
+#switch 4004:8017
+set current_shape = E[$solcount$]
+set current_color = func_mod[$current_shape$,10]
+set current_shape = func_div[$current_shape$,10]
+goto 0:0
+
+#switch 4004:8015
+gosub 4004:8017
+set nextcount = (solcount + 1)
+set @poops = RANDOM
+gosub 4004:8014
+set next_shape = an_shape
+set next_color = 9
+set show_curr_color = 9
+set @goo = RANDOM
+if (@goo > (100 - (an_max_choice * 7))) {
+  set next_color = current_color
+  set show_curr_color = current_color
+}
+set E[$nextcount$] = ((next_shape * 10) + current_color)
+if ((rho_is_master == 0) && (ws_skill_level == 2)) {
+  set current_shape = (1 + func_mod[$current_shape$,3])
+  set show_curr_color = (1 + func_mod[$show_curr_color$,3])
+  set next_color = (1 + func_mod[$next_color$,3])
+  set next_shape = (1 + func_mod[$next_shape$,3])
+}
+set H[$solcount$] = ((current_shape * 10) + show_curr_color)
+set I[$solcount$] = ((next_shape * 10) + next_color)
+goto 0:0
+
+#switch 4004:8016
+gosub 4004:8017
+set nextcount = (solcount + 1)
+set @poops = RANDOM
+gosub 4004:8014
+set next_color = an_color
+set next_shape = 9
+set show_curr_shape = 9
+set E[$nextcount$] = ((current_shape * 10) + next_color)
+if ((rho_is_master == 0) && (ws_skill_level == 2)) {
+  set current_color = (1 + func_mod[$current_color$,3])
+  set show_curr_shape = (1 + func_mod[$show_curr_shape$,3])
+  set next_shape = (1 + func_mod[$next_shape$,3])
+  set next_color = (1 + func_mod[$next_color$,3])
+}
+set H[$solcount$] = ((show_curr_shape * 10) + current_color)
+set I[$solcount$] = ((next_shape * 10) + next_color)
+goto 0:0
+
+#switch 4004:8018
+set c = 1
+while (c <= an_order) {
+  set poo = func_drand[1,$an_order$]
+  set temp1 = H[$c$]
+  set temp2 = I[$c$]
+  set H[$c$] = H[$poo$]
+  set I[$c$] = I[$poo$]
+  set H[$poo$] = temp1
+  set I[$poo$] = temp2
+  set c = (c + 1)
+}
+goto 0:0
+
+#switch 4004:8006
+extern CreateAPE2DControl push askbutt 521 115 width=23 height=21 normal=/gameflow/an/an_ask.atd bright=/gameflow/an/an_ask_h.atd gamevar=wt returnvalue=1 holdfocusflag=false sequence=4004:8011
+extern CreateAPE2DControl push exitbutt 548 115 width=23 height=21 normal=/gameflow/an/an_quit.atd bright=/gameflow/an/an_quit_h.atd gamevar=wt returnvalue=2 holdfocusflag=false sequence=4004:8012
+extern CreateAPE2DControl push conv1 109 325 width=64 height=32 nodrawflag=true gamevar=which_conv returnvalue=1 holdfocusflag=false sequence=4004:8007
+extern CreateAPE2DControl push conv2 179 325 width=64 height=32 nodrawflag=true gamevar=which_conv returnvalue=2 holdfocusflag=false sequence=4004:8007
+extern CreateAPE2DControl push conv3 249 325 width=64 height=32 nodrawflag=true gamevar=which_conv returnvalue=3 holdfocusflag=false sequence=4004:8007
+extern CreateAPE2DControl push conv4 319 325 width=64 height=32 nodrawflag=true gamevar=which_conv returnvalue=4 holdfocusflag=false sequence=4004:8007
+extern CreateAPE2DControl push conv5 389 325 width=64 height=32 nodrawflag=true gamevar=which_conv returnvalue=5 holdfocusflag=false sequence=4004:8007
+extern CreateAPE2DControl push conv6 459 325 width=64 height=32 nodrawflag=true gamevar=which_conv returnvalue=6 holdfocusflag=false sequence=4004:8007
+goto 0:0
+
+#switch 4004:8007
+if (an_paused || anox_finished)
+  goto 0:0
+set target_index = (an_current_place + 1)
+set our_left = H[$which_conv$]
+set our_right = I[$which_conv$]
+set our_left_color = func_mod[$our_left$,10]
+set our_left_shape = func_div[$our_left$,10]
+set our_right_color = func_mod[$our_right$,10]
+set our_right_shape = func_div[$our_right$,10]
+set an_placement_success = 1
+gosub 4004:8020	                   
+if ((an_placement_success == 1) && (an_current_place == 5))
+  gosub 4004:8021	                        
+if (an_placement_success == 0) {
+  extern playsound ui/gen/ui_gen_failure.wav
+  goto 4004:8028
+}
+extern playsound ui/gen/ui_gen_okay.wav
+set an_current_place = (an_current_place + 1)
+set F[$an_current_place$] = H[$which_conv$]
+set G[$an_current_place$] = I[$which_conv$]
+set H[$which_conv$] = -1.000000
+set I[$which_conv$] = -1.000000
+set K[$an_current_place$] = which_conv
+gosub 4004:8026
+gosub 4004:8025		                        
+gosub 4004:8027		                                
+if (an_current_place == 6)
+  goto 4004:8009
+goto 0:0
+
+#switch 4004:8028
+set an_counter_time = (an_counter_time - 3)
+if (an_counter_time < 1)
+  set an_counter_time = 1
+goto 0:0
+
+#switch 4004:8020
+if ((our_left_shape != 9) && (our_left_color != 9)) {
+  set check_shape = our_left_shape
+  set check_color = our_left_color
+  set target_data = L[$target_index$]
+  gosub 4004:8022
+} else if (our_left_shape != 9) {
+  set check_shape = our_left_shape
+  set target_data = L[$target_index$]
+  gosub 4004:8023
+} else if (our_left_color != 9) {
+  set check_color = our_left_color
+  set target_data = L[$target_index$]
+  gosub 4004:8024
+}
+goto 0:0
+
+#switch 4004:8021
+if ((our_right_shape != 9) && (our_right_color != 9)) {
+  set check_shape = our_right_shape
+  set check_color = our_right_color
+  set target_data = L[7]
+  gosub 4004:8022
+} else if (our_left_shape != 9) {
+  set check_shape = our_right_shape
+  set target_data = L[7]
+  gosub 4004:8023
+} else if (our_right_color != 9) {
+  set check_color = our_right_color
+  set target_data = L[7]
+  gosub 4004:8024
+}
+goto 0:0
+
+#switch 4004:8022
+set target_color = func_mod[$target_data$,10]
+set target_shape = func_div[$target_data$,10]
+if ((target_color == check_color) && (target_shape == check_shape)) {
+  set an_placement_success = 1
+} else
+  set an_placement_success = 0
+goto 0:0
+
+#switch 4004:8023
+set target_shape = func_div[$target_data$,10]
+set check_color = -1.000000
+if (target_shape == check_shape) {
+  set an_placement_success = 1
+} else
+  set an_placement_success = 0
+goto 0:0
+
+#switch 4004:8024
+set target_color = func_mod[$target_data$,10]
+set check_shape = -1.000000
+if (target_color == check_color) {
+  set an_placement_success = 1
+} else
+  set an_placement_success = 0
+goto 0:0
+
+#switch 4004:8008
+if ((an_paused || anox_finished) || (anox_worldskill_successful == 1))
+  goto 0:0
+extern playsound ui/gen/ui_gen_backdoor.wav
+set poo = K[$an_current_place$]
+set H[$poo$] = F[$an_current_place$]
+set I[$poo$] = G[$an_current_place$]
+set F[$an_current_place$] = -1.000000
+set G[$an_current_place$] = -1.000000
+set an_current_place = (an_current_place - 1)
+gosub 4004:8027		                                   
+set an_restore_this_one = poo
+gosub 4004:8019		                       
+set poo = (an_current_place + 2)
+if (poo != 7)
+  set L[$poo$] = 99
+goto 0:0
+
+#switch 4004:8009
+extern playsound ui/skill/ui_skill_success.wav
+set anox_worldskill_successful = 1
+set an_finished = 80
+goto 0:0
+
+#switch 4004:8010
+extern playsound ui/gen/ui_gen_failure.wav
+set anox_worldskill_successful = 0
+set an_finished = 40
+goto 0:0
+
+#switch 4004:8011
+if (an_paused || anox_finished)
+  goto 0:0
+set an_paused = 1
+gosub 4004:9000
+goto 0:0
+
+#switch 4004:8012
+if (an_paused || anox_finished)
+  goto 0:0
+extern playsound ui/gen/ui_gen_failure.wav
+closewindow 4004:8001
+goto 0:0
+
+#switch 4004:8025
+if (which_conv == 1) {
+  extern RemoveAPE2DControl conv1
+} else if (which_conv == 2) {
+  extern RemoveAPE2DControl conv2
+} else if (which_conv == 3) {
+  extern RemoveAPE2DControl conv3
+} else if (which_conv == 4) {
+  extern RemoveAPE2DControl conv4
+} else if (which_conv == 5) {
+  extern RemoveAPE2DControl conv5
+} else if (which_conv == 6)
+  extern RemoveAPE2DControl conv6
+goto 0:0
+
+#switch 4004:8019
+if (an_restore_this_one == 1) {
+  extern CreateAPE2DControl push conv1 109 325 width=64 height=32 nodrawflag=true gamevar=which_conv returnvalue=1 holdfocusflag=false sequence=4004:8007
+} else if (an_restore_this_one == 2) {
+  extern CreateAPE2DControl push conv2 179 325 width=64 height=32 nodrawflag=true gamevar=which_conv returnvalue=2 holdfocusflag=false sequence=4004:8007
+} else if (an_restore_this_one == 3) {
+  extern CreateAPE2DControl push conv3 249 325 width=64 height=32 nodrawflag=true gamevar=which_conv returnvalue=3 holdfocusflag=false sequence=4004:8007
+} else if (an_restore_this_one == 4) {
+  extern CreateAPE2DControl push conv4 319 325 width=64 height=32 nodrawflag=true gamevar=which_conv returnvalue=4 holdfocusflag=false sequence=4004:8007
+} else if (an_restore_this_one == 5) {
+  extern CreateAPE2DControl push conv5 389 325 width=64 height=32 nodrawflag=true gamevar=which_conv returnvalue=5 holdfocusflag=false sequence=4004:8007
+} else if (an_restore_this_one == 6)
+  extern CreateAPE2DControl push conv6 459 325 width=64 height=32 nodrawflag=true gamevar=which_conv returnvalue=6 holdfocusflag=false sequence=4004:8007
+goto 0:0
+
+#switch 4004:8027
+extern RemoveAPE2DControl removebutt
+if (an_current_place == 1) {
+  extern CreateAPE2DControl push removebutt 126 273 width=32 height=16 normal=/gameflow/an/an_undo.png bright=/gameflow/an/an_undo_h.png gamevar=which_conv returnvalue=1 holdfocusflag=false sequence=4004:8008
+} else if (an_current_place == 2) {
+  extern CreateAPE2DControl push removebutt 196 273 width=32 height=16 normal=/gameflow/an/an_undo.png bright=/gameflow/an/an_undo_h.png gamevar=which_conv returnvalue=1 holdfocusflag=false sequence=4004:8008
+} else if (an_current_place == 3) {
+  extern CreateAPE2DControl push removebutt 266 273 width=32 height=16 normal=/gameflow/an/an_undo.png bright=/gameflow/an/an_undo_h.png gamevar=which_conv returnvalue=1 holdfocusflag=false sequence=4004:8008
+} else if (an_current_place == 4) {
+  extern CreateAPE2DControl push removebutt 336 273 width=32 height=16 normal=/gameflow/an/an_undo.png bright=/gameflow/an/an_undo_h.png gamevar=which_conv returnvalue=1 holdfocusflag=false sequence=4004:8008
+} else if (an_current_place == 5) {
+  extern CreateAPE2DControl push removebutt 406 273 width=32 height=16 normal=/gameflow/an/an_undo.png bright=/gameflow/an/an_undo_h.png gamevar=which_conv returnvalue=1 holdfocusflag=false sequence=4004:8008
+} else if (an_current_place == 6)
+  extern CreateAPE2DControl push removebutt 476 273 width=32 height=16 normal=/gameflow/an/an_undo.png bright=/gameflow/an/an_undo_h.png gamevar=which_conv returnvalue=1 holdfocusflag=false sequence=4004:8008
+goto 0:0
+
+#switch 4004:8026
+set an_big_tile = (an_current_place + 1)
+set an_change_shape = G[$an_current_place$]
+set an_change_color = func_mod[$an_change_shape$,10]
+set an_change_shape = func_div[$an_change_shape$,10]
+set prev_shape = L[$an_current_place$]
+set prev_color = func_mod[$prev_shape$,10]
+set prev_shape = func_div[$prev_shape$,10]
+if ((an_change_shape != 9) && (an_change_color != 9)) {
+  set L[$an_big_tile$] = ((an_change_shape * 10) + an_change_color)
+} else if (an_change_shape != 9) {
+  set L[$an_big_tile$] = ((an_change_shape * 10) + prev_color)
+} else if (an_change_color != 9)
+  set L[$an_big_tile$] = ((prev_shape * 10) + an_change_color)
+goto 0:0
+
+#switch 4004:9000
+if (ws_skill_level == 1)
+  goto 4004:9005
+if (ws_skill_level == 2)
+  goto 4004:9010
+goto 0:0

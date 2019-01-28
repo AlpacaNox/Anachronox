@@ -1,0 +1,4267 @@
+#window 64:104
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+if (func_charinparty[pal] == 3)
+  title "PAL-18"
+if (func_charinparty[rho] == 3)
+  title "Rho Bowman"
+body "Someone's gotta stay behind and watch the shuttle."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+if (func_charinparty[boots] == 2)
+  choice "Sorry, Boots" 64:105
+if (func_charinparty[pal] == 2)
+  choice "Sorry, PAL." 64:107
+if (func_charinparty[grumpos] == 2)
+  choice "Sorry, Grumpos." 64:106
+if (func_charinparty[rho] == 2)
+  choice "Sorry, Doctor." 64:108
+
+#window 64:110
+title "Boots"
+body "Don't let down your guard. We could run into more of those cue balls."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (((func_charinparty[grumpos] > 1) && (func_charinparty[pal] > 1)) && (func_charinparty[rho] > 1)) {
+    set chartoadd = 1
+    goto 64:0104
+  }
+  extern AI_GrabEntity boots bootsgrip
+  extern AI_DestroyEntity bootsgrip
+  extern add_npc_to_party boots
+  set Boots_Votowne1 = 1
+  set BOOTS_IN_PARTY = 1
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:115
+title "Boots"
+body "What are standing around here for?"
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+if (func_charinparty[grumpos] == 3)
+  choice "Let's go, you creep." 64:110
+if ((func_charinparty[grumpos] == 3) || (func_charinparty[rho] == 3))
+  choice "Wait here and watch the ship." 64:120
+if (func_charinparty[pal] == 3)
+  choice "Will you come with me, sir?" 64:110
+if (func_charinparty[pal] == 3)
+  choice "Kick up your heels and relax." 64:120
+if (func_charinparty[rho] == 3)
+  choice "C'mon, bruiser. Let's roll." 64:110
+
+#window 64:120
+title "Boots"
+body "Hey, I'm a little grease monkey. I'll try repairing the shuttle if your bring me back a sandwich."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:125
+title "Boots"
+body "It's about time you jokers showed up."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0126
+
+#window 64:126
+title "Boots"
+body "Too bad you didn't want me dragging along."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0128
+
+#window 64:128
+title "Boots"
+body "I got hungry waiting around for a sandwich, so I came out to forage for food. I ended up becoming best buds with the guard outside. I even taught him how to blow a snot rocket."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0129
+
+#window 64:129
+title "Boots"
+body "We're gonna grab a beer after his shift's over. He said I could hang out here in the meantime."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0130
+
+#window 64:130
+title "Boots"
+body "Where have you all been?"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set Boots_Votowne1 = 2
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:205
+title "Grumpos"
+body "My dreams have come true."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0206
+
+#window 64:206
+title "Grumpos"
+body "MysTech is active and I'm alive to see it."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0207
+
+#window 64:207
+title "Grumpos"
+body "And this is only the beginning. I suspect we've only just begun unlocking its secrets."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0208
+
+#window 64:208
+title "Grumpos"
+body "Let's get our hands on as many slags of MysTech as we can."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (((func_charinparty[boots] > 1) && (func_charinparty[pal] > 1)) && (func_charinparty[rho] > 1)) {
+    set chartoadd = 2
+    goto 64:0104
+  }
+  extern AI_GrabEntity grumpos grumposgrip
+  extern AI_DestroyEntity grumposgrip
+  extern add_npc_to_party grumpos
+  set Grumpos_Votowne1 = 1
+  set GRUMPOS_IN_PARTY = 1
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:210
+title "Grumpos"
+body "What's the rumpus?"
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+if ((func_charinparty[rho] == 3) || (func_charinparty[boots] == 3))
+  choice "C'mon, let's get off this rock." 64:208
+if ((func_charinparty[rho] == 3) || (func_charinparty[boots] == 3))
+  choice "Stay with the shuttle. We'll be back." 64:215
+if (func_charinparty[pal] == 3)
+  choice "Would you please help me, sir?" 64:208
+if (func_charinparty[pal] == 3)
+  choice "Maybe you should stay with the shuttle." 64:215
+
+#window 64:215
+title "Grumpos"
+body "Oh, pooh. I've been sitting in that shuttle for weeks."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:220
+title "Grumpos"
+body "There you are. I was afraid I'd have to find you."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0221
+
+#window 64:221
+title "Grumpos"
+body "Too bad you didn't want me dragging along. I got fed up just waiting, and went out to explore."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0222
+
+#window 64:222
+title "Grumpos"
+body "Turns out the guard outside collects antique staffs as a hobby. We jabbered about my walking stick for ten minutes, and became best of friends."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0223
+
+#window 64:223
+title "Grumpos"
+body "He said I could kick up my heels in here for a while."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0224
+
+#window 64:224
+title "Grumpos"
+body "Where have you all been?"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set Grumpos_Votowne1 = 2
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:305
+title "PAL-18"
+body "I don't like this place. It makes me feel funny."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (((func_charinparty[grumpos] >= 2) && (func_charinparty[boots] >= 2)) && (func_charinparty[rho] >= 2))
+    extern check_party_size @VotowneSize
+  if (@VotowneSize == 3) {
+    set chartoadd = 3
+    goto 64:0104
+  }
+  extern AI_GrabEntity pal palgrip
+  extern AI_DestroyEntity palgrip
+  extern add_npc_to_party pal
+  set Pal_Votowne1 = 1
+  set PAL_IN_PARTY = 1
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:310
+title "PAL-18"
+if ((func_charinparty[boots] == 3) || (func_charinparty[grumpos] == 3))
+  body "I'm ready for my orders, sir."
+if (func_charinparty[rho] == 3)
+  body "I'm ready for my orders, ma'am."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+choice "Come along, PAL." 64:305
+choice "Stay put and guard the ship." 64:315
+
+#window 64:315
+title "PAL-18"
+if ((func_charinparty[boots] == 3) || (func_charinparty[grumpos] == 3))
+  body "I won't let you down, sir."
+if (func_charinparty[rho] == 3)
+  body "I won't let you down, ma'am."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern AI_GrabEntity pal pal_handle
+  extern AI_Path pal_handle pal_path1
+  extern AI_ReleaseEntity pal_handle
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:320
+title "PAL-18"
+body "It's about time you guys showed up!"
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0321
+
+#window 64:321
+title "PAL-18"
+body "Too bad you didn't want me dragging along. I got scared waitin' by myself so I came out lookin' for you guys."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0322
+
+#window 64:322
+title "PAL-18"
+body "Turns out the guard outside is a big ol' robot lover. He's got half a BUDDI unit in his garage that he's trying to build."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0323
+
+#window 64:323
+title "PAL-18"
+body "He said I could wait in here if I was too scared outside."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0324
+
+#window 64:324
+title "PAL-18"
+body "Where have you been?"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set Pal_Votowne1 = 2
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:330
+title "PAL-18"
+body "Ain't you got some robots to kill? Get your murderin' butt away from me."
+cam left lift(40) restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:405
+title "Rho Bowman"
+body "Can I cook or what?"
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity rho rho_handle
+  extern ANIM_PlayAnim rho_handle talk_e 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0406
+
+#window 64:406
+title "Rho Bowman"
+body "The spatial disturbance that split Sunder in half must have activated my MysTech. And if I'm right about its properties, this isn't the only slag that's active."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim rho_handle talk_b 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0407
+
+#window 64:407
+title "Rho Bowman"
+body "I think every slag of MysTech around the galaxy can now release the energy that's always been dormant inside it."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim rho_handle talk_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0408
+
+#window 64:408
+title "Rho Bowman"
+body "We were drifting in space for a few days before I noticed that my pocket was glowing. It was a slag I keep with me for sentimental reasons."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim rho_handle talk_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0409
+
+#window 64:409
+title "Rho Bowman"
+body "I didn't wanna jump to conclusions until I could test it out in an open space, but I was pretty sure I knew what it meant. I've been anticipating this for most of my adult life."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim rho_handle talk_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0416
+
+#window 64:416
+title "Rho Bowman"
+body "So if the coast is clear, I wanna share my thoughts and findings with everyone before we move on."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity pal pal_handle
+  extern AI_WaitAndFace pal_handle -1 rho_eyeline
+  extern ANIM_PlayAnim rho_handle talk_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0410
+
+#window 64:410
+title "Rho Bowman"
+body "Let's use that worktop over there."
+cam left restore zip
+startswitch {
+  extern AI_WaitAndFace rho_handle -1 worktop_eyeline
+  extern ANIM_PlayAnim rho_handle amb_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity rho_handle
+  extern AI_ReleaseEntity pal_handle
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5000
+
+#window 64:411
+title "Rho Bowman"
+body "Anyway, I guess this vindicates me in the scientific community. Too bad there's no scientific community left."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0412
+
+#window 64:412
+title "Rho Bowman"
+body "Whoever or whatever caused that disturbance is responsible for the death of six million people, and there's nothing to suggest it won't happen again."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0413
+
+#window 64:413
+title "Rho Bowman"
+if (@gotcellsfromrho)
+  body "Here. These shieldcells should give us a little protection from whatever lies ahead. "
+body "C'mon, let's get off this rock."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  if (@gotcellsfromrho == 1)
+    set @gotcellsfromrho = 0
+  if (Rho_Votowne1 == 0) {
+    set Chamber_NoMoreShieldCells = 1
+    extern addnew_to_inventory "Callossum Shieldcell" 2
+    set @gotcellsfromrho = 1
+    set Rho_Votowne1 = 1
+  }
+}
+
+finishswitch {
+  if (((func_charinparty[grumpos] > 1) && (func_charinparty[pal] > 1)) && (func_charinparty[boots] > 1)) {
+    set chartoadd = 4
+    goto 64:0104
+  }
+  extern AI_GrabEntity rho rhogrip
+  extern AI_DestroyEntity rhogrip
+  extern add_npc_to_party rho
+  set Rho_Votowne1 = 1
+  set RHO_IN_PARTY = 1
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:415
+title "Rho Bowman"
+body "What's the plan?"
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+if (func_charinparty[boots] == 3)
+  choice "C'mon, sister. I need your help." 64:413
+if (func_charinparty[grumpos] == 3)
+  choice "Would you join me, doctor?" 64:413
+if ((func_charinparty[grumpos] == 3) || (func_charinparty[boots] == 3))
+  choice "Stay with the shuttle. We'll be back." 64:425
+if (func_charinparty[pal] == 3)
+  choice "Would you please help me, ma'am?" 64:413
+if (func_charinparty[pal] == 3)
+  choice "Maybe you should stay with the shuttle." 64:425
+
+#window 64:425
+title "Rho Bowman"
+body "You're right. I'm too giddy to be any use. I'll wait here."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+
+#window 64:430
+title "Rho"
+body "Funny bumping into you here."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0431
+
+#window 64:431
+title "Rho"
+body "Too bad you didn't want me dragging along. I was getting restless just waiting around. I was determined to find a way off this planet myself."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0432
+
+#window 64:432
+title "Rho"
+body "It wasn't too hard convincing the guard outside that I'm an Ally of the Council."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0433
+
+#window 64:433
+title "Rho"
+body "What a funny guy. He didn't know I was female."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0434
+
+#window 64:434
+title "Rho"
+body "Where have you all been?"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set Rho_Votowne1 = 2
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:505
+title "Keeber"
+body "Welcome to Votowne."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 bootshandle
+  extern AI_GrabEntity keeber keeber_handle
+  extern AI_WaitAndFace keeber_handle -1 playerchar0
+  extern ANIM_PlayAnim keeber_handle talk_a 0 0 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0506
+
+#window 64:506
+title "Keeber"
+body "My name is Keeber. I am cultural attache and diplomatic liaison for the hospitality committee."
+cam left restore zip
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0507
+
+#window 64:507
+title "Keeber"
+body "Please accept my sincerest apologies on behalf of the Democratus High Council."
+cam left restore zip
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0508
+
+#window 64:508
+title "Keeber"
+body "Those sentry Robodes should never have been on active duty. By the time we realized our mistake, the automatic tractor beam system was already locked on your shuttle."
+cam left restore zip
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0509
+
+#window 64:509
+title "Keeber"
+body "Yes..."
+cam left restore zip
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0510
+
+#window 64:510
+title "Keeber"
+body "...well."
+cam left restore zip
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0511
+
+#window 64:511
+title "Keeber"
+body "I'll have to cut my greeting rather short. The High Council just called an emergency session, putting the entire administrative staff, myself included, on full alert."
+cam left restore zip
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0512
+
+#window 64:512
+title "Keeber"
+body "Feel free to roam the city, and make yourselves at home while we resolve this emergency. I'll be in touch."
+cam left restore zip
+finishswitch {
+  set chamber_keeber_walking = 1
+  extern AI_Path keeber_handle keeberpath1
+  extern AI_ReleaseEntity keeber_handle
+  extern AI_ReleaseEntity bootshandle
+  extern AI_TalkStop keeber
+  set vote1 = func_drand[1,2]
+  set vote2 = func_drand[1,2]
+  set vote3 = func_drand[1,2]
+  set vote4 = func_drand[1,2]
+  set vote5 = func_drand[1,2]
+  set vote6 = func_drand[1,2]
+  set vote7 = 2
+  set vote8 = func_drand[1,2]
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:515
+title "Keeber"
+body "Your ship? Oh, I'm afraid all our resources are diverted at the moment. Our crews will work on it as soon as they're free."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern AI_TalkStop keeber
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+
+#window 64:520
+title "Keeber"
+body "I'm afraid I'm needed elsewhere. Please, excuse me."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern AI_TalkStop keeber
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+
+#window 64:602
+title "Bambam"
+body "We've been through this already! It might disarm them, but we'd lose control entirely if they ever came back online. I'd rather not."
+cam left to(bambam) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 bambam
+  extern AI_GrabEntity bambam bambam_handle
+  extern ANIM_PlayAnim bambam_handle talk_a 0 0 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity bambam_handle
+  extern AI_ReleaseEntity anjelo_handle
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:603
+title "Bambam"
+body "If they were on the fritz, there would be 200 amperes of electricity shooting through your body right now. I don't think so."
+cam left to(bambam) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 bambam
+  extern AI_GrabEntity bambam bambam_handle
+  extern ANIM_PlayAnim bambam_handle talk_a 0 0 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity bambam_handle
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:604
+title "Bambam"
+body "If we open the panel, you'll start tugging on random wires. NO."
+cam left to(bambam) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 bambam
+  extern AI_GrabEntity bambam bambam_handle
+  extern ANIM_PlayAnim bambam_handle gest_g 0 0 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity bambam_handle
+  extern AI_ReleaseEntity anjelo_handle
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:605
+title "Bambam"
+if (func_charinparty[boots] < 2)
+  body "He was complaining about being hungry."
+if (func_charinparty[grumpos] < 2)
+  body "He was complaining about being bored."
+if (func_charinparty[pal] < 2)
+  body "He was complaining about being scared."
+if (func_charinparty[rho] < 2)
+  body "She was complaining about feeling restless."
+cam left restore zip
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:610
+title "Anjelo"
+body "Let's drain the oil before we remove it."
+cam left to(anjelo) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 anjelo
+  extern AI_GrabEntity anjelo anjelo_handle
+  extern ANIM_PlayAnim anjelo_handle talk_a 0 0 0
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0611
+
+#window 64:611
+title "Bambam"
+body "NO! This is primitive technology. Who knows what that would do."
+cam left to(bambam) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 bambam
+  extern AI_GrabEntity bambam bambam_handle
+  extern ANIM_PlayAnim bambam_handle gest_g 0 0 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity bambam_handle
+  extern AI_ReleaseEntity anjelo_handle
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:702
+title "Anjelo"
+body "Maybe if we cut the feed wires...?"
+cam left to(anjelo) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 anjelo
+  extern AI_GrabEntity anjelo anjelo_handle
+  extern ANIM_PlayAnim anjelo_handle gest_h 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0602
+
+#window 64:703
+title "Anjelo"
+body "Maybe the circuit interrupters are on the fritz...?"
+cam left to(anjelo) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 anjelo
+  extern AI_GrabEntity anjelo anjelo_handle
+  extern ANIM_PlayAnim anjelo_handle gest_h 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0603
+
+#window 64:704
+title "Anjelo"
+body "Maybe if we open the panel...?"
+cam left to(anjelo) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 anjelo
+  extern AI_GrabEntity anjelo anjelo_handle
+  extern ANIM_PlayAnim anjelo_handle gest_h 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0604
+
+#window 64:705
+title "Bambam"
+if (func_charinparty[boots] < 2)
+  body "A guy wearing a trench coat just wandered by here a few minutes ago. Friend of yours?"
+if (func_charinparty[grumpos] < 2)
+  body "An old man with a big beard just wandered by here a few minutes ago. Friend of yours?"
+if (func_charinparty[pal] < 2)
+  body "A cute little robot just wandered by here a few minutes ago. Friend of yours?"
+if (func_charinparty[rho] < 2)
+  body "A lady in green wearing dark glasses just wandered by here a few minutes ago. Friend of yours?"
+cam left restore zip
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:802
+title "Fraynk"
+body "I give up. We've been at this for hours."
+cam left lift(45) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 fraynk
+  extern AI_GrabEntity fraynk fraynk_handle
+  extern ANIM_PlayAnim fraynk_handle amb_e 0 0 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity fraynk_handle
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:803
+title "Fraynk"
+if (func_charinparty[rho] > 2)
+  body "She wouldn't even help us."
+if (func_charinparty[rho] < 1)
+  body "He wouldn't even help us."
+cam left lift(45) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 fraynk
+  extern AI_GrabEntity fraynk fraynk_handle
+  extern ANIM_PlayAnim fraynk_handle amb_e 0 0 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity fraynk_handle
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:805
+title "Fraynk"
+body "The High Council ordered us to give your vessel a tune-up. We should be done in a few hours."
+cam left restore zip
+talk npc talk_a stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:902
+title "Sergeant Guff"
+body "Hell, I'd be a good neighbor and invite you inside, but nobody's allowed in the Council Chambers when there's an emergency meeting in session."
+cam left to(guff) restore zip
+startswitch {
+  extern ANIM_PlayAnim guff_handle gest_h 0 0 0
+  set been_to_2 = 1
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+if (func_charinparty[boots] == 3)
+  choice "C'mon, bub. It'll only take a second. We need to ask 'em to fix our jalopy." 64:916
+if (func_charinparty[boots] == 3)
+  choice "I'm not scared of you, champ. You don't even have a weapon." 64:904
+if (func_charinparty[grumpos] == 3)
+  choice "Look here, young soldier. We only need a minute with the Council. Nothing more." 64:916
+if (func_charinparty[grumpos] == 3)
+  choice "I'm sure I could out-muscle you past that door. You're pretty gangly." 64:904
+if (func_charinparty[pal] == 3)
+  choice "I'm just a toy robot. Quit givin' me the business. We just wanna see the Council." 64:916
+if (func_charinparty[pal] == 3)
+  choice "Sir, I know I look like a toy robot. But I'm actually pretty deadly." 64:904
+if (func_charinparty[rho] == 3)
+  choice "Please, sir. We need your help. Can we see the Council for a moment?" 64:916
+if (func_charinparty[rho] == 3)
+  choice "Don't underestimate me, sir. I suggest you let us in." 64:904
+
+#window 64:903
+title "Sergeant Guff"
+body "I can't just knock on their door and sweep you in. They're very serious about not being disturbed. Only Allies of the Council are trusted inside."
+cam left to(guff) restore zip
+startswitch {
+  extern ANIM_PlayAnim guff_handle gest_h 0 0 0
+  set been_to_3 = 1
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+choice "Fine, fine. How do I become an Ally of the Council?" 64:905
+if ((func_charinparty[boots] == 3) && (been_to_4 == 0))
+  choice "I'm not scared of you, champ. You don't even have a weapon." 64:917
+if ((func_charinparty[boots] == 3) && (been_to_4 == 1))
+  choice "I don't think you understand who you're dealing with. Look at us. We'll cream you." 64:909
+if ((func_charinparty[grumpos] == 3) && (been_to_4 == 0))
+  choice "I'm sure I could out-muscle you past that door. You're pretty gangly." 64:917
+if ((func_charinparty[grumpos] == 3) && (been_to_4 == 1))
+  choice "Son, I think we've been pretty patient with you.  Let us see the Council. NOW." 64:909
+if ((func_charinparty[pal] == 3) && (been_to_4 == 0))
+  choice "Sir, I know I look like a toy robot. But I'm actually pretty deadly." 64:917
+if ((func_charinparty[pal] == 3) && (been_to_4 == 1))
+  choice "I'm so ready to take you on. I'll kick in my reserves for extra beating action." 64:909
+if ((func_charinparty[rho] == 3) && (been_to_4 == 0))
+  choice "Don't underestimate me, sir. I suggest you let us in." 64:917
+if ((func_charinparty[rho] == 3) && (been_to_4 == 1))
+  choice "You probably think its antique, but MysTech's quite powerful. Need proof?" 64:909
+
+#window 64:904
+title "Sergeant Guff"
+body "The Administration InterRing you're standing on is the most policed section of the Ring. Don't make me call for back-up."
+cam left to(guff) restore zip
+startswitch {
+  extern ANIM_PlayAnim guff_handle gest_h 0 0 0
+  set been_to_4 = 1
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+if ((func_charinparty[boots] == 3) && (been_to_3 == 0))
+  choice "Cool it, I was only playin'. I just wanna see the council, that's all." 64:903
+if ((func_charinparty[boots] == 3) && (been_to_3 == 1))
+  choice "Cool it, I was only playin'. I just wanna see the council, that's all." 64:905
+if ((func_charinparty[grumpos] == 3) && (been_to_3 == 0))
+  choice "Don't be so serious. Just lemme see the Council and I'll leave you alone." 64:903
+if ((func_charinparty[grumpos] == 3) && (been_to_3 == 1))
+  choice "Don't be so serious. Just lemme see the Council and I'll leave you alone." 64:905
+if ((func_charinparty[pal] == 3) && (been_to_3 == 0))
+  choice "Man, can't you take a joke? I just wanna see the Council for a second." 64:903
+if ((func_charinparty[pal] == 3) && (been_to_3 == 1))
+  choice "Man, can't you take a joke? I just wanna see the Council for a second." 64:905
+if ((func_charinparty[rho] == 3) && (been_to_3 == 0))
+  choice "Did you think I was serious just now? Don't be silly. Can I see the Council?" 64:903
+if ((func_charinparty[rho] == 3) && (been_to_3 == 1))
+  choice "Did you think I was serious just now? Don't be silly. Can I see the Council?" 64:905
+choice "I'm scared. Lord forbid you stun me." 64:909
+
+#window 64:905
+title "Sergeant Guff"
+if ((func_charinparty[boots] == 3) || (func_charinparty[grumpos] == 3))
+  body "Sir, in order to see the Council, you must gain their trust."
+if (func_charinparty[pal] == 3)
+  body "Boy, in order to see the Council, you must gain their trust."
+if (func_charinparty[rho] == 3)
+  body "Ma'am, in order to see the Council, you must gain their trust."
+cam left to(guff) restore zip
+startswitch {
+  extern ANIM_PlayAnim guff_handle gest_h 0 0 0
+  set been_to_5 = 1
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0906
+
+#window 64:906
+title "Sergeant Guff"
+body "And in order to gain their trust, you must prove you think like them."
+cam left to(guff) restore zip
+startswitch {
+  extern ANIM_PlayAnim guff_handle gest_h 0 0 0
+  set been_to_5 = 1
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0907
+
+#window 64:907
+title "Sergeant Guff"
+body "Why don't you vote in today's election? If you're of like mind, they will consider you an Ally of the Council."
+cam left to(guff) restore zip
+startswitch {
+  extern ANIM_PlayAnim guff_handle gest_h 0 0 0
+  set been_to_7 = 1
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+choice "Sounds easy enough. Where do I vote?" 64:908
+if ((func_charinparty[boots] == 3) && (been_to_9 == 0))
+  choice "Why don't I pick your teeth outta my fist instead?" 64:909
+if ((func_charinparty[boots] == 3) && ((been_to_9 == 1) && (been_to_10 == 0)))
+  choice "Why don't I pick your teeth outta my fist instead?" 64:910
+if ((func_charinparty[grumpos] == 3) && (been_to_9 == 0))
+  choice "Why don't I pick your teeth outta my staff instead?" 64:909
+if ((func_charinparty[grumpos] == 3) && ((been_to_9 == 1) && (been_to_10 == 0)))
+  choice "Why don't I pick your teeth outta my staff instead?" 64:910
+if ((func_charinparty[pal] == 3) && (been_to_9 == 0))
+  choice "Why don't I pick your teeth outta my claw instead?" 64:909
+if ((func_charinparty[pal] == 3) && ((been_to_9 == 1) && (been_to_10 == 0)))
+  choice "Why don't I pick your teeth outta my claw instead?" 64:910
+if ((func_charinparty[rho] == 3) && (been_to_9 == 0))
+  choice "Why don't I pick your teeth outta my MysTech instead?" 64:909
+if ((func_charinparty[rho] == 3) && ((been_to_9 == 1) && (been_to_10 == 0)))
+  choice "Why don't I pick your teeth outta my MysTech instead?" 64:910
+
+#window 64:908
+title "Sergeant Guff"
+body "I believe the closest voting station is outside the Votowne Administration Center."
+cam left to(guff) restore zip
+startswitch {
+  extern ANIM_PlayAnim guff_handle gest_h 0 0 0
+  set KNOW_NEED_ALLY_CARD = 1
+  extern add_quest "Need To Vote"
+  set been_to_8 = 1
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0918
+
+#window 64:909
+title "Sergeant Guff"
+if ((func_charinparty[boots] == 3) || (func_charinparty[grumpos] == 3))
+  body "Sir, these Stun Wands have a KILL setting. I'm not threatening you. I'm just warning you."
+if (func_charinparty[pal] == 3)
+  body "Boy, these Stun Wands have a KILL setting. I'm not threatening you. I'm just warning you."
+if (func_charinparty[rho] == 3)
+  body "Ma'am, these Stun Wands have a KILL setting. I'm not threatening you. I'm just warning you."
+cam left to(guff) restore zip
+startswitch {
+  extern ANIM_PlayAnim guff_handle gest_h 0 0 0
+  set been_to_9 = 1
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+if ((func_charinparty[boots] == 3) && (been_to_3 == 0))
+  choice "Don't get so uptight. I just wanna see the council. No foolin'." 64:903
+if (((func_charinparty[boots] == 3) && (been_to_3 == 1)) && (been_to_5 == 0))
+  choice "Don't get so uptight. I just wanna see the council. No foolin'." 64:905
+if (((func_charinparty[boots] == 3) && (been_to_3 == 1)) && (been_to_5 == 1))
+  choice "Don't get so uptight. I just wanna see the council. No foolin'." 64:908
+if ((func_charinparty[grumpos] == 3) && (been_to_3 == 0))
+  choice "You need a sense of humor. I just wanna see the council." 64:903
+if (((func_charinparty[grumpos] == 3) && (been_to_3 == 1)) && (been_to_5 == 0))
+  choice "You need a sense of humor. I just wanna see the council." 64:905
+if (((func_charinparty[grumpos] == 3) && (been_to_3 == 1)) && (been_to_5 == 1))
+  choice "You need a sense of humor. I just wanna see the council." 64:908
+if ((func_charinparty[pal] == 3) && (been_to_3 == 0))
+  choice "Don't get so uptight. I just wanna see the council. No foolin'." 64:903
+if (((func_charinparty[pal] == 3) && (been_to_3 == 1)) && (been_to_5 == 0))
+  choice "Don't get so uptight. I just wanna see the council. No foolin'." 64:905
+if (((func_charinparty[pal] == 3) && (been_to_3 == 1)) && (been_to_5 == 1))
+  choice "Don't get so uptight. I just wanna see the council. No foolin'." 64:908
+if ((func_charinparty[rho] == 3) && (been_to_3 == 0))
+  choice "You need a sense of humor. I just wanna see the council." 64:903
+if (((func_charinparty[rho] == 3) && (been_to_3 == 1)) && (been_to_5 == 0))
+  choice "You need a sense of humor. I just wanna see the council." 64:905
+if (((func_charinparty[rho] == 3) && (been_to_3 == 1)) && (been_to_5 == 1))
+  choice "You need a sense of humor. I just wanna see the council." 64:908
+choice "Well, I AM threatening you. Let me in to see the Council." 64:910
+
+#window 64:910
+title "Sergeant Guff"
+body "Threatening me isn't going to help the situation. Cooperating and acting like an adult will."
+cam left to(guff) restore zip
+startswitch {
+  extern ANIM_PlayAnim guff_handle gest_h 0 0 0
+  set been_to_10 = 1
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+if ((func_charinparty[boots] == 3) && (been_to_3 == 0))
+  choice "I can act like an adult. Really I can. Can I give you a note to pass on?" 64:903
+if (((func_charinparty[boots] == 3) && (been_to_3 == 1)) && (been_to_5 == 0))
+  choice "I can act like an adult. Really I can. Can I give you a note to pass on?" 64:905
+if (((func_charinparty[boots] == 3) && (been_to_3 == 1)) && (been_to_5 == 1))
+  choice "I can act like an adult. Really I can. Can I give you a note to pass on?" 64:908
+if ((func_charinparty[grumpos] == 3) && (been_to_3 == 0))
+  choice "Do you know how old I am, son? Do me a favor, and let me pass them a note." 64:903
+if (((func_charinparty[grumpos] == 3) && (been_to_3 == 1)) && (been_to_5 == 0))
+  choice "Do you know how old I am, son? Do me a favor, and let me pass them a note." 64:905
+if (((func_charinparty[grumpos] == 3) && (been_to_3 == 1)) && (been_to_5 == 1))
+  choice "Do you know how old I am, son? Do me a favor, and let me pass them a note." 64:908
+if ((func_charinparty[pal] == 3) && (been_to_3 == 0))
+  choice "I can act like an adult. Really I can. Can I give you a note to pass on?" 64:903
+if (((func_charinparty[pal] == 3) && (been_to_3 == 1)) && (been_to_5 == 0))
+  choice "I can act like an adult. Really I can. Can I give you a note to pass on?" 64:905
+if (((func_charinparty[pal] == 3) && (been_to_3 == 1)) && (been_to_5 == 1))
+  choice "I can act like an adult. Really I can. Can I give you a note to pass on?" 64:908
+if ((func_charinparty[rho] == 3) && (been_to_3 == 0))
+  choice "I was simply testing your mettle. Will you at least pass them a note for me?" 64:903
+if (((func_charinparty[rho] == 3) && (been_to_3 == 1)) && (been_to_5 == 0))
+  choice "I was simply testing your mettle. Will you at least pass them a note for me?" 64:905
+if (((func_charinparty[rho] == 3) && (been_to_3 == 1)) && (been_to_5 == 1))
+  choice "I was simply testing your mettle. Will you at least pass them a note for me?" 64:908
+choice "But threatening you is fun." 64:911
+
+#window 64:911
+title "Sergeant Guff"
+body "You're hopeless."
+cam left to(guff) restore zip
+startswitch {
+  extern ANIM_PlayAnim guff_handle gest_h 0 0 0
+  set badboy = 1
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity guff_handle
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:912
+title "Sergeant Guff"
+body "Are you ready to act like an adult?"
+cam left to(guff) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_GrabEntity guff guff_handle
+  extern AI_WaitAndFace bootshandle -1 guff
+  extern ANIM_PlayAnim guff_handle gest_h 0 0 0
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+if (been_to_3 == 0)
+  choice "Yeah, I was just kidding. How can I get in to see the Council?" 64:903
+if (been_to_3 == 1)
+  choice "Yeah, I was just kidding. How can I get in to see the Council?" 64:905
+choice "Are you?" 64:911
+
+#window 64:913
+title "Sergeant Guff"
+if (func_charinparty[pal] == 3)
+  body "Too bad bots haven't earned the right to vote. Maybe your master can get a Gold Council Ally Card for you."
+if (func_charinparty[pal] != 3)
+  body "Hope you come back with a Gold Council Ally Card! It's accepted at over a hundred locations."
+cam left restore zip
+talk npc gest_g stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:914
+title "Sergeant Guff"
+if (have_it == 1)
+  body "So you're an Ally of the Council, huh? Okay, I guess you can wait in the lobby until the emergency session is over. But whatever you do, don't disturb them."
+if (have_it == 0)
+  body "I see you've got a Silver VoteNote Card. Nice and shiny, isn't it? Too bad you need a Gold Council Ally Card to see the High Council."
+cam left restore zip
+talk npc gest_h stay
+finishswitch {
+  if (have_it == 1) {
+    target partydoor
+    set Chamber_GruffApprovedGoldCard = 1
+    extern complete_quest "Need To Use Ally Card"
+  }
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:915
+title "Sergeant Guff"
+body "I'd stay out of the hangar bays if I were you. Those malfunctioning Robodes will kill you without a care."
+cam left to(guff) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_GrabEntity guff guff_handle
+  extern AI_WaitAndFace bootshandle -1 guff
+  extern ANIM_PlayAnim guff_handle gest_h 0 0 0
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0902
+
+#window 64:916
+title "Sergeant Guff"
+body "Look, I'm sure your business is all very important. But the High Council's in the middle of a very important emergency session."
+cam left to(guff) restore zip
+startswitch {
+  extern ANIM_PlayAnim guff_handle gest_h 0 0 0
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0903
+
+#window 64:917
+title "Sergeant Guff"
+if (func_charinparty[boots] == 3)
+  body "Sir, I'll have you know I'm armed with a Stun Wand. It has enough voltage to put down a fellow your size."
+if (func_charinparty[grumpos] == 3)
+  body "Sir, I'll have you know I'm armed with a Stun Wand. It has enough voltage to put down an old man."
+if (func_charinparty[pal] == 3)
+  body "Boy, I'll have you know I'm armed with a Stun Wand. It has enough voltage to put down any robotic companions."
+if (func_charinparty[rho] == 3)
+  body "Ma'am, I'll have you know I'm armed with a Stun Wand. It has enough voltage to put down an average-sized adult."
+cam left to(guff) restore zip
+startswitch {
+  extern ANIM_PlayAnim guff_handle gest_h 0 0 0
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0904
+
+#window 64:918
+title "Sergeant Guff"
+body "Take this hallway all the way down and you'll end up in the City District of the Ring. Just ask for directions. You'll find it easy enough."
+cam left to(guff) restore zip
+startswitch {
+  extern ANIM_PlayAnim guff_handle gest_h 0 0 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity guff_handle
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:921
+title "Sergeant Guff"
+body "I'm really proud of you guys. It seems like only yesterday that you came wandering by from the hanger bays. How far we've come, huh?"
+cam left restore zip
+talk npc gest_h stay
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0922
+
+#window 64:922
+title "Sergeant Guff"
+body "You're good people. Honest people. Just people."
+cam left restore zip
+talk npc gest_h stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0923
+
+#window 64:923
+title "Sergeant Guff"
+body "Here's a token of my appreciation."
+cam left restore zip
+talk npc gest_h stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0924
+
+#window 64:930
+title "Sergeant Guff"
+if (func_charinparty[boots] == 3)
+  body "I can't believe it! Ambassador Boots in the flesh!"
+if (func_charinparty[pal] == 3)
+  body "I can't believe it! Ambassador Ayteen in the flesh!"
+if (func_charinparty[rho] == 3)
+  body "I can't believe it! Ambassador Bowman in the flesh!"
+if (func_charinparty[stiletto] == 3)
+  body "I can't believe it! Ambassador Anyway in the flesh!"
+if (func_charinparty[paco] == 3)
+  body "I can't believe it! Ambassador Estrella in the flesh!"
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  if (talk_v2_guff < 2)
+    set talk_v2_guff = (talk_v2_guff + 1)
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:0935
+
+#window 64:935
+title "Sergeant Guff"
+body "You must be here for the Festival of Choice."
+cam left restore zip
+talk npc gest_h stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:1105
+title "Fatima"
+body "Sorry to interrupt, but I just dug up some interesting info on this dump."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 bootshandle
+  extern AI_SpawnEntity fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  echo "*** FATIMA *** handle was %d", fatima_handle
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace fatima_handle -1 playerchar0
+  extern AI_WaitAndFace bootshandle -1 fatima
+  extern ANIM_PlayAnim fatima_handle talk_a 0 0 0
+  set FATIMA_VOTOWNE = 0
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:1106
+
+#window 64:1106
+title "Fatima"
+body "Formerly known as Tevolin II, the planet of Democratus was made up of hardline isolationists before the sudden fall of Emperor Ducalion last year. They've only recently become interested in interplanetary relations."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern ANIM_PlayAnim fatima_handle talk_a 0 0 0
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:1107
+
+#window 64:1107
+title "Fatima"
+body "The whole planet is run by committee. They are extremely bureaucratic, with an elitist class living in a ring floating around the planet, and a working class that has been relegated to the surface."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern ANIM_PlayAnim fatima_handle talk_a 0 0 0
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:1108
+
+#window 64:1108
+title "Fatima"
+body "Limited-access visitors report amazing technology, but none of it is allowed to be exported."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+  extern ANIM_PlayAnim fatima_handle talk_a 0 0 0
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:1109
+
+#window 64:1109
+title "Fatima"
+body "Either that helps or it doesn't. Have fun."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern ANIM_PlayAnim fatima_handle talk_a 0 0 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity bootshandle
+  extern AI_DestroyEntity fatima_handle
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:1205
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+if (func_charinparty[pal] == 3)
+  title "PAL-18"
+if (func_charinparty[rho] == 3)
+  title "Rho Bowman"
+if (func_charinparty[boots] == 3)
+  body "Sorry, charlie. This bird's outta commission."
+if (func_charinparty[grumpos] == 3)
+  body "This jalopy's officially landlocked."
+if (func_charinparty[pal] == 3)
+  body "This banana boat's TKO!"
+if (func_charinparty[rho] == 3)
+  body "I bought her for a bargain at a Sender Station flea market. I guess you get what you pay for."
+cam left restore zip
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:1210
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+if (func_charinparty[pal] == 3)
+  title "PAL-18"
+if (func_charinparty[rho] == 3)
+  title "Rho Bowman"
+if (func_charinparty[stiletto] == 3)
+  title "Stiletto"
+if (func_charinparty[paco] == 3)
+  title "Paco \"El Puño\" Estrella"
+if (func_charinparty[boots] == 3)
+  body "Do we wanna leave now or goof around here some more?"
+if (func_charinparty[grumpos] == 3)
+  body "Should we fly the coop or putt around here some more?"
+if (func_charinparty[pal] == 3)
+  body "What now? Stay putski or skip town?"
+if (func_charinparty[rho] == 3)
+  body "Do we want to stay here and waste more time or get this show on the road?"
+if (func_charinparty[stiletto] == 3)
+  body "Should I stay or should I go?"
+if (func_charinparty[paco] == 3)
+  body "Stay or leave?"
+cam left restore zip
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+choice "Stay." 0:0
+choice "Leave." 64:1215
+
+#window 64:1220
+title "Fatima"
+body "I know we're in a hurry to get to Limbus, but I think everyone's pretty tired and cranky. We should take the High Council up on their offer and spend the night at the Republic Inn."
+cam left from(PlayerChar0) to(fatima2) restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 bootshandle
+  extern AI_SpawnEntity fatima_handle fatima_holo fatima 0:0 fatima_spawn2
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace fatima_handle -1 playerchar0
+  extern AI_WaitAndFace bootshandle -1 fatima
+  extern ANIM_PlayAnim fatima_handle talk_a 0 0 0
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:1221
+
+#window 64:1221
+title "Fatima"
+body "Besides, I don't think they're done tuning up the ship."
+cam left from(PlayerChar0) to(fatima2) restore zip
+startswitch {
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+  extern ANIM_PlayAnim fatima_handle talk_a 0 0 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity bootshandle
+  extern AI_DestroyEntity fatima_handle
+  set @fatimaScold = 1
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:1225
+title "Fatima"
+if (func_charinparty[stiletto] == 3)
+  body "Look, I know you wanna run the show... but your friends need rest, Sera. Why don't you think about someone else for once?"
+if (func_charinparty[stiletto] != 3)
+  body "Don't be stubborn. There's a soft bed waiting for you at the Republic Inn."
+cam left from(PlayerChar0) to(fatima2) restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 bootshandle
+  extern AI_SpawnEntity fatima_handle fatima_holo fatima 0:0 fatima_spawn2
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace fatima_handle -1 playerchar0
+  extern AI_WaitAndFace bootshandle -1 fatima
+  extern ANIM_PlayAnim fatima_handle talk_a 0 0 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity bootshandle
+  extern AI_DestroyEntity fatima_handle
+}
+
+style "style_demo"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:1305
+title "Jorry"
+body "Surely there's been some mistake."
+cam left restore zip
+talk npc gest_h stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:1310
+title "Jorry"
+body "Full disclosure, Ambassador. We need the help."
+cam left restore zip
+talk npc gest_h stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:1315
+
+#window 64:1315
+title "Jorry"
+body "It's irresponsible to keep such important knowledge a secret."
+cam left restore zip
+talk npc gest_h stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:1405
+title "Bornuff"
+body "No outworlder could possibly emulate the wisdom of the council."
+cam left restore zip
+talk npc gest_h stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:1410
+title "Bornuff"
+body "Ambassador! What a pleasure to see you. I'm Bornuff with the Planets Abroad: Full Disclosure lobby."
+cam left restore zip
+talk npc gest_h stay
+startswitch {
+  set talk_bornuff = 1
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:1415
+
+#window 64:1415
+title "Bornuff"
+body "It is our belief that the information pertaining to the imminent destruction of our universe -- which currently is only known by the population of the Votowne Ring, and the six ambassadors -- should become a matter of public record."
+cam left restore zip
+talk npc gest_h stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:1420
+title "Bornuff"
+body "Doctor Bowman should draft up an explanation and send it to all the major news feeds, including this SenderNet. I'm sure a message from the well-respected Rho Bowman would be well received."
+cam left restore zip
+talk npc gest_h stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:1505
+title "Champawatt"
+body "Beyond those doors, the High Council of Democratus faces every decision with will, purpose, and determination."
+cam left restore zip
+talk npc gest_h stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:1510
+title "Champawatt"
+body "Did you interrupt the council during an emergency session?"
+cam left restore zip
+talk npc gest_h stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:1605
+title "Hoothan"
+body "Maybe a subcommittee is in order to settle this matter."
+cam left lift(40) restore zip
+talk npc sit_d stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:1610
+title "Hoothan"
+body "I'm your biggest fan! I've watched every minute of footage available."
+cam left lift(40) restore zip
+talk npc sit_d stay
+startswitch {
+  set talk_hoothan = 1
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:1615
+
+#window 64:1615
+title "Hoothan"
+body "I thought you would be taller."
+cam left lift(40) restore zip
+talk npc sit_d stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:1620
+title "Hoothan"
+body "Will there be a very special \"Festival of Choice\" episode next week?"
+cam left lift(40) restore zip
+talk npc sit_d stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:1705
+title "Warship Drone LM34456-B"
+body "Remote thermistor check."
+cam left restore zip
+talk npc talk_b stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:1710
+title "Warship Drone LM34456-B"
+body "Antipodean capacitor check."
+cam left restore zip
+talk npc talk_b stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:1715
+title "Warship Drone LM34456-B"
+body "Variable resistor check."
+cam left restore zip
+talk npc talk_b stay
+finishswitch {
+  set @DronerBoner1 = 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:2501
+title "Councilman Hagen"
+if (ELEMENTOR_ACTIVE == 0)
+  body "I think the vote is unanimous. You have been elected to save us."
+if (ELEMENTOR_ACTIVE == 1)
+  body "We look forward to continuing the adventure. Don't forget that you're permanent guests of the Republic Inn."
+cam left restore zip
+talk npc gest_h stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:2601
+title "Councilman Halpert"
+if (ELEMENTOR_ACTIVE == 0)
+  body "For ONCE! Someone with guts! Someone willing to make decisions!"
+if (ELEMENTOR_ACTIVE == 1)
+  body "Do you realize what you've done? You've revitalized Democratus, and given us a sense of purpose."
+cam left restore zip
+talk npc gest_h stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:2701
+title "Councilman Cook"
+if (ELEMENTOR_ACTIVE == 0)
+  body "The people of Democratus will be forever in your debt if you pull this off."
+if (ELEMENTOR_ACTIVE == 1)
+  body "I thought of expanding the planet to escape from the Krapton jail. And I thought of the protective bubbles. And I even thought of putting one around the shuttle. ME."
+cam left restore zip
+talk npc gest_h stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:2801
+title "Councilman Guss"
+body "Please help us get out of this awful mess I've created."
+cam left restore zip
+talk npc gest_h stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:2901
+title "Councilman Lasky"
+if (ELEMENTOR_ACTIVE == 0)
+  body "This is nonsense. You probably engineered this whole charade in order to trick us into giving away our Sparrow fighter."
+if ((ELEMENTOR_ACTIVE == 1) && (func_charinparty[boots] == 3))
+  body "I hope your stay in Politicus didn't mar your opinion of our fair planet. The planet-dwellers are simple people. Don't believe anything they told you about us."
+if ((ELEMENTOR_ACTIVE == 1) && (func_charinparty[pal] == 3))
+  body "I hope your stay in Ballotine didn't mar your opinion of our fair planet. The planet-dwellers are simple people. Don't believe anything they told you about us."
+if ((ELEMENTOR_ACTIVE == 1) && (func_charinparty[rho] == 3))
+  body "I hope your stay in Tensil didn't mar your opinion of our fair planet. The planet-dwellers are simple people. Don't believe anything they told you about us."
+if ((ELEMENTOR_ACTIVE == 1) && (func_charinparty[stiletto] == 3))
+  body "I hope your stay in Doren didn't mar your opinion of our fair planet. The planet-dwellers are simple people. Don't believe anything they told you about us."
+if ((ELEMENTOR_ACTIVE == 1) && (func_charinparty[paco] == 3))
+  body "I hope your stay in Commiteon didn't mar your opinion of our fair planet. The planet-dwellers are simple people. Don't believe anything they told you about us."
+cam left restore zip
+talk npc gest_h stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:3001
+title "Councilman Willis"
+if (ELEMENTOR_ACTIVE == 0)
+  body "Good luck getting to the fighter. It won't be easy."
+if (ELEMENTOR_ACTIVE == 1)
+  body "We should have implanted you with tracking chips for just such a contingency. With your consent, of course."
+cam left restore zip
+talk npc gest_h stay
+finishswitch {
+  if (Willis1 == 0)
+    goto 64:3002
+  extern cam_restore
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:3002
+title "Councilman Willis"
+body "Maybe you could use this...."
+cam left restore zip
+talk npc gest_h stay
+finishswitch {
+  set Willis1 = 1
+  extern addnew_to_inventory "Old Ducalion Shieldcell"
+  set timed_message = 20
+  got_object$="Old Ducalion Shieldcell" 
+  gosub 1000:1
+  goto 0:0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:3101
+title "Councilman Sears"
+if (ELEMENTOR_ACTIVE == 0)
+  body "We deserve to die. Just put us out of our misery and leave us alone."
+if (ELEMENTOR_ACTIVE == 1)
+  body "Why are you trying to save the universe? We are destructive miscreants, undeserving of life."
+cam left restore zip
+talk npc gest_h stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:3201
+title "Councilman Mesaros"
+if (ELEMENTOR_ACTIVE == 0)
+  body "Right on, man. We'll throw a party for you if you make it back."
+if (ELEMENTOR_ACTIVE == 1)
+  body "You guys are a blast. Got room for me in that shuttle? "
+cam left restore zip
+talk npc gest_h stay
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:2001
+title "Councilman Hagen"
+body "Order!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2005
+title "Councilman Hagen"
+body "          Can we please stick to the issue at hand?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2010
+title "Councilman Hagen"
+body "We must reach a decision before the missiles hit."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2015
+title "Councilman Halpert"
+body "Sitting here and squabbling about it isn't going to save us."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2020
+title "Councilman Halpert"
+body "What we require is swift, decisive action!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2025
+title "Councilman Halpert"
+body "Someone must fly into the hive and destroy the threat."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2030
+title "Councilman Cook"
+body "I don't think rushing headlong into conflict is the best course of action for the people of Democratus, Hal."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2035
+title "Councilman Halpert"
+body "Best course of action?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2040
+title "Councilman Halpert"
+body "                           Would you rather sit back and die?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2045
+title "Councilman Halpert"
+body "There are sixty-four cascading concussion missiles headed straight for us."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2050
+title "Councilman Halpert"
+body "Unless we do something in the next two hours, this entire planet will be rubble!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2055
+title "Councilman Guss"
+body "This is obviously my fault. I take complete responsibility for our destruction."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2060
+title "Councilman Lasky"
+body "Oh, you're all jumping to conclusions. There's no evidence the missiles are even destructive in nature."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2065
+title "Councilman Halpert"
+body "Evidence?!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2070
+title "Councilman Halpert"
+body "              The Verilent Hive has been doing this for hundreds of years!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2075
+title "Councilman Halpert"
+body "Bomb planet, wait for dust to settle, then re-colonize to expand hive."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2080
+title "Councilman Halpert"
+body "What exactly do you think is inside those warheads?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2085
+title "Councilman Halpert"
+body "                                                                Gift baskets?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2090
+title "Councilman Hagen"
+body "That's quite enough."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2095
+title "Councilman Hagen"
+body "No one doubts your passion for the subject, councilman, but this is a democracy."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2100
+title "Councilman Hagen"
+body "All voices will be heard equally, and you've dominated this session long enough."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2105
+title "Councilman Hagen"
+body "Who will be heard next?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2110
+title "Dr. Rho Bowman"
+body "We will."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2115
+title "Dr. Rho Bowman"
+body "I've heard enough."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2120
+title "Dr. Rho Bowman"
+body "                      Give us a fighter."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2125
+title "Dr. Rho Bowman"
+body "                                            We'll take out this \"hive\" while you guys bicker about it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2130
+title "Councilman Hagen"
+body "Who are these people?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2135
+title "Councilman Guss"
+body "Are they serious?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2140
+title "Boots"
+body "Uh... could we talk about this for a second?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2145
+title "Dr. Rho Bowman"
+body "You wanna get off this planet or not?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2150
+title "Councilman Halpert"
+body "See! Now that's decisiveness! Get this man a fighter!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2155
+title "Councilman Cook"
+body "That's a woman, Hal."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2160
+title "Councilman Willis"
+body "Um... aren't we all forgetting something?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2165
+title "Councilman Willis"
+body "The 228 Sparrow is a state-of-the-art asteroid fighter."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2170
+title "Councilman Willis"
+body "It packs everything a talented pilot would need to infiltrate and destroy the hive--"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2175
+title "Councilman Willis"
+body "--except hangar security systems are still online."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2180
+title "Councilman Willis"
+body "There's no time for a subcommittee to approve deactivation,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2185
+title "Councilman Willis"
+body "so you would have to fight past a division of deadly sentry Robodes just to access the ship."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2190
+title "Dr. Rho Bowman"
+body "Sir, do I look like I care? Where are the keys?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2195
+title "Grumpos"
+body "This is insanity. Why fight the hive when we can just steal the fighter and save ourselves?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2200
+title "Boots"
+body "No kidding. Screw the fighter. Let's grab a warship and fly home in style."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2205
+title "Dr. Rho Bowman"
+body "No."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2210
+title "Dr. Rho Bowman"
+body "      I'm not gonna sit back and watch another planet be destroyed."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2215
+title "PAL-18"
+body "PAL-18 can't let you do this."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2220
+title "Boots"
+body "Your concern is sweet, PAL... and unfortunate, because you're coming with us."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2225
+title "Boots"
+body "                                                                                                    Period."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2230
+title "PAL-18"
+body "The robots you're about to destroy are my brothers."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2235
+title "PAL-18"
+body "I won't help you kill them."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2240
+title "PAL-18"
+body "                                        PERIOD."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2245
+title "Boots"
+body "Did he just talk smack to me?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2250
+title "Dr. Rho Bowman"
+body "Has he ever questioned you like that before?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2255
+title "Dr. Rho Bowman"
+body "PAL, how are you feeling?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2260
+title "PAL-18"
+if (KIDZ == 0)
+  body "I'm pretty pissed off, man!"
+if (KIDZ == 1)
+  body "I'm pretty peaced off, man!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2265
+title "Dr. Rho Bowman"
+body "Congratulations, Boots."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2267
+title "Dr. Rho Bowman"
+body "                                 Your robot's become self-aware."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2270
+title "Dr. Rho Bowman"
+body "You're a daddy now."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2275
+title "Boots"
+body "PAL?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2280
+title "Boots"
+body "        Self-aware?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2285
+title "Boots"
+body "                         Hey, where do you get off?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2290
+title "Grumpos"
+body "Need I remind everyone about the missiles racing towards the planet?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2295
+title "Boots"
+body "Right. Stay put."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2300
+title "Boots"
+body "                      But we're having a serious powwow when I get back, mister."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:2305
+title "PAL-18"
+body "Ooooo. Pinch me."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 64:5000
+startswitch {
+  console "forcecursormode 1"
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 1
+  set @tstart = func_gametime
+  set @flashing = 0
+}
+
+thinkswitch {
+  set @t = (func_gametime - @tstart)
+  if ((@t > 1100) && (@flashing == 0)) {
+    gosub 64:2		                  
+    extern FlashScreenf 0 0 0 1 0
+    extern FlashScreenf 0 0 0 0 2
+    set @flashing = 1
+  }
+  if (@t > 3000) {
+    gosub 64:5005
+    closewindow 64:5000
+  }
+}
+
+finishswitch {
+  console "forcecursormode 0"
+  console "fov 60"
+}
+
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 100
+height 100
+
+#window 64:5005
+title "Rho Bowman"
+body "This should only take a few minutes, so humor me and pay attention. You're gonna love it."
+cam left from(boots) to(rho) restore zip
+startswitch {
+  extern AI_GrabEntity rho rho_handle
+  extern ANIM_PlayAnim rho_handle talk_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5006
+
+#window 64:5006
+title "Rho Bowman"
+body "Okay, so it appears that you need three things to cast MysTech."
+cam left from(boots) to(rho) restore zip
+startswitch {
+  extern ANIM_PlayAnim rho_handle talk_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5007
+
+#window 64:5007
+title "Rho Bowman"
+body "The first, and most obvious, thing you need is a slag of MysTech such as the one I employed so effectively in battle just now. As you saw, this one creates a damaging fire effect."
+cam left from(boots) to(rho) restore zip
+startswitch {
+  extern ANIM_PlayAnim rho_handle talk_e 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5008
+
+#window 64:5008
+title "Rho Bowman"
+body "For lack of a better name, let's call it FireSlag."
+cam left from(boots) to(rho) restore zip
+startswitch {
+  extern ANIM_PlayAnim rho_handle talk_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5009
+
+#window 64:5009
+title "Rho Bowman"
+body "If my speculation is correct, different slags have different powers, so we'll have to experiment with other slags we run across and test their effects. More on that in a minute."
+cam left from(boots) to(rho) restore zip
+startswitch {
+  extern ANIM_PlayAnim rho_handle talk_b 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5015
+
+#window 64:5015
+title "Rho Bowman"
+body "The second thing you need in order to cast MysTech is an energy source. Once again, surprise, surprise, the theories in my book were correct..."
+cam left from(boots) to(rho) restore zip
+startswitch {
+  extern ANIM_PlayAnim rho_handle talk_e 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5016
+
+#window 64:5016
+title "Rho Bowman"
+body "The glowing rodents, or glodents, originally found on Hephaestus along with MysTech, were not a coincidence."
+cam left from(boots) to(rho) restore zip
+startswitch {
+  extern ANIM_PlayAnim rho_handle talk_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5017
+
+#window 64:5017
+title "Rho Bowman"
+body "An alien technology related to MysTech, maybe even the MysTech itself, must have irradiated the glodents as an energy source for the slags. MysTech consumes them as easily as our shield cells do."
+cam left from(boots) to(rho) restore zip
+startswitch {
+  extern ANIM_PlayAnim rho_handle talk_b 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5018
+
+#window 64:5018
+title "Rho Bowman"
+body "This means NRG is our ticket to using MysTech."
+cam left from(boots) to(rho) restore zip
+startswitch {
+  extern ANIM_PlayAnim rho_handle talk_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5020
+
+#window 64:5020
+title "Rho Bowman"
+body "Okay. Now the last and most important element in casting MysTech..."
+cam left from(boots) to(rho) restore zip
+startswitch {
+  extern ANIM_PlayAnim rho_handle talk_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5021
+
+#window 64:5021
+title "Rho Bowman"
+body "...is YOU."
+cam left from(boots) to(rho) restore zip
+startswitch {
+  extern ANIM_PlayAnim rho_handle amb_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5022
+
+#window 64:5022
+title "Rho Bowman"
+body "MysTech needs a conduit to channel out its awesome energy. Without a person to cast it, MysTech is nothing."
+cam left from(boots) to(rho) restore zip
+startswitch {
+  extern ANIM_PlayAnim rho_handle talk_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5023
+
+#window 64:5023
+title "Rho Bowman"
+body "The slag can somehow read the caster's emotional condition based on various metabolic changes, determining the outcome of the casting in the process. Think of it like a super-advanced lie detector."
+cam left from(boots) to(rho) restore zip
+startswitch {
+  extern ANIM_PlayAnim rho_handle talk_b 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5024
+
+#window 64:5024
+title "Rho Bowman"
+body "I call it galvanic-response polarity. Intense fear and anger may trigger one function, while panic and concern may trigger another."
+cam left from(boots) to(rho) restore zip
+startswitch {
+  extern ANIM_PlayAnim rho_handle talk_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5025
+
+#window 64:5025
+title "Rho Bowman"
+body "For example, the same FireSlag can both burn an enemy and extinguish a burning friend, just as a Bane slag that normally hurts an enemy will heal if cast on yourself."
+cam left from(boots) to(rho) restore zip
+startswitch {
+  extern ANIM_PlayAnim rho_handle talk_b 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5030
+
+#window 64:5030
+title "PAL-18"
+body "Miss Bowman...? Mister Boots is lookin' a bit funny."
+cam left from(rho) to(pal) restore zip
+startswitch {
+  extern AI_GrabEntity pal pal_handle
+  extern ANIM_PlayAnim pal_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity pal_handle
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5035
+
+#window 64:5035
+title "Rho Bowman"
+body "In other words, Mister Boots, all you have to do is get mad at bad people, and feel worried about friends. MysTech should take care of the rest. It's as easy as just wanting to use it."
+startswitch {
+  console "fov 90"
+  extern cam_from -3249 -1031 -620
+  extern cam_to -3203 -989 -604
+  extern cam_zip
+  extern ANIM_PlayAnim rho_handle lookr_b 0 0 1
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5040
+
+#window 64:5040
+title "Rho Bowman"
+body "By the way, this may interest you, Mister Matavastros. My studies of glodent consumption indicate that the speed in which they're used increases the power throughput of the MysTech."
+startswitch {
+  extern cam_from -3249 -1031 -620
+  extern cam_to -3203 -989 -604
+  extern AI_GrabEntity grumpos grumpos_handle
+  extern AI_WaitAndFace grumpos_handle -1 rho_eyeline
+  extern AI_WaitAndFace rho_handle -1 grumpos_eyeline
+  extern ANIM_PlayAnim rho_handle talk_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5041
+
+#window 64:5041
+title "Rho Bowman"
+body "Take Harbigen's Binary Law of NRG and apply it to MysTech. You can use glodents at rates of 1, 2, 4, or 8 times the input level of the device."
+startswitch {
+  extern cam_from -3249 -1031 -620
+  extern cam_to -3203 -989 -604
+  extern ANIM_PlayAnim rho_handle talk_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5042
+
+#window 64:5042
+title "Rho Bowman"
+body "Fatima? Can you project that binary level graph we discussed in the shuttle?"
+startswitch {
+  extern cam_from -3249 -1031 -620
+  extern cam_to -3203 -989 -604
+  extern ANIM_PlayAnim rho_handle lookr_b 0 0 1
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5045
+
+#window 64:5045
+title "Rho Bowman"
+body "It's vaguely like valence shells of electrons. The NRG flow locks to certain steps or stages, each twice the cost of the last stage."
+startswitch {
+  set @alpha = 0.40000000596
+  set @qx = 224
+  set @qy = 180
+  extern cam_from -3242 -1037 -626
+  extern cam_to -3216 -983 -605
+  extern AI_WaitAndFace rho_handle -1 pal_eyeline
+  extern ANIM_PlayAnim rho_handle talk_a 0 1 0
+  extern AI_WaitAndFace grumpos_handle -1 PlayerChar0
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_SpawnEntity hElec1 ob_squib2 e1 0:0 elem_e1
+  extern NPSimple hElec1 "tutorial/electron"
+  extern AI_SpawnEntity hElec2 ob_squib2 e2 0:0 elem_e2
+  extern NPSimple hElec2 "tutorial/electron"
+  extern AI_SpawnEntity hElec3 ob_squib2 e3 0:0 elem_e4
+  extern NPSimple hElec3 "tutorial/electron"
+  extern AI_SpawnEntity hElec4 ob_squib2 e4 0:0 elem_e8
+  extern NPSimple hElec4 "tutorial/electron"
+  extern AI_SpawnEntity hLight ob_squib2 eleclight 0:0 glodent_spawn
+  extern PARTICLE_StartEffect hLight Hand_R lt004488
+  extern AI_ReleaseEntity hLight
+}
+
+finishswitch {
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern NPKill hElec1
+  extern NPKill hElec2
+  extern NPKill hElec3
+  extern NPKill hElec4
+  extern PARTICLE_StopEffect hLight Hand_R
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5046
+
+#window 64:5046
+title "Rho Bowman"
+body "Beyond eight times the base level input, certain values approach infinity, so that seems to be the hard limit."
+startswitch {
+  extern cam_from -3249 -1031 -620
+  extern cam_to -3203 -989 -604
+  extern ANIM_PlayAnim rho_handle talk_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5050
+
+#window 64:5050
+title "Grumpos"
+body "No doubt, Doctor. No doubt."
+startswitch {
+  extern cam_from -3249 -1031 -620
+  extern cam_to -3203 -989 -604
+  extern ANIM_PlayAnim grumpos_handle lookr_b 0 0 1
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5051
+
+#window 64:5051
+title "Grumpos"
+body "Perhaps you might summarize for the layman. In the big coat."
+startswitch {
+  extern cam_from -3249 -1031 -620
+  extern cam_to -3203 -989 -604
+  extern AI_WaitAndFace grumpos_handle -1 PlayerChar0
+  extern ANIM_PlayAnim grumpos_handle talk_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5055
+
+#window 64:5055
+title "Boots"
+body "Mm?"
+startswitch {
+  extern cam_from -3249 -1031 -620
+  extern cam_to -3259 -971 -599
+  extern ANIM_PlayAnim rho_handle lookr_b 0 0 1
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5060
+
+#window 64:5060
+title "Rho Bowman"
+body "In a nutshell, whatever the NRG cost of operation is at its lowest level, the next level will cost you twice as much."
+startswitch {
+  extern cam_from -3249 -1031 -620
+  extern cam_to -3203 -989 -604
+  extern AI_WaitAndFace rho_handle -1 PlayerChar0
+  extern ANIM_PlayAnim rho_handle talk_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5061
+
+#window 64:5061
+title "Rho Bowman"
+body "Not only that, but I suspect higher-level devices may have lower-level effects built-in, such that different power levels might produce different effects."
+startswitch {
+  extern cam_from -3249 -1031 -620
+  extern cam_to -3203 -989 -604
+  extern ANIM_PlayAnim grumpos_handle lookr_b 0 0 1
+  extern AI_WaitAndFace rho_handle -1 pal_eyeline
+  extern ANIM_PlayAnim rho_handle talk_e 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5062
+
+#window 64:5062
+title "Rho Bowman"
+body "Got it?"
+startswitch {
+  extern cam_from -3249 -1031 -620
+  extern cam_to -3203 -989 -604
+  extern ANIM_PlayAnim rho_handle lookr_b 0 0 1
+  extern ANIM_PlayAnim grumpos_handle amb_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5063
+
+#window 64:5063
+title "Rho Bowman"
+body "Good. Because I'm done."
+startswitch {
+  extern cam_from -3249 -1031 -620
+  extern cam_to -3203 -989 -604
+  extern ANIM_PlayAnim rho_handle amb_a 0 0 1
+  extern AI_ReleaseEntity grumpos_handle
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5064
+
+#window 64:5064
+title "Rho Bowman"
+body "Was that so awful?"
+startswitch {
+  extern cam_from -3249 -1031 -620
+  extern cam_to -3203 -989 -604
+  extern ANIM_PlayAnim rho_handle amb_a 0 0 1
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5070
+
+#window 64:5070
+title "Rho Bowman"
+body "We're all taking part in a grand experiment, people. Keep an eye out for more MysTech, and snap up all the glodents you can."
+startswitch {
+  extern cam_from -3249 -1031 -620
+  extern cam_to -3203 -989 -604
+  extern ANIM_PlayAnim rho_handle talk_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+nextwindow 64:5071
+
+#window 64:5071
+startswitch {
+  extern cam_from -3236 -1004 -623
+  extern cam_to -3216 -946 -605
+  extern cam_zip
+  console "forcecursormode 1"
+  extern ANIM_PlayAnim rho_handle gest_a 0 1 0
+  set @tstart = func_gametime
+  set @try_get = 0
+  set @done_getting = 0
+}
+
+thinkswitch {
+  set @t = (func_gametime - @tstart)
+  if ((@t > 600) && (@try_get == 0)) {
+    set @try_get = 1
+    extern AI_DestroyEntity hSlag
+  }
+  if ((@t > 1200) && (@done_getting == 0)) {
+    set @done_getting = 1
+    extern ANIM_MakeSmart rho_handle
+    extern AI_ReleaseEntity rho_handle
+    gosub 64:5075
+    closewindow 64:5071
+  }
+}
+
+finishswitch {
+  console "forcecursormode 0"
+}
+
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 100
+height 100
+
+#window 64:5075
+title "Rho Bowman"
+body "We're gonna need 'em."
+startswitch {
+  extern cam_from -3236 -1004 -623
+  extern cam_to -3216 -946 -605
+  extern cam_zip
+  extern ANIM_PlayAnim rho_handle amb_a 0 0 1
+}
+
+finishswitch {
+  extern cam_restore
+  console "fov 90"
+  extern AI_ReleaseEntity rho_handle
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#window 64:3301
+title "%s", PlayerChar0$
+if (func_charinparty[pal] == 3)
+  body "Hmm, that port's busted. Dang."
+if (func_charinparty[pal] != 3)
+  body "Busted dataport."
+cam left from(boots) to(rho) restore zip
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+
+#switch 64:1
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+extern loopambient ambi_chamberspark
+set CURRENT_PLANET = 4
+set CURRENT_BANK = 64
+extern applylevelconfiguration chamber
+extern resetbattle warshipbay0
+extern resetbattle warshipbay1
+extern resetbattle warshipbay2
+extern resetbattle warshipbay3
+extern resetbattle warshipbay4
+set anox_interface_active = 0
+extern playlevelmusic mp3/democratus/anox_democratus.mp3
+if (DEMO_MODE_ENABLED)
+  console "ui_playscene grumpos_scene4"
+if (mystech_active && (rho_gave_tutorial == 0))
+  goto 64:0405
+goto 0:0
+
+#switch 64:2
+extern AI_SpawnEntity hSlag ob_mystech01 slag 0:0 batt_spawn
+extern AI_GetEdictNumber toppoint hTop
+extern AI_GetEdictNumber midpoint hMid
+extern cam_from_edictnumber hTop
+extern cam_to_edictnumber hMid
+extern cam_zip
+extern AI_GrabEntity playerchar0 hBoots
+extern AI_GetEdictNumber boots_tut hBootsSpawn
+extern AI_GetXYZ hBootsSpawn @x @y @z
+extern AI_SetXYZ hBoots @x @y @z
+extern AI_GetYaw hBootsSpawn @yaw
+extern AI_SetYaw hBoots @yaw
+extern ANIM_MakeSmart hBoots
+extern AI_ReleaseEntity hBoots
+extern AI_GrabEntity Rho hRho
+extern AI_GetEdictNumber rho_tut hRhoSpawn
+extern AI_GetXYZ hRhoSpawn @x @y @z
+extern AI_SetXYZ hRho @x @y @z
+extern AI_GetYaw hRhoSpawn @yaw
+extern AI_Setyaw hRho @yaw
+extern AI_ReleaseEntity hRho
+goto 64:3
+
+#switch 64:3
+extern AI_GrabEntity Grumpos hGrumpos
+extern AI_GetEdictNumber grumpos_tut hGrumposSpawn
+extern AI_GetXYZ hGrumposSpawn @x @y @z
+extern AI_SetXYZ hGrumpos @x @y @z
+extern AI_GetYaw hGrumposSpawn @yaw
+extern AI_SetYaw hGrumpos @yaw
+extern AI_ReleaseEntity hGrumpos
+extern AI_GrabEntity PAL hPAL
+extern AI_GetEdictNumber pal_tut hPALSpawn
+extern AI_GetXYZ hPALSpawn @x @y @z
+extern AI_SetXYZ hPAL @x @y @z
+extern AI_GetYaw hPALSpawn @yaw
+extern AI_SetYaw hPAL @yaw
+extern AI_ReleaseEntity hPAL
+set rho_gave_tutorial = 1
+extern cam_to_edictnumber hRhoSpawn
+extern cam_zip
+goto 0:0
+
+#switch 5001:1
+if (func_charinparty[boots] == 2)
+  goto 0:0
+goto 64:0101
+
+#switch 64:101
+if (Boots_Votowne1 > 1)
+  goto 64:0130
+extern is_quest_done "Need To Use Ally Card" @gotchaBITCH
+if (@gotchaBITCH == 2)
+  goto 64:0125
+if (Boots_Votowne1 > 0)
+  goto 64:0115
+goto 64:0110
+
+#switch 64:105
+extern remove_npc_from_party Boots
+set BOOTS_IN_PARTY = 0
+if (chartoadd == 1) {
+  extern AI_GrabEntity boots bootsgrip
+  extern AI_DestroyEntity bootsgrip
+  extern add_npc_to_party boots
+  set BOOTS_IN_PARTY = 1
+}
+if (chartoadd == 2) {
+  extern AI_GrabEntity grumpos grumposgrip
+  extern AI_DestroyEntity grumposgrip
+  extern add_npc_to_party grumpos
+  set GRUMPOS_IN_PARTY = 1
+}
+if (chartoadd == 3) {
+  extern AI_GrabEntity pal palgrip
+  extern AI_DestroyEntity palgrip
+  extern add_npc_to_party pal
+  set PAL_IN_PARTY = 1
+}
+if (chartoadd == 4) {
+  extern AI_GrabEntity rho rhogrip
+  extern AI_DestroyEntity rhogrip
+  extern add_npc_to_party rho
+  set RHO_IN_PARTY = 1
+}
+
+#switch 64:106
+extern remove_npc_from_party Grumpos
+set GRUMPOS_IN_PARTY = 0
+if (chartoadd == 1) {
+  extern AI_GrabEntity boots bootsgrip
+  extern AI_DestroyEntity bootsgrip
+  extern add_npc_to_party boots
+  set BOOTS_IN_PARTY = 1
+}
+if (chartoadd == 2) {
+  extern AI_GrabEntity grumpos grumposgrip
+  extern AI_DestroyEntity grumposgrip
+  extern add_npc_to_party grumpos
+  set GRUMPOS_IN_PARTY = 1
+}
+if (chartoadd == 3) {
+  extern AI_GrabEntity pal palgrip
+  extern AI_DestroyEntity palgrip
+  extern add_npc_to_party pal
+  set PAL_IN_PARTY = 1
+}
+if (chartoadd == 4) {
+  extern AI_GrabEntity rho rhogrip
+  extern AI_DestroyEntity rhogrip
+  extern add_npc_to_party rho
+  set RHO_IN_PARTY = 1
+}
+
+#switch 64:107
+extern remove_npc_from_party Pal
+set PAL_IN_PARTY = 0
+if (chartoadd == 1) {
+  extern AI_GrabEntity boots bootsgrip
+  extern AI_DestroyEntity bootsgrip
+  extern add_npc_to_party boots
+  set BOOTS_IN_PARTY = 1
+}
+if (chartoadd == 2) {
+  extern AI_GrabEntity grumpos grumposgrip
+  extern AI_DestroyEntity grumposgrip
+  extern add_npc_to_party grumpos
+  set GRUMPOS_IN_PARTY = 1
+}
+if (chartoadd == 3) {
+  extern AI_GrabEntity pal palgrip
+  extern AI_DestroyEntity palgrip
+  extern add_npc_to_party pal
+  set PAL_IN_PARTY = 1
+}
+if (chartoadd == 4) {
+  extern AI_GrabEntity rho rhogrip
+  extern AI_DestroyEntity rhogrip
+  extern add_npc_to_party rho
+  set RHO_IN_PARTY = 1
+}
+
+#switch 64:108
+extern remove_npc_from_party Rho
+set RHO_IN_PARTY = 0
+if (chartoadd == 1) {
+  extern AI_GrabEntity boots bootsgrip
+  extern AI_DestroyEntity bootsgrip
+  extern add_npc_to_party boots
+  set BOOTS_IN_PARTY = 1
+}
+if (chartoadd == 2) {
+  extern AI_GrabEntity grumpos grumposgrip
+  extern AI_DestroyEntity grumposgrip
+  extern add_npc_to_party grumpos
+  set GRUMPOS_IN_PARTY = 1
+}
+if (chartoadd == 3) {
+  extern AI_GrabEntity pal palgrip
+  extern AI_DestroyEntity palgrip
+  extern add_npc_to_party pal
+  set PAL_IN_PARTY = 1
+}
+if (chartoadd == 4) {
+  extern AI_GrabEntity rho rhogrip
+  extern AI_DestroyEntity rhogrip
+  extern add_npc_to_party rho
+  set RHO_IN_PARTY = 1
+}
+
+#switch 5002:1
+if (func_charinparty[grumpos] == 2)
+  goto 0:0
+goto 64:0201
+
+#switch 64:201
+if (Grumpos_Votowne1 > 1)
+  goto 64:0224
+extern is_quest_done "Need To Use Ally Card" @gotchaBITCH
+if (@gotchaBITCH == 2)
+  goto 64:0220
+if (Grumpos_Votowne1 > 0)
+  goto 64:0210
+goto 64:0205
+
+#switch 5003:1
+if (PAL_IN_CHAMBER == 1)
+  goto 64:0330
+if (func_charinparty[pal] == 2)
+  goto 0:0
+goto 64:0301
+
+#switch 64:301
+if (Pal_Votowne1 > 1)
+  goto 64:0324
+extern is_quest_done "Need To Use Ally Card" @gotchaBITCH
+if (@gotchaBITCH == 2)
+  goto 64:0320
+if (Pal_Votowne1 > 0)
+  goto 64:0310
+goto 64:0305
+
+#switch 5004:1
+if (func_charinparty[rho] == 2)
+  goto 0:0
+goto 64:0401
+
+#switch 64:401
+if (Rho_Votowne1 > 1)
+  goto 64:0434
+extern is_quest_done "Need To Use Ally Card" @gotchaBITCH
+if (@gotchaBITCH == 2)
+  goto 64:0430
+if (Rho_Votowne1 > 0)
+  goto 64:0415
+goto 64:0411
+
+#switch 64:501
+set keeber = (keeber + 1)
+if (keeber > 2)
+  goto 64:0520
+if (keeber > 1)
+  goto 64:0515
+extern complete_quest "Democratus Unknown"
+extern add_quest "Democratus Known"
+goto 64:0505
+
+#switch 64:502
+if (chamber_keeber_walking)
+  goto 0:0
+goto 64:0501
+
+#switch 64:601
+if (ELEMENTOR_ACTIVE == 1)
+  goto 64:0610
+set abf = (abf + 1)
+if (know_all_votes == 1) {
+  set clueSpeak = (clueSpeak + 1)
+  if (clueSpeak > 1)
+    goto 64:0605
+  goto 64:0705
+}
+if (abf > 2)
+  goto 64:0704
+if (abf > 1)
+  goto 64:0703
+goto 64:0702
+
+#switch 64:701
+if (ELEMENTOR_ACTIVE == 1)
+  goto 64:0610
+set abf = (abf + 1)
+if (know_all_votes == 1) {
+  set clueSpeak = (clueSpeak + 1)
+  if (clueSpeak > 1)
+    goto 64:0605
+  goto 64:0705
+}
+if (abf > 2)
+  goto 64:0704
+if (abf > 1)
+  goto 64:0703
+goto 64:0702
+
+#switch 64:801
+if (ELEMENTOR_ACTIVE == 1)
+  goto 64:0805
+if (know_all_votes)
+  goto 64:0803
+goto 64:0802
+
+#switch 64:901
+if (spoke2guff == 1)
+  goto 0:0
+set spoke2guff = 1
+goto 64:0915
+
+#switch 64:925
+if (elementor_active)
+  goto 64:0920			                               
+extern is_in_inventory "Gold Council Ally Card" have_it
+extern is_in_inventory "Silver VoteNote Card" silver
+if (have_it || silver)
+  goto 64:0914
+set guff = (guff + 1)
+if (been_to_8 == 1)
+  goto 64:0913
+if ((guff > 1) && (badboy == 1))
+  goto 64:0912
+if ((guff > 1) && (badboy == 0))
+  goto 64:0913
+goto 64:0915
+
+#switch 64:920
+if ((talk_v2_guff == 0) || got_taco_3)
+  goto 64:0930		                            
+if (got_taco_3 == 0)
+  goto 64:0921	              
+goto 64:0930	                              
+
+#switch 64:924
+extern addnew_to_inventory "TACO"
+set got_taco_3 = 1
+set timed_message = 20
+got_object$="TACO" 
+gosub 1000:1
+goto 0:0
+
+#switch 64:1101
+if (FATIMA_VOTOWNE > 0)
+  goto 64:1105
+
+#switch 64:1201
+extern is_quest_done "Rest at Republic" @seenFatimaFlash
+if (@seenFatimaFlash == 2)
+  goto 64:1210
+if (@fatimaScold == 1)
+  goto 64:1225
+if (@seenFatimaFlash == 1)
+  goto 64:1220
+goto 64:1205
+
+#switch 64:1215
+console "map senderss fromrhoshuttle"
+
+#switch 64:1301
+if (elementor_active)
+  goto 64:1310
+goto 64:1305
+
+#switch 64:1401
+if (elementor_active && talk_bornuff)
+  goto 64:1420
+if (elementor_active)
+  goto 64:1410
+goto 64:1405
+
+#switch 64:1501
+extern is_quest_done "Get to Democratus Fighter" @buggedCouncil
+if ((@buggedCouncil == 1) || (@buggedCouncil == 2))
+  goto 64:1510
+goto 64:1505
+
+#switch 64:1601
+if (talk_hoothan && elementor_active)
+  goto 64:1620
+if (elementor_active)
+  goto 64:1610
+
+#switch 64:1701
+set @DronerBoner1 = (@DronerBoner1 + 1)
+if (@DronerBoner1 > 2)
+  goto 64:1715
+if (@DronerBoner1 > 1)
+  goto 64:1710
+goto 64:1705
+
+#switch 64:3305
+target tacodoor
+
+#switch 64:3401
+if (PlayedChamberScene1 == 1)
+  console "target councildoor"
+
+#switch 64:3451
+if (PlayedChamberScene1 == 1) {
+  console "target councildoor"
+} else {
+  extern complete_quest "Democratus Known"
+  extern add_quest "Find Central Controller"
+  extern add_quest "Get to Democratus Fighter"
+  set PlayedChamberScene1 = 1
+  gosub 64:3452
+  set boots_waiting = 0
+  set grumpos_waiting = 0
+  set pal_waiting = 0
+  set rho_waiting = 0
+  set PAL_IN_CHAMBER = 1
+  extern chainscripts chamber_scene1 chamber_scene2
+  console "set storysave \"Mission: Hive|Hive Mission Commences\""
+  extern playscene chamber_scene1
+}
+
+#switch 64:3452
+if (func_charinparty[pal] == 3)
+  if (func_charinparty[boots] == 2) {
+    extern set_party_leader boots
+  } else if (func_charinparty[grumpos] == 2) {
+    extern set_party_leader grumpos
+  } else if (func_charinparty[rho] == 2)
+    extern set_party_leader rho
+if (func_charinparty[pal] >= 2) {
+  extern remove_npc_from_party pal
+  set PAL_IN_PARTY = 0
+  if (func_charinparty[boots] < 2) {
+    extern add_npc_to_party boots
+    set BOOTS_IN_PARTY = 1
+  } else if (func_charinparty[rho] < 2) {
+    extern add_npc_to_party rho
+    set RHO_IN_PARTY = 1
+  } else if (func_charinparty[grumpos] < 2) {
+    extern add_npc_to_party grumpos
+    set GRUMPOS_IN_PARTY = 1
+  }
+}
+goto 0:0
+
+#switch 64:4000
+if (Chamber_GruffApprovedGoldCard == 1)
+  console "target partydoor"
+
+#switch 66:6666
+extern add_quest "Rest at Republic"
+
+#switch 66:666
+extern add_quest "Need To Use Ally Card"
+extern complete_quest "Need To Use Ally Card"

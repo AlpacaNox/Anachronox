@@ -1,0 +1,1075 @@
+#window 97:9
+title "COMMBASE NOT PLAYED FROM REAL GAME?"
+body "None of these have been set to 1:\n"
+body "--STILETTO_ON_DEMOCRATUS\n"
+body "--PAL_ON_DEMOCRATUS\n"
+body "--RHO_ON_DEMOCRATUS\n"
+style "style_demo"
+font "_ANOX10"
+xpos 30
+ypos 30
+width 580
+
+#window 97:10
+startswitch {
+  set @delayframecount = 0
+}
+
+thinkswitch {
+  set @delayframecount = (@delayframecount + 1)
+  if (@delayframecount > 5)
+    closewindow 97:10		                                 
+  goto 0:0
+}
+
+finishswitch {
+  gosub 97:2		         
+  if (@pacowinactive == 0)
+    gosub 97:100
+}
+
+style "NULL"
+xpos 0
+ypos 0
+width 32
+height 32
+
+#window 97:100
+startswitch {
+  if (pacoHP == 0)
+    set pacoHP = 5
+  set pacowindowUp = 1
+  set @pacowinactive = 1
+  echo "*|*| Startswitch for Gun!"
+  set @pcurrentMS = (func_GameTime + 250)
+}
+
+thinkswitch {
+  set @fuckit = func_gametime
+  set @pfuckit = (func_GameTime + 250)
+  if (func_gametime < @pcurrentMS)
+    goto 0:0
+  set @pcurrentMS = (func_GameTime + 250)
+  if (hurtTime)
+    set hurtTime = (hurtTime - 1)
+  if (paco_inside == 0)
+    gosub 97:102		               
+  if (gun1_active == 1)
+    gosub 97:3120		                            
+  if (gun2_active == 1)
+    gosub 97:3220
+  if (gun3_active == 1)
+    gosub 97:3320
+  if (gun4_active == 1)
+    gosub 97:3420		             
+  if (gun2_active && (gun2_state == 3))
+    gosub 97:105	         
+  if (gun3_active && (gun3_state == 3))
+    gosub 97:106	         
+  goto 0:0
+}
+
+finishswitch {
+  set pacowindowUp = 0
+  set @pacowinactive = 0
+}
+
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 80
+height 80
+
+#window 97:112
+body "PACO HURT!"
+startswitch {
+  extern playsound battle/character_paco_com/character_paco_com_pain.wav
+  extern FlashScreenf 1 0 0 0 0
+  extern FlashScreenf 1 0 0 0.3 0.15
+  set @PainFlashTime = func_gametime
+  extern GetPlayerCurrentHP Paco @hpleft
+  if (@hpleft < 11)
+    extern SetPlayerCurrentHP Paco 1
+  if (@hpleft >= 11) {
+    set @hpleft = (@hpleft - 10)
+    extern SetPlayerCurrentHP Paco @hpleft
+  }
+  set @flashed = 0
+}
+
+thinkswitch {
+  if ((func_gametime > (@PainFlashTime + 150)) && (@flashed == 0)) {
+    set @flashed = 1
+    extern FlashScreenf 1 0 0 0.3 0
+    extern FlashScreenf 1 0 0 0 .15
+  }
+  if (func_gametime > (@PainFlashTime + 1000))
+    closewindow 97:112
+}
+
+style "style_bubble"
+font "comicfont_black"
+flags passive, TRUE
+background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffffff
+xpos 32
+ypos 32
+width 80
+height 48
+
+#window 97:113
+startswitch {
+  closewindow 97:100
+  set paco_lastMS = func_gametime
+  set paco_currentMS = ws_lastMS
+  set paco_counter = 0
+  extern cam_anoxmariomode 1
+  extern AI_GrabEntity PlayerChar0 hPaco
+  extern ANIM_PlayAnim hPaco cine_a 1 1 0
+  extern playsound battle/character_paco_com/character_paco_pain.wav
+  goto 0:0
+}
+
+thinkswitch {
+  set paco_currentMS = func_GameTime
+  set paco_delta = (paco_currentMS - paco_lastMS)
+  if (paco_delta < 1000)
+    goto 0:0
+  set paco_lastMS = paco_currentMS
+  set paco_delta = (paco_delta - 1000)
+  set paco_lastMS = (paco_currentMS - paco_delta)
+  set paco_counter = (paco_counter + 1)
+  if (paco_counter == 2) {
+    extern ANIM_PlayAnim hPaco cine2_a 0 1 1
+    closewindow 97:113
+  }
+  goto 0:0
+}
+
+finishswitch {
+  set paco_lastMS = 0
+  set paco_currentMS = 0
+  set paco_counter = 0
+  set paco_delta = 0
+  set anox_manner_of_death = 14
+  extern AI_ReleaseEntity hPaco
+  extern cam_anoxmariomode 0
+  goto 986:1			               
+}
+
+style "NULL"
+flags passive, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 0
+ypos 0
+width 100
+height 100
+
+#window 97:6000
+title "Paco \"El Puño\" Estrella"
+body "Door will not open. Must find other way."
+cam left restore zip
+style "null"
+font "_anox10"
+xpos 30
+ypos 340
+width 580
+
+#window 97:6050
+title "Paco \"El Puño\" Estrella"
+body "Mmmmmm..."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 97:6051
+
+#window 97:6051
+title "Paco \"El Puño\" Estrella"
+body "Switch for door must be somewhere else."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 97:7000
+title "Paco \"El Puño\" Estrella"
+body "This control the security elevator to basement. Map show two intruders."
+xyprintfx 210, 381, @intruder_alpha, 0.800000011921, 0.600000023842, 0.600000023842, _anox10, "."
+xyprintfx 339, 356, @intruder_alpha, 0.800000011921, 0.600000023842, 0.600000023842, _anox10, "."
+startswitch {
+  set @intruder_delta = 0.10000000149
+}
+
+thinkswitch {
+  set @intruder_alpha = (@intruder_alpha + @intruder_delta)
+  if (@intruder_alpha <= 0) {
+    set @intruder_alpha = 0
+    set @intruder_delta = 0.10000000149
+  } else if (@intruder_alpha >= 1) {
+    set @intruder_alpha = 1
+    set @intruder_delta = -0.100000
+  }
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+image "commbase/basemap.tga" 152, 170
+image "graphics/underline_demo.pcx" 16, 31, 548, 32
+choice "Open elevator?" 97:7010
+choice "Wait." 0:0
+
+#window 97:8080
+startswitch {
+  set boomLastMS = func_gametime
+  set boomCurrentMS = boomLastMS
+}
+
+thinkswitch {
+  set boomCurrentMS = func_gametime
+  if ((boomCurrentMS - boomLastMS) < 300)
+    goto 0:0
+  extern AI_DestroyEntity boomhandle
+  set blowing_up = 0
+  closewindow 97:8080
+}
+
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 97:5200
+title "Paco \"El Puño\" Estrella"
+body "I'm Paco. And you?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 97:5205
+title "Paco \"El Puño\" Estrella"
+body "Mmm...."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 97:5210
+title "Councilman HALPERT"
+body "I'm gonna puke."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 97:5215
+title "Councilman HALPERT"
+body "We're the most technologically advanced society in the system,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 97:5220
+title "Councilman HALPERT"
+body "and we can't even find three people on the surface of our planet?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 97:5225
+title "Councilman WILLIS"
+body "Actually, we have a lock on one."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 97:5230
+title "Councilman HAGEN"
+body "Who?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 97:5235
+title "Councilman WILLIS"
+body "Unknown. But the rescue shuttle is already en route,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 97:5240
+title "Councilman WILLIS"
+body "so we'll know within the hour."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 97:5245
+title "Councilman HALPERT"
+body "Well, good."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 97:5250
+title "Councilman HALPERT"
+body "See? That's what happens when you speak up."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 97:5255
+title "Councilman HALPERT"
+body "One down. Two to go."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 97:1
+set CURRENT_PLANET = 8
+set CURRENT_BANK = 97
+loadape "countdownClock"
+extern applylevelconfiguration commbase
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+extern playlevelmusic mp3/democratus/democdungeonfinal.mp3
+extern AI_GrabEntity elevatordoor @elev_handle
+extern entkey @elev_handle "sequence" "97:6050"
+extern AI_ReleaseEntity @elev_handle
+if (pacoHP == 0)
+  set pacoHP = 5
+console "r_mapsizewarning 0"
+extern SetCollisionCallback monster_hover_mine character_paco 97:8000
+gosub 97:10		                      
+goto 0:0
+
+#switch 97:5
+set paco_visit_lightroom = 1
+if ((paco_leave_lightroom && paco_visit_lightroom) && (@playing_scene == 0))
+  goto 97:6
+goto 0:0
+
+#switch 97:6
+if (paco_leave_lightroom != 1)
+  goto 0:0
+set paco_leave_lightroom = 0
+extern AI_GrabEntity senpoint1 hSentarget1
+extern stopsound_byedict hSentarget1
+extern AI_GrabEntity senpoint2 hSentarget2
+extern stopsound_byedict hSentarget2
+extern AI_GrabEntity senpoint3 hSentarget3
+extern stopsound_byedict hSentarget3
+extern AI_GrabEntity senpoint4 hSentarget4
+extern stopsound_byedict hSentarget4
+extern complete_quest "Save Little Girl"
+extern playscene commbase_scene76 0 97:8
+set @playing_scene = 1
+goto 0:0
+
+#switch 97:7
+if (paco_leave_lightroom)
+  goto 0:0
+set paco_leave_lightroom = 1
+extern playsound games/commbase/games_commbase_ganniesound.wav
+goto 0:0
+
+#switch 97:8
+if (STILETTO_ON_DEMOCRATUS == 1) {
+  extern add_npc_to_party stiletto
+  extern set_party_leader stiletto
+  extern remove_npc_from_party paco
+  set start_stilettointro = 1
+  console "set storysave \"Lost in Doren|Stiletto Lost in Doren\""
+  console "map doren cinematic"
+} else if (PAL_ON_DEMOCRATUS == 1) {
+  extern add_npc_to_party pal
+  extern set_party_leader pal
+  extern remove_npc_from_party paco
+  set start_palintro = 1
+  console "set storysave \"PAL Dream|PAL-18 Dreams...\""
+  console "map baltown cinematic"
+} else if (RHO_ON_DEMOCRATUS == 1) {
+  extern add_npc_to_party rho
+  extern set_party_leader rho
+  extern remove_npc_from_party paco
+  set start_rhointro = 1
+  console "set storysave \"To Tensil|Rho is Lost\""
+  console "map tensil cinematic"
+} else {
+  echo "NO XXXX_ON_DEMOCRATUS VARIABLES SET!"
+  goto 97:9
+}
+goto 0:0
+
+#switch 97:2
+gosub 97:3		                 
+gosub 97:4
+goto 0:0
+
+#switch 97:3
+extern AI_GrabEntity sentinel1 hSentinel1
+extern AI_GrabEntity senpoint1 hSentarget1
+extern BEAM_CreateBeamEx hSentinel1 fx_1 hSentarget1 0 1 .8 0 1 1 .5 0 100000 2 1 0 7 7 10784
+extern NPSimple hSentarget1 343/firework2
+extern AI_ReleaseEntity hSentinel1
+extern AI_Seek hSentarget1 s1p1
+extern AI_NoEntCollision hSentarget1 true
+extern AI_AvoidEnts hSentarget1 false
+extern AI_ReleaseEntity hSentarget1
+extern AI_GrabEntity sentinel2 hSentinel2
+extern AI_GrabEntity senpoint2 hSentarget2
+extern BEAM_CreateBeamEx hSentinel2 fx_1 hSentarget2 0 1 .8 0 1 1 .5 0 100000 2 1 0 7 7 10784
+extern NPSimple hSentarget2 343/firework2
+extern AI_ReleaseEntity hSentinel2
+extern AI_Seek hSentarget2 s2p1
+extern AI_AvoidEnts hSentarget2 false
+extern AI_NoEntCollision hSentarget2 true
+extern AI_ReleaseEntity hSentarget2
+goto 0:0
+
+#switch 97:4
+extern AI_GrabEntity sentinel3 hSentinel3
+extern AI_GrabEntity senpoint3 hSentarget3
+extern BEAM_CreateBeamEx hSentinel3 fx_1 hSentarget3 0 1 .8 0 1 1 .5 0 100000 2 1 0 7 7 10784
+extern NPSimple hSentarget3 343/firework2
+extern AI_ReleaseEntity hSentinel3
+extern AI_Seek hSentarget3 s3p1
+extern AI_AvoidEnts hSentarget3 false
+extern AI_NoEntCollision hSentarget3 true
+extern AI_ReleaseEntity hSentarget3
+extern AI_GrabEntity sentinel4 hSentinel4
+extern AI_GrabEntity senpoint4 hSentarget4
+extern BEAM_CreateBeamEx hSentinel4 fx_1 hSentarget4 0 1 .8 0 1 1 .5 0 100000 2 1 0 7 7 10784
+extern NPSimple hSentarget4 343/firework2
+extern AI_ReleaseEntity hSentinel4
+extern AI_Seek hSentarget4 s4p1
+extern AI_AvoidEnts hSentarget4 false
+extern AI_NoEntCollision hSentarget4 true
+extern AI_ReleaseEntity hSentarget4
+goto 0:0
+
+#switch 97:50
+set paco_inside = 0
+goto 0:0
+
+#switch 97:51
+set paco_inside = 1
+goto 0:0
+
+#switch 97:102
+extern AI_GetEdictNumber playerchar0 hPlayer
+extern AI_GrabEntity senpoint1 hSentinel1
+extern AI_Distance2d laserdist hPlayer hSentinel1
+extern ANIM_MakeSmart hSentinel1
+extern AI_ReleaseEntity hSentinel1
+if ((laserdist < 64) && (hurtTime == 0))
+  gosub 97:111	             
+extern AI_GrabEntity senpoint2 hSentinel2
+extern AI_Distance2d laserdist hPlayer hSentinel2
+extern ANIM_MakeSmart hSentinel2
+extern AI_ReleaseEntity hSentinel2
+if ((laserdist < 64) && (hurtTime == 0))
+  gosub 97:111	             
+extern AI_GrabEntity senpoint3 hSentinel3
+extern AI_Distance2d laserdist hPlayer hSentinel3
+extern ANIM_MakeSmart hSentinel3
+extern AI_ReleaseEntity hSentinel3
+if ((laserdist < 64) && (hurtTime == 0))
+  gosub 97:111	             
+extern AI_GrabEntity senpoint4 hSentinel4
+extern AI_Distance2d laserdist hPlayer hSentinel4
+extern ANIM_MakeSmart hSentinel4
+extern AI_ReleaseEntity hSentinel4
+if ((laserdist < 64) && (hurtTime == 0))
+  gosub 97:111	             
+goto 0:0
+
+#switch 97:105
+if (gun2_timer == 5) {
+  extern AI_GrabEntity turret3 hTurret2
+  extern AI_GrabEntity gun2south3 hBeamTarget
+  extern BEAM_CreateBeamEx hTurret2 effect_1 hBeamTarget 0 1 0 0 .5 1 0 0 500 1 1 0 7 7 2664
+  extern AI_ReleaseEntity hTurret2
+  extern AI_ReleaseEntity hBeamTarget
+  extern playsound games/commbase/games_commbase_laser_look.wav
+} else if (gun2_timer == 3) {
+  extern AI_GrabEntity turret3 hTurret2
+  extern AI_GrabEntity gun2south1 hBeamTarget
+  extern BEAM_CreateBeamEx hTurret2 effect_1 hBeamTarget 0 1 0 0 .5 1 0 0 500 1 1 0 7 7 2664
+  extern AI_ReleaseEntity hTurret2
+  extern AI_ReleaseEntity hBeamTarget
+  extern playsound games/commbase/games_commbase_laser_look.wav
+} else if (gun2_timer == 1) {
+  extern AI_GrabEntity turret3 hTurret2
+  extern AI_GrabEntity gun2south2 hBeamTarget
+  extern BEAM_CreateBeamEx hTurret2 effect_1 hBeamTarget 0 1 0 0 .5 1 0 0 500 1 1 0 7 7 2664
+  extern AI_ReleaseEntity hTurret2
+  extern AI_ReleaseEntity hBeamTarget
+  extern playsound games/commbase/games_commbase_laser_look.wav
+}
+goto 0:0
+
+#switch 97:106
+if (gun3_timer == 5) {
+  extern AI_GrabEntity turret1 hTurret3
+  extern AI_GrabEntity gun3-3 hBeamTarget
+  extern BEAM_CreateBeamEx hTurret3 effect_1 hBeamTarget 0 0 1 0 .5 0 1 0 500 1 1 0 7 7 2664
+  extern AI_ReleaseEntity hTurret3
+  extern AI_ReleaseEntity hBeamTarget
+  extern playsound games/commbase/games_commbase_laser_look.wav
+} else if (gun3_timer == 3) {
+  extern AI_GrabEntity turret1 hTurret3
+  extern AI_GrabEntity gun3-1 hBeamTarget
+  extern BEAM_CreateBeamEx hTurret3 effect_1 hBeamTarget 0 0 1 0 .5 0 1 0 500 1 1 0 7 7 2664
+  extern AI_ReleaseEntity hTurret3
+  extern AI_ReleaseEntity hBeamTarget
+  extern playsound games/commbase/games_commbase_laser_look.wav
+} else if (gun3_timer == 1) {
+  extern AI_GrabEntity turret1 hTurret3
+  extern AI_GrabEntity gun3-2 hBeamTarget
+  extern BEAM_CreateBeamEx hTurret3 effect_1 hBeamTarget 0 0 1 0 .5 0 1 0 500 1 1 0 7 7 2664
+  extern AI_ReleaseEntity hTurret3
+  extern AI_ReleaseEntity hBeamTarget
+  extern playsound games/commbase/games_commbase_laser_look.wav
+}
+goto 0:0
+
+#switch 97:111
+set pacoHP = (pacoHP - 1)
+set hurtTime = 20
+gosub 97:112
+goto 0:0
+
+#switch 97:1000
+echo ">>>>>>>PACO IN DANGEROUS AREA!"
+set pacoShootable = 1
+set paco_inside = 1
+goto 0:0
+
+#switch 97:1100
+echo ">>>>>>>PACO SAFE!"
+set paco_inside = 1
+set pacoShootable = 0
+set pacoSide_1 = 0
+set pacoSide_2 = 0
+set pacoSide_3 = 0
+goto 0:0
+
+#switch 97:1201
+echo "PACO Shootable FROM GUN SIDE 1"
+if (pacoShootable == 0)
+  gosub 97:3200
+set pacoShootable = 1
+set pacoSide_1 = 1
+
+#switch 97:1202
+echo "PACO Shootable FROM GUN SIDE 2"
+if (pacoShootable == 0)
+  gosub 97:3200
+set pacoShootable = 1
+set pacoSide_1 = 1
+set pacoSide_2 = 1
+set pacoSide_3 = 1
+
+#switch 97:1203
+goto 0:0
+echo "PACO Shootable FROM GUN SIDE 3"
+set pacoShootable = 1
+set pacoSide_3 = 1
+
+#switch 97:2010
+if (@Generator1_smashed) {
+  set timed_message = 29
+  gosub 1000:1		                      
+  goto 0:0
+}
+WS_STAND$="gen1stand" 
+ws_object$="" 
+set ws_bank = 97
+set ws_entry = 2015
+gosub 4007:1
+
+#switch 97:2015
+extern AI_GetEdictNumber gen1squib @ob_1
+extern np @ob_1 1 0 effect_1 0 commbase/Generator_Smoke
+set @Generator1_smashed = 1
+set pacoShootable = 0
+set gun3_active = -1.000000
+set gun3_state = -1.000000
+goto 0:0
+
+#switch 97:2020
+if (@Generator2_smashed) {
+  set timed_message = 29
+  gosub 1000:1		                      
+  goto 0:0
+}
+WS_STAND$="gen2stand" 
+ws_object$="" 
+set ws_bank = 97
+set ws_entry = 2025
+gosub 4007:1
+
+#switch 97:2025
+extern AI_GetEdictNumber gen2squib @ob_2
+extern np @ob_2 1 0 effect_1 0 commbase/Generator_Smoke
+set @Generator2_smashed = 1
+set pacoShootable = 0
+set gun1_active = -1.000000
+set gun1_state = -1.000000
+goto 0:0
+
+#switch 97:2030
+if (@Generator3_smashed) {
+  set timed_message = 29
+  gosub 1000:1		                      
+  goto 0:0
+}
+WS_STAND$="gen3stand" 
+ws_object$="" 
+set ws_bank = 97
+set ws_entry = 2035
+gosub 4007:1
+
+#switch 97:2035
+extern AI_GetEdictNumber gen3squib @ob_3
+extern np @ob_3 1 0 effect_1 0 commbase/Generator_Smoke
+set @Generator3_smashed = 1
+set pacoShootable = 0
+set gun2_active = -1.000000
+set gun2_state = -1.000000
+goto 0:0
+
+#switch 97:2040
+if (@Generator4_smashed) {
+  set timed_message = 29
+  gosub 1000:1		                      
+  goto 0:0
+}
+WS_STAND$="gen4stand" 
+ws_object$="" 
+set ws_bank = 97
+set ws_entry = 2045
+gosub 4007:1
+
+#switch 97:2045
+extern AI_GetEdictNumber gen4squib @ob_4
+extern np @ob_4 1 0 effect_1 0 commbase/Generator_Smoke
+set @Generator4_smashed = 1
+set pacoShootable = 0
+set gun4_active = -1.000000
+set gun4_state = -1.000000
+goto 0:0
+
+#switch 97:3100
+echo "---trigger gun 1----"
+if (gun1_active != 0)
+  goto 0:0
+set gun1_active = 1
+set gun1_timer = 2
+set gun1_state = 1
+echo "GUN 1 IS THINKING!"
+goto 0:0
+goto 0:0
+
+#switch 97:3110
+if (gun1_active == 0)
+  goto 0:0
+if (gun1_active != -1.000000)
+  set gun1_active = 0
+goto 0:0
+
+#switch 97:3120
+set gun1_timer = (gun1_timer - 1)
+if (gun1_timer != 0)
+  goto 0:0
+if (gun1_state == 1) {
+  extern playsound games/commbase/games_commbase_gun_lower.wav
+  set gun1_state = 2
+  extern AI_GrabEntity turret2 hTurret1
+  extern ANIM_PlayAnim hTurret1 talk_a 0 0 0
+  set gun1_timer = 3
+  extern AI_ReleaseEntity hTurret1
+  goto 0:0
+} else if ((gun1_state == 2) || (((gun1_state == 3) || (gun1_state == 5)) && pacoShootable)) {
+  if (pacoShootable && (hurtTime == 0)) {
+    extern playsound games/commbase/games_commbase_gun_fire.wav
+    set gun1_state = 5
+    extern AI_GrabEntity turret2 hTurret1
+    extern ANIM_PlayAnim hTurret1 talk_d 0 1 0
+    extern np hTurret1 1 0 effect_1 0 343/muzzle_flash
+    extern AI_ReleaseEntity hTurret1
+    set gun1_timer = 4
+    gosub 97:111	             
+    goto 0:0
+  } else {
+    extern playsound games/commbase/games_commbase_gun_look.wav
+    set gun1_state = 3
+    extern AI_GrabEntity turret2 hTurret1
+    extern ANIM_PlayAnim hTurret1 talk_b 0 1 0
+    extern npkill hTurret1
+    extern AI_ReleaseEntity hTurret1
+    set gun1_timer = 6
+    goto 0:0
+  }
+} else if ((gun1_state == 3) || (gun1_state == 5)) {
+  extern playsound games/commbase/games_commbase_gun_raise.wav
+  set gun1_state = 4
+  extern AI_GrabEntity turret2 hTurret1
+  extern ANIM_PlayAnim hTurret1 talk_c 0 1 0
+  extern npkill hTurret1
+  set gun1_timer = 4
+  extern AI_ReleaseEntity hTurret1
+  goto 0:0
+} else if (gun1_state == 4) {
+  set gun1_state = 1
+  extern AI_GrabEntity turret2 hTurret1
+  extern ANIM_PlayAnim hTurret1 amb_a 0 1 0
+  set gun1_timer = 4
+  extern AI_ReleaseEntity hTurret1
+  if ((gun2_active == 1) && (gun1_active == 1))
+    set gun1_active = 0
+  goto 0:0
+}
+goto 0:0
+
+#switch 97:3200
+if (gun2_active != 0)
+  goto 0:0
+set gun2_active = 1
+set gun2_timer = 2
+set gun2_state = 1
+echo "GUN 2 IS THINKING!"
+goto 0:0
+
+#switch 97:3210
+echo "GUN 2 IS SLEEPING"
+if (gun2_active != -1.000000)
+  set gun2_active = 0
+goto 0:0
+
+#switch 97:3220
+set gun2_timer = (gun2_timer - 1)
+if (gun2_timer != 0)
+  goto 0:0
+if (gun2_state == 1) {
+  extern playsound games/commbase/games_commbase_gun_lower.wav
+  set gun2_state = 2
+  extern AI_GrabEntity turret3 hTurret2
+  extern ANIM_PlayAnim hTurret2 talk_a 0 0 0
+  set gun2_timer = 3
+  extern AI_ReleaseEntity hTurret2
+  goto 0:0
+} else if ((gun2_state == 2) || (((gun2_state == 3) || (gun2_state == 5)) && pacoShootable)) {
+  if (pacoShootable && (hurtTime == 0)) {
+    extern playsound games/commbase/games_commbase_gun_fire.wav
+    set gun2_state = 5
+    extern AI_GrabEntity turret3 hTurret2
+    extern ANIM_PlayAnim hTurret2 talk_d 0 1 0
+    extern np hTurret2 1 0 effect_1 0 343/muzzle_flash
+    extern AI_ReleaseEntity hTurret2
+    set gun2_timer = 4
+    gosub 97:111	             
+    goto 0:0
+  } else {
+    extern playsound games/commbase/games_commbase_gun_look.wav
+    set gun2_state = 3
+    extern AI_GrabEntity turret3 hTurret2
+    extern ANIM_PlayAnim hTurret2 talk_b 0 1 0
+    extern npkill hTurret2
+    extern AI_ReleaseEntity hTurret2
+    set gun2_timer = 6
+    goto 0:0
+  }
+} else if ((gun2_state == 3) || (gun2_state == 5)) {
+  extern playsound games/commbase/games_commbase_gun_raise.wav
+  set gun2_state = 4
+  extern AI_GrabEntity turret3 hTurret2
+  extern ANIM_PlayAnim hTurret2 talk_c 0 1 0
+  extern npkill hTurret2
+  set gun2_timer = 4
+  extern AI_ReleaseEntity hTurret2
+  goto 0:0
+} else if (gun2_state == 4) {
+  set gun2_state = 1
+  extern AI_GrabEntity turret3 hTurret2
+  extern ANIM_PlayAnim hTurret2 amb_a 0 1 0
+  set gun2_timer = 4
+  extern AI_ReleaseEntity hTurret2
+  goto 0:0
+}
+goto 0:0
+
+#switch 97:3300
+echo "GUN 3 IS THINKING"
+if (gun3_active != 0)
+  goto 0:0
+set gun3_active = 1
+set gun3_timer = 2
+set gun3_state = 1
+echo "GUN 3 IS THINKING!"
+goto 0:0
+
+#switch 97:3310
+echo "GUN 3 IS SLEEPING"
+if (gun3_active != -1.000000)
+  set gun3_active = 0
+goto 0:0
+
+#switch 97:3320
+set gun3_timer = (gun3_timer - 1)
+if (gun3_timer != 0)
+  goto 0:0
+if (gun3_state == 1) {
+  extern playsound games/commbase/games_commbase_gun_lower.wav
+  set gun3_state = 2
+  extern AI_GrabEntity turret1 hTurret3
+  extern ANIM_PlayAnim hTurret3 talk_a 0 0 0
+  set gun3_timer = 3
+  extern AI_ReleaseEntity hTurret3
+  goto 0:0
+} else if ((gun3_state == 2) || (((gun3_state == 3) || (gun3_state == 5)) && pacoShootable)) {
+  if (pacoShootable && (hurtTime == 0)) {
+    extern playsound games/commbase/games_commbase_gun_fire.wav
+    set gun3_state = 5
+    extern AI_GrabEntity turret1 hTurret3
+    extern ANIM_PlayAnim hTurret3 talk_d 0 1 0
+    extern np hTurret3 1 0 effect_1 0 343/muzzle_flash
+    extern AI_ReleaseEntity hTurret3
+    set gun3_timer = 4
+    gosub 97:111	             
+    goto 0:0
+  } else {
+    extern playsound games/commbase/games_commbase_gun_look.wav
+    set gun3_state = 3
+    extern AI_GrabEntity turret1 hTurret3
+    extern ANIM_PlayAnim hTurret3 talk_b 0 1 0
+    extern npkill hTurret3
+    extern AI_ReleaseEntity hTurret3
+    set gun3_timer = 6
+    goto 0:0
+  }
+} else if ((gun3_state == 3) || (gun3_state == 5)) {
+  extern playsound games/commbase/games_commbase_gun_raise.wav
+  set gun3_state = 4
+  extern AI_GrabEntity turret1 hTurret3
+  extern ANIM_PlayAnim hTurret3 talk_c 0 1 0
+  extern npkill hTurret3
+  set gun3_timer = 4
+  extern AI_ReleaseEntity hTurret3
+  goto 0:0
+} else if (gun3_state == 4) {
+  set gun3_state = 1
+  extern AI_GrabEntity turret1 hTurret3
+  extern ANIM_PlayAnim hTurret3 amb_a 0 1 0
+  set gun3_timer = 4
+  extern AI_ReleaseEntity hTurret3
+  goto 0:0
+}
+goto 0:0
+
+#switch 97:3400
+echo "GUN 4&5 ARE THINKING"
+if (gun4_active != 0)
+  goto 0:0
+set gun4_active = 1
+set gun4_timer = 2
+set gun4_state = 1
+goto 0:0
+
+#switch 97:3410
+echo "GUN 4&5 ARE SLEEPING"
+if (gun4_active != -1.000000)
+  set gun4_active = 0
+goto 0:0
+
+#switch 97:3420
+echo "4545454545454545454545454545: SERVICE ACTIVE GUN 4&5 GS: %d", gun4_state
+set gun4_timer = (gun4_timer - 1)
+if (gun4_timer != 0)
+  goto 0:0
+if (gun4_state == 1) {
+  extern playsound games/commbase/games_commbase_gun_lower.wav
+  set gun4_state = 2
+  extern AI_GrabEntity turret4 hTurret4
+  extern ANIM_PlayAnim hTurret4 talk_a 0 0 0
+  extern AI_GrabEntity turret5 hTurret5
+  extern ANIM_PlayAnim hTurret5 talk_a 0 0 0
+  set gun4_timer = 3
+  extern AI_ReleaseEntity hTurret4
+  extern AI_ReleaseEntity hTurret5
+  extern playsound games/commbase/games_commbase_gun_lower.wav
+  goto 0:0
+} else if ((gun4_state == 2) || (((gun4_state == 3) || (gun4_state == 5)) && pacoShootable)) {
+  if (pacoShootable && (hurtTime == 0)) {
+    extern playsound games/commbase/games_commbase_gun_fire.wav
+    set gun4_state = 5
+    extern AI_GrabEntity turret4 hTurret4
+    extern ANIM_PlayAnim hTurret4 talk_d 0 1 0
+    extern np hTurret4 1 0 effect_1 0 343/muzzle_flash
+    extern AI_ReleaseEntity hTurret4
+    extern AI_GrabEntity turret5 hTurret5
+    extern ANIM_PlayAnim hTurret5 talk_d 0 1 0
+    extern np hTurret4 1 0 effect_1 0 343/muzzle_flash
+    extern AI_ReleaseEntity hTurret5
+    set gun4_timer = 4
+    extern playsound games/commbase/games_commbase_gun_fire.wav
+    gosub 97:111	             
+    if (pacoHP)
+      gosub 97:111	             
+    goto 0:0
+  } else {
+    extern playsound games/commbase/games_commbase_gun_look.wav
+    set gun4_state = 3
+    extern AI_GrabEntity turret4 hTurret4
+    extern ANIM_PlayAnim hTurret4 talk_b 0 1 0
+    extern npkill hTurret4
+    extern AI_ReleaseEntity hTurret4
+    extern AI_GrabEntity turret5 hTurret5
+    extern ANIM_PlayAnim hTurret5 talk_b 0 1 0
+    extern npkill hTurret5
+    extern AI_ReleaseEntity hTurret5
+    extern playsound games/commbase/games_commbase_gun_look.wav
+    set gun4_timer = 6
+    goto 0:0
+  }
+} else if ((gun4_state == 3) || (gun4_state == 5)) {
+  extern playsound games/commbase/games_commbase_gun_raise.wav
+  set gun4_state = 4
+  extern AI_GrabEntity turret4 hTurret4
+  extern ANIM_PlayAnim hTurret4 talk_c 0 1 0
+  extern npkill hTurret4
+  extern AI_ReleaseEntity hTurret4
+  extern AI_GrabEntity turret5 hTurret5
+  extern ANIM_PlayAnim hTurret5 talk_c 0 1 0
+  extern npkill hTurret5
+  extern AI_ReleaseEntity hTurret5
+  set gun4_timer = 4
+  goto 0:0
+} else if (gun4_state == 4) {
+  set gun4_state = 1
+  extern AI_GrabEntity turret4 hTurret4
+  extern ANIM_PlayAnim hTurret4 amb_a 0 1 0
+  extern AI_ReleaseEntity hTurret4
+  extern AI_GrabEntity turret5 hTurret5
+  extern ANIM_PlayAnim hTurret5 amb_a 0 1 0
+  extern AI_ReleaseEntity hTurret5
+  set gun4_timer = 4
+  goto 0:0
+}
+goto 0:0
+
+#switch 97:4000
+extern is_in_inventory "Cyclic Sensor Array" have_it
+if (have_it) {
+  set timed_message = 21
+  gosub 1000:1
+} else {
+  set timed_message = 20
+  got_object$="Cyclic Sensor Array" 
+  gosub 1000:1
+  extern addnew_to_inventory "Cyclic Sensor Array"
+}
+goto 0:0
+
+#switch 97:4010
+target shutter
+goto 0:0
+
+#switch 97:5000
+target secretdoor
+goto 0:0
+
+#switch 97:7010
+target elevatordoor
+set commbase_timer_active = 1
+extern AI_GrabEntity elevatordoor @elev_handle
+extern entkey @elev_handle "sequence" ""
+extern AI_ReleaseEntity @elev_handle
+goto 60:9300		                  
+
+#switch 97:8000
+if (blowing_up)
+  goto 0:0
+set minehandle = collidea
+extern playsound games/commbase/GAMES_commbase_explode.wav
+extern AI_SpawnEntity boomhandle tg_boom boomtarget
+extern AI_GetXYZ minehandle tx ty tz
+extern AI_SetXYZ boomhandle tx ty tz
+extern np boomhandle 1 0 boom1 0 343/sunderboom
+set blowing_up = 1
+gosub 97:8080
+extern AI_DestroyEntity minehandle
+goto 97:111			            
+
+#switch 97:5109
+pathtarget corner2
+target trigger
+
+#switch 97:7500
+if (paco_leave_lightroom && paco_visit_lightroom)
+  goto 97:7505
+set paco_visit_lightroom = 1
+goto 0:0
+
+#switch 97:7505
+extern playscene commbase_scene76
+goto 0:0

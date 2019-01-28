@@ -1,0 +1,348 @@
+#window 4006:8001
+xyprintfx 17, 30, 0.899999976158, 0, 0, 0, _standardshadow, "Successful"
+startswitch {
+  if ((WS_countertime == 0) && (ws_time > 0))
+    set WS_countertime = ws_time
+  extern pauselevelmusic
+  extern loopsound ../music/mp3/worldskill.mp3
+  set anox_worldskill_successful = 0
+  extern deassign R[0] 15
+  extern deassign X[0] 15
+  extern deassign Y[0] 15
+  extern deassign S[0] 15
+  extern deassign T[0] 15
+  extern CreateAPE2DControl push select 381 238 width=219 height=191 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=1 sequence=4006:8035
+  extern CreateAPE2DControl push Quitit 602 411 width=18 height=19 normal=/gameflow/throwloonie/tl_X.TGA holdfocusflag=false gamevar=@AndrewJThomasWazHere returnvalue=162 sequence=4006:8099
+  extern CreateAPE2DControl push what 602 390 width=18 height=19 normal=/gameflow/throwloonie/tl_Help.TGA holdfocusflag=false gamevar=@LPLock2box returnvalue=1 sequence=4006:8093
+  set lastMS = func_GameTime
+  set currentMS = lastMS
+  extern get_world_skill_level throwloonie @throwloonieworldlevel
+  if ((@throwloonieworldlevel == 1) && (ws_skill_level == 2)) {
+    set timed_message = 99
+    timed_message$="You are not skilled enough to ThrowLoonie this." 
+    gosub 1000:1
+  }
+  console "pushbind"
+  console "bind SPACE \"invoke 4006:8035\""
+  gosub 4006:8005
+}
+
+thinkswitch {
+  if (@ThrowlooniePause)
+    goto 0:0
+  if (@movering <= 0)
+    goto 0:0
+  if ((func_timer - @TLTimerTime) >= 100) {
+    set T[3] = (T[3] - 1)
+    set @TLTimerTime = func_timer
+    set @TLTimerCountdown = (@TLTimerCountdown - 1)
+    if (T[3] < 0) {
+      set T[3] = 9
+      set T[2] = (T[2] - 1)
+    }
+    if (T[2] < 0) {
+      set T[2] = 9
+      set T[1] = (T[1] - 1)
+    }
+    if (T[1] < 0)
+      set T[1] = 0
+  }
+  if (@TLTimerCountdown <= 0) {
+    extern playsound "ui/gen/ui_gen_quit.wav"
+    set anox_worldskill_successful = 0
+    goto 4006:8099
+  }
+}
+
+finishswitch {
+  extern stopsound ../music/mp3/worldskill.mp3
+  extern resumelevelmusic
+  extern RemoveAPE2DControl select
+  extern RemoveAPE2DControl Quitit
+  extern RemoveAPE2DControl what
+  extern deassign R[0] 15
+  extern deassign X[0] 15
+  extern deassign Y[0] 15
+  extern deassign S[0] 15
+  extern deassign T[0] 5
+  goto 4006:8020
+}
+
+style "null"
+flags passive2d, TRUE
+xpos 364
+ypos 190
+if (WS_difficulty <= 1)
+  background "throwloonie/tl_background_0b.TGA" 
+if (WS_difficulty >= 2)
+  background "throwloonie/tl_background_1b.TGA" 
+image "throwloonie/suc_$s[1]$.tga" 98, 16
+if (@totalrings > 0)
+  image "throwloonie/tl_lit_$@BoxCount$.tga" @BoxX, @BoxY
+if (R[1] >= 1)
+  image "throwloonie/tl_ring_1.tga" X[1], Y[1]
+if (R[1] >= 2)
+  image "throwloonie/tl_ring_2.tga" X[2], Y[2]
+if (R[1] >= 3)
+  image "throwloonie/tl_ring_3.tga" X[3], Y[3]
+if (R[1] >= 4)
+  image "throwloonie/tl_ring_4.tga" X[4], Y[4]
+if ((R[1] >= 5) && (@throwloonieworldlevel >= 2))
+  image "throwloonie/tl_ring_5.tga" X[5], Y[5]
+if ((R[1] >= 6) && (@throwloonieworldlevel >= 2))
+  image "throwloonie/tl_ring_6.tga" X[6], Y[6]
+if ((R[1] >= 7) && (@throwloonieworldlevel >= 2))
+  image "throwloonie/tl_ring_7.tga" X[7], Y[7]
+if ((R[1] >= 8) && (@throwloonieworldlevel >= 2))
+  image "throwloonie/tl_ring_8.tga" X[8], Y[8]
+image "throwloonie/tl_tm$t[1]$.pcx" 173, 15
+image "throwloonie/tl_tm$t[2]$.pcx" 189, 15
+image "throwloonie/tl_tm$t[3]$.pcx" 210, 15
+image "throwloonie/tl_period.pcx" 204, 33
+
+#window 4006:8050
+startswitch {
+  set @loonieringtime = 6
+}
+
+thinkswitch {
+  gosub 4006:8053
+  set @movering = func_gametime
+  set x[$@totalrings$] = (((248 / @loonieringtime) * @movering) * 0.0010000000475)
+  set @loonieXdistance2 = (@loonieXdistance * 2)
+  set x[$@totalrings$] = func_mod[x[$@totalrings$],@loonieXdistance2]
+  if (x[$@totalrings$] >= @loonieXdistance)
+    set x[$@totalrings$] = (@loonieXdistance2 - x[$@totalrings$])
+  set x[$@totalrings$] = (x[$@totalrings$] + 17)
+  set y[$@totalrings$] = @loonieYvalue
+}
+
+style "NULL"
+flags passive, TRUE
+width 0
+height 0
+
+#window 4006:8094
+title "Stiletto's ThrowLoonie"
+body "Help Stiletto concentrate on her target by centering the rings on the target lines. Click on the bull's-eye, or hit the space bar to "
+body "lock a ring in place. "
+startswitch {
+  set @ThrowlooniePause = 1
+}
+
+finishswitch {
+  set @ThrowlooniePause = 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 0000ff77 color2 = 0000dd66 color3 = 1111ee57 color4 = 0000ff77
+xpos 30
+ypos 55
+width 580
+
+#window 4006:8095
+title "Stiletto's Master ThrowLoonie"
+body "Help Stiletto concentrate on her target by centering the rings on the target lines. Click on the bull's-eye, or hit the space bar to "
+body "lock a ring in place.\n"
+if (@throwloonieworldlevel == 1)
+  body "Not enough rings? Perhaps she should learn better focus from someone."
+startswitch {
+  set @ThrowlooniePause = 1
+}
+
+finishswitch {
+  set @ThrowlooniePause = 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 0000ff77 color2 = 0000dd66 color3 = 1111ee57 color4 = 0000ff77
+xpos 30
+ypos 55
+width 580
+
+#switch 4006:8005
+if ((WS_difficulty < 1) || (WS_difficulty > 2))
+  set WS_difficulty = 1
+if (WS_countertime == 0)
+  set WS_countertime = 10
+if (ws_skill_level == 2) {
+  set WS_difficulty = 2
+  set WS_countertime = 15
+}
+set @totalrings = 0
+set @TLTimerTime = func_timer
+set @TLTimerCountdown = (WS_countertime * 10)
+set t[1] = func_div[WS_countertime,10]
+set t[2] = func_mod[WS_countertime,10]
+set x[1] = 38
+set y[1] = 54
+if ((ws_skill_level == 1) && (ThrowLoonie_First_Time1 == 0)) {
+  set ThrowLoonie_First_Time1 = 1
+  gosub 4006:8093
+}
+if ((ws_skill_level == 2) && (ThrowLoonie_First_Time2 == 0)) {
+  set ThrowLoonie_First_Time2 = 1
+  gosub 4006:8093
+}
+
+#switch 4006:8020
+unset @totalrings
+unset @movering
+unset ws_countertime
+unset ws_time
+unset ws_difficulty
+unset @BoxX
+unset @BoxY
+unset @BoxCount
+goto 4006:8025
+
+#switch 4006:8025
+extern stopsound "ui/skill/picklock_tumbler.wav"
+console "popbind"
+set ws_doing_wskill = 0
+
+#switch 4006:8035
+if (@ThrowlooniePause)
+  goto 0:0
+if ((ws_difficulty == 1) && (R[1] >= 4))
+  goto 4006:8073
+if ((ws_difficulty == 2) && (R[1] >= 8))
+  goto 4006:8073
+if (((ws_difficulty == 2) && (R[1] >= 4)) && (@throwloonieworldlevel == 1))
+  goto 4006:8073
+if (@movering == 0) {
+  set @totalrings = 1
+  set @BoxCount = 1
+  set R[1] = 1
+  set @BoxX = 39
+  set @BoxY = 55
+  extern playsound "ui/gen/button2.wav"
+  goto 4006:8050
+}
+gosub 4006:8070
+set @BoxX = (@BoxX + 10)
+set @BoxY = (@BoxY + 10)
+set @BoxCount = (@BoxCount + 1)
+set @totalrings = (@totalrings + 1)
+set R[1] = (R[1] + 1)
+set @loonieringtime = (@loonieringtime - 0.75)
+
+#switch 4006:8053
+if (@totalrings == 1) {
+  set @loonieYvalue = 54
+  set @loonieXdistance = 39
+}
+if (@totalrings == 2) {
+  set @loonieYvalue = 64
+  set @loonieXdistance = 59
+}
+if (@totalrings == 3) {
+  set @loonieYvalue = 74
+  set @loonieXdistance = 79
+}
+if (@totalrings == 4) {
+  set @loonieYvalue = 84
+  set @loonieXdistance = 99
+}
+if (@totalrings == 5) {
+  set @loonieYvalue = 94
+  set @loonieXdistance = 119
+}
+if (@totalrings == 6) {
+  set @loonieYvalue = 104
+  set @loonieXdistance = 139
+}
+if (@totalrings == 7) {
+  set @loonieYvalue = 114
+  set @loonieXdistance = 159
+}
+if (@totalrings == 8) {
+  set @loonieYvalue = 124
+  set @loonieXdistance = 179
+}
+goto 0:0
+
+#switch 4006:8070
+if (@totalrings == 1)
+  if ((x[1] >= 36) && (x[1] <= 42)) {
+    set S[1] = 1
+    extern playsound "ui/gen/button2.wav"
+  } else
+    extern playsound "ui/gen/bad_click.wav"
+if (@totalrings == 2)
+  if ((x[2] >= 46) && (x[2] <= 52)) {
+    set S[1] = (S[1] + 1)
+    extern playsound "ui/gen/button2.wav"
+  } else
+    extern playsound "ui/gen/bad_click.wav"
+if (@totalrings == 3)
+  if ((x[3] >= 56) && (x[3] <= 62)) {
+    set S[1] = (S[1] + 1)
+    extern playsound "ui/gen/button2.wav"
+  } else
+    extern playsound "ui/gen/bad_click.wav"
+if (@totalrings == 4)
+  if ((x[4] >= 66) && (x[4] <= 72)) {
+    set S[1] = (S[1] + 1)
+    extern playsound "ui/gen/button2.wav"
+  } else
+    extern playsound "ui/gen/bad_click.wav"
+if (@totalrings == 5)
+  if ((x[5] >= 74) && (x[5] <= 85)) {
+    set S[1] = (S[1] + 1)
+    extern playsound "ui/gen/button2.wav"
+  } else
+    extern playsound "ui/gen/bad_click.wav"
+if (@totalrings == 6)
+  if ((x[6] >= 84) && (x[6] <= 95)) {
+    set S[1] = (S[1] + 1)
+    extern playsound "ui/gen/button2.wav"
+  } else
+    extern playsound "ui/gen/bad_click.wav"
+if (@totalrings == 7)
+  if ((x[7] >= 94) && (x[7] <= 105)) {
+    set S[1] = (S[1] + 1)
+    extern playsound "ui/gen/button2.wav"
+  } else
+    extern playsound "ui/gen/bad_click.wav"
+if (@totalrings == 8)
+  if ((x[8] >= 104) && (x[8] <= 115)) {
+    set S[1] = (S[1] + 1)
+    extern playsound "ui/gen/button2.wav"
+  } else
+    extern playsound "ui/gen/bad_click.wav"
+goto 0:0
+
+#switch 4006:8075
+closewindow 4006:8001
+set anox_worldskill_successful = 1
+extern playsound "ui/gen/ui_gen_chng_good.wav"
+
+#switch 4006:8073
+if (((ws_difficulty == 1) && (S[1] >= 3)) || ((ws_difficulty == 2) && (S[1] >= 6))) {
+  set anox_worldskill_successful = 1
+  extern playsound "ui/gen/ui_gen_chng_good.wav"
+  goto 4006:8099
+} else {
+  extern playsound "ui/gen/bad_click.wav"
+  goto 4006:8099
+}
+
+#switch 4006:8093
+if (ws_skill_level == 1)
+  goto 4006:8094
+if (ws_skill_level == 2)
+  goto 4006:8095
+goto 0:0
+
+#switch 4006:8099
+closewindow 4006:8001
+closewindow 4006:8050

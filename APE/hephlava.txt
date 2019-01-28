@@ -1,0 +1,1692 @@
+#window 26:100
+title "Fatima"
+body "As the Abbot said, this place is DANGEROUS. Lava spouts are everywhere, so be careful. We're looking for Resonating Fluid. There must be some sort of compartment or machine where it's stored."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  gosub 26:7200	                    
+  extern AI_GrabEntity playerchar0 bootshandle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatstand
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 playerchar0
+  extern AI_WaitAndFace bootshandle -1 fatima
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+  set @fatima_is_yapping = 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+nextwindow 26:101
+
+#window 26:101
+title "Fatima"
+body "Watch out for any other broken equipment or cables that might ELECTROCUTE you, got me? We're in Danger Central, so be careful."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity bootshandle
+  extern AI_DestroyEntity @fatima_handle
+  set @fatima_is_yapping = 0
+}
+
+style "style_hephaestus"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 26:1000
+xyprintfx 430, 390, 1, 1, 1, 1, _newsub, "Arrows: move"
+xyprintfx 430, 410, 1, 1, 1, 1, _newsub, "Mouse1/2: Up/Down"
+if (@plat_at_stop)
+  xyprintfx 430, 430, 1, 1, 1, 0, _newsub, "Space: STOP"
+startswitch {
+  set lastMS = func_GameTime
+  set currentMS = lastMS
+  extern AI_GrabEntity PlayerChar0 @realbootshandle
+  extern AI_SetXYZ @realbootshandle 0 0 0
+  extern AI_SpawnEntity @bootshandle character_boots_prop ourboots
+  set bootsx = (bx + 32)
+  set bootsy = (by - 32)
+  set bootsz = (bz - 8)
+  extern AI_SetXYZ @bootshandle bootsx bootsy bootsz
+  extern AI_SetYaw @bootshandle 180
+  set anox_interface_active = 1
+  gosub 25:1102
+  set statebits = 0
+  set msec_pressed = 0
+  set @control_held = 0
+  set @plat_at_stop = 0
+  set blockstate = 2
+  set movetype = 0
+  gosub 26:1021
+  gosub 26:9060
+  goto 0:0
+}
+
+thinkswitch {
+  set currentMS = func_GameTime
+  set delta = (currentMS - lastMS)
+  if (delta < 50)
+    goto 0:0
+  set lastMS = currentMS
+  set delta = (delta - 50)
+  set lastMS = (currentMS - delta)
+  extern GetButtonState left statebits msec_pressed
+  if (statebits && (movetype == 0))
+    gosub 26:1005
+  extern GetButtonState right statebits msec_pressed
+  if (statebits && (movetype == 0))
+    gosub 26:1006
+  extern GetButtonState forward statebits msec_pressed
+  if (statebits && (movetype == 0))
+    gosub 26:1007
+  extern GetButtonState back statebits msec_pressed
+  if (statebits && (movetype == 0))
+    gosub 26:1008
+  extern GetButtonState actiona statebits msec_pressed
+  if (statebits && (movetype == 0))
+    gosub 26:1020
+  extern GetButtonState moveleft statebits msec_pressed
+  if (statebits && (movetype == 0))
+    gosub 26:1005
+  extern GetButtonState moveright statebits msec_pressed
+  if (statebits && (movetype == 0))
+    gosub 26:1006
+  if (movetype != 0)
+    gosub 26:1011
+  if (movetype == 0)
+    gosub 26:1019
+  goto 0:0
+}
+
+finishswitch {
+  set bootsx = (bx + 48)
+  set bootsy = (by - 24)
+  set bootsz = bz
+  extern AI_SetXYZ @realbootshandle bootsx bootsy bootsz
+  extern AI_ReleaseEntity @realbootshandle
+  extern cam_restore
+  extern cam_from null
+  extern cam_to null
+  extern cam_anoxmariomode 0
+  extern AI_DestroyEntity @bootshandle
+  extern set2dcursor default
+  console "popbind"
+  console "bind mouse1 +lmb"
+  console "bind mouse2 +rmb"
+  set anox_interface_active = 0
+  goto 0:0
+}
+
+style "NULL"
+font "_newsub"
+flags passive2d, TRUE
+xpos 0
+ypos 0
+width 640
+image "graphics/black50back.tga" 420, plate_y
+image "gondola/plate.tga" plate_x, plate_y
+image "gondola/joystik.tga" joyleft_x, joyleft_y
+image "gondola/joystik.tga" joyright_x, joyright_y
+
+#window 26:2000
+title "WARNING"
+body "Primary Service Platforms engaged.  Please clear area."
+startswitch {
+  set @flastMS = func_GameTime
+  set @fcurrentMS = @flastMS
+  set @platcount = 0
+}
+
+thinkswitch {
+  set @fcurrentMS = func_GameTime
+  set @fdelta = (@fcurrentMS - @flastMS)
+  if (@fdelta < 50)
+    goto 0:0
+  set @flastMS = @fcurrentMS
+  set @fdelta = (@fdelta - 50)
+  set @flastMS = (@fcurrentMS - @fdelta)
+  set @platcount = (@platcount + 1)
+  if (@platcount >= 60)
+    closewindow 26:2000	                     
+}
+
+finishswitch {
+  target atrain
+}
+
+style "style_hephbox"
+font "_anox10"
+flags passive, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 140
+width 580
+
+#window 26:2100
+title "WARNING"
+body "Secondary Service Platforms engaged.  Please clear area."
+startswitch {
+  set @tlastMS = func_GameTime
+  set @tcurrentMS = @flastMS
+  set @platcount2 = 0
+}
+
+thinkswitch {
+  set @tcurrentMS = func_GameTime
+  set @tdelta = (@tcurrentMS - @tlastMS)
+  if (@tdelta < 50)
+    goto 0:0
+  set @tlastMS = @tcurrentMS
+  set @tdelta = (@tdelta - 50)
+  set @tlastMS = (@tcurrentMS - @tdelta)
+  set @platcount2 = (@platcount2 + 1)
+  if (@platcount2 >= 60)
+    closewindow 26:2100	                     
+}
+
+finishswitch {
+  target buttonwall
+  target btrain
+}
+
+style "style_hephbox"
+font "_anox10"
+flags passive, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 140
+width 580
+
+#window 26:2210
+title "Boots"
+body "(Klaz... I didn't get the Resonating Fluid... I just KNOW Fatima's gonna pop up any second. I should go back.)"
+cam left restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 26:2350
+title "Boots"
+body "No chance. This thing's rusted shut forever. Guess the maintenance crews are all hawking t-shirts now."
+cam left from(PlayerChar0) to(26:2350) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 26:3150
+xyprintfx 200, 20, 1, 1, 0.5, 0, _message, "Pressure release in %d seconds.", @pressure_time
+startswitch {
+  set our_fogvalue = 0.000100
+  set our_rcolor = 0.800000011921
+  set our_gcolor = 0.40000000596
+  set our_bcolor = 0
+  set our_delta = 0.000100
+}
+
+thinkswitch {
+  set our_fogvalue = (our_fogvalue + our_delta)
+  if (our_fogvalue >= 0.0010000000475)
+    set our_delta = (-1.000000 * our_delta)
+  if (our_fogvalue <= 0.000100)
+    set our_delta = (-1.000000 * our_delta)
+  console "gl_fog %f %f %f %f", our_fogvalue, our_rcolor, our_gcolor, our_bcolor
+  set @current_pressure_ticks = func_GameTime
+  set @pdelta = (@current_pressure_ticks - @last_pressure_ticks)
+  if (@pdelta < 1000)
+    goto 0:0
+  set @last_pressure_ticks = @current_pressure_ticks
+  set @pdelta = (@pdelta - 1000)
+  set @last_pressure_ticks = (@current_pressure_ticks - @pdelta)
+  set @pressure_time = (@pressure_time - 1)
+  set @presstoggle = (1 - @presstoggle)
+  if (@presstoggle)
+    extern playsound GAMES/hephgame/GAMES_hephgame_pressure_alarm.wav
+  if (@pressure_time == 0)
+    closewindow 26:3150
+}
+
+finishswitch {
+  console "gl_fog .0007 1 .5 0"
+  pathtarget hydrolava1
+  target pressuretrigger
+  pathtarget pg1corner0
+  target pgtrigger1
+  pathtarget pg2corner0
+  target pgtrigger2
+  pathtarget pg3corner0
+  target pgtrigger3
+  pathtarget pg4corner0
+  target pgtrigger4
+  pathtarget pg5corner0
+  target pgtrigger5
+  pathtarget pg6corner0
+  target pgtrigger6
+  pathtarget pg7corner0
+  target pgtrigger7
+}
+
+style "NULL"
+font "_message"
+flags passive, TRUE
+xpos 0
+ypos 400
+width 640
+
+#window 26:3210
+title "Boots"
+body "Nothing. Maybe I need to turn the power on."
+cam left from(PlayerChar0) to(26:3200) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 340
+width 580
+
+#window 26:3220
+title "Boots"
+body "I got a lava sample already."
+cam left from(PlayerChar0) to(26:3200) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 340
+width 580
+
+#window 26:3301
+title "Boots"
+body "Looks like this lever fits in the big power unit. I think I can turn it on."
+cam left from(PlayerChar0) to(26:3300) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+nextwindow 26:3302
+
+#window 26:3302
+title "Boots"
+body "Hope it doesn't blow up."
+cam left from(PlayerChar0) to(26:3300) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+nextwindow 26:3303
+
+#window 26:3340
+title "Boots"
+body "I think the sampler down there was activated by turning this on."
+cam left from(PlayerChar0) to(26:3300) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 26:3350
+title "Boots"
+body "Some sort of big power unit. Maybe for the sampler? But there's no lever handle."
+cam left from(PlayerChar0) to(26:3300) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 26:3520
+title "Boots"
+body "Bet that door's rigged to the Sample Analyzer here. If I could bring it a sample...."
+cam left from(PlayerChar0) to(26:3500) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 26:26
+title "Boots"
+body "Hmmm...won't open.\n"
+body "%s\n", n$
+body "%s\n", d$
+startswitch {
+  unset n$=func_mapname$ 
+  unset d$=func_mapdesc$ 
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 200
+width 580
+height 280
+
+#window 26:4505
+title "Boots"
+body "It won't budge. Must be inactive while a sample is being analyzed. Or something. I think."
+cam left restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+
+#window 26:5900
+if (@inactive_time)
+  body "Sampler is inactive.\n"
+startswitch {
+  if (sampler_activated && (@got_sample == 0)) {
+    set sampler_state = 1
+  } else {
+    set @inactive_time = 20
+    set sampler_state = 0
+  }
+  extern AI_GrabEntity sampler shandle
+  extern AI_GetYaw shandle @syaw
+  set @startyaw = @syaw
+  extern AI_GetXYZ shandle sx sy sz
+  set @startz = sz
+  set @bottomz = (sz - 192)
+  set @secticks = 20
+  extern AI_GrabEntity PlayerChar0 @realbootshandle
+  set anox_interface_active = 1
+  set @slastMS = func_GameTime
+  set @scurrentMS = @slastMS
+  goto 0:0
+}
+
+thinkswitch {
+  set @scurrentMS = func_GameTime
+  set @sdelta = (@scurrentMS - @slastMS)
+  if (@sdelta < 50)
+    goto 0:0
+  set @slastMS = @scurrentMS
+  set @sdelta = (@sdelta - 50)
+  set @slastMS = (@scurrentMS - @sdelta)
+  if (sampler_state == 7)
+    closewindow 26:5900
+  if (@inactive_time)
+    set @secticks = (@secticks - 1)
+  if (@inactive_time && (@secticks == 0)) {
+    set @secticks = 20
+    set @inactive_time = (@inactive_time - 1)
+    if (@inactive_time == 0)
+      closewindow 26:5900
+  }
+  if (@inactive_time == 0)
+    gosub 26:5904
+  goto 0:0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity @realbootshandle
+  set anox_interface_active = 0
+  set sz = (sz - 24)
+  extern AI_SetXYZ shandle sx sy sz
+  goto 0:0
+}
+
+style "NULL"
+font "_anox10"
+xpos 0
+ypos 0
+width 100
+
+#window 26:5950
+startswitch {
+  set anox_interface_active = 1
+  extern AI_GrabEntity sampler shandle
+  extern AI_GetYaw shandle @syaw
+  set @startyaw = @syaw
+  extern AI_GetXYZ shandle sx sy sz
+  set @startz = sz
+  set @secticks = 20
+  set sampler_state = 6
+  extern AI_GrabEntity @realbootshandle PlayerChar0
+  set @slastMS = func_GameTime
+  set @scurrentMS = @slastMS
+  goto 0:0
+}
+
+thinkswitch {
+  set @scurrentMS = func_GameTime
+  set @sdelta = (@scurrentMS - @slastMS)
+  if (@sdelta < 50)
+    goto 0:0
+  set @slastMS = @scurrentMS
+  set @sdelta = (@sdelta - 50)
+  set @slastMS = (@scurrentMS - @sdelta)
+  if (sampler_state == 7)
+    closewindow 26:5950
+  gosub 26:5954
+  goto 0:0
+}
+
+finishswitch {
+  set @sampler_door_unlocked = 1
+  extern npkill shandle 1
+  pathtarget lavatrigger2
+  target trigger2
+  extern AI_ReleaseEntity shandle
+  extern AI_ReleaseEntity @realbootshandle
+  target samplerdoor
+  set anox_interface_active = 0
+  goto 0:0
+}
+
+style "NULL"
+font "_newsub"
+xpos 0
+ypos 0
+width 100
+
+#window 26:6100
+startswitch {
+  gosub 26:6104
+  set dismiss_plat_map = 0
+  goto 0:0
+}
+
+thinkswitch {
+  gosub 26:6104
+  if (dismiss_plat_map == 1)
+    closewindow %DrawPlatMap
+}
+
+finishswitch {
+  goto 0:0
+}
+
+style "style_hephbox"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 300
+background "hephgame/platmap.pcx" 
+image "hephgame/plat1.pcx" p1x, p1y
+image "hephgame/plat2.pcx" p2x, p2y
+
+#window 26:9000
+xyprintfx 20, 20, 1, 1, 0.699999988079, 0.20000000298, messagenarrow, "FLUID DISPENSER"
+xyprintfx 20, 32, 1, 1, 0.5, 0, _standardthin, "Authorized personnel only"
+xyprintfx 20, 70, 1, 1, 0.5, 0, _standardthin, "WARNING:"
+xyprintfx 20, 82, 1, 1, 0.5, 0, _standardthin, "Resonating Fluid"
+if (fluid_message == 1)
+  xyprintfx 20, 142, 1, 1, 0.5, 0, _standardthin, "Do not shake"
+if (fluid_message == 2)
+  xyprintfx 20, 142, 1, 1, 0.5, 0, _standardthin, "Do not tip"
+if (fluid_message == 3)
+  xyprintfx 20, 142, 1, 1, 0.5, 0, _standardthin, "Do not stir"
+if (fluid_message == 4)
+  xyprintfx 20, 142, 1, 1, 0.5, 0, _standardthin, "Do not eat"
+if (fluid_message == 5)
+  xyprintfx 20, 142, 1, 1, 0.5, 0, _standardthin, "Do not drink"
+if (fluid_message == 6)
+  xyprintfx 20, 142, 1, 1, 0.5, 0, _standardthin, "Do not get wet"
+if (fluid_message == 7)
+  xyprintfx 20, 142, 1, 1, 0.5, 0, _standardthin, "Do not freeze"
+if (fluid_message == 8)
+  xyprintfx 20, 142, 1, 1, 0.5, 0, _standardthin, "Do not heat"
+if (fluid_message == 9)
+  xyprintfx 20, 142, 1, 1, 0.5, 0, _standardthin, "Do not jostle"
+if (fluid_message == 10)
+  xyprintfx 20, 142, 1, 1, 0.5, 0, _standardthin, "Or you will be very sorry."
+if (hephlava_fluid_amount == -1.000000)
+  xyprintfx 70, 170, fluid_alpha, 1, 0.5, 0, messagenarrow, "Fluid depleted"
+startswitch {
+  extern AI_GrabEntity playerchar0 @boo
+  if (hephlava_fluid_amount == 0)
+    set hephlava_fluid_amount = 1
+  extern CreateAPE2DControl push fbutton1 240 310 width=64 height=16 holdfocusflag=false normal=/gameflow/hephgame/b_dispense.pcx bright=/gameflow/hephgame/b_dispense_h.pcx sequence=26:9040 gamevar=fluid_selection returnvalue=1
+  extern CreateAPE2DControl push fbutton2 336 310 width=64 height=16 holdfocusflag=false normal=/gameflow/hephgame/b_exit.pcx bright=/gameflow/hephgame/b_exit_h.pcx sequence=26:9040 gamevar=fluid_selection returnvalue=2
+  set fluid_alpha = 0.10000000149
+  set fluid_delta = 0.10000000149
+  set fgame_ms = func_GameTime
+  set flast_ms = tgame_ms
+  goto 0:0
+}
+
+thinkswitch {
+  if (hephlava_fluid_amount == -1.000000) {
+    set fluid_alpha = (fluid_alpha + fluid_delta)
+    if ((fluid_alpha >= 1) || (fluid_alpha <= 0.10000000149))
+      set fluid_delta = (-1.000000 * fluid_delta)
+  }
+  set fgame_ms = func_gametime
+  if ((fgame_ms - flast_ms) < 2000)
+    goto 0:0
+  set flast_ms = fgame_ms
+  set fluid_message = (fluid_message + 1)
+  if (fluid_message > 10)
+    set fluid_message = 1
+  goto 0:0
+}
+
+finishswitch {
+  extern RemoveAPE2DControl fbutton1
+  extern RemoveAPE2DControl fbutton2
+  extern ANIM_MakeSmart @boo
+  extern AI_ReleaseEntity @boo
+  goto 0:0
+}
+
+style "NULL"
+flags passive2d, TRUE
+flags noscroll, TRUE
+xpos 192
+ypos 112
+width 256
+height 256
+background "hephgame/games_hephlava_monitor.tga" 
+image "hephgame/fluidgauge.pcx" 150, 64
+if (hephlava_fluid_amount == 1)
+  image "hephgame/fluidmeter.pcx" 169, 115
+
+#window 26:5578
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "Ow! That burns my hands!"
+if (func_charinparty[grumpos] == 3)
+  body "Dammit! That's too hot!"
+if (func_charinparty[pal] == 3)
+  body "I ain't a-touchin' nothing that glows red, dag toot it!"
+if (func_charinparty[rho] == 3)
+  body "Um, that appears radioactive."
+if (func_charinparty[democratus] == 3)
+  body "We detect that is a dangerous substance."
+if (func_charinparty[stiletto] == 3)
+  body "Hey, I don't pick up red-hot things."
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 140
+width 580
+
+#window 26:5579
+title "El Puño"
+body "Ah, a Redstone, the rough ore used to make Kraptonite. If there were somewhere I could irradiate this..."
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 140
+width 580
+nextwindow 26:5580
+
+#window 26:7200
+startswitch {
+  set currentSpoutNumber = 0
+  set hCurrentSpout = 0
+  set @spoutCurrentMS = func_gametime
+  set @spoutLastMS = @spoutCurrentMS
+  goto 0:0
+}
+
+thinkswitch {
+  set @spoutCurrentMS = func_gametime
+  if (@spoutCurrentMS < (@spoutLastMS + 1500))
+    goto 0:0
+  set @spoutLastMS = @spoutCurrentMS
+  if (@oldspout1) {
+    extern NPKill @oldspout1
+    extern NPKill @oldspout2
+    extern NPKill @oldspout3
+    extern NPKill @oldspout4
+    extern NPKill @oldspout5
+    extern NPKill @oldspout6
+    extern NPKill @oldspout7
+    extern NPKill @oldspout8
+  }
+  set currentSpoutCounter = (currentSpoutCounter + 1)
+  if (currentSpoutCounter > 3)
+    set currentSpoutCounter = 1
+  gosub 26:7260
+  gosub 26:7270
+  goto 0:0
+}
+
+finishswitch {
+  echo "I am lonely...I never get called."
+  goto 0:0
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 80
+height 80
+
+#window 26:8030
+startswitch {
+  extern get_party_order @CharacterToPain$ @2ndchar$ @3rdchar$
+  extern GetPlayerCurrentHP @CharacterToPain$ @hpleft
+  if (@hpleft < 11) {
+    extern SetPlayerCurrentHP @CharacterToPain$ 1
+  } else {
+    set @hpleft = (@hpleft - 10)
+    extern SetPlayerCurrentHP @CharacterToPain$ @hpleft
+  }
+  if (func_charinparty[boots] == 3)
+    extern playsound battle/character_boots_com/character_boots_com_pain.wav
+  if (func_charinparty[grumpos] == 3)
+    extern playsound battle/character_grumpos_com/character_grumpos_com_pain.wav
+  if (func_charinparty[rho] == 3)
+    extern playsound battle/character_rho_com/character_rho_com_pain.wav
+  if (func_charinparty[democratus] == 3)
+    extern playsound battle/character_democratus_com/dem_pain.wav
+  if (func_charinparty[stiletto] == 3)
+    extern playsound battle/character_rho_com/character_rho_com_pain.wav
+  if (func_charinparty[paco] == 3)
+    extern playsound battle/character_paco_com/character_paco_pain.wav
+  extern FlashScreenf 1 0 0 0 0
+  extern FlashScreenf 1 0 0 0.3 0.15
+  set @PainFlashTime = func_gametime
+}
+
+thinkswitch {
+  if (func_gametime > (@PainFlashTime + 150)) {
+    extern FlashScreenf 1 0 0 0.3 0
+    extern FlashScreenf 1 0 0 0 .15
+    closewindow 26:8030
+  }
+}
+
+style "null"
+flags passive, TRUE
+
+#switch 26:1
+set CURRENT_PLANET = 6
+set CURRENT_BANK = 26
+extern applylevelconfiguration hephlava
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 .6 .6
+console "gl_fog .0007 1 .5 0"
+extern playlevelmusic mp3/bricks/bricks_normalug_1_0.mp3
+set @first_func_train = 0
+set @second_func_train_active = 0
+set @second_func_train = 0
+if (@HLAVA_YouAreDead == 1)
+  set @HLAVA_YouAreDead = 0
+if (hephlava_secret_platform_lowered) {
+  pathtarget secretcorner2
+  target secrettrigger
+  target bridgeblock
+}
+extern AI_GetEdictNumber block1 @ben
+extern AI_SpawnEntity hRidePlat ob_hephlava block1
+extern AI_SpawnEntity hChain1 ob_hepchains chain1
+extern AI_SpawnEntity hChain2 ob_hepchains chain2
+extern AI_SpawnEntity hChain3 ob_hepchains chain3
+extern AI_SpawnEntity hChain4 ob_hepchains chain4
+set bx = 1216
+set by = -1536.000000
+set bz = -256.000000
+extern AI_SetXYZ hRidePlat bx by bz
+gosub 26:1018			                           
+goto 0:0
+
+#switch 26:9060
+console "pushbind"
+console "bind mouse1 invoke 26:1009"
+console "bind mouse2 invoke 26:1010"
+console "-actiona"
+console "bind space +actiona"
+goto 0:0
+
+#switch 25:1102
+set @camx = 1600
+set @camy = -2490.000000
+set @camz = 0
+extern cam_anoxmariomode 1
+extern cam_from @camx @camy @camz
+extern cam_to_edictnumber @bootshandle
+goto 0:0
+
+#switch 26:1021
+set joyleft_x = (51 + 226)
+set joyright_x = (131 + 226)
+set joyleft_y = (26 + 360)
+set joyright_y = (26 + 360)
+set plate_x = 226
+set plate_y = 360
+extern set2dcursor invisiblecursor.pcx
+goto 0:0
+
+#switch 26:1005
+if (bx <= 1152)
+  goto 0:0
+gosub 26:1013
+if (noWayDude)
+  goto 0:0
+set blockstate = 1
+set movetype = 1
+set moveamount = 64
+set roomx = (roomx - 1)
+extern playsound GAMES/hephgame/GAMES_hephgame_platform.wav
+set joyleft_x = ((51 - 12) + 226)
+goto 0:0
+
+#switch 26:1006
+if (bx >= 2176)
+  goto 0:0
+gosub 26:1014
+if (noWayDude)
+  goto 0:0
+set blockstate = 1
+set movetype = 2
+set moveamount = 64
+set roomx = (roomx + 1)
+extern playsound GAMES/hephgame/GAMES_hephgame_platform.wav
+set joyleft_x = ((51 + 12) + 226)
+goto 0:0
+
+#switch 26:1007
+if (by >= -1536.000000)
+  goto 0:0
+gosub 26:1015
+if (noWayDude)
+  goto 0:0
+set roomy = (roomy - 1)
+set blockstate = 1
+set movetype = 3
+set moveamount = 64
+extern playsound GAMES/hephgame/GAMES_hephgame_platform.wav
+set joyleft_y = ((26 - 12) + 360)
+goto 0:0
+
+#switch 26:1008
+if (by <= -2496.000000)
+  goto 0:0
+gosub 26:1016
+if (noWayDude)
+  goto 0:0
+set roomy = (roomy + 1)
+set blockstate = 1
+set movetype = 4
+set moveamount = 64
+extern playsound GAMES/hephgame/GAMES_hephgame_platform.wav
+set joyleft_y = ((26 + 12) + 360)
+goto 0:0
+
+#switch 26:1009
+if (movetype != 0)
+  goto 0:0
+if (bz >= 64)
+  goto 0:0
+set roomz = (roomz + 1)
+set blockstate = 1
+set movetype = 5
+set moveamount = 64
+extern playsound GAMES/hephgame/GAMES_hephgame_platform.wav
+set joyright_y = ((26 - 12) + 360)
+goto 0:0
+
+#switch 26:1010
+if (movetype != 0)
+  goto 0:0
+if (bz <= -640.000000)
+  goto 0:0
+gosub 26:1017
+if (noWayDude)
+  goto 0:0
+set roomz = (roomz - 1)
+set blockstate = 1
+set movetype = 6
+set moveamount = 64
+extern playsound GAMES/hephgame/GAMES_hephgame_platform.wav
+set joyright_y = ((26 + 12) + 360)
+goto 0:0
+
+#switch 26:1011
+if (movetype == 1) {
+  set bx = (bx - 8)
+} else if (movetype == 2) {
+  set bx = (bx + 8)
+} else if (movetype == 3) {
+  set by = (by + 8)
+} else if (movetype == 4) {
+  set by = (by - 8)
+} else if (movetype == 5) {
+  set bz = (bz + 8)
+} else if (movetype == 6)
+  set bz = (bz - 8)
+extern AI_SetXYZ hRidePlat bx by bz
+gosub 26:1012
+set moveamount = (moveamount - 8)
+if (moveamount == 0) {
+  gosub 26:1022
+  if (@control_held)
+    goto 0:0
+}
+if (moveamount == 0) {
+  set movetype = 0
+  extern playsound GAMES/hephgame/GAMES_hephgame_stopmove.wav
+  set joyleft_x = (51 + 226)
+  set joyright_x = (131 + 226)
+  set joyleft_y = (26 + 360)
+  set joyright_y = (26 + 360)
+}
+goto 0:0
+
+#switch 26:1022
+set @control_held = 0
+if (movetype == 1) {
+  extern GetButtonState moveleft statebits msec_pressed
+  if (statebits)
+    gosub 26:1005
+  if (moveamount > 0)
+    set @control_held = 1
+} else if (movetype == 2) {
+  extern GetButtonState moveright statebits msec_pressed
+  if (statebits)
+    gosub 26:1006
+  if (moveamount > 0)
+    set @control_held = 1
+} else if (movetype == 3) {
+  extern GetButtonState forward statebits msec_pressed
+  if (statebits)
+    gosub 26:1007
+  if (moveamount > 0)
+    set @control_held = 1
+} else if (movetype == 4) {
+  extern GetButtonState back statebits msec_pressed
+  if (statebits)
+    gosub 26:1008
+  if (moveamount > 0)
+    set @control_held = 1
+}
+goto 0:0
+
+#switch 26:1012
+gosub 26:1018
+set bootsx = (bx + 32)
+set bootsy = (by - 32)
+set bootsz = (bz - 8)
+extern AI_SetXYZ @bootshandle bootsx bootsy bootsz
+if (@got_lava_sample && (@sampler_door_unlocked == 0)) {
+  set sx = (bx + 128)
+  set sy = by
+  set sz = (bz - 8)
+  extern AI_SetXYZ shandle sx sy sz
+}
+goto 0:0
+
+#switch 26:1018
+set cx = (bx + 124)
+set cy = (by - 60)
+set cz = (bz + 32)
+extern AI_SetXYZ hChain1 cx cy cz
+set cx = (bx + 4)
+set cy = (by - 60)
+set cz = (bz + 32)
+extern AI_SetXYZ hChain2 cx cy cz
+set cx = (bx + 124)
+set cy = (by - 10)
+set cz = (bz + 32)
+extern AI_SetXYZ hChain3 cx cy cz
+set cx = (bx + 4)
+set cy = (by - 10)
+set cz = (bz + 32)
+extern AI_SetXYZ hChain4 cx cy cz
+if (sampler_activated && (@sampoo == 0)) {
+  extern AI_SpawnEntity leverhandle ob_placedhephlever levertarget 26:3300 leverplace
+  extern AI_GetXYZ leverhandle @lx @ly @lz
+  set @lx = (@lx - 2)
+  set @ly = (@ly + 10)
+  set @lz = (@lz + 1)
+  extern AI_SetXYZ leverhandle @lx @ly @lz
+  extern AI_SetYaw leverhandle 290
+  set @sampoo = 1
+}
+goto 0:0
+
+#switch 26:1013
+set noWayDude = 0
+if (((roomx == 16) && (roomy >= 0)) && (roomy <= 4)) {
+  set noWayDude = 1
+} else if (((roomx == 1) && (roomy != 15)) && (roomy != 16)) {
+  set noWayDude = 1
+} else if (((roomx == 8) && (roomy == 8)) && (roomz <= 4)) {
+  set noWayDude = 1
+} else if ((roomx == 14) && (roomy == 5)) {
+  set noWayDude = 1
+} else if (((roomx == 9) && ((roomy == 9) || (roomy == 10))) && (roomz <= 4)) {
+  set noWayDude = 1
+} else if (((roomx == 5) && ((roomy == 13) || (roomy == 14))) && (roomz < 8))
+  set noWayDude = 1
+goto 0:0
+
+#switch 26:1014
+set noWayDude = 0
+if ((roomx == 1) && (roomy == 0)) {
+  set noWayDude = 1
+} else if ((roomx == 11) && (roomy == 5)) {
+  set noWayDude = 1
+} else if (((roomx == 7) && (roomy >= 1)) && (roomy <= 4)) {
+  set noWayDude = 1
+} else if (((roomx == 5) && (((roomy == 8) || (roomy == 9)) || (roomy == 10))) && (roomz <= 4)) {
+  set noWayDude = 1
+} else if ((roomx == 14) && ((roomy == 13) || (roomy == 14)))
+  set noWayDude = 1
+goto 0:0
+
+#switch 26:1015
+set noWayDude = 0
+if (((roomy == 1) && (roomx >= 2)) && (roomx <= 7)) {
+  set noWayDude = 1
+} else if (((roomy == 5) && (roomx >= 8)) && (roomx <= 15)) {
+  set noWayDude = 1
+} else if (((roomx == 12) || (roomx == 13)) && (roomy == 6)) {
+  set noWayDude = 1
+} else if ((((roomy == 11) && (roomx >= 6)) && (roomx <= 8)) && (roomz <= 4)) {
+  set noWayDude = 1
+} else if ((roomx == 16) && (roomy == 1)) {
+  set noWayDude = 1
+} else if ((roomx == 0) && (roomy == 12)) {
+  set noWayDude = 1
+} else if ((roomx == 0) && (roomy == 15)) {
+  set noWayDude = 1
+} else if ((roomy == 15) && (roomx >= 15)) {
+  set noWayDude = 1
+} else if (((roomy == 15) && (roomx <= 4)) && (roomz < 8))
+  set noWayDude = 1
+goto 0:0
+
+#switch 26:1016
+set noWayDude = 0
+if ((((roomy == 8) && (roomx >= 6)) && (roomx <= 8)) && (roomz <= 4)) {
+  set noWayDude = 1
+} else if ((((roomy == 7) && (roomx >= 6)) && (roomx <= 7)) && (roomz <= 4)) {
+  set noWayDude = 1
+} else if (((roomy == 12) && (roomx <= 4)) && (roomz < 8)) {
+  set noWayDude = 1
+} else if ((roomy == 12) && (roomx >= 15)) {
+  set noWayDude = 1
+} else if (roomz == 10)
+  set noWayDude = 1
+goto 0:0
+
+#switch 26:1017
+set noWayDude = 0
+if ((((roomy == 9) || (roomy == 10)) && ((roomx >= 6) && (roomx <= 8))) && (roomz <= 5)) {
+  set noWayDude = 1
+} else if ((((roomy == 13) || (roomy == 14)) && (roomx <= 4)) && (roomz <= 8)) {
+  set noWayDude = 1
+} else if (((roomy == 8) && ((roomx == 6) || (roomx == 7))) && (roomz <= 4)) {
+  set noWayDude = 1
+} else if (roomz == 0)
+  set noWayDude = 1
+goto 0:0
+
+#switch 26:1019
+set @plat_at_stop = 0
+if (((roomx == 1) && (roomy == 0)) && (roomz == 6)) {
+  set @plat_at_stop = 1
+} else if (((roomx == 11) && (roomy == 5)) && (roomz == 9)) {
+  set @plat_at_stop = 1
+} else if (((roomx == 16) && (roomy == 1)) && (roomz == 1)) {
+  set @plat_at_stop = 1
+} else if (((roomx == 3) && (roomy == 15)) && (roomz == 6)) {
+  set @plat_at_stop = 1
+} else if (((roomx == 7) && (roomy == 11)) && (roomz == 1)) {
+  set @plat_at_stop = 1
+} else if (((roomx == 16) && (roomy == 15)) && (roomz == 7))
+  set @plat_at_stop = 1
+goto 0:0
+
+#switch 26:1020
+if (@plat_at_stop == 0)
+  goto 0:0
+closewindow 26:1000
+goto 0:0
+
+#switch 26:2200
+extern is_in_inventory "MysFac Security Card" @got_it
+extern is_in_inventory "Resonating Fluid" @got_fluid
+if ((@got_fluid == 0) && @got_it) {
+  goto 26:2210
+} else if (@got_it) {
+  target backdoor
+  set timed_message = 9
+  gosub 1000:1
+} else {
+  set timed_message = 10
+  gosub 1000:1
+}
+goto 0:0
+
+#switch 26:2300
+if (@door_picklocked == 1)
+  goto 26:2301
+WS_STAND$="picklockstand" 
+ws_object$="picklockdoor" 
+set LPdifficulty = 3
+set LPtime = 35
+gosub 4001:1		                   
+set ws_bank = 26
+set ws_entry = 2301
+goto 0:0
+
+#switch 26:2301
+target picklockdoor
+set @door_picklocked = 1
+goto 0:0
+
+#switch 26:2400
+extern is_in_inventory "MysFac Security Card" @got_it
+if (@got_it) {
+  target secretdoor
+  set timed_message = 9
+  gosub 1000:1
+} else {
+  set timed_message = 10
+  gosub 1000:1
+}
+goto 0:0
+
+#switch 26:2500
+extern is_in_inventory "MysFac Security Card" @got_it
+if (@got_it)
+  target pumpdoor
+if (@got_it) {
+  set timed_message = 9
+  gosub 1000:1
+} else {
+  set timed_message = 10
+  gosub 1000:1
+}
+goto 0:0
+
+#switch 26:2600
+extern is_in_inventory "MysFac Security Card" @got_it
+if (@got_it)
+  target controldoor
+if (@got_it) {
+  set timed_message = 9
+  gosub 1000:1
+} else {
+  set timed_message = 10
+  gosub 1000:1
+}
+goto 0:0
+
+#switch 26:2700
+extern is_in_inventory "MysFac Security Card" @got_it
+if (@got_it)
+  target storedoor
+if (@got_it) {
+  set timed_message = 9
+  gosub 1000:1
+} else {
+  set timed_message = 10
+  gosub 1000:1
+}
+goto 0:0
+
+#switch 26:2800
+extern is_in_inventory "MysFac Security Card" @got_it
+if (@got_it)
+  target frontdoor
+if (@got_it) {
+  set timed_message = 9
+  gosub 1000:1
+} else {
+  set timed_message = 10
+  gosub 1000:1
+}
+goto 0:0
+
+#switch 26:2900
+extern playsound ui/gen/ui_gen_buttonpress.wav
+pathtarget hydrolava2
+target pressuretrigger
+pathtarget pg1corner1
+target pgtrigger1
+pathtarget pg2corner1
+target pgtrigger2
+pathtarget pg3corner1
+target pgtrigger3
+pathtarget pg4corner1
+target pgtrigger4
+pathtarget pg5corner1
+target pgtrigger5
+pathtarget pg6corner1
+target pgtrigger6
+pathtarget pg7corner1
+target pgtrigger7
+extern playsound games/hephgame/games_hephgame_rumble.wav
+set @pressure_time = 60
+set @last_pressure_ticks = func_gameTime
+set @current_pressure_ticks = last_pressure_ticks
+gosub 26:3150
+goto 0:0
+
+#switch 26:3000
+extern playsound ui/gen/ui_gen_buttonpress.wav
+pathtarget hydrolava3
+target pressuretrigger
+pathtarget pg1corner2
+target pgtrigger1
+pathtarget pg2corner2
+target pgtrigger2
+pathtarget pg3corner2
+target pgtrigger3
+pathtarget pg4corner2
+target pgtrigger4
+pathtarget pg5corner2
+target pgtrigger5
+pathtarget pg6corner2
+target pgtrigger6
+pathtarget pg7corner2
+target pgtrigger7
+extern playsound games/hephgame/games_hephgame_rumble.wav
+goto 0:0
+
+#switch 26:3100
+extern playsound ui/gen/ui_gen_buttonpress.wav
+pathtarget hydrolava4
+target pressuretrigger
+pathtarget pg1corner3
+target pgtrigger1
+pathtarget pg2corner3
+target pgtrigger2
+pathtarget pg3corner3
+target pgtrigger3
+pathtarget pg4corner3
+target pgtrigger4
+pathtarget pg5corner3
+target pgtrigger5
+pathtarget pg6corner3
+target pgtrigger6
+pathtarget pg7corner3
+target pgtrigger7
+extern playsound games/hephgame/games_hephgame_rumble.wav
+goto 0:0
+
+#switch 26:3200
+if (sampler_activated == 0)
+  goto 26:3210
+if (@got_lava_sample)
+  goto 26:3220
+gosub 26:5900
+set @got_lava_sample = 1
+goto 0:0
+
+#switch 26:3300
+if (sampler_activated)
+  goto 26:3340
+extern is_in_inventory "Lava Sampler Lever" @got_lever
+if (@got_lever) {
+  goto 26:3301
+} else
+  gosub 26:3350
+goto 0:0
+
+#switch 26:3303
+extern is_in_inventory "Lava Sampler Lever" @got_lever
+if (@got_lever) {
+  extern AI_GrabEntity PlayerChar0 @realbootshandle
+  extern AI_GrabEntity leverstand @standhandle
+  extern AI_GetXYZ @standhandle rbx rby rbz
+  extern AI_SetXYZ @realbootshandle rbx rby rbz
+  extern AI_SetYaw @realbootshandle 90
+  extern playscene hephlava_placelever
+  extern AI_SpawnEntity leverhandle ob_placedhephlever levertarget 26:3300 leverplace
+  extern AI_GetXYZ leverhandle @lx @ly @lz
+  set @lx = (@lx - 2)
+  set @ly = (@ly + 10)
+  set @lz = (@lz + 1)
+  extern AI_SetXYZ leverhandle @lx @ly @lz
+  extern playsound games/hephgame/games_hephgame_lever_place.wav
+  extern AI_SetYaw leverhandle 290
+  set sampler_activated = 1
+  extern AI_ReleaseEntity @standhandle
+  extern AI_ReleaseEntity @realbootshandle
+  extern remove_from_inventory "Lava Sampler Lever"
+} else
+  gosub 26:3350
+goto 0:0
+
+#switch 26:3400
+if (hephlava_secret_platform_lowered)
+  goto 0:0
+pathtarget secretcorner2
+target secrettrigger
+target bridgeblock
+set hephlava_secret_platform_lowered = 1
+extern playsound ui/gen/ui_gen_distant_event.wav
+goto 0:0
+
+#switch 26:3500
+if (@got_lava_sample == 0)
+  goto 26:3520
+if (@sampler_door_unlocked)
+  goto 26:3600
+goto 26:5950
+
+#switch 26:3600
+target samplerdoor
+goto 0:0
+
+#switch 26:6666
+extern addnew_to_inventory "MysFac Security Card"
+extern addnew_to_inventory "Lava Sampler Lever"
+echo "CHEATING TO GET CARD AND LEVER"
+goto 0:0
+
+#switch 26:4000
+set @where_is_plat = 1
+set roomx = 1
+set roomy = 0
+set roomz = 6
+goto 26:1000
+
+#switch 26:4100
+set @where_is_plat = 2
+set roomx = 11
+set roomy = 5
+set roomz = 9
+goto 26:1000
+
+#switch 26:4200
+set @where_is_plat = 3
+set roomx = 16
+set roomy = 1
+set roomz = 1
+goto 26:1000
+
+#switch 26:4300
+set @where_is_plat = 4
+set roomx = 16
+set roomy = 15
+set roomz = 7
+goto 26:1000
+
+#switch 26:4400
+set @where_is_plat = 5
+set roomx = 7
+set roomy = 11
+set roomz = 1
+goto 26:1000
+
+#switch 26:4500
+if (@sampler_door_unlocked == 1)
+  goto 26:4505
+set @where_is_plat = 6
+set roomx = 3
+set roomy = 15
+set roomz = 6
+goto 26:1000
+
+#switch 26:5904
+if (sampler_state == 0) {
+  goto 0:0
+} else if (sampler_state == 1) {
+  gosub 26:6000
+} else if (sampler_state == 2) {
+  gosub 26:6001
+} else if (sampler_state == 3) {
+  gosub 26:6002
+} else if (sampler_state == 4) {
+  gosub 26:6003
+} else if (sampler_state == 5) {
+  gosub 26:6004
+} else if (sampler_state == 6)
+  gosub 26:6005
+goto 0:0
+
+#switch 26:6000
+if (sz == @startZ) {
+  extern playscene hephlava_sampler
+  extern playsound GAMES/hephgame/GAMES_hephgame_sampler_down.wav
+}
+set sz = (sz - 4)
+extern AI_SetXYZ shandle sx sy sz
+if (sz < @bottomZ) {
+  set sampler_state = 2
+  extern np shandle 1 0 glow1 0 343/lavaball
+  set @rstartZ = sz
+}
+goto 0:0
+
+#switch 26:6001
+if (sz == @rstartZ)
+  extern playsound games/hephgame/games_hephgame_sampler_up.wav
+set sz = (sz + 4)
+extern AI_SetXYZ shandle sx sy sz
+if (sz == @startZ) {
+  set sampler_state = 3
+  set @startX = sx
+}
+goto 0:0
+
+#switch 26:6002
+if (sx == @startx)
+  extern playsound GAMES/hephgame/GAMES_hephgame_sampler_move.wav
+set sx = (sx + 4)
+extern AI_SetXYZ shandle sx sy sz
+if (sx == (@startx + 96)) {
+  set sampler_state = 4
+  set @syaw = @startyaw
+}
+goto 0:0
+
+#switch 26:6003
+if (@syaw == @startyaw)
+  extern playsound GAMES/hephgame/GAMES_hephgame_sampler_turn.wav
+set @syaw = (@syaw - 15)
+extern AI_SetYaw shandle @syaw
+if (@syaw == (@startyaw - 90)) {
+  set sampler_state = 5
+  set @starty = sy
+}
+goto 0:0
+
+#switch 26:6004
+if (sy == @starty)
+  extern playsound GAMES/hephgame/GAMES_hephgame_sampler_move.wav
+set sy = (sy - 4)
+extern AI_SetXYZ shandle sx sy sz
+if (sy == (@starty - 128))
+  set sampler_state = 6
+goto 0:0
+
+#switch 26:6005
+if (@syaw == (@startyaw - 90))
+  extern playsound GAMES/hephgame/GAMES_hephgame_sampler_turn.wav
+set @syaw = (@syaw - 15)
+extern AI_SetYaw shandle @syaw
+if (@syaw == (@startyaw - 180)) {
+  set sampler_state = 7
+  extern stopscene hephlava_sampler
+  set @got_lava_sample = 1
+}
+goto 0:0
+
+#switch 26:5954
+if (sampler_state == 3) {
+  gosub 26:5955
+} else if (sampler_state == 4) {
+  gosub 26:5956
+} else if (sampler_state == 6) {
+  gosub 26:5958
+} else if (sampler_state == 5)
+  gosub 26:5957
+goto 0:0
+
+#switch 26:5955
+if (sx == @startx)
+  extern playsound GAMES/hephgame/GAMES_hephgame_sampler_move.wav
+set sx = (sx - 4)
+extern AI_SetXYZ shandle sx sy sz
+if (sx == (@startx - 288)) {
+  set sampler_state = 7
+  set @syaw = @startyaw
+}
+goto 0:0
+
+#switch 26:5956
+if (@syaw == @startyaw)
+  extern playsound GAMES/hephgame/GAMES_hephgame_sampler_turn.wav
+set @syaw = (@syaw + 15)
+extern AI_SetYaw shandle @syaw
+if (@syaw == (@startyaw + 90)) {
+  set sampler_state = 3
+  set @startx = sx
+}
+goto 0:0
+
+#switch 26:5957
+if (sy == @starty)
+  extern playsound GAMES/hephgame/GAMES_hephgame_sampler_move.wav
+set sy = (sy + 4)
+extern AI_SetXYZ shandle sx sy sz
+if (sy == (@starty + 128)) {
+  set sampler_state = 4
+  set @startyaw = @syaw
+}
+goto 0:0
+
+#switch 26:5958
+if (@syaw == @startyaw)
+  extern playsound GAMES/hephgame/GAMES_hephgame_sampler_turn.wav
+set @syaw = (@syaw + 15)
+extern AI_SetYaw shandle @syaw
+if (@syaw == (@startyaw + 90)) {
+  set sampler_state = 5
+  set @starty = sy
+}
+goto 0:0
+
+#switch 26:6104
+extern AI_GrabEntity atrain ahandle
+extern AI_GrabEntity btrain bhandle
+extern AI_GetXYZ ahandle p1x p1y p1z
+extern AI_GetXYZ bhandle p2x p2y p2z
+extern AI_ReleaseEntity atrain
+extern AI_ReleaseEntity btrain
+goto 0:0
+
+#switch 26:7000
+set hephlava_meter_active = 0
+extern playscene hephlava_2hephfactory
+goto 0:0
+
+#switch 26:8600
+if (@HLAVA_YouAreDead == 1)
+  goto 0:0
+set @HLAVA_YouAreDead = 1
+closewindow %ToxicMain                            
+closewindow 26:3150                                                      
+set anox_manner_of_death = 18
+goto 986:1
+
+#switch 26:8610
+if (@HLAVA_YouAreDead == 1)
+  goto 0:0
+set @HLAVA_YouAreDead = 1
+closewindow %ToxicMain                            
+closewindow 26:3150                                                      
+set anox_manner_of_death = 19
+goto 986:1
+
+#switch 26:8010
+goto 0:0
+
+#switch 26:8620
+echo "DEATH FROM WIRES, IF WE DO IT!"
+goto 0:0
+
+#switch 26:9040
+if (fluid_selection == 2)
+  closewindow 26:9000
+if ((fluid_selection == 1) && (hephlava_fluid_amount == -1.000000)) {
+  extern playsound ui/gen/ui_gen_failure.wav
+  goto 0:0
+} else if ((fluid_selection == 1) && (hephlava_fluid_amount == 1)) {
+  extern addnew_to_inventory "Resonating Fluid"
+  extern complete_quest "Get Fluid"
+  extern add_quest "Get Fluid Back"
+  set got_fluid = 1
+  set hephlava_fluid_amount = -1.000000
+  if (GOT_FLUID && FOUND_3KEYS_NOTE)
+    set @Abbot_Spawn63 = 1
+  extern playsound ui/gen/ui_gen_success.wav
+  got_object$="Resonating Fluid" 
+  set timed_message = 20
+  gosub 1000:1
+}
+
+#switch 26:5577
+console "cam_anoxmariomode 1"
+extern AI_GrabEntity PlayerChar0 hPlayer
+extern AI_SeekAndFace hPlayer pacostand1
+extern AI_SetCompletionCallback hPlayer 26:5588
+
+#switch 26:5588
+extern ANIM_MakeSmart hPlayer
+extern AI_ReleaseEntity hPlayer
+console "cam_anoxmariomode 0"
+extern is_in_inventory "Redstone" @rs
+extern is_in_inventory "Red Kraptonite" @rk
+extern is_in_inventory "Radius Rage" @rr
+if ((((func_charinparty[paco] == 3) && (@rs == 0)) && (@rk == 0)) && (@rr == 0))
+  goto 26:5579
+goto 26:5578
+
+#switch 26:5580
+extern AI_GetEdictNumber PlayerChar0 getter
+extern pickup_getitem getter 26:5577
+set timed_message = 20
+got_object$="Redstone" 
+gosub 1000:1
+goto 0:0
+
+#switch 26:7260
+set currentSpoutNumber = currentSpoutCounter
+gosub 26:7240
+gosub 26:7250		                  
+set @oldspout1 = @saveSpout1
+set @saveSpout1 = hCurrentSpout
+set currentSpoutNumber = (currentSpoutCounter + 3)
+gosub 26:7240
+gosub 26:7250
+set @oldspout2 = @saveSpout2
+set @saveSpout2 = hCurrentSpout
+set currentSpoutNumber = (currentSpoutCounter + 6)
+gosub 26:7240
+gosub 26:7250
+set @oldspout3 = @saveSpout3
+set @saveSpout3 = hCurrentSpout
+set currentSpoutNumber = (currentSpoutCounter + 9)
+gosub 26:7240
+gosub 26:7250
+set @oldspout4 = @saveSpout4
+set @saveSpout4 = hCurrentSpout
+goto 0:0
+
+#switch 26:7270
+set currentSpoutNumber = (currentSpoutCounter + 12)
+gosub 26:7240
+gosub 26:7250
+set @oldspout5 = @saveSpout5
+set @saveSpout5 = hCurrentSpout
+set currentSpoutNumber = (currentSpoutCounter + 15)
+gosub 26:7240
+gosub 26:7250
+set @oldspout6 = @saveSpout6
+set @saveSpout6 = hCurrentSpout
+set currentSpoutNumber = (currentSpoutCounter + 18)
+gosub 26:7240
+gosub 26:7250
+set @oldspout7 = @saveSpout7
+set @saveSpout7 = hCurrentSpout
+set currentSpoutNumber = (currentSpoutCounter + 21)
+gosub 26:7240
+gosub 26:7250
+set @oldspout8 = @saveSpout8
+set @saveSpout8 = hCurrentSpout
+goto 0:0
+
+#switch 26:7240
+if (currentSpoutNumber == 1) {
+  extern AI_GetEdictNumber lavaspout1 hCurrentSpout
+} else if (currentSpoutNumber == 2) {
+  extern AI_GetEdictNumber lavaspout2 hCurrentSpout
+} else if (currentSpoutNumber == 3) {
+  extern AI_GetEdictNumber lavaspout3 hCurrentSpout
+} else if (currentSpoutNumber == 4) {
+  extern AI_GetEdictNumber lavaspout4 hCurrentSpout
+} else if (currentSpoutNumber == 5) {
+  extern AI_GetEdictNumber lavaspout5 hCurrentSpout
+} else if (currentSpoutNumber == 6) {
+  extern AI_GetEdictNumber lavaspout6 hCurrentSpout
+} else if (currentSpoutNumber == 7) {
+  extern AI_GetEdictNumber lavaspout7 hCurrentSpout
+} else if (currentSpoutNumber == 8) {
+  extern AI_GetEdictNumber lavaspout8 hCurrentSpout
+} else if (currentSpoutNumber == 9) {
+  extern AI_GetEdictNumber lavaspout9 hCurrentSpout
+} else if (currentSpoutNumber == 10) {
+  extern AI_GetEdictNumber lavaspout10 hCurrentSpout
+} else if (currentSpoutNumber == 11) {
+  extern AI_GetEdictNumber lavaspout11 hCurrentSpout
+} else if (currentSpoutNumber == 12) {
+  extern AI_GetEdictNumber lavaspout12 hCurrentSpout
+} else if (currentSpoutNumber == 13) {
+  extern AI_GetEdictNumber lavaspout13 hCurrentSpout
+} else if (currentSpoutNumber == 14) {
+  extern AI_GetEdictNumber lavaspout14 hCurrentSpout
+} else if (currentSpoutNumber == 15) {
+  extern AI_GetEdictNumber lavaspout15 hCurrentSpout
+} else if (currentSpoutNumber == 16) {
+  extern AI_GetEdictNumber lavaspout16 hCurrentSpout
+} else if (currentSpoutNumber == 17) {
+  extern AI_GetEdictNumber lavaspout17 hCurrentSpout
+} else if (currentSpoutNumber == 18) {
+  extern AI_GetEdictNumber lavaspout18 hCurrentSpout
+} else if (currentSpoutNumber == 19) {
+  extern AI_GetEdictNumber lavaspout19 hCurrentSpout
+} else if (currentSpoutNumber == 20) {
+  extern AI_GetEdictNumber lavaspout20 hCurrentSpout
+} else if (currentSpoutNumber == 21) {
+  extern AI_GetEdictNumber lavaspout21 hCurrentSpout
+} else if (currentSpoutNumber == 22) {
+  extern AI_GetEdictNumber lavaspout22 hCurrentSpout
+} else if (currentSpoutNumber == 23) {
+  extern AI_GetEdictNumber lavaspout23 hCurrentSpout
+} else if (currentSpoutNumber == 24)
+  extern AI_GetEdictNumber lavaspout24 hCurrentSpout
+goto 0:0
+
+#switch 26:7250
+extern NPSimple hCurrentSpout "heph/lavaspout"
+extern playsound games/hephgame/games_hephgame_spout.wav hCurrentSpout .9
+extern AI_GetEdictNumber playerchar0 hPlayer
+extern AI_Distance2d playerDist hPlayer hCurrentSpout
+if (playerdist < 40)
+  gosub 26:8030		                                                                          
+goto 0:0
+
+#switch 26:8020
+set @sparkCurrentMS = func_gametime
+if (@sparkCurrentMS < (@sparkLastMS + 2000))
+  goto 0:0
+set @sparkLastMS = @sparkCurrentMS
+extern playsound games/hephgame/games_hephgame_wire_spark.wav
+gosub 26:8030
+goto 0:0

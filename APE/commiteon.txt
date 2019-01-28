@@ -1,0 +1,2321 @@
+#window 84:102
+title "Private Prille"
+body "Um. Hi."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0103
+
+#window 84:103
+title "Private Prille"
+body "Uh, are you...? Um. Does anyone know that you're..."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0104
+
+#window 84:104
+title "Private Prille"
+body "Just a second."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0105
+
+#window 84:105
+title "Private Prille"
+body "Private Prille to Sergeant Major Sargent. Yeah, do you know anything about an eight foottall guy in a circus costume? Big yellow fist on his chest... enormous hands?"
+cam left restore zip
+talk npc amb_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0106
+
+#window 84:106
+title "Private Prille"
+body "That's right, sir... a circus costume."
+cam left restore zip
+talk npc amb_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0107
+
+#window 84:107
+title "Private Prille"
+body "Yes, he's right here, sir."
+cam left restore zip
+talk npc amb_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0108
+
+#window 84:108
+title "Private Prille"
+body "Well, he doesn't talk much. In fact, he hasn't said a word. He's just standing here looking depressed. He sighs every few seconds. Yes, that's right, sir."
+cam left restore zip
+talk npc amb_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0109
+
+#window 84:109
+title "Private Prille"
+body "Of course, sir. I'll send him your way, sir."
+cam left restore zip
+talk npc amb_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0110
+
+#window 84:110
+title "Private Prille"
+body "Uh... Sergeant Major Sargent wants to see you. He's on the north side of the camp."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set PrilleIsAPansy = 1
+}
+
+finishswitch {
+  extern add_quest "Report to Sergeant Sargent"
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:120
+title "Private Prille"
+body "Um. Hi."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0121
+
+#window 84:121
+title "Private Prille"
+body "Uh, are you...? Um. Does anyone know that you're..."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0122
+
+#window 84:122
+title "Private Prille"
+body "Just a second."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0123
+
+#window 84:123
+title "Private Prille"
+body "Private Prille to Sergeant Major Sargent. Yeah, do you know anything about an eight foottall guy in a circus costume? Big yellow fist on his chest... enormous hands?"
+cam left restore zip
+talk npc amb_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0124
+
+#window 84:124
+title "Private Prille"
+body "I see. Yessir. Whatever you say, sir."
+cam left restore zip
+talk npc amb_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0125
+
+#window 84:125
+title "Private Prille"
+body "Uh... I guess you check out. "
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set PrilleIsAPansy = 1
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:130
+title "Private Prille"
+body "Please don't hit me."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:205
+title "Sergeant Major Sargent"
+body "Who the hell are you?"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern is_quest_done "Report to Sergeant Sargent" @boo
+  if (@boo == 1)
+    extern complete_quest "Report to Sergeant Sargent"
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0206
+
+#window 84:206
+title "Sergeant Major Sargent"
+body "You don't look like a native... do any of the higherups know you're here?"
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0207
+
+#window 84:207
+title "Sergeant Major Sargent"
+body "It's been a while since I've seen any civvies. I don't remember them wearing circus costumes though, but what the hell."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0208
+
+#window 84:208
+title "Sergeant Major Sargent"
+body "You got no idea the problems we've been through. I don't even know where to start."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0209
+
+#window 84:209
+title "Sergeant Major Sargent"
+body "I guess it was about six months ago, at our main military installation eight clicks from here. The Ringdwellers were sending us ordinances every other week, as well as supplies, equipment, anything to keep us busy and on track."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0210
+
+#window 84:210
+title "Sergeant Major Sargent"
+body "On track of what? I don't know. I never understood why they need a surface army when they all live up in that Ring. Ain't nobody down here but us dumb Terrans."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0211
+
+#window 84:211
+title "Sergeant Major Sargent"
+body "Anyway, about six months ago, the shipments stopped coming. Just like that. No supplies, no orders, and most importantly, no authentication codes for the installation's security systems."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0212
+
+#window 84:212
+title "Sergeant Major Sargent"
+body "Next thing we knew, we were sitting there with expired codes. And when the weekly codes don't match up, central computer ain't happy. The defense grid automatically went on full alert, looking for any intruders in the base. Unfortunately, that was us. We got caught with our pants down. Literally."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0213
+
+#window 84:213
+title "Sergeant Major Sargent"
+body "Major SNAFU. We had to leave everything behind. I mean, I don't wanna sound melodramatic here, but just imagine if your own home suddenly attacked you one night. We had to abandon it."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0214
+
+#window 84:214
+title "Sergeant Major Sargent"
+body "Anyway, here we are, six months later, in a temporary base camp, planning to retake the installation... my nerves still frazzled enough that I'm spilling my guts to a stranger in a circus costume."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0215
+
+#window 84:215
+title "Sergeant Major Sargent"
+body "Listen, you oughta talk to First Lieutenant Bibere. Let HIM figure out what to do with you. Lemme give you his officer's field code or else he won't talk to you."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0217
+
+#window 84:217
+title "Sergeant Major Sargent"
+body "First Lieutenant Bibere's field code is... Shadow Cordica Obelisk Watcher Lithium."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern add_quest "Report to Bibere"
+  set KnowFieldCode1 = 1
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0218
+
+#window 84:218
+title "Sergeant Major Sargent"
+body "See you later. And thanks for not making fun of my name."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:220
+title "Sergeant Major Sargent"
+body "Anything you wanna tell me about? You look pretty down yourself."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:305
+title "First Lieutenant Bibere"
+body "You got the proper field code authentication?"
+cam left from(PlayerChar0) to(bibere) restore zip
+startswitch {
+  gosub 84:1110
+  gosub 84:1102
+  @comchoice1$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  gosub 84:1102
+  @comchoice2$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  gosub 84:1102
+  @comchoice3$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  gosub 84:1102
+  @comchoice4$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  extern STAB_Destroy ComSTAB
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "%s", @comchoice1$, 84:307
+choice "%s", @comchoice2$, 84:307
+if (KnowFieldCode1 == 0)
+  choice "%s", @comchoice3$, 84:307
+if (KnowFieldCode1 == 1)
+  choice "Shadow Cordica Obelisk Watcher Lithium" 84:310
+choice "%s", @comchoice4$, 84:307
+choice "Nevermind" 0:0
+
+#window 84:307
+title "First Lieutenant Bibere"
+body "What?!? Get out my FACE! "
+cam left from(PlayerChar0) to(bibere) restore zip
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:310
+title "First Lieutenant Bibere"
+body "Shadow Cordica Obelisk Watcher Lithium, CHECK!"
+cam left from(PlayerChar0) to(bibere) restore zip
+finishswitch {
+  extern is_quest_done "Report to Bibere" @boo
+  if (@boo == 1)
+    extern complete_quest "Report to Bibere"
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0311
+
+#window 84:311
+title "First Lieutenant Bibere"
+body "So what's your story? Did the colonel bring you up here to help us recapture the base?"
+cam left from(PlayerChar0) to(bibere) restore zip
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0312
+
+#window 84:312
+title "First Lieutenant Bibere"
+body "I'm sure you've been briefed on our situation. We got our butts handed to us in a sling by central computer. Pretty embarrassing, huh? But we'll make it all pretty, nicely and politely. It's just a matter of time."
+cam left from(PlayerChar0) to(bibere) restore zip
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0313
+
+#window 84:313
+title "First Lieutenant Bibere"
+body "I know we're ramping up to a major operation here... we need to stay focused and frosty. But you wanna know what I keep thinking about? You're gonna laugh... but it's beer."
+cam left from(PlayerChar0) to(bibere) restore zip
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0314
+
+#window 84:314
+title "First Lieutenant Bibere"
+body "Hey, look at your eyes light up. Yeah, I'd just gotten a case of beer from my mother in Whitendon right before we abandoned the base. They brew the finest beer in the world in Whitendon, which I know isn't saying much, but the best beer on the planet is the best beer on the planet."
+cam left from(PlayerChar0) to(bibere) restore zip
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0315
+
+#window 84:315
+title "First Lieutenant Bibere"
+body "Anyway, I was waiting for lights-out so I could crack open a bottle of suds after a hard day's sweat. Next thing I knew, I was running for dear life in my skivvies."
+cam left from(PlayerChar0) to(bibere) restore zip
+startswitch {
+  set bibereconvo = 1
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0322
+
+#window 84:322
+title "First Lieutenant Bibere"
+cam left from(PlayerChar0) to(bibere) restore zip
+startswitch {
+  gosub 84:1110
+  gosub 84:1102
+  @comchoice1$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  gosub 84:1102
+  @comchoice2$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  gosub 84:1102
+  @comchoice3$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  gosub 84:1102
+  @comchoice4$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  extern STAB_Destroy ComSTAB
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+if (BibereConvChoice1 != 1)
+  choice "Beer? What kind of beer?" 84:316
+if (BibereConvChoice2 != 2)
+  choice "Where is beer?" 84:317
+if (BibereConvChoice3 != 3)
+  choice "Is alcohol anywhere on camp?" 84:318
+if (BibereConvChoice4 != 4)
+  choice "I don't care." 84:319
+
+#window 84:323
+title "First Lieutenant Bibere"
+body "Beer drinker too, huh? It was a twelvepack of three different types of micro brews. One was a robust honey porter. Another was a crisp pilsner. I forget what the other one was."
+cam left from(PlayerChar0) to(bibere) restore zip
+finishswitch {
+  if ((((BibereConvChoice1 == 1) && (BibereConvChoice2 == 2)) && (BibereConvChoice3 == 3)) && (BibereConvChoice4 == 4))
+    goto 84:0328
+  goto 84:0322
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:324
+title "First Lieutenant Bibere"
+body "I left it in my foot locker in the officer's barracks. In hindsight, I should've grabbed it before bailing, but at the time, I was sure we were under attack."
+cam left from(PlayerChar0) to(bibere) restore zip
+finishswitch {
+  if ((((BibereConvChoice1 == 1) && (BibereConvChoice2 == 2)) && (BibereConvChoice3 == 3)) && (BibereConvChoice4 == 4))
+    goto 84:0328
+  goto 84:0322
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:325
+title "First Lieutenant Bibere"
+body "'Fraid not. Private Sump cooked up some bark juice the other day, but the lush drank it all last night... got skunko behind a troop transport."
+cam left from(PlayerChar0) to(bibere) restore zip
+finishswitch {
+  if ((((BibereConvChoice1 == 1) && (BibereConvChoice2 == 2)) && (BibereConvChoice3 == 3)) && (BibereConvChoice4 == 4))
+    goto 84:0328
+  goto 84:0322
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:326
+title "First Lieutenant Bibere"
+body "Not the talkative type. That's cool. Why don't you report to Captain Militaratus if you haven't already."
+cam left from(PlayerChar0) to(bibere) restore zip
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0327
+
+#window 84:327
+title "First Lieutenant Bibere"
+body "His officer's field code is... Watcher Radium Astro Tentac Helium."
+cam left from(PlayerChar0) to(bibere) restore zip
+startswitch {
+  if (KnowFieldCode2 == 0) {
+    set KnowFieldCode2 = 1
+    extern add_quest "Report to Militaratus"
+  }
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:328
+title "First Lieutenant Bibere"
+body "Why don't you report to Captain Militaratus if you haven't already. His officer's field code is... Watcher Radium Astro Tentac Helium."
+cam left from(PlayerChar0) to(bibere) restore zip
+finishswitch {
+  if (KnowFieldCode2 == 0) {
+    set KnowFieldCode2 = 1
+    extern add_quest "Report to Militaratus"
+  }
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:405
+title "Captain Militaratus"
+body "Think you can manage to stand erect, you spineless, primate gelatin blob? What am I supposed to do... pour you onto the battlefield?"
+cam left from(PlayerChar0) to(militaratus) restore zip
+talk_ex militaratus sump talk_b amb_b stay stay
+startswitch {
+  set MilitaratusConvo = 1
+}
+
+finishswitch {
+  if (KnowFieldCode3 == 0)
+    goto 84:0406
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0406
+
+#window 84:406
+title "Captain Militaratus"
+body "Did you dress yourself today, boy? Or did you just dive at a pile o' clothes and wear whatever stuck?"
+cam left from(PlayerChar0) to(militaratus) restore zip
+talk npc talk_b stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0420
+
+#window 84:407
+title "Captain Militaratus"
+body "You're nothing but a bloody smudge of greasy giraffe dung! Hell, son... you look like something I puked out into my grandmother's spew gag when I was twelve!"
+cam left from(PlayerChar0) to(militaratus) restore zip
+talk_ex militaratus sump talk_b amb_b stay stay
+startswitch {
+  set MilitaratusConvo = 2
+}
+
+finishswitch {
+  if (KnowFieldCode3 == 0)
+    goto 84:0408
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:408
+title "Captain Militaratus"
+body "What the hell do YOU want, you hogtoed, spineless, pile of gutrot?!"
+cam left from(PlayerChar0) to(militaratus) restore zip
+talk npc talk_b stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0420
+
+#window 84:409
+title "Captain Militaratus"
+body "Holy gut gush, son! Your breath smells like a spray cup full of latrine soup! I think you've got a two week old wad of chunk dumplings stuck between your teeth!"
+cam left from(PlayerChar0) to(militaratus) restore zip
+talk_ex militaratus sump talk_b amb_b stay stay
+startswitch {
+  set MilitaratusConvo = 3
+}
+
+finishswitch {
+  if (KnowFieldCode3 == 0)
+    goto 84:0410
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:410
+title "Captain Militaratus"
+body "What do YOU want, you weak kneed, slack jawed sack of monkey squirt!"
+cam left from(PlayerChar0) to(militaratus) restore zip
+talk npc talk_b stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0420
+
+#window 84:411
+title "Captain Militaratus"
+body "Your face looks like a mohair sandwich, son! I bet you popped out and your mother mistook you for a womb sausage!"
+cam left from(PlayerChar0) to(militaratus) restore zip
+talk_ex militaratus sump talk_b amb_b stay stay
+startswitch {
+  set MilitaratusConvo = 4
+}
+
+finishswitch {
+  if (KnowFieldCode3 == 0)
+    goto 84:0412
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:412
+title "Captain Militaratus"
+body "About face, you square jawed, turd faced maggot! I'm busy!"
+cam left from(PlayerChar0) to(militaratus) restore zip
+talk npc talk_b stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0420
+
+#window 84:413
+title "Captain Militaratus"
+body "Holy sunshine! Did you brush your teeth with sewage grease, son? Your breath stinks like a knee deep cadaver pit!"
+cam left from(PlayerChar0) to(militaratus) restore zip
+talk_ex militaratus sump talk_b amb_b stay stay
+startswitch {
+  set MilitaratusConvo = 5
+}
+
+finishswitch {
+  if (KnowFieldCode3 == 0)
+    goto 84:0414
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:414
+title "Captain Militaratus"
+body "Does anything I've said up to this juncture indicate that I require your editorial feedback? "
+cam left from(PlayerChar0) to(militaratus) restore zip
+talk npc talk_b stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0420
+
+#window 84:420
+title "Captain Militaratus"
+body "Have you got a field code for me, maggot?"
+cam left from(PlayerChar0) to(militaratus) restore zip
+startswitch {
+  gosub 84:1110
+  gosub 84:1102
+  @comchoice1$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  gosub 84:1102
+  @comchoice2$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  gosub 84:1102
+  @comchoice3$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  gosub 84:1102
+  @comchoice4$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  extern STAB_Destroy ComSTAB
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "%s", @comchoice1$, 84:425
+choice "%s", @comchoice2$, 84:425
+choice "%s", @comchoice4$, 84:425
+if (KnowFieldCode2 == 0)
+  choice "%s", @comchoice3$, 84:425
+if (KnowFieldCode2 == 1)
+  choice "Watcher Radium Astro Tentac Helium" 84:430
+choice "Nevermind" 0:0
+
+#window 84:425
+title "Captain Militaratus"
+body "Get the hell outta my face unless you got my proper field code, you balding turd!"
+cam left from(PlayerChar0) to(militaratus) restore zip
+talk npc talk_b stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:430
+title "Captain Militaratus"
+body "Holy hound dog! This walking ham hock knows my field code! Call me 'Darla' and slather me in kidney butter!"
+cam left from(PlayerChar0) to(militaratus) restore zip
+talk npc talk_b stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0431
+
+#window 84:431
+title "Captain Militaratus"
+body "Get your fat lumbar to Major Tweedy immediately, juggle head! His field code is... Shadow Photon Integer Tentac Eternal!"
+cam left from(PlayerChar0) to(militaratus) restore zip
+talk npc talk_b stay
+finishswitch {
+  if (KnowFieldCode3 == 0) {
+    set KnowFieldCode3 = 1
+    extern complete_quest "Report to Militaratus"
+    extern add_quest "Report to Tweedy"
+  }
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:505
+title "Private Sump"
+body "SIR, YES, SIR!!!"
+cam left from(PlayerChar0) to(sump) restore zip
+talk_ex sump militaratus talk_b amb_b stay stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0506
+
+#window 84:506
+title "Private Sump"
+body "Hic."
+cam left from(PlayerChar0) to(sump) restore zip
+talk_ex sump militaratus talk_b amb_b stay stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:605
+title "Major Tweedy"
+body "Yessir. That's right, sir. A sand mite, sir. They're crawling in under the perimeter fences."
+cam left from(PlayerChar0) to(tweedy) restore zip
+talk_ex tweedy heten amb_a amb_a stay stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0606
+
+#window 84:606
+title "Major Tweedy"
+body "That's a negatory, sir. There's barely enough juice in the generator to refuel the transports."
+cam left from(PlayerChar0) to(tweedy) restore zip
+talk_ex tweedy heten amb_a amb_a stay stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0607
+
+#window 84:607
+title "Major Tweedy"
+body "No, sir. Of course I'm not questioning your command, sir. I'll see what I can do, sir."
+cam left from(PlayerChar0) to(tweedy) restore zip
+talk_ex tweedy heten amb_a amb_a stay stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0608
+
+#window 84:608
+title "Major Tweedy"
+body "Wilco, out."
+cam left from(PlayerChar0) to(tweedy) restore zip
+talk_ex tweedy heten amb_a amb_a stay stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0609
+
+#window 84:609
+title "Major Tweedy"
+body "Hoah! You must be the walking wall of meat everyone's been talking about."
+cam left from(PlayerChar0) to(tweedy) restore zip
+talk npc talk_b stay
+startswitch {
+  set TweedyConvo = 1
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0610
+
+#window 84:610
+title "Major Tweedy"
+body "Look, we're in the middle of mounting a major military operation here. Unless you got authorization... I ain't talkin' to you."
+cam left from(PlayerChar0) to(tweedy) restore zip
+talk npc talk_b stay
+startswitch {
+  gosub 84:1110
+  gosub 84:1102
+  @comchoice1$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  gosub 84:1102
+  @comchoice2$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  gosub 84:1102
+  @comchoice3$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  gosub 84:1102
+  @comchoice4$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  extern STAB_Destroy ComSTAB
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "%s", @comchoice1$, 84:611
+if (KnowFieldCode3 == 0)
+  choice "%s", @comchoice3$, 84:611
+if (KnowFieldCode3 == 1)
+  choice "Shadow Photon Integer Tentac Eternal" 84:615
+choice "%s", @comchoice2$, 84:611
+choice "%s", @comchoice4$, 84:611
+choice "Nevermind" 0:0
+
+#window 84:611
+title "Major Tweedy"
+body "Sorry, but unless you got the right authorization, I don't have the time."
+cam left from(PlayerChar0) to(tweedy) restore zip
+talk npc talk_b stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:615
+title "Major Tweedy"
+body "Shadow Photon Integer Tentac Eternal, check. Guess you're clear."
+cam left from(PlayerChar0) to(tweedy) restore zip
+talk npc talk_b stay
+startswitch {
+  extern AI_SpawnEntity crocus_handle npc_soldier_s crocus 84:0695 walk4
+  extern AI_Path crocus_handle spawnguy1
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0620
+
+#window 84:620
+title "Major Tweedy"
+body "Man, this has been a witch of a day. The generator's been malfunctioning, we got sand mites sneaking in under the perimeter fence, and now there are reports that a little native girl from a neighboring village has wandered into the abandoned installation we're about to attack. Why can't those Gingko's watch their kids?"
+cam left from(PlayerChar0) to(tweedy) restore zip
+talk npc talk_b stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0630
+
+#window 84:630
+title "Major Tweedy"
+body "Excuse me."
+cam left from(PlayerChar0) to(tweedy) restore zip
+talk npc talk_b stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0631
+
+#window 84:631
+title "Major Tweedy"
+body "What is it, private?"
+cam left from(PlayerChar0) to(tweedy) restore zip
+talk_ex tweedy crocus talk_a amb_c stay nostay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0632
+
+#window 84:632
+title "Private Crocus"
+body "Private George went desert happy, sir. Ran off whooping & hollering into the Dessicati Canyon."
+cam left from(PlayerChar0) to(crocus) restore zip
+talk_ex crocus tweedy talk_b amb_c stay nostay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0633
+
+#window 84:633
+title "Major Tweedy"
+body "As you were, Private."
+cam left from(PlayerChar0) to(tweedy) restore zip
+talk_ex tweedy crocus talk_a amb_c stay nostay
+finishswitch {
+  extern AI_Path crocus_handle spawnguy2
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0634
+
+#window 84:634
+title "Major Tweedy"
+body "Damnit, that's the third deserter this week."
+cam left from(PlayerChar0) to(tweedy) restore zip
+talk_ex tweedy PlayerChar0 talk_a amb_a stay stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0635
+
+#window 84:635
+title "Major Tweedy"
+body "You better report to the lieutenant colonel immediately. Let him decide what to do with you. Lieutenant Colonel Irdgaff's field code is... Astro Neon Gambit Eternal Radium."
+cam left from(PlayerChar0) to(tweedy) restore zip
+talk_ex tweedy PlayerChar0 talk_a amb_a stay stay
+finishswitch {
+  if (KnowFieldCode4 == 0) {
+    extern complete_quest "Report to Tweedy"
+    extern add_quest "Report to Irdgaff"
+    set KnowFieldCode4 = 1
+  }
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:636
+title "Major Tweedy"
+body "This headache is killing me.... "
+cam left from(PlayerChar0) to(tweedy) restore zip
+talk_ex tweedy PlayerChar0 talk_a amb_a stay stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:695
+title "Private Crocus"
+body "I have to get back to my post."
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:705
+title "Private First Class Bragg"
+body "These things gimme the jeebies. Small... but deadly."
+cam left from(PlayerChar0) to(bragg) lift(40) restore zip
+startswitch {
+  if (BraggConvo != 3)
+    set BraggConvo = 1
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:706
+title "Private First Class Bragg"
+body "One time, we were on patrol near the border of No Man's Land when half a dozen of these suckers leapt out from under an outcropping. Damn near chewed Private Redshert's leg clean off."
+cam left from(PlayerChar0) to(bragg) lift(40) restore zip
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0707
+
+#window 84:707
+title "Private First Class Bragg"
+body "We pumped about two hundred rounds into them. Redshert caught about five of 'em. No one really likes him much."
+cam left from(PlayerChar0) to(bragg) lift(40) restore zip
+startswitch {
+  set BraggConvo = 2
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:708
+title "Private First Class Bragg"
+body "This reminds me a little of my ex."
+cam left from(PlayerChar0) to(bragg) lift(40) restore zip
+startswitch {
+  set BraggConvo = 3
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:805
+title "Sergeant Wormwood"
+body "We're prepping aerial bursts for the attack, as well as prelaunch bolt holes and accreted missile sweeps. We got ourselves a fancy, little operation here."
+cam left restore zip
+talk npc talk_b stay
+startswitch {
+  set WormwoodConvo = 1
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:806
+title "Sergeant Wormwood"
+body "The date of the attack is confidential. But it's soon. "
+cam left restore zip
+talk npc talk_b stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:905
+title "Sergeant Wormwood"
+body "Don't speak to Lieutenant Colonel Irdgaff unless you've got field code authorization."
+cam left restore zip
+talk_ex wormwood PlayerChar0 talk_b amb_a stay stay
+startswitch {
+  gosub 84:1110
+  gosub 84:1102
+  @comchoice1$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  gosub 84:1102
+  @comchoice2$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  gosub 84:1102
+  @comchoice3$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  gosub 84:1102
+  @comchoice4$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  extern STAB_Destroy ComSTAB
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "%s", @comchoice1$, 84:906
+choice "%s", @comchoice2$, 84:906
+choice "%s", @comchoice4$, 84:906
+if (KnowFieldCode4 == 0)
+  choice "%s", @comchoice3$, 84:906
+if (KnowFieldCode4 == 1)
+  choice "Astro Neon Gambit Eternal Radium" 84:910
+choice "Nevermind" 0:0
+
+#window 84:906
+title "Sergeant Wormwood"
+body "Would you please leave the Lieutenant Colonel alone? "
+cam left restore zip
+talk_ex wormwood PlayerChar0 talk_b amb_a stay stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:910
+title "Lieutenant Colonel Irdgaff"
+body "You're a hero... aren't you? You're here to save us with your super powers, is that it? Well, there's no need for your heroics here, my friend, I assure you. I have everything under control."
+cam left to(irdgaff) restore zip
+talk npc talk_a stay
+finishswitch {
+  extern complete_quest "Report to Irdgaff"
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0911
+
+#window 84:911
+title "Lieutenant Colonel Irdgaff"
+body "Look around you. These men need hope. They need purpose. Retaking that installation is the only thing keeping this army together. If you fly in there, fists swinging, easily securing our objectives, how do you think that will make them feel?"
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0912
+
+#window 84:912
+title "Lieutenant Colonel Irdgaff"
+body "I know what you're thinking..."
+talk_ex irdgaff tweedy talk_a amb_b stay stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0913
+
+#window 84:913
+title "Lieutenant Colonel Irdgaff"
+body "You're thinking about the little Gingko girl who wandered into the base. Well, saving her is a lost cause. Even if she somehow avoided the hover mines, the sentinel lasers most certainly will have cut her down. I can't let one dead little girl interfere with this operation."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0914
+
+#window 84:914
+title "Lieutenant Colonel Irdgaff"
+body "Do you have any idea what's at stake here? The Ring dwellers are out to lunch. Perhaps permanently. If we reclaim the installation, we will become the major super power in this region."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0915
+
+#window 84:915
+title "Lieutenant Colonel Irdgaff"
+body "So don't interfere with my operation."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0916
+
+#window 84:916
+title "Lieutenant Colonel Irdgaff"
+body "I mean it."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0917
+
+#window 84:917
+title "Lieutenant Colonel Irdgaff"
+body "Let Command Sergeant Major Heten know if you need anything. His field code is Gambit Radium Obelisk Watcher Lithium."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set KnowFieldCode5 = 1
+  extern add_quest "Save Little Girl"
+  extern complete_quest "Paco Find Drink"
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:0918
+
+#window 84:918
+title "Lieutenant Colonel Irdgaff"
+body "Excuse me."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:920
+title "Sergeant Wormwood"
+body "Don't disturb the Lieutenant Colonel right now. He's under a lot of pressure."
+cam left to(wormwood) restore zip
+talk_ex wormwood PlayerChar0 talk_b amb_a stay stay
+startswitch {
+  set IrdgaffConvo = 1
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:921
+title "Sergeant Wormwood"
+body "Would you please leave the Lieutenant Colonel alone? "
+cam left to(wormwood) restore zip
+talk_ex wormwood PlayerChar0 talk_b amb_a stay stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:1005
+title "Command Sergeant Major Heten"
+body "Who the hell are you? Do you have field code authorization?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  gosub 84:1110
+  gosub 84:1102
+  @comchoice1$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  gosub 84:1102
+  @comchoice2$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  gosub 84:1102
+  @comchoice3$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  gosub 84:1102
+  @comchoice4$="%s %s %s %s %s" , @cw1$, @cw2$, @cw3$, @cw4$, @cw5$
+  extern STAB_Destroy ComSTAB
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+choice "%s", @comchoice1$, 84:1010
+choice "%s", @comchoice2$, 84:1010
+if (KnowFieldCode5 == 0)
+  choice "%s", @comchoice3$, 84:1010
+if (KnowFieldCode5 == 1)
+  choice "Gambit Radium Obelisk Watcher Lithium" 84:1006
+choice "%s", @comchoice4$, 84:1010
+choice "Nevermind" 0:0
+
+#window 84:1006
+title "Command Sergeant Major Heten"
+body "With the constant security breaches these days, I'm surprised your field code checks out. These soldiers behave like children."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:1007
+
+#window 84:1007
+title "Command Sergeant Major Heten"
+body "Here's just one example of our weak security. Every time the power generator drops below the yellow line, the perimeter fence downgrades to half power, which triggers an alarm."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set HetenConvo = 1
+  extern complete_quest "Report to Heten"
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:1008
+
+#window 84:1008
+title "Command Sergeant Major Heten"
+body "That's why a sand mite managed to get in here half an hour ago. The generator should be checked each and every time the alarm goes off. It's the only way to insure security."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:1009
+
+#window 84:1009
+title "Command Sergeant Major Heten"
+body "If that alarm goes off one more time, I swear, I've got half a mind to check it myself."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set HetenConvo = 1
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:1010
+title "Command Sergeant Major Heten"
+body "Get away from here. This information is confidential."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:1015
+title "Command Sergeant Major Heten"
+body "If that alarm goes off one more time, I swear, I've got half a mind to check it myself."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set HetenConvo = 2
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:1020
+title "Command Sergeant Major Heten"
+body "Get away from there. The location of the base is classified information."
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:1025
+title "Command Sergeant Major Heten"
+body "Damnit, that alarm went off again! I'm taking matters into my own hands."
+cam left restore zip
+talk_ex heten PlayerChar0 talk_a amb_a nostay stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:1030
+title "Command Sergeant Major Heten"
+body "It was just the generator. But you can never be sure unless you check."
+cam left restore zip
+talk_ex heten PlayerChar0 talk_a amb_a nostay stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:1065
+title "Command Sergeant Major Heten"
+body "Get away from there! The location of the base is classified information!"
+talk npc talk_a stay
+startswitch {
+  closewindow 84:2001
+  closewindow 84:2205
+  closewindow 1:10
+  set HetenWindowsOpen = 0
+}
+
+finishswitch {
+  extern AI_Path heten_handle heten17
+  extern AI_SetCompletionCallback heten_handle 84:1055
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:2102
+title "Paco \"El Puño\" Estrella"
+body "Hmmm... I could RageMight this weak machine."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set @PacoRageExplain = 1
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 84:2103
+
+#window 84:2109
+startswitch {
+  set @HalarmTime = func_gametime
+  set @HalarmIsOn = 1
+}
+
+thinkswitch {
+  if (func_gametime > (@HalarmTime + 25000)) {
+    extern stopsound maps/mac/mac_alarm_01.wav
+    closewindow 84:2109
+    set @HalarmIsOn = 0
+  }
+}
+
+style "NULL"
+flags passive, TRUE
+width 0
+height 0
+
+#window 84:2205
+finishswitch {
+  set HetenWindowsOpen = 0
+  if (PacoSawCommMap == 0) {
+    set PacoSawCommMap = 1
+    extern complete_quest "Find Military Installation"
+  }
+}
+
+style "NULL"
+font "_anox10"
+xpos 57
+ypos 41
+width 512
+height 256
+background "commiteon/comscrn_l.pcx" 
+image "commiteon/comscrn_r.pcx" 256, 0
+
+#window 84:2305
+startswitch {
+  set @currentEnteredDigit = 0
+  set @buttonPressed = 69
+  gosub 84:2310
+  gosub 84:2315
+}
+
+finishswitch {
+  set HetenWindowsOpen = 0
+  goto 84:2320
+}
+
+style "NULL"
+font "_anox10"
+flags passive2d, TRUE
+xpos 369
+ypos 17
+width 256
+background "commiteon/Com_pad1x.tga" 
+if (n[1] != -1.000000)
+  image "commiteon/comsec_D_$n[1]$.tga" 49, 37
+if (n[2] != -1.000000)
+  image "commiteon/comsec_D_$n[2]$.tga" 81, 37
+if (n[3] != -1.000000)
+  image "commiteon/comsec_D_$n[3]$.tga" 113, 37
+if (n[4] != -1.000000)
+  image "commiteon/comsec_D_$n[4]$.tga" 145, 37
+if (n[5] != -1.000000)
+  image "commiteon/comsec_D_$n[5]$.tga" 177, 37
+
+#window 84:2405
+startswitch {
+  set @currentEnteredDigit = 0
+  set @buttonPressed = 69
+  gosub 84:2410
+  gosub 84:2415
+}
+
+finishswitch {
+  set HetenWindowsOpen = 0
+  goto 84:2420
+}
+
+style "NULL"
+font "_anox10"
+flags passive2d, TRUE
+xpos 369
+ypos 17
+width 256
+background "commiteon/comsec_pad.tga" 
+if (n[1] != -1.000000)
+  image "commiteon/comsec_D_$n[1]$.tga" 49, 37
+if (n[2] != -1.000000)
+  image "commiteon/comsec_D_$n[2]$.tga" 81, 37
+if (n[3] != -1.000000)
+  image "commiteon/comsec_D_$n[3]$.tga" 113, 37
+if (n[4] != -1.000000)
+  image "commiteon/comsec_D_$n[4]$.tga" 145, 37
+if (n[5] != -1.000000)
+  image "commiteon/comsec_D_$n[5]$.tga" 177, 37
+
+#window 84:2601
+title "Private Finishi"
+body "Malfunctioning crap. Even if you kick it, it goes off!"
+cam left restore zip
+talk npc talk_a stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 84:3001
+title "Councilman Willis"
+body "Twenty-four hours. Give or take a few."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 84:3005
+title "Councilman Willis"
+body "And that's just to pinpoint the continent they're on."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 84:3010
+title "Councilman Willis"
+body "A definitive heat signature will take another forty-eight hours to lock in."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 84:3015
+title "Councilman Hagen"
+body "What is everyone so worried about?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 84:3020
+title "Councilman Hagen"
+body "Is being stranded on the surface of our planet so dangerous?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 84:3025
+title "Councilman Hagen"
+body "Democratus is a beautiful world. They'll be grateful for a free vacation."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 84:3030
+title "Councilman Halpert"
+body "Unless, of course, they're in the Dessicati Desert,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 84:3035
+title "Councilman Halpert"
+body "or the Waugee Forest, or sinking to the bottom of the Bloo Goo Sea..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 84:3040
+title "Councilman Willis"
+body "Put your faith in science, Hal."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 84:3045
+title "Councilman Willis"
+body "                                          We'll find them."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 84:3050
+title "Councilman Halpert"
+body "We better."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 84:3055
+title "Councilman Halpert"
+body "                The world is watching."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 84:1
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+set CURRENT_PLANET = 8
+set CURRENT_BANK = 84
+extern applylevelconfiguration commiteon
+extern add_quest "Paco Find Drink"
+extern Anim_MakeSmart stargent_handle
+extern add_npc_to_party paco
+extern set_party_leader paco
+extern forceplayerlevel Paco 29
+extern addnew_to_inventory "Spinsucker"
+extern add_battle_skill "RadiusRage"
+extern add_battle_skill "GroundPound"
+extern equip_item "Spinsucker"
+extern remove_npc_from_party boots 1
+if (start_pacointro)
+  goto 84:2
+extern playlevelmusic mp3/democratus/democdungeonfinal.mp3
+goto 0:0
+
+#switch 84:2
+extern playscene commiteon_scene75
+goto 0:0
+
+#switch 84:101
+if (PrilleIsAPansy == 1)
+  goto 84:0130
+if (KnowFieldCode1 == 0)
+  goto 84:0102
+if (KnowFieldCode1 == 1)
+  goto 84:0120
+
+#switch 84:201
+if (KnowFieldCode1 == 1)
+  goto 84:0220
+goto 84:0205
+
+#switch 84:301
+if (((((BibereConvChoice1 == 1) && (BibereConvChoice2 == 2)) && (BibereConvChoice3 == 3)) && (BibereConvChoice4 == 4)) && (KnowFieldCode2 == 1))
+  goto 84:0328
+if (bibereconvo == 1)
+  goto 84:0321
+goto 84:0305
+
+#switch 84:316
+set BibereConvChoice1 = 1
+set @KnowWhatThisMeansMarty = 1
+goto 84:0320
+
+#switch 84:317
+set BibereConvChoice2 = 2
+set @KnowWhatThisMeansMarty = 2
+goto 84:0320
+
+#switch 84:318
+set BibereConvChoice3 = 3
+set @KnowWhatThisMeansMarty = 3
+goto 84:0320
+
+#switch 84:319
+set BibereConvChoice4 = 4
+set @KnowWhatThisMeansMarty = 4
+goto 84:0320
+
+#switch 84:320
+if (@KnowWhatThisMeansMarty == 1) {
+  goto 84:0323
+  set @KnowWhatThisMeansMarty = 0
+}
+if (@KnowWhatThisMeansMarty == 2) {
+  goto 84:0324
+  set @KnowWhatThisMeansMarty = 0
+}
+if (@KnowWhatThisMeansMarty == 3) {
+  goto 84:0325
+  set @KnowWhatThisMeansMarty = 0
+}
+if (@KnowWhatThisMeansMarty == 4) {
+  goto 84:0326
+  set @KnowWhatThisMeansMarty = 0
+}
+
+#switch 84:321
+if ((((BibereConvChoice1 == 1) && (BibereConvChoice2 == 2)) && (BibereConvChoice3 == 3)) && (BibereConvChoice4 == 4))
+  goto 84:0328
+goto 84:0322
+
+#switch 84:401
+if (MilitaratusConvo == 1)
+  goto 84:0407
+if (MilitaratusConvo == 2)
+  goto 84:0409
+if (MilitaratusConvo == 3)
+  goto 84:0411
+if (MilitaratusConvo == 4)
+  goto 84:0413
+if (MilitaratusConvo == 5)
+  goto 84:0405
+goto 84:0405
+
+#switch 84:501
+goto 84:0505
+
+#switch 84:601
+if (KnowFieldCode4 == 1)
+  goto 84:0636
+if (TweedyConvo == 1)
+  goto 84:0610
+goto 84:0605
+
+#switch 84:680
+extern AI_SeekAndTouch crocus_handle tweedy
+extern AI_SetCompletionCallback crocus_handle 84:0681
+
+#switch 84:681
+extern ANIM_PlayAnim crocus_handle gest_b 0 1 0
+
+#switch 84:685
+extern AI_DestroyEntity crocus_handle
+
+#switch 84:701
+if (BraggConvo == 3)
+  goto 84:0705
+if (BraggConvo == 2)
+  goto 84:0708
+if (BraggConvo == 1)
+  goto 84:0706
+goto 84:0705
+
+#switch 84:801
+if (WormwoodConvo == 1)
+  goto 84:0806
+goto 84:0805
+
+#switch 84:901
+if (IrdgaffConvo == 1)
+  goto 84:0921
+if (KnowFieldCode5 == 1)
+  goto 84:0920
+goto 84:0905
+
+#switch 84:1001
+if (CommAlarm == 1)
+  goto 84:1025
+if (HetenOnPatrol == 1)
+  goto 84:1030
+if (HetenConvo == 2)
+  goto 84:1015
+if (HetenConvo == 1)
+  goto 84:1015
+goto 84:1005
+
+#switch 84:1050
+if (HetenWindowsOpen == 1)
+  goto 84:1060
+extern AI_Path heten_handle heten17
+extern AI_SetCompletionCallback heten_handle 84:1055
+
+#switch 84:1055
+extern AI_SeekAndFace heten_handle heten17
+extern Anim_MakeSmart heten_handle
+extern AI_ReleaseEntity heten_handle
+set HetenOnPatrol = 0
+
+#switch 84:1060
+goto 84:1065
+
+#switch 84:1102
+set @comrandom = func_drand[0,23]
+extern STAB_GetElem ComSTAB @comrandom @cw1$
+set @comrandom = func_drand[0,23]
+extern STAB_GetElem ComSTAB @comrandom @cw2$
+set @comrandom = func_drand[0,23]
+extern STAB_GetElem ComSTAB @comrandom @cw3$
+set @comrandom = func_drand[0,23]
+extern STAB_GetElem ComSTAB @comrandom @cw4$
+set @comrandom = func_drand[0,23]
+extern STAB_GetElem ComSTAB @comrandom @cw5$
+goto 0:0
+
+#switch 84:1110
+extern STAB_Create ComSTAB
+extern STAB_Append ComSTAB "Astro" 1
+extern STAB_Append ComSTAB "Obelisk" 2
+extern STAB_Append ComSTAB "Barnard" 3
+extern STAB_Append ComSTAB "Photon" 4
+extern STAB_Append ComSTAB "Cordica" 5
+extern STAB_Append ComSTAB "Quasar" 6
+extern STAB_Append ComSTAB "Radium" 7
+extern STAB_Append ComSTAB "Unity" 8
+extern STAB_Append ComSTAB "Shadow" 9
+extern STAB_Append ComSTAB "Flotsam" 10
+extern STAB_Append ComSTAB "Gambit" 11
+extern STAB_Append ComSTAB "Helium" 12
+extern STAB_Append ComSTAB "Vector" 13
+extern STAB_Append ComSTAB "Integer" 14
+extern STAB_Append ComSTAB "Justice" 15
+gosub 84:1111
+
+#switch 84:1111
+extern STAB_Append ComSTAB "X-ray" 16
+extern STAB_Append ComSTAB "Kepler" 17
+extern STAB_Append ComSTAB "Yeoman" 18
+extern STAB_Append ComSTAB "Lithium" 19
+extern STAB_Append ComSTAB "Zealot" 20
+extern STAB_Append ComSTAB "Mojo" 21
+extern STAB_Append ComSTAB "Neon" 22
+extern STAB_Append ComSTAB "Dogma" 23
+extern STAB_Append ComSTAB "Tentac" 24
+goto 0:0
+
+#switch 84:2001
+if (HetenOnPatrol == 0)
+  goto 84:1020
+set HetenWindowsOpen = 1
+goto 84:2005
+
+#switch 84:2005
+set keynote_answer = 3175
+set keynote_type = 1
+set keynote_callback_bank = 84
+set keynote_callback_entry = 2006
+keynote$="/gameflow/commiteon/keynote.txt" 
+gosub 1:10
+
+#switch 84:2006
+if (keynote_locked == 0) {
+  extern is_quest_done "Use Code to Leave" @boo
+  if (@boo == 0)
+    extern add_quest "Use Code to Leave"
+}
+set HetenWindowsOpen = 0
+
+#switch 84:2101
+if (HetenOnPatrol == 1) {
+  set TIMED_MESSAGE = 41
+  gosub 1000:1
+  goto 0:0
+}
+if (PacoSawCommMap == 0)
+  set keynote_locked = 1
+if ((anox_worldskill_active == 0) && (@PacoRageExplain == 0))
+  goto 84:2102
+WS_STAND$="pacosmash" 
+set ws_bank = 84
+set ws_entry = 2107
+gosub 4007:1
+goto 0:0
+
+#switch 84:2103
+set timed_message = 22
+gosub 1000:1
+goto 0:0
+
+#switch 84:2107
+extern AI_GetEdictNumber paco_gen_ob1 @ob_1
+extern AI_GetEdictNumber paco_gen_ob2 @ob_2
+extern AI_GetEdictNumber paco_gen_ob3 @ob_3
+extern npsimple @ob_1 basement/spark_burst
+extern npsimple @ob_2 basement/spark_burst
+extern npsimple @ob_3 basement/spark_burst
+extern playsound cine/bricks_misc/arcstop.wav
+goto 84:2108
+
+#switch 84:2108
+if (@HalarmIsOn == 1)
+  goto 0:0
+if (HetenConvo > 0) {
+  set CommAlarm = 1
+  set HetenOnPatrol = 1
+  extern AI_GrabEntity heten heten_handle
+  extern AI_Path heten_handle heten01
+  extern Anim_MakeSmart heten_handle
+  set @HalarmIsOn = 1
+}
+extern loopsound maps/mac/mac_alarm_01.wav keynote 1.0 2.0
+extern loopsound maps/mac/mac_alarm_01.wav fencealarm1 1.0 2.0
+extern loopsound maps/mac/mac_alarm_01.wav fencealarm2 1.0 2.0
+extern loopsound maps/mac/mac_alarm_01.wav fencealarm3 1.0 2.0
+extern loopsound maps/mac/mac_alarm_01.wav pathalarm1 1.0 2.0
+extern loopsound maps/mac/mac_alarm_01.wav pathalarm2 1.0 2.0
+extern loopsound maps/mac/mac_alarm_01.wav heten09 1.0 2.0
+extern loopsound maps/mac/mac_alarm_01.wav walk1 1.0 2.0
+if (HetenConvo == 0)
+  goto 84:2109
+
+#switch 84:2110
+goto 84:2305
+
+#switch 84:2190
+extern stopsound maps/mac/mac_alarm_01.wav
+set CommAlarm = 0
+set @HalarmIsOn = 0
+
+#switch 84:2201
+if (HetenOnPatrol == 0)
+  goto 84:1020
+set HetenWindowsOpen = 1
+goto 84:2205
+
+#switch 84:2301
+goto 84:2305
+
+#switch 84:2310
+set n[1] = -1.000000
+set n[2] = -1.000000
+set n[3] = -1.000000
+set n[4] = -1.000000
+set n[5] = -1.000000
+set t[1] = -1.000000
+set t[2] = -1.000000
+set t[3] = -1.000000
+set t[4] = -1.000000
+set t[5] = -1.000000
+set r[1] = 5
+set r[2] = 4
+set r[3] = 3
+set r[4] = 2
+set r[5] = 1
+goto 0:0
+
+#switch 84:2315
+extern CreateAPE2DControl push button1 484 128 width=32 height=32 normal=/gameflow/commiteon/comsec_K_1x.tga gamevar=@blah returnvalue=1
+extern CreateAPE2DControl push button2 517 128 width=32 height=32 normal=/gameflow/commiteon/comsec_K_2x.tga gamevar=@blah returnvalue=2
+extern CreateAPE2DControl push button3 550 128 width=32 height=32 normal=/gameflow/commiteon/comsec_K_3.tga gamevar=@buttonPressed returnvalue=3 sequence=84:2325
+extern CreateAPE2DControl push button4 484 161 width=32 height=32 normal=/gameflow/commiteon/comsec_K_4x.tga gamevar=@blah returnvalue=4
+extern CreateAPE2DControl push button5 517 161 width=32 height=32 normal=/gameflow/commiteon/comsec_K_5x.tga gamevar=@blah returnvalue=5
+extern CreateAPE2DControl push button6 550 161 width=32 height=32 normal=/gameflow/commiteon/comsec_K_6.tga gamevar=@buttonPressed returnvalue=6 sequence=84:2325
+extern CreateAPE2DControl push button7 484 194 width=32 height=32 normal=/gameflow/commiteon/comsec_K_7.tga gamevar=@buttonPressed returnvalue=7 sequence=84:2325
+extern CreateAPE2DControl push button8 517 194 width=32 height=32 normal=/gameflow/commiteon/comsec_K_8.tga gamevar=@buttonPressed returnvalue=8 sequence=84:2325
+extern CreateAPE2DControl push button9 550 194 width=32 height=32 normal=/gameflow/commiteon/comsec_K_9.tga gamevar=@buttonPressed returnvalue=9 sequence=84:2325
+extern CreateAPE2DControl push button11 484 227 width=32 height=32 normal=/gameflow/commiteon/comsec_K_b.tga gamevar=@buttonPressed returnvalue=11 sequence=84:2325
+extern CreateAPE2DControl push button10 517 227 width=32 height=32 normal=/gameflow/commiteon/comsec_K_0.tga gamevar=@buttonPressed returnvalue=0 sequence=84:2325
+extern CreateAPE2DControl push button12 550 227 width=32 height=32 normal=/gameflow/commiteon/comsec_K_r.tga gamevar=@buttonPressed returnvalue=12 sequence=84:2325
+extern CreateAPE2DControl push buttonx 384 244 width16 height=16 normal=/gameflow/commiteon/x.tga gamevar=@buttonXXX returnvalue=69 sequence=84:2330
+goto 0:0
+
+#switch 84:2320
+extern RemoveAPE2DControl button1
+extern RemoveAPE2DControl button2
+extern RemoveAPE2DControl button3
+extern RemoveAPE2DControl button4
+extern RemoveAPE2DControl button5
+extern RemoveAPE2DControl button6
+extern RemoveAPE2DControl button7
+extern RemoveAPE2DControl button8
+extern RemoveAPE2DControl button9
+extern RemoveAPE2DControl button10
+extern RemoveAPE2DControl button11
+extern RemoveAPE2DControl button12
+extern RemoveAPE2DControl buttonx
+goto 0:0
+
+#switch 84:2325
+if (@buttonPressed < 10) {
+  set @currentEnteredDigit = (@currentEnteredDigit + 1)
+  if (@currentEnteredDigit > 5) {
+    set @currentEnteredDigit = 5
+    goto 0:0
+  }
+  set t[$@currentEnteredDigit$] = @buttonPressed
+  set n[1] = n[2]
+  set n[2] = n[3]
+  set n[3] = n[4]
+  set n[4] = n[5]
+  set n[5] = @buttonPressed
+  extern playsound "ui/gen/button5.wav"
+}
+if (@buttonPressed == 11) {
+  if (@currentEnteredDigit == 0)
+    goto 0:0
+  set t[$@currentEnteredDigit$] = -1.000000
+  set n[5] = n[4]
+  set n[4] = n[3]
+  set n[3] = n[2]
+  set n[2] = n[1]
+  set n[1] = -1.000000
+  set @currentEnteredDigit = (@currentEnteredDigit - 1)
+  extern playsound "ui/gen/button5.wav"
+}
+if (@buttonPressed == 12) {
+  set n[1] = -1.000000
+  set n[2] = -1.000000
+  set n[3] = -1.000000
+  set n[4] = -1.000000
+  set n[5] = -1.000000
+  set t[1] = -1.000000
+  set t[2] = -1.000000
+  set t[3] = -1.000000
+  set t[4] = -1.000000
+  set t[5] = -1.000000
+  set @currentEnteredDigit = 0
+  extern playsound "ui/gen/ui_gen_last10secs.wav"
+}
+
+#switch 84:2330
+extern playsound "ui/gen/ui_gen_backout.wav"
+closewindow 84:2305
+
+#switch 84:2401
+goto 84:2405
+
+#switch 84:2410
+set n[1] = -1.000000
+set n[2] = -1.000000
+set n[3] = -1.000000
+set n[4] = -1.000000
+set n[5] = -1.000000
+set t[1] = -1.000000
+set t[2] = -1.000000
+set t[3] = -1.000000
+set t[4] = -1.000000
+set t[5] = -1.000000
+set r[1] = 6
+set r[2] = 5
+set r[3] = 7
+set r[4] = 1
+set r[5] = 2
+goto 0:0
+
+#switch 84:2415
+extern CreateAPE2DControl push button1 484 128 width=32 height=32 normal=/gameflow/commiteon/comsec_K_1.tga gamevar=@buttonPressed returnvalue=1 sequence=84:2425
+extern CreateAPE2DControl push button2 517 128 width=32 height=32 normal=/gameflow/commiteon/comsec_K_2.tga gamevar=@buttonPressed returnvalue=2 sequence=84:2425
+extern CreateAPE2DControl push button3 550 128 width=32 height=32 normal=/gameflow/commiteon/comsec_K_3.tga gamevar=@buttonPressed returnvalue=3 sequence=84:2425
+extern CreateAPE2DControl push button4 484 161 width=32 height=32 normal=/gameflow/commiteon/comsec_K_4.tga gamevar=@buttonPressed returnvalue=4 sequence=84:2425
+extern CreateAPE2DControl push button5 517 161 width=32 height=32 normal=/gameflow/commiteon/comsec_K_5.tga gamevar=@buttonPressed returnvalue=5 sequence=84:2425
+extern CreateAPE2DControl push button6 550 161 width=32 height=32 normal=/gameflow/commiteon/comsec_K_6.tga gamevar=@buttonPressed returnvalue=6 sequence=84:2425
+extern CreateAPE2DControl push button7 484 194 width=32 height=32 normal=/gameflow/commiteon/comsec_K_7.tga gamevar=@buttonPressed returnvalue=7 sequence=84:2425
+extern CreateAPE2DControl push button8 517 194 width=32 height=32 normal=/gameflow/commiteon/comsec_K_8.tga gamevar=@buttonPressed returnvalue=8 sequence=84:2425
+extern CreateAPE2DControl push button9 550 194 width=32 height=32 normal=/gameflow/commiteon/comsec_K_9.tga gamevar=@buttonPressed returnvalue=9 sequence=84:2425
+extern CreateAPE2DControl push button11 484 227 width=32 height=32 normal=/gameflow/commiteon/comsec_K_b.tga gamevar=@buttonPressed returnvalue=11 sequence=84:2425
+extern CreateAPE2DControl push button10 517 227 width=32 height=32 normal=/gameflow/commiteon/comsec_K_0.tga gamevar=@buttonPressed returnvalue=0 sequence=84:2425
+extern CreateAPE2DControl push button12 550 227 width=32 height=32 normal=/gameflow/commiteon/comsec_K_r.tga gamevar=@buttonPressed returnvalue=12 sequence=84:2425
+extern CreateAPE2DControl push buttonx 384 244 width=16 height=16 normal=/gameflow/commiteon/comsec_X.tga gamevar=@buttonXXX returnvalue=69 sequence=84:2430
+goto 0:0
+
+#switch 84:2420
+extern RemoveAPE2DControl button1
+extern RemoveAPE2DControl button2
+extern RemoveAPE2DControl button3
+extern RemoveAPE2DControl button4
+extern RemoveAPE2DControl button5
+extern RemoveAPE2DControl button6
+extern RemoveAPE2DControl button7
+extern RemoveAPE2DControl button8
+extern RemoveAPE2DControl button9
+extern RemoveAPE2DControl button10
+extern RemoveAPE2DControl button11
+extern RemoveAPE2DControl button12
+extern RemoveAPE2DControl buttonx
+goto 0:0
+
+#switch 84:2425
+if (@buttonPressed < 10) {
+  set @currentEnteredDigit = (@currentEnteredDigit + 1)
+  if (@currentEnteredDigit > 5) {
+    set @currentEnteredDigit = 5
+    goto 0:0
+  }
+  set t[$@currentEnteredDigit$] = @buttonPressed
+  set n[1] = n[2]
+  set n[2] = n[3]
+  set n[3] = n[4]
+  set n[4] = n[5]
+  set n[5] = @buttonPressed
+  extern playsound "ui/gen/button5.wav"
+}
+if (@buttonPressed == 11) {
+  if (@currentEnteredDigit == 0)
+    goto 0:0
+  set t[$@currentEnteredDigit$] = -1.000000
+  set n[5] = n[4]
+  set n[4] = n[3]
+  set n[3] = n[2]
+  set n[2] = n[1]
+  set n[1] = -1.000000
+  set @currentEnteredDigit = (@currentEnteredDigit - 1)
+  extern playsound "ui/gen/button5.wav"
+}
+if (@buttonPressed == 12)
+  if (((((t[1] == r[1]) && (t[2] == r[2])) && (t[3] == r[3])) && (t[4] == r[4])) && (t[5] == r[5])) {
+    extern playsound "ui/gen/ui_gen_select.wav"
+    console "target gate"
+    closewindow 84:2405
+  } else {
+    set n[1] = -1.000000
+    set n[2] = -1.000000
+    set n[3] = -1.000000
+    set n[4] = -1.000000
+    set n[5] = -1.000000
+    set t[1] = -1.000000
+    set t[2] = -1.000000
+    set t[3] = -1.000000
+    set t[4] = -1.000000
+    set t[5] = -1.000000
+    set @currentEnteredDigit = 0
+    extern playsound "ui/gen/ui_gen_last10secs.wav"
+  }
+
+#switch 84:2430
+extern playsound "ui/gen/ui_gen_backout.wav"
+closewindow 84:2405
+
+#switch 84:2501
+extern is_quest_done "Find Military Installation" @boo
+if (@boo != 2)
+  extern complete_quest "Find Military Installation"
+extern complete_quest "Get Out of Base Camp"
+extern is_quest_done "Paco Find Drink" @boo
+if (@boo != 2)
+  extern complete_quest "Paco Find Drink"
+console "MAP COMHILLS FROMCOMMITEON"
+goto 0:0

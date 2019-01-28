@@ -1,0 +1,123 @@
+#window 99:5579
+title "Paco \"El Puño\" Estrella"
+body "Ah... a Ruby Stone."
+cam to(pacogem2) from(PlayerChar0) lift(20) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 pacohandle
+  extern AI_WaitAndFace pacohandle -1 pacogem2
+  extern ANIM_PlayAnim pacohandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 99:5580
+
+#window 92:5580
+title "Paco \"El Puño\" Estrella"
+body "This rough ore can make a form of Kraptonite..."
+cam to(pacogem2) from(PlayerChar0) lift(20) restore zip
+startswitch {
+  extern ANIM_PlayAnim pacohandle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+nextwindow 99:5581
+
+#window 99:5581
+title "Paco \"El Puño\" Estrella"
+body "...but first I must irradiate it somewhere."
+cam to(pacogem2) from(PlayerChar0) lift(20) restore zip
+startswitch {
+  extern ANIM_PlayAnim pacohandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity pacohandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 140
+width 580
+nextwindow 99:5582
+
+#switch 106:1
+set CURRENT_PLANET = 8
+set CURRENT_BANK = 99
+extern applylevelconfiguration commhills
+extern playlevelmusic mp3/democratus/democnormalnormal.mp3
+BattleMusicOverride$="mp3/democratus/DemocBattleLoop.mp3" 
+extern AI_SpawnEntity @ob_clip_handle_1 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_1 1323 1732 -212
+extern AI_SpawnEntity @ob_clip_handle_2 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_2 1355 1732 -212
+extern AI_SpawnEntity @ob_clip_handle_3 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_3 1323 1732 -172
+extern AI_SpawnEntity @ob_clip_handle_4 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_4 1355 1732 -172
+extern AI_SpawnEntity @ob_clip_handle_5 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_5 1323 1732 -132
+extern AI_SpawnEntity @ob_clip_handle_6 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_6 1355 1732 -132
+extern AI_SpawnEntity @ob_clip_handle_7 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_7 1323 1732 -92
+extern AI_SpawnEntity @ob_clip_handle_8 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_8 1355 1732 -92
+
+#switch 99:1000
+console "battlestart 0"
+echo "battle 0 triggered"
+goto 0:0
+
+#switch 99:1010
+console "battlestart 1"
+echo "battle 1 triggered"
+goto 0:0
+
+#switch 99:1020
+console "battlestart 2"
+echo "battle 2 triggered"
+goto 0:0
+
+#switch 99:1030
+console "battlestart 3"
+echo "battle 3 triggered"
+goto 0:0
+
+#switch 99:1040
+console "battlestart 4"
+echo "battle 4 triggered"
+goto 0:0
+
+#switch 99:1050
+console "battlestart 5 ambush"
+echo "battle 5 triggered"
+goto 0:0
+
+#switch 99:1060
+console "battlestart 6"
+echo "battle 6 triggered"
+goto 0:0
+
+#switch 99:5577
+extern AI_GrabEntity PlayerChar0 hPlayer
+extern AI_SeekAndFace hPlayer pacostand2
+extern AI_SetCompletionCallback hPlayer 99:5588
+
+#switch 99:5588
+extern ANIM_MakeSmart hPlayer
+extern AI_ReleaseEntity hPlayer
+goto 99:5579
+
+#switch 99:5580
+extern AI_GetEdictNumber PlayerChar0 getter
+extern pickup_getitem getter 99:5577
+goto 0:0

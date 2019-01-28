@@ -1,0 +1,876 @@
+#window 4003:8001
+xyprintfx 32, 23, 1, 0.300000011921, 1, 0.800000011921, _standardthin, "Cordicom Backdoor Security"
+xyprintfx 53, 67, 1, 0.300000011921, 1, 0.800000011921, _anox5farsend, "Cross-Circuit Patchboard"
+if (@have_distractor)
+  xyprintfx 10, 260, @aux_alpha, 0.300000011921, 1, 0.800000011921, _message, "Distractor Band active"
+if (@have_doubletime)
+  xyprintfx 0, 276, @aux_alpha, 0.300000011921, 1, 0.800000011921, _message, "DoubleTime Bracer active"
+if (anox_worldskill_successful)
+  xyprintfx 73, 120, 1, 0.300000011921, 1, 0.800000011921, _message, "SUCCESS!"
+if (ct_success && (anox_worldskill_successful == 0))
+  xyprintfx 76, 120, 1, 0.300000011921, 1, 0.800000011921, _message, "FAILURE!"
+startswitch {
+  set c = 0
+  while (c < 49) {
+    set I[$c$] = E[$c$]
+    set F[$c$] = E[$c$]
+    set c = (c + 1)
+  }
+  extern is_equipped "Distractor Band" @have_distractor
+  extern is_equipped "DoubleTime Bracer" @have_doubletime
+  set anox_worldskill_successful = 0
+  set ct_success = 0
+  if (ws_countertime == 0)
+    set ws_countertime = 12
+  set anim_cycle = 0
+  set @aux_alpha = 0.20000000298
+  set @aux_delta = 0.0500000007451
+  set which_tile = 0
+  extern get_world_skill_level comptalk @ws
+  if ((@ws == 1) && (ws_skill_level == 2)) {
+    set timed_message = 99
+    timed_message$="You are not skilled enough to CompTalk this." 
+    gosub 1000:1
+  }
+  if (@ws == 1) {
+    set pal_is_master = 0
+  } else
+    set pal_is_master = 1
+  set cursormode = 1
+  set ct_currentMS = func_gametime
+  set ct_lastMS = ct_currentMS
+  gosub 4003:8005
+  gosub 4003:8006
+  extern pauselevelmusic
+  extern playsound ../music/mp3/worldskill.mp3
+  extern set2dcursor default
+  goto 0:0
+}
+
+thinkswitch {
+  if (ct_paused)
+    goto 0:0
+  if (CompTalk_First_Time1 == 0) {
+    set CompTalk_First_Time1 = 1
+    gosub 4003:8052
+  }
+  set @aux_alpha = (@aux_alpha + @aux_delta)
+  if (@aux_alpha >= 1) {
+    set @aux_delta = -0.050000
+  } else if (@aux_alpha <= 0.20000000298)
+    set @aux_delta = 0.0500000007451
+  if (explode_count)
+    set explode_count = (explode_count - 1)
+  set ct_currentMS = func_gametime
+  if ((ct_currentMS - ct_lastMS) > ((1800 + (2000 * @have_doubletime)) + (10000 * @have_distractor)))
+    if (ct_success == 0) {
+      set ws_countertime = (ws_countertime - 1)
+      set ct_lastMS = ct_currentMS
+      if ((ws_countertime > 5) && (@have_distractor == 0)) {
+        extern playsound ui/gen/button5.wav
+      } else if ((ws_countertime > 5) && @have_distractor) {
+        extern playsound ui/gen/ui_gen_backdoor.wav
+      } else
+        extern playsound ui/gen/ui_gen_last10secs.wav
+      if (ws_countertime == 0) {
+        extern playsound ui/gen/ui_gen_error.wav
+        goto 4003:8035
+      }
+    }
+  if (ct_success) {
+    set ct_success = (ct_success - 1)
+    if (ct_success == 0)
+      closewindow 4003:8001
+  }
+  goto 0:0
+}
+
+finishswitch {
+  extern RemoveAPE2DControl boardbutton
+  extern RemoveAPE2DControl tile1
+  extern RemoveAPE2DControl tile2
+  extern RemoveAPE2DControl tile3
+  extern RemoveAPE2DControl tile4
+  extern RemoveAPE2DControl tile5
+  extern RemoveAPE2DControl tile6
+  extern RemoveAPE2DControl garbage
+  extern RemoveAPE2DControl exit
+  extern RemoveAPE2DControl infobutt
+  extern set2dcursor default
+  set ws_countertime = 0
+  set c = 0
+  while (c < 49) {
+    set E[$c$] = 0
+    set F[$c$] = 0
+    set c = (c + 1)
+  }
+  set ws_doing_wskill = 0
+  unset ws_time
+  unset ws_difficulty
+  extern stopsound ../music/mp3/worldskill.mp3
+  extern resumelevelmusic
+  goto 0:0
+}
+
+style "NULL"
+font "_standardshadow"
+flags passive2d, TRUE
+xpos 192
+ypos 112
+width 256
+height 256
+background "ct/pal_back.pcx" 
+image "ct/tile_$F[1]$a.atd" 69, 61
+image "ct/tile_$F[2]$a.atd" 90, 61
+image "ct/tile_$F[3]$a.atd" 111, 61
+image "ct/tile_$F[4]$a.atd" 132, 61
+image "ct/tile_$F[5]$a.atd" 153, 61
+image "ct/tile_$F[8]$a.atd" 69, 82
+image "ct/tile_$F[9]$a.atd" 90, 82
+image "ct/tile_$F[10]$a.atd" 111, 82
+image "ct/tile_$F[11]$a.atd" 132, 82
+image "ct/tile_$F[12]$a.atd" 153, 82
+image "ct/tile_$F[15]$a.atd" 69, 103
+image "ct/tile_$F[16]$a.atd" 90, 103
+image "ct/tile_$F[17]$a.atd" 111, 103
+image "ct/tile_$F[18]$a.atd" 132, 103
+image "ct/tile_$F[19]$a.atd" 153, 103
+image "ct/tile_$F[22]$a.atd" 69, 124
+image "ct/tile_$F[23]$a.atd" 90, 124
+image "ct/tile_$F[24]$a.atd" 111, 124
+image "ct/tile_$F[25]$a.atd" 132, 124
+image "ct/tile_$F[26]$a.atd" 153, 124
+image "ct/tile_$F[29]$a.atd" 69, 145
+image "ct/tile_$F[30]$a.atd" 90, 145
+image "ct/tile_$F[31]$a.atd" 111, 145
+image "ct/tile_$F[32]$a.atd" 132, 145
+image "ct/tile_$F[33]$a.atd" 153, 145
+image "ct/tile_$F[36]$a.atd" 69, 166
+image "ct/tile_$F[37]$a.atd" 90, 166
+image "ct/tile_$F[38]$a.atd" 111, 166
+image "ct/tile_$F[39]$a.atd" 132, 166
+image "ct/tile_$F[40]$a.atd" 153, 166
+image "ct/tile_$F[43]$a.atd" 69, 187
+image "ct/tile_$F[44]$a.atd" 90, 187
+image "ct/tile_$F[45]$a.atd" 111, 187
+image "ct/tile_$F[46]$a.atd" 132, 187
+image "ct/tile_$F[47]$a.atd" 153, 187
+image "ct/light_anim.atd" 36, 77
+image "ct/light_anim.atd" 36, 93
+image "ct/light_anim.atd" 36, 109
+image "ct/light_anim.atd" 36, 125
+image "ct/light_anim.atd" 36, 141
+image "ct/light_anim.atd" 36, 157
+image "ct/light_anim.atd" 36, 173
+if (ws_countertime >= 1)
+  image "ct/timer_norm.pcx" 32, 38
+if (ws_countertime >= 2)
+  image "ct/timer_norm.pcx" 48, 38
+if (ws_countertime >= 3)
+  image "ct/timer_norm.pcx" 64, 38
+if (ws_countertime >= 4)
+  image "ct/timer_norm.pcx" 80, 38
+if (ws_countertime >= 5)
+  image "ct/timer_norm.pcx" 96, 38
+if (ws_countertime >= 6)
+  image "ct/timer_norm.pcx" 112, 38
+if (ws_countertime >= 7)
+  image "ct/timer_norm.pcx" 128, 38
+if (ws_countertime >= 8)
+  image "ct/timer_norm.pcx" 144, 38
+if (ws_countertime >= 9)
+  image "ct/timer_norm.pcx" 160, 38
+if (ws_countertime >= 10)
+  image "ct/timer_norm.pcx" 176, 38
+if (ws_countertime >= 11)
+  image "ct/timer_norm.pcx" 192, 38
+if (ws_countertime >= 12)
+  image "ct/timer_norm.pcx" 208, 38
+if (explode_count)
+  image "ct/tile_boom$explode_count$.pcx" explode_x, explode_y
+
+#window 4003:8053
+body "PAL-18 has been outfitted with the ability to access the dataports of most computers. He even has the infrared option!\n\n"
+body "To CompTalk, PAL-18 must figure out how to patch into the computer's \"backdoor\". By selecting the correct patchboard tiles and avoiding "
+body "bad, weak areas of the patchboard, PAL-18 can connect through the computer's backdoor before the built-in security systems shut him down.\n\n"
+body "Most patchboards have a left-to-right configuration, but advanced ones may be right-to-left, requiring Master level ability!"
+startswitch {
+  extern RemoveAPE2DControl garbage
+  extern RemoveAPE2DControl exit
+  extern RemoveAPE2DControl infobutt
+  extern RemoveAPE2DControl boardbutton
+  extern RemoveAPE2DControl tile1
+  extern RemoveAPE2DControl tile2
+  extern RemoveAPE2DControl tile3
+  if (pal_is_master)
+    extern RemoveAPE2DControl tile4
+  if (pal_is_master)
+    extern RemoveAPE2DControl tile5
+  if (pal_is_master)
+    extern RemoveAPE2DControl tile6
+}
+
+finishswitch {
+  extern CreateAPE2DControl push garbage 378 200 width=20 height=20 normal=/gameflow/ct/tile_garbage.pcx bright=/gameflow/ct/tile_garbage_h.pcx gamevar=wt returnvalue=1 holdfocusflag=false sequence=4003:8050
+  extern CreateAPE2DControl push exit 378 233 width=20 height=20 normal=/gameflow/ct/tile_exit.pcx bright=/gameflow/ct/tile_exit_h.pcx gamevar=wt returnvalue=2 holdfocusflag=false sequence=4003:8051
+  extern CreateAPE2DControl push infobutt 378 266 width=20 height=20 normal=/gameflow/ct/tile_info.pcx bright=/gameflow/ct/tile_info_h.pcx gamevar=wt returnvalue=3 holdfocusflag=false sequence=4003:8052
+  extern CreateAPE2DControl push boardbutton 261 194 width=105 height=105 nodrawflag=true holdfocusflag=false gamevar=cb returnvalue=1 sequence=4003:8008
+  extern CreateAPE2DControl push tile1 225 323 width=20 height=20 normal=/gameflow/ct/tile_0.pcx bright=/gameflow/ct/tile_0_s.pcx gamevar=wt returnvalue=1 holdfocusflag=false sequence=4003:8012
+  extern CreateAPE2DControl push tile2 258 323 width=20 height=20 normal=/gameflow/ct/tile_5.pcx bright=/gameflow/ct/tile_5_s.pcx gamevar=wt returnvalue=2 holdfocusflag=false sequence=4003:8013
+  extern CreateAPE2DControl push tile3 291 323 width=20 height=20 normal=/gameflow/ct/tile_10.pcx bright=/gameflow/ct/tile_10_s.pcx gamevar=wt returnvalue=3 holdfocusflag=false sequence=4003:8014
+  if (pal_is_master)
+    extern CreateAPE2DControl push tile4 324 323 width=20 height=20 normal=/gameflow/ct/tile_15.pcx bright=/gameflow/ct/tile_15_s.pcx gamevar=wt returnvalue=4 holdfocusflag=false sequence=4003:8015
+  if (pal_is_master)
+    extern CreateAPE2DControl push tile5 357 323 width=20 height=20 normal=/gameflow/ct/tile_20.pcx bright=/gameflow/ct/tile_20_s.pcx gamevar=wt returnvalue=5 holdfocusflag=false sequence=4003:8016
+  if (pal_is_master)
+    extern CreateAPE2DControl push tile6 390 323 width=20 height=20 normal=/gameflow/ct/tile_25.pcx bright=/gameflow/ct/tile_25_s.pcx gamevar=wt returnvalue=6 holdfocusflag=false sequence=4003:8017
+  set ct_paused = 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+background color1 = 444400ff color2 = 222200ff color3 = 111100ff color4 = 222200ff
+xpos 120
+ypos 80
+width 400
+height 320
+
+#switch 4003:8005
+extern assign X[0] -1 69 90 111 132 153 -1
+extern assign X[7] -1 69 90 111 132 153 -1
+extern assign X[14] -1 69 90 111 132 153 -1
+extern assign X[21] -1 69 90 111 132 153 -1
+extern assign X[28] -1 69 90 111 132 153 -1
+extern assign X[35] -1 69 90 111 132 153 -1
+extern assign X[42] -1 69 90 111 132 153 -1
+extern assign Y[0] -1 61 61 61 61 61 -1
+extern assign Y[7] -1 82 82 82 82 82 -1
+extern assign Y[14] -1 103 103 103 103 103 -1
+extern assign Y[21] -1 124 124 124 124 124 -1
+extern assign Y[28] -1 145 145 145 145 145 -1
+extern assign Y[35] -1 166 166 166 166 166 -1
+extern assign Y[42] -1 187 187 187 187 187 -1
+goto 0:0
+
+#switch 4003:8006
+set top = 0
+set bottom = 0
+set t = 1
+while (t < 6) {
+  set b = (t + 42)
+  if (top == 0)
+    if (E[$t$] == 51)
+      set top = t
+  if (bottom == 0)
+    if (E[$b$] == 46)
+      set bottom = b
+  set t = (t + 1)
+}
+if ((top == 0) || (bottom == 0)) {
+  echo "@@@@@@@ MISSING TOP OR BOTTOM TILE!"
+  closewindow 4003:8001
+}
+set first_bottom = (bottom - 7)
+set E[$first_bottom$] = (E[$first_bottom$] + 1)
+set F[$first_bottom$] = E[$first_bottom$]
+extern CreateAPE2DControl push garbage 378 200 width=20 height=20 normal=/gameflow/ct/tile_garbage.pcx bright=/gameflow/ct/tile_garbage_h.pcx gamevar=wt returnvalue=1 holdfocusflag=false sequence=4003:8050
+extern CreateAPE2DControl push exit 378 233 width=20 height=20 normal=/gameflow/ct/tile_exit.pcx bright=/gameflow/ct/tile_exit_h.pcx gamevar=wt returnvalue=2 holdfocusflag=false sequence=4003:8051
+extern CreateAPE2DControl push infobutt 378 266 width=20 height=20 normal=/gameflow/ct/tile_info.pcx bright=/gameflow/ct/tile_info_h.pcx gamevar=wt returnvalue=3 holdfocusflag=false sequence=4003:8052
+extern CreateAPE2DControl push boardbutton 261 194 width=105 height=105 nodrawflag=true holdfocusflag=false gamevar=cb returnvalue=1 sequence=4003:8008
+extern CreateAPE2DControl push tile1 225 323 width=20 height=20 normal=/gameflow/ct/tile_0.pcx bright=/gameflow/ct/tile_0_s.pcx gamevar=wt returnvalue=1 holdfocusflag=false sequence=4003:8012
+extern CreateAPE2DControl push tile2 258 323 width=20 height=20 normal=/gameflow/ct/tile_5.pcx bright=/gameflow/ct/tile_5_s.pcx gamevar=wt returnvalue=2 holdfocusflag=false sequence=4003:8013
+extern CreateAPE2DControl push tile3 291 323 width=20 height=20 normal=/gameflow/ct/tile_10.pcx bright=/gameflow/ct/tile_10_s.pcx gamevar=wt returnvalue=3 holdfocusflag=false sequence=4003:8014
+if (pal_is_master)
+  extern CreateAPE2DControl push tile4 324 323 width=20 height=20 normal=/gameflow/ct/tile_15.pcx bright=/gameflow/ct/tile_15_s.pcx gamevar=wt returnvalue=4 holdfocusflag=false sequence=4003:8015
+if (pal_is_master)
+  extern CreateAPE2DControl push tile5 357 323 width=20 height=20 normal=/gameflow/ct/tile_20.pcx bright=/gameflow/ct/tile_20_s.pcx gamevar=wt returnvalue=5 holdfocusflag=false sequence=4003:8016
+if (pal_is_master)
+  extern CreateAPE2DControl push tile6 390 323 width=20 height=20 normal=/gameflow/ct/tile_25.pcx bright=/gameflow/ct/tile_25_s.pcx gamevar=wt returnvalue=6 holdfocusflag=false sequence=4003:8017
+goto 0:0
+
+#switch 4003:8007
+set a = 0
+while (a < 47) {
+  set tileval = E[$a$]
+  set @m = func_mod[$tileval$,5]
+  if (@m == 1)
+    set F[$a$] = E[$a$]
+  set a = (a + 1)
+}
+goto 0:0
+
+#switch 4003:8008
+if (ct_paused)
+  goto 0:0
+set mx = func_mousex
+set my = func_mousey
+if (((cursormode == 2) && (mx < ((153 + 192) + 12))) && (my < ((187 + 112) + 12))) {
+  set mx = (mx + 3)
+  set my = (my + 3)
+}
+set tilex = (((mx - 69) - 192) / 21)
+set tilex = func_trunc[$tilex$]
+set tiley = (((my - 82) - 112) / 21)
+set tiley = func_trunc[$tiley$]
+set which_tile_num = (((tiley * 7) + 7) + (tilex + 1))
+set which_tile_type = E[$which_tile_num$]
+if (ct_success == 0)
+  gosub 4003:8009	                          
+goto 0:0
+
+#switch 4003:8009
+set @poops = func_mod[$which_tile_type$,5]
+if (@poops == 0) {
+  extern playsound ui/gen/ui_gen_unavailable.wav
+  goto 0:0
+}
+if (cursormode == 2) {
+  gosub 4003:8010
+} else
+  gosub 4003:8011
+goto 0:0
+
+#switch 4003:8010
+if (((which_tile_type != 36) && (which_tile_type != 31)) && (which_tile_type != 41)) {
+  extern playsound ui/gen/ui_gen_unavailable.wav
+  goto 0:0
+}
+if (cursor_has_tile == 1) {
+  gosub 4003:8018
+} else if (cursor_has_tile == 6) {
+  gosub 4003:8019
+} else if (cursor_has_tile == 11) {
+  gosub 4003:8020
+} else if (cursor_has_tile == 16) {
+  gosub 4003:8021
+} else if (cursor_has_tile == 21) {
+  gosub 4003:8022
+} else if (cursor_has_tile == 26)
+  gosub 4003:8023
+if (placement_is_bad) {
+  extern playsound ui/gen/ui_gen_unavailable.wav
+  goto 0:0
+}
+extern set2dcursor default
+if (which_tile_type != 31) {
+  extern playsound ui/gen/ui_gen_okay.wav
+  set E[$which_tile_num$] = cursor_has_tile
+  set F[$which_tile_num$] = cursor_has_tile
+  set which_tile_type = cursor_has_tile
+  set cursor_has_tile = 0
+  set cursormode = 1
+  if (which_tile_type == 1) {
+    gosub 4003:8028
+  } else if (which_tile_type == 6) {
+    gosub 4003:8029
+  } else if (which_tile_type == 11) {
+    gosub 4003:8030
+  } else if (which_tile_type == 16) {
+    gosub 4003:8031
+  } else if (which_tile_type == 21) {
+    gosub 4003:8032
+  } else if (which_tile_type == 26)
+    gosub 4003:8033
+  if (could_not_highlight)
+    goto 4003:8034
+} else {
+  extern playsound ui/skill/pal_bad_placement.wav
+  set E[$which_tile_num$] = 55
+  set F[$which_tile_num$] = 55
+  set explode_count = 4
+  set explode_x = X[$which_tile_num$]
+  set explode_y = Y[$which_tile_num$]
+  set cursor_has_tile = 0
+  set cursormode = 1
+}
+goto 0:0
+
+#switch 4003:8011
+if ((((which_tile_type == 36) || (which_tile_type == 31)) || (which_tile_type == 41)) || (which_tile_type >= 55)) {
+  extern playsound ui/gen/ui_gen_unavailable.wav
+  goto 0:0
+}
+if (which_tile_type == 1) {
+  gosub 4003:8040
+} else if (which_tile_type == 6) {
+  gosub 4003:8041
+} else if (which_tile_type == 11) {
+  gosub 4003:8042
+} else if (which_tile_type == 16) {
+  gosub 4003:8043
+} else if (which_tile_type == 21) {
+  gosub 4003:8044
+} else if (which_tile_type == 26)
+  gosub 4003:8045
+if (no_highlight_tiles) {
+  extern playsound ui/gen/ui_gen_unavailable.wav
+  goto 0:0
+}
+set cursor_has_tile = which_tile_type
+set E[$which_tile_num$] = (I[$which_tile_num$] + 1)
+set F[$which_tile_num$] = (I[$which_tile_num$] + 1)
+if (cursor_has_tile == 1) {
+  gosub 4003:8012
+} else if (cursor_has_tile == 6) {
+  gosub 4003:8013
+} else if (cursor_has_tile == 11) {
+  gosub 4003:8014
+} else if (cursor_has_tile == 16) {
+  gosub 4003:8015
+} else if (cursor_has_tile == 21) {
+  gosub 4003:8016
+} else if (cursor_has_tile == 26)
+  gosub 4003:8017
+goto 0:0
+
+#switch 4003:8012
+extern set2Dcursor ../gameflow/ct/tile_0.pcx
+extern playsound ui/gen/ui_gen_okay.wav
+set cursormode = 2
+set cursor_has_tile = 1
+goto 0:0
+
+#switch 4003:8013
+extern set2Dcursor ../gameflow/ct/tile_5.pcx
+extern playsound ui/gen/ui_gen_okay.wav
+set cursormode = 2
+set cursor_has_tile = 6
+goto 0:0
+
+#switch 4003:8014
+extern set2Dcursor ../gameflow/ct/tile_10.pcx
+extern playsound ui/gen/ui_gen_okay.wav
+set cursormode = 2
+set cursor_has_tile = 11
+goto 0:0
+
+#switch 4003:8015
+extern set2Dcursor ../gameflow/ct/tile_15.pcx
+extern playsound ui/gen/ui_gen_okay.wav
+set cursormode = 2
+set cursor_has_tile = 16
+goto 0:0
+
+#switch 4003:8016
+extern set2Dcursor ../gameflow/ct/tile_20.pcx
+extern playsound ui/gen/ui_gen_okay.wav
+set cursormode = 2
+set cursor_has_tile = 21
+goto 0:0
+
+#switch 4003:8017
+extern set2Dcursor ../gameflow/ct/tile_25.pcx
+extern playsound ui/gen/ui_gen_okay.wav
+set cursormode = 2
+set cursor_has_tile = 26
+goto 0:0
+
+#switch 4003:8018
+gosub 4003:8024
+if (placement_is_bad == 1)
+  goto 0:0
+set first_check = placement_is_bad
+gosub 4003:8025
+if ((placement_is_bad == 2) || ((placement_is_bad == 0) && (first_check == 2))) {
+  set placement_is_bad = 0
+} else
+  set placement_is_bad = 1
+goto 0:0
+
+#switch 4003:8019
+gosub 4003:8024
+if (placement_is_bad == 1)
+  goto 0:0
+set first_check = placement_is_bad
+gosub 4003:8027
+if ((placement_is_bad == 2) || ((placement_is_bad == 0) && (first_check == 2))) {
+  set placement_is_bad = 0
+} else
+  set placement_is_bad = 1
+goto 0:0
+
+#switch 4003:8020
+gosub 4003:8026
+if (placement_is_bad == 1)
+  goto 0:0
+set first_check = placement_is_bad
+gosub 4003:8025
+if ((placement_is_bad == 2) || ((placement_is_bad == 0) && (first_check == 2))) {
+  set placement_is_bad = 0
+} else
+  set placement_is_bad = 1
+goto 0:0
+
+#switch 4003:8021
+gosub 4003:8026
+if (placement_is_bad == 1)
+  goto 0:0
+set first_check = placement_is_bad
+gosub 4003:8027
+if ((placement_is_bad == 2) || ((placement_is_bad == 0) && (first_check == 2))) {
+  set placement_is_bad = 0
+} else
+  set placement_is_bad = 1
+goto 0:0
+
+#switch 4003:8022
+gosub 4003:8025
+if (placement_is_bad == 1)
+  goto 0:0
+set first_check = placement_is_bad
+gosub 4003:8027
+if ((placement_is_bad == 2) || ((placement_is_bad == 0) && (first_check == 2))) {
+  set placement_is_bad = 0
+} else
+  set placement_is_bad = 1
+goto 0:0
+
+#switch 4003:8023
+gosub 4003:8026
+if (placement_is_bad == 1)
+  goto 0:0
+set first_check = placement_is_bad
+gosub 4003:8024
+if ((placement_is_bad == 2) || ((placement_is_bad == 0) && (first_check == 2))) {
+  set placement_is_bad = 0
+} else
+  set placement_is_bad = 1
+goto 0:0
+
+#switch 4003:8024
+set check = (which_tile_num + 7)
+set placement_is_bad = 1
+set tile_to_down = E[$check$]
+if (E[$check$] == 46) {
+  set placement_is_bad = 2
+} else if (E[$check$] == 11) {
+  set placement_is_bad = 2
+} else if (E[$check$] == 1) {
+  set placement_is_bad = 2
+} else if (E[$check$] == 21) {
+  set placement_is_bad = 2
+} else if (E[$check$] == 40) {
+  set placement_is_bad = 0
+} else if (E[$check$] == 30) {
+  set placement_is_bad = 0
+} else if (E[$check$] == 35)
+  set placement_is_bad = 0
+goto 0:0
+
+#switch 4003:8025
+set check = (which_tile_num - 7)
+set placement_is_bad = 1
+set tile_to_up = E[$check$]
+if (E[$check$] == 51) {
+  set placement_is_bad = 2
+} else if (E[$check$] == 6) {
+  set placement_is_bad = 2
+} else if (E[$check$] == 1) {
+  set placement_is_bad = 2
+} else if (E[$check$] == 26) {
+  set placement_is_bad = 2
+} else if (E[$check$] == 40) {
+  set placement_is_bad = 0
+} else if (E[$check$] == 30) {
+  set placement_is_bad = 0
+} else if (E[$check$] == 35)
+  set placement_is_bad = 0
+goto 0:0
+
+#switch 4003:8026
+set check = (which_tile_num - 1)
+set placement_is_bad = 1
+set tile_to_left = E[$check$]
+if (E[$check$] == 6) {
+  set placement_is_bad = 2
+} else if (E[$check$] == 16) {
+  set placement_is_bad = 2
+} else if (E[$check$] == 21) {
+  set placement_is_bad = 2
+} else if (E[$check$] == 40) {
+  set placement_is_bad = 0
+} else if (E[$check$] == 30) {
+  set placement_is_bad = 0
+} else if (E[$check$] == 35)
+  set placement_is_bad = 0
+goto 0:0
+
+#switch 4003:8027
+set check = (which_tile_num + 1)
+set placement_is_bad = 1
+set tile_to_right = E[$check$]
+if (E[$check$] == 11) {
+  set placement_is_bad = 2
+} else if (E[$check$] == 16) {
+  set placement_is_bad = 2
+} else if (E[$check$] == 26) {
+  set placement_is_bad = 2
+} else if (E[$check$] == 40) {
+  set placement_is_bad = 0
+} else if (E[$check$] == 30) {
+  set placement_is_bad = 0
+} else if (E[$check$] == 35)
+  set placement_is_bad = 0
+goto 0:0
+
+#switch 4003:8028
+gosub 4003:8036
+if (could_not_highlight == 0)
+  goto 0:0
+gosub 4003:8037
+goto 0:0
+
+#switch 4003:8029
+gosub 4003:8037
+if (could_not_highlight == 0)
+  goto 0:0
+gosub 4003:8039
+goto 0:0
+
+#switch 4003:8030
+gosub 4003:8038
+if (could_not_highlight == 0)
+  goto 0:0
+gosub 4003:8036
+goto 0:0
+
+#switch 4003:8031
+gosub 4003:8038
+if (could_not_highlight == 0)
+  goto 0:0
+gosub 4003:8039
+goto 0:0
+
+#switch 4003:8032
+gosub 4003:8036
+if (could_not_highlight == 0)
+  goto 0:0
+gosub 4003:8039
+goto 0:0
+
+#switch 4003:8033
+gosub 4003:8038
+if (could_not_highlight == 0)
+  goto 0:0
+gosub 4003:8037
+goto 0:0
+
+#switch 4003:8036
+set check = (which_tile_num - 7)
+set could_not_highlight = 1
+if (E[$check$] == 40) {
+  set could_not_highlight = 0
+} else if (E[$check$] == 30) {
+  set could_not_highlight = 0
+} else if (E[$check$] == 35)
+  set could_not_highlight = 0
+if (could_not_highlight == 0) {
+  set E[$check$] = (E[$check$] + 1)
+  set F[$check$] = (F[$check$] + 1)
+}
+goto 0:0
+
+#switch 4003:8037
+set check = (which_tile_num + 7)
+set could_not_highlight = 1
+if (E[$check$] == 40) {
+  set could_not_highlight = 0
+} else if (E[$check$] == 30) {
+  set could_not_highlight = 0
+} else if (E[$check$] == 35)
+  set could_not_highlight = 0
+if (could_not_highlight == 0) {
+  set E[$check$] = (E[$check$] + 1)
+  set F[$check$] = (F[$check$] + 1)
+}
+goto 0:0
+
+#switch 4003:8038
+set check = (which_tile_num - 1)
+set could_not_highlight = 1
+if (E[$check$] == 40) {
+  set could_not_highlight = 0
+} else if (E[$check$] == 30) {
+  set could_not_highlight = 0
+} else if (E[$check$] == 35)
+  set could_not_highlight = 0
+if (could_not_highlight == 0) {
+  set E[$check$] = (E[$check$] + 1)
+  set F[$check$] = (F[$check$] + 1)
+}
+goto 0:0
+
+#switch 4003:8039
+set check = (which_tile_num + 1)
+set could_not_highlight = 1
+if (E[$check$] == 40) {
+  set could_not_highlight = 0
+} else if (E[$check$] == 30) {
+  set could_not_highlight = 0
+} else if (E[$check$] == 35)
+  set could_not_highlight = 0
+if (could_not_highlight == 0) {
+  set E[$check$] = (E[$check$] + 1)
+  set F[$check$] = (F[$check$] + 1)
+}
+goto 0:0
+
+#switch 4003:8034
+extern playsound ui/skill/ui_skill_success.wav
+set anox_worldskill_successful = 1
+set ct_success = 40
+goto 0:0
+
+#switch 4003:8035
+extern playsound ui/gen/ui_gen_failure.wav
+set anox_worldskill_successful = 0
+set ct_success = 20
+goto 0:0
+
+#switch 4003:8040
+gosub 4003:8046
+if (no_highlight_tiles == 0)
+  goto 0:0
+gosub 4003:8047
+goto 0:0
+
+#switch 4003:8041
+gosub 4003:8047
+if (no_highlight_tiles == 0)
+  goto 0:0
+gosub 4003:8049
+goto 0:0
+
+#switch 4003:8042
+gosub 4003:8048
+if (no_highlight_tiles == 0)
+  goto 0:0
+gosub 4003:8046
+goto 0:0
+
+#switch 4003:8043
+gosub 4003:8048
+if (no_highlight_tiles == 0)
+  goto 0:0
+gosub 4003:8049
+goto 0:0
+
+#switch 4003:8044
+gosub 4003:8046
+if (no_highlight_tiles == 0)
+  goto 0:0
+gosub 4003:8049
+goto 0:0
+
+#switch 4003:8045
+gosub 4003:8048
+if (no_highlight_tiles == 0)
+  goto 0:0
+gosub 4003:8047
+goto 0:0
+
+#switch 4003:8046
+set no_highlight_tiles = 1
+set check = (which_tile_num - 7)
+if (E[$check$] == 41) {
+  set no_highlight_tiles = 0
+} else if (E[$check$] == 31) {
+  set no_highlight_tiles = 0
+} else if (E[$check$] == 36) {
+  set no_highlight_tiles = 0
+} else if (E[$check$] == 55)
+  set no_highlight_tiles = 2
+if (no_highlight_tiles == 0) {
+  set E[$check$] = (E[$check$] - 1)
+  set F[$check$] = E[$check$]
+}
+if (no_highlight_tiles == 2)
+  set no_highlight_tiles = 0
+goto 0:0
+
+#switch 4003:8047
+set no_highlight_tiles = 1
+set check = (which_tile_num + 7)
+if (E[$check$] == 41) {
+  set no_highlight_tiles = 0
+} else if (E[$check$] == 31) {
+  set no_highlight_tiles = 0
+} else if (E[$check$] == 36) {
+  set no_highlight_tiles = 0
+} else if (E[$check$] == 55)
+  set no_highlight_tiles = 2
+if (no_highlight_tiles == 0) {
+  set E[$check$] = (E[$check$] - 1)
+  set F[$check$] = E[$check$]
+}
+if (no_highlight_tiles == 2)
+  set no_highlight_tiles = 0
+goto 0:0
+
+#switch 4003:8048
+set no_highlight_tiles = 1
+set check = (which_tile_num - 1)
+if (E[$check$] == 41) {
+  set no_highlight_tiles = 0
+} else if (E[$check$] == 31) {
+  set no_highlight_tiles = 0
+} else if (E[$check$] == 36) {
+  set no_highlight_tiles = 0
+} else if (E[$check$] == 55)
+  set no_highlight_tiles = 2
+if (no_highlight_tiles == 0) {
+  set E[$check$] = (E[$check$] - 1)
+  set F[$check$] = E[$check$]
+}
+if (no_highlight_tiles == 2)
+  set no_highlight_tiles = 0
+goto 0:0
+
+#switch 4003:8049
+set no_highlight_tiles = 1
+set check = (which_tile_num + 1)
+if (E[$check$] == 41) {
+  set no_highlight_tiles = 0
+} else if (E[$check$] == 31) {
+  set no_highlight_tiles = 0
+} else if (E[$check$] == 36) {
+  set no_highlight_tiles = 0
+} else if (E[$check$] == 55)
+  set no_highlight_tiles = 2
+if (no_highlight_tiles == 0) {
+  set E[$check$] = (E[$check$] - 1)
+  set F[$check$] = E[$check$]
+}
+if (no_highlight_tiles == 2)
+  set no_highlight_tiles = 0
+goto 0:0
+
+#switch 4003:8050
+if (ct_paused)
+  goto 0:0
+if (cursor_has_tile == 0) {
+  extern playsound ui/gen/ui_gen_unavailable.wav
+  goto 0:0
+}
+extern set2dcursor default
+extern playsound ui/gen/ui_gen_okay.wav
+set cursor_has_tile = 0
+set cursormode = 1
+goto 0:0
+
+#switch 4003:8051
+if (ct_paused)
+  goto 0:0
+extern playsound ui/gen/ui_gen_failure.wav
+closewindow 4003:8001
+goto 0:0
+
+#switch 4003:8052
+set ct_paused = 1
+extern get_world_skill_level comptalk @comptalkworldlevel
+if (@comptalkworldlevel < ws_skill_level) {
+  @INFO$="not skilled enough" 
+} else
+  @INFO$="skilled enough" 
+goto 4003:8053

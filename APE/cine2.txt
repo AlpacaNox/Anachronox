@@ -1,0 +1,753 @@
+#window 38:100
+if (shuttleHP == 0)
+  xyprintfx 260, 232, 1, 1, 1, 1, blackglo, "DESTROYED!"
+if ((timesUp || (eventSeconds == 0)) && (shuttleHP > 0))
+  xyprintfx 260, 232, 1, 1, 1, 1, blackglo, "ESCAPED!"
+if (eventSeconds > 58)
+  xyprintfx 200, 232, 1, 1, 1, 1, _message, "(Use mouse to steer ship)"
+if (shuttleHP < 1)
+  xyprintfx 90, 448, 1, 1, 1, 1, _message, "HULL BREACH!"
+if ((INV_RHOSHUTTLESHIELD && (shuttleHP == 6)) && (eventSeconds < 58))
+  xyprintfx 90, 448, 1, 1, 1, 1, _message, "SHIELD FUNCTIONAL"
+if ((INV_RHOSHUTTLESHIELD && (shuttleHP == 5)) && (eventSeconds < 58))
+  xyprintfx 90, 448, 1, 1, 1, 1, _message, "SHIELD DAMAGED"
+if ((INV_RHOSHUTTLESHIELD && (shuttleHP == 4)) && (eventSeconds < 58))
+  xyprintfx 90, 448, 1, 1, 1, 1, _message, "SHIELD FAILING"
+if ((INV_RHOSHUTTLESHIELD && (shuttleHP == 3)) && (eventSeconds < 58))
+  xyprintfx 90, 448, 1, 1, 1, 1, _message, "NO SHIELDS"
+if ((INV_RHOSHUTTLESHIELD && (shuttleHP == 2)) && (eventSeconds < 58))
+  xyprintfx 90, 448, 1, 1, 1, 1, _message, "HULL DAMAGED"
+if ((INV_RHOSHUTTLESHIELD && (shuttleHP == 1)) && (eventSeconds < 58))
+  xyprintfx 90, 448, 1, 1, 1, 1, _message, "HULL FAILING"
+startswitch {
+  set shuttleHP = 3
+  extern is_in_inventory "Shuttle Shield Unit" @INV_RHOSHUTTLESHIELD
+  if (@INV_RHOSHUTTLESHIELD)
+    set shuttleHP = 6
+  set sunder_escape_active = 1
+  set escapeMins = 1
+  set escapeTens = 0
+  set escapeOnes = 0
+  set eventSeconds = 60
+  set timesUp = 0
+  set shuttleTopZ = -80.000000
+  set shuttleBottomZ = -415.000000
+  set escapeScroll = 0
+  gosub 38:6
+  extern loopscene cine2_bg
+  set lastMS = func_GameTime
+  set currentMS = lastMS
+  gosub 60:9300				                                                                         
+  goto 0:0
+}
+
+thinkswitch {
+  set currentMS = func_GameTime
+  set delta = (currentMS - lastMS)
+  if (delta < 50)
+    goto 0:0
+  set escapeScroll = (escapeScroll + delta)
+  set delta = func_mod[$delta$,50]
+  set lastMS = (currentMS - delta)
+  if (escapeScroll >= 250) {
+    set escapeScroll = (escapeScroll - 250)
+    set shuttleTopZ = (shuttleTopZ + 1)
+    set shuttleBottomZ = (shuttleBottomZ + 1)
+    if ((shipZ < shuttleBottomZ) && (shuttleHP > 0))
+      set shipZ = shuttleBottomZ
+  }
+  set secondsCounter = (secondsCounter + 1)
+  if (secondsCounter >= 20) {
+    set secondsCounter = 0
+    gosub 38:13			                                
+  }
+  if ((theyDiedCounter >= 0) && @ItIsAGoodDayToDie) {
+    set theyDiedCounter = (theyDiedCounter - 1)
+    set eventSeconds = 0
+    if (theyDiedCounter == 0)
+      closewindow 38:100		                  
+  }
+  if ((eventSeconds == 0) && (theyDiedCounter == 0))
+    closewindow 38:100	              
+  gosub 38:5
+  goto 0:0
+}
+
+finishswitch {
+  if (func_charinparty[pal] == 3)
+    extern set_party_leader boots
+  extern remove_npc_from_party pal
+  if (func_charinparty[rho] < 2)
+    extern add_npc_to_party Rho
+  extern addnew_to_inventory "Callossum Shieldcell"
+  extern set_party_leader Rho
+  extern equip_item "Callossum Shieldcell"
+  extern set_party_leader Boots
+  if (shuttleHP > 0) {
+    set boots_is_safe = 1
+  } else
+    set boots_is_safe = 0
+  if ((eventSeconds > 0) && timer_active)
+    closewindow 60:9300	                        
+  set sunder_escape_active = 0
+  set anox_interface_active = 0
+  set currentThing = 1
+  while (currentThing <= 5) {
+    if (F[$currentThing$] != -1.000000) {
+      set thinghandle = H[$currentThing$]
+      extern AI_DestroyEntity thinghandle
+    }
+    set currentThing = (currentThing + 1)
+  }
+  if (((eventSeconds == 0) || timesUp) && (shuttleHP > 0)) {
+    set START_CINEDEM_CINE = 1
+    console "set storysave \"Lost in Space|Floating in space...\""
+    extern playlevelmusic ""
+    extern stopscene cine2_bg
+    extern chainscripts cine2_end cine2_end2
+    extern playscene cine2_end
+    goto 0:0
+  }
+  if (boots_is_safe == 0) {
+    set theyDiedCounter = 0
+    set @ItIsAGoodDayToDie = 0
+    set eventSeconds = 0
+    extern stopscene cine2_bg
+    extern pauselevelmusic
+    extern FlashScreenf 0 0 0 0 0
+    console "map cine2 cinematic"
+  } else
+    echo "SHOULD NEVER GET HERE 'CAUSE COUNTDOWNCLOCK LAUNCHES IT!"
+  goto 0:0
+}
+
+style "NULL"
+font "_message"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 640
+if ((shuttleHP >= 6) && (eventSeconds < 58))
+  image "sues/cine2_hp6.pcx" 16, 440
+if ((shuttleHP == 5) && (eventSeconds < 58))
+  image "sues/cine2_hp5.pcx" 16, 440
+if ((shuttleHP == 4) && (eventSeconds < 58))
+  image "sues/cine2_hp4.pcx" 16, 440
+if ((shuttleHP == 3) && (eventSeconds < 58))
+  image "sues/cine2_hp3.pcx" 16, 440
+if ((shuttleHP == 2) && (eventSeconds < 58))
+  image "sues/cine2_hp2.pcx" 16, 440
+if ((shuttleHP == 1) && (eventSeconds < 58))
+  image "sues/cine2_hp1.pcx" 16, 440
+
+#window 38:8201
+title "Rho Bowman"
+body "There's a shock wave right on our tail."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 38:8205
+title "Boots"
+body "Well get outta the damn way!!!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 38:8210
+title "Rho Bowman"
+body "I can't. We've gotta get to that Sender Spike."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 38:8215
+title "Rho Bowman"
+body "Come on!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 38:8220
+title "Rho Bowman"
+body "            Come on!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 38:8225
+title "Dr. Rho Bowman"
+body "                         Come on!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 38:8230
+title "PAL-18"
+body "There it is!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 38:1
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+set CURRENT_PLANET = 3
+set CURRENT_BANK = 38
+loadape "countdownclock"
+if (DEMO_MODE_ENABLED || START_SUNDERESCAPE)
+  goto 38:100
+goto 0:0
+
+#switch 38:6
+set shipX = 400
+set shipY = 0
+set shipZ = -240.000000
+if (@INV_RHOSHUTTLESHIELD) {
+  extern AI_SpawnEntity shiphandle ob_shuttlewhol3_high shiptargetname
+} else
+  extern AI_SpawnEntity shiphandle ob_shuttlewhol3 shiptargetname
+extern AI_SetXYZ shiphandle shipX shipY shipZ
+extern entkey shiphandle "rgb" ".7 .7 .7"
+extern AI_GetYaw shiphandle ship_yaw
+set ship_yaw = (ship_yaw - 90)
+extern AI_SetYaw shiphandle ship_yaw
+gosub 38:7
+set ship_pitch = 0
+goto 0:0
+
+#switch 38:7
+set bcount = 1
+while (bcount <= 5) {
+  set F[$bcount$] = -1.000000
+  set bcount = (bcount + 1)
+}
+extern AI_SpawnEntity boomhandle tg_boom boomtarget
+extern AI_SetXYZ boomhandle shipX 0 -800
+extern AI_DestroyEntity boomhandle
+goto 0:0
+
+#switch 38:5
+gosub 38:27
+gosub 38:8
+gosub 38:9
+if ((shuttleHP > 0) && (eventSeconds > 0)) {
+  gosub 38:11
+} else
+  set numCollisions = 0
+set shuttleHP = (shuttleHP - numCollisions)
+if (shuttleHP < 0)
+  set shuttleHP = 0
+if (((shuttleHP == 0) && numCollisions) && (theyDiedCounter == 0)) {
+  set @ItIsAGoodDayToDie = 1
+  set theyDiedCounter = 60
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 3
+}
+goto 0:0
+
+#switch 38:27
+set boomCounters = 0
+set currentThing = 1
+while (currentThing <= 5) {
+  if (F[$currentThing$] == 2) {
+    set L[$currentThing$] = (L[$currentThing$] - 1)
+    set boomCounters = (boomCounters + 1)
+    if (L[$currentThing$] == 0) {
+      set F[$currentThing$] = -1.000000
+      set bc = G[$currentThing$]
+      set bh = H[$currentThing$]
+      if (bc == 1) {
+        extern NPKill bh 1
+      } else if ((bc == 3) || (bc == 6)) {
+        extern NPKill bh 1
+      } else
+        extern NPKill bh 1
+      extern AI_DestroyEntity bh
+    }
+  }
+  set currentThing = (currentThing + 1)
+}
+goto 0:0
+
+#switch 38:8
+if (shuttleHP > 0) {
+  set destY = (200 - (0.670000016689 * func_mouseX))
+  set destZ = (shuttleTopZ - func_mouseY)
+  set diffY = ((destY - shipY) * (destY - shipY))
+  set diffZ = ((destZ - shipZ) * (destZ - shipZ))
+  if ((diffY + diffZ) < 300)
+    goto 0:0
+  set deltaY = ((destY - shipY) / 10)
+  set deltaZ = ((destZ - shipZ) / 10)
+  set shipY = (shipY + deltaY)
+  set shipZ = (shipZ + deltaZ)
+  if (shipZ < shuttleBottomZ)
+    set shipZ = shuttleBottomZ
+  if (shipZ > shuttleTopZ)
+    set shipZ = shuttleTopZ
+} else {
+  set deltaZ = -5.000000
+  set shipZ = (shipZ - 5)
+}
+extern AI_SetXYZ shiphandle shipX shipY shipZ
+set newpitch = (ship_pitch - deltaZ)
+extern AI_SetPitch shiphandle newpitch
+if (shield_glow_counter) {
+  set shield_glow_counter = (shield_glow_counter - 1)
+  if ((shield_glow_counter == 0) && (shuttleHP <= 2))
+    extern entkey shiphandle "rgb" ".7 .7 .7"
+}
+goto 0:0
+
+#switch 38:9
+set qq = RANDOM
+set currentThing = 1
+while (currentThing <= 5) {
+  if (F[$currentThing$] == 1)
+    if (G[$currentThing$] == 1) {
+      gosub 38:29
+    } else if (G[$currentThing$] == 4) {
+      gosub 38:30
+    } else if (G[$currentThing$] == 3) {
+      gosub 38:32
+    } else if (G[$currentThing$] == 5) {
+      gosub 38:33
+    } else if (G[$currentThing$] == 6)
+      gosub 38:34
+  set currentThing = (currentThing + 1)
+}
+goto 0:0
+
+#switch 38:29
+set thingHandle = H[$currentThing$]
+set boulderRot = (boulderRot + 5)
+if (boulderRot >= 360)
+  set boulderRot = 0
+extern AI_SetRoll thingHandle boulderRot
+if (qq > 80) {
+  extern entkey thinghandle "rgb" "1 .5 0"
+} else if (qq > 70) {
+  extern entkey thinghandle "rgb" "1 .5 0"
+} else if (qq > 60) {
+  extern entkey thinghandle "rgb" ".8 .5 0"
+} else if (qq > 50) {
+  extern entkey thinghandle "rgb" ".7 .5 .3"
+} else if (qq > 40) {
+  extern entkey thinghandle "rgb" ".6 .5 0"
+} else if (qq > 30) {
+  extern entkey thinghandle "rgb" ".5 .5 .2"
+} else
+  extern entkey thinghandle "rgb" "1 .5 .5"
+extern AI_GetXYZ thingHandle bx by bz
+if ((((by > 400) || (by < -400.000000)) || (bz > (shuttleTopZ + 200))) || (bz < (shuttleBottomZ - 350))) {
+  set F[$currentThing$] = -1.000000
+  set goodbye = H[$currentThing$]
+  extern AI_DestroyEntity goodbye
+}
+goto 0:0
+
+#switch 38:30
+set thingHandle = H[$currentThing$]
+extern AI_GetXYZ thingHandle bx by bz
+set fastRot = (RANDOM - 50)
+set fastRot = func_div[$fastRot$,5]
+if (fastRot < 0)
+  set fastRot = (fastRot + 360)
+extern AI_SetRoll thingHandle fastRot
+if (by < -400.000000) {
+  set F[$currentThing$] = -1.000000
+  set goodbye = H[$currentThing$]
+  extern AI_DestroyEntity goodbye
+}
+goto 0:0
+
+#switch 38:32
+set thingHandle = H[$currentThing$]
+extern AI_GetXYZ thingHandle bx by bz
+if (spark_delta == 0)
+  set spark_delta = 3
+set spark_rot = (spark_rot + spark_delta)
+if (spark_rot < 0)
+  set spark_rot = (spark_rot + 360)
+set spark_check = spark_rot
+if (spark_rot > 300)
+  set spark_check = (360 - spark_rot)
+if ((spark_check > 20) || (spark_check < -20.000000))
+  set spark_delta = (-1.000000 * spark_delta)
+extern AI_SetRoll thingHandle spark_rot
+set sparkPitch = (RANDOM - 50)
+set sparkPitch = (sparkPitch / 5)
+if (sparkPitch < 0)
+  set sparkPitch = (sparkPitch + 360)
+extern AI_SetPitch thingHandle sparkPitch
+if ((by > 400) || (bz < (shuttleBottomZ - 100))) {
+  set F[$currentThing$] = -1.000000
+  set goodbye = H[$currentThing$]
+  extern AI_DestroyEntity goodbye
+}
+goto 0:0
+
+#switch 38:33
+set thingHandle = H[$currentThing$]
+extern AI_GetXYZ thingHandle bx by bz
+set slowRot = (slowrot - 1)
+if (slowRot < 0)
+  set slowRot = (slowRot + 360)
+extern AI_SetRoll thingHandle slowRot
+if (by > 400) {
+  set F[$currentThing$] = -1.000000
+  set goodbye = H[$currentThing$]
+  extern AI_DestroyEntity goodbye
+}
+goto 0:0
+
+#switch 38:34
+set thingHandle = H[$currentThing$]
+extern AI_GetXYZ thingHandle bx by bz
+set bigShipRot = (bigShipRot + 10)
+if (bigShipRot >= 360)
+  set bigShipRot = 0
+extern AI_SetPitch thingHandle bigShipRot
+if (bz > (shuttleTopZ + 200)) {
+  set F[$currentThing$] = -1.000000
+  set goodbye = H[$currentThing$]
+  extern AI_DestroyEntity goodbye
+}
+goto 0:0
+
+#switch 38:11
+set numCollisions = 0
+set hitCounter = 1
+while (hitCounter <= 5) {
+  if (F[$hitCounter$] == 1) {
+    set box1X = (shipY + 64)
+    set box1Y = (shipZ + 64)
+    set box1width = 128
+    set box1height = 64
+    set bhdl = H[$hitCounter$]
+    extern AI_GetXYZ bhdl bx by bz
+    set box2X = (by + 32)
+    set box2Y = (bz + 64)
+    set box2width = 64
+    set box2height = 64
+    gosub 38:12
+    if (collided)
+      gosub 38:28
+  }
+  set hitCounter = (hitCounter + 1)
+}
+goto 0:0
+
+#switch 38:28
+set F[$hitCounter$] = 2
+set L[$hitCounter$] = 20
+extern AI_DestroyEntity bhdl
+extern AI_SpawnEntity boomhandle tg_boom boomtarget
+extern AI_SetXYZ boomhandle bx by bz
+set H[$hitCounter$] = boomhandle
+extern np boomhandle 1 0 boom1 0 343/sunderboom
+set numCollisions = (numCollisions + 1)
+if (shuttleHP >= 4) {
+  extern AI_DestroyEntity shiphandle
+  if (shuttleHP == 6) {
+    extern AI_SpawnEntity shiphandle ob_shuttlewhol3_med shiptargetname
+  } else if (shuttleHP == 5) {
+    extern AI_SpawnEntity shiphandle ob_shuttlewhol3_low shiptargetname
+  } else if (shuttleHP == 4)
+    extern AI_SpawnEntity shiphandle ob_shuttlewhol3 shiptargetname
+  extern AI_SetXYZ shiphandle shipX shipY shipZ
+  extern AI_SetYaw shiphandle ship_yaw
+}
+if (shuttleHP > 3) {
+  extern playsound GAMES/sues/GAMES_sues_shieldhit.wav
+} else {
+  extern entkey shiphandle "rgb" ".5 .5 0"
+  set shield_glow_counter = 20
+}
+extern playsound GAMES/sues/GAMES_sues_explode.wav
+goto 0:0
+
+#switch 38:12
+set box1Left = box1X
+set box1Right = (box1X - box1width)
+set box1Top = box1Y
+set box1Bottom = (box1Y - box1height)
+set box2Left = box2X
+set box2Right = (box2X - box2width)
+set box2Top = box2Y
+set box2Bottom = (box2Y - box2height)
+unset collided
+if (box1Top < box2Bottom)
+  goto 0:0
+if (box2Top < box1Bottom)
+  goto 0:0
+if (box1Left < box2Right)
+  goto 0:0
+if (box2Left < box1Right)
+  goto 0:0
+set collided = 1
+goto 0:0
+
+#switch 38:13
+if (eventSeconds == 57) {
+  extern playsound GAMES/sues/GAMES_sues_explode.wav
+  gosub 38:24
+} else if (eventSeconds == 53) {
+  gosub 38:15
+} else if (eventSeconds == 49) {
+  gosub 38:16
+} else if (eventSeconds == 45) {
+  gosub 38:17
+} else if (eventSeconds == 43) {
+  gosub 38:18
+} else if (eventSeconds == 40) {
+  gosub 38:19
+} else if (eventSeconds == 37) {
+  gosub 38:20
+} else if (eventSeconds == 34) {
+  gosub 38:21
+} else if (eventSeconds == 32) {
+  gosub 38:22
+} else if (eventSeconds == 25) {
+  gosub 38:23
+} else if (eventSeconds == 24) {
+  gosub 38:15
+} else if (eventSeconds == 21) {
+  gosub 38:24
+} else if (eventSeconds == 19) {
+  gosub 38:14
+} else if (eventSeconds == 18) {
+  gosub 38:25
+} else if (eventSeconds == 15) {
+  gosub 38:16
+} else if (eventSeconds == 12) {
+  gosub 38:20
+} else if (eventSeconds == 10) {
+  gosub 38:19
+} else if (eventSeconds == 7) {
+  gosub 38:15
+} else if (eventSeconds == 6) {
+  gosub 38:21
+} else if (eventSeconds == 4)
+  gosub 38:23
+goto 0:0
+
+#switch 38:14
+set bx = shipX
+set by = (func_drand[0,480] - 240)
+set bz = (shuttleBottomZ - 300)
+set vy = (func_drand[0,256] - 128)
+set vz = func_drand[200,400]
+set suppliedClass = 1
+gosub 38:26
+goto 0:0
+
+#switch 38:26
+set whichBadThing = 0
+set bcount = 1
+while (bcount <= 5) {
+  if (F[$bcount$] == -1.000000) {
+    set whichBadThing = bcount
+    set bcount = 5
+  }
+  set bcount = (bcount + 1)
+}
+if (whichBadThing == 0) {
+  console "echo COULDN'T GET A BadThing!  ======================"
+  goto 0:0
+}
+set I[$whichBadThing$] = bx
+set J[$whichBadThing$] = by
+set K[$whichBadThing$] = bz
+set F[$whichBadThing$] = 1
+set G[$whichBadThing$] = suppliedClass
+gosub 38:31
+set H[$whichBadThing$] = thinghandle
+extern AI_SetXYZ thinghandle bx by bz
+extern AI_SetVelocityXYZ thinghandle 0 vy vz
+extern entkey thinghandle "rgb" "1 1 1"
+goto 0:0
+
+#switch 38:31
+if (suppliedClass == 1) {
+  extern AI_SpawnEntity thinghandle cine_sundergameboulder badbouldertargetname
+  extern playsound GAMES/sues/GAMES_sues_boulder.wav thinghandle .9 1
+} else if (suppliedClass == 4) {
+  extern AI_SpawnEntity thinghandle se_v6 badshiptargetname
+  extern np thinghandle 1 0 fx_1 0 343/intro_jet_blue
+  extern playsound GAMES/sues/GAMES_sues_fastship.wav
+} else if (suppliedClass == 3) {
+  extern AI_SpawnEntity thinghandle se_v14 badshiptargetname
+  extern np thinghandle 1 0 effect_1 0 343/bippy_sparks
+  extern playsound GAMES/sues/GAMES_sues_sparkship.wav
+} else if (suppliedClass == 5) {
+  extern AI_SpawnEntity thinghandle se_v6 badshiptargetname
+  extern np thinghandle 1 0 fx_1 0 343/sunder_smoke
+  extern playsound GAMES/sues/GAMES_sues_slowship.wav
+} else if (suppliedClass == 6) {
+  extern AI_SpawnEntity thinghandle se_v14 badshiptargetname
+  extern np thinghandle 1 0 effect_1 0 343/rbsheep_sparklies
+  extern playsound games/sues/games_sues_sparkship.wav
+}
+extern AI_SetYaw thinghandle 270
+goto 0:0
+
+#switch 38:15
+set bx = shipX
+set by = -200.000000
+set bz = (shuttleBottomZ - 300)
+set vy = 0
+set vz = 300
+set suppliedClass = 1
+gosub 38:26
+set bx = shipX
+set by = 200
+set bz = -700.000000
+set vy = 0
+set vz = 300
+set suppliedClass = 1
+gosub 38:26
+goto 0:0
+
+#switch 38:16
+set bx = shipX
+set by = -200.000000
+set bz = (shuttleBottomZ - 300)
+set vy = 100
+set vz = 300
+set suppliedClass = 1
+gosub 38:26
+set bx = shipX
+set by = 200
+set bz = -700.000000
+set vy = -128.000000
+set vz = 400
+set suppliedClass = 1
+gosub 38:26
+goto 0:0
+
+#switch 38:17
+set bx = shipX
+set by = (func_drand[0,480] - 240)
+set bz = (shuttleTopZ + 150)
+set vy = (func_drand[0,256] - 128)
+set vz = -300.000000
+set suppliedClass = 1
+gosub 38:26
+goto 0:0
+
+#switch 38:18
+set bx = shipX
+set by = 400
+set bz = (shuttleTopZ - 100)
+set vy = -256.000000
+set vz = 0
+set suppliedClass = 4
+gosub 38:26
+goto 0:0
+
+#switch 38:19
+set bx = shipX
+set by = 0
+set bz = (shuttleBottomZ - 300)
+set vy = 0
+set vz = 300
+set suppliedClass = 1
+gosub 38:26
+goto 0:0
+
+#switch 38:20
+set bx = shipX
+set by = -400.000000
+set bz = (shuttleTopZ + 150)
+set vy = 200
+set vz = -200.000000
+set suppliedClass = 3
+gosub 38:26		                        
+goto 0:0
+
+#switch 38:21
+set bx = shipX
+set by = 400
+set bz = (shuttleTopZ - 100)
+set vy = -256.000000
+set vz = 0
+set suppliedClass = 4
+gosub 38:26
+set bx = shipX
+set by = 400
+set bz = shuttleBottomZ
+set vy = -256.000000
+set vz = 0
+set suppliedClass = 4
+gosub 38:26
+goto 0:0
+
+#switch 38:22
+set bx = shipX
+set by = -400.000000
+set bz = (shuttleTopZ - 200)
+set vy = 128
+set vz = -16.000000
+set suppliedClass = 5
+gosub 38:26
+goto 0:0
+
+#switch 38:23
+set bx = shipX
+set by = -200.000000
+set bz = (shuttleTopZ + 150)
+set vy = 100
+set vz = -200.000000
+set suppliedClass = 1
+gosub 38:26	
+goto 0:0
+
+#switch 38:24
+set bx = shipX
+set by = 0
+set bz = (shuttleBottomZ - 300)
+set vy = 0
+set vz = 300
+set suppliedClass = 6
+gosub 38:26
+goto 0:0
+
+#switch 38:25
+set bx = shipX
+set by = 400
+set bz = (shuttleBottomZ + 50)
+set vy = -256.000000
+set vz = 0
+set suppliedClass = 4
+gosub 38:26
+goto 0:0

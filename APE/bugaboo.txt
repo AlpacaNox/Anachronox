@@ -1,0 +1,981 @@
+#window 50000:1
+startswitch {
+  gosub 50000:105
+  extern AI_GrabEntity PlayerChar0 PlayerChar0_handle
+  extern cam_anoxmariomode 1
+  set anox_interface_active = 1
+  console "pushbind"
+  console "bind KP_MINUS \"invoke 50000:5300\""
+  console "bind ESCAPE \"invoke 50000:5300\""
+  console "bind MOUSE1 \"invoke 50000:5000\""
+  console "bind PAUSE \"pause\""
+  gosub 50000:110
+  gosub 50000:200                                             
+  gosub 50000:1200	 	                          
+  gosub 50000:330	 	                          
+  gosub 50000:325
+  extern playsound "GAMES/Bugaboo/games_bugaboo_bugaboo.wav"
+  extern set2dcursor invisiblecursor.pcx
+  goto 0:0
+}
+
+thinkswitch {
+  set currentMS = func_GameTime
+  set delta = (currentMS - lastMS)
+  if (delta < 50)
+    goto 0:0
+  set humCounter = (humCounter + 1)
+  set humCounter = func_mod[$humCounter$,20]
+  if (humCounter == 0)
+    if (numAliens == 1) {
+      extern playsound "GAMES/Bugaboo/games_bugaboo_lastbuzz.wav"
+    } else
+      extern playsound "GAMES/Bugaboo/games_bugaboo_alienhum.wav"
+  set lastMS = currentMS
+  gosub 50000:500
+  if (playerQuit != 0) {
+    gosub 50000:5400
+    if (playerQuit)
+      closewindow 50000:1
+  }
+  gosub 50000:1000
+  goto 0:0
+}
+
+finishswitch {
+  unset tempX
+  unset tempY
+  unset errorNumber
+  unset currentLevel
+  unset shipX
+  unset shipY
+  unset warmstart
+  unset playerquit
+  unset gamestate
+  unset showhiscore
+  unset levelones
+  unset leveltens
+  unset currentms
+  unset lastms
+  unset bugaboo_intransition
+  console "popbind"
+  extern set2dcursor default
+  set anox_interface_active = 0
+  extern AI_ReleaseEntity PlayerChar0_handle
+  extern cam_anoxmariomode 0
+  extern APE_ARCADE_ReturnFromGame
+  goto 0:0
+}
+
+style "style_apearcade"
+font "arcfix"
+flags passive2d, TRUE
+xpos 184
+ypos 88
+width 240
+height 272
+background "Bugaboo\\STARS.BMP" 
+image "Bugaboo\\STARS.BMP" 128, 0
+image "Bugaboo\\STARS.BMP" 0, 64
+image "Bugaboo\\STARS.BMP" 128, 64
+image "Bugaboo\\STARS.BMP" 0, 128
+image "Bugaboo\\STARS.BMP" 128, 128
+image "Bugaboo\\STARS.BMP" 0, 192
+image "Bugaboo\\STARS.BMP" 128, 192
+image "Bugaboo\\SCOREBAR.PCX" 0, 240
+image "Bugaboo\\oneup.pcx" 40, 8
+image "Bugaboo\\num$hundredThousands$.PCX" 24, 16
+image "Bugaboo\\num$tenThousands$.PCX" 32, 16
+image "Bugaboo\\num$thousands$.PCX" 40, 16
+image "Bugaboo\\num$hundreds$.PCX" 48, 16
+image "Bugaboo\\num$tens$.PCX" 56, 16
+image "Bugaboo\\num$ones$.PCX" 64, 16
+image "Bugaboo\\num$hiHundredThousands$.PCX" 152, 16
+image "Bugaboo\\num$hiTenThousands$.PCX" 160, 16
+image "Bugaboo\\num$hiThousands$.PCX" 168, 16
+image "Bugaboo\\num$hiHundreds$.PCX" 176, 16
+image "Bugaboo\\num$hiTens$.PCX" 184, 16
+image "Bugaboo\\num$hiOnes$.PCX" 192, 16
+image "Bugaboo\\hiscore.pcx" 136, 8
+if ((((gameState > 10) || (gameState == 4)) || (gameState == 5)) && (numlives > 1))
+  image "Bugaboo\\shiptiny.pcx" 128, 256
+if ((((gameState > 10) || (gameState == 4)) || (gameState == 5)) && (numlives > 2))
+  image "Bugaboo\\shiptiny.pcx" 136, 256
+if ((((gameState > 10) || (gameState == 4)) || (gameState == 5)) && (numlives > 3))
+  image "Bugaboo\\shiptiny.pcx" 144, 256
+if ((((gameState > 10) || (gameState == 4)) || (gameState == 5)) && (numlives > 4))
+  image "Bugaboo\\shiptiny.pcx" 152, 256
+if ((((gameState > 10) || (gameState == 4)) || (gameState == 5)) && (numlives > 5))
+  image "Bugaboo\\shiptiny.pcx" 160, 256
+if ((((gameState > 10) || (gameState == 4)) || (gameState == 5)) && (numlives > 6))
+  image "Bugaboo\\shiptiny.pcx" 168, 256
+if ((((gameState > 10) || (gameState == 4)) || (gameState == 5)) && (numlives > 7))
+  image "Bugaboo\\shiptiny.pcx" 176, 256
+if ((((gameState > 10) || (gameState == 4)) || (gameState == 5)) && (numlives > 8))
+  image "Bugaboo\\shiptiny.pcx" 184, 256
+if (((gameState > 10) || (gameState == 3)) && (currentLevel < 10))
+  image "Bugaboo\\num$currentLevel$.pcx" 96, 256
+if (((gameState > 10) || (gameState == 3)) && (currentLevel > 9))
+  image "Bugaboo\\num$levelTens$.pcx" 88, 256
+if (((gameState > 10) || (gameState == 3)) && (currentLevel > 9))
+  image "Bugaboo\\num$levelOnes$.pcx" 96, 256
+if (((gameState == 4) || (gameState == 5)) && (currentLevel < 10))
+  image "Bugaboo\\num$currentLevel$.pcx" 96, 256
+if (((gameState == 4) || (gameState == 5)) && (currentLevel > 9))
+  image "Bugaboo\\num$levelTens$.pcx" 88, 256
+if (((gameState == 4) || (gameState == 5)) && (currentLevel > 9))
+  image "Bugaboo\\num$levelOnes$.pcx" 96, 256
+if (gameState == 1)
+  background "Bugaboo\\title1.pcx" 
+if ((gameState == 1) || (gameState == 2))
+  image "Bugaboo\\title2.pcx" 0, 240
+if (gameState == 2)
+  background "Bugaboo\\credback.pcx" 
+if (gameState == 2)
+  image "Bugaboo\\credit_org.pcx" 80, 20
+if (gameState == 4)
+  background "Bugaboo\\levelscr.pcx" 
+if ((shipState == 9) && (currentLevel < 10))
+  image "Bugaboo\\num$levelOnes$.pcx" 144, 116
+if ((shipState == 9) && (currentLevel > 9))
+  image "Bugaboo\\num$levelTens$.pcx" 144, 116
+if ((shipState == 9) && (currentLevel > 9))
+  image "Bugaboo\\num$levelOnes$.pcx" 152, 116
+if ((shipState == 1) && (gameState > 10))
+  image "Bugaboo\\ship$shipCounter$.PCX" shipX, shipY
+if (((shipState == 4) && (gameState == 14)) && (shipCounter != 0))
+  image "Bugaboo\\explode$shipCounter$.PCX" shipX, shipY
+if (shipState == 9)
+  image "Bugaboo\\ship$shipCounter$.PCX" shipX, shipY
+if ((shipState == 3) || (shipState == 2))
+  image "Bugaboo\\ship$shipCounter$.PCX" shipX, shipY
+if ((S[0] == 1) || (S[0] == 7))
+  image "Bugaboo\\ralien$c[0]$.PCX" x[0], y[0]
+if ((S[1] == 1) || (S[1] == 7))
+  image "Bugaboo\\ralien$c[1]$.PCX" x[1], y[1]
+if ((S[2] == 1) || (S[2] == 7))
+  image "Bugaboo\\ralien$c[2]$.PCX" x[2], y[2]
+if ((S[3] == 1) || (S[3] == 7))
+  image "Bugaboo\\ralien$c[3]$.PCX" x[3], y[3]
+if ((S[4] == 1) || (S[4] == 7))
+  image "Bugaboo\\balien$c[4]$.PCX" x[4], y[4]
+if ((S[5] == 1) || (S[5] == 7))
+  image "Bugaboo\\balien$c[5]$.PCX" x[5], y[5]
+if ((S[6] == 1) || (S[6] == 7))
+  image "Bugaboo\\balien$c[6]$.PCX" x[6], y[6]
+if ((S[7] == 1) || (S[7] == 7))
+  image "Bugaboo\\balien$c[7]$.PCX" x[7], y[7]
+if ((S[8] == 1) || (S[8] == 7))
+  image "Bugaboo\\galien$c[8]$.PCX" x[8], y[8]
+if ((S[9] == 1) || (S[9] == 7))
+  image "Bugaboo\\galien$c[9]$.PCX" x[9], y[9]
+if ((S[10] == 1) || (S[10] == 7))
+  image "Bugaboo\\galien$c[10]$.PCX" x[10], y[10]
+if ((S[11] == 1) || (S[11] == 7))
+  image "Bugaboo\\galien$c[11]$.PCX" x[11], y[11]
+if (S[0] == -2.000000)
+  image "Bugaboo\\explode$c[0]$.PCX" x[0], y[0]
+if (S[1] == -2.000000)
+  image "Bugaboo\\explode$c[1]$.PCX" x[1], y[1]
+if (S[2] == -2.000000)
+  image "Bugaboo\\explode$c[2]$.PCX" x[2], y[2]
+if (S[3] == -2.000000)
+  image "Bugaboo\\explode$c[3]$.PCX" x[3], y[3]
+if (S[4] == -2.000000)
+  image "Bugaboo\\explode$c[4]$.PCX" x[4], y[4]
+if (S[5] == -2.000000)
+  image "Bugaboo\\explode$c[5]$.PCX" x[5], y[5]
+if (S[6] == -2.000000)
+  image "Bugaboo\\explode$c[6]$.PCX" x[6], y[6]
+if (S[7] == -2.000000)
+  image "Bugaboo\\explode$c[7]$.PCX" x[7], y[7]
+if (S[8] == -2.000000)
+  image "Bugaboo\\explode$c[8]$.PCX" x[8], y[8]
+if (S[9] == -2.000000)
+  image "Bugaboo\\explode$c[9]$.PCX" x[9], y[9]
+if (S[10] == -2.000000)
+  image "Bugaboo\\explode$c[10]$.PCX" x[10], y[10]
+if (S[11] == -2.000000)
+  image "Bugaboo\\explode$c[11]$.PCX" x[11], y[11]
+if (K[0] == 1)
+  image "Bugaboo\\opoop0.PCX" l[0], m[0]
+if (K[1] == 1)
+  image "Bugaboo\\opoop0.PCX" l[1], m[1]
+if (K[2] == 1)
+  image "Bugaboo\\opoop0.PCX" l[2], m[2]
+if (K[3] == 1)
+  image "Bugaboo\\opoop0.PCX" l[3], m[3]
+if (K[4] == 1)
+  image "Bugaboo\\opoop0.PCX" l[4], m[4]
+if (K[5] == 1)
+  image "Bugaboo\\opoop0.PCX" l[5], m[5]
+if (K[6] == 1)
+  image "Bugaboo\\opoop0.PCX" l[6], m[6]
+if (K[7] == 1)
+  image "Bugaboo\\opoop0.PCX" l[7], m[7]
+if (bulletState != -1.000000)
+  image "Bugaboo\\blaser0.PCX" bulletX, bulletY
+if ((gameState == 6) || (gameState == 3))
+  image "Bugaboo\\GAMEOVER.PCX" 72, 112
+if (gameState == 16)
+  image "Bugaboo\\GAMEWON.PCX" 76, 112
+if (shipState == 9)
+  image "Bugaboo\\stage.PCX" 96, 112
+if (gameState == 5)
+  background "Bugaboo\\levtrans.PCX" 
+if (bonusState == 100)
+  image "Bugaboo\\pts100.pcx" bonusX, bonusY
+if (bonusState == 200)
+  image "Bugaboo\\pts200.pcx" bonusX, bonusY
+if (bonusState == 500)
+  image "Bugaboo\\pts500.pcx" bonusX, bonusY
+
+#window 50000:8600
+title "ERROR!"
+if (errorNumber == 1)
+  body "Got an Event ($eventNum$)! I don't understand!"
+
+#switch 50000:105
+set currentLevel = 1
+set numLives = 0
+set currentScore = 0
+set keyMeaning = 0
+set playerQuit = 0
+set creditsCounter = 1
+set diveCounter = 60
+set bugaboo_intransition = 30
+set shipState = 1
+set gameState = 1
+set bulletState = -1.000000
+set lastMS = func_GameTime
+set currentMS = lastMS
+goto 0:0
+
+#switch 50000:110
+goto 0:0
+
+#switch 50000:200
+if (warmStart == 0)
+  gosub 50000:300
+gosub 50000:305
+if (warmStart == 0)
+  gosub 50000:1200		                             
+gosub 50000:310					                               
+gosub 50000:320		                          
+goto 0:0
+
+#switch 50000:300
+set levelOnes = func_mod[$currentLevel$,10]
+set levelTens = func_div[$currentLevel$,10]
+set poopFreq = func_div[$currentLevel$,3]
+set poopCounter = 50
+if (poopFreq > 9)
+  set poopFreq = 9
+set numDivers = (3 + poopFreq)
+if (numDivers > 6)
+  set numdivers = 6
+if (poopFreq > 9)
+  set poopFreq = 9
+set bonusState = -1.000000
+set bonusCounter = 0
+goto 0:0
+
+#switch 50000:305
+set dc = 0
+while (dc < 6) {
+  set d[$dc$] = -1.000000
+  set dc = (dc + 1)
+}
+goto 0:0
+
+#switch 50000:310
+set bulletState = -1.000000
+set shipX = 108
+set shipY = 208
+set shipCounter = func_mod[$RANDOM$,4]
+if ((gameState == 3) || (gameState == 1)) {
+  set shipState = -1.000000
+} else
+  set shipState = 1
+goto 0:0
+
+#switch 50000:320
+set row = 0
+while (row < 4) {
+  set col = 0
+  while (col < 5) {
+    set index = ((row * 4) + col)
+    if (warmStart == 0) {
+      set s[$index$] = 1
+    } else if (s[$index$] == 7)
+      set s[$index$] = 1
+    set x[$index$] = (88 + (col * 16))
+    set y[$index$] = (32 + (row * 16))
+    set sc = func_mod[$RANDOM$,4]
+    set c[$index$] = sc
+    set col = (col + 1)
+  }
+  set row = (row + 1)
+}
+if (warmStart == 0)
+  set numAliens = 12
+goto 0:0
+
+#switch 50000:325
+set o[0] = 8
+set o[1] = 11
+set o[2] = 4
+set o[3] = 7
+set o[4] = 0
+set o[5] = 3
+set o[6] = 9
+set o[7] = 10
+set o[8] = 5
+set o[9] = 6
+set o[10] = 1
+set o[11] = 2
+goto 0:0
+
+#switch 50000:330
+set count = 0
+set howMany = 16
+gosub 50000:340
+set howMany = 32
+gosub 50000:350
+set howMany = 16
+gosub 50000:340
+set a[$count$] = -999.000000
+set b[$count$] = -999.000000
+goto 0:0
+
+#switch 50000:350
+while (howMany != 0) {
+  set a[$count$] = 4
+  set b[$count$] = 4
+  set count = (count + 1)
+  set howMany = (howMany - 1)
+}
+goto 0:0
+
+#switch 50000:340
+while (howMany != 0) {
+  set a[$count$] = -4.000000
+  set b[$count$] = 4
+  set count = (count + 1)
+  set howMany = (howMany - 1)
+}
+goto 0:0
+
+#switch 50000:3000
+set box1Left = box1X
+set box1Right = (box1X + box1width)
+set box1Top = box1Y
+set box1Bottom = (box1Y + box1height)
+set box2Left = box2X
+set box2Right = (box2X + box2width)
+set box2Top = box2Y
+set box2Bottom = (box2Y + box2height)
+unset collided
+if (box1Top > box2Bottom)
+  goto 0:0
+if (box2Top > box1Bottom)
+  goto 0:0
+if (box1Left > box2Right)
+  goto 0:0
+if (box2Left > box1Right)
+  goto 0:0
+set collided = 1
+goto 0:0
+
+#switch 50000:500
+if (keyMeaning == 0)
+  goto 0:0
+if (keyMeaning == 5) {
+  set playerQuit = 1
+  goto 0:0
+} else if (gameState == 12)
+  if (keyMeaning == 1) {
+    gosub 50000:6000
+  } else if (keyMeaning == 2) {
+    set tryX = shipX
+    set tryY = shipY
+    gosub 50000:6200
+    set shipState = tryState
+  } else if (keyMeaning == 4) {
+    set tryX = shipX
+    set tryY = shipY
+    gosub 50000:6100
+    set shipState = tryState
+  } else if (keyMeaning != 6) {
+    set errorNumber = 1
+    goto 50000:8600
+  }
+if ((keyMeaning == 6) && (((gameState == 1) || (gameState == 3)) || (gameState == 2))) {
+  set bugaboo_intransition = 1
+  set gameState = 7
+}
+set keyMeaning = 0
+goto 0:0
+
+#switch 50000:6000
+if (bulletState != -1.000000)
+  goto 0:0
+set bulletState = 1
+set bulletX = (shipX + 6)
+set bulletY = (shipY - 8)
+extern playsound "GAMES/Bugaboo/games_bugaboo_laser.wav"
+goto 0:0
+
+#switch 50000:6200
+goto 0:0
+
+#switch 50000:6100
+goto 0:0
+
+#switch 50000:5400
+goto 50000:5500
+
+#switch 50000:5500
+set playerQuit = 1
+goto 0:0
+
+#switch 50000:5600
+set playerQuit = 0
+goto 0:0
+
+#switch 50000:1000
+gosub 50000:1100			                                
+gosub 50000:1310					                              
+gosub 50000:1400				                                
+if (poopFreq && (numAliens > 0)) {
+  gosub 50000:1010		                    
+  gosub 50000:1030
+}
+gosub 50000:1600			                        
+gosub 50000:1800			                                     
+set d0 = d[0]
+set d1 = d[1]
+set d2 = d[2]
+goto 0:0
+
+#switch 50000:1010
+set poopCounter = (poopCounter - 1)
+if (poopCounter || (shipState == 9))
+  goto 0:0
+set poopCounter = (10 + func_div[$RANDOM$,$currentLevel$])
+set avail = 0
+set gotOne = 0
+while ((avail < poopFreq) && (gotOne == 0))
+  if (K[$avail$] == -1.000000) {
+    set gotOne = 1
+  } else
+    set avail = (avail + 1)
+if (gotOne == 0)
+  goto 0:0
+set wc = 0
+set gotOne = 0
+while ((wc < 12) && (gotOne == 0)) {
+  set nextPooper = (nextPooper + 1)
+  if (nextPooper > 11)
+    set nextPooper = 0
+  if ((S[$nextPooper$] == 1) || (S[$nextPooper$] == 7)) {
+    set gotOne = 1
+  } else
+    set wc = (wc + 1)
+}
+if (gotOne == 0)
+  goto 0:0
+gosub 50000:1020
+goto 0:0
+
+#switch 50000:1020
+set k[$avail$] = 1
+set l[$avail$] = (x[$nextPooper$] + 8)
+set m[$avail$] = (y[$nextPooper$] + 20)
+extern playsound "GAMES/Bugaboo/games_bugaboo_pooping.wav"
+goto 0:0
+
+#switch 50000:1030
+set pc = 0
+while (pc < poopFreq) {
+  if (k[$pc$] == 1) {
+    set m[$pc$] = (m[$pc$] + 4)
+    if (m[$pc$] > 232)
+      set k[$pc$] = -1.000000
+  }
+  set pc = (pc + 1)
+}
+goto 0:0
+
+#switch 50000:1100
+set shipCounter = (shipCounter + 1)
+set shipCounter = func_mod[$shipCounter$,4]
+if (showScore < currentScore)
+  set showScore = (showScore + 10)
+if (showHiScore < bugaboo_hiscore)
+  set showHiScore = (showHiScore + 10)
+gosub 50000:1110
+if (shipCountdown > 0)
+  gosub 50000:1210
+set creditsCounter = (creditsCounter + 1)
+if (creditsCounter > 11)
+  set creditsCounter = 1
+if (bonusCounter > 0) {
+  set bonusCounter = (bonusCounter - 1)
+  if (bonusCounter == 0)
+    set bonusState = -1.000000
+}
+if (bugaboo_intransition == 0)
+  goto 0:0
+set bugaboo_intransition = (bugaboo_intransition - 1)
+if (bugaboo_intransition == 0)
+  goto 50000:1300
+goto 0:0
+
+#switch 50000:1110
+set i = 0
+while (i < 12) {
+  if ((S[$i$] == 1) || (S[$i$] == 7)) {
+    set C[$i$] = (C[$i$] + 1)
+    if (C[$i$] > 3)
+      set C[$i$] = 0
+  } else {
+    set C[$i$] = (C[$i$] - 1)
+    if (C[$i$] == 0)
+      set S[$i$] = -1.000000
+  }
+  set i = (i + 1)
+}
+if ((gameState == 12) || (gameState == 3))
+  set diveCounter = (diveCounter - 1)
+if (diveCounter == 0) {
+  set diveCounter = 40
+  gosub 50000:1120
+  if (who != -1.000000)
+    gosub 50000:1130
+}
+goto 0:0
+
+#switch 50000:1120
+set who = 0
+while (who < numDivers) {
+  if (d[$who$] == -1.000000)
+    goto 0:0
+  set who = (who + 1)
+}
+set who = -1.000000
+goto 0:0
+
+#switch 50000:1130
+set avail = -1.000000
+set gotOne = 0
+while ((avail < 12) && (gotOne == 0)) {
+  set avail = (avail + 1)
+  set next = o[$avail$]
+  if (S[$next$] == 1)
+    set gotOne = 1
+}
+if (gotOne == 0)
+  goto 0:0
+set d[$who$] = next
+set p[$next$] = 0
+set i[$next$] = 0
+set s[$next$] = 7
+extern playsound "GAMES/Bugaboo/games_bugaboo_dive.wav"
+goto 0:0
+
+#switch 50000:1300
+set bugaboo_intransition = 50
+gosub 50000:1301
+gosub 50000:1306
+goto 0:0
+
+#switch 50000:1301
+if (gamestate == 6) {
+  set gameState = 1
+  gosub 50000:1200		                           
+} else if (gameState == 1) {
+  set gameState = 2
+  set bugaboo_intransition = 100
+} else if (gameState == 2) {
+  set gameState = 3
+} else if (gameState == 3) {
+  set gameState = 1
+} else if (gameState == 7) {
+  gosub 50000:1305
+} else if (gameState == 4) {
+  gosub 50000:1302
+} else if (gameState == 11) {
+  set gamestate = 12
+  set shipState = 1
+} else if (gameState == 13) {
+  gosub 50000:1303
+} else if (gameState == 5) {
+  gosub 50000:1304
+} else if (gameState == 17) {
+  set warmStart = 1
+  gosub 50000:1302
+} else if (gameState == 15) {
+  set gameState = 6
+} else if (gameState == 14) {
+  gosub 50000:1307
+} else if (gameState == 16)
+  set gameState = 1
+goto 0:0
+
+#switch 50000:1302
+gosub 50000:200
+set gameState = 11
+set shipState = 9
+set bugaboo_intransition = 20
+extern playsound "GAMES/Bugaboo/games_bugaboo_gamintro.wav"
+goto 0:0
+
+#switch 50000:1303
+set gameState = 5
+set currentLevel = (currentLevel + 1)
+set i = func_mod[$RANDOM$,19]
+set randSaying = (i + 1)
+goto 0:0
+
+#switch 50000:1304
+set gameState = 4
+goto 0:0
+
+#switch 50000:1305
+set currentLevel = 1
+set gameState = 4
+set currentScore = 0
+set showScore = 0
+set showHiScore = bugaboo_hiscore
+set numLives = 3
+goto 0:0
+
+#switch 50000:1306
+if (gameState == 3) {
+  set bugaboo_intransition = 200
+  set currentLevel = (func_mod[$RANDOM$,49] + 1)
+  gosub 50000:200
+}
+if (gameState == 12)
+  set bugaboo_intransition = 0
+if (((gameState == 3) || (gameState == 1)) || (gameState == 2))
+  set shipState = -1.000000
+if ((gameState == 4) || (gameState == 6))
+  set shipState = -1.000000
+if (((gameState == 1) || (gameState == 2)) || (gameState == 4))
+  gosub 50000:1200
+if (gameState == 1)
+  extern playsound "GAMES/Bugaboo/games_bugaboo_bugaboo.wav"
+goto 0:0
+
+#switch 50000:1307
+set numLives = (numLives - 1)
+if (numLives == 0) {
+  set gameState = 6
+  set warmStart = 0
+} else {
+  if (numAliens > 0) {
+    set gameState = 17
+  } else {
+    set gameState = 13
+    set warmStart = 0
+  }
+  gosub 50000:1205			                       
+}
+goto 0:0
+
+#switch 50000:1200
+set shipState = -1.000000
+set counter = 0
+while (counter < 12) {
+  set S[$counter$] = -1.000000
+  set counter = (counter + 1)
+}
+gosub 50000:1205
+goto 0:0
+
+#switch 50000:1205
+set counter = 0
+while (counter < 8) {
+  set k[$counter$] = -1.000000
+  set counter = (counter + 1)
+}
+goto 0:0
+
+#switch 50000:1210
+set shipCountdown = (shipCountdown - 1)
+if (shipCountdown == 0)
+  if (shipState == 4)
+    set shipState = 5
+goto 0:0
+
+#switch 50000:1310
+set dnum = 0
+while (dnum < numDivers) {
+  if (d[$dnum$] != -1.000000)
+    gosub 50000:1135
+  set dnum = (dnum + 1)
+}
+goto 0:0
+
+#switch 50000:1135
+set diveboy = d[$dnum$]
+set pi = i[$diveboy$]
+set x[$diveboy$] = (x[$diveboy$] + a[$pi$])
+if ((numAliens == 1) && (RANDOM > 45))
+  set x[$diveboy$] = (x[$diveboy$] + a[$pi$])
+set y[$diveboy$] = (y[$diveboy$] + b[$pi$])
+if ((numAliens == 1) && (RANDOM > 45))
+  set y[$diveboy$] = (y[$diveboy$] + b[$pi$])
+set i[$diveboy$] = (pi + 1)
+set pi = i[$diveboy$]
+if (a[$pi$] == -999.000000)
+  set i[$diveboy$] = 0
+goto 0:0
+
+#switch 50000:1400
+if (shipState == 1) {
+  set mc = func_mousex
+  set mc = (mc - 320)
+  if (mc < -112.000000) {
+    set mc = -112.000000
+    console "setmousepos %f 0", mc
+  }
+  if (mc > 112) {
+    set mc = 112
+    console "setmousepos %f 0", mc
+  }
+  set shipX = (mc + 112)
+}
+if (bulletState == 1) {
+  set bulletY = (bulletY - 16)
+  if (bulletY < 2)
+    set bulletState = -1.000000
+}
+set count = 0
+while (count < 12) {
+  gosub 50000:1510
+  if (s[$count$] == 1)
+    gosub 50000:1500
+  gosub 50000:1510
+  set count = (count + 1)
+}
+goto 0:0
+
+#switch 50000:1500
+set x[$count$] = (x[$count$] + 4)
+if (numAliens == 1)
+  set x[$count$] = (x[$count$] + 4)
+if (x[$count$] > 220)
+  set x[$count$] = 0
+goto 0:0
+
+#switch 50000:1510
+set xm = x[$count$]
+if (xm < 0)
+  set xm = (220 + xm)
+set x[$count$] = func_mod[$xm$,220]
+set ym = y[$count$]
+if (ym < 0)
+  set ym = (220 + ym)
+set y[$count$] = func_mod[$ym$,220]
+goto 0:0
+
+#switch 50000:1600
+set counter = 0
+while ((counter < 12) && ((shipState == 1) || (bulletState == 1))) {
+  if (counter < poopfreq)
+    if ((k[$counter$] == 1) && (m[$counter$] > 180))
+      gosub 50000:1605
+  if ((S[$counter$] == 1) || (S[$counter$] == 7)) {
+    set collided = 0
+    if (bulletState != -1.000000)
+      gosub 50000:1520
+    if ((collided == 0) && (shipState == 1))
+      gosub 50000:1530
+  }
+  set counter = (counter + 1)
+}
+goto 0:0
+
+#switch 50000:1605
+set box1X = (shipX + 3)
+set box1Y = (shipY + 1)
+set box2X = l[$counter$]
+set box2Y = m[$counter$]
+set box1width = 10
+set box1height = 14
+set box2width = 2
+set box2height = 2
+gosub 50000:3000
+if (collided) {
+  set k[$counter$] = -1.000000
+  gosub 50000:1700
+}
+goto 0:0
+
+#switch 50000:1520
+set box1X = bulletX
+set box1Y = bulletY
+set box2X = (X[$counter$] + 4)
+set box2Y = (Y[$counter$] + 4)
+set box1width = 4
+set box1height = 16
+set box2width = 8
+set box2height = 8
+gosub 50000:3000
+if (collided)
+  gosub 50000:1610
+goto 0:0
+
+#switch 50000:1530
+if ((Y[$counter$] < 180) || (shipState == 4))
+  goto 0:0
+set box1X = (shipX + 2)
+set box1Y = (shipY + 1)
+set box2X = (X[$counter$] + 4)
+set box2Y = (Y[$counter$] + 4)
+set box1width = 12
+set box1height = 14
+set box2width = 8
+set box2height = 8
+gosub 50000:3000
+if (collided) {
+  gosub 50000:1700
+  gosub 50000:1610
+}
+goto 0:0
+
+#switch 50000:1610
+if (s[$counter$] == 7)
+  gosub 50000:1615
+set oldState = S[$counter$]
+set S[$counter$] = -2.000000
+set C[$counter$] = 4
+set bulletState = -1.000000
+extern playsound "GAMES/Bugaboo/games_bugaboo_explode.wav"
+gosub 50000:1620
+set numAliens = (numAliens - 1)
+if ((numAliens == 0) && (gameState != 14))
+  gosub 50000:1630
+if (numAliens == 1)
+  extern playsound "GAMES/Bugaboo/games_bugaboo_fintro.wav"
+goto 0:0
+
+#switch 50000:1615
+set find = 0
+while (find < numDivers) {
+  if (d[$find$] == counter) {
+    set d[$find$] = -1.000000
+    set find = MAXDIVER%
+  }
+  set find = (find + 1)
+}
+goto 0:0
+
+#switch 50000:1630
+set bugaboo_intransition = 30
+set gameState = 13
+set warmStart = 0
+goto 0:0
+
+#switch 50000:1620
+set ntt = func_div[$currentScore$,10000]
+set bonusPoints = 50
+set bonusState = -1.000000
+gosub 50000:1625
+if (bonusPoints > 50) {
+  extern playsound "GAMES/Bugaboo/games_bugaboo_special.wav"
+  set bonusCounter = 20
+}
+set currentScore = (currentScore + bonusPoints)
+set bonusX = X[$counter$]
+set bonusY = Y[$counter$]
+set ctt = func_div[$currentScore$,10000]
+if (ctt > ntt) {
+  set numLives = (numLives + 1)
+  extern playsound "GAMES/Bugaboo/games_bugaboo_freeship.wav"
+}
+goto 0:0
+
+#switch 50000:1625
+if (oldstate == 7) {
+  set bonusState = 100
+  set bonusPoints = 100
+}
+if (y[$counter$] > 140) {
+  set bonusPoints = 200
+  set bonusState = 200
+}
+if (numAliens == 1) {
+  set bonusPoints = 500
+  set bonusState = 500
+}
+goto 0:0
+
+#switch 50000:1700
+set shipState = 4
+set gameState = 14
+set shipCountdown = 20
+set bugaboo_intransition = 20
+extern playsound "GAMES/Bugaboo/games_bugaboo_explode.wav"
+goto 0:0
+
+#switch 50000:1800
+set bustValue = showScore
+gosub 50000:1900
+set hundredThousands = digit10000
+set tenThousands = digit10000
+set thousands = digit1000
+set hundreds = digit100
+set tens = digit10
+set ones = digit1
+if (currentScore > bugaboo_hiscore)
+  set bugaboo_hiscore = currentScore
+set bustValue = showHiScore
+gosub 50000:1900
+set hiHundredThousands = digit100000
+set hiTenThousands = digit10000
+set hiThousands = digit1000
+set hiHundreds = digit100
+set hiTens = digit10
+set hiOnes = digit1
+goto 0:0
+
+#switch 50000:1900
+set digit1 = func_mod[$bustValue$,10]
+set bustValue = func_div[$bustValue$,10]
+set digit10 = func_mod[$bustValue$,10]
+set bustValue = func_div[$bustValue$,10]
+set digit100 = func_mod[$bustValue$,10]
+set bustValue = func_div[$bustValue$,10]
+set digit1000 = func_mod[$bustValue$,10]
+set bustValue = func_div[$bustValue$,10]
+set digit10000 = func_mod[$bustValue$,10]
+set bustValue = func_div[$bustValue$,10]
+set digit100000 = func_mod[$bustValue$,10]
+set bustValue = func_div[$bustValue$,10]
+goto 0:0
+
+#switch 50000:5000
+set keyMeaning = 1
+if (((gameState == 3) || (gameState == 1)) || (gameState == 2))
+  set keyMeaning = 6
+goto 0:0
+
+#switch 50000:5100
+set keyMeaning = 2
+goto 0:0
+
+#switch 50000:5200
+set keyMeaning = 4
+goto 0:0
+
+#switch 50000:5300
+set keyMeaning = 5
+goto 0:0
+
+#switch 50000:5700
+set keyMeaning = 6
+goto 0:0

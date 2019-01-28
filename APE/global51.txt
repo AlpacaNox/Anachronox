@@ -1,0 +1,737 @@
+#window 4001:8001
+startswitch {
+  if ((LPdifficulty == 0) && (ws_difficulty > 0))
+    set LPdifficulty = ws_difficulty
+  if ((LPtime == 0) && (ws_time > 0))
+    set LPtime = ws_time
+  gosub 4001:8027
+  extern pauselevelmusic
+  extern loopsound ../music/mp3/worldskill.mp3
+  gosub 4001:8003
+  extern get_world_skill_level picklock @picklockworldlevel
+  if ((LPdifficulty >= 1) && (@wslockturn <= 1))
+    extern CreateAPE2DControl push turnup1 527 375 width=12 height=12 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=1 sequence=4001:8035
+  if ((LPdifficulty >= 2) && (@wslockturn == 2))
+    extern CreateAPE2DControl push turnup2 544 375 width=12 height=12 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=1 sequence=4001:8035
+  if ((LPdifficulty >= 3) && (@wslockturn == 3))
+    extern CreateAPE2DControl push turnup3 561 375 width=12 height=12 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=1 sequence=4001:8035
+  if ((LPdifficulty >= 4) && (@wslockturn == 4))
+    extern CreateAPE2DControl push turnup4 578 375 width=12 height=12 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=1 sequence=4001:8035
+  if ((LPdifficulty == 5) && (@wslockturn == 5))
+    extern CreateAPE2DControl push turnup5 595 375 width=12 height=12 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=1 sequence=4001:8035
+  if ((LPdifficulty >= 1) && (@wslockturn <= 1))
+    extern CreateAPE2DControl push turndn1 527 408 width=12 height=12 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=2 sequence=4001:8035
+  if ((LPdifficulty >= 2) && (@wslockturn == 2))
+    extern CreateAPE2DControl push turndn2 544 408 width=12 height=12 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=2 sequence=4001:8035
+  if ((LPdifficulty >= 3) && (@wslockturn == 3))
+    extern CreateAPE2DControl push turndn3 561 408 width=12 height=12 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=2 sequence=4001:8035
+  if ((LPdifficulty >= 4) && (@wslockturn == 4))
+    extern CreateAPE2DControl push turndn4 578 408 width=12 height=12 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=2 sequence=4001:8035
+  if ((LPdifficulty == 5) && (@wslockturn == 5))
+    extern CreateAPE2DControl push turndn5 595 408 width=12 height=12 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=2 sequence=4001:8035
+  if (LPdifficulty >= 1)
+    extern CreateAPE2DControl push select1 526 229 width=16 height=127 nodrawflag=true holdfocusflag=false gamevar=@LPChickityChina returnvalue=0 sequence=4001:8040
+  if (LPdifficulty >= 2)
+    extern CreateAPE2DControl push select2 543 229 width=16 height=127 nodrawflag=true holdfocusflag=false gamevar=@LPChickityChina returnvalue=0 sequence=4001:8040
+  if (LPdifficulty >= 3)
+    extern CreateAPE2DControl push select3 560 229 width=16 height=127 nodrawflag=true holdfocusflag=false gamevar=@LPChickityChina returnvalue=0 sequence=4001:8040
+  if (LPdifficulty >= 4)
+    extern CreateAPE2DControl push select4 577 229 width=16 height=127 nodrawflag=true holdfocusflag=false gamevar=@LPChickityChina returnvalue=0 sequence=4001:8040
+  if (LPdifficulty == 5)
+    extern CreateAPE2DControl push select5 594 229 width=16 height=127 nodrawflag=true holdfocusflag=false gamevar=@LPChickityChina returnvalue=0 sequence=4001:8040
+  if (@picklockworldlevel > 1)
+    extern CreateAPE2DControl push lock2box 407 356 width=35 height=25 normal=/gameflow/lockpick/lvl2button_up.tga bright=/gameflow/lockpick/lvl2button_down.tga holdfocusflag=false gamevar=@LPLock2box returnvalue=1 sequence=4001:8060
+  extern CreateAPE2DControl push what 585 191 width=16 height=16 normal=/gameflow/lockpick/help_off.tga bright=/gameflow/lockpick/help_on.tga holdfocusflag=false gamevar=@LPLock2box returnvalue=1 sequence=4001:8092
+  extern CreateAPE2DControl push quit 602 191 width=16 height=16 normal=/gameflow/lockpick/exit_off.tga bright=/gameflow/lockpick/exit_on.tga holdfocusflag=false gamevar=@LPLock2box returnvalue=1 sequence=4001:8099
+  gosub 4001:8005
+}
+
+thinkswitch {
+  if (@LockPause)
+    goto 0:0
+  if (@LockAnimTime <= 0)
+    goto 0:0
+  if ((func_timer - @LPTimerTime) >= 100) {
+    set T[3] = (T[3] - 1)
+    set @LPTimerTime = func_timer
+    set @LPTimerCountdown = (@LPTimerCountdown - 1)
+  }
+  if (T[3] < 0) {
+    set T[3] = 9
+    set T[2] = (T[2] - 1)
+  }
+  if (T[2] < 0) {
+    set T[2] = 9
+    set T[1] = (T[1] - 1)
+  }
+  if (T[1] < 0)
+    set T[1] = 0
+  if (@LPTimerCountdown <= 0) {
+    set anox_worldskill_successful = 0
+    gosub 4001:8099
+  }
+}
+
+finishswitch {
+  extern RemoveAPE2DControl turnup1
+  extern RemoveAPE2DControl turnup2
+  extern RemoveAPE2DControl turnup3
+  extern RemoveAPE2DControl turnup4
+  extern RemoveAPE2DControl turnup5
+  extern RemoveAPE2DControl turndn1
+  extern RemoveAPE2DControl turndn2
+  extern RemoveAPE2DControl turndn3
+  extern RemoveAPE2DControl turndn4
+  extern RemoveAPE2DControl turndn5
+  extern RemoveAPE2DControl select1
+  extern RemoveAPE2DControl select2
+  extern RemoveAPE2DControl select3
+  extern RemoveAPE2DControl select4
+  extern RemoveAPE2DControl select5
+  extern RemoveAPE2DControl lock2box
+  extern RemoveAPE2DControl what
+  extern RemoveAPE2DControl quit
+  echo "Finish 1"
+  unset ws_lockcombo
+  unset lptime
+  unset lpdifficulty
+  goto 4001:8020
+}
+
+style "null"
+flags passive2d, TRUE
+xpos 364
+ypos 190
+background "lockpick/lock_background.tga" 
+if ((LPdifficulty >= 1) && (@Lock_TumblerAnim != 1))
+  image "lockpick/mag_top_$S[1]$.png" 155, y[0]
+if ((LPdifficulty >= 2) && (@Lock_TumblerAnim != 2))
+  image "lockpick/mag_top_$S[2]$.png" 172, y[1]
+if ((LPdifficulty >= 3) && (@Lock_TumblerAnim != 3))
+  image "lockpick/mag_top_$S[3]$.png" 189, y[2]
+if ((LPdifficulty >= 4) && (@Lock_TumblerAnim != 4))
+  image "lockpick/mag_top_$S[4]$.png" 206, y[3]
+if ((LPdifficulty == 5) && (@Lock_TumblerAnim != 5))
+  image "lockpick/mag_top_$S[5]$.png" 223, y[4]
+if ((LPdifficulty >= 1) && (@Lock_TumblerAnim != 1))
+  image "lockpick/mag_bottom_$S[1]$.png" 155, y[5]
+if ((LPdifficulty >= 2) && (@Lock_TumblerAnim != 2))
+  image "lockpick/mag_bottom_$S[2]$.png" 172, y[6]
+if ((LPdifficulty >= 3) && (@Lock_TumblerAnim != 3))
+  image "lockpick/mag_bottom_$S[3]$.png" 189, y[7]
+if ((LPdifficulty >= 4) && (@Lock_TumblerAnim != 4))
+  image "lockpick/mag_bottom_$S[4]$.png" 206, y[8]
+if ((LPdifficulty == 5) && (@Lock_TumblerAnim != 5))
+  image "lockpick/mag_bottom_$S[5]$.png" 223, y[9]
+if ((LPdifficulty >= 1) && (@Lock_TumblerAnim == 1))
+  image "lockpick/mag_anim_top.atd" 155, y[0]
+if ((LPdifficulty >= 2) && (@Lock_TumblerAnim == 2))
+  image "lockpick/mag_anim_top.atd" 172, y[1]
+if ((LPdifficulty >= 3) && (@Lock_TumblerAnim == 3))
+  image "lockpick/mag_anim_top.atd" 189, y[2]
+if ((LPdifficulty >= 4) && (@Lock_TumblerAnim == 4))
+  image "lockpick/mag_anim_top.atd" 206, y[3]
+if ((LPdifficulty == 5) && (@Lock_TumblerAnim == 5))
+  image "lockpick/mag_anim_top.atd" 223, y[4]
+if ((LPdifficulty >= 1) && (@Lock_TumblerAnim == 1))
+  image "lockpick/mag_anim_bottom.atd" 155, y[5]
+if ((LPdifficulty >= 2) && (@Lock_TumblerAnim == 2))
+  image "lockpick/mag_anim_bottom.atd" 172, y[6]
+if ((LPdifficulty >= 3) && (@Lock_TumblerAnim == 3))
+  image "lockpick/mag_anim_bottom.atd" 189, y[7]
+if ((LPdifficulty >= 4) && (@Lock_TumblerAnim == 4))
+  image "lockpick/mag_anim_bottom.atd" 206, y[8]
+if ((LPdifficulty == 5) && (@Lock_TumblerAnim == 5))
+  image "lockpick/mag_anim_bottom.atd" 223, y[9]
+image "lockpick/lock_joint1.tga" x[2], 94
+image "lockpick/lock_joint1.tga" x[3], 94
+image "lockpick/lock_joint1.tga" x[4], 94
+image "lockpick/lock_joint1.tga" x[5], 94
+if (J[6])
+  image "lockpick/lock_joint1.tga" x[6], 94
+if (J[7])
+  image "lockpick/lock_joint1.tga" x[7], 94
+if (J[8])
+  image "lockpick/lock_joint1.tga" x[8], 94
+if (J[9])
+  image "lockpick/lock_joint1.tga" x[9], 94
+if (J[0])
+  image "lockpick/lock_joint1.tga" x[0], 94
+image "lockpick/lock_background2.tga" 0, 84
+image "lockpick/lock_claw.tga" x[1], 81
+image "lockpick/meter_on_$M[1]$.tga" 26, 118
+image "lockpick/lock_slider.tga" 22, Q[1]
+if (LPdifficulty >= 1)
+  image "lockpick/arrow_up_$U[1]$.tga" 164, 186
+if (LPdifficulty >= 2)
+  image "lockpick/arrow_up_$U[2]$.tga" 181, 186
+if (LPdifficulty >= 3)
+  image "lockpick/arrow_up_$U[3]$.tga" 198, 186
+if (LPdifficulty >= 4)
+  image "lockpick/arrow_up_$U[4]$.tga" 215, 186
+if (LPdifficulty >= 5)
+  image "lockpick/arrow_up_$U[5]$.tga" 232, 186
+if (LPdifficulty >= 1)
+  image "lockpick/arrow_down_$V[1]$.tga" 164, 219
+if (LPdifficulty >= 2)
+  image "lockpick/arrow_down_$V[2]$.tga" 181, 219
+if (LPdifficulty >= 3)
+  image "lockpick/arrow_down_$V[3]$.tga" 198, 219
+if (LPdifficulty >= 4)
+  image "lockpick/arrow_down_$V[4]$.tga" 215, 219
+if (LPdifficulty == 5)
+  image "lockpick/arrow_down_$V[5]$.tga" 232, 219
+if ((LPdifficulty >= 1) && (B[1] == 0))
+  image "lockpick/lock_cd$D[1]$.tga" 162, 199
+if ((LPdifficulty >= 2) && (B[2] == 0))
+  image "lockpick/lock_cd$D[2]$.tga" 179, 199
+if ((LPdifficulty >= 3) && (B[3] == 0))
+  image "lockpick/lock_cd$D[3]$.tga" 196, 199
+if ((LPdifficulty >= 4) && (B[4] == 0))
+  image "lockpick/lock_cd$D[4]$.tga" 213, 199
+if ((LPdifficulty == 5) && (B[5] == 0))
+  image "lockpick/lock_cd$D[5]$.tga" 230, 199
+if ((LPdifficulty >= 1) && (B[1] == 1))
+  image "lockpick/lock_cdb$D[1]$.tga" 162, 199
+if ((LPdifficulty >= 2) && (B[2] == 1))
+  image "lockpick/lock_cdb$D[2]$.tga" 179, 199
+if ((LPdifficulty >= 3) && (B[3] == 1))
+  image "lockpick/lock_cdb$D[3]$.tga" 196, 199
+if ((LPdifficulty >= 4) && (B[4] == 1))
+  image "lockpick/lock_cdb$D[4]$.tga" 213, 199
+if ((LPdifficulty == 5) && (B[5] == 1))
+  image "lockpick/lock_cdb$D[5]$.tga" 230, 199
+image "lockpick/lock_tm$t[1]$.png" 12, 10
+image "lockpick/lock_tm$t[2]$.png" 30, 10
+image "lockpick/lock_tm$t[3]$.png" 53, 10
+image "lockpick/period.png" 46, 26
+
+#window 4001:8050
+startswitch {
+  if (@wslockturn == 0)
+    set @wslockturn = 1
+  extern loopsound "sound/maps/mac/mac_Neon_g.wav"
+  set @LockAnimTime = func_gametime
+  set @Lock_TumblerAnim = @wslockturn
+}
+
+thinkswitch {
+  set @moveslider = func_gametime
+  set Q[1] = (((111 / 2) * @moveslider) * 0.0010000000475)
+  set Q[3] = (77 * 2)
+  set Q[1] = func_mod[Q[1],Q[3]]
+  if (Q[1] >= 77)
+    set Q[1] = (Q[3] - Q[1])
+  set Q[1] = (Q[1] + 164)
+  if ((func_gametime - @LockAnimTime) > 2000) {
+    gosub 4001:8070
+    extern stopsound "sound/maps/mac/mac_Neon_g.wav"
+    set @Lock_TumblerAnim = 0
+    closewindow 4001:8050
+  }
+}
+
+style "NULL"
+flags passive, TRUE
+width 0
+height 0
+
+#window 4001:8052
+startswitch {
+  if (@wslockturn == 2)
+    set J[6] = 1
+  if (@wslockturn == 2)
+    set J[7] = 1
+  if (@wslockturn == 3)
+    set J[8] = 1
+  if (@wslockturn == 4)
+    set J[9] = 1
+  if (@wslockturn == 5)
+    set J[0] = 1
+  extern loopsound "ui/skill/picklock_tumbler.wav"
+  set @XStart = X[1]
+  if (@wslockturn == 0) {
+    set @XFinish = 150
+  } else
+    set @XFinish = (@XStart + 16)
+  set @movepick = func_gametime
+  if (@wslockturn == 0)
+    set @movepickdone = (@movepick + 1600)
+  if (@wslockturn != 0)
+    set @movepickdone = (@movepick + 800)
+  set @LockAnimInProgress = 1
+}
+
+thinkswitch {
+  set @LockAnimInProgress = 1
+  set @fractiontime = ((func_gametime - @movepick) / (@movepickdone - @movepick))
+  if (@fractiontime > 1) {
+    set @fractiontime = 1
+  } else
+    set @fractiontime = (1 - ((1 - @fractiontime) * (1 - @fractiontime)))
+  set X[1] = (@XStart + (@fractiontime * (@XFinish - @XStart)))
+  gosub 4001:8053
+  if (@fractiontime >= 1) {
+    if (@wslockturn == 0) {
+      set J[6] = 1
+      set J[7] = 1
+      set J[8] = 1
+    }
+    set X[1] = @XFinish
+    gosub 4001:8053
+    extern stopsound "ui/skill/picklock_tumbler.wav"
+    if (@wslockturn != 0)
+      extern playsound "ui/gen/ui_gen_displaychange.wav"
+    closewindow 4001:8052
+    set @LockAnimInProgress = 0
+    if (@wslockturn != 0)
+      gosub 4001:8045
+  }
+}
+
+style "NULL"
+flags passive, TRUE
+width 0
+height 0
+
+#window 4001:8094
+title "Boots' PickLock"
+body "Guess the code for each tumbler by clicking the up and down arrows above each digit, or by using the up and down arrow keys. "
+body "Then click on the tumbler or press space to try that number. Solve the entire lock in time to succeed."
+startswitch {
+  set @LockPause = 1
+}
+
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 009999ee color2 = 008888dd color3 = 119999ee color4 = 008080d6
+xpos 30
+ypos 55
+width 580
+nextwindow 4001:8095
+
+#window 4001:8095
+title "Boots' PickLock"
+body "Hint: A meter on the handle of the lockpick will help show you how close you are."
+finishswitch {
+  set @LockAnimInProgress = 0
+  set @LockPause = 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 009999ee color2 = 008888dd color3 = 119999ee color4 = 008080d6
+xpos 30
+ypos 55
+width 580
+
+#window 4001:8096
+title "Boots' Master PickLock"
+body "Guess the code for each tumbler by clicking the up and down arrows above each digit, or by using the up and down arrow keys. "
+body "Then click on the tumbler or press space to try that number. A meter on the handle will help you see how close you are."
+startswitch {
+  set @LockPause = 1
+}
+
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 009999ee color2 = 008888dd color3 = 119999ee color4 = 008080d6
+xpos 30
+ypos 55
+width 580
+nextwindow 4001:8097
+
+#window 4001:8097
+title "Boots' Master PickLock"
+body "Solve the entire lock in time to succeed.\n\n"
+if (@picklockworldlevel == 1)
+  body "Having trouble with time? Look at getting an upgrade to your lockpick."
+if (@picklockworldlevel == 2)
+  body "Having trouble with time? Check out that new button on your lockpick."
+finishswitch {
+  set @LockAnimInProgress = 0
+  set @LockPause = 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 009999ee color2 = 008888dd color3 = 119999ee color4 = 008080d6
+xpos 30
+ypos 55
+width 580
+
+#switch 4001:8003
+if ((LPdifficulty < 1) || (LPdifficulty > 5))
+  set LPdifficulty = 3
+if ((LPtime < 1) || (LPtime > 99))
+  set LPtime = 35
+if (ws_skill_level == 2) {
+  set LPtime = 10
+  set LPdifficulty = 5
+}
+console "pushbind"
+console "bind KP_UPARROW \"invoke 4001:8085\""
+console "bind KP_DOWNARROW \"invoke 4001:8090\""
+console "bind UPARROW \"invoke 4001:8085\""
+console "bind DOWNARROW \"invoke 4001:8090\""
+console "bind SPACE \"invoke 4001:8040\""
+extern RegisterPic @lockpick_atd1 /gameflow/lockpick/mag_anim_top.atd
+extern RegisterPic @lockpick_atd2 /gameflow/lockpick/mag_anim_bottom.atd
+
+#switch 4001:8005
+set lastMS = func_GameTime
+set currentMS = lastMS
+set @LPTimerTime = func_timer
+set @LPTimerCountdown = (LPtime * 10)
+set t[1] = func_div[LPtime,10]
+set t[2] = func_mod[LPtime,10]
+if ((@picklockworldlevel == 1) && (ws_skill_level == 2)) {
+  set timed_message = 99
+  timed_message$="You are not skilled enough to Lockpick this." 
+  gosub 1000:1
+}
+if (ws_lockcombo == 0)
+  set C[1] = func_drand[0,9]
+if (ws_lockcombo == 0)
+  set C[2] = func_drand[0,9]
+if (ws_lockcombo == 0)
+  set C[3] = func_drand[0,9]
+if (ws_lockcombo == 0)
+  set C[4] = func_drand[0,9]
+if (ws_lockcombo == 0)
+  set C[5] = func_drand[0,9]
+if (ws_lockcombo > 0)
+  gosub 4001:8007
+set D[1] = func_drand[0,9]
+set D[2] = func_drand[0,9]
+set D[3] = func_drand[0,9]
+set D[4] = func_drand[0,9]
+set D[5] = func_drand[0,9]
+if (D[1] == C[1])
+  set D[1] = (D[1] + 1)
+if (D[2] == C[2])
+  set D[2] = (D[2] + 1)
+if (D[3] == C[3])
+  set D[3] = (D[3] + 1)
+if (D[4] == C[4])
+  set D[4] = (D[4] + 1)
+if (D[5] == C[5])
+  set D[5] = (D[5] + 1)
+if (D[1] > 9)
+  set D[1] = (D[1] - 2)
+if (D[2] > 9)
+  set D[2] = (D[2] - 2)
+if (D[3] > 9)
+  set D[3] = (D[3] - 2)
+if (D[4] > 9)
+  set D[4] = (D[4] - 2)
+if (D[5] > 9)
+  set D[5] = (D[5] - 2)
+gosub 4001:8006
+goto 0:0
+
+#switch 4001:8006
+set x[1] = 105
+set x[2] = 89
+set x[3] = 73
+set x[4] = 57
+set x[5] = 41
+set x[6] = 25
+set x[7] = 41
+set x[8] = 41
+set x[9] = 41
+set x[0] = 41
+set y[0] = 40
+set y[1] = 40
+set y[2] = 40
+set y[3] = 40
+set y[4] = 40
+set y[5] = 103
+set y[6] = 103
+set y[7] = 103
+set y[8] = 103
+set y[9] = 103
+set B[1] = 1
+set U[1] = 1
+set V[1] = 1
+set Q[1] = 203
+gosub 4001:8052
+if ((ws_skill_level == 1) && (Lockpick_First_Time1 == 0)) {
+  set Lockpick_First_Time1 = 1
+  gosub 4001:8092
+}
+if ((ws_skill_level == 2) && (Lockpick_First_Time2 == 0)) {
+  set Lockpick_First_Time2 = 1
+  gosub 4001:8092
+}
+goto 0:0
+
+#switch 4001:8007
+if (ws_lockcombo > 9999)
+  set C[5] = func_mod[ws_lockcombo,10]
+if (ws_lockcombo > 9999)
+  set ws_lockcombo = func_div[ws_lockcombo,10]
+if (ws_lockcombo > 999)
+  set C[4] = func_mod[ws_lockcombo,10]
+if (ws_lockcombo > 999)
+  set ws_lockcombo = func_div[ws_lockcombo,10]
+if (ws_lockcombo > 99)
+  set C[3] = func_mod[ws_lockcombo,10]
+if (ws_lockcombo > 99)
+  set ws_lockcombo = func_div[ws_lockcombo,10]
+if (ws_lockcombo > 9)
+  set C[2] = func_mod[ws_lockcombo,10]
+if (ws_lockcombo > 9)
+  set ws_lockcombo = func_div[ws_lockcombo,10]
+if (ws_lockcombo > 0)
+  set C[1] = func_mod[ws_lockcombo,10]
+if (ws_lockcombo > 0)
+  set ws_lockcombo = func_div[ws_lockcombo,10]
+
+#switch 4001:8020
+set @Run_Lockpick_FirstTime = 0
+gosub 4001:8027
+echo "Finish 2"
+goto 4001:8025
+
+#switch 4001:8025
+extern stopsound "ui/skill/picklock_tumbler.wav"
+extern stopsound "sound/maps/mac/mac_Neon_g.wav"
+echo "Finish 3"
+unset @LP_Lock2Pic
+unset @LPturnselect
+unset @wslockturn
+unset @CorrectLockCode
+unset @LockAnimTime
+unset @LockAnimInProgress
+unset @LPCodeFromGuess
+unset @Lock_TumblerAnim
+unset ws_difficulty
+unset ws_time
+console "popbind"
+set ws_doing_picklock = 0
+set ws_doing_wskill = 0
+
+#switch 4001:8027
+extern deassign X[0] 10
+extern deassign Y[0] 8
+extern deassign S[0] 6
+extern deassign U[0] 5
+extern deassign V[0] 5
+extern deassign C[0] 6
+extern deassign D[0] 6
+extern deassign J[0] 9
+extern deassign M[0] 5
+extern deassign B[0] 6
+extern deassign T[0] 4
+goto 0:0
+
+#switch 4001:8035
+if (@LockPause)
+  goto 0:0
+if (@LockAnimInProgress == 1) {
+  goto 0:0
+} else {
+  extern playsound "ui/gen/button2.wav"
+  if (@LPturnselect == 1) {
+    set D[$@wslockturn$] = (D[$@wslockturn$] + 1)
+    if (@wslockturn < 1)
+      set D[1] = (D[1] + 1)
+    if (D[$@wslockturn$] > 9)
+      set D[$@wslockturn$] = 0
+    if ((@wslockturn < 1) && (D[1] > 9))
+      set D[1] = 0
+  }
+  if (@LPturnselect == 2) {
+    set D[$@wslockturn$] = (D[$@wslockturn$] - 1)
+    if (@wslockturn < 1)
+      set D[1] = (D[1] - 1)
+    if (D[$@wslockturn$] < 0)
+      set D[$@wslockturn$] = 9
+    if ((@wslockturn < 1) && (D[1] < 0))
+      set D[1] = 9
+  }
+}
+
+#switch 4001:8040
+if (@LockPause)
+  goto 0:0
+if (@LockAnimInProgress == 1) {
+  goto 0:0
+} else {
+  set @LockAnimInProgress = 1
+  extern playsound "ui/gen/button2.wav"
+  goto 4001:8050
+}
+
+#switch 4001:8045
+extern RemoveAPE2DControl turnup1
+extern RemoveAPE2DControl turnup2
+extern RemoveAPE2DControl turnup3
+extern RemoveAPE2DControl turnup4
+extern RemoveAPE2DControl turnup5
+extern RemoveAPE2DControl turndn1
+extern RemoveAPE2DControl turndn2
+extern RemoveAPE2DControl turndn3
+extern RemoveAPE2DControl turndn4
+extern RemoveAPE2DControl turndn5
+if ((LPdifficulty >= 1) && (@wslockturn <= 1))
+  extern CreateAPE2DControl push turnup1 527 375 width=12 height=12 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=1 sequence=4001:8035
+if ((LPdifficulty >= 2) && (@wslockturn == 2))
+  extern CreateAPE2DControl push turnup2 544 375 width=12 height=12 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=1 sequence=4001:8035
+if ((LPdifficulty >= 3) && (@wslockturn == 3))
+  extern CreateAPE2DControl push turnup3 561 375 width=12 height=12 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=1 sequence=4001:8035
+if ((LPdifficulty >= 4) && (@wslockturn == 4))
+  extern CreateAPE2DControl push turnup4 578 375 width=12 height=12 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=1 sequence=4001:8035
+if ((LPdifficulty == 5) && (@wslockturn == 5))
+  extern CreateAPE2DControl push turnup5 595 375 width=12 height=12 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=1 sequence=4001:8035
+if ((LPdifficulty >= 1) && (@wslockturn <= 1))
+  extern CreateAPE2DControl push turndn1 527 408 width=12 height=12 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=2 sequence=4001:8035
+if ((LPdifficulty >= 2) && (@wslockturn == 2))
+  extern CreateAPE2DControl push turndn2 544 408 width=12 height=12 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=2 sequence=4001:8035
+if ((LPdifficulty >= 3) && (@wslockturn == 3))
+  extern CreateAPE2DControl push turndn3 561 408 width=12 height=12 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=2 sequence=4001:8035
+if ((LPdifficulty >= 4) && (@wslockturn == 4))
+  extern CreateAPE2DControl push turndn4 578 408 width=12 height=12 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=2 sequence=4001:8035
+if ((LPdifficulty == 5) && (@wslockturn == 5))
+  extern CreateAPE2DControl push turndn5 595 408 width=12 height=12 nodrawflag=true holdfocusflag=false gamevar=@LPturnselect returnvalue=2 sequence=4001:8035
+
+#switch 4001:8053
+set X[2] = (X[1] - 16)
+set X[3] = (X[2] - 16)
+set X[4] = (X[3] - 16)
+set X[5] = (X[4] - 16)
+if (J[6])
+  set X[6] = (X[5] - 16)
+if (J[7])
+  set X[7] = (X[6] - 16)
+if (J[8])
+  set X[8] = (X[7] - 16)
+if (J[9])
+  set X[9] = (X[8] - 16)
+if (J[0])
+  set X[0] = (X[9] - 16)
+
+#switch 4001:8055
+if (@LockPause)
+  goto 0:0
+extern get_world_skill_level picklock @picklockworldlevel
+if (@picklockworldlevel < 2) {
+  set TIMED_MESSAGE = 8
+  gosub 1000:1
+  goto 0:0
+} else {
+  set @LP_Lock2Pic = 1
+  gosub 4001:8060
+}
+
+#switch 4001:8060
+if (@LockPause)
+  goto 0:0
+extern playsound "ui/gen/button2.wav"
+set LPtime = 9
+set @LPTimerCountdown = (LPtime * 10)
+set t[1] = func_div[LPtime,10]
+set t[2] = func_mod[LPtime,10]
+
+#switch 4001:8070
+if (@LockPause)
+  goto 0:0
+if (D[$@wslockturn$] == C[$@wslockturn$]) {
+  set @Lock_move = (@wslockturn - 1)
+  set Y[$@Lock_move$] = (Y[$@Lock_move$] - 20)
+  set @Lock_move = (@wslockturn + 4)
+  set Y[$@Lock_move$] = (Y[$@Lock_move$] + 20)
+  set U[$@wslockturn$] = 0
+  set V[$@wslockturn$] = 0
+  set @wslockturn = (@wslockturn + 1)
+  set B[$@wslockturn$] = 1
+  set U[$@wslockturn$] = 1
+  set V[$@wslockturn$] = 1
+  extern playsound "ui/skill/picklock_success.wav"
+  set @CorrectLockCode = (@CorrectLockCode + 1)
+  set M[1] = 0
+  gosub 4001:8052
+} else {
+  extern playsound "ui/gen/bad_click.wav"
+  gosub 4001:8080
+}
+if (@LPturnselect == 0)
+  gosub 4001:8080
+set @LockAnimInProgress = 0
+if (LPdifficulty == @CorrectLockCode)
+  goto 4001:8075
+
+#switch 4001:8080
+set @LPCodeFromGuess = (C[$@wslockturn$] - D[$@wslockturn$])
+if (@LPCodeFromGuess < 0)
+  set @LPCodeFromGuess = (@LPCodeFromGuess * -1.000000)
+if (@LPCodeFromGuess > 5) {
+  if (C[$@wslockturn$] < D[$@wslockturn$])
+    set @LPCodeFromGuess = (C[$@wslockturn$] + (10 - D[$@wslockturn$]))
+  if (C[$@wslockturn$] > D[$@wslockturn$])
+    set @LPCodeFromGuess = (D[$@wslockturn$] + (10 - C[$@wslockturn$]))
+}
+if (@LPCodeFromGuess >= 5) {
+  set Q[1] = 235
+  set M[1] = 6
+}
+if (@LPCodeFromGuess == 4) {
+  set Q[1] = 220
+  set M[1] = 5
+}
+if (@LPCodeFromGuess == 3) {
+  set Q[1] = 205
+  set M[1] = 4
+}
+if (@LPCodeFromGuess == 2) {
+  set Q[1] = 190
+  set M[1] = 3
+}
+if (@LPCodeFromGuess == 1) {
+  set Q[1] = 175
+  set M[1] = 2
+}
+
+#switch 4001:8085
+set @LPturnselect = 1
+goto 4001:8035
+
+#switch 4001:8090
+set @LPturnselect = 2
+goto 4001:8035
+
+#switch 4001:8092
+if (ws_skill_level == 1)
+  goto 4001:8094
+if (ws_skill_level == 2)
+  goto 4001:8096
+goto 0:0
+
+#switch 4001:8099
+closewindow 4001:8001
+closewindow 4001:8050
+extern stopsound ../music/mp3/worldskill.mp3
+extern resumelevelmusic
+extern playsound "ui/gen/ui_gen_quit.wav"
+set anox_worldskill_successful = 0
+
+#switch 4001:8075
+closewindow 4001:8001
+closewindow 4001:8050
+set anox_worldskill_successful = 1
+extern stopsound ../music/mp3/worldskill.mp3
+extern resumelevelmusic
+extern playsound "ui/gen/ui_gen_chng_good.wav"

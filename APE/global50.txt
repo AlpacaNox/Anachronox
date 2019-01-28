@@ -1,0 +1,987 @@
+#window 4001:2
+startswitch {
+  gosub 2005:140
+  goto 0:0
+}
+
+thinkswitch {
+  if (ws_doing_wskill)
+    goto 0:0
+  if (func_gametime >= (@ws_currentMS + 250)) {
+    set @ws_currentMS = func_GameTime
+    set ws_delta = (ws_currentMS - ws_lastMS)
+    set ws_counter = (ws_counter + 1)
+    if (ws_counter == 2) {
+      set ws_doing_wskill = 1
+      gosub 4001:8001
+    }
+    if (ws_counter == 4) {
+      extern playsound player/worldskill/boots_picklock.wav
+      extern ANIM_PlayAnim playerchar0_handle gest_a 0 1 0
+    }
+    if (ws_counter == 10)
+      closewindow 4001:2
+    goto 0:0
+  }
+}
+
+finishswitch {
+  if (anox_worldskill_successful == 1)
+    gosub 2005:180
+  if (anox_worldskill_successful == 0)
+    gosub 2005:200
+  gosub 2005:220
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 4002:2
+startswitch {
+  gosub 2005:140
+  goto 0:0
+}
+
+thinkswitch {
+  if (ws_doing_wskill)
+    goto 0:0
+  if (func_gametime >= (@ws_currentMS + 250)) {
+    set @ws_currentMS = func_GameTime
+    set ws_delta = (ws_currentMS - ws_lastMS)
+    set ws_counter = (ws_counter + 1)
+    if (ws_counter == 2) {
+      set ws_doing_wskill = 1
+      gosub 4002:8001
+    }
+    if (ws_counter == 6) {
+      if ((ws_yammer1$ != "") && (anox_worldskill_successful == 1))
+        gosub 4002:10
+      if ((ws_yammer1$ == "") && (anox_worldskill_successful == 1))
+        gosub 4002:30
+      if (anox_worldskill_successful == 0)
+        gosub 4002:50
+    }
+    goto 0:0
+  }
+}
+
+finishswitch {
+  if (anox_worldskill_successful == 1)
+    gosub 2005:180
+  if (anox_worldskill_successful == 0)
+    gosub 2005:200
+  gosub 2005:220
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 4002:10
+title "Grumpos"
+body "%s", ws_yammer1$
+cam left restore zip
+talk player talk_a stay
+finishswitch {
+  if (ws_yammer2$ == "")
+    goto 4002:25
+  goto 4002:11
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+
+#window 4002:11
+title "Grumpos"
+body "%s", ws_yammer2$
+cam left restore zip
+talk player talk_a stay
+finishswitch {
+  if (ws_yammer3$ == "")
+    goto 4002:25
+  goto 4002:12
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+
+#window 4002:12
+title "Grumpos"
+body "%s", ws_yammer3$
+cam left restore zip
+talk player talk_a stay
+finishswitch {
+  if (ws_yammer4$ == "")
+    goto 4002:25
+  goto 4002:13
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+
+#window 4002:13
+title "Grumpos"
+body "%s", ws_yammer4$
+cam left restore zip
+talk player talk_a stay
+finishswitch {
+  if (ws_yammer5$ == "")
+    goto 4002:25
+  goto 4002:14
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+
+#window 4002:14
+title "Grumpos"
+body "%s", ws_yammer5$
+cam left restore zip
+talk player talk_a stay
+finishswitch {
+  if (ws_yammer6$ == "")
+    goto 4002:25
+  goto 4002:15
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+
+#window 4002:15
+title "Grumpos"
+body "%s", ws_yammer6$
+cam left restore zip
+talk player talk_a stay
+finishswitch {
+  if (ws_yammer7$ == "")
+    goto 4002:25
+  goto 4002:16
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+
+#window 4002:16
+title "Grumpos"
+body "%s", ws_yammer7$
+cam left restore zip
+talk player talk_a stay
+finishswitch {
+  if (ws_yammer8$ == "")
+    goto 4002:25
+  goto 4002:17
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+
+#window 4002:17
+title "Grumpos"
+body "%s", ws_yammer8$
+cam left restore zip
+talk player talk_a stay
+finishswitch {
+  goto 4002:25
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+
+#window 4002:20
+title "%s", ws_yammeredname$
+body "%s", ws_yammer_response$
+cam right restore zip
+finishswitch {
+  goto 4002:30
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+
+#window 4002:50
+title "Grumpos"
+if (ws_yammer_fail$ != "")
+  body "%s", ws_yammer_fail$
+if ((ws_yammer_fail$ == "") && (@GrumposFailureSpeach == 1))
+  body "Excuse me... can’t breathe... got a recurring case of graveyard cough..."
+if ((ws_yammer_fail$ == "") && (@GrumposFailureSpeach == 2))
+  body "Excuse me... can’t breathe... must be my bronchitis actin’ up..."
+if ((ws_yammer_fail$ == "") && (@GrumposFailureSpeach == 3))
+  body "Excuse me... can’t breathe... my farmer’s lung is kickin’ up some trouble..."
+if ((ws_yammer_fail$ == "") && (@GrumposFailureSpeach == 4))
+  body "Excuse me... can’t breathe... must be something lodged in my windpipe..."
+if ((ws_yammer_fail$ == "") && (@GrumposFailureSpeach == 5))
+  body "Excuse me... can’t breathe... my chest is feelin’ a bit constricted..."
+if ((ws_yammer_fail$ == "") && (@GrumposFailureSpeach == 6))
+  body "Excuse me... can’t breathe... I’m gettin’ all croupy all of a sudden..."
+cam left restore zip
+talk player talk_a stay
+startswitch {
+  set @GrumposFailureSpeach = func_drand[1,6]
+}
+
+finishswitch {
+  goto 4002:51
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+
+#window 4002:51
+title "%s", ws_yammeredname$
+if (ws_yammer_fail_retort$ != "")
+  body "%s", ws_yammer_fail_retort$
+if ((ws_yammer_fail_retort$ == "") && (@VictimFailureSpeach == 1))
+  body "Let’s wrap this up, old-timer. Don’t waste my time if you’re just gonna stutter."
+if ((ws_yammer_fail_retort$ == "") && (@VictimFailureSpeach == 2))
+  body "Are we done here, sir? Shove off, you incoherent coot."
+if ((ws_yammer_fail_retort$ == "") && (@VictimFailureSpeach == 3))
+  body "You’re fading out, old man. Buzz off until you’ve got something to say."
+if ((ws_yammer_fail_retort$ == "") && (@VictimFailureSpeach == 4))
+  body "Spit it out or take a hike before you expire, grandpa."
+if ((ws_yammer_fail_retort$ == "") && (@VictimFailureSpeach == 5))
+  body "Beat it if you’re just gonna stand there saying nothing."
+startswitch {
+  set @VictimFailureSpeach = func_drand[1,5]
+}
+
+finishswitch {
+  goto 4002:35
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+
+#window 4003:2
+startswitch {
+  gosub 2005:140
+  goto 0:0
+}
+
+thinkswitch {
+  if (ws_doing_wskill)
+    goto 0:0
+  if (func_gametime >= (@ws_currentMS + 250)) {
+    set @ws_currentMS = func_GameTime
+    set ws_delta = (ws_currentMS - ws_lastMS)
+    set ws_counter = (ws_counter + 1)
+    if (ws_counter == 2) {
+      set ws_doing_wskill = 1
+      gosub 4003:8001
+    }
+    if (ws_counter == 4) {
+      extern playsound player/worldskill/pal_comptalk.wav
+      extern ANIM_PlayAnim playerchar0_handle skill_a 0 1 1
+    }
+    if (ws_counter == 10)
+      closewindow 4003:2
+    goto 0:0
+  }
+}
+
+finishswitch {
+  if (anox_worldskill_successful == 1)
+    gosub 2005:180
+  if (anox_worldskill_successful == 0)
+    gosub 2005:200
+  gosub 2005:220
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 4004:2
+startswitch {
+  gosub 2005:140
+  goto 0:0
+}
+
+thinkswitch {
+  if (ws_doing_wskill)
+    goto 0:0
+  if (func_gametime >= (@ws_currentMS + 250)) {
+    set @ws_currentMS = func_GameTime
+    set ws_delta = (ws_currentMS - ws_lastMS)
+    set ws_counter = (ws_counter + 1)
+    if (ws_counter == 1)
+      if (ws_skill_level == 1)
+        extern ANIM_PlayAnim playerchar0_handle wskill_a 0 1 1
+    if (ws_counter == 2) {
+      if (ws_skill_level == 2)
+        extern ANIM_PlayAnim playerchar0_handle wskill_b 0 1 1
+      set ws_doing_wskill = 1
+      gosub 4004:8001
+    }
+    if (ws_counter == 4)
+      if (ws_skill_level == 2)
+        extern ANIM_PlayAnim playerchar0_handle wskill_c 0 1 0
+    if (ws_counter == 10) {
+      if (ws_analyze$ == "")
+        closewindow 4004:2
+      if (ws_analyze$ != "")
+        gosub 4004:6		                              
+    }
+    goto 0:0
+  }
+}
+
+finishswitch {
+  if (anox_worldskill_successful == 1)
+    gosub 2005:180
+  if (anox_worldskill_successful == 0)
+    gosub 2005:200
+  gosub 2005:220
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 4004:6
+title "Rho"
+if (anox_worldskill_successful)
+  body "%s", ws_analyze$
+if (anox_worldskill_successful == 0)
+  body "Hmmm... I'm SURE I can figure this out... Just need to analyze it a bit more..."
+cam left restore zip
+finishswitch {
+  closewindow 4004:2
+  unset ws_analyze$ 
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 300
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 4005:2
+startswitch {
+  gosub 2005:140
+  goto 0:0
+}
+
+thinkswitch {
+  if (ws_doing_wskill)
+    goto 0:0
+  if (func_gametime >= (@ws_currentMS + 50)) {
+    set @ws_currentMS = func_GameTime
+    set ws_counter = (ws_counter + 1)
+    if (ws_counter == 1)
+      extern AI_SpawnEntity objhandle ob_squib3
+    if (ws_counter == 2) {
+      set ws_doing_wskill = 1
+      gosub 4005:8001
+    }
+    if (ws_counter == 10) {
+      extern AI_SpawnEntity dishhandle ob_squib2
+      extern np dishhandle 1 0 effect_1 0 343/tractor_shine
+      extern AI_GetXYZ playerchar0_handle cx cy cz
+      set cz = (cz + 60)
+      extern AI_SetXYZ dishhandle cx cy cz
+      extern AI_GrabEntity ws_object$ itemHandle
+      extern BEAM_CreateBeamEx playerchar0_handle fx_2 itemHandle 0 1 0 1 .8 1 0 1 3000 1 1 1 2 2 2089
+      extern BEAM_CreateBeamEx playerchar0_handle fx_2 itemHandle 0 1 0 1 .8 1 0 1 3000 1 1 1 2 2 2601
+      extern playsound player/worldskill/democratus_tractor1.wav
+    }
+    if (ws_counter == 30) {
+      extern AI_GetXYZ itemhandle ix iy iz
+      extern np objhandle 1 0 effect_1 0 343/tractor_objectglow
+      extern AI_SetXYZ objhandle ix iy iz
+      set ws_deltax = ((cx - ix) / 30)
+      set ws_deltay = ((cy - iy) / 30)
+      set ws_deltaz = ((cz - iz) / 30)
+      set ws_scale = 1
+    }
+    if ((ws_counter > 30) && (ws_counter < 60)) {
+      if (ws_counter == 40) {
+        extern np objhandle 1 0 effect_1 0 343/tractor_littleflash
+        extern playsound player/worldskill/democratus_tractor2.wav
+      }
+      set ix = (ix + ws_deltax)
+      set iy = (iy + ws_deltay)
+      set iz = (iz + ws_deltaz)
+      if (anox_worldskill_successful == 1)
+        extern AI_SetXYZ itemHandle ix iy iz
+      if (anox_worldskill_successful == 1)
+        extern AI_SetXYZ objhandle ix iy iz
+      if ((ws_counter >= 45) && (ws_scale > 0.10000000149))
+        set ws_scale = (ws_scale - 0.10000000149)
+      if (anox_worldskill_successful == 1)
+        extern AI_SetScale itemHandle ws_scale ws_scale ws_scale
+    }
+    if (ws_counter == 60) {
+      extern BEAM_KillBeam playerchar0_handle
+      extern AI_DestroyEntity dishhandle
+      extern AI_DestroyEntity objhandle
+      if (anox_worldskill_successful == 1)
+        extern AI_DestroyEntity itemhandle
+      closewindow 4005:2
+    }
+  }
+}
+
+finishswitch {
+  if (anox_worldskill_successful == 1)
+    gosub 2005:180
+  if (anox_worldskill_successful == 0)
+    gosub 2005:200
+  gosub 2005:220
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 4006:2
+startswitch {
+  gosub 2005:140
+  goto 0:0
+}
+
+thinkswitch {
+  if (ws_doing_wskill)
+    goto 0:0
+  if (func_gametime >= (@ws_currentMS + 250)) {
+    set @ws_currentMS = func_GameTime
+    set ws_delta = (ws_currentMS - ws_lastMS)
+    set ws_counter = (ws_counter + 1)
+    if (ws_counter == 2) {
+      set ws_doing_wskill = 1
+      gosub 4006:8001
+    }
+    if (ws_counter == 4) {
+      extern playsound player/worldskill/stiletto_throwloonie.wav
+      extern ANIM_PlayAnim playerchar0_handle gest_g
+    }
+    if (ws_counter == 10)
+      closewindow 4006:2
+    goto 0:0
+  }
+}
+
+finishswitch {
+  if (anox_worldskill_successful == 1)
+    gosub 2005:180
+  if (anox_worldskill_successful == 0)
+    gosub 2005:200
+  gosub 2005:220
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 4007:2
+startswitch {
+  gosub 2005:140
+  goto 0:0
+}
+
+thinkswitch {
+  if (ws_doing_wskill)
+    goto 0:0
+  if (func_gametime >= (@ws_currentMS + 50)) {
+    set @ws_currentMS = func_GameTime
+    set ws_delta = (ws_currentMS - ws_lastMS)
+    set ws_counter = (ws_counter + 1)
+    if (ws_counter == 2) {
+      set ws_doing_wskill = 1
+      gosub 4007:8001
+    }
+    if (ws_counter == 3) {
+      extern ANIM_PlayAnim playerchar0_handle wskill_a
+      set ws_counter = 29
+    }
+    if (ws_counter == 55) {
+      echo "*|*| Eeetz Beein Biiine Lieber!!!!"
+      echo "*|*| Eeetz Beein Biiine Lieber!!!!"
+      echo "*|*| Eeetz Beein Biiine Lieber!!!!"
+      gosub 4007:6
+    } else if (ws_counter == 59) {
+      extern PARTICLE_StopEffect puffhandle effect_1
+      extern AI_DestroyEntity puffhandle
+    } else if (((ws_counter == 58) || (ws_counter == 64)) || (ws_counter == 100)) {
+      set cz = (cz - 4)
+      extern AI_SetXYZ crashhandle cx cy cz
+    } else if (((ws_counter == 61) || (ws_counter == 97)) || (ws_counter == 103)) {
+      set cz = (cz + 4)
+      extern AI_SetXYZ crashhandle cx cy cz
+    } else if (ws_counter == 56) {
+      set cy = (cy + 4)
+      set cz = (cz + 8)
+      extern AI_SetXYZ crashhandle cx cy cz
+    } else if (ws_counter == 62) {
+      extern ENT_SetColor crashhandle 1 .1 .1
+    } else if (ws_counter == 63) {
+      set cx = (cx + 2)
+      set cz = (cz - 6)
+      extern AI_SetXYZ crashhandle cx cy cz
+      extern ENT_SetColor crashhandle 1 1 1
+    } else if (ws_counter == 72) {
+      extern ENT_SetColor crashhandle 1 .3 .3
+    } else if (ws_counter == 75) {
+      if ((anox_worldskill_successful == 1) && (ws_object$ != ""))
+        extern AI_DestroyEntity doorhandle
+      extern AI_DestroyEntity crashhandle
+      closewindow 4007:2
+    }
+    goto 0:0
+  }
+}
+
+finishswitch {
+  if (anox_worldskill_successful == 1)
+    gosub 2005:180
+  if (anox_worldskill_successful == 0)
+    gosub 2005:200
+  gosub 2005:220
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#switch 2005:100
+if (anox_worldskill_active == 0) {
+  set ws_called_invalid = 1
+  set timed_message = 31
+  gosub 1000:1
+  goto 0:0
+}
+
+#switch 2005:120
+if (ws_doing_wskill) {
+  echo "!_!_!_! Error Worldskill In Progress !_!_!_!"
+  echo "!_!_!_! Report This To An APE Programmer !_!_!_!"
+  goto 0:0
+}
+set anox_worldskill_successful = 0
+set anox_interface_active = 1
+extern playsound ui/skill/ui_skill_success.wav
+extern AI_GrabEntity PlayerChar0 playerchar0_handle
+set @camtovar = func_cursorentity
+extern cam_to_edictnumber @camtovar
+extern cam_from playerchar0
+extern cam_set cam_movespeed 300
+extern cam_set cam_lagfactor 100
+extern cam_set cam_lift 0
+if (ws_standoverride == 0)
+  extern AI_SeekAndFace playerchar0_handle ws_stand$
+if (ws_standoverride == 0)
+  extern AI_SetCompletionCallback playerchar0_handle ws_callback_sequence$
+if (ws_standoverride == 1)
+  goto $ws_callback_sequence_a$:$ws_callback_sequence_b$
+
+#switch 2005:140
+set @ws_currentMS = func_gametime
+set ws_counter = 0
+
+#switch 2005:160
+extern ANIM_MakeSmart playerchar0_handle
+extern AI_ReleaseEntity playerchar0_handle
+
+#switch 2005:180
+if (ws_skill_level == 1)
+  extern Add_XP playerchar0$ 50
+if (ws_skill_level == 2)
+  extern Add_XP playerchar0$ 100
+gosub 2005:160
+extern playsound ui/skill/ui_skill_success.wav
+if (ws_object$ != "")
+  target ws_object$
+if ((ws_getitem == 1) || (ws_getitem$ != ""))
+  extern AI_GetEdictNumber PlayerChar0 playerchar0_handle
+if ((ws_getitem == 1) && (ws_getitem$ == ""))
+  extern pickup_getitem playerchar0_handle ws_object$
+if (ws_getitem$ != "")
+  extern pickup_getitem playerchar0_handle ws_getitem$
+if (ws_ambientname$ != "")
+  extern playambient ws_ambientname$ 0 0:0 null null 0 0 false
+if (ws_scenename$ != "")
+  extern playscene ws_scenename$ 0 0:0 null null 0 0 false
+if ((ws_variable$ != "") && (ws_variable == 0))
+  extern setvar_flexible ws_variable$ 1
+if ((ws_variable$ != "") && (ws_variable != 0))
+  extern setvar_flexible ws_variable$ ws_variable
+if (ws_bank)
+  gosub $ws_bank$:$ws_entry$
+
+#switch 2005:200
+gosub 2005:160
+extern playsound ui/gen/ui_gen_error.wav
+
+#switch 2005:220
+unset anox_interface_active
+unset ws_stand$ 
+unset ws_object$ 
+unset ws_bank
+unset ws_getitem$ 
+unset ws_entry
+unset ws_getitem
+unset ws_ambientname$ 
+unset ws_scenename$ 
+unset ws_variable$ 
+unset ws_variable
+unset ws_skill_level
+unset ws_doing_wskill
+unset ws_callback_sequence$ 
+unset ws_counter
+unset ws_standoverride
+unset ws_callback_sequence_a
+unset ws_callback_sequence_b
+extern cam_restore
+
+#switch 4001:1
+gosub 2005:100
+if (ws_called_invalid == 1) {
+  set ws_called_invalid = 0
+  goto 0:0
+}
+if (func_charinparty[boots] != 3) {
+  set timed_message = 5
+  gosub 1000:1
+  goto 0:0
+}
+set ws_skill_level = 1
+ws_callback_sequence$="4001:2" 
+set ws_callback_sequence_a = 4001
+set ws_callback_sequence_b = 2
+gosub 2005:120
+
+#switch 4101:1
+gosub 2005:100
+if (ws_called_invalid == 1) {
+  set ws_called_invalid = 0
+  goto 0:0
+}
+if (func_charinparty[boots] != 3) {
+  set timed_message = 5
+  gosub 1000:1
+  goto 0:0
+}
+set ws_skill_level = 2
+ws_callback_sequence$="4001:2" 
+set ws_callback_sequence_a = 4001
+set ws_callback_sequence_b = 2
+gosub 2005:120
+
+#switch 4002:1
+gosub 2005:100
+if (ws_called_invalid == 1) {
+  set ws_called_invalid = 0
+  goto 0:0
+}
+if (func_charinparty[grumpos] != 3) {
+  set timed_message = 5
+  gosub 1000:1
+  goto 0:0
+}
+set ws_skill_level = 1
+ws_callback_sequence$="4002:2" 
+set ws_callback_sequence_a = 4002
+set ws_callback_sequence_b = 2
+gosub 2005:120
+
+#switch 4002:25
+if (ws_yammer_response$ != "") {
+  goto 4002:20
+} else
+  goto 4002:30
+
+#switch 4002:30
+if (ws_outofway$ != "")
+  extern AI_GrabEntity ws_yammeree$ poophandle
+if (ws_outofway$ != "")
+  extern AI_SeekAndFace poophandle ws_outofway$
+if (ws_outofway$ != "")
+  extern AI_SetCompletionCallback poophandle 4002:35
+if (ws_outofway$ == "")
+  goto 4002:35
+
+#switch 4002:35
+unset ws_yammer_fail$ 
+unset ws_yammer_fail_retort$ 
+unset ws_yammeredname$ 
+unset ws_yammeree$ 
+unset ws_outofway$ 
+unset ws_yammer1$ 
+unset ws_yammer2$ 
+unset ws_yammer3$ 
+unset ws_yammer4$ 
+unset ws_yammer5$ 
+unset ws_yammer6$ 
+unset ws_yammer7$ 
+unset ws_yammer8$ 
+closewindow 4002:2
+goto 0:0
+
+#switch 4102:1
+gosub 2005:100
+if (ws_called_invalid == 1) {
+  set ws_called_invalid = 0
+  goto 0:0
+}
+if (func_charinparty[grumpos] != 3) {
+  set timed_message = 5
+  gosub 1000:1
+  goto 0:0
+}
+set ws_skill_level = 2
+ws_callback_sequence$="4002:2" 
+set ws_callback_sequence_a = 4002
+set ws_callback_sequence_b = 2
+gosub 2005:120
+
+#switch 4003:1
+gosub 2005:100
+if (ws_called_invalid == 1) {
+  set ws_called_invalid = 0
+  goto 0:0
+}
+if (func_charinparty[pal] != 3) {
+  set timed_message = 5
+  gosub 1000:1
+  goto 0:0
+}
+set ws_skill_level = 1
+ws_callback_sequence$="4003:2" 
+set ws_callback_sequence_a = 4003
+set ws_callback_sequence_b = 2
+gosub 2005:120
+
+#switch 4103:1
+gosub 2005:100
+if (ws_called_invalid == 1) {
+  set ws_called_invalid = 0
+  goto 0:0
+}
+if (func_charinparty[pal] != 3) {
+  set timed_message = 5
+  gosub 1000:1
+  goto 0:0
+}
+set ws_skill_level = 2
+ws_callback_sequence$="4003:2" 
+set ws_callback_sequence_a = 4003
+set ws_callback_sequence_b = 2
+gosub 2005:120
+
+#switch 4004:1
+gosub 2005:100
+if (ws_called_invalid == 1) {
+  set ws_called_invalid = 0
+  goto 0:0
+}
+if (func_charinparty[rho] != 3) {
+  set timed_message = 5
+  gosub 1000:1
+  goto 0:0
+}
+set ws_skill_level = 1
+ws_callback_sequence$="4004:2" 
+set ws_callback_sequence_a = 4004
+set ws_callback_sequence_b = 2
+gosub 2005:120
+
+#switch 4104:1
+gosub 2005:100
+if (ws_called_invalid == 1) {
+  set ws_called_invalid = 0
+  goto 0:0
+}
+if (func_charinparty[rho] != 3) {
+  set timed_message = 5
+  gosub 1000:1
+  goto 0:0
+}
+set ws_skill_level = 2
+ws_callback_sequence$="4004:2" 
+set ws_callback_sequence_a = 4004
+set ws_callback_sequence_b = 2
+gosub 2005:120
+
+#switch 4005:1
+gosub 2005:100
+if (ws_called_invalid == 1) {
+  set ws_called_invalid = 0
+  goto 0:0
+}
+if (func_charinparty[democratus] != 3) {
+  set timed_message = 5
+  gosub 1000:1
+  goto 0:0
+}
+set ws_skill_level = 1
+ws_callback_sequence$="4005:2" 
+set ws_callback_sequence_a = 4005
+set ws_callback_sequence_b = 2
+gosub 2005:120
+
+#switch 4105:1
+gosub 2005:100
+if (ws_called_invalid == 1) {
+  set ws_called_invalid = 0
+  goto 0:0
+}
+if (func_charinparty[democratus] != 3) {
+  set timed_message = 5
+  gosub 1000:1
+  goto 0:0
+}
+set ws_skill_level = 2
+ws_callback_sequence$="4005:2" 
+set ws_callback_sequence_a = 4005
+set ws_callback_sequence_b = 2
+gosub 2005:120
+
+#switch 4006:1
+gosub 2005:100
+if (ws_called_invalid == 1) {
+  set ws_called_invalid = 0
+  goto 0:0
+}
+if (func_charinparty[stiletto] != 3) {
+  set timed_message = 5
+  gosub 1000:1
+  goto 0:0
+}
+set ws_skill_level = 1
+ws_callback_sequence$="4006:2" 
+set ws_callback_sequence_a = 4006
+set ws_callback_sequence_b = 2
+gosub 2005:120
+
+#switch 4106:1
+gosub 2005:100
+if (ws_called_invalid == 1) {
+  set ws_called_invalid = 0
+  goto 0:0
+}
+if (func_charinparty[stiletto] != 3) {
+  set timed_message = 5
+  gosub 1000:1
+  goto 0:0
+}
+set ws_skill_level = 2
+ws_callback_sequence$="4006:2" 
+set ws_callback_sequence_a = 4006
+set ws_callback_sequence_b = 2
+gosub 2005:120
+
+#switch 4007:1
+gosub 2005:100
+if (ws_called_invalid == 1) {
+  set ws_called_invalid = 0
+  goto 0:0
+}
+if (func_charinparty[paco] != 3) {
+  set timed_message = 5
+  gosub 1000:1
+  goto 0:0
+}
+set ws_skill_level = 1
+ws_callback_sequence$="4007:2" 
+set ws_callback_sequence_a = 4007
+set ws_callback_sequence_b = 2
+gosub 2005:120
+
+#switch 4007:6
+extern playsound ui/skill/ui_skill_ragemight_smash.wav
+if (ws_object$ != "")
+  extern AI_GrabEntity ws_object$ doorhandle
+if (ws_object$ != "")
+  extern AI_GetXYZ doorhandle dx dy dz
+if ((anox_worldskill_successful == 1) && (ws_object$ != ""))
+  extern ANIM_PlayAnim doorhandle gest_a
+extern AI_SpawnEntity puffhandle ob_squib pufftarget
+set dz = (dz + 20)
+extern AI_SetXYZ puffhandle dx dy dz
+extern PARTICLE_StartEffect puffhandle effect_1 9978599999997113971099009717599310000002100000000000000000000000
+extern AI_SpawnEntity crashhandle ob_crash crash_logo
+extern AI_GetXYZ playerchar0_handle cx cy cz
+set cz = (cz + 100)
+extern AI_SetXYZ crashhandle cx cy cz
+extern AI_SetYaw crashhandle 90
+
+#switch 4107:1
+gosub 2005:100
+if (ws_called_invalid == 1) {
+  set ws_called_invalid = 0
+  goto 0:0
+}
+if (func_charinparty[paco] != 3) {
+  set timed_message = 5
+  gosub 1000:1
+  goto 0:0
+}
+set ws_skill_level = 2
+ws_callback_sequence$="4007:2" 
+set ws_callback_sequence_a = 4007
+set ws_callback_sequence_b = 2
+gosub 2005:120

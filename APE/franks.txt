@@ -1,0 +1,2851 @@
+#window 15:105
+title "Frank"
+body "Need a room? Five dollars a pop."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity frank frank_handle
+  extern ANIM_PlayAnim frank_handle talk_a 1 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+choice "Yeah, hook me up." 15:110
+choice "Eyoo. Sleeping in the gutter would be cleaner." 15:115
+choice "No, thanks." 15:115
+if ((FRANK_BRIBE < 1) && (MET_VALESTA > 0))
+  choice "What room's Deanamo in?" 15:120
+
+#window 15:111
+title "Frank"
+body "Get your own freakin' key. I'm in the middle of an article."
+cam left restore zip
+startswitch {
+  set slept_at_franks = 1
+}
+
+finishswitch {
+  extern AI_ReleaseEntity frank_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+nextwindow 15:0112
+
+#window 15:115
+title "Frank"
+body "Hey, screw ya. I don't need your money."
+cam left restore zip
+startswitch {
+  set FRANK_PISSED = 1
+}
+
+finishswitch {
+  extern AI_ReleaseEntity frank_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+
+#window 15:120
+title "Frank"
+body "That's confidential. In fact, that's about five bucks worth of confidentiality."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity frank frank_handle
+  extern ANIM_PlayAnim frank_handle talk_a 1 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+choice "Payola." 15:150
+choice "Shove off, creep. I don't need your help." 15:115
+
+#window 15:125
+title "Frank"
+body "You and your wife need a room?"
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity frank frank_handle
+  extern ANIM_PlayAnim frank_handle talk_a 1 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+choice "Yeah, hook me up." 15:110
+choice "I'd rather sleep in a dung heap." 15:135
+choice "No, thanks." 15:115
+
+#window 15:130
+title "Frank"
+body "You again? You gonna jaw me an attitude again, or ya really want a room? Five bucks a pop."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity frank frank_handle
+  extern ANIM_PlayAnim frank_handle talk_a 1 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+choice "Fine, I'll take a room." 15:110
+choice "I'd rather sleep in a dung heap." 15:135
+if ((FRANK_BRIBE < 1) && (MET_VALESTA > 0))
+  choice "In what room might I find Deanamo?" 15:120
+
+#window 15:135
+title "Frank"
+body "You're a jerk. Get outta here."
+cam left restore zip
+startswitch {
+  set FRANK_PISSED = (FRANK_PISSED + 1)
+}
+
+finishswitch {
+  extern AI_ReleaseEntity frank_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+
+#window 15:140
+title "Frank"
+body "Get your face outta here. Let the gutter be your bed tonight, ya rude jerk."
+cam left restore zip
+finishswitch {
+  extern AI_ReleaseEntity frank_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+
+#window 15:151
+title "Frank"
+body "She's in Room A, sucker."
+cam left restore zip
+startswitch {
+  set FRANK_BRIBE = (FRANK_BRIBE + 1)
+}
+
+finishswitch {
+  extern AI_ReleaseEntity frank_handle
+  extern remove_money 5
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+
+#window 15:155
+title "Frank"
+body "You ain't even got enough money! Get outta my face, ya cheap bastard."
+cam left restore zip
+finishswitch {
+  extern AI_ReleaseEntity frank_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+
+#window 15:160
+title "Frank"
+body "The rate's five bucks a night. Per person. Wanna room, or what?"
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity frank frank_handle
+  extern ANIM_PlayAnim frank_handle talk_a 1 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+choice "Yes." 15:110
+choice "No." 15:115
+
+#window 15:165
+title "Frank"
+body "Don't listen to anything that creep over there says. He loiters around here all day trying to scare off the customers. I'd kick him out, but he's my nephew."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+nextwindow 15:0166
+
+#window 15:166
+title "Frank"
+body "Laziest kid I've ever met."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity frank frank_handle
+  extern ANIM_PlayAnim frank_handle talk_a 1 0 0
+  set met_heeto = 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+nextwindow 15:0105
+
+#window 15:205
+title "Andricus Tosc"
+body "I'm never gonna get any sleep."
+cam left restore zip
+talk npc gest_f stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:210
+title "Andricus Tosc"
+body "My brother talks in his sleep. Like, ALL NIGHT. Weird things."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:215
+title "Andricus Tosc"
+body "I wouldn't mind as much if we didn't have a shipment of... uh, spices to deliver in Cordica by tomorrow."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:220
+title "Andricus Tosc"
+body "I can't handle another night without sleep."
+cam left restore zip
+talk npc gest_f stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:301
+title "Veest"
+body "Zzzz... Eddie knows... he knows."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0302
+
+#window 15:302
+title "Veest"
+body "Zzzz... Eddie knows Anachronox... knows Anachronox like the back of his...."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0303
+
+#window 15:303
+title "Veest"
+body "Mom, that's butter."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0304
+
+#window 15:304
+title "Veest"
+body "Zzzz... Mom...?"
+cam left restore zip
+finishswitch {
+  set LEARN_EDDIE = 1
+  extern is_quest_done "Find More Info on Eddie" @poop
+  if (@poop == 0)
+    extern add_quest "Find More Info on Eddie"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:420
+title "Deanamo"
+body "Tell Valesta what happened. Please, I need a friend here."
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:425
+title "Deanamo"
+body "Wound welding at Ghalla's will cost me 200 loonies. How am I gonna buy new limbs?"
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:430
+title "Deanamo"
+body "I've got an itch. On a phantom limb."
+cam left lift(20) restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:450
+title "Deanamo"
+body "YOU."
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0451
+
+#window 15:451
+title "Deanamo"
+body "Either you've come to pay me what you owe me... or you're here to DIE."
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Settle down, girl. I'm here to compensate you for your efforts." 15:465
+if (valesta_on_route == 1)
+  choice "Die? Are you planning to throttle me with your stump?" 15:485
+if (valesta_on_route == 0)
+  choice "Die? Are you planning to throttle me with your stump?" 15:475
+
+#window 15:455
+title "Deanamo"
+body "Since I failed the job, I don't expect all of the fee... but 200 loonies would pay for a good wound welding at Ghalla's."
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (valesta_on_route == 1)
+  choice "Here you are, my brave girl. 200 loonies on the spot." 15:469
+if (valesta_on_route == 0)
+  choice "Here you are, my brave girl. 200 loonies on the spot." 15:471
+choice "200 loonies, you say? I don't have that much on me." 15:475
+
+#window 15:465
+title "Deanamo"
+body "You are?"
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0466
+
+#window 15:466
+title "Deanamo"
+body "Of course you are."
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0467
+
+#window 15:467
+title "Deanamo"
+body "I just wasn't expecting it. I should have given you more credit. I guess I've had an adversarial relationship with life ever since I left home."
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0468
+
+#window 15:468
+title "Deanamo"
+body "I guess \"thanks\" is what I mean, little bastard."
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0455
+
+#window 15:469
+title "Valesta"
+body "C'mon, Dee. Let's get you outta this fleapit."
+cam left from(PlayerChar0) to(valesta) lift(70) restore zip
+talk npc gest_a stay
+startswitch {
+  extern remove_money 200
+  set deanamo_paid = 1
+  set valesta_on_route = 0
+  extern AI_GrabEntity valesta valesta_handle
+  extern AI_WaitAndFace valesta_handle -1 deanamo
+}
+
+finishswitch {
+  extern AI_ReleaseEntity valesta_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:471
+title "Deanamo"
+body "At least I get to check out of this fleapit now."
+cam left lift(20) restore zip
+talk npc gest_a stay
+finishswitch {
+  extern remove_money 200
+  set deanamo_paid = 1
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:470
+title "Deanamo"
+body "You tease. You don't even have 200 loonies!"
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0475
+
+#window 15:475
+title "Deanamo"
+body "GET OUT!"
+cam left from(PlayerChar0) to(deanamo) lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0476
+
+#window 15:476
+title "Deanamo"
+body "Everyone."
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0477
+
+#window 15:477
+title "Deanamo"
+body "Just get out."
+cam left lift(20) restore zip
+talk npc gest_a stay
+finishswitch {
+  set deanamo_not_paid = 1
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:480
+title "Deanamo"
+body "Please."
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0481
+
+#window 15:481
+title "Deanamo"
+body "Just get out of here."
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0482
+
+#window 15:482
+title "Deanamo"
+body "I can't take it anymore."
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:485
+title "Deanamo"
+body "Valesta, hand me my gun."
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0486
+
+#window 15:486
+title "Valesta"
+body "Gun? You lost it in the tunnels."
+cam left from(PlayerChar0) to(valesta) lift(70) restore zip
+talk npc amb_c stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0487
+
+#window 15:487
+title "Deanamo"
+body "What? My dagger then!"
+cam left from(PlayerChar0) to(deanamo) lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0488
+
+#window 15:488
+title "Valesta"
+body "Dee, don't you remember? You made me sell it to pay for the zap-a-gap surgery."
+cam left from(PlayerChar0) to(valesta) lift(70) restore zip
+talk npc amb_c stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0489
+
+#window 15:489
+title "Deanamo"
+body "What about my switchblade?"
+cam left from(PlayerChar0) to(deanamo) lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0499
+
+#window 15:499
+title "Valesta"
+body "You left it as collateral for this room."
+cam left from(PlayerChar0) to(valesta) lift(70) restore zip
+talk npc amb_c stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0475
+
+#window 15:490
+title "Deanamo"
+body "Why would you bring that old bastard in here?! Shame on you!"
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:495
+title "Deanamo"
+body "Thank you for convincing Matavastros to pay me. I'd give you a reward if I wasn't so dirt poor."
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:496
+title "Deanamo"
+body "Lemme talk to Boots."
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:497
+title "Deanamo"
+body "I heard you've been hanging around with that Matavastros character. What's up with that?"
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:498
+title "Deanamo"
+body "Alright. Freak show's over. Goodnight, folks."
+cam left lift(20) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:500
+title "Deanamo"
+body "Hey, that's Valesta's bracelet. Can you take it back to her?"
+cam left from(playerchar0) to(deanamo) lift(20) restore zip
+startswitch {
+  set FRANKS_TOOK_BRACELET = 1
+  set got_valesta_bracelet = 1
+}
+
+finishswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_SeekAndFace bootshandle get_vb
+  extern AI_SetCompletionCallback bootshandle 15:0510
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+
+#window 15:505
+title "Fatima"
+body "Hey, kiddo. I just ran a SenderNet search on this Grumpos character..."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 bootshandle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 playerchar0
+  extern AI_WaitAndFace bootshandle -1 fatima
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+  extern complete_quest "Find Grumpos"
+  extern add_quest "Find Matavastros"
+  set FATIMA_DEANAMO = 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0506
+
+#window 15:506
+title "Fatima"
+body "His last name is Matavastros, and he was the curator of the MysTech Museum until about six months ago when he retired."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0507
+
+#window 15:507
+title "Fatima"
+body "Luckily for you, she was right. He lives just across the street in Building 5. Make sure to check their building directory. His apartment number isn't listed."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity bootshandle
+  extern AI_DestroyEntity @fatima_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:805
+title "Zarlo"
+body "I swilled too much pazoola."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:810
+title "Zarlo"
+body "I'm gonna spew."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0811
+
+#window 15:811
+title "Zarlo"
+body "I'm gonna hurl."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0812
+
+#window 15:812
+title "Zarlo"
+body "All over the room."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:815
+title "Zarlo"
+body "I'm gonna pass out."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:905
+title "Dax"
+body "You... you found my war medallion? But I threw it away months ago. Where...?"
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 dax
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0906
+
+#window 15:906
+title "Dax"
+body "Mine is a sad story."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 dax
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:910
+title "Dax"
+body "I was career military. I'd just made colonel when they sent us to Verdun VII."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 dax
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0915
+
+#window 15:915
+title "Dax"
+body "The planet's atmosphere prevented us from using advanced machinery. We were reduced to trench warfare."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0916
+
+#window 15:916
+title "Dax"
+body "It was a bloodbath."
+cam left restore zip
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:920
+title "Dax"
+body "I was losing my best men by the minute... all for a patch of land the size of a zongba field."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 dax
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:925
+title "Dax"
+body "We were ordered on a suicide charge. We were in no condition. No condition at all...."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 dax
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:926
+title "Dax"
+body "I'd rather not talk about what happened next. I resigned after that."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 dax
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:930
+title "Dax"
+body "I threw away my war medallion... but I could never give away my gun."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 dax
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0931
+
+#window 15:931
+title "Dax"
+body "Please. Take my weapon. I should have thrown it away instead of the medal."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0932
+
+#window 15:932
+title "Dax"
+body "Maybe now I will know peace. Go now."
+cam left restore zip
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern addnew_to_inventory "Stargent Decimator"
+  set timed_message = 20
+  got_object$="Stargent Decimator" 
+  gosub 1000:1
+  goto 0:0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:935
+title "Dax"
+body "Please. Leave me alone now. Leave me alone...."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 dax
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:940
+title "Dax"
+body "Please. Leave me alone."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 dax
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0941
+
+#window 15:941
+title "Dax"
+body "Every face I see reminds me of the past."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0942
+
+#window 15:942
+title "Dax"
+body "When I threw away my medal of honor, I thought I’d forget..."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:0943
+
+#window 15:943
+title "Dax"
+body "But it still haunts me. Leave me alone."
+cam left restore zip
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:1005
+title "Heeto"
+body "Look around. This was a mausoleum."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:1006
+
+#window 15:1006
+title "Heeto"
+body "Hey, don't run away from me."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:1007
+
+#window 15:1007
+title "Heeto"
+body "You should hear this if you're ever going to sleep here."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:1010
+title "Heeto"
+body "Close your eyes and picture this place hundreds of years ago... stuffed from floor to ceiling with thousands of aliens dead from plague."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:1011
+
+#window 15:1011
+title "Heeto"
+body "If you have nightmares here tonight, you'll know why."
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  set met_heeto = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:1015
+title "Heeto"
+body "Last week, something woke me up in the middle of the night. I felt claustrophobic... like I was trapped within the stone walls."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:1016
+
+#window 15:1016
+title "Heeto"
+body "My only impulse was to break outta here... but I was too confused to move."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:1017
+
+#window 15:1017
+title "Heeto"
+body "Then the feeling went away as quickly as it came. I think I was having a psychic connection with one of the plague spirits."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:1025
+title "Heeto"
+body "Okay, let's stop talking about this."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:1030
+title "Heeto"
+body "Did you have any nightmares while you slept here?"
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  set slept_at_franks = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:1035
+title "Heeto"
+body "You must be a heavy sleeper...."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:1405
+title "Boots"
+body "I don't like the looks of that one.  Maybe I should try a different door."
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:1705
+title "Sveta Fone"
+body "I can't believe Frank is lettin' that Time Minder hang out in his place of business."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:1706
+
+#window 15:1706
+title "Sveta Fone"
+body "All they do is sit around waitin' for people to give 'em affection and feed 'em. The life, huh?"
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:1710
+title "Sveta Fone"
+body "Time Minders perceive time as a simultaneous occurrence, not a progression."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:1711
+
+#window 15:1711
+title "Sveta Fone"
+body "For them, time doesn't move forward like it does for us. Everything is occurring at the same time."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:1712
+
+#window 15:1712
+title "Sveta Fone"
+body "Their birth, their death, it's all happening NOW. They see all time as a whole."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:1713
+
+#window 15:1713
+title "Sveta Fone"
+body "When you pet one, you achieve a small measure of immortality. You exist in their memory not just at the moment, but at every moment they ever have and ever will experience."
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:1714
+
+#window 15:1714
+title "Sveta Fone"
+body "Or something like that."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:1715
+title "Sveta Fone"
+body "Most people pet Time Minders before any big undertaking, but methinks people pet them a little too often."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:1805
+title "Valesta"
+body "That old man is to blame for this."
+cam left restore zip
+talk npc talk_e stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:1810
+title "Valesta"
+body "There was a time I had a shred of respect for you, Boots."
+cam left restore zip
+talk npc talk_e stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:1811
+
+#window 15:1811
+title "Valesta"
+body "My mistake."
+cam left restore zip
+talk npc talk_e stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:1815
+title "Valesta"
+body "Why don't you pay this woman what you owe her?"
+cam left restore zip
+talk npc talk_e stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:1820
+title "Valesta"
+body "You did the right thing. Imagine that."
+cam left restore zip
+talk npc talk_e stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:1825
+title "Valesta"
+body "Animals."
+cam left restore zip
+talk npc talk_e stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:1905
+title "Samoth"
+body "Weee arrre alien magicians!"
+cam left restore zip
+talk_ex samoth PlayerChar0 gest_k amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:1906
+
+#window 15:1906
+title "Nevets"
+body "Beware our wiiily tricks."
+cam left restore zip
+talk_ex nevets PlayerChar0 gest_j amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:1910
+title "Samoth"
+body "Dooon't loook away for a moment!"
+cam left restore zip
+talk_ex samoth PlayerChar0 gest_j amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:1911
+
+#window 15:1911
+title "Nevets"
+body "Weee're masssters of illuuusion!"
+cam left restore zip
+talk_ex nevets PlayerChar0 gest_j amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:1915
+title "Samoth"
+body "Our trrricks defy death!"
+cam left restore zip
+talk_ex samoth PlayerChar0 gest_j amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:1916
+
+#window 15:1916
+title "Nevets"
+body "Our illuuusions mock logiiiiiic!"
+cam left restore zip
+talk_ex nevets PlayerChar0 gest_k amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:2005
+title "Nevets"
+body "Seee ourrr magical arm movements!"
+cam left restore zip
+talk_ex nevets PlayerChar0 gest_j amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2006
+
+#window 15:2006
+title "Samoth"
+body "Imagine our feats of amaaazingness!"
+cam left restore zip
+talk_ex samoth PlayerChar0 gest_k amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:2010
+title "Nevets"
+body "Our illusions will bliiind you!"
+cam left restore zip
+talk_ex nevets PlayerChar0 gest_j amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2011
+
+#window 15:2011
+title "Samoth"
+body "Our spells possssess you!"
+cam left restore zip
+talk_ex samoth PlayerChar0 gest_k amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:2110
+title "Ambassador Ashdown"
+body "If I didn't know any better, I would swear that's my home planet floating behind you. May I speak to it?"
+cam left restore zip
+talk npc gest_d stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:2120
+title "Ambassador Ashdown"
+body "I've lost my home planet of Democratus. Would you help me find it? I have important information to relay."
+cam left restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:2130
+title "Ambassador Ashdown"
+body "With your permission, I would like to continue my exploration of the many different forms of government this galaxy has to offer."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2135
+
+#window 15:2135
+title "Ambassador Ashdown"
+body "There is an emerging gynocracy on Asagan that could bear fruit."
+cam left restore zip
+talk npc gest_e stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:2140
+title "Ambassador Ashdown"
+body "I must be dreaming!"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2145
+
+#window 15:2145
+title "Ambassador Ashdown"
+body "Can it be? Has my own home planet come to take me back into its fold?"
+cam left restore zip
+talk npc gest_d stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2150
+
+#window 15:2150
+title "Ambassador Ashdown"
+body "But I've discovered so much since I left good Democratus. The forms of government throughout the universe are quite varied and wonderful."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2155
+
+#window 15:2155
+title "Ambassador Ashdown"
+body "The Fluvini of Tentac X practice a psychic oligarchy unsurpassed in its swiftness of legislation."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2160
+
+#window 15:2160
+title "Ambassador Ashdown"
+body "The revolving-door meritocracy of the Brebulan Triumvirate Senate is as flexible a system of government this galaxy has ever seen."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2165
+
+#window 15:2165
+title "Ambassador Ashdown"
+body "Even the corporate socio-democratic technomonarchy of Eastern Cordica is extremely effective, albeit in a fairly limited scope."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2170
+
+#window 15:2170
+title "Ambassador Ashdown"
+body "When I left the democratic shores of our fair planet, it was not a condemnation of our current system of government, but an effort to broaden the horizons of our politics."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2175
+
+#window 15:2175
+title "Ambassador Ashdown"
+body "If it so pleases the High Council, I would like to present a lecture on advanced techniques in the art of the possible."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity ashdown @ashdown_handle
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace @ashdown_handle -1 PlayerChar0
+  extern AI_WaitAndFace bootshandle -1 ashdown
+  extern ANIM_PlayAnim @ashdown_handle gest_h 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "After careful consideration, we kindly accept your generous offer." 15:2180
+choice "I'm afraid the High Council has voted to deny you the audience." 15:2200
+
+#window 15:2180
+title "Ambassador Ashdown"
+body "Your openness to new ideas is commendable, honorable sirs."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @ashdown_handle gest_h 0 1 0
+}
+
+finishswitch {
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2181
+
+#window 15:2181
+startswitch {
+  set @tstart = func_gametime
+  set @flashing = 0
+}
+
+thinkswitch {
+  set @t = (func_gametime - @tstart)
+  if ((@t > 3000) && (@flashing == 0)) {
+    extern FlashScreenf 0 0 0 1 0
+    extern FlashScreenf 0 0 0 0 2
+    set @flashing = 1
+  }
+  if (@t > 5000) {
+    gosub 15:2185
+    closewindow 15:2181
+  }
+}
+
+style "null"
+
+#window 15:2185
+title "Ambassador Ashdown"
+body "In conclusion... you will find the recess an invaluable tool in staving off administrative lassitude."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @ashdown_handle gest_h 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2190
+
+#window 15:2190
+title "Ambassador Ashdown"
+body "Thank you for this opportunity to assist the council in its search for political perfection."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @ashdown_handle gest_c 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity @ashdown_handle
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 3000:10
+
+#window 15:2200
+title "Ambassador Ashdown"
+body "I understand. The High Council of Democratus is the busiest legislature in the system."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @ashdown_handle gest_c 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2205
+
+#window 15:2205
+title "Ambassador Ashdown"
+body "But if you ever conduct a re-vote, I am forever at your disposal."
+cam left restore zip
+startswitch {
+  extern AI_WaitAndFace @ashdown_handle -1 PlayerChar0
+  extern ANIM_PlayAnim @ashdown_handle gest_h 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2210
+
+#window 15:2210
+title "Ambassador Ashdown"
+body "Just don't make me go back."
+cam left restore zip
+startswitch {
+  extern ANIM_PlayAnim @ashdown_handle gest_b 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity @ashdown_handle
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:2300
+title "Ambassador Ashdown"
+body "Please grant me an audience with the High Council. You would find my presentation on advanced techniques in the art of the possible quite intriguing..."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity ashdown @ashdown_handle
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace @ashdown_handle -1 PlayerChar0
+  extern AI_WaitAndFace bootshandle -1 ashdown
+  extern ANIM_PlayAnim @ashdown_handle gest_h 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "After careful consideration, we kindly accept your generous offer." 15:2180
+choice "Our vote stands, Ambassador. The answer is NO." 15:2200
+
+#window 15:2305
+title "Ambassador Ashdown"
+body "A delegation of Ambrali from Cordica presented me with this slag of MysTech as a gift."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2306
+
+#window 15:2306
+title "Ambassador Ashdown"
+body "Please take it from me before it blows my face off."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2307
+
+#window 15:2310
+title "Ambassador Ashdown"
+body "Be careful saving the universe!"
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:2405
+title "Wanda"
+if (rejectWanda == 0)
+  body "Can I help you with something?"
+if (rejectWanda == 1)
+  body "Are you sure I can't help you with something?"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Frankie sent this bracelet." 15:2415
+if (rejectWanda == 0)
+  choice "Sorry, wrong room." 15:2410
+if (rejectWanda == 1)
+  choice "Not really." 15:2410
+
+#window 15:2410
+title "Wanda"
+body "Close the door on your way out."
+cam left restore zip
+talk npc talk_n stay
+finishswitch {
+  set rejectWanda = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:2415
+title "Wanda"
+body "You're puttin' me on."
+cam left restore zip
+talk npc gest_d stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2416
+
+#window 15:2416
+title "Wanda"
+body "It's beautiful."
+cam left restore zip
+talk npc talk_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2417
+
+#window 15:2417
+title "Wanda"
+body "Are you sure Frankie sent this?"
+cam left restore zip
+talk npc gest_c stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2418
+
+#window 15:2418
+title "Wanda"
+body "Hold on a second."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern AI_GrabEntity wanda wanda_handle
+  extern AI_WaitAndFace wanda_handle -1 wanda_eyeline
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2419
+
+#window 15:2419
+title "Wanda"
+body "I'm just writing him a little note."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2420
+
+#window 15:2420
+title "Wanda"
+body "There we go. Can you give that to him?"
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity wanda wanda_handle
+  extern AI_WaitAndFace wanda_handle -1 wanda_eyeline
+  extern ANIM_PlayAnim wanda_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2421
+
+#window 15:2421
+title "Wanda"
+body "I'm sure he can recompense you. He just got a nice paying gig on Sender Station."
+cam left restore zip
+talk npc talk_y stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2422
+
+#window 15:2422
+title "Wanda"
+body "Don't lose it."
+cam left restore zip
+finishswitch {
+  extern remove_from_inventory "Wanda's Bracelet"
+  extern addnew_to_inventory "Wanda's Note to Frankie"
+  set timed_message = 20
+  got_object$="Wanda's Note to Frankie" 
+  gosub 1000:1
+  goto 0:0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:2425
+title "Wanda"
+body "Can you take that note I gave you to Frankie on Sender Station?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:2430
+title "Wanda"
+body "That's a beautiful bracelet you're wearing."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2410
+
+#window 15:2505
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "Ah... Frank's Privacy Lounge. I've been to some pretty primo bachelor parties in here. I've heard it's the prime spot for hidden deals as well."
+if (func_charinparty[boots] != 3)
+  body "Gross. This is Frank's Privacy Lounge."
+cam left from(PlayerChar0) to(frank_goon_eyeline) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 frank_goon_eyeline
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  set @triggerBgone = 0
+  set FloungeClear = 1
+  if (func_charinparty[boots] == 3)
+    goto 15:2506
+  extern AI_ReleaseEntity bootshandle
+  extern cam_restore
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:2506
+title "%s", PlayerChar0$
+body "Frank doesn't care what goes on down here as long as he doesn't foot the cleaning bill."
+cam left from(PlayerChar0) to(frank_goon_eyeline) restore zip
+startswitch {
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:2510
+title "PAX Guard"
+body "Is Detta willing to meet our asking price?"
+cam left from(1095 -132 -636) to(1154 -154 -636) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 frank_goon_eyeline
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2511
+
+#window 15:2511
+title "Melvin Butane"
+body "Of course. He spares no expense when it comes to da privacy of his own home. Especially now."
+cam left from(1095 -132 -636) to(1154 -154 -636) restore zip
+startswitch {
+  extern AI_GrabEntity frank_goon @frankGoon_handle
+  extern ANIM_PlayAnim @frankGoon_handle talk_c 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2512
+
+#window 15:2512
+title "PAX Guard"
+body "And he'll continue to push the “AnachroPAX” campaign?"
+cam left from(1095 -132 -636) to(1154 -154 -636) restore zip
+startswitch {
+  extern AI_GrabEntity frank_pax @frankPax_handle
+  extern ANIM_PlayAnim @frankPax_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2513
+
+#window 15:2513
+title "Melvin Butane"
+body "On the streets and behind the scenes, mate."
+cam left from(1095 -132 -636) to(1154 -154 -636) restore zip
+startswitch {
+  extern ANIM_PlayAnim @frankGoon_handle talk_c 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2514
+
+#window 15:2514
+title "PAX Guard"
+body "Then it's settled."
+cam left from(1095 -132 -636) to(1154 -154 -636) restore zip
+startswitch {
+  extern ANIM_PlayAnim @frankPax_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2515
+
+#window 15:2515
+title "PAX Guard"
+body "PAX Squads will begin patrolling OneGate within the week."
+cam left from(1095 -132 -636) to(1154 -154 -636) restore zip
+startswitch {
+  extern ANIM_PlayAnim @frankPax_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 15:2518
+
+#window 15:2518
+title "Boots"
+body "I'd better get back to Mardoman before they finalize the deal and catch me sneaking around."
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 boots_eyeline
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  set PAXDET_MEET = 1
+  goto 15:2519
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:2525
+title "Boots"
+body "I'd better get back to Mardoman before they finalize the deal and catch me sneaking around."
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 boots_eyeline
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  goto 15:2519
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 15:2605
+title "%s", PlayerChar0$
+if (((func_charinparty[boots] == 3) || (func_charinparty[rho] == 3)) || (func_charinparty[stiletto] == 3))
+  body "Rukh must've snapped this picture before the Tetra-snatcher got the jump on him."
+if (func_charinparty[grumpos] == 3)
+  body "The detective gentleman must have snapped this picture before his killer got the jump on him."
+if (func_charinparty[pal] == 3)
+  body "Mister Boots' friend musta snapped this picture before the killer got the jump on him."
+if (func_charinparty[democratus] == 3)
+  body "Oh, dear. The goodly Detective Rukh must have photographed his killer."
+if (func_charinparty[paco] == 3)
+  body "Detective took picture of killer."
+cam left from(PlayerChar0) to(bob_piccy) lift(40) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 bob_piccy
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  if (func_charinparty[rho] > 1)
+    goto 15:2606
+  extern AI_ReleaseEntity bootshandle
+  extern cam_restore
+  goto 0:0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "BobPhoto.tga" 370, 160
+
+#window 15:2606
+title "Rho Bowman"
+body "Wait a minute. I've seen this guy before. I bumped into him on my way to the shuttle when we were fleeing Sunder."
+cam left from(PlayerChar0) to(bob_piccy) lift(40) restore zip
+startswitch {
+  if (func_charinparty[rho] == 3)
+    extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "BobPhoto.tga" 370, 160
+
+#window 15:1219
+title "SFX"
+body "Click..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 15:1220
+title "SFX"
+body "Woosh!!!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 15:1221
+title "Boots"
+body "Oh. Uh.. excuse me."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 15:1222
+title "Deanamo"
+body "No, come on in."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 15:1224
+title "Deanamo"
+body "                   I could use the company."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 15:1226
+title "Boots"
+body "Valesta sent me to see you about a job."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 15:1228
+title "Deanamo"
+body "Forget about it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 15:1230
+title "Deanamo"
+body "This old guy, Grumpos... He hires me to explore the tunnels, right?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 15:1232
+title "Deanamo"
+body "...bring back some MysTech... Easy job."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 15:1234
+title "Deanamo"
+body "Hell, I wasn't there ten minutes when something came outta nowhere and did this to me."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 15:1236
+title "Deanamo"
+body "I mean, look..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 15:1238
+title "Deanamo"
+body "                  LOOK AT ME!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 15:1240
+title "Deanamo"
+body "And the old bastard won't even pay me!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 15:1242
+title "Deanamo"
+body "He said... "
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 15:1244
+title "Deanamo"
+body "             \"No MysTech..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 15:1246
+title "Deanamo"
+body "                                    no money!\""
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 15:1248
+title "Deanamo"
+body "He's in tenement building five across the street from here if ya wanna punch him in the face for me."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 15:1250
+title "Deanamo"
+body "Right in the face!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 15:1
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .6 1 1
+set CURRENT_PLANET = 1
+set CURRENT_BANK = 15
+gosub 500:1			                   
+if ((deanamo_paid == 1) && (got_valesta_bracelet == 0)) {
+  extern AI_GrabEntity vb vb_handle
+  extern AI_DestroyEntity vb_handle
+}
+extern AI_GrabEntity 15:1401 @nowhereDoor
+extern EntKey @nowhereDoor "sequence" ""
+extern playlevelmusic mp3/bricks/bricks_normal_1_0.mp3
+BattleMusicOverride$="mp3/bricks/bricks_combat_2_0.mp3" 
+
+#switch 15:101
+if (met_heeto == 1)
+  goto 15:0165
+if ((func_charinparty[boots] == 3) && (FRANK_PISSED == 2))
+  goto 15:0140
+if ((func_charinparty[boots] == 3) && (FRANK_PISSED == 1))
+  goto 15:0130
+if (func_charinparty[boots] == 3)
+  goto 15:0105
+goto 15:0160                                 
+
+#switch 15:110
+extern check_money money_frank
+if (money_frank < 10)
+  goto 15:0155
+goto 15:0111
+
+#switch 15:112
+extern remove_money 5
+gosub 600:3			                  
+set slept_at_franks = 1
+extern playscene franks_sleep
+
+#switch 15:13
+set timed_message = 53
+gosub 1000:1
+goto 0:0
+
+#switch 15:150
+extern check_money money_frank
+if (money_frank < 5)
+  goto 15:0155
+goto 15:0151
+
+#switch 15:201
+set Tosc1 = (Tosc1 + 1)
+if (Tosc1 > 3)
+  goto 15:0220
+if (Tosc1 > 2)
+  goto 15:0215
+if (Tosc1 > 1)
+  goto 15:0210
+goto 15:0205                                 
+
+#switch 15:401
+set Deanamo1 = (Deanamo1 + 1)
+if ((func_charinparty[boots] != 3) && (func_charinparty[grumpos] != 3))
+  goto 15:0496
+if ((deanamo_paid > 0) && (func_charinparty[boots] == 3))
+  goto 15:0495
+if ((deanamo_paid > 0) && (func_charinparty[grumpos] == 3))
+  goto 15:0498
+if (deanamo_not_paid > 0)
+  goto 15:0480
+if ((func_charinparty[boots] == 3) && (func_charinparty[grumpos] == 2))
+  goto 15:0490
+if (((func_charinparty[boots] == 3) && (func_charinparty[grumpos] != 2)) && (MET_GRUMPOS == 1))
+  goto 15:0497
+if (func_charinparty[grumpos] == 3)
+  goto 15:0450
+if (Deanamo1 > 2)
+  goto 15:0430
+if (Deanamo1 > 1)
+  goto 15:0425
+goto 15:0420                                 
+
+#switch 15:460
+extern check_money @deanamoney
+if (@deanamoney < 200)
+  goto 15:0470
+goto 15:0468
+
+#switch 15:510
+extern ANIM_PlayAnim bootshandle grab_m 0 1 0
+extern AI_ReleaseEntity bootshandle
+extern AI_GrabEntity vb vb_handle
+extern AI_DestroyEntity vb_handle
+extern addnew_to_inventory "Valesta's Bracelet"
+set timed_message = 20
+got_object$="Valesta's Bracelet" 
+gosub 1000:1
+goto 0:0
+
+#switch 15:501
+if (FATIMA_DEANAMO > 0)
+  goto 15:0505
+
+#switch 15:601
+set got_frank_taco = 1
+extern AI_GetEdictNumber PlayerChar0 getter
+extern pickup_getitem getter 15:0601
+
+#switch 15:801
+set Zarlo1 = (Zarlo1 + 1)
+if (Zarlo1 > 2)
+  goto 15:0815
+if (Zarlo1 > 1)
+  goto 15:0810
+goto 15:0805                                 
+
+#switch 15:901
+if (dax_gave_gun == 1)
+  goto 15:0935
+extern is_in_inventory "Verdun War Medallion" @warmed
+if (@warmed > 0)
+  goto 15:0902
+goto 15:0940
+
+#switch 15:902
+set Dax1 = (Dax1 + 1)
+if (Dax1 > 5)
+  goto 15:0935
+if (Dax1 > 4)
+  goto 15:0930
+if (Dax1 > 3)
+  goto 15:0925
+if (Dax1 > 2)
+  goto 15:0920
+if (Dax1 > 1)
+  goto 15:0910
+goto 15:0905                                 
+
+#switch 15:1001
+set Heeto1 = (Heeto1 + 1)
+if (slept_at_franks == 2)
+  goto 15:1035
+if (slept_at_franks == 1)
+  goto 15:1030
+if (Heeto1 > 3)
+  goto 15:1025
+if (Heeto1 > 2)
+  goto 15:1015
+if (Heeto1 > 1)
+  goto 15:1010
+goto 15:1005                                 
+
+#switch 15:1201
+if (SESAME_OPEN_A == 1) {
+  target sesame_a
+  goto 0:0
+}
+if (anox_worldskill_active == 0) {
+  set timed_message = 31
+  gosub 1000:1
+  goto 0:0
+}
+ws_stand$="boots_skill_a" 
+ws_object$="sesame_a" 
+set ws_bank = 15
+set ws_entry = 1205
+gosub 4001:1
+
+#switch 15:1205
+set SESAME_OPEN_A = 1
+set MET_DEANAMO = 1
+set MET_DEANAMO_V = 1
+set FATIMA_DEANAMO = 1
+extern complete_quest "Talk To Deanamo"
+extern add_quest "Find Grumpos"
+extern playscene franks_deanamo2
+goto 0:0
+
+#switch 15:1301
+if (did_sesame_b) {
+  target sesame_b
+  goto 0:0
+}
+set LPdifficulty = 5
+set LPtime = 10
+ws_stand$="boots_skill_b" 
+ws_object$="sesame_b" 
+set ws_bank = 15
+set ws_entry = 1302
+gosub 4101:1
+goto 0:0
+
+#switch 15:1302
+set did_sesame_b = 1
+target sesame_b
+goto 0:0
+
+#switch 15:1401
+goto 15:1405
+ws_stand$="boots_skill_c" 
+set ws_bank = 15
+set ws_entry = 1405
+gosub 4001:1
+goto 0:0
+
+#switch 15:1501
+if (did_sesame_d) {
+  target sesame_d
+  goto 0:0
+}
+set LPdifficulty = 3
+set LPtime = 35
+ws_stand$="boots_skill_d" 
+ws_object$="sesame_d" 
+set ws_bank = 15
+set ws_entry = 1502
+gosub 4001:1
+goto 0:0
+
+#switch 15:1502
+set did_sesame_d = 1
+target sesame_d
+goto 0:0
+
+#switch 15:1601
+if (did_sesame_e) {
+  target sesame_e
+  goto 0:0
+}
+set LPdifficulty = 3
+set LPtime = 35
+ws_stand$="boots_skill_e" 
+ws_object$="sesame_e" 
+set ws_bank = 15
+set ws_entry = 1602
+gosub 4001:1
+goto 0:0
+
+#switch 15:1602
+set did_sesame_e = 1
+target sesame_e
+goto 0:0
+
+#switch 15:1231
+if (did_sesame_6a) {
+  target closet_6a
+  goto 0:0
+}
+WS_STAND$="boots_skill_6a" 
+ws_object$="closet_6a" 
+set LPdifficulty = 2
+set LPtime = 30
+set ws_bank = 15
+set ws_entry = 1235
+gosub 4001:1
+goto 0:0
+
+#switch 15:1235
+set did_sesame_6a = 1
+target closet_6a
+goto 0:0
+
+#switch 15:1233
+if (did_sesame_6b) {
+  target closet_6b
+  goto 0:0
+}
+WS_STAND$="boots_skill_6b" 
+ws_object$="closet_6b" 
+set LPdifficulty = 3
+set ws_bank = 15
+set ws_entry = 1237
+gosub 4001:1
+goto 0:0
+
+#switch 15:1237
+set did_sesame_6b = 1
+target closet_6b
+goto 0:0
+
+#switch 15:1701
+set Fone1 = (Fone1 + 1)
+if (Fone1 > 2)
+  goto 15:1715
+if (Fone1 > 1)
+  goto 15:1710
+goto 15:1705                                 
+
+#switch 15:1801
+if (deanamo_not_paid > 0)
+  goto 15:1825
+if (deanamo_paid > 0)
+  goto 15:1820
+if (func_charinparty[grumpos] == 3)
+  goto 15:1815
+if (func_charinparty[grumpos] == 2)
+  goto 15:1810
+goto 15:1805                                 
+
+#switch 15:1901
+set Samoth1 = (Samoth1 + 1)
+if (Samoth1 > 2) {
+  set Samoth1 = 0
+  goto 15:1915
+}
+if (Samoth1 > 1)
+  goto 15:1910
+goto 15:1905                                 
+
+#switch 15:2001
+set Nevets1 = (Nevets1 + 1)
+if (Nevets1 > 1) {
+  set Nevets1 = 0
+  goto 15:2010
+}
+goto 15:2005                                 
+
+#switch 15:2101
+if (GotWinkyHarmonic == 1)
+  goto 15:2310
+if (PRE_DETTA == 1)
+  goto 15:2305
+if (func_charinparty[democratus] == 2)
+  goto 15:2110
+if (func_charinparty[democratus] != 3)
+  goto 15:2120
+extern get_world_skill_level tractor @t
+if (@t == 2)
+  goto 15:2130
+if (talk_ashdown == 1)
+  goto 15:2300
+set talk_ashdown = 1
+goto 15:2140	                                  
+
+#switch 15:2307
+extern addnew_to_inventory "WinkyTornado Harmonic"
+set timed_message = 20
+got_object$="WinkyTornado Harmonic" 
+set GotWinkyHarmonic = 1
+gosub 1000:1
+goto 0:0
+
+#switch 15:2401
+extern is_equipped "Wanda's Bracelet" @wearingBracelet
+extern is_in_inventory "Wanda's Note to Frankie" @gotWandaNote
+if (@wearingBracelet == 1)
+  goto 15:2430
+if (@gotWandaNote == 1)
+  goto 15:2425
+goto 15:2405
+
+#switch 15:2501
+if (@triggerBgone == 1)
+  goto 0:0
+set @triggerBgone = 1
+if ((PAXDET_MEET == 1) && (pdm1 > 0))
+  goto 0:0
+if (PAXDET_MEET == 1)
+  goto 15:2525
+if ((ROUGH_AEWA == 2) && (PAXDET_MEET == 0))
+  goto 15:2510
+if (FloungeClear == 1)
+  goto 0:0
+goto 15:2505
+
+#switch 15:2519
+extern cam_anoxmariomode 1
+extern ANIM_MakeSmart bootshandle
+extern AI_SeekAndFace bootshandle StepYoBack
+extern AI_SetCompletionCallback bootshandle 15:2520
+
+#switch 15:2520
+set @triggerBgone = 0
+extern ANIM_MakeSmart bootshandle
+extern AI_ReleaseEntity bootshandle
+extern cam_anoxmariomode 0
+console "forcecursormode 0"
+
+#switch 15:2601
+goto 15:2605

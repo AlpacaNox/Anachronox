@@ -1,0 +1,1963 @@
+#window 70:205
+title "Mrs. Invisiblus"
+body "Don't be alarmed. I used to be a superhero. Maybe you read some issues of the Super Boffo League of Cordica? I was the elusive Transparrow."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0207
+
+#window 70:207
+title "Mrs. Invisiblus"
+body "Little white miniskirt? Clip-on wings?"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0209
+
+#window 70:209
+title "Mrs. Invisiblus"
+body "It was a long time ago...."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:211
+title "Mrs. Invisiblus"
+body "My powers aren't what they used to be. I guess too much Brebulan whiskey and super powers don't mix. I wouldn't have turned to drink if The Fist had flown off with me years ago. I miss my Paco."
+cam right restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:215
+title "Mrs. Invisiblus"
+body "Do my old eyes deceive me? That can't be... Paco... with you?"
+cam right restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:225
+title "Mrs. Invisiblus"
+body "Come back and visit any time, sweetness. Mr. Invisiblus works the midnight shift."
+cam left from(198 -970 524) to(145 -1004 513) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 pacohandle
+  extern AI_GrabEntity mrs.invisiblus mrs_handle
+  extern AI_SeekAndFace pacohandle stepYoBack
+  extern AI_WaitAndFace bootshandle -1 mrs.invisiblus
+  extern AI_WaitAndFace guesshandle -1 mrs.invisiblus
+  extern ANIM_PlayAnim mrs_handle gest_b 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity mrs_handle
+  extern AI_ReleaseEntity pacohandle
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:230
+title "Mrs. Invisiblus"
+body "It can't be. After all these years..."
+cam left from(198 -970 524) to(145 -1004 513) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 pacohandle
+  extern AI_GrabEntity mrs.invisiblus mrs_handle
+  extern AI_SeekAndFace pacohandle stepYoBack
+  extern AI_WaitAndFace mrs_handle -1 PlayerChar0
+  extern ANIM_PlayAnim mrs_handle gest_c 0 1 0
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0235
+
+#window 70:235
+title "Mrs. Invisiblus"
+body "My dear, sweet Paco. I never thought I would see you again."
+cam left from(198 -970 524) to(145 -1004 513) restore zip
+startswitch {
+  extern ANIM_PlayAnim mrs_handle talk_b 0 1 0
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0240
+
+#window 70:240
+title "Mrs. Invisiblus"
+body "Don't you recognize me without my white miniskirt and clip-on wings? I'm the elusive Transparrow. We teamed up about ten years ago during the Secret PowerGem Hunt. Don't you remember?"
+cam left from(198 -970 524) to(145 -1004 513) restore zip
+startswitch {
+  extern ANIM_PlayAnim mrs_handle gest_a 0 1 0
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0245
+
+#window 70:245
+title "Mrs. Invisiblus"
+body "Behind the Transparrow Jet?"
+cam left from(198 -970 524) to(145 -1004 513) restore zip
+startswitch {
+  extern ANIM_PlayAnim mrs_handle gest_b 0 1 0
+  extern AI_SpawnEntity hMister npc_hepmwc misterinv 0:0 mr.invisiblus_spawn
+  extern entkey hMister alpha 0.5
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0250
+
+#window 70:250
+title "Mr. Invisiblus"
+body "Ina, have you seen my right goggle? I'm late for work."
+cam left from(198 -970 524) to(207 -1033 526) restore zip
+startswitch {
+  extern AI_WaitAndFace mrs_handle -1 misterinv
+  extern AI_WaitAndFace pacohandle -1 misterinv
+  extern ANIM_PlayAnim hMister talk_a 0 1 0
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0255
+
+#window 70:255
+title "Mrs. Invisiblus"
+body "Look, dear, who is here. It's \"El Puño\". Do you remember Paco Estrella?"
+cam left from(198 -970 524) to(207 -1033 526) restore zip
+startswitch {
+  extern ANIM_PlayAnim mrs_handle talk_a 0 1 0
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0260
+
+#window 70:260
+title "Mr. Invisiblus"
+body "How could I forget? I was in his Giant-Sized Annual."
+cam left from(198 -970 524) to(207 -1033 526) restore zip
+startswitch {
+  extern ANIM_PlayAnim hMister talk_a 0 1 0
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0265
+
+#window 70:265
+title "Mr. Invisiblus"
+body "Have you seen my goggle or not?"
+cam left from(198 -970 524) to(207 -1033 526) restore zip
+startswitch {
+  extern ANIM_PlayAnim hMister talk_a 0 1 0
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0270
+
+#window 70:270
+title "Mrs. Invisiblus"
+body "Check under the pillow, dear. You fell asleep with your mask on again."
+cam left from(198 -970 524) to(207 -1033 526) restore zip
+startswitch {
+  extern ANIM_PlayAnim mrs_handle talk_a 0 1 0
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0275
+
+#window 70:275
+title "Mrs. Invisiblus"
+body "He's still bitter that our son, InvisoLad, decided to join the Mega Pals instead of the old man's alma mater, the Super Boffo League of Cordica. Consequently, he's cold to anyone in the business."
+cam left from(198 -970 524) to(145 -1004 513) restore zip
+startswitch {
+  extern ANIM_PlayAnim mrs_handle talk_y 0 1 0
+  extern AI_WaitAndFace mrs_handle -1 PlayerChar0
+  extern AI_WaitAndFace pacohandle -1 mrs.invisiblus
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0280
+
+#window 70:280
+title "Mrs. Invisiblus"
+body "He was so used to life behind the mask. It only seemed natural he would look for work at the factory."
+cam left from(198 -970 524) to(145 -1004 513) restore zip
+startswitch {
+  extern ANIM_PlayAnim mrs_handle talk_a 0 1 0
+  extern AI_DestroyEntity hMister
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0285
+
+#window 70:285
+title "Mrs. Invisiblus"
+body "So where have you been hiding yourself? When I heard from Hystericlod about what had happened between you and Metallion Man, my heart almost broke."
+cam left from(198 -970 524) to(145 -1004 513) restore zip
+startswitch {
+  extern ANIM_PlayAnim mrs_handle talk_b 0 1 0
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0290
+
+#window 70:290
+title "Mrs. Invisiblus"
+body "When they cancelled your title, I was worried sick you would hang up your cape for good. Everyone knows the brothers went out of business because they were dumb enough to axe the series."
+cam left from(198 -970 524) to(145 -1004 513) restore zip
+startswitch {
+  extern ANIM_PlayAnim mrs_handle talk_n 0 1 0
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0295
+
+#window 70:295
+title "Mrs. Invisiblus"
+body "Is it true you can't fly anymore, my sweet?"
+cam left from(198 -970 524) to(145 -1004 513) restore zip
+startswitch {
+  extern ANIM_PlayAnim mrs_handle gest_c 0 1 0
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0300
+
+#window 70:300
+title "Mrs. Invisiblus"
+body "Don't let it get to you. Loss of powers happens to everyone. Just look at me. I'm a mess."
+cam left from(198 -970 524) to(145 -1004 513) restore zip
+startswitch {
+  extern ANIM_PlayAnim mrs_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity mrs_handle
+  extern AI_ReleaseEntity pacohandle
+  set talk_inv_paco = 1
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:305
+title "Mrs. Invisiblus"
+body "You always had such a temper, Paco."
+cam left from(198 -970 524) to(145 -1004 513) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 pacohandle
+  extern AI_GrabEntity mrs.invisiblus mrs_handle
+  extern AI_SeekAndFace pacohandle stepYoBack
+  extern AI_WaitAndFace mrs_handle -1 PlayerChar0
+  extern ANIM_PlayAnim mrs_handle talk_n 0 1 0
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0310
+
+#window 70:310
+title "Mrs. Invisiblus"
+body "When Mr. Invisiblus and I retired from the business and settled down, it took time to adjust to domestic life. You know what a raging swinger I was."
+cam left from(198 -970 524) to(145 -1004 513) restore zip
+startswitch {
+  extern ANIM_PlayAnim mrs_handle talk_a 0 1 0
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0315
+
+#window 70:315
+title "Mrs. Invisiblus"
+body "I had to control my anger at being forced to retire before my time. If there's anything I can do for you, I'd like to teach you how to channel some of that rage you have bottled inside."
+cam left from(198 -970 524) to(145 -1004 513) restore zip
+startswitch {
+  extern ANIM_PlayAnim mrs_handle talk_a 0 1 0
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0320
+
+#window 70:320
+title "Mrs. Invisiblus"
+body "Would you like to learn some channeling techniques?"
+cam left from(198 -970 524) to(145 -1004 513) restore zip
+startswitch {
+  extern ANIM_PlayAnim mrs_handle talk_y 0 1 0
+}
+
+finishswitch {
+  set talk_inv_paco = 2
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+choice "Yes." 70:325
+choice "No." 70:340
+
+#window 70:325
+title "Mrs. Invisiblus"
+body "Good. You're on the road to recovery, my big sweet potato. Listen up..."
+cam left from(198 -970 524) to(145 -1004 513) restore zip
+startswitch {
+  extern ANIM_PlayAnim mrs_handle talk_y 0 1 0
+}
+
+finishswitch {
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 2
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0327
+
+#window 70:327
+startswitch {
+  set @tstart = func_gametime
+  set @flashing = 0
+}
+
+thinkswitch {
+  set @t = (func_gametime - @tstart)
+  if ((@t > 3000) && (@flashing == 0)) {
+    extern FlashScreenf 0 0 0 1 0
+    extern FlashScreenf 0 0 0 0 2
+    set @flashing = 1
+  }
+  if (@t > 5000) {
+    gosub 70:0330
+    closewindow 70:0327
+  }
+}
+
+style "null"
+flags passive, TRUE
+
+#window 70:330
+title "Mrs. Invisiblus"
+body "...and that's about it. Simple really, but it will do wonders for your control."
+cam left from(198 -970 524) to(145 -1004 513) restore zip
+startswitch {
+  extern ANIM_PlayAnim mrs_handle talk_y 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity mrs_handle
+  extern AI_ReleaseEntity pacohandle
+  extern set_world_skill_level ragemight 2
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0335
+
+#window 70:335
+title "RAGEMIGHT WORLDSKILL"
+body "Paco attains Master level RageMight!"
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:340
+title "Mrs. Invisiblus"
+body "You always were the stubborn one, weren't you? Have it your way, my sweet."
+cam left from(198 -970 524) to(145 -1004 513) restore zip
+startswitch {
+  extern ANIM_PlayAnim mrs_handle talk_b 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity mrs_handle
+  extern AI_ReleaseEntity pacohandle
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:360
+title "Mrs. Invisiblus"
+body "Are you sure I can't interest you in learning my techniques for channeling rage?"
+cam left from(198 -970 524) to(145 -1004 513) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 pacohandle
+  extern AI_GrabEntity mrs.invisiblus mrs_handle
+  extern AI_SeekAndFace pacohandle stepYoBack
+  extern AI_WaitAndFace mrs_handle -1 PlayerChar0
+  extern ANIM_PlayAnim mrs_handle talk_n 0 1 0
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+choice "Yes, I am sure." 70:340
+choice "No. Teach me." 70:325
+
+#window 70:383
+title "Brother Notri"
+body "Welcome to the town of Mysteria!"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0384
+
+#window 70:384
+title "Brother Notri"
+body "Simon of Brebula wrote the sacred scriptures of the Brotherhood of the Mysterium many hundred years ago. The Grand Mysterium discovered them, and from their vision, established the Brotherhood of Mysterium."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0385
+
+#window 70:385
+title "Brother Notri"
+body "Our goal is to confront the fundamental questions of our universe through scientific method tempered by spiritual leanings. Foremost, our belief is that MysTech is a gift from the Gods."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0386
+
+#window 70:386
+title "Brother Notri"
+body "That's why the monastery grounds were built here, on the richest source of MysTech in the galaxy. Our Lavatic Processing Facility produces an average of 4,000 slags of MysTech per week!"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0387
+
+#window 70:387
+title "Brother Notri"
+body "So tighten your shoelaces, and open your wallet. Please make a left and take a tram to our Entertainment District, the Mysterium Mecca."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0388
+
+#window 70:388
+title "Brother Notri"
+body "Have a splendid day. May you find the magic inside you."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:395
+title "Brother Notri"
+body "I'm glad you could join us for your MysTech holiday. Please make a left ahead and take a HephTram to our Entertainment District, the Mysterium Mecca."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:601
+title "Jack Dunhill"
+body "\"Become part of the magic\"? Become part of the commercialism. Screw this place. I'm over and OUT."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:705
+title "Kimmy"
+body "Then what?"
+cam left lift(40) restore zip
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0710
+
+#window 70:710
+title "Mrs. Ciconidae"
+body "Well, uh... then your mommy and daddy get into a comfortable position, and, uh..."
+cam left lift(40) restore zip
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0715
+
+#window 70:715
+title "Mrs. Ciconidae"
+body "Well, why don't we wait for daddy to help explain, okay?"
+cam left lift(40) restore zip
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:750
+title "Kimmy"
+body "I think I understand, mommy. It's like MysTech."
+cam left lift(40) restore zip
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0755
+
+#window 70:755
+title "Mrs. Ciconidae"
+body "Something like that."
+cam left lift(40) restore zip
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:905
+title "Brother Teraki"
+body "Patience, my child. We are doing everything within our earthly power to repair the tram."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:0910
+
+#window 70:910
+title "Brother Teraki"
+body "You must learn to find peace within yourself and transcend haste."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:915
+title "Brother Teraki"
+body "He sows hurry, and reaps indigestion. No?"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:1105
+title "Hank Feathra"
+body "Can't you zap it with repair MysTech or something?"
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:1110
+title "Hank Feathra"
+body "I just wanna start my MysTech Adventure."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:1201
+title "Hector Doofeño"
+body "Where's the magic?"
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:1205
+
+#window 70:1205
+title "Hector Doofeño"
+body "This sucks major wampum."
+cam left restore zip
+talk npc gest_f stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:1301
+title "Nadia Comecarne"
+body "Let's just walk to the Entertainment District, hon. The monk said it was nearby, and we could use the exercise."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:1401
+title "Baran"
+body "Forget it. I didn't pay for a deluxe adventure so I could walk through their ghetto and have my wallet stolen."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:1410
+
+#window 70:1410
+title "Baran"
+body "We're waiting for the tram."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:1505
+title "Hudanech"
+body "Just think, son. As soon as your mother comes back from the restroom, we can take a tram to the Mysterium Mecca and look at all the MysTech. Maybe even buy some."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity hudanech hudanech_handle
+  extern AI_GrabEntity krequa krequa_handle
+  extern AI_WaitAndFace hudanech_handle -1 krequa
+  extern AI_WaitAndFace krequa_handle -1 hudanech
+  extern ANIM_PlayAnim hudanech_handle gest_g 0 1 0
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:1520
+title "Krequa"
+body "Can I buy a laser?"
+cam left to(krequa) lift(40) restore zip
+startswitch {
+  extern AI_GrabEntity hudanech hudanech_handle
+  extern AI_GrabEntity krequa krequa_handle
+  extern AI_WaitAndFace hudanech_handle -1 krequa
+  extern AI_WaitAndFace krequa_handle -1 hudanech
+  extern ANIM_PlayAnim krequa_handle talk_e 0 1 0
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:1525
+
+#window 70:1525
+title "Hudanech"
+body "You almost burned down the house with a cotton swab and a tube of HealGrease. No lasers, son."
+cam left lift(70) restore zip
+startswitch {
+  extern ANIM_PlayAnim hudanech_handle gest_g 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity hudanech_handle
+  extern AI_ReleaseEntity krequa_handle
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:1601
+title "Krequa"
+body "Huh?"
+cam left lift(40) restore zip
+talk npc gest_d stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:1605
+
+#window 70:1605
+title "Krequa"
+body "Dad, this weirdo poked me."
+cam left from(PlayerChar0) to(krequa) lift(40) restore zip
+startswitch {
+  extern AI_GrabEntity hudanech hudanech_handle
+  extern AI_GrabEntity krequa krequa_handle
+  extern AI_WaitAndFace hudanech_handle -1 krequa
+  extern AI_WaitAndFace krequa_handle -1 hudanech
+  extern ANIM_PlayAnim krequa_handle talk_d 0 1 0
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:1610
+
+#window 70:1610
+title "Hudanech"
+body "I suggest you step away from my family. There are laws against poking my son."
+cam left from(PlayerChar0) to(hudanech) lift(70) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 hudanech
+  extern AI_WaitAndFace hudanech_handle -1 PlayerChar0
+  extern AI_WaitAndFace krequa_handle -1 PlayerChar0
+  extern ANIM_PlayAnim hudanech_handle gest_g 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity hudanech_handle
+  extern AI_ReleaseEntity krequa_handle
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:1705
+title "Kleedog 9"
+body "Don't look so horrified. I got a bad slag of MysTech. Instead of doing anything remotely useful, this one makes my pores bleed bubbles."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:1710
+
+#window 70:1710
+title "Kleedog 9"
+body "It doesn't hurt or anything. It's just hard to see."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:1730
+title "Kleedog 9"
+body "Be careful what you buy in the Entertainment District. There seems to be a high rate of turkey slags these days. Guess they're just churning 'em out without testing."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:1760
+title "Kleedog 9"
+body "It's not permanent. I won't believe it's permanent."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:1805
+title "Silvoy"
+body "Take a wrong turn? The HephTram's in the opposite direction, buddy. Nothing down here but us poor people."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:1830
+title "Silvoy"
+body "Yeah, all the workers for the factory live here. But everyone's off digging up MysTech for the monks during the day. Not all of us are lucky enough to take vacations during the middle of the week."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:1860
+title "Silvoy"
+body "It's my birthday today, so I called in sick. Nobody should have to work on their birthday."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:1901
+title "Tequi Rohu"
+body "The HephTram break down or something?"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:2005
+title "Boomer"
+body "You ain't a photojournalist, are ya?"
+cam left lift(40) restore zip
+talk npc amb_e stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:2010
+
+#window 70:2010
+title "Boomer"
+body "Don't take no picture of me."
+cam left lift(40) restore zip
+talk npc amb_e stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:2050
+title "Boomer"
+body "Jerk."
+cam left lift(40) restore zip
+talk npc amb_e stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:2101
+title "Worker Drone 214"
+body "Hi! I'm a Worker Drone for the Brotherhood of Mysterium Airdrome."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:2110
+
+#window 70:2110
+title "Worker Drone 214"
+body "My services include estimating freight and insurance costs, assuring proper packaging, arranging container loading, and giving shipping advice."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5002:1
+title "Grumpos"
+if (need_to_enter_tower == 0)
+  body "The Tower of the Grand Mysterium houses the most comprehensive MysTech library in the galaxy. Let's split up and spread our resources. Surely between the three of us, we can find a way inside."
+if (need_to_enter_tower == 1)
+  body "Run along. You keep bragging about being such a sleuth... so go sleuth."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set need_to_enter_tower = 1
+  extern is_quest_done "Get In Tower" @boo
+  if (@boo == 0) {
+    extern complete_quest "Visit the MysTech Library"
+    extern add_quest "Get In Tower"
+  }
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5002:2
+title "Grumpos"
+if (@leave_grumpos)
+  body "Say, get your butt back here! Shouldn't we debrief before you go running off without your head?"
+if (@leave_grumpos == 0)
+  body "Quit your foolin' and get over here! We have to talk!"
+cam left to(grumpos) restore zip
+startswitch {
+  set @leave_grumpos = (1 - @leave_grumpos)
+  extern AI_GrabEntity grumpos grumpos_handle
+  extern AI_WaitAndFace grumpos_handle -1 PlayerChar0
+  extern AI_ReleaseEntity grumpos_handle
+  extern AI_GrabEntity boots boots_handle
+  extern AI_Path boots_handle boots_path
+}
+
+finishswitch {
+  extern cam_restore
+  extern ANIM_MakeSmart boots_handle
+  extern AI_ReleaseEntity boots_handle
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5003:1
+title "PAL-18"
+if (need_to_enter_tower == 0)
+  body "I ain't scared of this planet at all."
+if (need_to_enter_tower == 1)
+  body "Don't try and take care of me. I don't need you anymore. I'll find my way into that tower by myself."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5004:1
+title "Rho"
+if (need_to_enter_tower == 0)
+  body "Coming here was a bad idea."
+if (need_to_enter_tower == 1)
+  body "Grumpos has a point. Let's scatter to the winds."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (need_to_enter_tower)
+    gosub 5004:2 
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5004:2
+title "Rho"
+body "I wouldn't mind the time alone."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5005:1
+title "Democratus"
+if (need_to_enter_tower == 0)
+  body "We've added an initiative to tomorrow's ballot that would officially make it \"Hephaestus Week\" in Votowne."
+if (need_to_enter_tower == 1)
+  body "I believe we're to split up and explore the planet by ourselves. We can't wait!"
+cam left restore zip
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5006:1
+title "Stiletto"
+if (need_to_enter_tower == 0)
+  body "Ah, the tetanus possibilities with all this rusty metal. Wonderful choice, Sylvester."
+if (need_to_enter_tower == 1)
+  body "Hey, I don't need your shadow. I'm a big girl now. Let's do like the man says and split up."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:401
+title "Grumpos"
+if (busted == 0)
+  body "Where do you think you're going, squirt? We gotta get into that library!"
+startswitch {
+  set @running = 1
+  closewindow 70:0402
+  if (hephpoor_paths) {
+    extern AI_GetEdictNumber grumpos @character
+    if (@character != -1.000000)
+      extern AI_DestroyEntity @character
+    extern AI_SpawnEntity @character character_grumpos grumpos 5002:1
+    extern AI_SetXYZ @character -175 -2330 800
+    extern AI_SetYaw @character 15
+    extern ANIM_PlayAnim @character gest_a 0 1 0
+    extern AI_ReleaseEntity @character
+    extern cam_from -241.19 -2312.81 873.94
+    extern cam_to -178.27 -2312.41 862.21
+    extern AI_GrabEntity boots @bootshandle
+    extern AI_Path @bootshandle bootsbusted
+  }
+  if (hephpoor_paths == 0) {
+    extern AI_GrabEntity grumpos @character
+    extern AI_WaitAndFace @character -1 bootsbusted
+    extern ANIM_PlayAnim @character gest_a 0 1 0
+    extern AI_ReleaseEntity @character
+    extern AI_GrabEntity boots @bootshandle
+    extern AI_Path @bootshandle bootsbusted
+  }
+}
+
+finishswitch {
+  set @running = 0
+  set @pathgrumpos = 1
+  extern AI_ReleaseEntity @bootshandle
+  extern cam_zip
+  extern cam_restore
+  goto 70:0402
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:402
+startswitch {
+  extern AI_GrabEntity grumpos @character
+}
+
+thinkswitch {
+  extern AI_WaitAndFace @character -1 PlayerChar0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity @character
+}
+
+style "null"
+flags passive, TRUE
+
+#window 70:8500
+title "Ed"
+if (@p == 3)
+  body "Hey, little fella. Might have some good crap for ya."
+if (@p != 3)
+  body "Yeah, I got some crap to sell. Whaddya want?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set @p = func_charinparty[pal]
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+choice "Buy 'n' sell crap" 70:8501
+choice "Leave" 70:8504
+nextwindow 70:8501
+
+#window 70:8502
+title "Ed"
+body "Great. Now get outta my dump!"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:8504
+title "Ed"
+body "Why'd ya come in then?"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:4467
+title "Sister Dolores"
+body "My poor child. Come here."
+cam left restore zip
+talk npc gest_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:4468
+
+#window 70:4468
+title "Sister Dolores"
+body "In your eyes... I recognize the woman I was before I found peace."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:4469
+
+#window 70:4469
+title "Sister Dolores"
+body "I know you're full of anger, but the world will never cease to be a painful."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:4470
+
+#window 70:4470
+title "Sister Dolores"
+body "You must find the calm at your center, and enjoy the pleasure of peace."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:4471
+
+#window 70:4471
+title "Sister Dolores"
+body "Here's a little blade from the old days. Maybe it will help you find your center as it did for me."
+cam left restore zip
+talk npc gest_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:4472
+
+#window 70:4473
+title "Sister Dolores"
+body "Peace be with you, my child."
+cam left restore zip
+talk npc gest_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:4476
+title "Sister Dolores"
+body "Before I found peace in the arms of the Brotherhood, I was a mercenary. Hard to believe, isn't it? Not too many people can relate."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 70:4477
+
+#window 70:4477
+title "Sister Dolores"
+body "It's not every day you meet a woman who is also a mercenary."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set @talked2dolores = 1
+}
+
+style "style_hephaestus.pcx"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 70:105
+title "Fatima"
+body "Forget it. Walking away from unfinished cases was the OLD Boots."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  set @running = 1
+  extern AI_GrabEntity playerchar0 bootshandle
+  extern AI_SpawnEntity fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace fatima_handle -1 playerchar0
+  extern AI_WaitAndFace bootshandle -1 fatima
+  extern ANIM_PlayAnim fatima_handle talk_a 0 0 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 70:0106
+
+#window 70:106
+title "Fatima"
+if (@HephSize == 1)
+  body "Besides, bailing out now would leave the rest of the party stranded."
+if (@HephSize == 2)
+  body "Besides, bailing out now would leave Grumpos stranded."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern cam_anoxmariomode 1
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern extern check_party_size @HephSize
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+  extern ANIM_PlayAnim fatima_handle talk_a 0 0 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_DestroyEntity fatima_handle
+  extern AI_SeekAndFace bootshandle bootsbusted2
+  extern AI_SetCompletionCallback bootshandle 70:0107
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#switch 70:1
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 .7 .6
+set CURRENT_PLANET = 6
+set CURRENT_BANK = 70
+gosub 500:1                                  
+console "stopmusic"
+extern playlevelmusic mp3/hephaestus/hephpoor.mp3
+extern AI_GetEdictNumber mrs.invisiblus hMrs
+extern entkey hMrs alpha 0.5
+if ((ELEMENTOR_ACTIVE < 1) && (hephpoor_alreadyvisited == 0))
+  goto 70:2
+
+#switch 70:2
+set hephpoor_alreadyvisited = 1
+extern set_party_leader boots
+if (GRUMPOS_IN_PARTY) {
+  extern remove_npc_from_party Grumpos
+  set GRUMPOS_IN_PARTY = 0
+  set grumpos_on_heph = 1
+}
+if (PAL_IN_PARTY) {
+  extern remove_npc_from_party Pal
+  set PAL_IN_PARTY = 0
+  set pal_on_heph = 1
+}
+if (RHO_IN_PARTY) {
+  extern remove_npc_from_party Rho
+  set RHO_IN_PARTY = 0
+  set rho_on_heph = 1
+}
+if (DEMOCRATUS_IN_PARTY) {
+  extern remove_npc_from_party Democratus
+  set DEMOCRATUS_IN_PARTY = 0
+  set democratus_on_heph = 1
+}
+if (STILETTO_IN_PARTY) {
+  extern remove_npc_from_party Stiletto
+  set STILETTO_IN_PARTY = 0
+  set stiletto_on_heph = 1
+}
+goto 0:0
+
+#switch 70:201
+extern get_world_skill_level ragemight @rm
+if ((func_charinparty[paco] < 2) && (talk_invisiblus == 1))
+  goto 70:0211
+if (func_charinparty[paco] < 2)
+  goto 70:0205
+if ((func_charinparty[paco] == 2) && (@rm < 2))
+  goto 70:0215
+if (func_charinparty[paco] == 2)
+  goto 70:0211
+if (@rm == 2)
+  goto 70:0225
+if (talk_inv_paco == 2)
+  goto 70:0360	                                
+if (talk_inv_paco)
+  goto 70:0305			                         
+goto 70:0230			             
+
+#switch 70:8766
+set talk_invisiblus = 1
+extern AI_GrabEntity PlayerChar0 PlayerChar0_handle
+extern cam_anoxmariomode 1
+extern cam_set cam_movespeed 200
+extern cam_set cam_lagfactor 200
+extern cam_from 85 -1056 524
+extern cam_to 174 -995 450
+goto 0:0
+
+#switch 70:8767
+extern cam_anoxmariomode 1
+extern cam_set cam_movespeed 200
+extern cam_set cam_lagfactor 200
+extern cam_from 85 -1056 524
+extern cam_to 174 -995 450
+goto 0:0
+
+#switch 70:8768
+extern cam_anoxmariomode 1
+extern cam_set cam_movespeed 200
+extern cam_set cam_lagfactor 200
+extern cam_from 85 -1056 524
+extern cam_to 275 -1300 491
+goto 0:0
+
+#switch 70:8769
+extern AI_ReleaseEntity PlayerChar0_handle
+extern Anim_MakeSmart PlayerChar0_handle
+extern cam_restore
+extern cam_anoxmariomode 0
+goto 0:0
+
+#switch 70:381
+if (talk_notri)
+  goto 70:0395
+set talk_notri = 1
+goto 70:0383
+
+#switch 70:701
+if (talk_kimmy)
+  goto 70:0750
+set talk_kimmy = 1
+goto 70:0705
+
+#switch 70:801
+goto 70:0701	
+
+#switch 70:901
+if (talk_teraki)
+  goto 70:0915
+set talk_teraki = 1
+goto 70:0905
+
+#switch 70:1001
+closewindow 70:0402
+if (need_to_enter_tower == 0)
+  goto 5002:2
+extern playscene hephpoor_elevator1top
+
+#switch 70:1002
+extern playscene hephpoor_elevator1bottom
+
+#switch 70:1003
+pathtarget corner1
+target trigger
+
+#switch 70:1101
+if (talk_hankf)
+  goto 70:01110
+set talk_hankf = 1
+goto 70:01105
+
+#switch 70:1501
+if (talk_hudanech)
+  goto 70:1520
+set talk_hudanech = (1 - talk_hudanech)
+goto 70:1505
+
+#switch 70:1701
+set talk_kleedog = (talk_kleedog + 1)
+if (talk_kleedog == 3)
+  goto 70:1760
+if (talk_kleedog == 2)
+  goto 70:1730
+goto 70:1705
+
+#switch 70:1801
+set talk_silvoy = (talk_silvoy + 1)
+if (talk_silvoy > 3)
+  set talk_silvoy = 1
+if (talk_silvoy == 3)
+  goto 70:1860
+if (talk_silvoy == 2)
+  goto 70:1830
+goto 70:1805
+
+#switch 70:2001
+extern photo_findentity @boo sequence 70:2001
+if (@boo)
+  goto 70:2050
+goto 70:2005
+
+#switch 70:400
+if (@running)
+  goto 0:0
+if (ELEMENTOR_ACTIVE > 0)
+  goto 70:0101
+extern is_quest_done "Find 3 Keys" @solvingCase
+if (@solvingCase == 1)
+  goto 70:0105
+goto 70:0401
+
+#switch 70:500
+if (@pathgrumpos) {
+  set @pathgrumpos = 0
+  extern AI_GrabEntity 5002:1 @character
+  extern AI_DestroyEntity @character
+  extern AI_SpawnEntity @character character_grumpos grumpos 5002:1 player2path1
+  extern AI_Path @character player2path2
+  extern ANIM_MakeSmart @character
+  extern AI_ReleaseEntity @character
+}
+if (hephpoor_paths)
+  goto 0:0
+set hephpoor_paths = 1
+if (pal_on_heph)
+  extern AI_GrabEntity 5003:1 @character
+if (rho_on_heph)
+  extern AI_GrabEntity 5004:1 @character
+if (democratus_on_heph)
+  extern AI_GrabEntity 5005:1 @character
+if (stiletto_on_heph)
+  extern AI_GrabEntity 5006:1 @character
+extern AI_DestroyEntity @character
+if (pal_on_heph)
+  extern AI_SpawnEntity @character character_pal pal 5003:1 player2path1
+if (rho_on_heph)
+  extern AI_SpawnEntity @character character_rho rho 5004:1 player2path1
+if (democratus_on_heph)
+  extern AI_SpawnEntity @character character_democratus democratus 5005:1 player2path1
+if (stiletto_on_heph)
+  extern AI_SpawnEntity @character character_stiletto stiletto 5006:1 player2path1
+extern AI_Path @character player2path2
+extern ANIM_MakeSmart @character
+extern AI_ReleaseEntity @character
+extern AI_GrabEntity 5002:1 @character
+extern AI_DestroyEntity @character
+extern AI_SpawnEntity @character character_grumpos grumpos 5002:1 grumpospath1
+extern AI_Path @character grumpospath2
+extern ANIM_MakeSmart @character
+extern AI_ReleaseEntity @character
+
+#switch 70:8501
+extern is_in_inventory "Battlebot Shocksphere Upgrade" @got_shock_upgrade
+extern is_skill_acquired "Teslatus Sphere" @got_shocksphere
+extern is_in_inventory "Battlebot TaserDrain Upgrade" @got_taser_upgrade
+extern is_skill_acquired "TaserDrain" @got_taser
+extern shop_create "Ed's House o' Crap"
+extern shop_set_active "Ed's House o' Crap"
+extern shop_add_object "Vistin Blader Staffhead" 100
+if (PRE_DETTA)
+  extern shop_add_object "Stargent Pummelbeam" 100
+extern shop_add_object "Static Pulse Injector" 100
+if (PRE_DETTA)
+  extern shop_add_object "Tesseract Impactor" 100
+extern shop_add_object "HealGrease" 100
+extern shop_add_object "HealGrease Plus" 100
+extern shop_add_object "HealGrease Complete" 100
+extern shop_add_object "Fire Retardant Roundlet" 100
+extern shop_add_object "FreezeMeNot Loop" 100
+extern shop_add_object "TurboAlert Wristpincher" 100
+extern shop_add_object "Mysteria Shieldcell" 100
+extern shop_add_object "Mysteria Gold Shieldcell" 100
+if (DEMO_QUESTS_COMPLETE)
+  extern shop_add_object "Recycler Shieldcell" 1
+if ((@got_shocksphere == 0) && (@got_shock_upgrade == 0))
+  extern shop_add_object "Battlebot Shocksphere Upgrade" 1
+if (PRE_DETTA && ((@got_taser_upgrade == 0) && (@got_taser == 0)))
+  extern shop_add_object "Battlebot TaserDrain Upgrade" 1
+extern shop_picture "eddo.png"
+extern shop_slogan "Whaddayou want?"
+extern shop_start 70:8502
+goto 0:0
+
+#switch 70:8503
+extern shop_create "Ed's House o' Crap"
+extern shop_set_active "Ed's House o' Crap"
+extern shop_start sell
+goto 70:8502
+
+#switch 70:4466
+if ((func_charinparty[stiletto] == 3) && (got_bskill_61 == 0))
+  goto 70:4467
+if ((func_charinparty[stiletto] == 3) && (got_bskill_61 == 1))
+  goto 70:4473
+if ((func_charinparty[stiletto] != 3) && (@talked2dolores == 1))
+  goto 70:4477
+goto 70:4476
+
+#switch 70:4472
+extern addnew_to_inventory "Stargent Sleepshank"
+set timed_message = 20
+got_object$="Stargent Sleepshank" 
+gosub 1000:1
+set got_bskill_61 = 1
+goto 0:0
+
+#switch 70:5001
+if (hephpoor_invdoor)
+  goto 70:5002
+WS_STAND$="boots_skill_1" 
+ws_object$="invdoor" 
+set LPdifficulty = 2
+set LPtime = 35
+set ws_bank = 70
+set ws_entry = 5002
+gosub 4001:1
+goto 0:0
+
+#switch 70:5002
+target invdoor
+set hephpoor_invdoor = 1
+goto 0:0
+
+#switch 70:9977
+if (hephpoor_got_bw == 1)
+  goto 70:9980
+WS_STAND$="boots_skill_1" 
+ws_object$="bwChest" 
+set LPdifficulty = 5
+set LPtime = 10
+set ws_bank = 70
+set ws_entry = 9978
+gosub 4101:1		       
+goto 0:0
+
+#switch 70:9978
+extern AI_GrabEntity bwChest chest_handle
+extern ANIM_PlayAnim chest_handle amb_b 0 1 1
+extern AI_ReleaseEntity chest_handle
+extern addnew_to_inventory "FreezySlicer"
+got_object$="FreezySlicer MysTech" 
+set TIMED_MESSAGE = 20
+gosub 1000:1
+goto 0:0
+
+#switch 70:9988
+ws_stand$="demo_skill_2" 
+ws_object$="ccrawler" 
+set ws_bank = 70
+set ws_entry = 9989
+gosub 4005:1
+goto 0:0
+
+#switch 70:9989
+extern getbug CobaltCrawler 7
+set got_crawler_6 = 1
+set timed_message = 20
+got_object$="CobaltCrawler" 
+gosub 1000:1
+goto 0:0
+
+#switch 70:101
+set PLAY_SLEVANT_OUTRO = 1
+if (PRE_LIMBUS < 1)
+  set DI_Cant_Go_To_4 = 1
+gosub 111:1000
+
+#switch 70:107
+set @running = 0
+extern ANIM_MakeSmart bootshandle
+extern AI_ReleaseEntity bootshandle
+extern cam_anoxmariomode 0
+goto 0:0
+
+#switch 66:6666
+extern add_quest "Find 3 Keys"

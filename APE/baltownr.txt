@@ -1,0 +1,118 @@
+#window 81:305
+title "Claude"
+body "The air is clean. My lungs feel free."
+cam left restore zip
+talk npc gest_e stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 81:0306
+
+#window 81:306
+title "Claude"
+body "My body isn't changing anymore. I can feel it."
+cam left restore zip
+talk npc gest_n stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 81:0307
+
+#window 81:307
+title "Claude"
+body "I'm not afraid anymore."
+cam left restore zip
+talk npc gest_e stay
+finishswitch {
+  extern addnew_to_inventory "Bag o' Glodents" 3
+  set timed_message = 20
+  got_object$="3 Bags o' Glodents" 
+  gosub 1000:1
+  goto 0:0
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 81:0308
+
+#window 81:308
+title "Claude"
+body "Listen, buddy. Take this. You deserve it."
+cam left restore zip
+talk npc gest_h stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#window 81:310
+title "Claude"
+body "Waitaminute."
+cam left restore zip
+talk npc amb_b stay
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+nextwindow 81:0311
+
+#window 81:311
+title "Claude"
+body "I'm gonna look like this the rest of my life, aren't I?"
+cam left restore zip
+talk npc amb_c stay
+finishswitch {
+  extern complete_quest "Shutoff Complete"
+  extern AI_ReleaseEntity claude_handle
+  set start_whiteintro = 1
+  extern add_npc_to_party boots
+  extern set_party_leader boots
+  extern remove_npc_from_party pal
+  console "set storysave \"White Caves|Enter the White Caves\""
+  console "map whitecaves-a fromwhitendon"
+}
+
+style "NULL"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+background "backdrop.bmp" stretch
+
+#switch 82:1
+set CURRENT_PLANET = 8
+set CURRENT_BANK = 84
+extern setmasterlevel 35
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+extern ambi_baltownr
+if (BALTOWNR_INTRO == 1)
+  extern playscene baltownr_elevdown
+extern playlevelmusic "mp3/Democratus/democNormalNormal.mp3"
+goto 0:0
+
+#switch 81:301
+set Claude2 = (Claude2 + 1)
+if (Claude2 > 1)
+  goto 81:0310
+goto 81:0305                                 

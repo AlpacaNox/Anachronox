@@ -1,0 +1,1675 @@
+#window 13:205
+title "Moop"
+body "Only ONE may enter. Do you have offering?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:210
+title "Moop"
+body "Take not trouble to speak to me if you do not have offering."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:215
+title "Moop"
+body "Go away."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:220
+title "Moop"
+body "Offering? Very nice, very nice."
+cam left restore zip
+talk npc gest_h stay
+startswitch {
+  set Moop2 = 1
+  set HOVEL_PASSDOOR = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 13:0221
+
+#window 13:221
+title "Moop"
+body "Only ONE may enter. Maintain distance, make not sudden movement. Suspicious anything and we split you from your life. Understand?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:225
+title "Moop"
+body "Continue. Eddie have not all the day."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:240
+title "Moop"
+body "No offering, no pass."
+style "style_embrace"
+font "_newsub"
+flags passive, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:305
+title "Bennett"
+body "I'm here for Eddie, man. I'm here for the signs he gives. He writes 'em in the sand, man, of your mind. You know, like his brain... he's got a hotline to the truth, man."
+cam left lift(50) restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:310
+title "Bennett"
+body "See, Eddie's got, like, the pot boiled, man. He's got the card slipped. It's all in his head, man... all in his head. Trust me."
+cam left lift(50) restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:315
+title "Bennett"
+body "Eddie knows, man. He knows."
+cam left lift(50) restore zip
+talk npc amb_i stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:401
+title "Mercury"
+body "Eddie don't tell fortunes. He don't predict the future. He just knows facts. Don't bug him with other shine."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:505
+title "Nick Deedle"
+body "You'll never believe the offering I brought Eddie. Are you sitting down? You're not gonna believe this...."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:510
+title "Nick Deedle"
+body "Ready?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 13:0511
+
+#window 13:511
+title "Nick Deedle"
+body "It's a piece of string!"
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 13:0512
+
+#window 13:512
+title "Nick Deedle"
+body "Look at the way the tiny fibers intertwine. Look how taut and strong it is."
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 13:0513
+
+#window 13:513
+title "Boots"
+body "What's chewy about that?"
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 13:0514
+
+#window 13:514
+title "Nick Deedle"
+body "Are you kidding? I'm not falling for that. You just wanna steal a gnaw or two off my string. I know your type."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:515
+title "Nick Deedle"
+body "Go get your own string!"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:605
+title "Flooch"
+body "You see that guy's piece of string? Wow."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:610
+title "Flooch"
+body "I wish I had thought of that."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:705
+title "Mub"
+body "The guy with the piece of string should wrestle the guy who brought floss."
+cam left from(PlayerChar0) to(mub) restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 13:0706
+
+#window 13:706
+title "Flooch"
+body "Someone brought floss?!"
+cam left from(PlayerChar0) to(flooch) restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:710
+title "Mub"
+body "I'm still waiting for a number. Did you get a number?"
+cam left from(PlayerChar0) to(mub) restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:805
+title "Renie"
+body "I wasn't sure what to bring as an offering, so I brought my rubber duck."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:810
+title "Renie"
+body "I've had it since I was a kid. I used to take it to school in my pocket and the other kids would point at my pants."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:815
+title "Renie"
+body "Hell, it's chewy enough. And it tastes like my bath water. Eddie should love it."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 13:0816
+
+#window 13:816
+title "Boots"
+body "It's not very stinky, though, is it?"
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 13:0817
+
+#window 13:817
+title "Renie"
+body "What's your point?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:905
+title "Spozz"
+body "I couldn't think of an offering to bring Eddie until I remembered this dead bippy I found under a wind chute."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:910
+title "Spozz"
+body "It must have been under that wind chute for a while because it's partially mummified. Look at its tongue."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 13:0911
+
+#window 13:911
+title "Boots"
+body "It's not very chewy, though, is it?"
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 13:0912
+
+#window 13:912
+title "Spozz"
+body "Well, no... but look at its tongue!"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:915
+title "Spozz"
+body "Wait 'til the guy with the piece of string sees this!"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:1505
+title "Grumpos"
+body "I ain't going in there. No how, mister. It's dangerous and it stinks."
+talk npc talk_a stay
+startswitch {
+  set Grumpos_waiting1 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 13:1506
+
+#window 13:1506
+title "Boots"
+body "Fine. Stay put."
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 13:1507
+
+#window 13:1507
+title "Boots"
+body "I hope no one steals your teeth."
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 13:1508
+
+#window 13:1508
+title "Grumpos"
+body "What teeth?"
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:1553
+title "Grumpos"
+body "Nuh-uh, bigshot. We ain't skippin' out until you've talked to Eddie."
+cam left from(PlayerChar0) to(13:1585) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace grumpos_handle -1 bootshov_path
+  extern ANIM_PlayAnim grumpos_handle talk_a 0 1 0
+}
+
+finishswitch {
+  console "forcecursormode 1"
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 13:1554
+
+#window 13:1585
+title "Grumpos"
+if (@socktemp > 0)
+  body "Take care of business, son. I'll wait out here."
+if (@socktemp == 0)
+  body "Let's slip outta here, huh?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern is_in_inventory "Stinky Sock" @socktemp
+}
+
+finishswitch {
+  if (@socktemp == 0) {
+    extern AI_GrabEntity PlayerChar0 playerchar0_handle
+    extern AI_SeekAndTouch Grumpos_handle PlayerChar0
+    extern AI_SetCompletionCallback Grumpos_handle 13:1587
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:1601
+title "Grumpos"
+body "There you are."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 13:1605
+
+#window 13:1701
+title "Tisiphone"
+body "Eddie knows."
+cam left restore zip
+talk npc amb_a stay
+finishswitch {
+  set Tisiphone1 = 1
+  set LEARN_EDDIE = 1
+  extern is_quest_done "Find More Info on Eddie" @poop
+  if (@poop == 0)
+    extern add_quest "Find More Info on Eddie"
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:1805
+title "Woing Yunar"
+body "To the right you will find an orchard of beautiful crystal trees."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:1810
+title "Woing Yunar"
+body "To the left you will find CERTAIN DEATH."
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:2105
+title "JooJ"
+body "The trees are holy."
+cam left lift(20) restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:2110
+title "JooJ"
+body "Bastard."
+cam left lift(20) restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:2205
+title "FooF"
+body "Do not take our trees."
+cam left lift(20) restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:2210
+title "FooF"
+body "Bastard."
+cam left lift(20) restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:2305
+title "GooG"
+body "If we help Junkyard 20, they let us tend trees."
+cam left lift(20) restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 13:2306
+
+#window 13:2306
+title "GooG"
+body "Do not take our trees."
+cam left lift(20) restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 13:2307
+
+#window 13:2307
+title "GooG"
+body "The trees are holy."
+cam left lift(20) restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:2310
+title "GooG"
+body "Bastard."
+cam left lift(20) restore zip
+talk npc amb_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:6000
+title "%s", PlayerChar0$
+if ((@isboots == 3) && (@poops == 1))
+  body "Nah. Too pointy."
+if ((@isboots != 3) || (@poops != 1))
+  body "It's a weird crystal tree."
+cam left lift(20) restore zip
+startswitch {
+  set @isboots = func_charinparty[boots]
+  extern is_quest_done "Get Tree" @poops
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:6010
+title "%s", PlayerChar0$
+if ((@isboots == 3) && (@poops == 1))
+  body "Too small."
+if ((@isboots != 3) || (@poops != 1))
+  body "It's an odd crystal tree."
+cam left lift(20) restore zip
+startswitch {
+  set @isboots = func_charinparty[boots]
+  extern is_quest_done "Get Tree" @poops
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:6020
+title "%s", PlayerChar0$
+if ((@isboots == 3) && (@poops == 1))
+  body "Ugh. Don't like that one."
+if ((@isboots != 3) || (@poops != 1))
+  body "It's a strange crystal tree."
+cam left lift(20) restore zip
+startswitch {
+  set @isboots = func_charinparty[boots]
+  extern is_quest_done "Get Tree" @poops
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:6030
+title "%s", PlayerChar0$
+if ((@isboots == 3) && (@poops == 1))
+  body "Too tall."
+if ((@isboots != 3) || (@poops != 1))
+  body "It's a tall crystal tree."
+cam left lift(20) restore zip
+startswitch {
+  set @isboots = func_charinparty[boots]
+  extern is_quest_done "Get Tree" @poops
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:6040
+title "%s", PlayerChar0$
+if ((@isboots == 3) && (@poops == 1))
+  body "That one looks dumb. And it's in the trench."
+if ((@isboots != 3) || (@poops != 1))
+  body "It's a dumb crystal tree."
+cam left lift(20) restore zip
+startswitch {
+  set @isboots = func_charinparty[boots]
+  extern is_quest_done "Get Tree" @poops
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:6050
+title "%s", PlayerChar0$
+body "This tree looks pretty symmetrical."
+talk player talk_a stay
+finishswitch {
+  if (Sunil1 == 2)
+    goto 13:6051
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:6060
+title "%s", PlayerChar0$
+if ((@isboots == 3) && (@poops == 1))
+  body "I don't want to scramble down there."
+if ((@isboots != 3) || (@poops != 1))
+  body "It's a bizarre crystal tree."
+cam left lift(20) restore zip
+startswitch {
+  set @isboots = func_charinparty[boots]
+  extern is_quest_done "Get Tree" @poops
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:6070
+title "%s", PlayerChar0$
+if ((@isboots == 3) && (@poops == 1))
+  body "That's tiny, AND in that moldy trench. Gross."
+if ((@isboots != 3) || (@poops != 1))
+  body "It's a tiny, smelly crystal tree."
+cam left lift(20) restore zip
+startswitch {
+  set @isboots = func_charinparty[boots]
+  extern is_quest_done "Get Tree" @poops
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:6080
+title "%s", PlayerChar0$
+if ((@isboots == 3) && (@poops == 1))
+  body "Wow, that's so in the trench. Musty, slimy, moldy, bad."
+if ((@isboots != 3) || (@poops != 1))
+  body "It's a stinky crystal tree."
+cam left lift(20) restore zip
+startswitch {
+  set @isboots = func_charinparty[boots]
+  extern is_quest_done "Get Tree" @poops
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 5002:1
+title "Grumpos"
+body "Take care of business, son. I'll wait out here."
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 13:4001
+title "Boots"
+body "Gnash them snappers, kid... I got a sock that eats like a meal."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4005
+title "Chazcon"
+body "Most excellent."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4010
+title "Durling"
+body "Outstanding."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4015
+title "Boots"
+body "This putrid, unwashed, pus-soaked, blood-crusty sock was fermenting around a gangrenous stump of a foot for eight and a half months."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4020
+title "Boots"
+body "This is the chewiest, smelliest sock you'll ever have the luck to nosh on,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4025
+title "Boots"
+body "and you're just a short Q&A away from suckin' this baby dry."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4030
+title "Chazcon"
+body "Ahem. Sir, we're all impressed by the sock, but there are rules here. Procedures."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4035
+title "Pungle"
+body "Yeah, wait your turn!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4040
+title "Chazcon"
+body "Hey, behind the yellow line! You hear me? Get your butt back there!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4045
+title "Chazcon"
+body "You can't just barge in without a number, sir. You have to wait outside."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4050
+title "Eddie"
+body "No."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4055
+title "Eddie"
+body "Let him ask. Mmmm. Let him ask."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4060
+title "Boots"
+body "I'm trying to sneak into the MysTech Tunnels,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4065
+title "Boots"
+body "but someone bolted a Mephad'in DoorLord to the entrance."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4070
+title "Boots"
+body "Happen to know an easy way around him?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4075
+title "Durling"
+body "You must give Eddie the sock before he will answer."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4080
+title "Boots"
+body "What? Forget it then."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4085
+title "Durling"
+body "Eddie's mind is overpopulated with information."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4090
+title "Durling"
+body "Chewing helps him focus."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4095
+title "Durling"
+body "It allows him to sort through the overwhelming data in his brain and pinpoint specific strands of thought."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4100
+title "Durling"
+body "It's the only way he can concentrate."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4105
+title "Boots"
+body "Sounds like a scam to me."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4110
+title "Boots"
+body "                                Thanks anyway."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4115
+title "Eddie"
+body "Fatima."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4120
+title "Boots"
+body "What did you say?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4125
+title "Eddie"
+body "Fatima...  Mmmm. Who's Fatima?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4130
+title "Boots"
+body "How do you know about...?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4135
+title "Eddie"
+body "Fatima? Much pain... much pain..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4138
+title "Durling"
+body "Eddie's gift is strong."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4140
+title "Eddie"
+body "His brother. Mmmm."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4145
+title "Eddie"
+body "Doorlord has secret. About brother."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4150
+title "Eddie"
+body "Very secret. Incriminating."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4155
+title "Boots"
+body "You found dirt on his brother, huh?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4160
+title "Boots"
+body "So you suggest blackmailing my way into the caves?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4165
+title "Eddie"
+body "Blackmail unnecessary. Secret unnecessary."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4170
+title "Eddie"
+body "Knowledge of brother is enough... Mmmm... enough."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4175
+title "Boots"
+body "Well, I guess if you say so."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4180
+title "Durling"
+body "Trust in Eddie. He will not misguide you."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4185
+title "Chazcon"
+body "Okay, people, okay... can we wrap this up, please?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4190
+title "Chazcon"
+body "Eddie's got a lot of subjects left to see today and we're way behind schedule."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4195
+title "Boots"
+body "Hey, quit pushing, punky... I'm history."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4200
+title "Boots"
+body "Thanks for the help, Eddie. Don't go changin'."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4205
+title "Eddie"
+body "Mmmm."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4210
+title "Chazcon"
+body "No respect for pageantry."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 13:4215
+title "Chazcon"
+body "NEXT!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 13:1
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .6 1 1
+set CURRENT_PLANET = 1
+set CURRENT_BANK = 13
+if (PRE_DETTA) {
+  extern applylevelconfiguration hovel_third
+} else if (MYSTECH_ACTIVE) {
+  extern applylevelconfiguration hovel_second
+} else
+  extern applylevelconfiguration hovel_first
+extern playlevelmusic mp3/bricks/bricks_bad_place_1_0.mp3
+BattleMusicOverride$="mp3/bricks/bricks_combat_2_0.mp3" 
+extern AI_SpawnEntity ob_clip_handle1 ob_clip ob_clip1
+extern AI_SetXYZ ob_clip_handle1 254 2239 -139
+
+#switch 13:101
+if (INV_SOCK == 2) {
+  goto 13:0180
+} else if (INV_SOCK == 1) {
+  goto 13:0150
+} else if (MET_EDDIE) {
+  goto 13:0102
+} else
+  goto 13:0170
+
+#switch 13:201
+if (INV_SOCK != 2)
+  extern is_in_inventory "Stinky Sock" INV_SOCK
+set Moop1 = (Moop1 + 1)
+if ((INV_SOCK > 0) && (Moop2 > 0))
+  goto 13:0225
+if (INV_SOCK > 0)
+  goto 13:0220
+if (Moop1 > 2)
+  goto 13:0215
+if (Moop1 > 1)
+  goto 13:0210
+goto 13:0205                                 
+
+#switch 13:250
+if ((HOVEL_PASSDOOR == 1) && (@grumpos_at_bridge == 0)) {
+  goto 13:1510
+} else if (HOVEL_PASSDOOR == 0)
+  extern playscene hovel_nobridge
+
+#switch 13:255
+if (@grumpos_at_bridge) {
+  set grumpos_waiting = 0
+  extern complete_quest "Find More Info on Eddie"
+  extern add_npc_to_party Grumpos
+  set @grumpos_at_bridge = 0
+}
+
+#switch 13:301
+set Bennett1 = (Bennett1 + 1)
+if (Bennett1 > 2)
+  goto 13:0315
+if (Bennett1 > 1)
+  goto 13:0310
+goto 13:0305                                 
+
+#switch 13:501
+set Deedle1 = (Deedle1 + 1)
+if (Deedle1 > 2)
+  goto 13:0515
+if (Deedle1 > 1)
+  goto 13:0510
+goto 13:0505                                 
+
+#switch 13:601
+set Flooch1 = (Flooch1 + 1)
+if (Flooch1 > 1)
+  goto 13:0610
+goto 13:0605                                 
+
+#switch 13:701
+set Mub1 = (Mub1 + 1)
+if (Mub1 > 1)
+  goto 13:0710
+goto 13:0705                                 
+
+#switch 13:801
+set Renie1 = (Renie1 + 1)
+if (Renie1 > 3)
+  goto 13:0817
+if (Renie1 > 2)
+  goto 13:0815
+if (Renie1 > 1)
+  goto 13:0810
+goto 13:0805                                 
+
+#switch 13:901
+set Spozz1 = (Spozz1 + 1)
+if (Spozz1 > 2)
+  goto 13:0915
+if (Spozz1 > 1)
+  goto 13:0910
+goto 13:0905                                 
+
+#switch 13:1501
+echo "switch removed"
+
+#switch 13:1510
+set @grumpos_at_bridge = 1
+set grumpos_waiting = 1
+if (func_charinparty[grumpos] == 3) {
+  extern set_party_leader boots
+  extern AI_GrabEntity PlayerChar1 Grumpos_handle
+} else if (func_charinparty[grumpos] == 2)
+  extern AI_GrabEntity PlayerChar1 Grumpos_handle
+extern remove_npc_from_party Grumpos 0
+extern entkey Grumpos_handle "sequence" "13:1585"
+extern AI_SeekAndFace Grumpos_handle grumposhov_path moop
+
+#switch 13:1515
+set grumpos_waiting = 0
+extern complete_quest "Find More Info on Eddie"
+extern add_npc_to_party grumpos
+
+#switch 13:1551
+if (grumpos_waiting == 0)
+  goto 0:0
+if (@BootsAwayFromTrigger != 0)
+  goto 0:0
+set @BootsAwayFromTrigger = 1
+extern is_in_inventory "Stinky Sock" @socktemp
+if (@socktemp > 0)
+  goto 13:1553
+
+#switch 13:1554
+extern cam_anoxmariomode 1
+extern AI_SeekAndFace bootshandle bootshov_path
+extern AI_SetCompletionCallback bootshandle 13:1555
+
+#switch 13:1555
+set @BootsAwayFromTrigger = 0
+set @WhatTheFuck = 69
+extern ANIM_MakeSmart bootshandle
+extern AI_ReleaseEntity bootshandle
+extern AI_ReleaseEntity grumpos_handle
+extern cam_anoxmariomode 0
+console "forcecursormode 0"
+
+#switch 13:1556
+extern AI_GrabEntity PlayerChar0 playerchar0_handle
+
+#switch 13:1587
+extern complete_quest "Find More Info on Eddie"
+extern entkey Grumpos_handle "sequence" ""
+extern add_npc_to_party grumpos
+extern AI_ReleaseEntity playerchar0_handle
+extern AI_ReleaseEntity Grumpos_handle
+
+#switch 13:1605
+extern complete_quest "Find More Info on Eddie"
+extern add_npc_to_party grumpos
+
+#switch 13:1801
+set Woing1 = (Woing1 + 1)
+if (Woing1 > 1)
+  goto 13:1810
+goto 13:1805                                 
+
+#switch 13:3001
+if (@do_not_run_twice)
+  goto 0:0
+extern resetbattle hovel0
+extern resetbattle hovel1
+extern resetbattle hovel2
+extern resetbattle hovel3
+extern resetbattle hovel4
+extern resetbattle hovel5
+extern resetbattle hovel6
+extern resetbattle hovel7
+extern resetbattle hovel8
+extern resetbattle hovel9
+extern resetbattle hovel10
+extern resetbattle hovel11
+extern resetbattle hovel12
+if (grav_hovel_2_bricksc2 == 1) {
+  console "map bricksc2 fromhovel"
+} else {
+  set @do_not_run_twice = 1
+  set grav_hovel_2_bricksc2 = 1
+  extern playscene hovel_2_bricksc2
+}
+
+#switch 13:2101
+if (INV_TREE > 0)
+  goto 13:2110
+goto 13:2105
+
+#switch 13:2201
+if (INV_TREE > 0)
+  goto 13:2210
+goto 13:2205
+
+#switch 13:2301
+if (INV_TREE > 0)
+  goto 13:2310
+goto 13:2305
+
+#switch 13:5001
+if (@skinKeg == 1)
+  goto 0:0
+set @skinKeg = 1
+set INV_SOCK = 0
+set MET_EDDIE = 1
+set HOVEL_PASSDOOR = 0
+extern complete_quest "How To Get Past Tunnel Guard"
+extern add_quest "Know How To Get Past Guard"
+extern remove_from_inventory "Stinky Sock"
+extern playscene hovel_eddie1
+
+#switch 13:6051
+set INV_TREE = 1
+set hovel_tree_taken = 1
+extern addnew_to_inventory "Symmetrical Crystal Tree"
+extern playscene hovel_tree
+
+#switch 13:6666
+extern add_quest "Get Tree"
+goto 0:0
+
+#switch 13:1230
+WS_STAND$="demo_skill_1" 
+ws_object$="democratusitem" 
+set ws_bank = 13
+set ws_entry = 1235
+gosub 4005:1
+
+#switch 13:1235
+set hovel_tractor = 1
+extern addnew_to_inventory "HealGrease Complete"
+set timed_message = 20
+got_object$="HealGrease Complete" 
+gosub 1000:1
+goto 0:0
+
+#switch 13:8000
+console "battlestart 0"
+echo "battle 0 triggered"
+goto 0:0
+
+#switch 13:8010
+if (hovel_area_1 != 1)
+  goto 0:0
+console "battlestart 1"
+echo "battle 1 triggered"
+goto 0:0
+
+#switch 13:8020
+console "battlestart 2"
+echo "battle 2 triggered"
+goto 0:0
+
+#switch 13:8030
+if (hovel_poopie == 1) {
+  set hovel_area_1 = 1
+  set hovel_poopie = 0
+  console "battlestart 12"
+  goto 0:0
+}
+set hovel_area_1 = 1
+console "battlestart 3"
+echo "battle 3 triggered"
+goto 0:0
+
+#switch 13:8040
+if (hovel_area_2 != 1)
+  goto 0:0
+console "battlestart 4"
+echo "battle 4 triggered"
+goto 0:0
+
+#switch 13:8050
+set hovel_area_2 = 1
+console "battlestart 5"
+echo "battle 5 triggered"
+goto 0:0
+
+#switch 13:8060
+if (hovel_area_3 != 1)
+  goto 0:0
+console "battlestart 6"
+echo "battle 6 triggered"
+goto 0:0
+
+#switch 13:8070
+console "battlestart 7"
+echo "battle 7 triggered"
+goto 0:0
+
+#switch 13:8080
+set hovel_area_3 = 1
+console "battlestart 8"
+echo "battle 8 triggered"
+goto 0:0
+
+#switch 13:8090
+if (hovel_area_4 != 1)
+  goto 0:0
+console "battlestart 9"
+echo "battle 9 triggered"
+goto 0:0
+
+#switch 13:8100
+set hovel_area_4 = 1
+console "battlestart 10"
+echo "battle 10 triggered"
+goto 0:0
+
+#switch 66:6666
+extern addnew_to_inventory "Stinky Sock"

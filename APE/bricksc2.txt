@@ -1,0 +1,1467 @@
+#window 8:120
+title "Ghalla"
+if (MYSTECH_ACTIVE == 0)
+  body "Nice to see you alive and kicking, Boots. I was sure Detta had you sent to marble town."
+if (MYSTECH_ONLY == 1)
+  body "Detta's been turning up the heat around here, Boots. You best keep outta trouble."
+if (PRE_DETTA == 1)
+  body "NoxGuards came in here and busted up my equipment. Luckily the Creature Repair Chamber and the Ferriplasty Machine were unharmed."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:0115
+
+#window 8:125
+title "Ghalla"
+if ((MYSTECH_ACTIVE == 0) || ((MYSTECH_ACTIVE == 1) && (PRE_DETTA == 0)))
+  body "Welcome to Ghalla's Creature Repairs and Ferriplasty."
+if (PRE_DETTA == 1)
+  body "NoxGuards came in here and busted up my equipment. Luckily the Creature Repair Chamber and the Ferriplasty Machine were unharmed."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:0115
+
+#window 8:130
+title "Ghalla"
+if (MYSTECH_ACTIVE == 0)
+  body "Well, if it's not my little gumdrop, PAL-18!"
+if ((MYSTECH_ACTIVE == 1) && (PRE_DETTA == 0))
+  body "Hey, little gumdrop. You keepin' Boots outta trouble for us?"
+if (PRE_DETTA == 1)
+  body "NoxGuards came in here and busted up my equipment. Luckily the Creature Repair Chamber and the Ferriplasty Machine were unharmed."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:0115
+
+#window 8:135
+title "Ghalla"
+if (PRE_DETTA == 0)
+  body "You're the most amount of people I'll ever have healed at once."
+if (PRE_DETTA == 1)
+  body "NoxGuards came in here and busted up my equipment. Luckily the Creature Repair Chamber and the Ferriplasty Machine were unharmed."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:0115
+
+#window 8:140
+title "Ghalla"
+if ((MYSTECH_ACTIVE == 1) && (PRE_DETTA == 0))
+  body "Glad you're still alive, Sera. Love the beret."
+if (PRE_DETTA == 1)
+  body "NoxGuards came in here and busted up my equipment. Luckily the Creature Repair Chamber and the Ferriplasty Machine were unharmed."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:0115
+
+#window 8:170
+title "Ghalla"
+body "Come back to Ghalla's soon!"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern AI_ReleaseEntity ghalla_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:305
+title "Breadhaft-Ya"
+body "My stupid kid broke his arm trying to reach a bipidri working on a construction strut."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:310
+title "Breadhaft-Ya"
+body "Little brat."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:315
+title "Breadhaft-Ya"
+body "This little fool broke his other arm trying to feed a carrot to a Bipidri. Fell flat on his elbow."
+cam left restore zip
+talk npc amb_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:401
+title "Monhaft-Ya"
+body "*SOB*"
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:705
+title "Transition Bot"
+body "Transition plate twenty-seven is currently unaligned. Please keep this area clear in the event of a transition. "
+cam left from(PlayerChar0) to(transibot) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 transibot
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:0706
+
+#window 8:706
+title "Transition Bot"
+body "The District of South Anachronox is not liable for injury or death resulting from plate transitions."
+cam left from(PlayerChar0) to(transibot) restore zip
+finishswitch {
+  console "forcecursormode 1"
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:0707
+
+#window 8:805
+title "Bolo Torver"
+body "There's something wrong with my 'bot, man."
+cam left restore zip
+talk npc gest_f stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:810
+title "Bolo Torver"
+body "It's not the engine. It's not the wiring. It's not the circuitry. I don't know what's wrong with her."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:815
+title "Bolo Torver"
+body "They better fix my baby."
+cam left restore zip
+talk npc gest_f stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:905
+title "Barlis"
+body "Ghalla ever tell you how she got into this business?"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:0910
+
+#window 8:910
+title "Barlis"
+body "She started her career as a cyberneticist. But when her son was nearly killed in a swerver accident, she devised a radical, new grafting process to save him. It was a major advancement in traditional bio-melding techniques."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:915
+title "Barlis"
+body "Ghalla's a multi-millionaire, but she insists on working the shop herself... here on Anachronox of all places. She said something about The Bricks needing her help most."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:920
+title "Barlis"
+body "Don't tell her I told you though. Mom would kill me."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:1305
+title "Ghalla"
+body "Hey, you're not supposed to be back here! Vamoose!"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:1310
+title "Ghalla"
+body "Will you get outta here before I lose my temper?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:1405
+title "Sunil"
+body "Problem: Recipe requires symmetrical crystal tree for presentation."
+cam left from(PlayerChar0) to(sunil) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 sunil
+  extern AI_GrabEntity sunil sunil_handle
+  extern ANIM_PlayAnim sunil_handle talk_a 0 1 0
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:1406
+
+#window 8:1406
+title "Harth"
+body "Solution: Search junkyard for crystal tree."
+cam left from(PlayerChar0) to(harth) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 harth
+  extern AI_GrabEntity harth harth_handle
+  extern ANIM_PlayAnim harth_handle talk_a 0 1 0
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:1407
+
+#window 8:1407
+title "Sunil"
+body "Junkyard too dangerous."
+cam left from(PlayerChar0) to(sunil) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 sunil
+  extern AI_GrabEntity sunil sunil_handle
+  extern ANIM_PlayAnim sunil_handle talk_a 0 1 0
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:1408
+
+#window 8:1408
+title "Harth"
+body "Drip."
+cam left from(PlayerChar0) to(harth) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 harth
+}
+
+finishswitch {
+  set Sunil1 = 1
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity sunil_handle
+  extern AI_ReleaseEntity harth_handle
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:1410
+title "Sunil"
+body "Find symmetrical crystal tree in junkyard for us, please."
+cam left from(PlayerChar0) to(sunil) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 sunil
+  extern AI_GrabEntity sunil sunil_handle
+  extern AI_GrabEntity harth harth_handle
+  extern AI_WaitAndFace sunil_handle -1 PlayerChar0
+  extern AI_WaitAndFace harth_handle -1 PlayerChar0
+  extern ANIM_PlayAnim sunil_handle talk_a 0 1 0
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:1411
+
+#window 8:1411
+title "Harth"
+body "We will pay you."
+cam left from(PlayerChar0) to(harth) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 harth
+  extern ANIM_PlayAnim harth_handle talk_a 0 1 0
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:1412
+
+#window 8:1412
+title "Sunil"
+body "Make sure tree is symmetrical, please."
+cam left from(PlayerChar0) to(sunil) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 sunil
+  extern ANIM_PlayAnim sunil_handle talk_a 0 1 0
+}
+
+finishswitch {
+  set Sunil1 = 2
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity sunil_handle
+  extern AI_ReleaseEntity harth_handle
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:1415
+title "Sunil"
+body "You found tree."
+cam left from(PlayerChar0) to(sunil) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 sunil
+  extern AI_GrabEntity sunil sunil_handle
+  extern AI_WaitAndFace sunil_handle -1 PlayerChar0
+  extern AI_GrabEntity harth harth_handle
+  extern AI_WaitAndFace harth_handle -1 PlayerChar0
+  extern ANIM_PlayAnim sunil_handle talk_a 0 1 0
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:1416
+
+#window 8:1416
+title "Sunil"
+body "He found tree."
+cam left from(PlayerChar0) to(sunil) restore zip
+startswitch {
+  extern AI_WaitAndFace sunil_handle -1 harth
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:1417
+
+#window 8:1417
+title "Sunil"
+body "Here is payment. Do with money what you will."
+cam left from(PlayerChar0) to(sunil) restore zip
+startswitch {
+  extern AI_WaitAndFace sunil_handle -1 PlayerChar0
+  extern ANIM_PlayAnim sunil_handle talk_a 0 1 0
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:1418
+
+#window 8:1418
+title "Harth"
+body "Quality tree. Thank you."
+cam left from(PlayerChar0) to(harth) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 harth
+  extern ANIM_PlayAnim harth_handle talk_a 0 1 0
+}
+
+finishswitch {
+  set Sunil1 = 3
+  extern add_money 175
+  set timed_message = 20
+  got_object$="$175" 
+  gosub 1000:1
+  extern remove_from_inventory "Symmetrical Crystal Tree"
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity sunil_handle
+  extern AI_ReleaseEntity harth_handle
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:1420
+title "Sunil"
+body "Now recipe calls for germinating tongue spores."
+cam left from(PlayerChar0) to(sunil) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 sunil
+  extern AI_GrabEntity sunil sunil_handle
+  extern ANIM_PlayAnim sunil_handle talk_a 0 1 0
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:1421
+
+#window 8:1421
+title "Harth"
+body "Impossible."
+cam left from(PlayerChar0) to(harth) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 harth
+  extern AI_GrabEntity harth harth_handle
+  extern ANIM_PlayAnim harth_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity sunil_handle
+  extern AI_ReleaseEntity harth_handle
+}
+
+style "style_linguinator3"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:1425
+title "Sunil"
+body "This recipe is truly beginning to chafe my mottled hide."
+cam left from(PlayerChar0) to(sunil) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 sunil
+  extern AI_GrabEntity sunil sunil_handle
+  extern ANIM_PlayAnim sunil_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "brebulan"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:1426
+
+#window 8:1426
+title "Harth"
+body "We are perfectionists. Shut up and dig."
+cam left from(PlayerChar0) to(harth) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 harth
+  extern AI_GrabEntity harth harth_handle
+  extern ANIM_PlayAnim harth_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity sunil_handle
+  extern AI_ReleaseEntity harth_handle
+}
+
+style "style_embrace"
+font "brebulan"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:1105
+title "Mighty Mezz"
+body "We're sailin' on bad Dopa-dopa, man. They sold me some cheap flea powder down the street. It wouldn't get a Bippy high."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:1107
+
+#window 8:1107
+title "Muggles"
+body "Pure caca, man."
+cam left from(PlayerChar0) to(muggles) restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:1110
+title "Mighty Mezz"
+body "Are you holding?"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:1205
+title "Muggles"
+body "Wanna take a walk?"
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:2305
+title "Geraka-Ya"
+body "Delicious fruita, raised with love and carnival seeds. Lovely fruita, coveted by greedy eye and greedy hand."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:2310
+title "Geraka-Ya"
+body "Precious fruita, cultivated by Klaz itself. Beautiful fruita, constant target of hungry thievery."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:2315
+title "Geraka-Ya"
+body "Do not touch the fruita fresca. It is not for sale."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:2505
+title "Geraka-Ya"
+body "Steal not the fruita!"
+cam left from(PlayerChar0) to(geraka) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_GrabEntity geraka geraka_handle
+  extern AI_WaitAndFace bootshandle -1 geraka
+  extern ANIM_PlayAnim geraka_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity geraka_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:2510
+title "Geraka-Ya"
+body "The fruita is not for sale!"
+cam left from(PlayerChar0) to(geraka) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_GrabEntity geraka geraka_handle
+  extern AI_WaitAndFace bootshandle -1 geraka
+  extern ANIM_PlayAnim geraka_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity geraka_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:2515
+title "Geraka-Ya"
+body "The fruita is for display only!"
+cam left from(PlayerChar0) to(geraka) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_GrabEntity geraka geraka_handle
+  extern AI_WaitAndFace bootshandle -1 geraka
+  extern ANIM_PlayAnim geraka_handle talk_a 0 1 0
+}
+
+finishswitch {
+  set @Geraka2 = 0
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity geraka_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:2601
+title "Nana Fieth"
+body "We're not doing anything bad. We're just, uh... standing here."
+cam left from(PlayerChar0) to(nana) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle nana
+  extern AI_GrabEntity nana nana_handle
+  extern ANIM_PlayAnim nana_handle talk_n 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:2606
+
+#window 8:2606
+title "Bon Gurbler"
+body "Leave us alone, man."
+cam left from(PlayerChar0) to(bon) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle bon
+  extern AI_GrabEntity bon bon_handle
+  extern ANIM_PlayAnim bon_handle talk_b 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity nana_handle
+  extern AI_ReleaseEntity bon_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:2705
+title "Bon Gurbler"
+body "We're just, uh... admiring that house over there."
+cam left from(PlayerChar0) to(bon) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle bon
+  extern AI_GrabEntity bon bon_handle
+  extern ANIM_PlayAnim bon_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:2706
+
+#window 8:2706
+title "Nana Fieth"
+body "Yeah, we're thinking of, uh... buying it."
+cam left from(PlayerChar0) to(nana) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle nana
+  extern AI_GrabEntity nana nana_handle
+  extern ANIM_PlayAnim nana_handle talk_b 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+  extern AI_ReleaseEntity nana_handle
+  extern AI_ReleaseEntity bon_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:2905
+title "Verbo Slug"
+body "See all those little Gub-Bugs? They breed on the warm underbelly of those conductor pipes, and molt under the grating before coming up to search for food."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:2910
+title "Verbo Slug"
+body "Careful where you step. The Brebulans have an old saying... \"Step on a Gub, your life will stub.\" Well, something gets lost in the translation, but you get the point... it's bad luck, man."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:2915
+title "Verbo Slug"
+body "That sweet smell isn't the fruita. Gub-Bug excrement is coated with a syrupy oil that attracts speeder lice, their main dietary staple. It's funny, they literally dook where they eat."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:2920
+title "Verbo Slug"
+body "That fruita vendor probably regrets setting up shop here, huh? No wonder he's always in such a foul mood."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:2925
+title "Verbo Slug"
+body "Man, check out the spiracle on that one. I think I'm in love!"
+cam left restore zip
+talk npc gest_h stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:3010
+body "Use the elevator?"
+style "NULL"
+font "brebulan"
+xpos 20
+ypos 180
+
+#window 8:3011
+body "Thank you for using Cordicom!"
+style "NULL"
+font "prochars"
+xpos 305
+ypos 340
+
+#window 8:3012
+body "CORDICOM CLASS 2."
+style "NULL"
+font "brebulan"
+xpos 305
+ypos 360
+
+#window 8:3013
+body "Certified WSC-1009 compliant, inspection 7449L. Cordicom Inc. ID#2828225"
+style "NULL"
+font "procharl"
+xpos 325
+ypos 380
+
+#window 8:3101
+title "Verbo Slug"
+body "Don't touch that. You'll release all the larvae."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:3201
+title "Ashrigags"
+body "It's weird when you get a new limb. It slowly stimulates the nerve endings surrounding where the skin meld took place. The signal feels like a little tingle for the first few hours while your brain sensors learn to interpret the sensation."
+cam left lift(20) restore zip
+talk npc amb_j stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:3215
+
+#window 8:3215
+title "Ashrigags"
+body "Soon, your mind adjusts to the stimulation, and the new limb starts to feel exactly as the old one did."
+cam left lift(20) restore zip
+talk npc amb_j stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 8:3220
+
+#window 8:3220
+title "Ashrigags"
+body "I think I'm going to do it to my other arm."
+cam left lift(20) restore zip
+talk npc amb_j stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:3301
+title "Valesta"
+body "I sold my old swerver to pay for the rest of Deanamo's operation. Jerk."
+cam left restore zip
+talk npc amb_c stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:3401
+title "Deanamo"
+body "Ghalla's prepping me for my first wound welding session. Wish me luck."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 8:7060
+body "Found $50!"
+style "style_embrace"
+font "_anox10"
+xpos 35
+ypos 340
+width 580
+
+#window 8:1231
+title "PAL-18"
+if (func_charinparty[democratus] == 2)
+  body "Hey! Democratus and I are fully healed now. Thanks, Ferriplasty Service Table!"
+if (func_charinparty[democratus] != 2)
+  body "Hey! I'm fully healed now. Thanks, Ferriplasty Service Table!"
+talk player talk_a stay
+startswitch {
+  extern SetPlayerCurrentHP Pal 9999
+  if (func_charinparty[democratus] == 2)
+    extern SetPlayerCurrentHP democratus 9999
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 8:5001
+title "Boots"
+body "How 'bout next time, I DON'T get caught?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+xpos 40
+ypos 380
+width 580
+
+#switch 8:1
+set CURRENT_PLANET = 1
+set CURRENT_BANK = 8
+extern is_in_inventory "Poopie's Lifeless Husk" @poo
+if (@poo)
+  set hovel_poopie = 0
+extern applylevelconfiguration bricksc2
+if (PRE_DETTA == 0)
+  extern loopambient ambi_bricksc2_plate
+if (PRE_DETTA == 1)
+  extern loopambient ambi_bricksc2_plate_detta
+if (PRE_DETTA == 1)
+  set Ticket2 = 1
+if (PRE_DETTA == 1)
+  set Hermerlian1 = 1
+if (MET_DETTA == 1)
+  set Viehio1 = 1
+if (MET_EDDIE == 1)
+  set Magaero1 = 1
+if ((Ticket1 > 0) || (Sizzis1 > 0))
+  set Ticket2 = 1
+if ((MYSTECH_ACTIVE == 1) && (RussYES == 1))
+  set RussYES = 2
+set done_fruit_fight = 0
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .6 1 1
+extern playlevelmusic mp3/bricks/bricks_normal_1_0.mp3
+BattleMusicOverride$="mp3/bricks/Bricks_combat_2_0.mp3" 
+if (GOT_GRUMPOS == 0)
+  extern loopambient ambi_bricksc2
+if (bricksc2_playelevscript == 1) {
+  extern playscene bricksc2_elevator1top
+  set bricksc2_playelevscript = 0
+}
+if (briefcase_follow_mode == 1)
+  goto 8:0050
+if (AM_2_ghallas == 1)
+  goto 8:0019
+if (AM_2_hovel == 1)
+  goto 8:0020
+if ((AM_2_bricksc == 1) || (AM_2_platform == 1))
+  goto 8:0030
+goto 0:0
+
+#switch 8:19
+set AM_2_ghallas = 0
+extern playambient automap_2_ghallas
+
+#switch 8:20
+set AM_2_hovel = 0
+extern playambient automap_2_hovel
+
+#switch 8:30
+set AM_2_bricksc = 0
+extern playambient Automap_bricksc2_2_bricksc
+
+#switch 8:50
+if (briefcase_2_bricksc2 == 1) {
+  goto 8:0060
+} else
+  gosub 986:1
+
+#switch 8:60
+set briefcase_2_bricksc2 = 0
+extern playambient briefcase_bricksc2
+gosub 100:100
+
+#switch 8:101
+extern AI_GrabEntity ghalla ghalla_handle
+extern AI_WaitAndFace ghalla_handle -1 PlayerChar0
+if (func_charinparty[boots] == 3)
+  goto 8:0120
+if (func_charinparty[grumpos] == 3)
+  goto 8:0125
+if (func_charinparty[pal] == 3)
+  goto 8:0130
+if (func_charinparty[rho] == 3)
+  goto 8:0125
+if (func_charinparty[democratus] == 3)
+  goto 8:0135
+if (func_charinparty[stiletto] == 3)
+  goto 8:0140
+if (func_charinparty[paco] == 3)
+  goto 8:0125
+
+#switch 8:115
+extern shop_create "CREATURE REPAIR & FERRIPLASTY"
+extern shop_set_active "CREATURE REPAIR & FERRIPLASTY"
+extern shop_add_object "HealGrease" 100
+extern shop_add_object "HealGrease Plus" 100
+if (MYSTECH_ACTIVE)
+  extern shop_add_object "HealGrease Complete" 100
+extern shop_add_object "TimeMinder Tear" 100
+extern shop_picture "ghalla.png"
+extern shop_slogan "Ghalla can fix ANY body or bot!"
+extern shop_start 8:0170
+
+#switch 8:5
+set hpBoots = -1.000000
+set hpGrumpos = -1.000000
+set hpPal = -1.000000
+set hpStiletto = -1.000000
+set hpRho = -1.000000
+set hpPaco = -1.000000
+set hpDemocratus = -1.000000
+set p[0] = func_charinparty[boots]
+set p[1] = func_charinparty[grumpos]
+set p[2] = func_charinparty[pal]
+set p[3] = func_charinparty[stiletto]
+set p[4] = func_charinparty[rho]
+set p[5] = func_charinparty[paco]
+set p[6] = func_charinparty[democratus]
+goto 0:0
+
+#switch 8:6
+if (p[0] > 1) {
+  extern GetPlayerCurrentHP Boots hpBoots
+  extern check_stat boots add_max_hp maximumHP
+  if (hpBoots == maximumHP)
+    set hpBoots = -1.000000
+}
+if (p[1] > 1) {
+  extern GetPlayerCurrentHP Grumpos hpGrumpos
+  extern check_stat grumpos add_max_hp maximumHP
+  if (hpGrumpos == maximumHP)
+    set hpGrumpos = -1.000000
+}
+if (p[2] > 1) {
+  extern GetPlayerCurrentHP pal hpPal
+  extern check_stat pal add_max_hp maximumHP
+  if (hpPal == maximumHP)
+    set hpPal = -1.000000
+}
+if (p[3] > 1) {
+  extern GetPlayerCurrentHP Stiletto hpStiletto
+  extern check_stat check_stat add_max_hp maximumHP
+  if (hpStiletto == maximumHP)
+    set hpStiletto = -1.000000
+}
+if (p[4] > 1) {
+  extern GetPlayerCurrentHP Rho hpRho
+  extern check_stat rho add_max_hp maximumHP
+  if (hpRho == maximumHP)
+    set hpRho = -1.000000
+}
+if (p[5] > 1) {
+  extern GetPlayerCurrentHP Paco hpPaco
+  extern check_stat paco add_max_hp maximumHP
+  if (hpPaco == maximumHP)
+    set hpPaco = -1.000000
+}
+if (p[6] > 1) {
+  extern GetPlayerCurrentHP Democratus hpDemocratus
+  extern check_stat democratus add_max_hp maximumHP
+  if (hpDemocratus == maximumHP)
+    set hpDemocratus = -1.000000
+}
+goto 0:0
+
+#switch 8:7
+if (hpBoots > 0)
+  set partyCost = (partyCost + 100)
+if (hpBoots == 0)
+  set partyCost = (partyCost + 300)
+if (hpGrumpos > 0)
+  set partyCost = (partyCost + 100)
+if (hpGrumpos == 0)
+  set partyCost = (partyCost + 300)
+if (hpPal > 0)
+  set partyCost = (partyCost + 100)
+if (hpPal == 0)
+  set partyCost = (partyCost + 300)
+if (hpStiletto > 0)
+  set partyCost = (partyCost + 100)
+if (hpStiletto == 0)
+  set partyCost = (partyCost + 300)
+if (hpRho > 0)
+  set partyCost = (partyCost + 100)
+if (hpRho == 0)
+  set partyCost = (partyCost + 300)
+if (hpPaco > 0)
+  set partyCost = (partyCost + 100)
+if (hpPaco == 0)
+  set partyCost = (partyCost + 300)
+if (hpDemocratus > 0)
+  set partyCost = (partyCost + 100)
+if (hpDemocratus == 0)
+  set partyCost = (partyCost + 300)
+goto 0:0
+
+#switch 8:8
+if (hpBoots == 0) {
+  extern remove_money 300
+} else
+  extern remove_money 100
+extern SetPlayerCurrentHP Boots 9999
+extern adjust_stat boots status 0
+gosub 8:2 	              
+goto 0:0
+
+#switch 8:9
+if (hpGrumpos == 0) {
+  extern remove_money 300
+} else
+  extern remove_money 100
+extern SetPlayerCurrentHP Grumpos 9999
+extern adjust_stat Grumpos status 0
+gosub 8:2 	              
+goto 0:0
+
+#switch 8:10
+if (hpPal == 0) {
+  extern remove_money 300
+} else
+  extern remove_money 100
+extern SetPlayerCurrentHP Pal 9999
+extern adjust_stat Pal status 0
+gosub 8:2 	              
+goto 0:0
+
+#switch 8:11
+if (hpStiletto == 0) {
+  extern remove_money 300
+} else
+  extern remove_money 100
+extern SetPlayerCurrentHP Stiletto 9999
+extern adjust_stat Stiletto status 0
+gosub 8:2 	              
+goto 0:0
+
+#switch 8:12
+if (hpRho == 0) {
+  extern remove_money 300
+} else
+  extern remove_money 100
+extern SetPlayerCurrentHP Rho 9999
+extern adjust_stat Rho status 0
+gosub 8:2 	              
+goto 0:0
+
+#switch 8:13
+if (hpPaco == 0) {
+  extern remove_money 300
+} else
+  extern remove_money 100
+extern SetPlayerCurrentHP Paco 9999
+extern adjust_stat Paco status 0
+gosub 8:2 	              
+goto 0:0
+
+#switch 8:14
+if (hpDemocratus == 0) {
+  extern remove_money 300
+} else
+  extern remove_money 100
+extern SetPlayerCurrentHP Democratus 9999
+extern adjust_stat Democratus status 0
+gosub 8:2 	              
+goto 0:0
+
+#switch 8:15
+extern remove_money partyCost
+extern check_stat playerchar0 add_max_hp maximumHP
+extern adjust_stat playerchar0 add_max_hp maximumHP
+extern adjust_stat playerchar0 status 0
+extern check_stat playerchar1 add_max_hp maximumHP
+extern adjust_stat playerchar1 add_max_hp maximumHP
+extern adjust_stat playerchar1 status 0
+extern check_stat playerchar2 add_max_hp maximumHP
+extern adjust_stat playerchar2 add_max_hp maximumHP
+extern adjust_stat playerchar2 status 0
+gosub 8:2 	              
+goto 0:0
+
+#switch 8:301
+set Breadhaft1 = (Breadhaft1 + 1)
+if (MYSTECH_ACTIVE == 1)
+  goto 8:0315
+if (Breadhaft1 > 1)
+  goto 8:0310
+goto 8:0305                                 
+
+#switch 8:701
+if (@botStopsboots == 1)
+  goto 0:0
+set @botStopsboots = 1
+goto 8:0705
+
+#switch 8:707
+extern cam_anoxmariomode 1
+extern AI_SeekAndFace bootshandle dontgothere
+extern AI_SetCompletionCallback bootshandle 8:0708
+
+#switch 8:708
+set @botStopsboots = 0
+extern ANIM_MakeSmart bootshandle
+extern AI_ReleaseEntity bootshandle
+extern cam_anoxmariomode 0
+console "forcecursormode 0"
+
+#switch 8:801
+set Bolo1 = (Bolo1 + 1)
+if (Bolo1 > 2)
+  goto 8:0815
+if (Bolo1 > 1)
+  goto 8:0810
+goto 8:0805                                 
+
+#switch 8:901
+set Barlis1 = (Barlis1 + 1)
+if (Barlis1 > 2)
+  goto 8:0920
+if (Barlis1 > 1)
+  goto 8:0915
+goto 8:0905                                 
+
+#switch 8:1301
+set Ghalla2 = (Ghalla2 + 1)
+if (Ghalla2 > 1)
+  goto 8:1310
+goto 8:1305                                 
+
+#switch 8:1401
+extern is_in_inventory "Cordicom Linguinator" @gotLINGI
+if (@gotLINGI < 1)
+  goto 8:1425
+extern is_in_inventory "Symmetrical Crystal Tree" @gotTREE
+if (@gotTREE > 0)
+  goto 8:1415
+if (Sunil1 == 3)
+  goto 8:1420
+if (Sunil1 > 0)
+  goto 8:1410
+goto 8:1405
+
+#switch 8:1501
+goto 8:1401
+
+#switch 8:1101
+set Mezz1 = (Mezz1 + 1)
+if (Mezz1 > 1)
+  goto 8:1110
+goto 8:1105                                 
+
+#switch 8:1201
+goto 8:1205                                 
+
+#switch 8:2301
+set Geraka1 = (Geraka1 + 1)
+if (Geraka1 > 2)
+  goto 8:2315
+if (Geraka1 > 1)
+  goto 8:2310
+goto 8:2305                                 
+
+#switch 8:2402
+pathtarget corner2b
+target uhtrigger
+
+#switch 8:2501
+set @Geraka2 = (@Geraka2 + 1)
+if (@Geraka2 > 2)
+  goto 8:2515
+if (@Geraka2 > 1)
+  goto 8:2510
+goto 8:2505
+
+#switch 8:2701
+set Bon1 = (Bon1 + 1)
+if (Bon1 > 1)
+  goto 8:2606
+goto 8:2705                                 
+
+#switch 8:2901
+set Slug1 = (Slug1 + 1)
+if (Slug1 > 4)
+  goto 8:2925
+if (Slug1 > 3)
+  goto 8:2920
+if (Slug1 > 2)
+  goto 8:2915
+if (Slug1 > 1)
+  goto 8:2910
+goto 8:2905                                 
+
+#switch 8:3004
+elev_dest$="Down to Ghalla's Area" 
+if (bricksc2elev_no == 1) {
+  goto 8:3006
+} else
+  goto 8:3005
+
+#switch 8:3006
+set elev_bank = -1.000000
+gosub 1:8			                                    
+goto 0:0
+
+#switch 8:3005
+elev_dest$="Up to Casinox Area" 
+set elev_bank = 8
+set elev_entry = 3003
+gosub 1:8			                             
+goto 0:0
+
+#switch 8:3003
+extern playscene bricksc2_elevator1bottom
+
+#switch 8:8001
+extern playscene bricksc2_elevator1top
+set bricksc2_playelevscript 0 = (1 + 0)
+
+#switch 8:1230
+extern assign E[0] -1 50 50 50 51 50 -1
+extern assign E[7] -1 40 40 40 40 60 -1
+extern assign E[14] -1 40 30 30 40 40 -1
+extern assign E[21] -1 40 40 40 40 40 -1
+extern assign E[28] -1 40 40 40 40 60 -1
+extern assign E[35] -1 40 40 30 40 40 -1
+extern assign E[42] -1 46 45 45 45 45 -1
+WS_STAND$="pal_skill_1" 
+set ws_bank = 8
+set ws_entry = 1231
+gosub 4003:1
+goto 0:0
+
+#switch 20008:1
+if (follow_lucko || briefcase_follow_mode)
+  goto 0:0
+if (done_fruit_fight > 0)
+  goto 0:0
+set done_fruit_fight = 1
+if (fruit_fight_chance == 0)
+  set fruit_fight_chance = 100
+if (random < fruit_fight_chance) {
+  set fruit_fight_chance = (fruit_fight_chance / 2)
+  if (fruit_fight_chance < 10)
+    set fruit_fight_chance = 10
+  console "battlestart 0"
+} else
+  echo "avoided battle0"
+
+#switch 20008:2
+if (follow_lucko || briefcase_follow_mode)
+  goto 0:0
+if (done_fruit_fight > 0)
+  goto 0:0
+set done_fruit_fight = 1
+if (fruit_fight_chance == 0)
+  set fruit_fight_chance = 100
+if (random < fruit_fight_chance) {
+  set fruit_fight_chance = (fruit_fight_chance / 2)
+  if (fruit_fight_chance < 10)
+    set fruit_fight_chance = 10
+  console "battlestart 1"
+} else
+  echo "avoided battle1"
+
+#switch 20008:3
+if (follow_lucko || briefcase_follow_mode)
+  goto 0:0
+if (done_fruit_fight > 0)
+  goto 0:0
+set done_fruit_fight = 1
+if (fruit_fight_chance == 0)
+  set fruit_fight_chance = 100
+if (random < fruit_fight_chance) {
+  set fruit_fight_chance = (fruit_fight_chance / 2)
+  if (fruit_fight_chance < 10)
+    set fruit_fight_chance = 10
+  console "battlestart 2"
+} else
+  echo "avoided battle2"
+
+#switch 8:4001
+if (briefcase_follow_mode == 0) {
+  if (GOT_GRUMPOS == 0)
+    goto 8:0701
+  if (GOT_GRUMPOS == 1) {
+    if (@do_not_run_twice)
+      goto 0:0
+    if (grav_bricksc2_2_hovel == 1) {
+      console "map hovel frombricksc2"
+    } else {
+      set @do_not_run_twice = 1
+      set grav_bricksc2_2_hovel = 1
+      extern playscene bricksc2_2_hovel
+    }
+  } else
+    gosub 100:250
+}
+
+#switch 8:6001
+closewindow 100:100
+extern playscene briefcase_bricksc2_gone
+
+#switch 8:6661
+echo "*** GOT TO MAP CHANGE SWITCH ***"
+if (briefcase_follow_mode == 1) {
+  gosub 100:253
+  if (@WGoAheadAndChange == 1)
+    console "map tenements frombricksc2"
+} else {
+  echo "*** GO TO TENEMENTS ***"
+  console "map tenements frombricksc2"
+}

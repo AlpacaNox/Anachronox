@@ -1,0 +1,1407 @@
+#window 25:9920
+xyprintfx 15, 12, 1, 1, 1, 1, _anox12, "Party 1"
+startswitch {
+  extern CreateAPE2DControl push Party1_1 128 218 width=64 height=64 holdfocusflag=false nodrawflag=true gamevar=@SquirrelSmellsLikeZen returnvalue=0 sequence=25:9940
+  extern CreateAPE2DControl push Party1_2 128 287 width=64 height=64 holdfocusflag=false nodrawflag=true gamevar=@SquirrelSmellsLikeZen returnvalue=0 sequence=25:9941
+}
+
+style "default_style"
+font "_anox10"
+flags passive2d, TRUE
+xpos 113
+ypos 109
+width 94
+height 257
+image "sendernet/underline.pcx" 0, 30, 94, 32
+image "onegate/partyselect_1.tga" 16, 41
+image "onegate/partyselect_$P[11]$.tga" 16, 110
+image "onegate/partyselect_$P[12]$.tga" 16, 179
+
+#window 25:9930
+xyprintfx 12, 12, 1, 1, 1, 1, _anox12, "Party 2"
+startswitch {
+  extern CreateAPE2DControl push Party2_1 449 218 width=64 height=64 holdfocusflag=false nodrawflag=true gamevar=@SquirrelSmellsLikeZen returnvalue=0 sequence=25:9942
+  extern CreateAPE2DControl push Party2_2 449 287 width=64 height=64 holdfocusflag=false nodrawflag=true gamevar=@SquirrelSmellsLikeZen returnvalue=0 sequence=25:9943
+}
+
+style "default_style"
+font "_anox10"
+flags passive2d, TRUE
+xpos 434
+ypos 109
+width 94
+height 257
+image "sendernet/underline.pcx" 0, 30, 94, 32
+image "onegate/partyselect_6.tga" 16, 41
+image "onegate/partyselect_$P[21]$.tga" 16, 110
+image "onegate/partyselect_$P[22]$.tga" 16, 179
+
+#window 25:9925
+startswitch {
+  extern CreateAPE2DControl push PartyS_1 254 169 width=64 height=64 holdfocusflag=false nodrawflag=true gamevar=@PS_SlotVal returnvalue=41 sequence=25:9944
+  extern CreateAPE2DControl push PartyS_2 323 169 width=64 height=64 holdfocusflag=false nodrawflag=true gamevar=@PS_SlotVal returnvalue=42 sequence=25:9944
+  extern CreateAPE2DControl push PartyS_3 254 238 width=64 height=64 holdfocusflag=false nodrawflag=true gamevar=@PS_SlotVal returnvalue=43 sequence=25:9944
+  extern CreateAPE2DControl push PartyS_4 323 238 width=64 height=64 holdfocusflag=false nodrawflag=true gamevar=@PS_SlotVal returnvalue=44 sequence=25:9944
+}
+
+style "default_style"
+font "_anox10"
+flags passive2d, TRUE
+xpos 239
+ypos 154
+width 163
+height 163
+image "onegate/partyselect_$P[41]$.tga" 16, 16
+image "onegate/partyselect_$P[42]$.tga" 85, 16
+image "onegate/partyselect_$P[43]$.tga" 16, 85
+image "onegate/partyselect_$P[44]$.tga" 85, 85
+
+#window 25:9950
+xyprintfx 6, 3, 1, 1, 1, 1, _anox12, "Reset"
+startswitch {
+  extern CreateAPE2DControl push PartyReset 239 344 width=65 height=22 holdfocusflag=false nodrawflag=true gamevar=@SquirrelSmellsLikeZen returnvalue=0 sequence=25:9960
+}
+
+style "default_style"
+font "_anox10"
+flags passive2d, TRUE
+xpos 239
+ypos 344
+width 65
+height 22
+
+#window 25:9955
+if (@PartySelectionValid == 0)
+  xyprintfx 4, 3, 1, 0.5, 0.5, 0.5, _anox12, "Accept"
+if (@PartySelectionValid == 1)
+  xyprintfx 4, 3, 1, 1, 1, 1, _anox12, "Accept"
+thinkswitch {
+  if (@CanAcceptParty == 1)
+    goto 0:0
+  if (((((P[11] > 0) && (P[11] < 9)) && ((P[12] > 0) && (P[12] < 9))) && ((P[21] > 0) && (P[21] < 9))) && ((P[22] > 0) && (P[22] < 9))) {
+    set @PartySelectionValid = 1
+    extern CreateAPE2DControl push PartyAccept 332 344 width=70 height=22 holdfocusflag=false nodrawflag=true gamevar=@SquirrelSmellsLikeZen returnvalue=0 sequence=25:9965
+    set @CanAcceptParty = 1
+  }
+  if (((((P[11] < 1) || (P[11] > 8)) || ((P[12] < 1) || (P[12] > 8))) || ((P[21] < 1) || (P[21] > 8))) || ((P[22] < 1) || (P[22] > 8))) {
+    set @PartySelectionValid = 0
+    extern RemoveAPE2DControl PartyAccept
+  }
+}
+
+finishswitch {
+  unset @PartySelectionValid
+}
+
+style "default_style"
+font "_anox10"
+flags passive2d, TRUE
+xpos 327
+ypos 344
+width 75
+height 22
+
+#window 104:3800
+xyprintfx 56, 28, 1, 0, 1, 1, _anox12noshad, "menu"
+startswitch {
+  set @LoggedInDettaterm = 0
+  set M[99] = 99
+  console "pushbind"
+  console "bind ESCAPE \"invoke 104:3999\""
+  extern CreateAPE2DControl push quit 68 373 width=25 height=25 normal=/gameflow/dettainterface/x.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="X" sequence=104:3999
+  extern CreateAPE2DControl push beware 495 392 width=13 height=8 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@menu returnvalue=99 sequence=104:3950
+  if (M[02] >= 1)
+    extern CreateAPE2DControl push menu1 88 112 width=110 height=21 normal=/gameflow/dettainterface/menubox1.pcx holdfocusflag=false gamevar=@menu returnvalue=2 font="detta" message="ACCESS" sequence=104:3950
+  if (M[02] == 1)
+    gosub 104:3804
+  if (M[02] < 1)
+    gosub 104:3802
+  if (M[02] < 1)
+    gosub 104:3952
+  extern AI_GrabEntity PlayerChar0 playerchar0_handle
+}
+
+finishswitch {
+  extern deassign m[0] 20
+}
+
+style "null"
+flags passive2d, TRUE
+xpos 65
+ypos 55
+width 512
+height 384
+background "dettainterface/bg01.pcx" 
+image "dettainterface/bg02.pcx" 256, 0
+image "dettainterface/bg03.pcx" 0, 256
+image "dettainterface/bg04.pcx" 256, 256
+image "dettainterface/horzstripe.pcx" 20, 46, 117, 16
+image "dettainterface/title.tga" 190, 34
+if (W[0] == 10)
+  image "dettainterface/horzstripe.pcx" 153, 200, 330, 16
+
+#switch 25:9915
+set Percomm_Now_Enabled = 1
+set anox_interface_active = 1
+extern deassign s[0] 50
+extern deassign P[0] 50
+set P[41] = 2
+set P[42] = 4
+set P[43] = 5
+set P[44] = 7
+gosub 25:9920
+gosub 25:9930
+gosub 25:9925
+gosub 25:9950
+gosub 25:9955
+goto 0:0
+
+#switch 25:9940
+if ((@PartyCursorActive > 0) && (S[11] == 0))
+  goto 0:0
+if ((@PartyCursorActive > 0) && (S[11] == 1)) {
+  set P[$@PossibleSlot1$] = 0
+  set P[$@PossibleSlot2$] = 0
+  set P[$@PossibleSlot3$] = 0
+  set S[$@PossibleSlot1$] = 0
+  set S[$@PossibleSlot2$] = 0
+  set S[$@PossibleSlot3$] = 0
+  set P[11] = @PartyCursorActive
+  unset @PartyCursorActive
+  unset @PossibleSlot1
+  unset @PossibleSlot2
+  unset @PossibleSlot3
+  extern set2dcursor default
+  goto 0:0
+}
+if ((P[11] > 0) && (P[11] != 9)) {
+  set @PartyCursorActive = P[11]
+  gosub 25:9945
+  set @PossibleSlot1 = 11
+  set S[11] = 1
+  if (P[11] == 2) {
+    set @PossibleSlot2 = 41
+    set S[41] = 1
+    set P[41] = 9
+  }
+  if (P[11] == 4) {
+    set @PossibleSlot2 = 42
+    set S[42] = 1
+    set P[42] = 9
+  }
+  if (P[11] == 5) {
+    set @PossibleSlot2 = 43
+    set S[43] = 1
+    set P[43] = 9
+  }
+  if (P[11] == 7) {
+    set @PossibleSlot2 = 44
+    set S[44] = 1
+    set P[44] = 9
+  }
+  if ((P[21] > 0) && (P[22] == 0)) {
+    set @PossibleSlot3 = 22
+    set S[22] = 1
+    set P[22] = 9
+  }
+  if (P[21] == 0) {
+    set @PossibleSlot3 = 21
+    set S[21] = 1
+    set P[21] = 9
+  }
+  set P[11] = 9
+  set @CanAcceptParty = 0
+}
+goto 0:0
+
+#switch 25:9941
+if ((@PartyCursorActive > 0) && (S[12] == 0))
+  goto 0:0
+if ((@PartyCursorActive > 0) && (S[12] == 1)) {
+  set P[$@PossibleSlot1$] = 0
+  set P[$@PossibleSlot2$] = 0
+  set P[$@PossibleSlot3$] = 0
+  set S[$@PossibleSlot1$] = 0
+  set S[$@PossibleSlot2$] = 0
+  set S[$@PossibleSlot3$] = 0
+  set P[12] = @PartyCursorActive
+  unset @PartyCursorActive
+  unset @PossibleSlot1
+  unset @PossibleSlot2
+  unset @PossibleSlot3
+  extern set2dcursor default
+  goto 0:0
+}
+if ((P[12] > 0) && (P[12] != 9)) {
+  set @PartyCursorActive = P[12]
+  gosub 25:9945
+  set @PossibleSlot1 = 12
+  set S[12] = 1
+  if (P[12] == 2) {
+    set @PossibleSlot2 = 41
+    set S[41] = 1
+    set P[41] = 9
+  }
+  if (P[12] == 4) {
+    set @PossibleSlot2 = 42
+    set S[42] = 1
+    set P[42] = 9
+  }
+  if (P[12] == 5) {
+    set @PossibleSlot2 = 43
+    set S[43] = 1
+    set P[43] = 9
+  }
+  if (P[12] == 7) {
+    set @PossibleSlot2 = 44
+    set S[44] = 1
+    set P[44] = 9
+  }
+  if ((P[21] > 0) && (P[22] == 0)) {
+    set @PossibleSlot3 = 22
+    set S[22] = 1
+    set P[22] = 9
+  }
+  if (P[21] == 0) {
+    set @PossibleSlot3 = 21
+    set S[21] = 1
+    set P[21] = 9
+  }
+  set P[12] = 9
+  set @CanAcceptParty = 0
+}
+goto 0:0
+
+#switch 25:9942
+if ((@PartyCursorActive > 0) && (S[21] == 0))
+  goto 0:0
+if ((@PartyCursorActive > 0) && (S[21] == 1)) {
+  set P[$@PossibleSlot1$] = 0
+  set P[$@PossibleSlot2$] = 0
+  set P[$@PossibleSlot3$] = 0
+  set S[$@PossibleSlot1$] = 0
+  set S[$@PossibleSlot2$] = 0
+  set S[$@PossibleSlot3$] = 0
+  set P[21] = @PartyCursorActive
+  unset @PartyCursorActive
+  unset @PossibleSlot1
+  unset @PossibleSlot2
+  unset @PossibleSlot3
+  extern set2dcursor default
+  goto 0:0
+}
+if ((P[21] > 0) && (P[21] != 9)) {
+  set @PartyCursorActive = P[21]
+  gosub 25:9945
+  set @PossibleSlot1 = 21
+  set S[21] = 1
+  if (P[21] == 2) {
+    set @PossibleSlot2 = 41
+    set S[41] = 1
+    set P[41] = 9
+  }
+  if (P[21] == 4) {
+    set @PossibleSlot2 = 42
+    set S[42] = 1
+    set P[42] = 9
+  }
+  if (P[21] == 5) {
+    set @PossibleSlot2 = 43
+    set S[43] = 1
+    set P[43] = 9
+  }
+  if (P[21] == 7) {
+    set @PossibleSlot2 = 44
+    set S[44] = 1
+    set P[44] = 9
+  }
+  if ((P[11] > 0) && (P[12] == 0)) {
+    set @PossibleSlot3 = 12
+    set S[12] = 1
+    set P[12] = 9
+  }
+  if (P[11] == 0) {
+    set @PossibleSlot3 = 11
+    set S[11] = 1
+    set P[11] = 9
+  }
+  set P[21] = 9
+  set @CanAcceptParty = 0
+}
+goto 0:0
+
+#switch 25:9943
+if ((@PartyCursorActive > 0) && (S[22] == 0))
+  goto 0:0
+if ((@PartyCursorActive > 0) && (S[22] == 1)) {
+  set P[$@PossibleSlot1$] = 0
+  set P[$@PossibleSlot2$] = 0
+  set P[$@PossibleSlot3$] = 0
+  set S[$@PossibleSlot1$] = 0
+  set S[$@PossibleSlot2$] = 0
+  set S[$@PossibleSlot3$] = 0
+  set P[22] = @PartyCursorActive
+  unset @PartyCursorActive
+  unset @PossibleSlot1
+  unset @PossibleSlot2
+  unset @PossibleSlot3
+  extern set2dcursor default
+  goto 0:0
+}
+if ((P[22] > 0) && (P[22] != 9)) {
+  set @PartyCursorActive = P[22]
+  gosub 25:9945
+  set @PossibleSlot1 = 22
+  set S[22] = 1
+  if (P[22] == 2) {
+    set @PossibleSlot2 = 41
+    set S[41] = 1
+    set P[41] = 9
+  }
+  if (P[22] == 4) {
+    set @PossibleSlot2 = 42
+    set S[42] = 1
+    set P[42] = 9
+  }
+  if (P[22] == 5) {
+    set @PossibleSlot2 = 43
+    set S[43] = 1
+    set P[43] = 9
+  }
+  if (P[22] == 7) {
+    set @PossibleSlot2 = 44
+    set S[44] = 1
+    set P[44] = 9
+  }
+  if ((P[11] > 0) && (P[12] == 0)) {
+    set @PossibleSlot3 = 12
+    set S[12] = 1
+    set P[12] = 9
+  }
+  if (P[11] == 0) {
+    set @PossibleSlot3 = 11
+    set S[11] = 1
+    set P[11] = 9
+  }
+  set P[22] = 9
+  set @CanAcceptParty = 0
+}
+goto 0:0
+
+#switch 25:9944
+if ((@PartyCursorActive > 0) && (S[$@PS_SlotVal$] == 0))
+  goto 0:0
+if ((@PartyCursorActive > 0) && (S[$@PS_SlotVal$] == 1)) {
+  set P[$@PossibleSlot1$] = 0
+  set P[$@PossibleSlot2$] = 0
+  set P[$@PossibleSlot3$] = 0
+  set S[$@PossibleSlot1$] = 0
+  set S[$@PossibleSlot2$] = 0
+  set S[$@PossibleSlot3$] = 0
+  set P[$@PS_SlotVal$] = @PartyCursorActive
+  unset @PartyCursorActive
+  unset @PossibleSlot1
+  unset @PossibleSlot2
+  unset @PossibleSlot3
+  extern set2dcursor default
+  goto 0:0
+}
+if ((P[$@PS_SlotVal$] > 0) && (P[$@PS_SlotVal$] != 9)) {
+  set @PartyCursorActive = P[$@PS_SlotVal$]
+  gosub 25:9945
+  set @PossibleSlot1 = @PS_SlotVal
+  set S[$@PS_SlotVal$] = 1
+  if ((P[11] > 0) && (P[12] == 0)) {
+    set @PossibleSlot2 = 12
+    set S[12] = 1
+    set P[12] = 9
+  }
+  if (P[11] == 0) {
+    set @PossibleSlot2 = 11
+    set S[11] = 1
+    set P[11] = 9
+  }
+  if ((P[21] > 0) && (P[22] == 0)) {
+    set @PossibleSlot3 = 22
+    set S[22] = 1
+    set P[22] = 9
+  }
+  if (P[21] == 0) {
+    set @PossibleSlot3 = 21
+    set S[21] = 1
+    set P[21] = 9
+  }
+  set P[$@PS_SlotVal$] = 9
+  set @CanAcceptParty = 0
+}
+goto 0:0
+
+#switch 25:9945
+if (@PartyCursorActive == 2)
+  extern set2dcursor ../gameflow/onegate/cursor_2.tga 0 16 16
+if (@PartyCursorActive == 4)
+  extern set2dcursor ../gameflow/onegate/cursor_4.tga 0 16 16
+if (@PartyCursorActive == 5)
+  extern set2dcursor ../gameflow/onegate/cursor_5.tga 0 16 16
+if (@PartyCursorActive == 7)
+  extern set2dcursor ../gameflow/onegate/cursor_7.tga 0 16 16
+goto 0:0
+
+#switch 25:9960
+set anox_interface_active = 0
+extern set2dcursor default
+extern RemoveAPE2DControl PartyAccept
+extern deassign s[0] 50
+extern deassign P[0] 50
+unset @PartyCursorActive
+unset @PossibleSlot1
+unset @PossibleSlot2
+unset @PossibleSlot3
+unset @PS_SlotVal
+unset @CanAcceptParty
+set P[41] = 2
+set P[42] = 4
+set P[43] = 5
+set P[44] = 7
+
+#switch 25:9965
+if (P[11] == 2)
+  @Party1_Char1$="grumpos" 
+if (P[11] == 4)
+  @Party1_Char1$="rho" 
+if (P[11] == 5)
+  @Party1_Char1$="democratus" 
+if (P[11] == 7)
+  @Party1_Char1$="paco" 
+if (P[12] == 2)
+  @Party1_Char2$="grumpos" 
+if (P[12] == 4)
+  @Party1_Char2$="rho" 
+if (P[12] == 5)
+  @Party1_Char2$="democratus" 
+if (P[12] == 7)
+  @Party1_Char2$="paco" 
+if (P[21] == 2)
+  @Party2_Char1$="grumpos" 
+if (P[21] == 4)
+  @Party2_Char1$="rho" 
+if (P[21] == 5)
+  @Party2_Char1$="democratus" 
+if (P[21] == 7)
+  @Party2_Char1$="paco" 
+if (P[22] == 2)
+  @Party2_Char2$="grumpos" 
+if (P[22] == 4)
+  @Party2_Char2$="rho" 
+if (P[22] == 5)
+  @Party2_Char2$="democratus" 
+if (P[22] == 7)
+  @Party2_Char2$="paco" 
+gosub 25:9960
+if (@EnteringMapOutOfOrder == 0) {
+  extern operate_on_party 0
+  extern set_party_members 0 boots @Party1_Char1$ @Party1_Char2$
+  extern move_party_to_point 0 2581 45 -47
+  extern create_party 1 pal
+  extern move_party_to_point 1 2584 196 -47
+  extern create_party 2 stiletto @Party2_Char1$ @Party2_Char2$
+  extern move_party_to_point 2 2749 -49 -39
+}
+echo "Pre Goto"
+goto 25:9966
+
+#switch 25:9966
+set Fortress_Parties_Formed = 1
+set PerComm_Party0 = 1
+set PerComm_Party1 = 1
+set PerComm_Party2 = 1
+PerComm_Party0_C1$="boots" 
+unset PerComm_Party0_C2$=@Party1_Char1$ 
+unset PerComm_Party0_C3$=@Party1_Char2$ 
+PerComm_Party1_C1$="pal" 
+PerComm_Party2_C1$="stiletto" 
+unset PerComm_Party2_C2$=@Party2_Char1$ 
+unset PerComm_Party2_C3$=@Party2_Char2$ 
+extern RemoveAPE2DControl Party1_1
+extern RemoveAPE2DControl Party1_2
+extern RemoveAPE2DControl Party2_1
+extern RemoveAPE2DControl Party2_2
+extern RemoveAPE2DControl PartyS_1
+extern RemoveAPE2DControl PartyS_2
+extern RemoveAPE2DControl PartyS_3
+extern RemoveAPE2DControl PartyS_4
+extern RemoveAPE2DControl PartyReset
+extern RemoveAPE2DControl PartyAccept
+closewindow 25:9920
+closewindow 25:9930
+closewindow 25:9925
+closewindow 25:9950
+closewindow 25:9955
+if (@EnteringMapOutOfOrder == 0)
+  console "map fortressgrounds"
+if (@EnteringMapOutOfOrder == 1)
+  set @DoneWithPartyCreation = 1
+
+#switch 25:9999
+set CurrentPercomParty = (CurrentPercomParty + 1)
+if (CurrentPercomParty > 2)
+  set CurrentPercomParty = 0
+extern activate_party CurrentPercomParty
+
+#switch 25:8000
+if (Percomm_Now_Enabled == 0)
+  goto 0:0
+if ((((((((PerComm_Party0 == 0) && (PerComm_Party1 == 0)) && (PerComm_Party2 == 0)) && (PerComm_Party3 == 0)) && (PerComm_Party4 == 0)) && (PerComm_Party5 == 0)) && (PerComm_Party6 == 0)) && (PerComm_Party7 == 0))
+  goto 0:0
+set PerCommUnavailable = 0
+if (@CurrentPerComm == 0)
+  set @CurrentPerComm = 1
+if (anox_interface_active == 1)
+  goto 0:0
+extern checkgamestate @gc
+if (@gc == 0)
+  goto 0:0
+goto 25:8005
+
+#switch 25:8005
+while (PerCommUnavailable == 0) {
+  set @CurrentPerComm = (@CurrentPerComm + 1)
+  if (@CurrentPerComm > 8)
+    set @CurrentPerComm = 1
+  gosub 25:8010
+}
+goto 25:8015
+
+#switch 25:8010
+if ((@CurrentPerComm == 1) && (PerComm_Party0 == 1))
+  set PerCommUnavailable = 1
+if ((@CurrentPerComm == 2) && (PerComm_Party1 == 1))
+  set PerCommUnavailable = 1
+if ((@CurrentPerComm == 3) && (PerComm_Party2 == 1))
+  set PerCommUnavailable = 1
+if ((@CurrentPerComm == 4) && (PerComm_Party3 == 1))
+  set PerCommUnavailable = 1
+if ((@CurrentPerComm == 5) && (PerComm_Party4 == 1))
+  set PerCommUnavailable = 1
+if ((@CurrentPerComm == 6) && (PerComm_Party5 == 1))
+  set PerCommUnavailable = 1
+if ((@CurrentPerComm == 7) && (PerComm_Party6 == 1))
+  set PerCommUnavailable = 1
+if ((@CurrentPerComm == 8) && (PerComm_Party7 == 1))
+  set PerCommUnavailable = 1
+goto 0:0
+
+#switch 25:8015
+set @PartyToChoose = (@CurrentPercomm - 1)
+extern activate_party @PartyToChoose
+goto 0:0
+
+#switch 104:3801
+if (W[0] == 1)
+  gosub 104:3804
+if ((W[0] >= 4) && (W[0] <= 10))
+  gosub 104:3806
+if (W[0] == 14)
+  gosub 104:3808
+if (W[0] == 16)
+  gosub 104:3810
+if (W[0] == 18)
+  gosub 104:3812
+if ((W[0] == 22) || (W[0] == 24))
+  gosub 104:3814
+if (W[0] == 28)
+  gosub 104:3816
+if (W[0] == 34)
+  gosub 104:3820	
+if (((W[0] == 40) || (W[0] == 32)) || (W[0] == 80))
+  gosub 104:3818	
+if (W[0] == 42)
+  gosub 104:3822	
+if ((W[0] == 46) || (W[0] == 48))
+  gosub 104:3824
+if (W[0] == 50)
+  gosub 104:3826
+if (W[0] == 54)
+  gosub 104:3828
+if (W[0] == 58)
+  gosub 104:3830
+if (W[0] == 62)
+  gosub 104:3832
+if (W[0] == 66)
+  gosub 104:3834
+if (W[0] == 68)
+  gosub 104:3824
+if (W[0] == 70)
+  gosub 104:3838
+if (W[0] == 74)
+  gosub 104:3840
+if (W[0] == 84)
+  gosub 104:3842
+if (W[0] == 86)
+  gosub 104:3844
+
+#switch 104:3802
+if ((M[04] >= 1) && (L[0] == 2))
+  extern CreateAPE2DControl push menu2 88 136 width=110 height=21 normal=/gameflow/dettainterface/menubox1.pcx holdfocusflag=false gamevar=@menu returnvalue=4 font="detta" message="SECURITY" sequence=104:3950
+if ((M[06] >= 1) && (L[0] == 2))
+  extern CreateAPE2DControl push menu3 88 160 width=110 height=21 normal=/gameflow/dettainterface/menubox1.pcx holdfocusflag=false gamevar=@menu returnvalue=6 font="detta" message="GENERATOR" sequence=104:3950
+if ((M[08] >= 1) && (L[0] == 2))
+  extern CreateAPE2DControl push menu4 88 184 width=110 height=21 normal=/gameflow/dettainterface/menubox1.pcx holdfocusflag=false gamevar=@menu returnvalue=8 font="detta" message="MA LAB" sequence=104:3950
+if ((M[10] >= 1) && (L[0] == 2))
+  extern CreateAPE2DControl push menu5 88 208 width=110 height=21 normal=/gameflow/dettainterface/menubox1.pcx holdfocusflag=false gamevar=@menu returnvalue=10 font="detta" message="CI CHAMBER" sequence=104:3950
+if ((M[12] >= 1) && (L[0] == 2))
+  extern CreateAPE2DControl push menu6 88 232 width=110 height=21 normal=/gameflow/dettainterface/menubox1.pcx holdfocusflag=false gamevar=@menu returnvalue=12 font="detta" message="CI HOLDING" sequence=104:3950
+if ((M[14] >= 1) && (L[0] == 2))
+  extern CreateAPE2DControl push menu7 88 256 width=110 height=21 normal=/gameflow/dettainterface/menubox1.pcx holdfocusflag=false gamevar=@menu returnvalue=14 font="detta" message="AC CHAMBER" sequence=104:3950
+if (M[16] >= 1)
+  extern CreateAPE2DControl push menu8 88 280 width=110 height=21 normal=/gameflow/dettainterface/menubox1.pcx holdfocusflag=false gamevar=@menu returnvalue=16 font="detta" message="INFO" sequence=104:3950
+if ((M[18] >= 1) && (L[0] == 1))
+  extern CreateAPE2DControl push menu2 88 136 width=110 height=21 normal=/gameflow/dettainterface/menubox1.pcx holdfocusflag=false gamevar=@menu returnvalue=18 font="detta" message="BRIDGE" sequence=104:3950
+if ((M[20] >= 1) && (L[0] == 1))
+  extern CreateAPE2DControl push menu3 88 160 width=110 height=21 normal=/gameflow/dettainterface/menubox1.pcx holdfocusflag=false gamevar=@menu returnvalue=20 font="detta" message="FORTRESS" sequence=104:3950
+if (M[02] < 1)
+  extern CreateAPE2DControl push menu1 88 112 width=110 height=21 normal=/gameflow/dettainterface/menubox0.pcx holdfocusflag=false gamevar=@menu returnvalue=2 font="detta" message="ACCESS" sequence=104:3950
+if ((M[04] < 1) && (L[0] == 2))
+  extern CreateAPE2DControl push menu2 88 136 width=110 height=21 normal=/gameflow/dettainterface/menubox0.pcx holdfocusflag=false gamevar=@menu returnvalue=4 font="detta" message="SECURITY" sequence=104:3950
+if ((M[06] < 1) && (L[0] == 2))
+  extern CreateAPE2DControl push menu3 88 160 width=110 height=21 normal=/gameflow/dettainterface/menubox0.pcx holdfocusflag=false gamevar=@menu returnvalue=6 font="detta" message="GENERATOR" sequence=104:3950
+if ((M[08] < 1) && (L[0] == 2))
+  extern CreateAPE2DControl push menu4 88 184 width=110 height=21 normal=/gameflow/dettainterface/menubox0.pcx holdfocusflag=false gamevar=@menu returnvalue=8 font="detta" message="MA LAB" sequence=104:3950
+if ((M[10] < 1) && (L[0] == 2))
+  extern CreateAPE2DControl push menu5 88 208 width=110 height=21 normal=/gameflow/dettainterface/menubox0.pcx holdfocusflag=false gamevar=@menu returnvalue=10 font="detta" message="CI CHAMBER" sequence=104:3950
+if ((M[12] < 1) && (L[0] == 2))
+  extern CreateAPE2DControl push menu6 88 232 width=110 height=21 normal=/gameflow/dettainterface/menubox0.pcx holdfocusflag=false gamevar=@menu returnvalue=12 font="detta" message="CI HOLDING" sequence=104:3950
+if ((M[14] < 1) && (L[0] == 2))
+  extern CreateAPE2DControl push menu7 88 256 width=110 height=21 normal=/gameflow/dettainterface/menubox0.pcx holdfocusflag=false gamevar=@menu returnvalue=14 font="detta" message="AC CHAMBER" sequence=104:3950
+if (M[16] < 1)
+  extern CreateAPE2DControl push menu8 88 280 width=110 height=21 normal=/gameflow/dettainterface/menubox0.pcx holdfocusflag=false gamevar=@menu returnvalue=16 font="detta" message="INFO" sequence=104:3950
+if ((M[18] < 1) && (L[0] == 1))
+  extern CreateAPE2DControl push menu2 88 136 width=110 height=21 normal=/gameflow/dettainterface/menubox0.pcx holdfocusflag=false gamevar=@menu returnvalue=18 font="detta" message="BRIDGE" sequence=104:3950
+if ((M[20] < 1) && (L[0] == 1))
+  extern CreateAPE2DControl push menu3 88 160 width=110 height=21 normal=/gameflow/dettainterface/menubox0.pcx holdfocusflag=false gamevar=@menu returnvalue=20 font="detta" message="FORTRESS" sequence=104:3950
+
+#switch 104:3804
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="ACCESS"
+if (@CantLogin == 0)
+  extern CreateAPE2DControl push pusha 288 157 width=30 height=30 normal=/gameflow/dettainterface/security#1.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=" 1" sequence=104:3856
+if (@CantLogin == 0)
+  extern CreateAPE2DControl push push1 325 157 width=170 height=30 normal=/gameflow/dettainterface/securitybox1.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Login" sequence=104:3856
+if (@CantLogin == 1)
+  extern CreateAPE2DControl push pusha 288 157 width=30 height=30 normal=/gameflow/dettainterface/security#0.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=" 1"
+if (@CantLogin == 1)
+  extern CreateAPE2DControl push push1 325 157 width=170 height=30 normal=/gameflow/dettainterface/securitybox0.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Login"
+extern CreateAPE2DControl push pushb 288 192 width=30 height=30 normal=/gameflow/dettainterface/security#1.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=" 2" sequence=104:3999
+extern CreateAPE2DControl push push2 325 192 width=170 height=30 normal=/gameflow/dettainterface/securitybox1.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Logout" sequence=104:3999
+
+#switch 104:3806
+if (((W[0] == 4) || (W[0] == 6)) || (W[0] == 8))
+  extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="DETTA GUARD CODE COMPUTER"
+if (W[0] == 10)
+  extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="MASTER CODE CYPHER COMPUTER"
+if ((W[0] == 4) && (@AllYourBase1 == 2))
+  set @AllYourBase1 = 1
+if ((W[0] == 6) && (@AllYourBase2 == 2))
+  set @AllYourBase2 = 1
+if ((W[0] == 8) && (@AllYourBase3 == 2))
+  set @AllYourBase3 = 1
+if (W[0] == 4)
+  extern CreateAPE2DControl push push1 381 194 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Fortress Access Code Cypher #1"
+if (W[0] == 4)
+  extern CreateAPE2DControl push push2 381 214 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="U O Y D M R E R S D"
+if (W[0] == 6)
+  extern CreateAPE2DControl push push1 381 194 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Fortress Access Code Cypher #2"
+if (W[0] == 6)
+  extern CreateAPE2DControl push push2 381 214 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="S N O N B E N I T A"
+if (W[0] == 8)
+  extern CreateAPE2DControl push push1 381 194 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Fortress Access Code Cypher #3"
+if (W[0] == 8)
+  extern CreateAPE2DControl push push2 381 214 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="E L D U E D T E O Y"
+if (W[0] == 10)
+  extern CreateAPE2DControl push push1 381 194 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Code Decypher"
+if ((@AllYourBase1 == 1) && (W[0] == 10))
+  extern CreateAPE2DControl push push2 381 214 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="1: U O Y D M R E R S D"
+if ((@AllYourBase2 == 1) && (W[0] == 10))
+  extern CreateAPE2DControl push push3 381 229 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="2: S N O N B E N I T A"
+if ((@AllYourBase3 == 1) && (W[0] == 10))
+  extern CreateAPE2DControl push push4 381 244 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="3: E L D U E D T E O Y"
+if ((@AllYourBase1 != 1) && (W[0] == 10))
+  extern CreateAPE2DControl push push2 381 214 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="???"
+if ((@AllYourBase2 != 1) && (W[0] == 10))
+  extern CreateAPE2DControl push push3 381 229 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="???"
+if ((@AllYourBase3 != 1) && (W[0] == 10))
+  extern CreateAPE2DControl push push4 381 244 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="???"
+if ((((@AllYourBase1 == 1) && (@AllYourBase2 == 1)) && (@AllYourBase3 == 1)) && (W[0] == 10))
+  extern CreateAPE2DControl push push5 381 274 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Solution:"
+if ((((@AllYourBase1 == 1) && (@AllYourBase2 == 1)) && (@AllYourBase3 == 1)) && (W[0] == 10))
+  extern CreateAPE2DControl push push6 381 289 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="USE ONLY ODD NUMBERED ENTRIES TODAY"
+if ((((@AllYourBase1 != 1) || (@AllYourBase2 != 1)) || (@AllYourBase3 != 1)) && (W[0] == 10))
+  extern CreateAPE2DControl push push6 381 289 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Not Enough Information"
+if ((((@AllYourBase1 == 1) && (@AllYourBase2 == 1)) && (@AllYourBase3 == 1)) && (W[0] == 10)) {
+  extern is_quest_done "The Code Solution" @quest
+  if (@quest == 0) {
+    extern complete_quest "Decipher The Codes"
+    extern add_quest "The Code Solution"
+  }
+}
+
+#switch 104:3808
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="INFORMATION"
+extern CreateAPE2DControl textbox info 221 149 width=328 height=208 addfile=/gameflow/dettainterface/guardinfo.txt holdfocusflag=false border=false font="detta" fontcolor="FF5555FF"
+
+#switch 104:3810
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="CHASM BRIDGE CONTROL"
+extern CreateAPE2DControl push pusha 288 157 width=30 height=30 normal=/gameflow/dettainterface/security#1.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="1" sequence=104:3858
+extern CreateAPE2DControl push push1 325 157 width=170 height=30 normal=/gameflow/dettainterface/securitybox1.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Move Chasm Bridge" sequence=104:3858
+
+#switch 104:3812
+extern is_quest_done "Find The Code" @quest
+if (@quest == 0) {
+  extern add_quest "Find The Code"
+  extern cancel_quest "Find A Way In"
+}
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="1ST FLOOR ACCESS"
+extern CreateAPE2DControl push code01 225 157 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=1 font="detta" message="Astro" sequence=104:3860
+extern CreateAPE2DControl push code02 323 157 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=2 font="detta" message="Justice" sequence=104:3860
+extern CreateAPE2DControl push code03 421 157 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=3 font="detta" message="Shadow" sequence=104:3860
+extern CreateAPE2DControl push code04 225 180 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=4 font="detta" message="Barnard" sequence=104:3860
+extern CreateAPE2DControl push code05 323 180 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=5 font="detta" message="Kepler" sequence=104:3860
+extern CreateAPE2DControl push code06 421 180 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=6 font="detta" message="Tentac" sequence=104:3860
+extern CreateAPE2DControl push code07 225 203 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=7 font="detta" message="Cordica" sequence=104:3860
+extern CreateAPE2DControl push code08 323 203 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=8 font="detta" message="Lithium" sequence=104:3860
+extern CreateAPE2DControl push code09 421 203 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=9 font="detta" message="Unity" sequence=104:3860
+extern CreateAPE2DControl push code10 225 226 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=10 font="detta" message="Dogma" sequence=104:3860
+extern CreateAPE2DControl push code11 323 226 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=11 font="detta" message="Mojo" sequence=104:3860
+extern CreateAPE2DControl push code12 421 226 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=12 font="detta" message="Vector" sequence=104:3860
+extern CreateAPE2DControl push code13 225 249 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=13 font="detta" message="Eternal" sequence=104:3860
+extern CreateAPE2DControl push code14 323 249 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=14 font="detta" message="Neon" sequence=104:3860
+extern CreateAPE2DControl push code15 421 249 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=15 font="detta" message="Watcher" sequence=104:3860
+extern CreateAPE2DControl push code16 225 272 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=16 font="detta" message="Flotsam" sequence=104:3860
+extern CreateAPE2DControl push code17 323 272 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=17 font="detta" message="Obelisk" sequence=104:3860
+extern CreateAPE2DControl push code18 421 272 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=18 font="detta" message="X-ray" sequence=104:3860
+extern CreateAPE2DControl push code19 225 295 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=19 font="detta" message="Gambit" sequence=104:3860
+extern CreateAPE2DControl push code20 323 295 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=20 font="detta" message="Photon" sequence=104:3860
+extern CreateAPE2DControl push code21 421 295 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=21 font="detta" message="Yeoman" sequence=104:3860
+gosub 104:3813
+
+#switch 104:3813
+extern CreateAPE2DControl push code22 225 318 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=22 font="detta" message="Helium" sequence=104:3860
+extern CreateAPE2DControl push code23 323 318 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=23 font="detta" message="Quasar" sequence=104:3860
+extern CreateAPE2DControl push code24 421 318 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=24 font="detta" message="Zealot" sequence=104:3860
+extern CreateAPE2DControl push code25 225 341 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=25 font="detta" message="Interger" sequence=104:3860
+extern CreateAPE2DControl push code26 323 341 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@FortCode returnvalue=26 font="detta" message="Radium" sequence=104:3860
+extern CreateAPE2DControl push code27 421 347 width=20 height=20 normal=/gameflow/dettainterface/genclear.pcx holdfocusflag=false gamevar=@FortCode returnvalue=30 sequence=104:3860
+extern CreateAPE2DControl push code28 446 345 width=84 height=24 normal=/gameflow/dettainterface/genaccept.pcx holdfocusflag=false gamevar=@FortCode returnvalue=32 font="detta" message="ACCEPT" sequence=104:3860
+
+#switch 104:3814
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="~C% S`_"
+extern CreateAPE2DControl push push1 381 194 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="SYSTEM MALFUNCTION"
+extern CreateAPE2DControl push push2 381 214 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Please Reboot Terminal"
+
+#switch 104:3816
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@gencode returnvalue=44 font="detta" message="GENERATOR CONTROL"
+extern CreateAPE2DControl push code01 225 157 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=1 font="detta" message="Astro" sequence=104:3868
+extern CreateAPE2DControl push code02 323 157 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=2 font="detta" message="Justice" sequence=104:3868
+extern CreateAPE2DControl push code03 421 157 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=3 font="detta" message="Shadow" sequence=104:3868
+extern CreateAPE2DControl push code04 225 180 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=4 font="detta" message="Barnard" sequence=104:3868
+extern CreateAPE2DControl push code05 323 180 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=5 font="detta" message="Kepler" sequence=104:3868
+extern CreateAPE2DControl push code06 421 180 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=6 font="detta" message="Tentac" sequence=104:3868
+extern CreateAPE2DControl push code07 225 203 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=7 font="detta" message="Cordica" sequence=104:3868
+extern CreateAPE2DControl push code08 323 203 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=8 font="detta" message="Lithium" sequence=104:3868
+extern CreateAPE2DControl push code09 421 203 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=9 font="detta" message="Unity" sequence=104:3868
+extern CreateAPE2DControl push code10 225 226 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=10 font="detta" message="Dogma" sequence=104:3868
+extern CreateAPE2DControl push code11 323 226 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=11 font="detta" message="Mojo" sequence=104:3868
+extern CreateAPE2DControl push code12 421 226 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=12 font="detta" message="Vector" sequence=104:3868
+extern CreateAPE2DControl push code13 225 249 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=13 font="detta" message="Eternal" sequence=104:3868
+extern CreateAPE2DControl push code14 323 249 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=14 font="detta" message="Neon" sequence=104:3868
+extern CreateAPE2DControl push code15 421 249 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=15 font="detta" message="Watcher" sequence=104:3868
+extern CreateAPE2DControl push code16 225 272 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=16 font="detta" message="Flotsam" sequence=104:3868
+extern CreateAPE2DControl push code17 323 272 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=17 font="detta" message="Obelisk" sequence=104:3868
+extern CreateAPE2DControl push code18 421 272 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=18 font="detta" message="X-ray" sequence=104:3868
+extern CreateAPE2DControl push code19 225 295 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=19 font="detta" message="Gambit" sequence=104:3868
+extern CreateAPE2DControl push code20 323 295 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=20 font="detta" message="Photon" sequence=104:3868
+extern CreateAPE2DControl push code21 421 295 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=21 font="detta" message="Yeoman" sequence=104:3868
+extern CreateAPE2DControl push code22 225 318 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=22 font="detta" message="Helium" sequence=104:3868
+extern CreateAPE2DControl push code23 323 318 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=23 font="detta" message="Quasar" sequence=104:3868
+extern CreateAPE2DControl push code24 421 318 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=24 font="detta" message="Zealot" sequence=104:3868
+extern CreateAPE2DControl push code25 225 341 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=25 font="detta" message="Interger" sequence=104:3868
+extern CreateAPE2DControl push code26 323 341 width=90 height=20 normal=/gameflow/dettainterface/genbox1.pcx holdfocusflag=false gamevar=@gencode returnvalue=26 font="detta" message="Radium" sequence=104:3868
+extern CreateAPE2DControl push code27 421 347 width=20 height=20 normal=/gameflow/dettainterface/genclear.pcx holdfocusflag=false gamevar=@gencode returnvalue=30 sequence=104:3868
+extern CreateAPE2DControl push code28 446 345 width=84 height=24 normal=/gameflow/dettainterface/genaccept.pcx holdfocusflag=false gamevar=@gencode returnvalue=32 font="detta" message="ACCEPT" sequence=104:3868
+
+#switch 104:3818
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="SECTOR SECURITY"
+if (W[0] == 40)
+  extern CreateAPE2DControl push pusha 288 157 width=30 height=30 normal=/gameflow/dettainterface/security#1.tga holdfocusflag=false gamevar=@security returnvalue=40 font="detta" message=" 1" sequence=104:3874
+if (W[0] == 40)
+  extern CreateAPE2DControl push push1 325 157 width=170 height=30 normal=/gameflow/dettainterface/securitybox1.tga holdfocusflag=false gamevar=@security returnvalue=40 font="detta" message="Security Level 1" sequence=104:3874
+if (W[0] == 32)
+  extern CreateAPE2DControl push pushb 288 192 width=30 height=30 normal=/gameflow/dettainterface/security#1.tga holdfocusflag=false gamevar=@security returnvalue=32 font="detta" message=" 2" sequence=104:3874
+if (W[0] == 32)
+  extern CreateAPE2DControl push push2 325 192 width=170 height=30 normal=/gameflow/dettainterface/securitybox1.tga holdfocusflag=false gamevar=@security returnvalue=32 font="detta" message="Security Level 2" sequence=104:3874
+if (((W[0] == 40) || (W[0] == 32)) || (W[0] == 80))
+  extern CreateAPE2DControl push pushc 288 227 width=30 height=30 normal=/gameflow/dettainterface/security#0.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=" 3"
+if (((W[0] == 40) || (W[0] == 32)) || (W[0] == 80))
+  extern CreateAPE2DControl push push3 325 227 width=170 height=30 normal=/gameflow/dettainterface/securitybox0.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Security Level 3"
+if (W[0] == 80)
+  extern CreateAPE2DControl push pushd 288 262 width=30 height=30 normal=/gameflow/dettainterface/security#1.tga holdfocusflag=false gamevar=@security returnvalue=80 font="detta" message=" 4" sequence=104:3874
+if (W[0] == 80)
+  extern CreateAPE2DControl push push4 325 262 width=170 height=30 normal=/gameflow/dettainterface/securitybox1.tga holdfocusflag=false gamevar=@security returnvalue=80 font="detta" message="Security Level 4" sequence=104:3874
+if (((W[0] == 40) || (W[0] == 32)) || (W[0] == 80))
+  extern CreateAPE2DControl push pushe 288 297 width=30 height=30 normal=/gameflow/dettainterface/security#0.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=" 5"
+if (((W[0] == 40) || (W[0] == 32)) || (W[0] == 80))
+  extern CreateAPE2DControl push push5 325 297 width=170 height=30 normal=/gameflow/dettainterface/securitybox0.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Hot Chicks Room"
+if ((W[0] != 40) && (((W[0] == 40) || (W[0] == 32)) || (W[0] == 80)))
+  extern CreateAPE2DControl push pusha 288 157 width=30 height=30 normal=/gameflow/dettainterface/security#0.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=" 1"
+if ((W[0] != 40) && (((W[0] == 40) || (W[0] == 32)) || (W[0] == 80)))
+  extern CreateAPE2DControl push push1 325 157 width=170 height=30 normal=/gameflow/dettainterface/securitybox0.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Security Level 1"
+if ((W[0] != 32) && (((W[0] == 40) || (W[0] == 32)) || (W[0] == 80)))
+  extern CreateAPE2DControl push pushb 288 192 width=30 height=30 normal=/gameflow/dettainterface/security#0.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=" 2"
+if ((W[0] != 32) && (((W[0] == 40) || (W[0] == 32)) || (W[0] == 80)))
+  extern CreateAPE2DControl push push2 325 192 width=170 height=30 normal=/gameflow/dettainterface/securitybox0.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Security Level 2"
+if ((W[0] != 80) && (((W[0] == 40) || (W[0] == 32)) || (W[0] == 80)))
+  extern CreateAPE2DControl push pushd 288 262 width=30 height=30 normal=/gameflow/dettainterface/security#0.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=" 4"
+if ((W[0] != 80) && (((W[0] == 40) || (W[0] == 32)) || (W[0] == 80)))
+  extern CreateAPE2DControl push push4 325 262 width=170 height=30 normal=/gameflow/dettainterface/securitybox0.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Security Level 4"
+
+#switch 104:3820
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="INFORMATION"
+extern CreateAPE2DControl textbox info 221 149 width=328 height=208 addfile=/gameflow/dettainterface/thetainfo.txt holdfocusflag=false border=false font="detta" fontcolor="FF5555FF"
+
+#switch 104:3822
+extern is_quest_done "PAL DettaTerm Info" @quest
+if (@quest == 0)
+  extern add_quest "PAL DettaTerm Info"
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="INFORMATION"
+extern CreateAPE2DControl push push1 381 194 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Today's:"
+extern CreateAPE2DControl push push2 381 214 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="FACE"
+
+#switch 104:3824
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="ELEVATOR ACCESS"
+if (W[0] == 46)
+  extern CreateAPE2DControl push push1 381 194 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="ACCESS DENIED"
+if (W[0] == 48)
+  extern CreateAPE2DControl push pusha 288 157 width=30 height=30 normal=/gameflow/dettainterface/security#1.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=" 1" sequence=104:3876
+if (W[0] == 48)
+  extern CreateAPE2DControl push push1 325 157 width=170 height=30 normal=/gameflow/dettainterface/securitybox1.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Activate Elevator" sequence=104:3876
+
+#switch 104:3826
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="SECURITY FORCE STATS"
+extern CreateAPE2DControl push push1 381 194 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Detta Security"
+extern CreateAPE2DControl push push2 381 214 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Reserve Stats 80%"
+extern CreateAPE2DControl push push3 381 229 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Armament Stats 65%"
+
+#switch 104:3828
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="FLUID TRANSPORTATION SYSTEM"
+extern CreateAPE2DControl push push1 288 157 width=30 height=30 normal=/gameflow/dettainterface/security#1.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=" 1" sequence=104:3878
+extern CreateAPE2DControl push push2 325 157 width=170 height=30 normal=/gameflow/dettainterface/securitybox1.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Activate Fluid Plates" sequence=104:3878
+
+#switch 104:3830
+extern CreateAPE2DControl textbox info 221 149 width=328 height=208 addfile=/gameflow/dettainterface/mafluidinfo.txt holdfocusflag=false border=false font="detta" fontcolor="FF5555FF"
+
+#switch 104:3832
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="TRANSPORTATION PODS"
+extern CreateAPE2DControl push pusha 288 157 width=30 height=30 normal=/gameflow/dettainterface/security#1.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=" 1" sequence=104:3880
+extern CreateAPE2DControl push push1 325 157 width=170 height=30 normal=/gameflow/dettainterface/securitybox1.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Activate Transport Pods" sequence=104:3880
+
+#switch 104:3834
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="WORKSHOP ACCESS"
+extern CreateAPE2DControl push pusha 288 157 width=30 height=30 normal=/gameflow/dettainterface/security#1.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=" 1"
+extern CreateAPE2DControl push push1 325 157 width=170 height=30 normal=/gameflow/dettainterface/securitybox1.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Workshop Elevator"
+extern CreateAPE2DControl push pushb 288 192 width=30 height=30 normal=/gameflow/dettainterface/security#1.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=" 2"
+extern CreateAPE2DControl push push2 325 192 width=170 height=30 normal=/gameflow/dettainterface/securitybox1.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Workshop Door"
+
+#switch 104:3836
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="WORKSHOP PLATFORM CONTROL"
+extern CreateAPE2DControl push pusha 288 157 width=30 height=30 normal=/gameflow/dettainterface/security#1.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=" 1" sequence=104:3882
+extern CreateAPE2DControl push push1 325 157 width=170 height=30 normal=/gameflow/dettainterface/securitybox1.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Activate Platform" sequence=104:3882
+
+#switch 104:3838
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="INFORMATION"
+extern CreateAPE2DControl textbox info 221 149 width=328 height=208 addfile=/gameflow/dettainterface/ciholdinginfo.txt holdfocusflag=false border=false font="detta" fontcolor="FF5555FF"
+
+#switch 104:3840
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="INFORMATION"
+extern CreateAPE2DControl textbox info 221 149 width=328 height=208 addfile=/gameflow/dettainterface/acinfo.txt holdfocusflag=false border=false font="detta" fontcolor="FF5555FF"
+
+#switch 104:3842
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="WORKSHOP ENTRY"
+extern CreateAPE2DControl push pusha 288 157 width=30 height=30 normal=/gameflow/dettainterface/security#1.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=" 1" sequence=104:3884
+extern CreateAPE2DControl push push1 325 157 width=170 height=30 normal=/gameflow/dettainterface/securitybox1.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Unlock Workshop Door" sequence=104:3884
+
+#switch 104:3844
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="INFORMATION"
+extern CreateAPE2DControl textbox info 221 149 width=328 height=208 addfile=/gameflow/dettainterface/ciinfo.txt holdfocusflag=false border=false font="detta" fontcolor="FF5555FF"
+
+#switch 104:3846
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="SECURITY"
+extern CreateAPE2DControl push pusha 288 157 width=30 height=30 normal=/gameflow/dettainterface/security#1.tga holdfocusflag=false gamevar=@fort2doorfun returnvalue=1 font="detta" message=" 1" sequence=104:3886
+extern CreateAPE2DControl push push1 325 157 width=170 height=30 normal=/gameflow/dettainterface/securitybox1.tga holdfocusflag=false gamevar=@fort2doorfun returnvalue=1 font="detta" message="Activate Airlock" sequence=104:3886
+if (@Fort2_OpenCIChamber == 0)
+  extern CreateAPE2DControl push pushb 288 192 width=30 height=30 normal=/gameflow/dettainterface/security#1.tga holdfocusflag=false gamevar=@fort2doorfun returnvalue=2 font="detta" message=" 2" sequence=104:3886
+if (@Fort2_OpenCIChamber == 0)
+  extern CreateAPE2DControl push push2 325 192 width=170 height=30 normal=/gameflow/dettainterface/securitybox1.tga holdfocusflag=false gamevar=@fort2doorfun returnvalue=2 font="detta" message="Unlock CI Chamber Door" sequence=104:3886
+if (@Fort2_OpenCIChamber == 1)
+  extern CreateAPE2DControl push pushb 288 192 width=30 height=30 normal=/gameflow/dettainterface/security#0.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=" 2"
+if (@Fort2_OpenCIChamber == 1)
+  extern CreateAPE2DControl push push2 325 192 width=170 height=30 normal=/gameflow/dettainterface/securitybox0.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Unlock CI Chamber Door"
+
+#switch 104:3850
+extern CreateAPE2DControl push title 395 108 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Beware The Sasquatch"
+extern CreateAPE2DControl push push1 257 143 width=256 height=192 normal=/gameflow/dettainterface/beware.tga holdfocusflag=false gamevar=@myaaaah returnvalue=44
+extern CreateAPE2DControl push push2 381 344 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="DettaTerm, Inc."
+extern CreateAPE2DControl push push3 381 364 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message="Bringing You Evil Interfaces Since 2061."
+
+#switch 104:3856
+if (@LoggedInDettaterm == 1)
+  goto 0:0
+set @LoggedInDettaterm = 1
+extern playsound ui/gen/ui_gen_displaychange.wav
+gosub 104:3802
+
+#switch 104:3858
+extern playsound ui/gen/new/okay2.wav
+if (@party1_on_bridge == 1) {
+  gosub 104:3999
+  goto 103:3980
+}
+gosub 104:3999
+extern playscene basement_bridge.s
+
+#switch 104:3860
+if (@FortCode >= 30)
+  goto 104:3864
+if (@EnteredCodes == 4)
+  goto 0:0
+if (@FortCode == 1)
+  @FortCode$="Astro" 
+if (@FortCode == 2)
+  @FortCode$="Justice" 
+if (@FortCode == 3)
+  @FortCode$="Shadow" 
+if (@FortCode == 4)
+  @FortCode$="Barnard" 
+if (@FortCode == 5)
+  @FortCode$="Kepler" 
+if (@FortCode == 6)
+  @FortCode$="Tentac" 
+if (@FortCode == 7)
+  @FortCode$="Cordica" 
+if (@FortCode == 8)
+  @FortCode$="Lithium" 
+if (@FortCode == 9)
+  @FortCode$="Unity" 
+if (@FortCode == 10)
+  @FortCode$="Dogma" 
+if (@FortCode == 11)
+  @FortCode$="Mojo" 
+if (@FortCode == 12)
+  @FortCode$="Vector" 
+if (@FortCode == 13)
+  @FortCode$="Eternal" 
+if (@FortCode == 14)
+  @FortCode$="Neon" 
+if (@FortCode == 15)
+  @FortCode$="Watcher" 
+if (@FortCode == 16)
+  @FortCode$="Flotsam" 
+if (@FortCode == 17)
+  @FortCode$="Obelisk" 
+if (@FortCode == 18)
+  @FortCode$="X-ray" 
+if (@FortCode == 19)
+  @FortCode$="Gambit" 
+if (@FortCode == 20)
+  @FortCode$="Photon" 
+if (@FortCode == 21)
+  @FortCode$="Yeoman" 
+if (@FortCode == 22)
+  @FortCode$="Helium" 
+if (@FortCode == 23)
+  @FortCode$="Quasar" 
+if (@FortCode == 24)
+  @FortCode$="Zealot" 
+if (@FortCode == 25)
+  @FortCode$="Interger" 
+if (@FortCode == 26)
+  @FortCode$="Radium" 
+gosub 104:3862
+
+#switch 104:3862
+extern playsound ui/gen/new/okay2.wav
+set @EnteredCodes = (@EnteredCodes + 1)
+if (@EnteredCodes == 1) {
+  unset @FortCode1$=@FortCode$ 
+  extern CreateAPE2DControl push push1 251 142 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=@FortCode1$
+}
+if (@EnteredCodes == 2) {
+  unset @FortCode2$=@FortCode$ 
+  extern CreateAPE2DControl push push2 339 142 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=@FortCode2$
+}
+if (@EnteredCodes == 3) {
+  unset @FortCode3$=@FortCode$ 
+  extern CreateAPE2DControl push push3 427 142 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=@FortCode3$
+}
+if (@EnteredCodes == 4) {
+  unset @FortCode4$=@FortCode$ 
+  extern CreateAPE2DControl push push4 515 142 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=@FortCode4$
+}
+
+#switch 104:3864
+if (@FortCode == 30) {
+  extern playsound ui/gen/ui_gen_verify.wav
+  extern RemoveAPE2DControl push1
+  extern RemoveAPE2DControl push2
+  extern RemoveAPE2DControl push3
+  extern RemoveAPE2DControl push4
+  set @EnteredCodes = 0
+  set @CantLogin = 0
+  @FortCode1$="" 
+  @FortCode2$="" 
+  @FortCode3$="" 
+  @FortCode4$="" 
+}
+if ((((((@FortCode == 32) && (@EnteredCodes == 4)) && (@FortCode1$ == "Astro")) && (@FortCode2$ == "Cordica")) && (@FortCode3$ == "Kepler")) && (@FortCode4$ == "Mojo")) {
+  extern complete_quest "Find The Code"
+  extern playsound ui/gen/new/okay2.wav
+  gosub 104:3999
+  set @Basement_Fortress_Open = 1
+  extern playscene basement_doors_open.s
+}
+
+#switch 104:3868
+extern is_quest_done "Find Generator Code" @quest
+if (@quest == 0)
+  extern add_quest "Find Generator Code"
+if (@gencode >= 30)
+  goto 104:3872
+if (@EnteredCodes == 3)
+  goto 0:0
+if (@gencode == 1)
+  @gencode$="Astro" 
+if (@gencode == 2)
+  @gencode$="Justice" 
+if (@gencode == 3)
+  @gencode$="Shadow" 
+if (@gencode == 4)
+  @gencode$="Barnard" 
+if (@gencode == 5)
+  @gencode$="Kepler" 
+if (@gencode == 6)
+  @gencode$="Tentac" 
+if (@gencode == 7)
+  @gencode$="Cordica" 
+if (@gencode == 8)
+  @gencode$="Lithium" 
+if (@gencode == 9)
+  @gencode$="Unity" 
+if (@gencode == 10)
+  @gencode$="Dogma" 
+if (@gencode == 11)
+  @gencode$="Mojo" 
+if (@gencode == 12)
+  @gencode$="Vector" 
+if (@gencode == 13)
+  @gencode$="Eternal" 
+if (@gencode == 14)
+  @gencode$="Neon" 
+if (@gencode == 15)
+  @gencode$="Watcher" 
+if (@gencode == 16)
+  @gencode$="Flotsam" 
+if (@gencode == 17)
+  @gencode$="Obelisk" 
+if (@gencode == 18)
+  @gencode$="X-ray" 
+if (@gencode == 19)
+  @gencode$="Gambit" 
+if (@gencode == 20)
+  @gencode$="Photon" 
+if (@gencode == 21)
+  @gencode$="Yeoman" 
+if (@gencode == 22)
+  @gencode$="Helium" 
+gosub 104:3870
+
+#switch 104:3870
+if (@gencode == 23)
+  @gencode$="Quasar" 
+if (@gencode == 24)
+  @gencode$="Zealot" 
+if (@gencode == 25)
+  @gencode$="Interger" 
+if (@gencode == 26)
+  @gencode$="Radium" 
+extern playsound ui/gen/new/okay2.wav
+set @EnteredCodes = (@EnteredCodes + 1)
+if (@EnteredCodes == 1) {
+  unset @gencode1$=@gencode$ 
+  extern CreateAPE2DControl push push1 292 142 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=@gencode1$
+}
+if (@EnteredCodes == 2) {
+  unset @gencode2$=@gencode$ 
+  extern CreateAPE2DControl push push2 380 142 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=@gencode2$
+}
+if (@EnteredCodes == 3) {
+  unset @gencode3$=@gencode$ 
+  extern CreateAPE2DControl push push3 468 142 width=0 height=0 normal=/gameflow/dettainterface/empty.pcx holdfocusflag=false gamevar=@myaaaah returnvalue=44 font="detta" message=@gencode3$
+}
+
+#switch 104:3872
+if (@gencode == 30) {
+  extern playsound ui/gen/ui_gen_verify.wav
+  extern RemoveAPE2DControl push1
+  extern RemoveAPE2DControl push2
+  extern RemoveAPE2DControl push3
+  extern RemoveAPE2DControl push4
+  set @EnteredCodes = 0
+  set @CantLogin = 0
+  @gencode1$="" 
+  @gencode2$="" 
+  @gencode3$="" 
+  @gencode4$="" 
+}
+if (((((@gencode == 32) && (@EnteredCodes == 3)) && (@gencode1$ == "Quasar")) && (@gencode2$ == "Astro")) && (@gencode3$ == "Eternal")) {
+  extern complete_quest "Find Generator Code"
+  extern playsound ui/gen/new/okay2.wav
+  gosub 104:3999
+  if (@HackedTheGeneratorAlready == 1)
+    goto 0:0
+  extern AI_GrabEntity Party1_GenPathBlock Party1_GenPathBlock_handle
+  extern AI_DestroyEntity Party1_GenPathBlock_handle
+  extern AI_GrabEntity Party2_GenPathBlock1 Party2_GenPathBlock1_handle
+  extern AI_DestroyEntity Party2_GenPathBlock1_handle
+  extern AI_GrabEntity Party2_GenPathBlock2 Party2_GenPathBlock2_handle
+  extern AI_DestroyEntity Party2_GenPathBlock2_handle
+  extern AI_GrabEntity Party2_GenPathBlock3 Party2_GenPathBlock3_handle
+  extern AI_DestroyEntity Party2_GenPathBlock3_handle
+  set @HackedTheGeneratorAlready = 1
+  extern stopambient ambi_fortress1.s
+  extern playscene fortress1_laser_shutdown.s  0 0:0 null null 0 0 true false
+}
+
+#switch 104:3874
+echo "1"
+if (@security == 40) {
+  if (@Fortress_Security_Low == 1)
+    goto 0:0
+  gosub 104:3999
+  set @Fortress_Security_Low = 1
+  extern playscene fortress1_door1_open.s 0 104:3032 null null 0 0 true false
+}
+if (@security == 32) {
+  if (@Fortress_Security_Medium == 1)
+    goto 0:0
+  gosub 104:3999
+  set @Fortress_Security_Medium = 1
+  extern playscene fortress1_paldoor1_open.s  0 0:0 null null 0 0 true false
+}
+if (@security == 80) {
+  echo "2"
+  if (@OpenedHighLevelDoors == 1)
+    goto 0:0
+  gosub 104:3999
+  set @OpenedHighLevelDoors = 1
+  extern playscene fortress2_party_release.s
+}
+goto 0:0
+
+#switch 104:3876
+gosub 104:3999
+target floor_lift1
+set @Fort1_ElevatorGoinDown = 1
+
+#switch 104:3878
+gosub 104:3999
+if (@Fort1_PlatesActivated == 1)
+  goto 0:0
+set @Fort1_PlatesActivated = 1
+extern playscene fortress1_carts_active.s  0 0:0 null null 0 0 true false
+
+#switch 104:3880
+gosub 104:3999
+if (@Fort1_PodsActivated == 1)
+  goto 0:0
+set @Fort1_PodsActivated = 1
+extern playscene fortress1_pods_active.s  0 0:0 null null 0 0 true false
+
+#switch 104:3882
+gosub 104:3999
+if (@Fort2_WorkshopElevator)
+  goto 0:0
+set @Fort2_WorkshopElevator = 1
+target pit_doorblock
+extern playscene fortress2_platform_raise.s
+
+#switch 104:3884
+gosub 104:3999
+if (@HugeDoorIsOpen == 1)
+  goto 0:0
+set @HugeDoorIsOpen = 1
+extern playscene fortress2_hugedoor_open.s
+
+#switch 104:3886
+if (@fort2doorfun == 1) {
+  gosub 104:3999
+  extern playscene fortress2_airlock_open.s
+}
+if (@fort2doorfun == 2) {
+  set @Fort2_OpenCIChamber = 1
+  gosub 104:3999
+  extern playscene fortress2_party2_door_open.s
+}
+
+#switch 104:3950
+if (M[$@menu$] <= 0) {
+  extern playsound ui/gen/new/bad_selection4.wav
+  goto 0:0
+}
+gosub 104:3958
+set W[0] = M[$@menu$]
+gosub 104:3952
+
+#switch 104:3952
+extern playsound ui/gen/ui_gen_processing.wav
+if (W[0] == 1)
+  goto 104:3804
+if (W[0] == 4)
+  goto 104:3806
+if (W[0] == 6)
+  goto 104:3806
+if (W[0] == 8)
+  goto 104:3806
+if (W[0] == 10)
+  goto 104:3806
+if (W[0] == 14)
+  goto 104:3808
+if (W[0] == 16)
+  goto 104:3810
+if (W[0] == 18)
+  goto 104:3812
+if (W[0] == 22)
+  goto 104:3814
+if (W[0] == 24)
+  goto 104:3814
+if (W[0] == 28)
+  goto 104:3816
+if (W[0] == 32)
+  goto 104:3818
+if (W[0] == 34)
+  goto 104:3820
+if (W[0] == 40)
+  goto 104:3818
+if (W[0] == 42)
+  goto 104:3822
+if (W[0] == 46)
+  goto 104:3824
+if (W[0] == 48)
+  goto 104:3824
+if (W[0] == 50)
+  goto 104:3826
+if (W[0] == 54)
+  goto 104:3828
+if (W[0] == 58)
+  goto 104:3830
+if (W[0] == 62)
+  goto 104:3832
+if (W[0] == 66)
+  goto 104:3834
+if (W[0] == 68)
+  goto 104:3836
+if (W[0] == 70)
+  goto 104:3838
+gosub 104:3954
+
+#switch 104:3954
+if (W[0] == 74)
+  goto 104:3840
+if (W[0] == 80)
+  goto 104:3818
+if (W[0] == 84)
+  goto 104:3842
+if (W[0] == 86)
+  goto 104:3844
+if (W[0] == 88)
+  goto 104:3846
+if (W[0] == 99)
+  goto 104:3850
+
+#switch 104:3956
+extern RemoveAPE2DControl menu1
+extern RemoveAPE2DControl menu2
+extern RemoveAPE2DControl menu3
+extern RemoveAPE2DControl menu4
+extern RemoveAPE2DControl menu5
+extern RemoveAPE2DControl menu6
+extern RemoveAPE2DControl menu7
+extern RemoveAPE2DControl menu8
+
+#switch 104:3958
+extern RemoveAPE2DControl push1
+extern RemoveAPE2DControl push2
+extern RemoveAPE2DControl push3
+extern RemoveAPE2DControl push4
+extern RemoveAPE2DControl push2
+extern RemoveAPE2DControl push3
+extern RemoveAPE2DControl push4
+extern RemoveAPE2DControl push5
+extern RemoveAPE2DControl push6
+extern RemoveAPE2DControl pusha
+extern RemoveAPE2DControl pushb
+extern RemoveAPE2DControl pushc
+extern RemoveAPE2DControl pushd
+extern RemoveAPE2DControl pushe
+extern RemoveAPE2DControl pushf
+extern RemoveAPE2DControl pushg
+extern RemoveAPE2DControl info
+extern RemoveAPE2DControl title
+extern RemoveAPE2DControl beware
+gosub 104:3960
+
+#switch 104:3960
+extern RemoveAPE2DControl code01
+extern RemoveAPE2DControl code02
+extern RemoveAPE2DControl code03
+extern RemoveAPE2DControl code04
+extern RemoveAPE2DControl code05
+extern RemoveAPE2DControl code06
+extern RemoveAPE2DControl code07
+extern RemoveAPE2DControl code08
+extern RemoveAPE2DControl code09
+extern RemoveAPE2DControl code10
+extern RemoveAPE2DControl code11
+extern RemoveAPE2DControl code12
+extern RemoveAPE2DControl code13
+extern RemoveAPE2DControl code14
+extern RemoveAPE2DControl code15
+extern RemoveAPE2DControl code16
+extern RemoveAPE2DControl code17
+extern RemoveAPE2DControl code18
+extern RemoveAPE2DControl code19
+extern RemoveAPE2DControl code20
+extern RemoveAPE2DControl code21
+extern RemoveAPE2DControl code22
+extern RemoveAPE2DControl code23
+extern RemoveAPE2DControl code24
+extern RemoveAPE2DControl code25
+extern RemoveAPE2DControl code26
+extern RemoveAPE2DControl code27
+extern RemoveAPE2DControl code28
+
+#switch 104:3999
+gosub 104:3958
+gosub 104:3956
+extern playsound ui/gen/ui_gen_ask.wav
+set @LoggedInDettaterm = 0
+set W[0] = 0
+set L[0] = 0
+set @EnteredCodes = 0
+@FortCode1$="" 
+@FortCode2$="" 
+@FortCode3$="" 
+@FortCode4$="" 
+set @CantLogin = 0
+extern deassign M[0] 30
+extern RemoveAPE2DControl quit
+extern AI_ReleaseEntity playerchar0_handle
+console "popbind"
+closewindow 104:3800

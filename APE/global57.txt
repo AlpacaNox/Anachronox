@@ -1,0 +1,381 @@
+#window 4007:8001
+startswitch {
+  set @ragemightinit = 1
+  extern pauselevelmusic
+  extern loopsound ../music/mp3/worldskill.mp3
+  extern get_world_skill_level ragemight @rage_skill_level
+  console "alias +rage \"gamevar @ControlRage 1\""
+  console "alias -rage \"gamevar @ControlRage 0\""
+  set M[1] = 313
+  if (@rage_skill_level == 1)
+    set M[2] = 0
+  if (@rage_skill_level == 2)
+    set M[2] = 183
+  set M[3] = 313
+  set @sectorblah = 1
+  set @SectorSwitchTime = 200
+  if (ws_time == 0)
+    set ws_time = 30
+  extern set2dcursor ../gameflow/ragemight/rage_cursor.tga 0 32 32
+  extern CreateAPE2DControl push what 492 184 width=16 height=16 normal=/gameflow/ragemight/RageM_Help.tga holdfocusflag=false gamevar=@pacohelpcalled returnvalue=1 sequence=4007:8012
+  extern CreateAPE2DControl push quit 492 210 width=16 height=16 normal=/gameflow/ragemight/RageM_X.tga holdfocusflag=false gamevar=@pacoquitcalled returnvalue=1 sequence=4007:8012
+  extern CreateAPE2DControl push deadzone1 0 0 width=487 height=480 nodrawflag=true holdfocusflag=false gamevar=@thisisass returnvalue=1 sequence=4007:8012
+  extern CreateAPE2DControl push deadzone2 488 0 width=26 height=177 nodrawflag=true holdfocusflag=false gamevar=@thisisass returnvalue=1 sequence=4007:8012
+  extern CreateAPE2DControl push deadzone3 488 231 width=26 height=250 nodrawflag=true holdfocusflag=false gamevar=@thisisass returnvalue=1 sequence=4007:8012
+  extern CreateAPE2DControl push deadzone4 514 0 width=127 height=480 nodrawflag=true holdfocusflag=false gamevar=@thisisass returnvalue=1 sequence=4007:8012
+  set @RMTimerTime = func_timer
+  set @RMTimerCountdown = (ws_time * 10)
+  set t[1] = func_div[ws_time,10]
+  set t[2] = func_mod[ws_time,10]
+}
+
+thinkswitch {
+  if (@RagePause)
+    goto 0:0
+  if (@ragemightinit)
+    goto 0:0
+  if ((func_timer - @RMTimerTime) >= 100) {
+    set T[3] = (T[3] - 1)
+    set @RMTimerTime = func_timer
+    set @RMTimerCountdown = (@RMTimerCountdown - 1)
+  }
+  if (T[3] < 0) {
+    set T[3] = 9
+    set T[2] = (T[2] - 1)
+  }
+  if (T[2] < 0) {
+    set T[2] = 9
+    set T[1] = (T[1] - 1)
+  }
+  if (T[1] < 0)
+    set T[1] = 0
+  if (@RMTimerCountdown <= 0)
+    gosub 4007:8099
+  if (@RMWinner)
+    gosub 4007:8099
+}
+
+style "null"
+flags passive2d, TRUE
+xpos 129
+ypos 113
+width 384
+height 320
+image "ragemight/RageM_bg1.tga" 0, 64
+if (ws_skill_level == 1)
+  image "ragemight/RageM_bg2.tga" 256, 64
+if (ws_skill_level == 2)
+  image "ragemight/RageM_bg3.tga" 256, 64
+if (ws_skill_level == 2)
+  image "ragemight/RageBar_Yell.tga" 352, M[1], 32, M[2]
+image "ragemight/RageBar_red.tga" 0, M[3], 32, M[4]
+image "ragemight/rm$T[1]$.tga" 18, 83
+image "ragemight/rm$T[2]$.tga" 32, 83
+image "ragemight/rm$T[3]$.tga" 58, 83
+image "ragemight/rm_period.tga" 48, 101
+image "ragemight/RageM_Fist.tga" @fistLerpX, @fistLerpY
+
+#window 4007:8015
+startswitch {
+  set @DanceFistTime = func_gametime
+}
+
+thinkswitch {
+  if (func_gametime >= (@MoveFistTime + 50)) {
+    gosub 4007:8020
+    set @MoveFistTime = func_gametime
+  }
+  if (func_gametime >= (@MoveMeterTime + 100)) {
+    gosub 4007:8035
+    set @MoveMeterTime = func_gametime
+    if ((ws_skill_level == 2) && (@rage_skill_level == 2)) {
+      if (@ControlRage == 1) {
+        set M[1] = (M[1] - 1)
+        set M[2] = (M[2] + 1)
+      }
+      if (@ControlRage == 0) {
+        set M[1] = (M[1] - 3)
+        set M[2] = (M[2] + 3)
+      }
+      if ((M[1] > 313) || (M[2] < 0)) {
+        set M[1] = 313
+        set M[2] = 0
+      }
+      if ((M[1] < 129) || (M[2] > 183)) {
+        set M[1] = 129
+        set M[2] = 183
+      }
+    }
+  }
+  if (@BlindRage == 1)
+    gosub 4007:8040
+  gosub 4007:8025
+}
+
+style "null"
+flags passive, TRUE
+xpos 129
+ypos 113
+width 384
+height 256
+
+#window 4007:8096
+title "Paco \"El Puño\" Estrella's RageMight"
+body "Help Paco focus and build his rage by trying to steer the fist onto the fist symbol on Paco's chest. "
+body "As the rage builds, it will be harder and harder to control."
+body "\n\n"
+startswitch {
+  set @RagePause = 1
+}
+
+finishswitch {
+  set @pacohelpcalled = 0
+  set @RagePause = 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 009999ee color2 = 008888dd color3 = 119999ee color4 = 008080d6
+xpos 30
+ypos 40
+width 580
+
+#window 4007:8097
+title "Paco \"El Puño\" Estrella's Master RageMight"
+body "Help Paco focus and build his rage by trying to steer the fist onto the fist symbol on Paco's chest. "
+body "As the rage builds, it will be harder and harder to control."
+body "\n\n"
+if (@rage_skill_level == 1)
+  body "Having trouble being blinded by rage? Perhaps Paco needs to learn some control.\n\n"
+if (@rage_skill_level == 2)
+  body "Having trouble being blinded by rage? Try using the left mouse button.\n\n"
+startswitch {
+  set @RagePause = 1
+}
+
+finishswitch {
+  set @pacohelpcalled = 0
+  set @RagePause = 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 009999ee color2 = 008888dd color3 = 119999ee color4 = 008080d6
+xpos 30
+ypos 40
+width 580
+
+#switch 4007:8012
+if (@rageinprogress == 1)
+  goto 0:0
+echo "*|*|*| F' What We're Doing When The Big Z Rip It"
+if (@RagePause)
+  goto 0:0
+if (@pacohelpcalled)
+  goto 4007:8095
+if (@pacoquitcalled)
+  goto 4007:8099
+goto 4007:8013
+
+#switch 4007:8013
+extern RemoveAPE2DControl deadzone1
+extern RemoveAPE2DControl deadzone2
+extern RemoveAPE2DControl deadzone3
+extern RemoveAPE2DControl deadzone4
+set @rageinprogress = 1
+extern set2dcursor ../gameflow/ragemight/empty 0 32 32
+set @ragemightinit = 0
+gosub 4007:8015
+console "pushbind"
+if (@rage_skill_level == 2)
+  console "bind MOUSE1 \"+rage\""
+console "bind ESCAPE \"invoke 4007:8099\""
+
+#switch 4007:8020
+if (ws_skill_level == 1) {
+  set @fraction = ((M[4] / 182) * (M[4] / 182))
+  set @RMmin = (1 + (@fraction * 15))
+  set @RMmax = (5 + (@fraction * 30))
+  set D[1] = func_drand[@RMmin,@RMmax]
+  set D[2] = func_drand[@RMmin,@RMmax]
+  set D[3] = func_drand[1,2]
+  set D[4] = func_drand[1,2]
+  if (D[3] == 2)
+    set D[1] = (D[1] * -1.000000)
+  if (D[4] == 2)
+    set D[2] = (D[2] * -1.000000)
+  set F[1] = (X[1] + D[1])
+  set F[2] = (Y[1] + D[2])
+}
+if (ws_skill_level == 2) {
+  set @ChannelCost = 3
+  if ((@ControlRage == 1) && (M[2] >= @ChannelCost)) {
+    if (@BlindRage == 1)
+      gosub 4007:8045
+    set @fraction = ((M[4] / 182) * (M[4] / 182))
+    set @RMmin = (1 + (@fraction * 5))
+    set @RMmax = (2 + (@fraction * 10))
+  } else {
+    if (@BlindRage == 0)
+      set @BlindRage = 1
+    set @ChannelCost = 0
+    set @fraction = ((M[4] / 182) * (M[4] / 182))
+    set @RMmin = (4 + (@fraction * 40))
+    set @RMmax = (15 + (@fraction * 60))
+  }
+  set D[1] = func_drand[@RMmin,@RMmax]
+  set D[2] = func_drand[@RMmin,@RMmax]
+  set D[3] = func_drand[1,2]
+  set D[4] = func_drand[1,2]
+  if (D[3] == 2)
+    set D[1] = (D[1] * -1.000000)
+  if (D[4] == 2)
+    set D[2] = (D[2] * -1.000000)
+  set F[1] = (X[1] + D[1])
+  set F[2] = (Y[1] + D[2])
+}
+if (@ChannelCost > 0) {
+  set M[1] = (M[1] + @ChannelCost)
+  set M[2] = (M[2] - @ChannelCost)
+}
+if ((M[1] > 313) || (M[2] < 0)) {
+  set M[1] = 313
+  set M[2] = 0
+}
+if ((M[1] < 129) || (M[2] > 183)) {
+  set M[1] = 129
+  set M[2] = 183
+}
+
+#switch 4007:8025
+if (ws_skill_level == 1)
+  set @RMgradient = (((M[4] * 3.5) / 183) + 1.5)
+if (ws_skill_level == 2)
+  if ((@ControlRage == 1) && (M[2] >= @ChannelCost)) {
+    set @RMgradient = (((M[4] * 1.5) / 183) + 1.5)
+  } else
+    set @RMgradient = (((M[4] * 5.5) / 183) + 3.5)
+set X[1] = (F[1] + (func_mousedx / @RMgradient))
+set Y[1] = (F[2] + (func_mousedy / @RMgradient))
+set F[1] = X[1]
+set F[2] = Y[1]
+if (X[1] > 320)
+  set X[1] = 320
+if (X[1] < 0)
+  set X[1] = 1
+if (Y[1] > 256)
+  set Y[1] = 256
+if (Y[1] < 0)
+  set Y[1] = 1
+set @fistLerpX = (0.5 * (@fistLerpX + X[1]))
+set @fistLerpY = (0.5 * (@fistLerpY + Y[1]))
+
+#switch 4007:8035
+set @targetCenterX = (129 + 64)
+set @targetCenterY = (81 + 64)
+set @fistCenterX = (X[1] + 32)
+set @fistCenterY = (Y[1] + 32)
+set @distToTargetX = (@targetCenterX - @fistCenterX)
+set @distToTargetY = (@targetCenterY - @fistCenterY)
+set @distToTargetSq = ((@distToTargetX * @distToTargetX) + (@distToTargetY * @distToTargetY))
+set @distToTarget = func_sqrt[ @distToTargetSq ]
+set @pointsAwarded = (2 * ((96 - @distToTarget) / 96))
+set M[3] = (M[3] - @pointsAwarded)
+set M[4] = (M[4] + @pointsAwarded)
+if (@pointsAwarded < -0.500000)
+  set @pointsAwarded = -0.500000
+if ((M[3] > 313) || (M[4] < 0)) {
+  set M[3] = 313
+  set M[4] = 0
+}
+if ((M[3] < 129) || (M[4] > 183)) {
+  set @RMWinner = 1
+  set M[3] = 129
+  set M[4] = 183
+}
+
+#switch 4007:8040
+extern FlashScreenf 1 0 0 @RedAmount 0
+set @RedAmount = ((M[4] * 0.899999976158) / 183)
+extern FlashScreenf 1 0 0 @RedAmount 0
+
+#switch 4007:8045
+set @BlindRage = 0
+extern FlashScreenf 1 0 0 @RedAmount 0
+extern FlashScreenf 1 0 0 0 .25
+
+#switch 4007:8095
+if (ws_skill_level == 1)
+  goto 4007:8096
+if (ws_skill_level == 2)
+  goto 4007:8097
+goto 0:0
+
+#switch 4007:8099
+extern stopsound ../music/mp3/worldskill.mp3
+extern resumelevelmusic
+closewindow 4007:8001
+closewindow 4007:8015
+if (@RMWinner)
+  set anox_worldskill_successful = 1
+console "popbind"
+extern RemoveAPE2DControl quit
+extern RemoveAPE2DControl what
+extern set2dcursor default
+extern deassign D[0] 10
+extern deassign S[0] 10
+extern deassign F[0] 20
+extern deassign M[0] 5
+extern deassign T[0] 5
+set X[1] = 0
+set Y[1] = 0
+extern FlashScreenf 1 0 0 @RedAmount 0
+extern FlashScreenf 1 0 0 0 0
+unset @sectorblah
+unset @SectorSwitchTime
+unset @DanceFistTime
+unset @MoveFistTime
+unset @RagePause
+unset @pacohelpcalled
+unset @pacoquitcalled
+unset @rageinprogress
+unset ws_time
+unset ws_difficulty
+gosub 4007:8098
+
+#switch 4007:8098
+unset @CursorX
+unset @CursorY
+unset @CursorModX
+unset @CursorModY
+unset @MeterBonusTime
+unset @RMWinner
+unset @RMmin
+unset @RMmax
+unset @RMgradient
+unset @fraction
+unset @pointsAwarded
+unset @targetCenterX
+unset @targetCenterY
+unset @fistCenterX
+unset @fistCenterY
+unset @distToTargetX
+unset @distToTargetY
+unset @distToTargetSq
+unset @distToTarget
+unset @fistLerpX
+unset @fistLerpY
+unset @RedAmount
+unset @BlindRage
+unset ws_time
+unset ws_doing_wskill
+extern RemoveAPE2DControl deadzone1
+extern RemoveAPE2DControl deadzone2
+extern RemoveAPE2DControl deadzone3
+extern RemoveAPE2DControl deadzone4

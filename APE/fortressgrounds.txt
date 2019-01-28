@@ -1,0 +1,147 @@
+#window 102:3
+startswitch {
+  echo "%%%% GO GO %%%%"
+  set @NeedADelay = (func_gametime + 1000)
+}
+
+thinkswitch {
+  if (func_gametime >= @NeedADelay)
+    closewindow 102:0003
+}
+
+finishswitch {
+  echo "%%%% Fine' %%%%"
+  if (((PerComm_Party0_C1$ != "") && (PerComm_Party1_C1$ != "")) && (PerComm_Party2_C1$ != "")) {
+    extern operate_on_party 0
+    extern set_party_members 0 PerComm_Party0_C1$ PerComm_Party0_C2$ PerComm_Party0_C3$
+    extern move_party_to_point 0 -832 -2082 -79
+    extern create_party 1 PerComm_Party1_C1$
+    extern move_party_to_point 1 -475 -1566 -127
+    extern create_party 2 PerComm_Party2_C1$ PerComm_Party2_C2$ PerComm_Party2_C3$
+    extern move_party_to_point 2 1439 -2117 -71
+    gosub 102:5
+  }
+}
+
+style "Null"
+flags passive, TRUE
+
+#window 102:5
+startswitch {
+  set @percomm_message_time = (func_gametime + 1000)
+}
+
+thinkswitch {
+  if (func_gametime >= @percomm_message_time)
+    closewindow 102:5
+}
+
+finishswitch {
+  set timed_message = 99
+  timed_message$="Use SHIFT + TAB to PerComm Between Party Members" 
+  gosub 1000:1
+}
+
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 102:1005
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "Looks like this is it, girlies. Let’s join the party and wait for the others inside."
+if (func_charinparty[grumpos] == 3)
+  body "Here we are, kids. Let’s get our butts inside and wait for the others."
+if (func_charinparty[rho] == 3)
+  body "Here’s the entrance, folks. We better duck inside and wait for the others."
+if (func_charinparty[democratus] == 3)
+  body "We appear to have found the entrance. Perhaps we should wait for the others inside."
+if (func_charinparty[paco] == 3)
+  body "We wait inside."
+talk player talk_a stay
+finishswitch {
+  set PerComm_Party0 = 0
+  if (((PerComm_Party0 == 0) && (PerComm_Party1 == 0)) && (PerComm_Party2 == 0))
+    goto 102:1075
+  goto 25:8000
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 102:1030
+title "%s", PlayerChar0$
+if (func_charinparty[pal] == 3)
+  body "Death-defy!"
+talk player talk_a stay
+finishswitch {
+  set PerComm_Party1 = 0
+  if (((PerComm_Party0 == 0) && (PerComm_Party1 == 0)) && (PerComm_Party2 == 0))
+    goto 102:1075
+  goto 25:8000
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#window 102:1055
+title "%s", PlayerChar0$
+if (func_charinparty[stiletto] == 3)
+  body "Let’s tiptoe into the basement and meet with the rest of the crew."
+if (func_charinparty[grumpos] == 3)
+  body "This winds down to the basement. Let’s skip downstairs and meet up with the others."
+if (func_charinparty[rho] == 3)
+  body "Let’s move downstairs into the basement. We’ll meet with the others."
+if (func_charinparty[democratus] == 3)
+  body "This appears to lead into the basement. Let us rendezvous with the others inside."
+if (func_charinparty[paco] == 3)
+  body "This is to the basement. We will meet inside."
+talk player talk_a stay
+finishswitch {
+  set PerComm_Party2 = 0
+  if (((PerComm_Party0 == 0) && (PerComm_Party1 == 0)) && (PerComm_Party2 == 0))
+    goto 102:1075
+  goto 25:8000
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+
+#switch 102:1
+extern add_quest "Find Basement Entrance"
+extern playlevelmusic mp3/bricks/bricks_scary_3_2.mp3
+BattleMusicOverride$="mp3/bricks/bricks_combat_3_0.mp3" 
+extern applylevelconfiguration fortress
+gosub 102:0003
+
+#switch 102:1000
+if (@party0_atbasement == 1)
+  goto 0:0
+set @party0_atbasement = 1
+goto 102:1005
+
+#switch 102:1025
+if (@party1_atbasement == 1)
+  goto 0:0
+set @party1_atbasement = 1
+goto 102:1030
+
+#switch 102:1050
+if (@party2_atbasement == 1)
+  goto 0:0
+set @party2_atbasement = 1
+goto 102:1055
+
+#switch 102:1075
+extern complete_quest "Find Basement Entrance"
+console "map basement"

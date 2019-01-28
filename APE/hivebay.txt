@@ -1,0 +1,1195 @@
+#window 67:3003
+startswitch {
+  if (@bosswindow)
+    goto 0:0
+  set @bosswindow = 1
+  set @bossmax = @bosshealth
+}
+
+thinkswitch {
+  if (@playerdied)
+    goto 0:0
+  if (@bossmax < 1) {
+    echo "RAILGAME: invalid bossmax value (%i)", @bossmax
+    goto 0:0
+  }
+  set @i = (@bosshealth / @bossmax)
+  set @vx0 = 100
+  set @vx1 = ((440 * @i) + @vx0)
+  set @vy0 = 440
+  set @vy1 = (@vy0 + 24)
+  set @rgb = @bosscolor
+  if (@rgb == 0)
+    set @rgb = 16777215
+  extern drawnicerect @vx0 @vy0 @vx1 @vy1 @rgb 200
+}
+
+finishswitch {
+  set @bosswindow = 0
+}
+
+style "null"
+flags passive, TRUE
+
+#window 67:3001
+startswitch {
+  if (1) {
+    extern RegisterPic @pic_cursor$		/gameflow/hivegame/hivecursor.png
+    extern RegisterPic @pic_cursoroff$	/gameflow/hivegame/hivecursor2.png
+    extern RegisterPic @pic_cursorload$ /gameflow/hivegame/hivecursor3.png
+    extern RegisterPic @pic_signok$		/gameflow/hivegame/signentry.png
+    extern RegisterPic @pic_signlock$	/gameflow/hivegame/signlocked.png
+    extern RegisterPic @pic_signchoice$ /gameflow/hivegame/signchoice.png
+    extern RegisterPic @pic_hiveicon1$ /gameflow/hivegame/summary/verfightericon.png
+    extern RegisterPic @pic_hiveicon2$ /gameflow/hivegame/summary/verfightericon2.png
+    extern RegisterPic @pic_hivestar0$ /gameflow/hivegame/summary/star0.png
+    extern RegisterPic @pic_hivestar1$ /gameflow/hivegame/summary/star1.png
+    extern RegisterPic @pic_hivestar2$ /gameflow/hivegame/summary/star2.png
+    extern RegisterPic @pic_hivestar3$ /gameflow/hivegame/summary/star3.png
+    extern RegisterPic @pic_hivestar4$ /gameflow/hivegame/summary/star4.png
+    extern RegisterPic @pic_hivestar5$ /gameflow/hivegame/summary/star5.png
+  }
+  gosub 67:3012
+  set @lastshot = 0
+  set @playerdied = 0
+  set @warnon = 0
+  set @bosswindow = 0
+  set @failshot = 0
+  set @railselected = 0
+  set @showrailsign = 0
+  gosub 67:3091
+  if (anox_game_difficulty == 0)
+    set anox_game_difficulty = 2
+  set hg_attempts = (hg_attempts + 1)
+  if (hg_attempts < 1)
+    set hg_attempts = 1
+  set hg_enemydamage = ((1 + anox_game_difficulty) / hg_attempts)
+  set hg_missiledamage = ((3 * anox_game_difficulty) / hg_attempts)
+  set @hg_running = 1
+  set hg_playerdamage = 10
+  set hg_reloadshots = 15
+  set hg_totalhits = 0
+  set hg_totalshots = 0
+  set hg_maxhealth = 100
+  set hg_health = hg_maxhealth
+  set hg_shots = hg_reloadshots
+  set @acc_kill = 0
+  set @acc_meet = 0
+}
+
+thinkswitch {
+  if (hg_health < 1)
+    goto 67:3070
+  if (railnohud)
+    goto 0:0
+  gosub 67:3040
+  set @mx = func_mousex
+  set @my = func_mousey
+  set @mb = func_mouseb
+  if (@mb == 0) {
+    set @mouseup = 1
+    set @mousewait = 0
+  }
+  gosub 67:3030
+  if ((@mx < (8 + 64)) && (@my >= 408)) {
+    set @sx = (@mx - 16)
+    set @sy = (@my - 16)
+    extern DrawPic @pic_cursorload$ @sx @sy
+    if (((@mb > 0) && (@mousewait == 0)) && (hg_shots < hg_reloadshots)) {
+      extern playsound games/hivegame/player_reload.wav
+      set hg_shots = hg_reloadshots
+      set @failshot = 0
+      set @mousewait = 1
+    }
+  } else
+    gosub 67:3050
+  if (hg_totalshots > 0) {
+    set @showaccuracy = (100 * (hg_totalhits / hg_totalshots))
+  } else
+    set @showaccuracy = 0
+}
+
+finishswitch {
+  extern set2dcursor default
+}
+
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 640
+height 480
+
+#window 67:3095
+title "Mission Failed"
+body "The party was blown to bits."
+style "style_box4"
+choice "Lemme try that again." 67:3096
+choice "Lemme skip this part." 67:3097
+
+#window 67:8004
+flags passive2d, TRUE
+background "hivegame/shot/shot07.png" 
+
+#window 67:3004
+xyprintfx 18, 18, 1, 1, 1, 1, _anox12, "Hivebay Minigame Summary"
+if (@disp_meet >= 0)
+  xyprintfx 170, 70, 1, 1, 1, 1, _anox12, "%i", @disp_meet
+if (@disp_kill >= 0)
+  xyprintfx 170, 142, 1, 1, 1, 1, _anox12, "%i", @disp_kill
+if (@disp_pct >= 0)
+  xyprintfx 170, 214, 1, 1, 1, 1, _anox12, "%i%%", @disp_pct
+if (@prize_given > 0)
+  xyprintfx 70, 286, 1, 1, 1, 1, _anox12, "Party received"
+if (@prize_given > 0)
+  xyprintfx 70, 304, 1, 1, 1, 1, _anox12, "%s!", @prize_desc$
+startswitch {
+  set @start = func_gametime
+  set @disp_meet = -1.000000
+  set @disp_kill = -1.000000
+  set @disp_pct = -1.000000
+  set @acc_pct = ((@acc_kill / @acc_meet) * 100)
+  if (@acc_pct < 0)
+    set @acc_pct = 0
+  if (@acc_pct > 100)
+    set @acc_pct = 100
+  set hg_prize = 0
+  set @prize_given = 0
+  @prize_desc$=" " 
+}
+
+thinkswitch {
+  set @t = (func_gametime - @start)
+  if (@t < 0)
+    set @t = 100000
+  if (@t < 1000) {
+    set @disp_meet = ((@t / 1000) * @acc_meet)
+  } else
+    set @disp_meet = @acc_meet
+  if (@t < 2000) {
+    set @disp_kill = -1.000000
+  } else if (@t < 3000) {
+    set @disp_kill = (((@t - 2000) / 1000) * @acc_kill)
+  } else
+    set @disp_kill = @acc_kill
+  if (@t < 4000) {
+    set @disp_pct = -1.000000
+  } else if (@t < 5000) {
+    set @disp_pct = (((@t - 4000) / 1000) * @acc_pct)
+  } else
+    set @disp_pct = @acc_pct
+  if (@disp_pct > 99) {
+    extern DrawPic @pic_hivestar5$ 260 274
+    set hg_prize = 5
+  } else if (@disp_pct >= 90) {
+    extern DrawPic @pic_hivestar4$ 260 274
+    set hg_prize = 4
+  } else if (@disp_pct >= 70) {
+    extern DrawPic @pic_hivestar3$ 260 274
+    set hg_prize = 3
+  } else if (@disp_pct >= 50) {
+    extern DrawPic @pic_hivestar2$ 260 274
+    set hg_prize = 2
+  } else if (@disp_pct >= 0) {
+    extern DrawPic @pic_hivestar1$ 260 274
+    set hg_prize = 1
+  }
+  if ((@t > 6000) && (@prize_given == 0)) {
+    set @prize_given = 1
+    if (hg_prize == 5) {
+      extern addnew_to_inventory "Instabouge Icon"
+      @prize_desc$="Instabouge Icon" 
+    } else if (hg_prize == 4) {
+      extern addnew_to_inventory "FreezeZone"
+      @prize_desc$="FreezeZone" 
+    } else if (hg_prize == 3) {
+      extern addnew_to_inventory "Glodent"
+      @prize_desc$="Glodent" 
+    } else if (hg_prize == 2) {
+      extern addnew_to_inventory "HealGrease Plus"
+      @prize_desc$="HealGrease Plus" 
+    } else if (hg_prize == 1) {
+      extern addnew_to_inventory "HealGrease"
+      @prize_desc$="HealGrease" 
+    }
+  }
+}
+
+finishswitch {
+}
+
+style "style_box4"
+xpos 170
+ypos 80
+width 300
+height 330
+if (@disp_meet >= 0)
+  image "hivegame/summary/verfightericon.png" 90, 50
+if (@disp_kill >= 0)
+  image "hivegame/summary/verfightericon2.png" 90, 122
+
+#switch 67:1
+set CURRENT_PLANET = 5
+set CURRENT_BANK = 67
+if (anox_viewing_a_cinematic == 1)
+  goto 0:0
+extern loopambient hivebay/ambi_hivebay_red
+extern loopambient hivebay/ambi_hivebay_yel
+if (START_HIVEGAME || PLAY_HIVEINTRO)
+  goto 67:8001
+goto 0:0
+
+#switch 67:3012
+extern RegisterPic @pic_hiveshotout1$ /gameflow/hivegame/shot/shotout1.png
+extern RegisterPic @pic_hiveshotout2$ /gameflow/hivegame/shot/shotout2.png
+extern RegisterPic @pic_hivereloadarrow$ /gameflow/hivegame/leftarrow.png
+set @i = 0
+extern STAB_Create @shotlist
+while (@i < 16) {
+  @s$="/gameflow/hivegame/shot/shot%02i.png" , @i
+  extern RegisterPic @pichandle$ @s$
+  extern STAB_Append @shotlist @pichandle$
+  set @i = (@i + 1)
+}
+set @i = 0
+extern STAB_Create @shieldlist
+while (@i < 8) {
+  @s$="/gameflow/hivegame/shield/shield%02i.png" , @i
+  extern RegisterPic @pichandle$ @s$
+  extern STAB_Append @shieldlist @pichandle$
+  set @i = (@i + 1)
+}
+extern RegisterPic @shieldwarn$ /gameflow/hivegame/shield/warn.png
+extern RegisterPic @shielddamage$ /gameflow/hivegame/shield/damage.png
+goto 0:0
+
+#switch 67:3035
+if (@activeparm < 0) {
+  echo "HIVEGAME: could not activate invalid index (%i)", @activeparm
+  goto 0:0
+}
+set @entnum = e[$@activeparm$]
+if (@entnum <= 0) {
+  echo "HIVEGAME: could not add index (%i) to active list", @activeparm
+  goto 0:0
+}
+if (h[$@activeparm$] == 0) {
+  set h[$@activeparm$] = 1
+  set @i = 0
+  set @done = 0
+  while ((@i < @num_active) && (@done == 0)) {
+    if (f[$@i$] < 0) {
+      set f[$@i$] = @activeparm
+      set @done = 1
+    }
+    set @i = (@i + 1)
+  }
+  if (@done == 0) {
+    set f[$@num_active$] = @activeparm
+    set @num_active = (@num_active + 1)
+  }
+} else {
+  set @f = h[$@activeparm$]
+  echo "HIVEGAME: entity (%i) index (%i) had invalid flag (%i)", @entnum, @activeparm, @f
+}
+goto 0:0
+
+#switch 67:3333
+if (@playerdied)
+  goto 0:0
+if (railspawn < 0) {
+  echo "Invalid railspawn value!"
+  goto 0:0
+}
+set @entnum = e[$railspawn$]
+if (@entnum < 1) {
+  echo "railspawn (%i) failed with invalid entity (%i)", railspawn, @entnum
+  goto 0:0
+}
+if (@bosshasdied) {
+  echo "railspawn (%i) failed because boss is dead", railspawn
+  extern ANIM_PlayAnim @entnum gest_a 0 1 1
+  goto 0:0
+}
+set @activeparm = railspawn
+gosub 67:3035
+set g[$railspawn$] = (hg_playerdamage * 1)
+extern loopsound games/hivegame/critter_loop.wav @entnum 0.4 1.0 @i
+extern setdoppler @i
+set l[$railspawn$] = @i
+extern ANIM_PlayAnim @entnum walk_a 1 1 0
+set @acc_meet = (@acc_meet + 1)
+echo "railspawn (%i) succeeded", railspawn
+goto 0:0
+
+#switch 67:3334
+if (@playerdied)
+  goto 0:0
+set @activeparm = 150
+gosub 67:3035
+extern ANIM_PlayAnim @entnum amb_a 1 1 0
+echo "health box added, entnum (%i)", @entnum
+set g[150] = (hg_playerdamage * 1)
+set h[150] = 4
+goto 0:0
+
+#switch 67:3335
+if (@playerdied)
+  goto 0:0
+if (railspawn < 0) {
+  echo "Invalid railspawn value!"
+  goto 0:0
+}
+set @t = (railspawn + 30)
+set @entnum = e[$@t$]
+if (@entnum < 1) {
+  echo "HIVEGAME: spawnmissile failed (railspawn=%i)", railspawn
+  goto 0:0
+}
+if (@bosshasdied) {
+  echo "missile (%i) not spawned, boss is dead", railspawn
+  extern ShowEntity @entnum 0
+  goto 0:0
+}
+set @activeparm = @t
+gosub 67:3035
+extern ShowEntity @entnum
+echo "missile (%i) spawned OK.", railspawn
+set g[$@activeparm$] = (hg_playerdamage * 1)
+set h[$@activeparm$] = 5
+goto 0:0
+
+#switch 67:3090
+set @i = 0
+while (@i < @num_active) {
+  set @index = f[$@i$]
+  if (@index >= 0) {
+    set @f = h[$@index$]
+    if (@f == 1) {
+      set @entnum = e[$@index$]
+      set @snd = l[$@index$]
+      extern stopsoundid @snd
+      set g[$@index$] = 0
+    } else if (@f == 2)
+      set g[$@index$] = 0
+    set h[$@index$] = 0
+  }
+  set @i = (@i + 1)
+}
+set @num_active = 0
+if (hivedebug) {
+  set @i = 0
+  while (@i < 20) {
+    if (h[$@i$] > 0) {
+      set @f = h[$@i$]
+      echo "HIVEGAME WARNING: Detected flag (%i) at index (%i).", @f, @i
+    }
+    set @i = (@i + 1)
+  }
+}
+goto 0:0
+
+#switch 67:3037
+set @j = 0
+while (@j < @num_active) {
+  set @k = f[$@j$]
+  if (@k == @index_in) {
+    set @index_out = @j
+    goto 0:0
+  }
+  set @j = (@j + 1)
+}
+set @index_out = -1.000000
+goto 0:0
+
+#switch 67:3070
+set hg_health = 0
+if (@playerdied == 0) {
+  echo "Player died."
+  set @deathtime = func_gametime
+  extern playsound games/hivegame/player_shipdeath.wav
+  set @playerdied = 1
+  set @deathcomplete = 0
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 1.5
+}
+if (@deathcomplete)
+  goto 0:0
+set @t = (func_gametime - @deathtime)
+if (@t > 2000) {
+  closewindow 67:3001
+  echo "Death complete."
+  set @deathcomplete = 1
+  gosub 67:8006
+  console "forcecursormode 0"
+  extern stopscene *
+  goto 67:3095
+}
+goto 0:0
+
+#switch 67:3096
+set START_HIVEGAME = 1
+console "map hivebay cinematic"
+goto 0:0
+
+#switch 67:3097
+console "map hive cinematic"
+goto 0:0
+
+#switch 67:3050
+set @firstent = 1
+set @bestent = 0
+set @besttgtx = 0
+set @besttgty = 0
+set @bestdist = 0
+set @bestidx = -1.000000
+set @i = 0
+while (@i < @num_active) {
+  set @index = f[$@i$]
+  if (@index >= 0) {
+    set @enthandle = e[$@index$]
+    if (@enthandle > 0) {
+      set @f = h[$@index$]
+      set @isbest = 0
+      if (@f == 2) {
+        extern AI_GetScreenXY @enthandle @tgtx @tgty @tgtvalid
+        if (@tgtvalid > 0)
+          if ((((@mx - @tgtx) * (@mx - @tgtx)) + ((@my - @tgty) * (@my - @tgty))) <= 1024) {
+            set @isbest = 1
+          } else {
+            extern AI_GetScreenSphere @enthandle @tgtx @tgty @tgtr @tgtvalid @tgtdist
+            if (@tgtvalid > 0) {
+              if (hivedebug) {
+                set @sx = (@tgtx - 32)
+                set @sy = (@tgty - 32)
+                extern DrawPic @pic_debug$ @sx @sy
+              }
+              if ((((@mx - @tgtx) * (@mx - @tgtx)) + ((@my - @tgty) * (@my - @tgty))) <= (@tgtr * @tgtr))
+                if ((@firstent > 0) || (@tgtdist < @bestdist)) {
+                  set @isbest = 1
+                  if (@mx < @tgtx) {
+                    set @hitside = 0
+                  } else
+                    set @hitside = 1
+                }
+            }
+          }
+      }
+      if (@isbest) {
+        set @bestent = @enthandle
+        set @besttgtx = @tgtx
+        set @besttgty = @tgty
+        set @bestdist = @tgtdist
+        set @bestidx = @i
+        set @firstent = 0
+      }
+    }
+  }
+  set @i = (@i + 1)
+}
+set @sx = (@mx - 16)
+set @sy = (@my - 16)
+if (hg_shots > 0) {
+  if (@bestent > 0) {
+    extern DrawPic @pic_cursor$ @sx @sy
+  } else
+    extern DrawPic @pic_cursoroff$ @sx @sy
+} else {
+  extern DrawPic @pic_cursorload$ @sx @sy
+  if (@mb > 0)
+    extern DrawPic @pic_hiveshotout2$ 8 408
+}
+if (@mb > 0)
+  gosub 67:3020
+goto 0:0
+
+#switch 67:3045
+if (hg_reloadshots < 1)
+  goto 0:0
+if (hg_shots > hg_reloadshots)
+  set hg_shots = hg_reloadshots
+if (hg_shots < 0)
+  set hg_shots = 0
+set @i = hg_shots
+extern STAB_GetElem @shotlist @i @pich$
+extern DrawPic @pich$ 8 408
+extern DrawPic @pic_hiveshotout1$ 8 408
+if (@failshot > 5)
+  if (@mb > 0) {
+    set @x = (8 + 80)
+    set @y = (408 + 16)
+    extern DrawPic @pic_hivereloadarrow$ @x @y
+  }
+goto 0:0
+
+#switch 67:3040
+set @t = func_timer
+set @i = (hg_health / 12.5)
+if (@i < 0)
+  set @i = 0
+if (@i > 7)
+  set @i = 7
+extern STAB_GetElem @shieldlist @i @pich$
+extern DrawPic @pich$ 568 408
+if (@i < 1.5) {
+  set @k = ((@i * 700) + 300)
+  set @j = func_mod[$@t$,$@k$]
+  if (@j > (@k * 0.5)) {
+    extern DrawPic @shieldwarn$ 568 408
+    if (@warnon == 0) {
+      set @warnon = 1
+      extern playsound games/hivegame/alarm.wav
+    }
+  } else if (@warnon == 1)
+    set @warnon = 0
+}
+if (@isdamaged)
+  if ((@t - @isdamaged) > 500) {
+    set @isdamaged = 0
+  } else
+    extern DrawPic @shielddamage$ 568 408
+gosub 67:3045
+if (@railselected == 0)
+  if ((@railsignent > 0) && @showrailsign) {
+    extern AI_GetScreenXY @railsignent @sx @sy @isvalid
+    if (@isvalid)
+      if (railclick > 0) {
+        set @sx = (@sx - 32)
+        set @sy = (@sy - 32)
+        if (i[$railclick$]) {
+          extern DrawPic @pic_signlock$ @sx @sy
+        } else
+          extern DrawPic @pic_signok$ @sx @sy
+        set @sx = (@sx - 32)
+        set @sy = (@sy + 16)
+        extern DrawPic @pic_signchoice$ @sx @sy
+      }
+  }
+goto 0:0
+
+#switch 67:4444
+if (@hg_running == 0)
+  goto 0:0
+if (@playerdied > 0)
+  goto 0:0
+if ((railhit >= 20) || (railhit < 0)) {
+  echo "WARNING: Rail shooter got invalid railhit value."
+  goto 0:0
+}
+if (h[$railhit$] < 0.5)
+  goto 0:0
+set @enthandle = e[$railhit$]
+if (@enthandle > 0) {
+  extern ANIM_PlaySequence @enthandle atakr1_a 0 1 0
+  extern BEAM_CreateBeamEx @enthandle muzzle_1 @shooter target_1 0 255 0 128 0 255 0 50 1 1 0 0 0 32
+  set @dmg = hg_enemydamage
+  set hg_health = (hg_health - @dmg)
+  set @isdamaged = func_timer
+  extern FlashScreenf 1 0 0 0.5 0
+  extern FlashScreenf 1 0 0 0 0.5
+  extern playsound games/hivegame/critter_laser.wav @enthandle 0.5 1.0
+  extern playsound games/hivegame/player_pain.wav
+}
+goto 0:0
+
+#switch 67:4445
+if (@hg_running == 0)
+  goto 0:0
+if (@playerdied > 0)
+  goto 0:0
+if ((railhit >= 5) || (railhit < 0)) {
+  echo "WARNING: Invalid missile explosion (%i).", railhit
+  goto 0:0
+}
+set @t = (railhit + 30)
+if (h[$@t$] != 5) {
+  echo "WARNING: Missile (%i) did not exist.", railhit
+  goto 0:0
+}
+set @enthandle = e[$@t$]
+if (@enthandle > 0) {
+  set @dmg = hg_missiledamage
+  set hg_health = (hg_health - @dmg)
+  set @isdamaged = func_timer
+  extern playsound games/hivegame/player_pain.wav
+  extern FlashScreenf 1 0 0 1 0
+  extern FlashScreenf 1 0 0 0 0.5
+  set h[$@t$] = 0
+  set @index_in = @t
+  gosub 67:3037
+  if (@index_out < 0) {
+    echo "WARNING: Unable to locate active index for missile %i.", railhit
+    goto 0:0
+  }
+  set f[$@index_out$] = -1.000000
+  set @killparm = @enthandle
+  gosub 67:3066
+}
+goto 0:0
+
+#switch 67:3020
+if (@hg_running == 0)
+  goto 0:0
+if ((func_timer < (@lastshot + 300)) && (@mouseup == 0))
+  goto 0:0
+if (@mousewait > 0)
+  goto 0:0
+if (hg_shots == 0) {
+  extern playsound games/hivegame/player_blanks.wav
+  set @mousewait = 1
+  set @failshot = (@failshot + 1)
+  goto 0:0
+}
+set @mouseup = 0
+set @lastshot = func_timer
+set hg_totalshots = (hg_totalshots + 1)
+set hg_shots = (hg_shots - 1)
+if (@bestent > 0) {
+  set @laserent = @bestent
+  set hg_totalhits = (hg_totalhits + 1)
+} else
+  set @laserent = @squibby
+extern BEAM_CreateBeamEx @shooter fx_1 @laserent 0 255 0 0 128 255 0 0 1 1 1 0 0 0 32
+extern BEAM_CreateBeamEx @shooter fx_2 @laserent 0 255 0 0 128 255 0 0 1 1 1 0 0 0 32
+extern playsound games/hivegame/player_laser.wav
+if (@bestent > 0) {
+  gosub 67:3060
+} else if (@squibhit)
+  extern np @squibby 1 0 effect_1 0 343/hive_hit3
+goto 0:0
+
+#switch 67:3060
+set @sx = (@besttgtx - 32)
+set @sy = (@besttgty - 32)
+set @index = f[$@bestidx$]
+set @hp = (g[$@index$] - hg_playerdamage)
+set @f = h[$@index$]
+if (@f == 1) {
+  gosub 67:3065
+} else if (@f == 3)
+  if (@index == (3 + 50)) {
+    if (@hitside) {
+      extern np @bestent 1 0 #129 0 343/hive_hit_blue
+    } else
+      extern np @bestent 1 0 #136 0 343/hive_hit_blue
+    if (@bosstexture > 0)
+      extern SetAnimFrame @bosstexture 11
+  } else if (@index == (1 + 50)) {
+    extern np @bestent 1 0 effect_1 0 343/hive_hit_red
+  } else if (@index == (2 + 50))
+    extern np @bestent 1 0 effect_1 0 343/hive_hit_yellow
+if (@hp < 0.5) {
+  set @hp = 0
+  if (@f == 1) {
+    set @killparm = @bestent
+    gosub 67:3064
+  } else if (@f == 2) {
+    if (i[$railclick$] == 0) {
+      extern playsound games/hivegame/choice_approved.wav
+      set @railselected = 1
+      set railchain = railclick
+      gosub 67:3092
+    }
+  } else if (@f == 3) {
+    extern playsound games/hivegame/shields_death.wav
+    gosub 67:3063
+  } else if (@f == 4) {
+    gosub 67:3051
+  } else if (@f == 5) {
+    set @killparm = @bestent
+    gosub 67:3066
+  } else
+    echo "HIVEGAME: Invalid active entity type (%i).", @f
+  set h[$@index$] = 0
+  set f[$@bestidx$] = -1.000000
+} else if (@f == 3) {
+  extern playsound games/hivegame/shields_pain.wav
+  set @bosshealth = @hp
+}
+set g[$@index$] = @hp
+goto 0:0
+
+#switch 67:3065
+set @t = random
+if (@t < 25) {
+  extern playsound games/hivegame/critter_pain1.wav @bestent 0.8 1.0
+} else if (@t < 50) {
+  extern playsound games/hivegame/critter_pain2.wav @bestent 0.8 1.0
+} else if (@t < 75) {
+  extern playsound games/hivegame/critter_pain3.wav @bestent 0.8 1.0
+} else
+  extern playsound games/hivegame/critter_pain4.wav @bestent 0.8 1.0
+goto 0:0
+
+#switch 67:3064
+extern StopSound_ByEdict games/hivegame/critter_loop.wav @killparm
+extern playsound games/hivegame/critter_death.wav @killparm 0.5 1.0
+extern ANIM_PlayAnim @killparm gest_a 0 1 1
+extern npsimple @killparm 343/hive_hit
+set @acc_kill = (@acc_kill + 1)
+echo "Entity #%i was killed.", @killparm
+goto 0:0
+
+#switch 67:3066
+extern AI_GetXYZ @killparm @x @y @z
+extern AI_SetXYZ @squibby2 @x @y @z
+extern ENT_InstantXYZ @squibby2 @x @y @z
+extern npsimple @squibby2 343/hive_hit2
+extern ShowEntity @killparm 0
+echo "Missile entity #%i was killed.", @killparm
+goto 0:0
+
+#switch 67:3051
+extern playsound  games/hivegame/health.wav
+extern ANIM_PlayAnim @bestent hit_a 0 1 1
+set @poohealth = (2 - anox_game_difficulty)
+set hg_health = ((hg_health + 35) + (20 * @poohealth))
+if (hg_health > hg_maxhealth)
+  set hg_health = hg_maxhealth
+goto 0:0
+
+#switch 67:3063
+closewindow 67:3003
+echo "HIVEGAME: boss was killed!"
+set @i = 0
+while (@i < @num_active) {
+  if (@i != @bestidx) {
+    set @idx = f[$@i$]
+    if (@idx >= 0) {
+      set @entnum = e[$@idx$]
+      set @killparm = @entnum
+      set @t = h[$@idx$]
+      if (@t == 1) {
+        gosub 67:3064
+      } else if (@t == 5) {
+        gosub 67:3066
+      } else
+        set @t = 0
+      if (@t) {
+        set h[$@idx$] = 0
+        set g[$@idx$] = 0
+        set f[$@i$] = -1.000000
+      }
+    }
+  }
+  set @i = (@i + 1)
+}
+if (railvictory > 0) {
+  set railchain = railvictory
+  gosub 67:3092
+}
+if (railbossdeath > 0) {
+  extern STAB_GetElem @scriptlist railbossdeath @scriptfile$ @t
+  if (@t > 0) {
+    echo "HIVEGAME: playing boss ambient death script (%i).", railbossdeath
+    extern playambient @scriptfile$
+  } else
+    echo "HIVEGAME: Got bad railbossdeath scriptnum (%i).", railbossdeath
+}
+set @bosshasdied = 1
+goto 0:0
+
+#switch 67:7777
+if (railstopscript > 0) {
+  extern STAB_GetElem @scriptlist railstopscript @scriptfile$ @t
+  if (@t > 0) {
+    echo "HIVEGAME: stopping ambient script (%i) %s.", railstopscript, @scriptfile$
+    extern stopambient @scriptfile$
+  } else
+    echo "HIVEGAME: Got bad railstopscript number (%i).", railstopscript
+}
+goto 0:0
+
+#switch 67:3030
+extern ProjectEntity @squibby @mx @my 1000 @squibhit
+goto 0:0
+
+#switch 67:3011
+extern deassign e[0] 200
+extern deassign h[0] 200
+extern deassign g[0] 200
+extern deassign f[0] 200
+extern deassign i[0] 200
+goto 0:0
+
+#switch 67:3010
+set @i = 0
+set @imax = 20
+if (hg_debug)
+  set @imax = 2
+while (@i < @imax) {
+  set @seq1 = 67
+  set @seq2 = (9000 + @i)
+  extern MakeSequence @seq1 @seq2 @seqstr$
+  extern FindEntBySeq @entnum @seqstr$
+  if (@entnum <= 0)
+    extern SpawnEntity2 @entnum "monster_verfighter" "vfighter" @seqstr$
+  set e[$@i$] = @entnum
+  set h[$@i$] = 0
+  set @bossidx = (@i + 50)
+  set @seq1 = 67
+  set @seq2 = (9600 + @i)
+  extern MakeSequence @seq1 @seq2 @seqstr$
+  extern FindEntBySeq @entnum @seqstr$
+  if (@entnum <= 0) {
+    extern SpawnEntity2 @entnum "ob_cubesquib" "bossquib" @seqstr$
+    echo "Spawned ob_cubesquib with seq \"%s\"", @seqstr$
+  }
+  set e[$@bossidx$] = @entnum
+  set h[$@bossidx$] = 0
+  set g[$@bossidx$] = 100
+  set @i = (@i + 1)
+}
+set @i = 0
+set @imax = 5
+while (@i < @imax) {
+  set @seq1 = 67
+  set @seq2 = (9700 + @i)
+  extern MakeSequence @seq1 @seq2 @seqstr$
+  extern FindEntBySeq @entnum @seqstr$
+  if (@entnum <= 0) {
+    extern SpawnEntity2 @entnum "cine_hivemissile" "hivemissile" @seqstr$
+    extern ScaleEntity @entnum .75 .5 .5
+  }
+  set @t = (@i + 30)
+  set e[$@t$] = @entnum
+  set h[$@t$] = 0
+  set @i = (@i + 1)
+}
+extern SpawnEntity2 @shooter "ob_hivegame_beams" "hivegamebeams" 67:8999
+extern SpawnEntity2 @squibby "ob_squib2"
+extern SpawnEntity2 @squibby2 "ob_squib2"
+extern AI_DeSolidify @squibby
+set @num_active = 0
+set @railsignent = 0
+extern SpawnEntity2 @railsignent "ob_squib" "hivegamesign" 67:9500
+extern AI_DeSolidify @railsignent
+echo "HIVEGAME: railsignent = %i", @railsignent
+set e[100] = @railsignent
+extern SpawnEntity2 @i "hivegame_healthbox" "health" 67:9501
+set e[150] = @i
+goto 0:0
+
+#switch 67:5556
+if (@playerdied)
+  goto 0:0
+if (railsign < 0)
+  goto 0:0
+set @seq1 = 67
+set @seq2 = (9200 + railsign)
+@seqstr$="%d:%d" , @seq1, @seq2
+extern FindEntBySeq @enthandle @seqstr$
+if (@enthandle < 1) {
+  echo "railsign: Unable to locate entity %s", @seqstr$
+} else if (@enthandle == @railsignent2) {
+  set @railsignent2 = 0
+} else
+  set @railsignent2 = @enthandle
+set railsign = -1.000000
+goto 0:0
+
+#switch 67:5555
+if (@playerdied)
+  goto 0:0
+if (@railsignent < 1) {
+  echo "HIVEGAME: Unable to find rail sign entity!"
+  goto 0:0
+}
+if (@showrailsign) {
+  set @showrailsign = 0
+} else if (@railselected == 0) {
+  set @showrailsign = 1
+  extern playsound games/hivegame/choice.wav
+}
+goto 0:0
+
+#switch 67:3080
+set @scriptcount = 0
+if (@scriptlist > 0)
+  extern STAB_Destroy @scriptlist
+extern STAB_Create @scriptlist
+extern STAB_Append @scriptlist "invalidinvalidinvalid" 0
+extern STAB_Append @scriptlist "hivebay/hivebay_realintro" 1
+extern STAB_Append @scriptlist "hivebay/smallroom1_fight1" 2
+extern STAB_Append @scriptlist "hivebay/smallroom1_choice_1a" 3
+extern STAB_Append @scriptlist "hivebay/smallroom1_choice_2a" 4
+extern STAB_Append @scriptlist "hivebay/tunnel1_a" 5
+extern STAB_Append @scriptlist "hivebay/tunnel1_b" 6
+extern STAB_Append @scriptlist "hivebay/mainroom_fight1" 7
+extern STAB_Append @scriptlist "hivebay/mainroom_choice_1b" 8
+extern STAB_Append @scriptlist "hivebay/mainroom_choice_4a" 9
+extern STAB_Append @scriptlist "hivebay/mainroom_choice_3b" 10
+extern STAB_Append @scriptlist "hivebay/mainroom_choice_6b" 11
+extern STAB_Append @scriptlist "hivebay/tunnel4_a" 12
+extern STAB_Append @scriptlist "hivebay/tunnel4_b" 13
+extern STAB_Append @scriptlist "hivebay/bossred_death" 14
+extern STAB_Append @scriptlist "hivebay/smallroom2_choice_4b" 15
+extern STAB_Append @scriptlist "hivebay/smallroom2_choice_5b" 16
+extern STAB_Append @scriptlist "hivebay/smallroom2_choice_shieldred" 17
+gosub 67:3081
+goto 0:0
+
+#switch 67:3081
+extern STAB_Append @scriptlist "hivebay/tunnel5_a" 18
+extern STAB_Append @scriptlist "hivebay/tunnel5_b" 19
+extern STAB_Append @scriptlist "hivebay/bossyel_death" 20
+extern STAB_Append @scriptlist "hivebay/smallroom3_choice_3a" 21
+extern STAB_Append @scriptlist "hivebay/smallroom3_choice_5a" 22
+extern STAB_Append @scriptlist "hivebay/smallroom3_choice_shieldyellow" 23
+extern STAB_Append @scriptlist "hivebay/tunnel3_a" 24
+extern STAB_Append @scriptlist "hivebay/tunnel3_b" 25
+extern STAB_Append @scriptlist "hivebay/tunnel6_a" 26
+extern STAB_Append @scriptlist "hivebay/tunnel6_b" 27
+extern STAB_Append @scriptlist "hivebay/finalroom_fight1" 28
+extern STAB_Append @scriptlist "hivebay/finalroom_choice_6a" 29
+extern STAB_Append @scriptlist "hivebay/finalroom_choice_2b" 30
+extern STAB_Append @scriptlist "hivebay/finalroom_choice_land" 31
+extern STAB_Append @scriptlist "hivebay/tunnel2_a" 32
+extern STAB_Append @scriptlist "hivebay/tunnel2_b" 33
+extern STAB_Append @scriptlist "hivebay/smallroom1_fight2" 34
+gosub 67:3082
+goto 0:0
+
+#switch 67:3082
+extern STAB_Append @scriptlist "hivebay/joeyintro_b" 35
+extern STAB_Append @scriptlist "hivebay/bossred_loop1" 36
+extern STAB_Append @scriptlist "hivebay/bossred_loop2" 37
+extern STAB_Append @scriptlist "hivebay/bossred_victory" 38
+extern STAB_Append @scriptlist "hivebay/bossyel_loop1" 39
+extern STAB_Append @scriptlist "hivebay/bossyel_loop2" 40
+extern STAB_Append @scriptlist "hivebay/bossyel_victory" 41
+extern STAB_Append @scriptlist "hivebay/bossfin_loop1" 42
+extern STAB_Append @scriptlist "hivebay/bossfin_loop2" 43
+extern STAB_Append @scriptlist "hivebay/bossfin_loop3" 44
+extern STAB_Append @scriptlist "hivebay/bossfin_victory" 45
+extern STAB_Append @scriptlist "hivebay_intro_2" 46
+extern STAB_Append @scriptlist "hivebay/ambi_hivebay_red" 47
+extern STAB_Append @scriptlist "hivebay/ambi_hivebay_yel" 48
+extern STAB_Append @scriptlist "hivebay/bossfin_loop4" 49
+extern STAB_Append @scriptlist "hivebay/bossfin_death" 50
+gosub 67:3089
+goto 0:0
+
+#switch 67:3083
+set @scriptcount = 0
+if (@scriptlist > 0)
+  extern STAB_Destroy @scriptlist
+extern STAB_Create @scriptlist
+extern STAB_Append @scriptlist "invalidinvalidinvalid" 0
+extern STAB_Append @scriptlist "joeytest_rg1" 1
+extern STAB_Append @scriptlist "joeytest_rg2" 2
+extern STAB_Append @scriptlist "joeytest_rg3" 3
+gosub 67:3089
+goto 0:0
+
+#switch 67:3089
+set @i = 0
+extern STAB_GetSize @scriptlist @scriptcount
+while (@i < @scriptcount) {
+  extern STAB_GetElem @scriptlist @i @tempstr$ @tempflt
+  if (@tempflt != @i) {
+    echo "HIVEGAME: Invalid script initialization (index=%i, value=%i).", @i, @tempflt
+    goto 0:0
+  }
+  set i[$@i$] = 0
+  set @i = (@i + 1)
+}
+echo "HIVEGAME: Script list check OK (size=%i).", @scriptcount
+goto 0:0
+
+#switch 67:9999
+if (@playerdied)
+  goto 0:0
+if ((railchain < 1) || (railchain >= @scriptcount)) {
+  echo "HIVEGAME: Invalid railchain value (%i), must be > 0 and < %i.", railchain, @scriptcount
+  set railchain = 0
+  set railclick = 0
+  goto 0:0
+}
+if (railclick > 0) {
+  if (railclick >= @scriptcount) {
+    echo "HIVEGAME: Invalid railclick value (%i), must be < %i.", railclick, @scriptcount
+    set railchain = 0
+    set railclick = 0
+    goto 0:0
+  }
+  if (i[$railclick$] == 0) {
+    set @activeparm = 100
+    gosub 67:3035
+    set g[100] = hg_playerdamage
+    set h[100] = 2
+  }
+}
+if (railbossnext > 0) {
+  set @idx = (railbossnext + 50)
+  if (g[$@idx$] > 0.5) {
+    if ((railbosschain < 1) || (railbosschain >= @scriptcount)) {
+      echo "HIVEGAME: Invalid railbosschain value (%i), must be > 0 and < %i.", railbosschain, @scriptcount
+      set railchain = 0
+      goto 0:0
+    }
+    set railchain = railbosschain
+    echo "HIVEGAME: Boss #%i is still alive, chaining to boss script %i.", railbossnext, railbosschain
+  } else
+    echo "HIVEGAME: Boss #%i is dead, chaining to script %i.", railbossnext, railchain
+}
+if (railboss > 0) {
+  if (railboss == 1)
+    set @bosscolor = 255
+  if (railboss == 2)
+    set @bosscolor = 65535
+  if (railboss == 3)
+    set @bosscolor = 16744447
+  set @idx = (railboss + 50)
+  if (g[$@idx$] > 0.5) {
+    echo "HIVEGAME: We are in a script for Boss #%i.", railboss
+    set @activeparm = @idx
+    gosub 67:3035
+    set h[$@idx$] = 3
+    set @bosshealth = g[$@idx$]
+    gosub 67:3003
+  } else {
+    echo "HIVEGAME: Boss #%i is dead but we're in a boss script (you forgot a railbossnext somewhere)", railboss
+    set railchain = 0
+    goto 0:0
+  }
+}
+gosub 67:3092
+goto 0:0
+
+#switch 67:8888
+if (@playerdied)
+  goto 0:0
+if (@rg_unlock > 0) {
+  set i[$@rg_unlock$] = 0
+  echo "HIVEGAME: unlocked script (%i)", @rg_unlock
+  set @rg_unlock = 0
+}
+if (@rg_lock > 0) {
+  set i[$@rg_lock$] = 1
+  echo "HIVEGAME: locked script (%i)", @rg_lock
+  set @rg_lock = 0
+}
+if (@rg_bossnum > 0) {
+  set @index = (@rg_bossnum + 50)
+  if (@rg_bosshealth > 0) {
+    set g[$@index$] = @rg_bosshealth
+    set @rg_bosshealth = 0
+  }
+  set @rg_bossnum = 0
+}
+goto 0:0
+
+#switch 67:3091
+set railchain = 0
+set railclick = 0
+set railnohud = 0
+set railbossnext = 0
+set railbosschain = 0
+set railboss = 0
+set railbossdeath = 0
+set railvictory = 0
+set railunlock = 0
+set @bosshasdied = 0
+goto 0:0
+
+#switch 67:3015
+if (railchain == 0) {
+  echo "HIVEGAME: Script chains stopped."
+  goto 0:0
+}
+set @t = -1.000000
+if (@railselected) {
+  set railchain = railclick
+  set @railselected = 0
+}
+extern STAB_GetElem @scriptlist railchain @scriptfile$ @t
+echo "HIVEGAME: current script is %s", @scriptfile$
+gosub 67:3091
+gosub 67:3090
+if (@playerdied)
+  goto 0:0
+if (@t > 0) {
+  if (@firstscript) {
+    extern playscene @scriptfile$ 0 67:3015 null null 0 0 false false
+    set @firstscript = 0
+  }
+} else
+  echo "HIVEGAME: Got bad script chain (%i).", railchain
+goto 0:0
+
+#switch 67:3092
+if (@playerdied)
+  goto 0:0
+extern STAB_GetElem @scriptlist railchain @nextscript$ @t
+if (@t > 0) {
+  extern chainscripts @scriptfile$ @nextscript$
+  unset @curscriptfile$=@scriptfile$ 
+} else
+  echo "HIVEGAME: Unable to chain to (%i).", railchain
+goto 0:0
+
+#switch 67:8234
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 1
+gosub 67:3010
+gosub 67:3001
+extern playscene joey_hivetest_rail
+goto 0:0
+
+#switch 67:8001
+extern camkill
+set anox_interface_active = 1
+set ape_no_autosave = 1
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 1
+console "forcecursormode 1"
+gosub 67:3011
+gosub 67:8002
+if (hg_debug > 0) {
+  gosub 67:3083
+} else
+  gosub 67:3080
+gosub 67:3010
+gosub 67:3001
+set railchain = 1
+set railclick = 0
+set @firstscript = 1
+gosub 67:3015
+goto 0:0
+
+#switch 67:8002
+extern SpawnEntity2 @entnum "monster_verboss" "hiveboss" "67:9603"
+extern ScaleEntity @entnum 3
+goto 0:0
+
+#switch 67:8003
+set hg_debug = 1
+gosub 67:8001
+goto 0:0
+
+#switch 67:9998
+extern UnlinkEntity @curscriptfile$ 10
+goto 0:0
+
+#switch 67:8005
+extern playlevelmusic mp3/hive/hive_minigame.mp3
+goto 0:0
+
+#switch 67:8006
+extern stopsound ../music/mp3/hive/hive_minigame.mp3
+goto 0:0
+
+#switch 67:2222
+gosub 67:3004
+goto 0:0
+
+#switch 67:3005
+set @acc_meet = 200
+set @acc_kill = 170
+goto 67:3004
+goto 0:0
+
+#switch 67:3098
+console "set storysave \"Hive Landing|Landing in the Hive\""
+goto 0:0

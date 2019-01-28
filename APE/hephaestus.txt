@@ -1,0 +1,5655 @@
+#window 5000:1
+if (PARTY_GRUMPOS)
+  title "Grumpos"
+if (PARTY_PAL)
+  title "PAL-18"
+if (PARTY_RHO)
+  title "Rho"
+if (PARTY_DEMOCRATUS)
+  title "Democratus"
+if (PARTY_STILETTO)
+  title "Stiletto"
+if (PARTY_GRUMPOS)
+  body "Hey, I risked my neck for you to find that letter. This old man deserves a break today."
+if (PARTY_PAL)
+  body "Man, I'm all jittery. I gotta calm down after that."
+if (PARTY_RHO)
+  body "I just went above and beyond the call of duty, Boots. Gimme a chance to catch my breath."
+if (PARTY_DEMOCRATUS)
+  body "We've unanimously decided to give our planetary navigators some time off from perilous activities. They're still faint from that stunt on the ledge."
+if (PARTY_STILETTO)
+  body "Mind giving me a little breathing room? That stunt we just pulled was pretty intense."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  gosub 1:5 
+}
+
+finishswitch {
+  if (PARTY_GRUMPOS)
+    extern remove_npc_from_party Grumpos
+  if (PARTY_PAL)
+    extern remove_npc_from_party Pal
+  if (PARTY_RHO)
+    extern remove_npc_from_party Rho
+  if (PARTY_DEMOCRATUS)
+    extern remove_npc_from_party Democratus
+  if (PARTY_STILETTO)
+    extern remove_npc_from_party Stiletto
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5002:2
+title "Grumpos"
+if (@grumpos_cycle == 1)
+  body "Run along. You keep bragging about being such a sleuth... so go sleuth."
+if (@grumpos_cycle == 2)
+  body "I'll find a way into the tower soon enough. I'm just taking a gander at these shops first."
+if (@grumpos_cycle == 3)
+  body "Will you stop pestering me, and find a way into that tower?"
+if (@grumpos_cycle == 4)
+  body "Do you want me to hold your hand, detective? Are you lonely?"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set @grumpos_cycle = (@grumpos_cycle + 1)
+  if (@grumpos_cycle > 4)
+    set @grumpos_cycle = 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5002:3
+title "Grumpos"
+if (pal_on_heph)
+  body "Two-man job? Well, I'm flattered you thought of me, shamus. But don't you think PAL would make a better choice?"
+if (rho_on_heph)
+  body "Two-man job? Well, I'm flattered you thought of me, shamus. But don't you think Doctor Bowman would make a better choice?"
+if (democratus_on_heph)
+  body "Two-man job? Well, I'm flattered you thought of me, shamus. But don't you think Democratus would make a better choice?"
+if (stiletto_on_heph)
+  body "Two-man job? Well, I'm flattered you thought of me, shamus. But don't you think the young lady would make a better choice?"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (pal_on_heph && (grump2nd == 0))
+    goto 5002:4
+  if (rho_on_heph && (grump2nd == 0))
+    goto 5002:4
+  if (democratus_on_heph && (grump2nd == 0))
+    goto 5002:4
+  if (stiletto_on_heph && (grump2nd == 0))
+    goto 5002:4
+  if (grump2nd)
+    extern cam_restore
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5002:4
+title "Grumpos"
+if (pal_on_heph)
+  body "I think the little fella is having an identity crisis... what with becoming self-aware and all. This is the time he needs you the most, son. Go take care of business. I'll be shopping."
+if (rho_on_heph)
+  body "I think the girl's heartbroken over having her only home split in half. Just look at her... wandering the streets like an orphan. Do the right thing and keep her company, son. I'll be shopping."
+if (democratus_on_heph)
+  body "Democratus is exploring the universe for the first time. Be a gentlemen, and show that planet a good time. I'll be shopping."
+if (stiletto_on_heph)
+  body "What's wrong with you, son? You jingled-brained? You like hanging out with old men? Don't you like girls? Go take care of business, son. I'll be shopping."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set grump2nd = 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5003:2
+title "PAL-18"
+if (@pal_cycle == 1)
+  body "Don't try and take care of me. I don't need you anymore. I'll find a way into that tower by myself."
+if (@pal_cycle == 2)
+  body "Hey, I just wanna look around for a second. Why you gotta make me feel guilty about it?"
+if (@pal_cycle == 3)
+  body "Will you get off my back? I'm just a toy robot. Quit givin' me the business."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set @pal_cycle = (@pal_cycle + 1)
+  if (@pal_cycle > 3)
+    set @pal_cycle = 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5003:3
+title "PAL-18"
+body "Two on the town. I won't let you down."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  gosub 5050:1
+  extern add_npc_to_party Pal
+  set PAL_IN_PARTY = 1
+  set GET_PARTNER_FOR_SEARCH = 0
+  console "bind TAB invoke 5001:1"
+  if (suspect_angela)
+    extern complete_quest "Help For Angela"
+  if (suspect_liseria)
+    extern complete_quest "Help For Liseria"
+  if (suspect_thomas)
+    extern complete_quest "Help For Thomas"
+  if (suspect_angela)
+    extern add_quest "GOT Help For Angela"
+  if (suspect_liseria)
+    extern add_quest "GOT Help For Liseria"
+  if (suspect_thomas)
+    extern add_quest "GOT Help For Thomas"
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5003:5
+title "PAL-18"
+body "You ain't gonna make me roll out on that ledge again are you?"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  gosub 5050:1
+  extern add_npc_to_party Pal
+  set PAL_IN_PARTY = 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5003:10
+title "PAL-18"
+body "Man, I'm all jittery. I gotta calm down after that."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5004:2
+title "Rho"
+if (@rho_cycle == 1)
+  body "Grumpos has a point. Let's scatter to the winds."
+if (@rho_cycle == 2)
+  body "I can't believe the MysTech these shops are selling. Some of these are quality slags. I'd buy 'em all if I could afford it."
+if (@rho_cycle == 3)
+  body "Really, Boots... you're a nice guy, but I shop alone."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set @rho_cycle = (@rho_cycle + 1)
+  if (@rho_cycle > 3)
+    set @rho_cycle = 1
+}
+
+finishswitch {
+  if (@rho_cycle == 1)
+    gosub 5004:3 
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5004:3
+title "Rho"
+body "I wouldn't mind the time alone."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5004:4
+title "Rho"
+body "Two-person job, huh? Let's kick it."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  gosub 5050:1
+  extern add_npc_to_party Rho
+  set GET_PARTNER_FOR_SEARCH = 0
+  set RHO_IN_PARTY = 1
+  console "bind TAB invoke 5001:1"
+  if (suspect_angela)
+    extern complete_quest "Help For Angela"
+  if (suspect_liseria)
+    extern complete_quest "Help For Liseria"
+  if (suspect_thomas)
+    extern complete_quest "Help For Thomas"
+  if (suspect_angela)
+    extern add_quest "GOT Help For Angela"
+  if (suspect_liseria)
+    extern add_quest "GOT Help For Liseria"
+  if (suspect_thomas)
+    extern add_quest "GOT Help For Thomas"
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5004:5
+title "Rho"
+body "You're kidding. Grumpos made a breakthrough? I gotta see this."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  gosub 5050:1
+  extern add_npc_to_party Rho
+  set RHO_IN_PARTY = 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5004:10
+title "Rho Bowman"
+body "I just went above and beyond the call of duty, Boots. Gimme a chance to catch my breath."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5005:2
+title "Democratus"
+if (@demo_cycle == 1)
+  body "I believe we're to split up and explore the planet by ourselves. We can't wait! "
+if (@demo_cycle == 2)
+  body "We are overwhelmed by the sights and sounds of this planet. Such pandemonium. Such chaos!"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set @demo_cycle = (@demo_cycle + 1)
+  if (@demo_cycle > 2)
+    set @demo_cycle = 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5005:4
+title "Democratus"
+body "Two-being team? You made the right choice."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  gosub 5050:1
+  extern add_npc_to_party Democratus
+  set DEMOCRATUS_IN_PARTY = 1
+  set GET_PARTNER_FOR_SEARCH = 0
+  console "bind TAB invoke 5001:1"
+  if (suspect_angela)
+    extern complete_quest "Help For Angela"
+  if (suspect_liseria)
+    extern complete_quest "Help For Liseria"
+  if (suspect_thomas)
+    extern complete_quest "Help For Thomas"
+  if (suspect_angela)
+    extern add_quest "GOT Help For Angela"
+  if (suspect_liseria)
+    extern add_quest "GOT Help For Liseria"
+  if (suspect_thomas)
+    extern add_quest "GOT Help For Thomas"
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5005:5
+title "Democratus"
+body "Another wild adventure perhaps? Splendid."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  gosub 5050:1
+  extern add_npc_to_party Democratus
+  set DEMOCRATUS_IN_PARTY = 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5005:10
+title "Democratus"
+body "We've unanimously decided to give our planetary navigators some time off from perilous activities. They're still faint from the stunt on the ledge."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5006:3
+title "Stiletto"
+if (@stil_cycle == 1)
+  body "I don't need your shadow, Boots. I'm a big girl now. Let's do like the man said and split up."
+if (@stil_cycle == 2)
+  body "Will you quit breathing down my neck? I know you're glad to see me, but I work alone now."
+if (@stil_cycle == 3)
+  body "Are you afraid I'm gonna find a way into that tower before you or something? Beat it."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set @stil_cycle = (@stil_cycle + 1)
+  if (@stil_cycle > 3)
+    set @stil_cycle = 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5006:4
+title "Stiletto"
+body "Two-person job? Just like the old days. Let's cook."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  gosub 5050:1
+  extern add_npc_to_party Stiletto
+  set STILETTO_IN_PARTY = 1
+  set GET_PARTNER_FOR_SEARCH = 0
+  console "bind TAB invoke 5001:1"
+  if (suspect_angela)
+    extern complete_quest "Help For Angela"
+  if (suspect_liseria)
+    extern complete_quest "Help For Liseria"
+  if (suspect_thomas)
+    extern complete_quest "Help For Thomas"
+  if (suspect_angela)
+    extern add_quest "GOT Help For Angela"
+  if (suspect_liseria)
+    extern add_quest "GOT Help For Liseria"
+  if (suspect_thomas)
+    extern add_quest "GOT Help For Thomas"
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5006:5
+title "Stiletto"
+body "Here we go again."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  gosub 5050:1
+  extern add_npc_to_party Stiletto
+  set STILETTO_IN_PARTY = 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5006:10
+title "Stiletto"
+body "Mind giving me a little breathing room? That stunt we just pulled was pretty intense."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:105
+title "Worker Drone 321"
+body "Hi! I'm a Worker Drone for The Brotherhood of the Mysterium Plant Management department. It's my job to transport excavation equipment to the MysTech Lavatic Processing Facility located directly under the tower. Would you like to know more about it?"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+choice "Yes, tell me how The Order of the Mysterium mines for precious MysTech." 71:110
+choice "No, thank you." 71:120
+
+#window 71:110
+title "Worker Drone 321"
+body "The mining process begins with a series of Hammerix 450 drilling pumps burrowing deep into the Mysterium Levant, the richest source of MysTech in the galaxy."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0111
+
+#window 71:111
+title "Worker Drone 321"
+body "Core lava is fed into a screening system using gigantic spiral concentrators to separate the slags of MysTech from the molten rock. The process is highly dangerous, but stringent safety codes provide a safe, healthy work environment for our employees."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0112
+
+#window 71:112
+title "Worker Drone 321"
+body "For more in-depth coverage of the mining process, purchase \"Hephaestus: Adventures in MysTech Mining\" available at the Le MysTech Manuscript Shoppe."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0113
+
+#window 71:113
+title "Worker Drone 321"
+body "As soon as some special cargo arrives, I can finish loading this A31 Tunnel Transport and send it down to the lavatic processing plant under the monastery."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0114
+
+#window 71:114
+title "Worker Drone 321"
+body "If it's the regular delivery boy, however, I might be waiting for hours. I often catch him sleeping on the job."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0115
+
+#window 71:115
+title "Worker Drone 321"
+body "Enjoy the rest of your stay on Hephaestus, the Planet of MysTech!"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0116
+
+#window 71:116
+title "Worker Drone 321"
+body "Copyright 225ac, The Order of Mysterium, Inc."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:120
+title "Worker Drone 321"
+body "Enjoy the rest of your stay on Hephaestus, the Planet of MysTech!"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0121
+
+#window 71:121
+title "Worker Drone 321"
+body "Copyright 225ac, The Order of Mysterium, Inc."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:125
+title "Worker Drone 321"
+body "Why, this is the delivery slip I've been waiting for."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0126
+
+#window 71:126
+title "Worker Drone 321"
+body "Excuse me. I must load the cargo."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 hBoots
+}
+
+finishswitch {
+  set hephaestus_gave_him_slip = 1
+  if (drone_at_elevator == 0) {
+    extern cam_anoxmariomode 1
+    extern AI_GetEdictNumber drone_path3 @hDroneDest
+    extern remove_from_inventory "Delivery Slip"
+    extern AI_GrabEntity 321 @321_handle
+    extern cam_to_edictnumber @hDroneDest
+    extern AI_SeekAndFace @321_handle drone_path3
+    extern AI_SetCompletionCallback @321_handle 71:0128
+  } else {
+    extern ANIM_MakeSmart hBoots
+    extern AI_ReleaseEntity hBoots
+  }
+}
+
+style "style_hephaestus"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:135
+title "Worker Drone 321"
+body "Interfering with the elevator is a violation of municipal code 3833. Please stop."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:140
+title "Worker Drone 321"
+body "Excuse me. I must load the cargo."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:202
+title "Felicia"
+body "Burp."
+cam left lift(40) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0203
+
+#window 71:203
+title "Felicia"
+if (Felicia1 == 0)
+  body "Hey, cutie. Buy a girl a drink?"
+if (Felicia1 == 1)
+  body "C'mon, cutie. Buy a girl a drink?"
+cam left lift(40) restore zip
+finishswitch {
+  set Felicia1 = 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+choice "Alkie Hall ($2)" 71:210
+choice "Bug Juice ($4)" 71:211
+choice "Canned Heat ($6)" 71:212
+choice "I think you've had enough." 71:208
+
+#window 71:204
+title "Felicia"
+body "Appreciate it, but I'm only drinking Shaker Dougans today. I need 'em. I've got problems. Neck-deep in troubles you wouldn't believe. Talk about roller coasters... I'm on the longest one ever. I don't know... I just don't know."
+cam left lift(40) restore zip
+startswitch {
+  set @hephaestus_felicia_drink = 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0205
+
+#window 71:205
+title "Felicia"
+body "I'm staying in Room 3 at Le Sommeil if you wanna drop by later and help me take my mind off my troubles."
+cam left lift(40) restore zip
+startswitch {
+  set BOUGHT_DRINK = 1
+  extern complete_quest "Find Felicia"
+  extern add_quest "Search Room 3"
+  extern AI_GrabEntity somdoor notedoor_handle
+  extern EntKey notedoor_handle "sequence" "71:3005"
+  extern EntKey notedoor_handle "wsequence" "71:3005"
+  set hephaestus_sommeil_open = 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0206
+
+#window 71:206
+title "Felicia"
+body "Kiss me."
+cam left lift(40) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0207
+
+#window 71:207
+title "Felicia"
+body "Burp."
+cam left lift(40) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:208
+title "Felicia"
+body "Kill joy."
+cam left lift(40) restore zip
+startswitch {
+  set @hephaestus_felicia_drink = 0
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:215
+title "Felicia"
+body "Yuck! You're BROKE?"
+cam left lift(40) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:220
+title "Felicia"
+body "I'm staying in Room 3 at Le Sommeil if you wanna drop by later and help me take my mind off my troubles."
+cam left lift(40) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:302
+title "Brother Gray"
+body "Burp."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0303
+
+#window 71:303
+title "Brother Gray"
+if (Gray1 == 0)
+  body "Sorry about that. I've been drinking. And eating. Life in The Brotherhood is no parade of laughs. Nothing but pointless politics. Buy me a drink?"
+if (Gray1 == 1)
+  body "C'mon, show some pity to a poor celibate slug. Buy me a drink."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set Gray1 = 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+choice "Alkie Hall ($2)" 71:310
+choice "Bug Juice ($4)" 71:311
+choice "Canned Heat ($6)" 71:312
+choice "I think you've had enough." 71:308
+
+#window 71:304
+title "Brother Gray"
+body "That's mighty gent of you. I appreciate it. This has been the strangest twenty-four hours in my life."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0305
+
+#window 71:305
+title "Brother Gray"
+body "At least the beds at Le Sommeil are softer than the cinder blocks we sleep on in the monastery. Yeah, I'm shacked up there for a few days. Long story."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0306
+
+#window 71:306
+title "Brother Gray"
+body "Burp."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0307
+
+#window 71:307
+title "Brother Gray"
+body "The room service is excellent. Like I need to gain any weight, right? I order something every twenty minutes. Now they answer the phone assuming it's Room 3."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set BOUGHT_DRINK = 1
+  extern complete_quest "Find Gray"
+  extern add_quest "Search Room 3"
+  set hephaestus_sommeil_open = 1
+  extern AI_GrabEntity somdoor notedoor_handle
+  extern EntKey notedoor_handle "sequence" "71:3005"
+  extern EntKey notedoor_handle "wsequence" "71:3005"
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:308
+title "Brother Gray"
+body "Yeah, I probably have, haven't I? I'm pretty drunk."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:315
+title "Brother Gray"
+body "No cash, huh? I'm glad SOMEONE'S worse off than me."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:320
+title "Brother Gray"
+body "Thanks for the drink, man. Excuse me if I pass out."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:402
+title "Donald"
+body "Burp."
+cam left restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0403
+
+#window 71:403
+title "Donald"
+if (Yadoo1 == 0)
+  body "I can't take it. Tommy's so pushy... so damn pushy. Hey, can you afford to buy me a drink? I ain't pickled enough to talk to strangers quite yet."
+if (Yadoo1 == 1)
+  body "C'mon, man. I could really use a drink."
+cam left restore zip
+finishswitch {
+  set Yadoo1 = 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+choice "Alkie Hall ($2)" 71:410
+choice "Bug Juice ($4)" 71:411
+choice "Canned Heat ($6)" 71:412
+choice "I think you've had enough." 71:408
+
+#window 71:404
+title "Donald"
+body "Many thanks, many thanks. But Tommy doesn't like it when I drink here. He says I get irresponsible."
+cam left restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0405
+
+#window 71:405
+title "Donald"
+body "He accused me of forgetting my room number at Le Sommeil. But I didn't forget... Room 3. How could anyone forget Room 3? Sure, I lost my room keys, but I didn't forget the number."
+cam left restore zip
+startswitch {
+  set BOUGHT_DRINK = 1
+  extern complete_quest "Find Donald"
+  extern add_quest "Search Room 3"
+  set hephaestus_sommeil_open = 1
+  extern AI_GrabEntity somdoor notedoor_handle
+  extern EntKey notedoor_handle "sequence" "71:3005"
+  extern EntKey notedoor_handle "wsequence" "71:3005"
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0406
+
+#window 71:406
+title "Donald"
+body "Burp."
+cam left restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0407
+
+#window 71:407
+title "Donald"
+body "Wow. Your teeth are pretty crooked. You can get that fixed, you know."
+cam left restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:408
+title "Donald"
+body "Ugh. You sound just like Tommy. Go away."
+cam left restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:409
+title "Donald"
+body "I better get outta here before Tommy finds out where I am. You never know what he's gonna do when he's angry. Too bad I can't stand up."
+cam left restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:415
+title "Donald"
+body "Broke? Spend too much on MysTech?"
+cam left restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 5001:1
+title "Boots"
+if (boots_leader == 1)
+  body "Hey, this is MY case, and it's gonna STAY my case."
+if (boots_leader == 2)
+  body "Beat it! This is my investigation."
+if (boots_leader == 3)
+  body "Quit trying to rain on my parade. Investigation MINE!"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set boots_leader = (boots_leader + 1)
+  if (boots_leader > 3)
+    set boots_leader = 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:602
+title "Koo Shanglo"
+body "Isn't it surprising how friendly people are? I never would have thought it until I started walking around the city talking to everyone."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:603
+title "Koo Shanglo"
+body "Notice people usually have some funny little story? Or quirky little personality? Or they sound totally serious, and then the last thing they say is a joke?"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0604
+
+#window 71:604
+title "Koo Shanglo"
+body "It's almost like you don't trust anyone because you're waiting for them to undermine everything they just said."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:605
+title "Koo Shanglo"
+body "No, that's it. I'm done talking. No joke."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:606
+title "Koo Shanglo"
+body "Just kidding."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:701
+title "Brother Shetruck"
+body "Exciting time to be alive, isn't it? With active MysTech in its infancy!"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0705
+
+#window 71:705
+title "Brother Shetruck"
+body "Think of all the new slags to discover. New magics to test. I feel like a kid again."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:0710
+
+#window 71:710
+title "Brother Shetruck"
+body "What can I get you?"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+choice "Buy and sell" 71:715
+choice "Nothing" 0:0
+
+#window 71:750
+title "Brother Shetruck"
+body "May you find the magic within you."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:902
+title "Dr. Zame Thinure"
+body "Oh, I see you have a LifeCursor too! Helpful little thing, isn't it? It's so much easier to stay focused and keep track of my day."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:903
+title "Dr. Zame Thinure"
+body "Which personality module did you get? I bought Seductive Susan. It was pretty expensive upgrade, but worth every penny."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+choice "My LifeCursor is, uh... customized. It's someone I knew." 71:904
+choice "I just use the default secretary." 71:905
+
+#window 71:904
+title "Dr. Zame Thinure"
+body "You digitized someone you knew? Wow, that's heavy, man. Who was it? An ex-girlfriend?"
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:905
+title "Dr. Zame Thinure"
+body "The default secretary? How can you bear him? He puts me to sleep."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:906
+title "Dr. Zame Thinure"
+body "Do you think I'm pretty?"
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:907
+title "Dr. Zame Thinure"
+body "Freak."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:908
+title "Dr. Zame Thinure"
+body "Say, I've got some extra LightTrail upgrades. Want one?"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+choice "Yes" 71:909
+choice "No" 71:907
+
+#window 71:909
+title "Dr. Zame Thinure"
+body "It's a one-time only item, but I've got a dozen of 'em if you ever want more of these puppies. I'll activate one, and give you an extra. Enjoy!"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set hephaestus_got_lighttrail = 1
+  extern addnew_to_inventory "Lifecursor LightTrail"
+}
+
+finishswitch {
+  set timed_message = 20
+  got_object$="Lifecursor LightTrail" 
+  gosub 1000:1
+  console "gl_cursortrail 1"
+  set anox_cursortrailstate = 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:910
+title "Dr. Zame Thinure"
+if ((@lt == 0) && (@partycash >= 50))
+  body "Want more LightTrails? I'll sell you ten for $50. Deal?"
+if ((@lt == 0) && (@partycash < 50))
+  body "I'd sell ya some LightTrails if you had enough dough..."
+if (@lt == 1)
+  body "Enjoying the LightTrail? Remember, if it shuts off, just use another one!"
+if (@lt > 1)
+  body "Enjoying them LightTrails? Remember, if it shuts off, just use another one!"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern check_money @partycash
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+if ((@lt == 0) && (@partycash >= 50))
+  choice "Woo hoo!" 71:911
+if ((@lt == 0) && (@partycash >= 50))
+  choice "No thanks." 0:0
+if (@lt >= 1)
+  choice "How do you turn them off?" 71:912
+if (@lt >= 1)
+  choice "See ya." 0:0
+
+#window 71:911
+title "Dr. Zame Thinure"
+body "I'll even turn one on for free!  Pleasure doing business with ya."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set timed_message = 20
+  got_object$="10 Lifecursor LightTrails" 
+  gosub 1000:1
+  extern remove_money 50
+  console "gl_cursortrail 1"
+  set anox_cursortrailstate = 1
+  extern addnew_to_inventory "Lifecursor LightTrail" 10
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:912
+title "Dr. Zame Thinure"
+body "Um, they're temporary. But I'll make sure yours is extinguished."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  console "gl_cursortrail 0"
+  set anox_cursortrailstate = 0
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1005
+title "Brother Deplerd"
+if (Deplerd1 > 0)
+  body "I'm a scholar. What am I forced to peddle MysTech in the streets like some huckster? "
+if (Deplerd1 > 1)
+  body "We must be the first religion to sell pieces of God at an affordable price. "
+if (Deplerd1 > 2)
+  body "T-shirts. Coffee table books. Enchanted MysTech Cereal. This isn't what the Brotherhood is about."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (Deplerd1 > 2)
+    set Deplerd1 = 0
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1010
+
+#window 71:1010
+title "Brother Deplerd"
+body "Would you like to rob the Brotherhood of some MysTech?"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+choice "Buy or sell" 71:1015
+choice "No." 0:0
+nextwindow 71:1015
+
+#window 71:1030
+title "Brother Deplerd"
+if ((@moneybeforeshop > @moneyaftershop) && (Deplerd1 == 0))
+  body "Blasphemer. Every slag of MysTech is holy, and that slag belongs in our temple."
+if ((@moneybeforeshop > @moneyaftershop) && (Deplerd1 == 1))
+  body "I hope you blow your digits off."
+if ((@moneybeforeshop > @moneyaftershop) && (Deplerd1 == 2))
+  body "Choke on it."
+if (@moneybeforeshop <= @moneyaftershop)
+  body "You have done the right thing. Buying MysTech is a sacrilege."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern check_money @moneyaftershop
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1102
+title "Carly"
+body "Look at my bippy! Poppa bought me two, but I don't know where the other one went."
+cam left lift(40) restore zip
+talk npc gest_f stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1103
+title "Carly"
+body "Look, my bippy keeps playing with the glass. I think she's trying to make music."
+cam left lift(40) restore zip
+talk npc gest_f stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1202
+title "Jimmy"
+body "That bippy's as good as dead. My sister's managed to kill her last three pets, each in less than a week."
+cam left lift(40) restore zip
+talk npc amb_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1203
+title "Jimmy"
+body "The bippy knows it's in trouble. They're smart enough to know when they've got a bad owner. They know a little girl like my sister is the kiss of death."
+cam left lift(40) restore zip
+talk npc amb_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1204
+title "Jimmy"
+body "One of 'em escaped when my sister was throwing a carrot in there. These suckers can run fast when they wanna."
+cam left lift(40) restore zip
+talk npc amb_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1205
+title "Jimmy"
+body "I'm gonna unlock the cage when she's not looking. Maybe my dad will stop buying her pets if she loses another one."
+cam left lift(40) restore zip
+talk npc amb_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1302
+title "Herbert"
+body "All children should know the responsibility of caring for a pet."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1303
+title "Herbert"
+body "I owned a turtle when I was seven years-old. My aunt accidentally stepped on his head during a New Year's Eve party. She was wearing high heels."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1304
+title "Herbert"
+body "Yeah, thanks for bringing back bad memories."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1405
+title "Bush Ditfall"
+body "MysTech uses you as a conduit for its power. You channel alien energy through your body. There's no knowing what kind of adverse health effects it might have."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1410
+
+#window 71:1410
+title "Bush Ditfall"
+body "Until we can set up a provisional panel to study the effects of MysTech on organic material, I advise against anyone using it."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1415
+title "Bush Ditfall"
+body "I propose slapping warnings on every slag."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1501
+title "Paul Testoret"
+body "Don't buy any MysTech here."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1502
+
+#window 71:1502
+title "Paul Testoret"
+body "I bought a really expensive slag. The first time I used it, I suddenly found myself on Cordica with a steam train of a headache."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1503
+
+#window 71:1503
+title "Paul Testoret"
+body "It took me a week to find a flight back here so I could complain."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1504
+
+#window 71:1504
+title "Paul Testoret"
+body "What if I'd been teleported to an uninhabited planet? Or the middle of open space? It's just too risky to use."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1505
+
+#window 71:1505
+title "Paul Testoret"
+body "And it's weird looking too. That's why I picked it. Here, lemme show it to you."
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  set testoret_gawn = 1
+  extern FindEntBySeq @ent "71:1510"
+  extern NPSimple @ent "heph/teleportatus"
+  extern playsound cine/labscene/labscene_mystech_poof.wav
+  extern playsound battle/mystech/nuts/mystech_ring_eerie.wav
+  extern AI_GrabEntity testoret @testoret_handle
+  extern AI_DestroyEntity @testoret_handle
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1602
+title "Brother Naranja"
+body "Welcome to the exclusive home of fresh Fiery Fruita. See those trees above us? Native to Hephaestus, the Fire Berry tree is capable of growing in the harshest of environments."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1603
+
+#window 71:1603
+title "Brother Naranja"
+body "It bears extraordinarily sweet fruit--the juicy goodness baked in by the extreme heat of the broiling atmosphere."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1604
+title "Brother Naranja"
+body "Here, have a Fiery Fruita on the house."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1605
+
+#window 71:1605
+title "Franco-Ya"
+body "Hey, why didn't I get a free one?"
+talk npc talk_a stay
+startswitch {
+  extern cam_to 71:1701
+  extern AI_GrabEntity franco franco_handle
+  extern AI_WaitAndFace franco_handle 7 naranja
+  extern AI_ReleaseEntity franco_handle
+}
+
+finishswitch {
+  extern cam_to NULL
+  extern cam_restore
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1606
+title "Brother Naranja"
+body "Have a wonderful day of hope."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1702
+title "Franco-Ya"
+body "Some vacation. This place is hot, overpriced, noisy, and full of screaming kids."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1710
+
+#window 71:1703
+title "Franco-Ya"
+body "Some kid just yelled in my ear. I was two seconds away from throwing him over the edge of the railing."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1704
+title "Franco-Ya"
+body "And I got fourteen of these things. When am I ever going to use 'em? Just look at it!"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1706
+
+#window 71:1705
+title "Franco-Ya"
+body "I should've gone to Cordica this year...."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1710
+title "Franco-Ya"
+body "I mean, they haven't even finished building the rides. What a rip."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1805
+title "Brother Luna"
+body "Magmatos."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1810
+
+#window 71:1810
+title "Brother Luna"
+body "Most people think he is just a legend we made up to sell t-shirts. But he's quite real. I've seen him myself."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1830
+title "Brother Luna"
+body "Just a few months ago, while enjoying a modest lunch on the overlook, I saw something remarkable skimming the surface of the lava lake below."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1835
+
+#window 71:1835
+title "Brother Luna"
+body "As the Gods are my witness, I saw was a huge, fiery hand."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1840
+
+#window 71:1840
+title "Brother Luna"
+body "For me to have seen it from hundreds of feet away it would have to have been GIGANTIC. Who knows what manner of creature would evolve so close to MysTech."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1845
+
+#window 71:1845
+title "Brother Luna"
+body "It took all my breath away."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1860
+title "Brother Luna"
+body "Keep your eye and your mind open for a glimpse of Magmatos."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1865
+
+#window 71:1865
+title "Brother Luna"
+body "The Lavatic Leviathan!"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1905
+title "Zhang Gogelen"
+body "I love people watching."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1910
+
+#window 71:1910
+title "Zhang Gogelen"
+body "You can tell a lot by giving someone the bird-eye."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1915
+
+#window 71:1915
+title "Zhang Gogelen"
+body "Take that lady over there for instance."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1920
+
+#window 71:1920
+title "Zhang Gogelen"
+body "She was beautiful once, but she's getting older and signs of aging are setting in. This makes her a little less certain of her opinions. She fears people will question her more with every new wrinkle they can see."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1925
+
+#window 71:1925
+title "Zhang Gogelen"
+body "She fears she will lose her once sharply-cut edge and senility will set in."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1930
+
+#window 71:1930
+title "Zhang Gogelen"
+body "She fears everything around her will collapse. That's why she took a vacation to Hephaestus. She wants the magic back. She wants to find her soul."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:1935
+title "Zhang Gogelen"
+body "What can I tell about you just by looking?"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:1940
+
+#window 71:1940
+title "Zhang Gogelen"
+body "You're bound to get arrested one of these days."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:2001
+title "Hugo"
+body "The world is big."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:2105
+title "Evelyn Gogelen"
+body "Why don't they sell MysTech that blows cold air? This heat is insufferable."
+cam left restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:2110
+title "Evelyn Gogelen"
+body "Is my daughter talking about me again?"
+cam left restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:2202
+title "Andy"
+body "Hey, Janice! A monk told us they spotted Magmatos this morning and he was calling out your name!"
+cam left restore zip
+startswitch {
+  extern cam_to andy
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:2302
+
+#window 71:2203
+title "Andy"
+body "Hey, Janice! Magmatos pulled a little girl out of the roller coaster just yesterday. You better hold on tight!"
+cam left restore zip
+startswitch {
+  extern cam_to andy
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:2303
+
+#window 71:2204
+title "Andy"
+body "Hey, Janice! Last week, a car full of kids came back with all their heads bitten off by Magmatos!"
+cam left restore zip
+startswitch {
+  extern cam_to andy
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:2304
+
+#window 71:2302
+title "Janice"
+body "Shut up, you liar!"
+cam left restore zip
+startswitch {
+  extern cam_to janice
+  extern AI_GrabEntity janice janice_handle
+  extern AI_WaitAndFace janice_handle -1 andy
+}
+
+finishswitch {
+  extern AI_WaitAndFace janice_handle -1 richie
+  extern AI_ReleaseEntity janice_handle
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:2303
+title "Janice"
+body "Shut up! You're not scaring me!"
+cam left restore zip
+startswitch {
+  extern cam_to janice
+  extern AI_GrabEntity janice janice_handle
+  extern AI_WaitAndFace janice_handle -1 andy
+}
+
+finishswitch {
+  extern AI_WaitAndFace janice_handle -1 richie
+  extern AI_ReleaseEntity janice_handle
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:2304
+title "Janice"
+body "Will you shut up already!"
+cam left restore zip
+startswitch {
+  extern cam_to janice
+  extern AI_GrabEntity janice janice_handle
+  extern AI_WaitAndFace janice_handle -1 andy
+}
+
+finishswitch {
+  extern AI_WaitAndFace janice_handle -1 richie
+  extern AI_ReleaseEntity janice_handle
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:2402
+title "Brother Saltar"
+body "Why does everyone fear \"Leap of Faith: The Ultimate Bungee Cord Experience\"? Who would not want to experience the exhilarating sensation of a 380-foot plummet towards a 5 mile-wide lake of boiling lava?"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:2403
+title "Brother Saltar"
+body "Imagine yourself... tentatively walking out to the edge of the platform, too afraid to look down... feeling the heat from below wash over you in waves."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:2404
+
+#window 71:2404
+title "Brother Saltar"
+body "Your stomach is in your throat. You can't believe you agreed to this. No field repulsion. No anti-grav buckles. Nothing to save you from certain fiery death except a thin cord of natural rubber."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:2405
+title "Brother Saltar"
+body "Coward! Coward!!"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:2502
+title "Viktor"
+body "Little Heinz, do you see your brother out there exploring the world? You should be more like him."
+cam left to(victor) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:2602
+
+#window 71:2503
+title "Viktor"
+body "Little Heinz, you must not be so afraid of the world. There is nothing here to harm you. There is nothing here to fear."
+cam left to(victor) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:2602
+
+#window 71:2504
+title "Viktor"
+body "Little Heinz, will you not at least watch your brother ride the grand roller coaster?"
+cam left to(victor) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:2602
+
+#window 71:2505
+title "Viktor"
+body "Then DIE, little Heinz. Just DIE."
+cam left to(victor) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3205
+title "Dell Veckia"
+body "We fried this Bippy."
+cam left from(PlayerChar0) to(dell) restore zip
+talk_ex dell nitrous talk_e amb_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3210
+
+#window 71:3210
+title "Nitrous"
+body "With some MysTech."
+cam left from(PlayerChar0) to(nitrous) restore zip
+talk_ex dell nitrous amb_a talk_e stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3230
+title "Dell Veckia"
+body "I'm gonna fry my sister."
+cam left from(PlayerChar0) to(dell) restore zip
+talk_ex dell nitrous talk_e amb_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3235
+
+#window 71:3235
+title "Nitrous"
+body "I'm gonna fry your sister too."
+cam left from(PlayerChar0) to(nitrous) restore zip
+talk_ex dell nitrous amb_a talk_e stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3260
+title "Dell Veckia"
+body "MysTech is great."
+cam left from(PlayerChar0) to(dell) restore zip
+talk_ex dell nitrous talk_e amb_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3265
+
+#window 71:3265
+title "Nitrous"
+body "It's all I'm gonna ask for every birthday."
+cam left from(PlayerChar0) to(nitrous) restore zip
+talk_ex dell nitrous amb_a talk_e stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3505
+title "Pete Serrilore"
+body "Just make sure you're speaking into the mike. And with that, we can begin."
+cam left from(PlayerChar0) to(pete) restore zip
+talk_ex pete tula gest_a amb_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3510
+
+#window 71:3510
+title "Pete Serrilore"
+body "Ahem."
+cam left from(PlayerChar0) to(pete) restore zip
+talk_ex pete tula gest_a amb_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3515
+
+#window 71:3515
+title "Pete Serrilore"
+body "So what happened in your life that convinced you to lead the ascetic life and become a monk?"
+cam left from(PlayerChar0) to(pete) restore zip
+talk_ex pete tula gest_a amb_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3520
+
+#window 71:3520
+title "Brother Tula"
+body "Whether we know it or not, we're all in search of spirituality."
+cam left from(PlayerChar0) to(tula) restore zip
+talk_ex pete tula amb_b talk_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3525
+
+#window 71:3525
+title "Brother Tula"
+body "I was a top executive for a commodities company on Cordica. It wasn't too lonely at the top. I had good friends, a rewarding job, and a loving wife. But there was still something lacking. A space in my soul."
+cam left from(PlayerChar0) to(tula) restore zip
+talk_ex pete tula amb_b talk_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3530
+
+#window 71:3530
+title "Brother Tula"
+body "I remembered reading an article about MysTech in Interplanetary Geographic. There was something about the idea of MysTech that really spoke to me. It stayed with me for years."
+cam left from(PlayerChar0) to(tula) restore zip
+talk_ex pete tula amb_b talk_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3535
+
+#window 71:3535
+title "Brother Tula"
+body "I would think of these thousands of strange, metallic sculptures scattered around the galaxy, their shapes and forms as different as people. I knew there was a slag of MysTech somewhere that corresponded to me."
+cam left from(PlayerChar0) to(tula) restore zip
+talk_ex pete tula amb_b talk_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3540
+
+#window 71:3540
+title "Brother Tula"
+body "You can sleepwalk through life with a vacuum in your soul for only so long. It drives some people to drink. Others to abusive relationships. Me... it drove to MysTech."
+cam left from(PlayerChar0) to(tula) restore zip
+talk_ex pete tula amb_b talk_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3545
+
+#window 71:3545
+title "Brother Tula"
+body "So I abandoned it all. My friends, my job, my wife. And you know what? I've never regretted it. I've never been more fulfilled than when I've been here."
+cam left from(PlayerChar0) to(tula) restore zip
+talk_ex pete tula amb_b talk_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3550
+title "Pete Serrilore"
+body "Have you found that slag of MysTech yet that corresponds to you?"
+cam left from(PlayerChar0) to(pete) restore zip
+talk_ex pete tula gest_a amb_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3555
+
+#window 71:3555
+title "Brother Tula"
+body "Sadly, no. For all I know, it's still buried in the magma of some uninhabited planet, just waiting for me to come along and deliver it."
+cam left from(PlayerChar0) to(tula) restore zip
+talk_ex pete tula amb_b talk_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3560
+title "Pete Serrilore"
+body "What did you feel when MysTech became active?"
+cam left from(PlayerChar0) to(pete) restore zip
+talk_ex pete tula gest_a amb_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3565
+
+#window 71:3565
+title "Brother Tula"
+body "Disbelief. I have to admit."
+cam left from(PlayerChar0) to(tula) restore zip
+talk_ex pete tula amb_b talk_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3570
+
+#window 71:3570
+title "Brother Tula"
+body "I always knew there was some sort of power in MysTech. I mean, you can just feel it when you put your fingers on a slag. It vibrates your soul."
+cam left from(PlayerChar0) to(tula) restore zip
+talk_ex pete tula amb_b talk_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3573
+
+#window 71:3573
+title "Brother Tula"
+body "But I never thought they would awaken during the course of my lifetime, and certainly not to this extent. Who knew they would be so powerful."
+cam left from(PlayerChar0) to(tula) restore zip
+talk_ex pete tula amb_b talk_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3575
+title "Pete Serrilore"
+body "What does it feel like when you use a slag of MysTech?"
+cam left from(PlayerChar0) to(pete) restore zip
+talk_ex pete tula gest_a amb_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3580
+
+#window 71:3580
+title "Brother Tula"
+body "Deliverance. The glory of the Gods."
+cam left from(PlayerChar0) to(tula) restore zip
+talk_ex pete tula amb_b talk_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3585
+title "Pete Serrilore"
+body "Thank you for your time."
+cam left from(PlayerChar0) to(pete) restore zip
+talk_ex pete tula gest_a amb_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3590
+
+#window 71:3590
+title "Brother Tula"
+body "My pleasure."
+cam left from(PlayerChar0) to(tula) restore zip
+talk_ex pete tula amb_b talk_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3595
+
+#window 71:3595
+title "Brother Tula"
+body "Is someone coming to take my picture?"
+cam left from(PlayerChar0) to(tula) restore zip
+talk_ex pete tula amb_b talk_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:8791
+title "Brother Synams"
+body "Children's matinee only."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:8792
+title "Brother Synams"
+body "Look, those are the rules. Children's matinee only. Without rules, our society would crumble. Please refrain from this nonsense."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:8793
+title "Brother Synams"
+body "Sir, no one can dissuade me. Children's matinee only. You cannot go in."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:8796
+title "Brother Synams"
+body "Enough already! Children's matinee only!"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:8797
+
+#window 71:8797
+title "Brother Synams"
+body "Why won't you understand?"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:2602
+title "Heinz"
+body "I don't care."
+cam left to(heinz) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:2705
+title "Boots"
+body "Well, lookie here..."
+cam left from(PlayerChar0) to(center_key) lift(30) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 center_key
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+style "style_hephaestus"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:2706
+
+#window 71:2706
+title "Boots"
+body "Guess these are the 3 Keys everyone's making so much noise about. Dinky little suckers."
+cam left from(PlayerChar0) to(center_key) lift(30) restore zip
+startswitch {
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+style "style_hephaestus"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:2707
+
+#window 71:2707
+title "Boots"
+body "I better hightail it back to the Abbot and tell him they're here."
+cam left from(PlayerChar0) to(center_key) lift(30) restore zip
+startswitch {
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  set FOUND_3KEYS_NOTE = 1
+  extern complete_quest "Search Room 3"
+  extern add_quest "Take Three Keys Info To Abbot"
+  if (GOT_FLUID && FOUND_3KEYS_NOTE)
+    set @Abbot_Spawn63 = 1
+  if (suspect_angela)
+    set angela_die = 1
+  if (suspect_liseria)
+    set liseria_die = 1
+  if (suspect_thomas)
+    set thomas_die = 1
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_hephaestus"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:2710
+title "Boots"
+body "I better hightail it back to the Abbot and tell him the 3 Keys are here."
+cam left from(PlayerChar0) to(center_key) lift(30) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 center_key
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_hephaestus"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:2950
+startswitch {
+  set @dogstart = func_gametime
+  set @animtime = func_drand[7000,13000]
+}
+
+thinkswitch {
+  set @dogdelta = (func_gametime - @dogstart)
+  if (@dogdelta >= @animtime) {
+    extern AI_GrabEntity mascot mascot_handle
+    extern ANIM_PlayAnim mascot_handle gest_a 0 1 0
+    extern AI_ReleaseEntity mascot_handle
+    set @dogstart = func_gametime
+    set @animtime = func_drand[7000,13000]
+  }
+}
+
+finishswitch {
+  set on_break = 0
+}
+
+style "NULL"
+flags passive, TRUE
+
+#window 71:2955
+startswitch {
+  set @dogstart = func_gametime
+  set @whichanim = 0
+}
+
+thinkswitch {
+  set @dogdelta = (func_gametime - @dogstart)
+  if (@whichanim == 0) {
+    extern AI_GrabEntity mascot2 mascot_handle
+    extern ANIM_PlayAnim mascot_handle gest_b 0 1 0
+    set @dogstart = func_gametime
+    set @whichanim = 1
+    extern AI_ReleaseEntity mascot_handle
+  }
+  if ((@whichanim == 1) && (@dogdelta > 4000)) {
+    extern AI_GrabEntity mascot2 mascot_handle
+    extern ANIM_PlayAnim mascot_handle gest_c 0 1 0
+    set @dogstart = func_gametime
+    set @whichanim = 2
+    extern AI_ReleaseEntity mascot_handle
+  }
+  if ((@whichanim == 2) && (@dogdelta > 6550))
+    set @whichanim = 0
+}
+
+finishswitch {
+  set on_break = 1
+}
+
+style "NULL"
+flags passive, TRUE
+
+#window 71:3102
+title "%s", PlayerChar0$
+if (func_charinparty[democratus] != 3)
+  body "Not while I'm on the platform under the elevator."
+if (func_charinparty[democratus] == 3)
+  body "Not while we're on the platform under the elevator."
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3106
+title "Worker Drone 321"
+body "I'm sorry. No one is permitted on the train. Please step away from the tracks."
+cam left restore zip
+startswitch {
+  extern cam_anoxmariomode 1
+  extern AI_GrabEntity playerchar0 bootshandle
+  extern AI_GrabEntity 321 @drone321_handle
+  extern AI_WaitAndFace @drone321_handle -1 playerchar0
+  extern AI_WaitAndFace bootshandle -1 321
+  extern ANIM_PlayAnim @drone321_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_SeekAndFace bootshandle gobackhere
+  extern AI_SetCompletionCallback bootshandle 71:3109
+}
+
+style "style_hephaestus"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3107
+title "Worker Drone 321"
+body "Please step away from the tracks. Do I have to alert the authorities?"
+cam left restore zip
+startswitch {
+  extern cam_anoxmariomode 1
+  extern AI_GrabEntity playerchar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 321
+  extern AI_GrabEntity 321 @drone321_handle
+  extern AI_WaitAndFace @drone321_handle -1 playerchar0
+  extern ANIM_PlayAnim @drone321_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_SeekAndFace bootshandle gobackhere
+  extern AI_SetCompletionCallback bootshandle 71:3109
+}
+
+style "style_hephaestus"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3405
+title "Milligan Tune"
+body "Maybe it's the heat."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3410
+
+#window 71:3410
+title "Milligan Tune"
+body "I've felt weird all day. Like I've been in slow motion, trying to catch up to time."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3415
+
+#window 71:3415
+title "Milligan Tune"
+body "Then you come outta nowhere and wanna talk to me. You don't even say anything. You just poke me with your LifeCursor and wait expectantly for me to speak."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3430
+title "Milligan Tune"
+body "I don't think you're real."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3435
+
+#window 71:3435
+title "Milligan Tune"
+body "None of this is real, is it? I feel like I'm on the verge of waking up."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3440
+
+#window 71:3440
+title "Milligan Tune"
+body "Who are you? Why do you keep poking me?"
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3470
+title "Milligan Tune"
+body "Ouch."
+cam left restore zip
+talk npc amb_b stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3480
+title "Milligan Tune"
+body "Stop it."
+cam left restore zip
+talk npc amb_b stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3490
+title "Milligan Tune"
+body "Enough."
+cam left restore zip
+talk npc amb_b stay
+finishswitch {
+  extern AI_TalkStop 71:3401
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3705
+title "Francis Botnik"
+body "Hey."
+cam left restore zip
+talk npc amb_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3710
+
+#window 71:3710
+title "Francis Botnik"
+body "What a place, huh? My editor sent me out here to write an article about The Brotherhood of Mysterium. There's plenty of angles to play."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3715
+
+#window 71:3715
+title "Francis Botnik"
+body "Before MysTech became active, the Brotherhood was struggling to survive. They were just another crackpot cult with a savvy sense of marketing."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3720
+
+#window 71:3720
+title "Francis Botnik"
+body "Now that they've got the market cornered on MysTech, they've become a major force of power in the universe."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3725
+
+#window 71:3725
+title "Francis Botnik"
+body "But what kind of real coverage am I supposed to get when I can't even enter the monastery?"
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3730
+title "Francis Botnik"
+body "The upper spire of the monastery is called the Tower of the Nine Enigmas."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3735
+
+#window 71:3735
+title "Francis Botnik"
+body "I understand that each enigma has its own prayer chamber that nobody outside the brotherhood has ever seen them. What I wouldn't give to sneak in there and take a picture of each one. My editor would flip."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3740
+title "Francis Botnik"
+body "What I wouldn't give to sneak into the Tower of the Nine Enigmas and take a picture of each of the nine prayer chambers. My editor would flip."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3745
+title "Francis Botnik"
+body "Whoa, don't tease me. You've got some of Enigma pictures! What I wouldn't give to sneak into the Tower of the Nine Enigmas and take a picture of all nine prayer chambers. My editor would flip."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3750
+title "Francis Botnik"
+body "What? These are pictures of the Nine Enigma prayer chambers?"
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3755
+
+#window 71:3755
+title "Francis Botnik"
+if (talk_botnik == 3)
+  body "How did you get these? I'll buy them from you. I promise you I will never tell anyone where they came from."
+if (talk_botnik == 4)
+  body "C'mon, surely you can part with those pictures of the Nine Enigma chambers. I'll pay you well."
+cam left restore zip
+talk npc gest_g stay
+finishswitch {
+  set talk_botnik = 4
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+choice "You're on." 71:3760
+choice "Forget it." 71:3765
+
+#window 71:3760
+title "Francis Botnik"
+body "Man, you are saving my neck. Thank you so much."
+cam left restore zip
+talk npc gest_g stay
+startswitch {
+  set paid_for_enigma_pix = 1
+  extern add_money 900
+  set timed_message = 20
+  got_object$="900 Loonies" 
+  gosub 1000:1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3765
+title "Francis Botnik"
+body "C'mon, man. I'm desperate here. I need an angle."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3795
+title "Francis Botnik"
+body "Thanks again. Great shots."
+cam left restore zip
+talk npc gest_g stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3797
+title "Francis Botnik"
+body "Hey."
+cam left restore zip
+talk npc amb_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:3801
+title "Binet"
+body "Give us the MysTech."
+cam left from(PlayerChar0) to(binet) lift(40) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_GrabEntity binet binet_handle
+  extern AI_GrabEntity simon simon_handle
+  extern AI_GrabEntity jorvee jorvee_handle
+  extern AI_WaitAndFace bootshandle -1 binet
+  extern ANIM_PlayAnim binet_handle talk_e 0 1 0
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3810
+
+#window 71:3810
+title "Simon"
+body "Yeah. The MysTech."
+cam left from(PlayerChar0) to(simon) lift(40) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 simon
+  extern ANIM_PlayAnim simon_handle talk_e 0 1 0
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3815
+
+#window 71:3815
+title "Jorvee"
+body "The death of my body or the death of my ideals?"
+cam left from(PlayerChar0) to(jorvee) lift(40) restore zip
+startswitch {
+  extern AI_WaitAndFace bootshandle -1 jorvee
+  extern ANIM_PlayAnim jorvee_handle talk_b 0 1 0
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3820
+
+#window 71:3820
+title "Jorvee"
+body "Lemme think about it."
+cam left from(PlayerChar0) to(jorvee) lift(40) restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:3825
+
+#window 71:3825
+title "Jorvee"
+body "Bite me."
+cam left from(PlayerChar0) to(jorvee) lift(40) restore zip
+finishswitch {
+  extern AI_ReleaseEntity binet_handle
+  extern AI_ReleaseEntity simon_handle
+  extern AI_ReleaseEntity jorvee_handle
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:4105
+title "Silverman"
+body "Movie posters are getting so Avant-garde these days."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:4110
+title "Silverman"
+body "I hate it."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:4205
+title "Brother Kerfuzuc"
+body "Our sharpest critics accuse us of selling out. It's understandable. We move a lot of lucrative product."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:4210
+
+#window 71:4210
+title "Brother Kerfuzuc"
+body "But we don't use the profits to line our own pockets. We don't use it to make more money. We use it to further knowledge."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:4215
+
+#window 71:4215
+title "Brother Kerfuzuc"
+body "We must spread the knowledge of MysTech across the galaxy. It is a gift from the Gods."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:4220
+
+#window 71:4220
+title "Brother Kerfuzuc"
+body "So you wanna buy something?"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+choice "Buy or Sell..." 71:4225
+choice "Nothing." 0:0
+nextwindow 71:4225
+
+#window 71:4240
+title "Brother Kerfuzuc"
+body "May you find the MysTech inside you."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:4301
+title "Worker Drone 336"
+body "The HephTram is currently out of service."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:4401
+title "Brother Loqui"
+body "Welcome to Le Sommeil. All rooms are currently occupied, but I'll let you sleep on the couch for a loonie."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern check_money @partycash
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+if (@partycash == 0)
+  choice "Sorry. Funds are low." 71:4405
+if (@partycash > 0)
+  choice "Yes." 71:4450
+if (@partycash > 0)
+  choice "No." 71:4480
+
+#window 71:4405
+title "Brother Loqui"
+body "Not a loonie to your name?  Aww...let me help you...."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern playsound battle/mystech/heal/mys_heal.wav
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 1 1 1 1 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:4406
+
+#window 71:4406
+startswitch {
+  extern add_money 110
+  gosub 600:3						                
+  set @tstart = func_gametime
+  set @flashing = 0
+}
+
+thinkswitch {
+  set @t = (func_gametime - @tstart)
+  if ((@t > 1000) && (@flashing == 0)) {
+    extern FlashScreenf 1 1 1 1 0
+    extern FlashScreenf 0 0 0 0 1
+    set @flashing = 1
+  }
+  if (@t > 2000) {
+    gosub 71:4407
+    closewindow 71:4406
+  }
+}
+
+style "null"
+flags passive, TRUE
+
+#window 71:4407
+title "Brother Loqui"
+body "There. All better?"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:4450
+title "Brother Loqui"
+body "You can keep any change you find under the cushions. Good night."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:4451
+
+#window 71:4451
+cam left to(boots) restore zip
+startswitch {
+  if (RANDOM > 80) {
+    set @qq = (RANDOM / 10)
+    extern add_money @qq
+  }
+  if (func_charinparty[boots] > 1) {
+    extern GetPlayerCurrentHP Boots @poo
+    set @poo = (@poo + 500)
+    extern SetPlayerCurrentHP Boots @poo
+  }
+  if (func_charinparty[grumpos] > 1) {
+    extern GetPlayerCurrentHP Grumpos @poo
+    set @poo = (@poo + 500)
+    extern SetPlayerCurrentHP Grumpos @poo
+  }
+  if (func_charinparty[pal] > 1) {
+    extern GetPlayerCurrentHP Pal @poo
+    set @poo = (@poo + 500)
+    extern SetPlayerCurrentHP Pal @poo
+  }
+  if (func_charinparty[rho] > 1) {
+    extern GetPlayerCurrentHP Rho @poo
+    set @poo = (@poo + 500)
+    extern SetPlayerCurrentHP Rho @poo
+  }
+  if (func_charinparty[democratus] > 1) {
+    extern GetPlayerCurrentHP Democratus @poo
+    set @poo = (@poo + 500)
+    extern SetPlayerCurrentHP Democratus @poo
+  }
+  if (func_charinparty[stiletto] > 1) {
+    extern GetPlayerCurrentHP Stiletto @poo
+    set @poo = (@poo + 500)
+    extern SetPlayerCurrentHP Stiletto @poo
+  }
+  if (func_charinparty[paco] > 1) {
+    extern GetPlayerCurrentHP Paco @poo
+    set @poo = (@poo + 500)
+    extern SetPlayerCurrentHP Paco @poo
+  }
+  gosub 600:2	         
+  set @tstart = func_gametime
+  set @flashing = 0
+}
+
+thinkswitch {
+  set @t = (func_gametime - @tstart)
+  if ((@t > 1000) && (@flashing == 0)) {
+    extern FlashScreenf 0 0 0 1 0
+    extern FlashScreenf 0 0 0 0 1
+    set @flashing = 1
+    extern AI_GrabEntity PlayerChar0 hPlayer
+    extern AI_GetEdictNumber couchstand hCouch
+    extern AI_GetXYZ hCouch @x @y @z
+    extern AI_SetXYZ hPlayer @x @y @z
+    set @yaw = (RANDOM * 3)
+    extern AI_SetYaw hPlayer @yaw
+    extern ANIM_MakeSmart hPlayer
+    extern AI_ReleaseEntity hPlayer
+  }
+  if (@t > 2000)
+    closewindow 71:4451			                     
+}
+
+style "null"
+flags passive, TRUE
+
+#window 71:4480
+title "Brother Loqui"
+if ((func_charinparty[rho] != 3) && (func_charinparty[stiletto] != 3))
+  body "Good luck finding other accommodations, fella."
+if ((func_charinparty[rho] == 3) || (func_charinparty[stiletto] == 3))
+  body "Good luck finding other accommodations, honey."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:4501
+title "Fogondro"
+body "My partner and I are fixing the elevator. He's gonna radio me at any moment."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:4505
+
+#window 71:4505
+title "Fogondro"
+body "Just let us do our job. Please."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:4601
+title "Willa"
+body "I don't like the graphics."
+cam left lift(40) restore zip
+talk npc amb_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:4701
+title "Theo"
+body "I wish the retro trend in games would end."
+cam left lift(40) restore zip
+talk npc amb_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:4801
+title "Dan Glassband"
+body "There's loonies in there!"
+cam left lift(40) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 dan
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:4901
+title "01110000 01100001 01100011 01101111"
+body "It keeps pooping!"
+cam left lift(40) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 01110000
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:4950
+title "01101100 01101001 01110110 01100101 01110011"
+body "Maybe we should insert a coin."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 01101100
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:5055
+title "Brother Dag"
+body "Spread your wings and fly in the face of fortune! Gather around my Magic Grab Bag!"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:5057
+
+#window 71:5057
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "Looks like a garbage can."
+if (func_charinparty[grumpos] == 3)
+  body "Bosh! That's a garbage can."
+if (func_charinparty[pal] == 3)
+  body "Man, that looks like a barrel or somethin'."
+if (func_charinparty[rho] == 3)
+  body "Looks like a trash can to me."
+if (func_charinparty[democratus] == 3)
+  body "We detect paper and organic waste inside."
+if (func_charinparty[stiletto] == 3)
+  body "Right. That's why it smells like hot garbage."
+if (func_charinparty[paco] == 3)
+  body "Hmmm. Smells bad."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:5060
+
+#window 71:5060
+title "Brother Dag"
+body "Haven't you ever heard that one man's garbage is another man's treasure? Today may be your lucky day. Only FIVE DOLLARS for a reach inside."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern check_money @pc
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+if (@pc >= 5)
+  choice "Yes." 71:5065
+if (talk_brotherdag == 1)
+  choice "Reach. Into garbage. For money." 71:5075
+choice "No." 0:0
+
+#window 71:5065
+title "Brother Dag"
+body "Here we gooooo!"
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern cam_anoxmariomode 1
+  extern AI_GrabEntity playerchar0 bootshandle
+  extern AI_SeekAndFace bootshandle dagstand
+  extern AI_SetCompletionCallback bootshandle 71:5067
+}
+
+style "style_hephaestus"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:5067
+cam left from(dag) to(playerchar0) restore zip
+startswitch {
+  extern ANIM_PlayAnim bootshandle grab_m 0 1 0
+  set @poo = func_gametime
+}
+
+thinkswitch {
+  if (func_gametime > (@poo + 800))
+    closewindow 71:5067
+}
+
+finishswitch {
+  set @what = func_drand[1,10]
+  if (@what > 6) {
+    extern playsound player/player_getitem.wav
+  } else {
+    set @which_squish = func_drand[1,5]
+    if (@which_squish == 1)
+      extern playsound games/hephgame/games_heph_garbagesquish1.wav
+    if (@which_squish == 2)
+      extern playsound games/hephgame/games_heph_garbagesquish2.wav
+    if (@which_squish == 3)
+      extern playsound games/hephgame/games_heph_garbagesquish3.wav
+    if (@which_squish == 4)
+      extern playsound games/hephgame/games_heph_garbagesquish4.wav
+    if (@which_squish == 5)
+      extern playsound games/hephgame/games_heph_garbagesquish5.wav
+  }
+  goto 71:5068
+}
+
+style "NULL"
+flags passive, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 0
+ypos 0
+width 40
+height 40
+
+#window 71:5070
+title "Brother Dag"
+if (@what < 7)
+  body "You didn't find the treasure! Maybe your luck will change next time you reach into my Magic Grab Bag."
+if (@what >= 7)
+  body "Wow! %s! Fortune smiles on you today! Maybe you're on a lucky streak!", got_object$
+cam left from(playerchar0) to(dag) restore zip
+talk_ex dag playerchar0 talk_a amb_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:5075
+title "Brother Dag"
+body "There are prizes inside Brother Dag's Grab Bag guaranteed to be worth 40 loonies in some sectors."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set talk_brotherdag = 2
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:6232
+title "Brother Shiya"
+body "Hello there. I'm just measuring wind shear. Nothing interesting."
+cam left restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:6234
+title "Brother Shiya"
+body "Brother Raysa wishes to know the wind shear? Certainly."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set heph_shear1 = 10
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:6235
+
+#window 71:6235
+title "Brother Shiya"
+body "Beam stress due to wind shear here is approximately 10 foot-pounds."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:6236
+title "Brother Shiya"
+body "Hurry back to Brother Raysa with the information. The winds change quickly in Mysteria."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:6238
+title "Brother Shiya"
+body "I was afraid of that. Well, we'd best get to work on the bafflers then."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:6242
+title "Brother Porquimada"
+body "Hello there. I'm just measuring wind velocity here. Nothing interesting."
+cam left restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:6244
+title "Brother Porquimada"
+body "Brother Raysa wishes to know the wind velocity here? Certainly."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set heph_shear2 = 15
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:6245
+
+#window 71:6245
+title "Brother Porquimada"
+body "Windspeed is approximately 15 knots."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:6246
+title "Brother Porquimada"
+body "Hurry back to Brother Raysa with the information. The winds change quickly in Mysteria."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:6248
+title "Brother Porquimada"
+body "Bafflers it is then."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:6252
+title "Brother Zairculle"
+body "Hello there. I'm just measuring the eddy strength here. Nothing interesting."
+cam left restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:6254
+title "Brother Zairculle"
+body "Brother Raysa was concerned about wind eddies here, but the effect is nominal. He need not worry."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set heph_shear3 = 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:6256
+title "Brother Zairculle"
+body "Hurry back to Brother Raysa with the information. The winds change quickly in Mysteria."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:6258
+title "Brother Zairculle"
+body "I see. Well, Teru is a good man."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:6262
+title "Brother Teru"
+body "Hello there. I'm just measuring the channel blowthrough here. Nothing interesting."
+cam left restore zip
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:6264
+title "Brother Teru"
+body "Brother Raysa may be a factor. Given current stress measurements, I'd recommend bafflers be installed."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set heph_shear4 = 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:6266
+title "Brother Teru"
+body "Hurry back to Brother Raysa with the information."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:6268
+title "Brother Teru"
+body "Good to know Teru agrees. We'll have to get on it in the near future."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:5482
+title "Brother Raysa"
+body "Thank you for your help. Hephaestus is safer for it."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:5483
+title "Brother Raysa"
+body "I'm busy tinkering on my latest prototype. Don't interrupt my pursuit of science."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:5484
+title "Brother Raysa"
+body "To know what to tell Brother Trevella, I need you to talk to the other engineer Brothers in the District, and get the following:\n"
+if (heph_shear1 == 0)
+  body "--Information on wind shear near the metal support tower.\n"
+if (heph_shear2 == 0)
+  body "--Information on wind velocity near the Rocket Coaster.\n"
+if (heph_shear3 == 0)
+  body "--Information on eddy strength behind Le Sommeil.\n"
+if (heph_shear4 == 0)
+  body "--Information on channel blowthrough near the Eco Bar.\n"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:5486
+title "Brother Raysa"
+body "Oh, dear. Brother Trevella will be here at any moment to get my report on the effects of wind on the structures of Hephaestus! But, I'm so engrossed in the final testing of this prototype device that I don't have time to find my fellows and gather their reports!"
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set heph_know_need_shear = 1
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+if (func_charinparty[boots] == 3)
+  choice "Relax. I'll get that info for you in a jiffy." 71:5487
+if (func_charinparty[grumpos] == 3)
+  choice "Settle down. I'll gather the information for you within minutes." 71:5487
+if (func_charinparty[pal] == 3)
+  choice "Keep cool. I'll muster up that stuff for you quick as spit!" 71:5487
+if (func_charinparty[rho] == 3)
+  choice "Calm down. I'll round up the info for you in no time." 71:5487
+if (func_charinparty[democratus] == 3)
+  choice "Compose yourself. We shall assemble the information for you shortly." 71:5487
+if (func_charinparty[stiletto] == 3)
+  choice "Keep it together. I'll find that info for you in a ZIP." 71:5487
+if (func_charinparty[paco] == 3)
+  choice "Sshhh. I will find information." 71:5487
+choice "Goodbye." 0:0
+
+#window 71:5487
+title "Brother Raysa"
+body "Really? It's not much. I just need a few facts to finish my report."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:5484
+
+#window 71:5488
+title "Brother Raysa"
+body "Wonderful! So all we have to worry about is the bafflers then. I totally agree."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set heph_know_need_shear = 2
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:5489
+
+#window 71:5489
+title "Brother Raysa"
+body "Thank you! Here's a little gift for your help in this matter. You gave me just enough time to finish my pet project."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 71:5490
+
+#window 71:5491
+title "Brother Raysa"
+if (heph_know_need_shear == 0)
+  body "That's my KeyNote. Please leave it alone."
+if (heph_know_need_shear == 1)
+  body "That's my report. It's only half done!"
+if (heph_know_need_shear == 2)
+  body "I can finish my report now that I've got all the data. Thank you heartily."
+cam left restore zip
+talk_ex racer playerchar0 talk_a amb_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 71:6000
+title "BUGABOO MACHINE"
+body "Play Bugaboo?"
+cam left restore zip
+startswitch {
+  loadape "bugaboo"
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+choice "Yes." 50000:1
+choice "No." 0:0
+
+#window 71:6100
+title "POOPER MACHINE"
+body "Play Pooper?"
+cam left restore zip
+startswitch {
+  loadape "pooper"
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+choice "Yes." 50000:1
+choice "No." 0:0
+
+#window 7400:1
+title "COMING SOON TO THIS ARCADE:"
+if (firstMovieWord == 0)
+  body "Rolling "
+if (firstMovieWord == 1)
+  body "Thunder "
+if (firstMovieWord == 2)
+  body "Danger "
+if (firstMovieWord == 3)
+  body "Screaming "
+if (firstMovieWord == 4)
+  body "Sudden "
+if (firstMovieWord == 5)
+  body "Hyper "
+if (firstMovieWord == 6)
+  body "Flying "
+if (firstMovieWord == 7)
+  body "Burning "
+if (firstMovieWord == 8)
+  body "Fire "
+if (firstMovieWord == 9)
+  body "Shrieking "
+if (firstMovieWord == 10)
+  body "Shocking "
+if (firstMovieWord == 11)
+  body "Destruction "
+if (firstMovieWord == 12)
+  body "Fatal "
+if (firstMovieWord == 13)
+  body "Final "
+if (firstMovieWord == 14)
+  body "Furious "
+if (firstMovieWord == 15)
+  body "Battle "
+if (firstMovieWord == 16)
+  body "Super "
+if (firstMovieWord == 17)
+  body "Double "
+if (firstMovieWord == 18)
+  body "Power "
+if (firstMovieWord == 19)
+  body "Fighting "
+if (firstMovieWord == 20)
+  body "Raging "
+if (firstMovieWord == 21)
+  body "Dungeon "
+if (firstMovieWord == 22)
+  body "Galactic "
+if (firstMovieWord == 23)
+  body "Lord of "
+if (firstMovieWord == 24)
+  body "Crazy "
+if (firstMovieWord == 25)
+  body "Soul "
+if (firstMovieWord == 26)
+  body "Shadow "
+if (firstMovieWord == 27)
+  body "Guardian "
+if (firstMovieWord == 28)
+  body "Mega "
+if (firstMovieWord == 29)
+  body "Phantom "
+if (firstMovieWord == 30)
+  body "Blue "
+if (firstMovieWord == 31)
+  body "Red "
+if (firstMovieWord == 32)
+  body "Golden "
+if (firstMovieWord == 33)
+  body "Silver "
+if (firstMovieWord == 34)
+  body "Black "
+if (firstMovieWord == 35)
+  body "Strange "
+if (firstMovieWord == 36)
+  body "Mysterious "
+if (firstMovieWord == 37)
+  body "Sorcerer "
+if (firstMovieWord == 38)
+  body "Magic "
+if (firstMovieWord == 39)
+  body "Amazing "
+if (firstMovieWord == 40)
+  body "Fearless "
+if (firstMovieWord == 41)
+  body "Fantastic "
+if (firstMovieWord == 42)
+  body "The "
+if (firstMovieWord == 43)
+  body "Lost "
+if (firstMovieWord == 44)
+  body "Hidden "
+if (firstMovieWord == 45)
+  body "Secret "
+if (firstMovieWord == 46)
+  body "Psycho "
+if (firstMovieWord == 47)
+  body "Solar "
+if (firstMovieWord == 48)
+  body "Space "
+if (firstMovieWord == 49)
+  body "Moon "
+if (firstMovieWord == 50)
+  body "Hard "
+if (firstMovieWord == 51)
+  body "Haunted "
+if (firstMovieWord == 52)
+  body "Big "
+if (firstMovieWord == 53)
+  body "Mutant "
+if (firstMovieWord == 54)
+  body "Sea "
+if (firstMovieWord == 55)
+  body "Aqua "
+if (firstMovieWord == 56)
+  body "Air "
+if (firstMovieWord == 57)
+  body "Earth "
+if (firstMovieWord == 58)
+  body "Rear "
+if (firstMovieWord == 59)
+  body "Atomic "
+if (firstMovieWord == 60)
+  body "Shooting "
+if (firstMovieWord == 61)
+  body "Road "
+if (firstMovieWord == 62)
+  body "Night "
+if (firstMovieWord == 63)
+  body "Star "
+if (firstMovieWord == 64)
+  body "Stellar "
+if (firstMovieWord == 65)
+  body "Monkey "
+if (secondMovieWord == 0)
+  body "Fight"
+if (secondMovieWord == 1)
+  body "Rangers"
+if (secondMovieWord == 2)
+  body "Race"
+if (secondMovieWord == 3)
+  body "Sergeants"
+if (secondMovieWord == 4)
+  body "Thunder"
+if (secondMovieWord == 5)
+  body "Lightning"
+if (secondMovieWord == 6)
+  body "Frenzy"
+if (secondMovieWord == 7)
+  body "Assault"
+if (secondMovieWord == 8)
+  body "Challenge"
+if (secondMovieWord == 9)
+  body "Battle"
+if (secondMovieWord == 10)
+  body "Alley"
+if (secondMovieWord == 11)
+  body "Derby"
+if (secondMovieWord == 12)
+  body "Fist"
+if (secondMovieWord == 13)
+  body "Terror"
+if (secondMovieWord == 14)
+  body "Squad"
+if (secondMovieWord == 15)
+  body "Strike"
+if (secondMovieWord == 16)
+  body "Run"
+if (secondMovieWord == 17)
+  body "Fury"
+if (secondMovieWord == 18)
+  body "Dragon"
+if (secondMovieWord == 19)
+  body "Brothers"
+if (secondMovieWord == 20)
+  body "Rampage"
+if (secondMovieWord == 21)
+  body "Dungeon"
+if (secondMovieWord == 22)
+  body "Castle"
+if (secondMovieWord == 23)
+  body "Master"
+if (secondMovieWord == 24)
+  body "Warriors"
+if (secondMovieWord == 25)
+  body "Agents"
+if (secondMovieWord == 26)
+  body "Star"
+if (secondMovieWord == 27)
+  body "World"
+if (secondMovieWord == 28)
+  body "Engines"
+if (secondMovieWord == 29)
+  body "Wheels"
+if (secondMovieWord == 30)
+  body "Guardian"
+if (secondMovieWord == 31)
+  body "Magic"
+if (secondMovieWord == 32)
+  body "Vengeance"
+if (secondMovieWord == 33)
+  body "Lair"
+if (secondMovieWord == 34)
+  body "Zone"
+if (secondMovieWord == 35)
+  body "Island"
+if (secondMovieWord == 36)
+  body "Riot"
+if (secondMovieWord == 37)
+  body "Space"
+if (secondMovieWord == 38)
+  body "Invaders"
+if (secondMovieWord == 39)
+  body "Sword"
+if (secondMovieWord == 40)
+  body "Gunner"
+if (secondMovieWord == 41)
+  body "Chase"
+if (secondMovieWord == 42)
+  body "Attack"
+if (secondMovieWord == 43)
+  body "Lords"
+if (secondMovieWord == 44)
+  body "Combat"
+if (secondMovieWord == 45)
+  body "Ball"
+if (secondMovieWord == 46)
+  body "Command"
+if (secondMovieWord == 47)
+  body "Gods"
+if (secondMovieWord == 48)
+  body "Runner"
+if (secondMovieWord == 49)
+  body "Patrol"
+if (secondMovieWord == 50)
+  body "Rider"
+if (thirdMovieWord == 1)
+  body " Complete"
+if (thirdMovieWord == 2)
+  body " Solid"
+if (thirdMovieWord == 3)
+  body " Alpha"
+if (thirdMovieWord == 4)
+  body " Extreme"
+if (thirdMovieWord == 5)
+  body " Plus"
+if (thirdMovieWord == 6)
+  body ": Collector's Edition"
+if (thirdMovieWord == 7)
+  body " Platinum"
+if (thirdMovieWord == 8)
+  body " Returns"
+if (doesItHaveX)
+  body " X"
+if (isItASequel)
+  body " II"
+cam left restore zip
+startswitch {
+  set firstMovieWord = func_drand[1,65]
+  set secondMovieWord = func_drand[1,50]
+  set thirdMovieWord = 0
+  if (RANDOM > 90)
+    set thirdMovieWord = func_drand[1,8]
+  set doesItHaveX = func_div[$RANDOM$,85]
+  set isItASequel = func_div[$RANDOM$,81]
+  goto 0:0
+}
+
+thinkswitch {
+  goto 0:0
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 160
+ypos 112
+width 320
+height 96
+
+#window 71:4000
+startswitch {
+  set elev_choice = 0
+  set anox_interface_active = 1
+  extern CreateAPE2DControl push button4 32 80 width=64 height=64 normal=/gameflow/elevator/button4b.tga bright=/gameflow/elevator/button4a.tga gamevar=elev_choice returnvalue=4 sequence=71:4040
+  extern CreateAPE2DControl push button3 32 144 width=64 height=64 normal=/gameflow/elevator/button3b.tga bright=/gameflow/elevator/button3a.tga gamevar=elev_choice returnvalue=3 sequence=71:4040
+  extern CreateAPE2DControl push button2 32 208 width=64 height=64 normal=/gameflow/elevator/button2b.tga bright=/gameflow/elevator/button2a.tga gamevar=elev_choice returnvalue=2 sequence=71:4040
+  extern CreateAPE2DControl push button1 32 272 width=64 height=64 normal=/gameflow/elevator/button1b.tga bright=/gameflow/elevator/button1a.tga gamevar=elev_choice returnvalue=1 sequence=71:4040
+  extern CreateAPE2DControl push buttonbye 32 336 width=64 height=64 normal=/gameflow/elevator/button_closeb.tga bright=/gameflow/elevator/button_closea.tga gamevar=elev_choice returnvalue=0 sequence=71:4040
+  extern set2Dcursor elevator/cursor1.png
+  goto 0:0
+}
+
+thinkswitch {
+  goto 0:0
+}
+
+finishswitch {
+  set anox_interface_active = 0
+  extern Set2DCursor default
+  extern RemoveAPE2DControl button4
+  extern RemoveAPE2DControl button3
+  extern RemoveAPE2DControl button2
+  extern RemoveAPE2DControl button1
+  extern RemoveAPE2DControl buttonbye
+  if (elev_choice == 4)
+    goto 14:2202
+  if (elev_choice == 3)
+    goto 14:2203
+  if (elev_choice == 2)
+    goto 14:2204
+  if (elev_choice == 1)
+    goto 14:2205
+  goto 0:0
+}
+
+style "NULL"
+xpos 32
+ypos 16
+width 96
+height 480
+background "elevator/buttons_cap1.tga" 
+image "elevator/buttons_cap2.tga" 0, 384
+
+#switch 71:1
+set CURRENT_PLANET = 6
+set CURRENT_BANK = 71
+set elevator_down = 0
+if (drone_at_elevator) {
+  extern AI_GrabEntity 321 @321_handle
+  extern AI_SeekAndFace @321_handle drone_path3
+  extern AI_ReleaseEntity @321_handle
+  extern AI_SetCompletionCallback @321_handle 71:0128
+}
+gosub 500:1                                  
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 .7 .6
+set flockstate = 1
+if (been_to_tower == 1) {
+  target freight_doors
+  set spawnbarris = 0
+}
+extern playlevelmusic mp3/hephaestus/hephaestus.mp3
+extern loopambient ambi_hephaestus
+extern anim_showframe dead_bird 71
+extern is_quest_done "Search Room 3" @time4note
+if (testoret_gawn == 1) {
+  extern AI_GrabEntity testoret testoret_handle
+  extern AI_DestroyEntity testoret_handle
+}
+if (@time4note == 0) {
+  extern AI_GrabEntity 71:3005 notedoor_handle
+  extern entkey notedoor_handle "sequence" ""
+  extern entkey notedoor_handle "wsequence" ""
+  extern AI_ReleaseEntity notedoor_handle
+}
+if (SOLVED_CASE && (party_population > 1))
+  goto 5000:1
+
+#switch 5002:1
+if (GET_PARTNER_FOR_SEARCH == 1)
+  goto 5002:3
+goto 5002:2
+
+#switch 5050:1
+if (func_charinparty[pal] == 2) {
+  extern remove_npc_from_party PAL
+} else if (func_charinparty[grumpos] == 2) {
+  extern remove_npc_from_party Grumpos
+} else if (func_charinparty[stiletto] == 2) {
+  extern remove_npc_from_party Stiletto
+} else if (func_charinparty[democratus] == 2)
+  extern remove_npc_from_party Democratus
+goto 0:0
+
+#switch 5003:1
+if (KNOW_ELEMENTOR)
+  goto 5003:5
+if (rest_response == 1)
+  goto 5003:10
+if (GET_PARTNER_FOR_SEARCH == 1)
+  goto 5003:3
+goto 5003:2
+
+#switch 5004:1
+if (KNOW_ELEMENTOR)
+  goto 5004:5		                                     
+if (rest_response == 1)
+  goto 5004:10
+if (GET_PARTNER_FOR_SEARCH == 1)
+  goto 5004:4
+goto 5004:2
+
+#switch 5005:1
+if (KNOW_ELEMENTOR)
+  goto 5005:5
+if (rest_response == 1)
+  goto 5005:10
+if (GET_PARTNER_FOR_SEARCH == 1)
+  goto 5005:4
+goto 5005:2
+
+#switch 5006:1
+if (KNOW_ELEMENTOR)
+  goto 5006:5
+if (rest_response == 1)
+  goto 5006:10
+if (GET_PARTNER_FOR_SEARCH == 1)
+  goto 5006:4
+goto 5006:3
+
+#switch 71:101
+if ((elevator_down == 1) && (drone_at_elevator == 0))
+  goto 71:0135
+set drone321 = (drone321 + 1)
+if (drone_at_elevator == 1)
+  goto 71:0140
+extern is_in_inventory "Delivery Slip" @gotslip
+if ((drone321 > 1) && (@gotslip >= 1))
+  goto 71:0125
+goto 71:0105
+
+#switch 71:128
+extern AI_ReleaseEntity @321_handle
+if (hboots)
+  extern ANIM_MakeSmart hBoots
+if (hboots)
+  extern AI_ReleaseEntity hBoots
+extern cam_restore
+extern cam_anoxmariomode 0
+unset hBoots
+goto 71:0130
+
+#switch 71:130
+set drone_at_elevator = 1
+
+#switch 71:201
+if (BOUGHT_DRINK)
+  goto 71:0220
+goto 71:0202
+
+#switch 71:210
+extern check_money @party_cash
+if (@party_cash < 2)
+  goto 71:0215
+extern remove_money 2
+goto 71:0205
+
+#switch 71:211
+extern check_money @party_cash
+if (@party_cash < 4)
+  goto 71:0215
+extern remove_money 4
+goto 71:0205
+
+#switch 71:212
+extern check_money @party_cash
+if (@party_cash < 6)
+  goto 71:0215
+extern remove_money 6
+goto 71:0205
+
+#switch 71:301
+if (BOUGHT_DRINK)
+  goto 71:0320
+goto 71:0302
+
+#switch 71:310
+extern check_money @party_cash
+if (@party_cash < 2)
+  goto 71:0315
+extern remove_money 2
+goto 71:0304
+
+#switch 71:311
+extern check_money @party_cash
+if (@party_cash < 4)
+  goto 71:0315
+extern remove_money 4
+goto 71:0304
+
+#switch 71:312
+extern check_money @party_cash
+if (@party_cash < 6)
+  goto 71:0315
+extern remove_money 6
+goto 71:0304
+
+#switch 71:401
+if (BOUGHT_DRINK)
+  goto 71:0409
+goto 71:0402
+
+#switch 71:410
+extern check_money @party_cash
+if (@party_cash < 2)
+  goto 71:0415
+extern remove_money 2
+goto 71:0404
+
+#switch 71:411
+extern check_money @party_cash
+if (@party_cash < 4)
+  goto 71:0415
+extern remove_money 4
+goto 71:0404
+
+#switch 71:412
+extern check_money @party_cash
+if (@party_cash < 6)
+  goto 71:0415
+extern remove_money 6
+goto 71:0404
+
+#switch 71:501
+if (@Heph_Car_Only_Once)
+  goto 0:0
+set @Heph_Car_Only_Once = 1
+if (arriving_on_train == 0) {
+  set @suspect = func_drand[1,3]
+  if (@suspect == 1)
+    set suspect_angela = 1
+  if (@suspect == 2)
+    set suspect_liseria = 1
+  if (@suspect == 3)
+    set suspect_thomas = 1
+}
+set been_to_tower = 1
+set arriving_on_train = 1
+console "set storysave \"Monastery|The Monastery Grounds\""
+extern playscene hephaestus_entercar
+
+#switch 71:601
+set @talk_koo = (@talk_koo + 1)
+if (@talk_koo == 1)
+  goto 71:0602
+if (@talk_koo == 2)
+  goto 71:0603
+if (@talk_koo == 3)
+  goto 71:0605
+if (@talk_koo > 3)
+  goto 71:0606
+goto 0:0
+
+#switch 71:715
+extern shop_create "Shetruck's Slags"
+extern shop_set_active "Shetruck's Slags"
+extern shop_add_object "Batt" 100
+extern shop_add_object "Glodent" 100
+extern shop_add_object "Bag O' Glodents" 100
+if ((RANDOM > 80) || PRE_DETTA)
+  extern shop_add_object "Glodent Colony" 100
+extern shop_add_object "Nutspark" 5
+extern shop_add_object "NutsWalker" 5
+if ((PRE_KRAPTON || PRE_LIMBUS) || PRE_DETTA)
+  extern shop_add_object "NutsHammer" 5
+extern shop_add_object "PsyPull" 5
+extern shop_add_object "PsyChain" 5
+if ((PRE_KRAPTON || PRE_LIMBUS) || PRE_DETTA)
+  extern shop_add_object "PsyPuppet" 5
+if (PRE_DETTA)
+  extern shop_add_object "PsySummon" 1
+extern shop_picture "shetruck.png"
+extern shop_slogan "Shetruck won't steer ya wrong"
+extern shop_start 71:0750
+goto 0:0
+
+#switch 71:901
+extern is_in_inventory "Lifecursor LightTrail" @lt
+if (@zame < 3)
+  set @zame = (@zame + 1)
+if ((@zame >= 3) && (hephaestus_got_lighttrail == 1))
+  goto 71:0910
+if ((@zame >= 3) && (@lt == 0))
+  goto 71:0908
+if (@zame >= 3)
+  goto 71:0906
+if (@zame == 2)
+  goto 71:0903
+if (@zame == 1)
+  goto 71:0902
+
+#switch 71:1001
+set Deplerd1 = (Deplerd1 + 1)
+goto 71:1005
+
+#switch 71:1015
+extern check_money @moneybeforeshop
+extern shop_create "Deplerd's Holy Relics"
+extern shop_set_active "Deplerd's Holy Relics"
+extern shop_add_object "Bane" 5
+extern shop_add_object "Banewave" 5
+if ((PRE_KRAPTON || PRE_LIMBUS) || PRE_DETTA)
+  extern shop_add_object "Baneblade" 5
+if (PRE_DETTA)
+  extern shop_add_object "Baneslaught" 1
+extern shop_add_object "Fireslag" 5
+extern shop_add_object "Firespire" 5
+if ((PRE_KRAPTON || PRE_LIMBUS) || PRE_DETTA)
+  extern shop_add_object "Firecage" 5
+extern shop_picture "deplerd.png"
+extern shop_slogan "Please do not buy these holy slags"
+extern shop_start 71:1030
+goto 0:0
+
+#switch 71:1101
+if (@carly < 2)
+  set @carly = (@carly + 1)
+if (@carly == 2)
+  goto 71:1103
+if (@carly == 1)
+  goto 71:1102
+
+#switch 71:1201
+set @jimmy = (@jimmy + 1)
+if (@jimmy > 3)
+  goto 71:1205
+if (@jimmy == 3)
+  goto 71:1204
+if (@jimmy == 2)
+  goto 71:1203
+if (@jimmy == 1)
+  goto 71:1202
+
+#switch 71:1301
+set @herbert = (@herbert + 1)
+if (@herbert == 3)
+  goto 71:1304
+if (@herbert == 2)
+  goto 71:1303
+if (@herbert == 1)
+  goto 71:1302
+
+#switch 71:1401
+set talk_bush = (1 - talk_bush)
+if (talk_bush == 1)
+  goto 71:1405
+goto 71:1415
+
+#switch 71:1601
+set @naranja = (@naranja + 1)
+if (@naranja > 2)
+  goto 71:1606
+if (@naranja == 2)
+  goto 71:1604
+if (@naranja == 1)
+  goto 71:1602
+
+#switch 71:1701
+if (@ya < 4)
+  set @ya = (@ya + 1)
+if ((@ya >= 3) && (hephaestus_got_ws == 0))
+  goto 71:1705
+if (@ya >= 3)
+  goto 71:1704
+if (@ya == 2)
+  goto 71:1703
+if (@ya == 1)
+  goto 71:1702
+
+#switch 71:1706
+extern addnew_to_inventory "WinkySpins"
+set hephaestus_got_ws = 1
+set timed_message = 20
+got_object$="WinkySpins MysTech" 
+gosub 1000:1
+goto 0:0
+
+#switch 71:1801
+if (talk_bluna < 3)
+  set talk_bluna = (talk_bluna + 1)
+if (talk_bluna == 3)
+  goto 71:1860
+if (talk_bluna == 2)
+  goto 71:1830
+goto 71:1805
+
+#switch 71:1901
+if (talk_zhang)
+  goto 71:1935
+set talk_zhang = 1
+goto 71:1905
+
+#switch 71:2101
+if (talk_zhang)
+  goto 71:2110		                      
+goto 71:2105
+
+#switch 71:2201
+set @andy = (@andy + 1)
+if (@andy > 2)
+  goto 71:2204
+if (@andy == 2)
+  goto 71:2203
+if (@andy == 1)
+  goto 71:2202
+
+#switch 71:2301
+set @andy = (@andy + 1)
+if (@andy > 2)
+  goto 71:2204
+if (@andy == 2)
+  goto 71:2203
+if (@andy == 1)
+  goto 71:2202
+
+#switch 71:2401
+set @saltar = (@saltar + 1)
+if (@saltar > 2)
+  goto 71:2405
+if (@saltar == 2)
+  goto 71:2403
+if (@saltar == 1)
+  goto 71:2402
+
+#switch 71:2501
+set @victor = (@victor + 1)
+if (@victor > 3)
+  goto 71:2505
+if (@victor == 3)
+  goto 71:2504
+if (@victor == 2)
+  goto 71:2503
+if (@victor == 1)
+  goto 71:2502
+
+#switch 71:3201
+if (talk_veckia < 3)
+  set talk_veckia = (talk_veckia + 1)
+if (talk_veckia == 3)
+  goto 71:3260
+if (talk_veckia == 2)
+  goto 71:3230
+goto 71:3205
+
+#switch 71:3301
+goto 71:3201		                     
+
+#switch 71:3501
+if (talk_serri < 5)
+  set talk_serri = (talk_serri + 1)
+if (talk_serri == 5)
+  goto 71:3585
+if (talk_serri == 4)
+  goto 71:3575
+if (talk_serri == 3)
+  goto 71:3560
+if (talk_serri == 2)
+  goto 71:3550
+goto 71:3505
+
+#switch 71:3601
+goto 71:3501			                     
+
+#switch 71:8790
+if (anox_worldskill_active && hephaestus_got_nw)
+  goto 71:8796
+if (anox_worldskill_active)
+  goto 71:8794
+set @limon = (@limon + 1)
+if (@limon > 2)
+  goto 71:8793
+if (@limon > 1)
+  goto 71:8792
+if (@limon > 0)
+  goto 71:8791
+
+#switch 71:8794
+WS_STAND$="grumpos_skill_1" 
+ws_yammeree$="yammonk" 
+set ws_bank = 71
+set ws_entry = 8795
+ws_yammer1$="Do you remember the soup kitchens of the Cordican Old West? When I was young and fearless, I dedicated an entire summer to transporting rare cargo across the Champaign Outback with a crew of bastard slop slingers and their wild equines." 
+ws_yammer2$="I'd sit around the campfire with these guys, staring out into that place where the lick of the flame meets the black of the sky in a wash of sorrow, regret, and anything else I care to throw in there. And these boys... these boys could carry on conversations without uttering a word or moving a muscle." 
+ws_yammer3$="They had some sort of hidden code I wasn't privy to. Sometimes one of 'em would suddenly burst into laughter, or break into speech, mid-sentence, as if the cryptic language could scant contain the feverish words in his brain." 
+ws_yammer4$="Now before you try gettin' ahead of my story here, lemme state for the record that it wasn't mental telepathy. The Tentac system has that market cornered. No, these were backwater Cordican boys with nary a super power beside their inborn tenacity for profit." 
+ws_yammer5$="It was something else... a silent language that took patience, time, and a dribble cup. In fact, it wasn't until two months on the hot, lonely Cordican trail, transporting a cargo of unrefined banana wood, that I realized how they did it." 
+ws_yammer6$="My first clue was that they couldn't communicate their code while in the dark. The second clue, which was even more important, which was that they had to be looking at each other for the code to work. That's how I figured out the secret and the secret was this:" 
+ws_yammer7$="Cordican Morse code. But instead of communicating with auditory dashes, they transmitted their code with the pacing of their blinks. Now hold on just a minute. I can see by your uncomfortable reaction that my story does not meet with your approval. Then look into my eyes." 
+ws_yammer8$="Blink blink-BLINK BLINK BLINK-BLINK blink BLINK-BLINK BLINK-BLINK-BLINK blink-BLINK-blink BLINK-BLINK-BLINK BLINK-blink. That's Cordican Morse code for \"Eat me, moron.\"" 
+ws_yammeredname$="Brother Synams" 
+ws_yammer_response$="Stop it, stop it, stop it! Take this and leave me alone." 
+gosub 4102:1
+goto 0:0
+
+#switch 71:8795
+extern addnew_to_inventory "Stargent Staffbeam"
+set hephaestus_got_nw = 1
+set timed_message = 20
+got_object$="Stargent Staffbeam" 
+gosub 1000:1
+goto 0:0
+
+#switch 71:2601
+set @victor = (@victor + 1)
+if (@victor > 3)
+  goto 71:2505
+if (@victor == 3)
+  goto 71:2504
+if (@victor == 2)
+  goto 71:2503
+if (@victor == 1)
+  goto 71:2502
+
+#switch 71:2701
+if (FOUND_3KEYS_NOTE == 1)
+  goto 71:2710
+goto 71:2705
+
+#switch 71:2801
+if (picked_room3 == 0) {
+  set picked_room3 = 1
+  WS_STAND$="boots_picknode" 
+  ws_object$="room3door" 
+  gosub 4001:1
+} else
+  target room3door
+
+#switch 71:3001
+set @source_floor = 1
+goto 71:4000
+
+#switch 71:3002
+set @source_floor = 2
+goto 71:4000
+
+#switch 71:3003
+set @source_floor = 3
+goto 71:4000
+
+#switch 71:3004
+set @source_floor = 4
+goto 71:4000
+
+#switch 71:3101
+extern playsound ui/gen/ui_gen_okay.wav
+extern AI_GetEdictNumber PlayerChar0 @pc
+extern AI_GetXYZ @pc @x @y @z
+echo "X = %d", @x
+if ((@x > 50) && (elevator_down == 0))
+  goto 71:3102		                                                                    
+target freight_train
+if (elevator_down == 0)
+  target freight_train
+goto 0:0
+
+#switch 71:3105
+if ((elevator_down == 1) && (drone_at_elevator == 1))
+  goto 0:0
+if (droneStop == 1)
+  goto 0:0
+set droneStop = 1
+set Drone321 = (Drone321 + 1)
+if (Drone321 > 1)
+  goto 71:3107
+goto 71:3106
+
+#switch 71:3108
+set droneStop = 0
+
+#switch 71:3109
+set droneStop = 0
+extern ANIM_MakeSmart bootshandle
+extern AI_ReleaseEntity bootshandle
+extern cam_anoxmariomode 0
+if (hephaestus_gave_him_slip == 1)
+  goto 71:0126                                                 
+goto 0:0
+
+#switch 71:3110
+set elevator_down = 0
+
+#switch 71:3111
+set elevator_down = 1
+
+#switch 71:3401
+if (talk_milligan < 5)
+  set talk_milligan = (talk_milligan + 1)
+if (talk_milligan == 5)
+  goto 71:3490
+if (talk_milligan == 4)
+  goto 71:3480
+if (talk_milligan == 3)
+  goto 71:3470
+if (talk_milligan == 2)
+  goto 71:3430
+goto 71:3405
+
+#switch 71:3701
+if (talk_botnik < 3)
+  set talk_botnik = (talk_botnik + 1)
+set @i_am_boots = 0
+if (func_charinparty[boots] == 3)
+  set @i_am_boots = 1
+if (@i_am_boots && paid_for_enigma_pix)
+  goto 71:3795			          
+if ((@i_am_boots == 0) && paid_for_enigma_pix)
+  goto 71:3797			      
+gosub 71:3702		                                     
+if (((@i_am_boots && (talk_botnik > 1)) && (@enigma_count == 9)) && (paid_for_enigma_pix == 0))
+  goto 71:3750		           
+if (((@i_am_boots && (talk_botnik > 1)) && (@enigma_count > 0)) && (paid_for_enigma_pix == 0))
+  goto 71:3745	           
+if (talk_botnik == 3)
+  goto 71:3740		            
+if (talk_botnik == 2)
+  goto 71:3730		              
+goto 71:3705                 
+
+#switch 71:3702
+set @enigma_count = 0
+extern photo_findentity @e1 targetname enigma1
+extern photo_findentity @e2 targetname enigma2
+extern photo_findentity @e3 targetname enigma3
+extern photo_findentity @e4 targetname enigma4
+extern photo_findentity @e5 targetname enigma5
+extern photo_findentity @e6 targetname enigma6
+extern photo_findentity @e7 targetname enigma7
+extern photo_findentity @e8 targetname enigma8
+extern photo_findentity @e9 targetname enigma9
+if (@e1)
+  set @enigma_count = (@enigma_count + 1)
+if (@e2)
+  set @enigma_count = (@enigma_count + 1)
+if (@e3)
+  set @enigma_count = (@enigma_count + 1)
+if (@e4)
+  set @enigma_count = (@enigma_count + 1)
+if (@e5)
+  set @enigma_count = (@enigma_count + 1)
+if (@e6)
+  set @enigma_count = (@enigma_count + 1)
+if (@e7)
+  set @enigma_count = (@enigma_count + 1)
+if (@e8)
+  set @enigma_count = (@enigma_count + 1)
+if (@e9)
+  set @enigma_count = (@enigma_count + 1)
+goto 0:0
+
+#switch 71:3901
+goto 71:3801
+
+#switch 71:4001
+goto 71:3801
+
+#switch 71:4101
+set talk_silverman = (1 - talk_silverman)
+if (talk_silverman)
+  goto 71:4105
+goto 71:4110
+
+#switch 71:4201
+if (talk_kerfuzuc)
+  goto 71:4220
+set talk_kerfuzuc = 1
+goto 71:4205
+
+#switch 71:4225
+extern shop_create "Kerfuzuc's Fine Slags"
+extern shop_set_active "Kerfuzuc's Fine Slags"
+extern shop_add_object "Poisoner" 5
+extern shop_add_object "PoisonSpin" 5
+if ((PRE_KRAPTON || PRE_LIMBUS) || PRE_DETTA)
+  extern shop_add_object "PoisonBeams" 5
+extern shop_add_object "SlowSpout" 5
+extern shop_add_object "SlowStrike" 5
+if ((PRE_KRAPTON || PRE_LIMBUS) || PRE_DETTA)
+  extern shop_add_object "SlowMarch" 5
+if (PRE_DETTA)
+  extern shop_add_object "SlowVicer" 1
+extern shop_picture "kerfuzuc.png"
+extern shop_slogan "Kerfuzuc's slags are keraaaazy!"
+extern shop_start 71:4240
+goto 0:0
+
+#switch 71:5051
+if (talk_brotherdag)
+  goto 71:5060
+set talk_brotherdag = 1
+goto 71:5055
+
+#switch 71:5068
+extern ANIM_MakeSmart bootshandle
+extern AI_ReleaseEntity bootshandle
+extern cam_anoxmariomode 0
+if (@what == 1) {
+  got_object$="Piece of Stinky Garbage" 
+} else if (@what == 2) {
+  got_object$="Piece of Smelly Garbage" 
+} else if (@what == 3) {
+  got_object$="Piece of Awful Garbage" 
+} else if (@what == 4) {
+  got_object$="Piece of Organic Garbage" 
+} else if (@what == 5) {
+  got_object$="Piece of Putrid Garbage" 
+} else if (@what == 6) {
+  got_object$="Piece of Unholy Garbage" 
+} else if (@what == 7) {
+  got_object$="HealGrease" 
+} else if (@what == 8) {
+  got_object$="Ipangi Crystal" 
+} else if (@what == 9) {
+  got_object$="Bolongo" 
+} else if (@what == 10)
+  got_object$="Vestrina Cube" 
+extern addnew_to_inventory got_object$
+goto 71:5070
+
+#switch 71:6231
+if (heph_know_need_shear == 2)
+  goto 71:6238
+if ((heph_know_need_shear == 1) && (heph_shear1 == 0))
+  goto 71:6234
+if ((heph_know_need_shear == 1) && heph_shear1)
+  goto 71:6236
+goto 71:6232
+
+#switch 71:6241
+if (heph_know_need_shear == 2)
+  goto 71:6248
+if ((heph_know_need_shear == 1) && (heph_shear2 == 0))
+  goto 71:6244
+if ((heph_know_need_shear == 1) && heph_shear2)
+  goto 71:6246
+goto 71:6242
+
+#switch 71:6251
+if (heph_know_need_shear == 2)
+  goto 71:6258
+if ((heph_know_need_shear == 1) && (heph_shear3 == 0))
+  goto 71:6254
+if ((heph_know_need_shear == 1) && heph_shear3)
+  goto 71:6256
+goto 71:6252
+
+#switch 71:6261
+if (heph_know_need_shear == 2)
+  goto 71:6268
+if ((heph_know_need_shear == 1) && (heph_shear4 == 0))
+  goto 71:6264
+if ((heph_know_need_shear == 1) && heph_shear4)
+  goto 71:6266
+goto 71:6262
+
+#switch 71:5481
+if ((func_charinparty[rho] != 3) || (PRE_DETTA == 0))
+  goto 71:5483
+if (heph_know_need_shear == 2)
+  goto 71:5482
+if (((((heph_know_need_shear == 1) && heph_shear1) && heph_shear2) && heph_shear3) && heph_shear4)
+  goto 71:5488
+if (heph_know_need_shear == 1)
+  goto 71:5484
+goto 71:5486
+
+#switch 71:5490
+extern addnew_to_inventory "Atomic Debinder"
+got_object$="Atomic Debinder" 
+set timed_message = 20
+gosub 1000:1
+goto 0:0
+
+#switch 71:4040
+closewindow 71:4000
+goto 0:0
+
+#switch 14:2202
+if (@source_floor == 1) {
+  extern chainscripts hephaestus_elev_in_1 hephaestus_elev_out_4
+  extern playscene hephaestus_elev_in_1
+}
+if (@source_floor == 2) {
+  extern chainscripts hephaestus_elev_in_2 hephaestus_elev_out_4
+  extern playscene hephaestus_elev_in_2
+}
+if (@source_floor == 3) {
+  extern chainscripts hephaestus_elev_in_3 hephaestus_elev_out_4
+  extern playscene hephaestus_elev_in_3
+}
+
+#switch 14:2203
+if (@source_floor == 1) {
+  extern chainscripts hephaestus_elev_in_1 hephaestus_elev_out_3
+  extern playscene hephaestus_elev_in_1
+}
+if (@source_floor == 2) {
+  extern chainscripts hephaestus_elev_in_2 hephaestus_elev_out_3
+  extern playscene hephaestus_elev_in_2
+}
+if (@source_floor == 4) {
+  extern chainscripts hephaestus_elev_in_4 hephaestus_elev_out_3
+  extern playscene hephaestus_elev_in_4
+}
+
+#switch 14:2204
+if (@source_floor == 1) {
+  extern chainscripts hephaestus_elev_in_1 hephaestus_elev_out_2
+  extern playscene hephaestus_elev_in_1
+}
+if (@source_floor == 3) {
+  extern chainscripts hephaestus_elev_in_3 hephaestus_elev_out_2
+  extern playscene hephaestus_elev_in_3
+}
+if (@source_floor == 4) {
+  extern chainscripts hephaestus_elev_in_4 hephaestus_elev_out_2
+  extern playscene hephaestus_elev_in_4
+}
+
+#switch 14:2205
+if (@source_floor == 2) {
+  extern chainscripts hephaestus_elev_in_2 hephaestus_elev_out_1
+  extern playscene hephaestus_elev_in_2
+}
+if (@source_floor == 3) {
+  extern chainscripts hephaestus_elev_in_3 hephaestus_elev_out_1
+  extern playscene hephaestus_elev_in_3
+}
+if (@source_floor == 4) {
+  extern chainscripts hephaestus_elev_in_4 hephaestus_elev_out_1
+  extern playscene hephaestus_elev_in_4
+}
+
+#switch 71:3005
+if (Hephaestus_somdoor == 1)
+  goto 71:3006
+WS_STAND$="boots_skill_1" 
+ws_object$="somdoor" 
+set ws_bank = 71
+set ws_entry = 3006
+set ws_difficulty = 3
+set ws_countertime = 35
+gosub 4001:1
+goto 0:0
+
+#switch 71:3006
+target somdoor
+set Hephaestus_somdoor = 1
+extern is_in_inventory "Three Keys Note" @tkn
+extern is_quest_done "Search Room 3" @needgoal
+if (@tkn && (@needgoal < 2)) {
+  extern complete_quest "Search Room 3"
+  extern add_quest "Take Three Keys Info To Abbot"
+}
+goto 0:0
+
+#switch 71:8760
+WS_STAND$="demo_skill_2" 
+ws_object$="fc" 
+set ws_bank = 71
+set ws_entry = 8765
+gosub 4105:1
+goto 0:0
+
+#switch 71:8765
+set hephaestus_tractor = 1
+extern addnew_to_inventory "Firecage"
+set timed_message = 20
+got_object$="Firecage MysTech" 
+gosub 1000:1
+goto 0:0
+
+#switch 66:6666
+extern add_quest "Find Felicia"

@@ -1,0 +1,269 @@
+#window 111:1003
+if ((@CurrentDestination == 1) && (@Travel_YouAreHere == 0))
+  xyprintfx 234, 415, 1, 1, 1, 1, _anox12, "  Anachronox  "
+if ((@CurrentDestination == 2) && (@Travel_YouAreHere == 0))
+  xyprintfx 234, 415, 1, 1, 1, 1, _anox12, "Sender Station"
+if ((@CurrentDestination == 3) && (@Travel_YouAreHere == 0))
+  xyprintfx 240, 415, 1, 1, 1, 1, _anox12, "  Hephaestus  "
+if ((@CurrentDestination == 4) && (@Travel_YouAreHere == 0))
+  xyprintfx 250, 415, 1, 1, 1, 1, _anox12, "    Limbus    "
+if ((@CurrentDestination == 1) && @Travel_YouAreHere)
+  xyprintfx 234, 415, 1, 1, 1, 1, _anox12, " You Are Here "
+if ((@CurrentDestination == 2) && @Travel_YouAreHere)
+  xyprintfx 234, 415, 1, 1, 1, 1, _anox12, " You Are Here "
+if ((@CurrentDestination == 3) && @Travel_YouAreHere)
+  xyprintfx 240, 415, 1, 1, 1, 1, _anox12, " You Are Here "
+if ((@CurrentDestination == 4) && @Travel_YouAreHere)
+  xyprintfx 250, 415, 1, 1, 1, 1, _anox12, " You Are Here "
+if (@CurrentDestination && (@Travel_YouAreHere == 0))
+  xyprintfx 190, 440, 1, 1, 1, 1, _anox10, "Click on the planet to travel there."
+startswitch {
+  console "gl_fog .001 0 0 0"
+  set anox_interface_active = 1
+  extern loopambient ambi_destination
+  extern CreateAPE2DControl push destleft 47 225 width=64 height=32 holdfocusflag=false normal=/gameflow/destination/mm_left.tga bright=/gameflow/destination/mm_lefthi.tga gamevar=@WhereDoYouWantToGoToday returnvalue=1 sequence=111:1005
+  extern CreateAPE2DControl push destright 530 225 width=64 height=32 holdfocusflag=false normal=/gameflow/destination/mm_right.tga bright=/gameflow/destination/mm_righthi.tga gamevar=@WhereDoYouWantToGoToday returnvalue=2 sequence=111:1005
+  extern CreateAPE2DControl push destselect 161 81 width=320 height=320 holdfocusflag=false nodrawflag=true gamevar=@HesComingForYou returnvalue=0 sequence=111:1025
+  extern CreateAPE2DControl push destquit 566 406 width=64 height=64 holdfocusflag=false normal=/gameflow/destination/mm_exit.tga bright=/gameflow/destination/mm_exithi.tga gamevar=@HesComingForYou returnvalue=0 sequence=111:1030
+  set @CurrentDestination = 1
+  if ((DI_Cant_Go_To_1 == 1) && (@CurrentDestination == 1))
+    if (DI_Cant_Go_To_2 != 1) {
+      set @CurrentDestination = 2
+    } else if (DI_Cant_Go_To_3 != 1) {
+      set @CurrentDestination = 3
+    } else if (DI_Cant_Go_To_4 != 1)
+      set @CurrentDestination = 4
+  console "pushbind"
+  console "unbindall"
+  console "bind KP_LEFTARROW \"invoke 111:1015\""
+  console "bind KP_RIGHTARROW \"invoke 111:1020\""
+  console "bind KP_UPARROW \"invoke 111:1015\""
+  console "bind KP_DOWNARROW \"invoke 111:1020\""
+  console "bind LEFTARROW \"invoke 111:1015\""
+  console "bind RIGHTARROW \"invoke 111:1020\""
+  console "bind UPARROW \"invoke 111:1015\""
+  console "bind DOWNARROW \"invoke 111:1020\""
+  console "bind SPACE \"invoke 111:1025\""
+  console "bind ENTER \"invoke 111:1025\""
+  console "bind ESCAPE \"invoke 111:1030\""
+  console "bind mouse1 +lmb"
+  unset @ChoseADestination$ 
+  extern cam_anoxmariomode 1
+  extern cam_zip
+  gosub 111:1010
+}
+
+finishswitch {
+  extern RemoveAPE2DControl destleft
+  extern RemoveAPE2DControl destright
+  extern RemoveAPE2DControl destselect
+  extern RemoveAPE2DControl destquit
+  unset @CurrentDestination
+  unset DI_Cant_Go_To_1
+  unset DI_Cant_Go_To_2
+  unset DI_Cant_Go_To_3
+  unset DI_Cant_Go_To_4
+  console "popbind"
+}
+
+flags passive2d, TRUE
+xpos 0
+ypos 0
+width 640
+height 480
+
+#switch 1:7
+goto 0:0
+
+#switch 111:1000
+if ((((DI_Cant_Go_To_1 == 1) && (DI_Cant_Go_To_2 == 1)) && (DI_Cant_Go_To_3 == 1)) && (DI_Cant_Go_To_4 == 1)) {
+  echo "You are an idiot. You blocked all the destinations. sigh..."
+  unset DI_Cant_Go_To_1
+  unset DI_Cant_Go_To_2
+  unset DI_Cant_Go_To_3
+  unset DI_Cant_Go_To_4
+  goto 0:0
+}
+goto 111:1003
+
+#switch 111:1005
+if (@WhereDoYouWantToGoToday == 1)
+  set @CurrentDestination = (@CurrentDestination - 1)
+if (@WhereDoYouWantToGoToday == 2)
+  set @CurrentDestination = (@CurrentDestination + 1)
+if (@CurrentDestination < 1)
+  set @CurrentDestination = 4
+if (@CurrentDestination > 4)
+  set @CurrentDestination = 1
+if ((@WhereDoYouWantToGoToday == 1) && ((((DI_Cant_Go_To_1 == 1) || (DI_Cant_Go_To_2 == 1)) || (DI_Cant_Go_To_3 == 1)) || (DI_Cant_Go_To_4 == 1))) {
+  if ((DI_Cant_Go_To_1 == 1) && (@CurrentDestination == 1))
+    if (DI_Cant_Go_To_4 != 1) {
+      set @CurrentDestination = 4
+    } else if (DI_Cant_Go_To_3 != 1) {
+      set @CurrentDestination = 3
+    } else if (DI_Cant_Go_To_2 != 1)
+      set @CurrentDestination = 2
+  if ((DI_Cant_Go_To_2 == 1) && (@CurrentDestination == 2))
+    if (DI_Cant_Go_To_1 != 1) {
+      set @CurrentDestination = 1
+    } else if (DI_Cant_Go_To_4 != 1) {
+      set @CurrentDestination = 4
+    } else if (DI_Cant_Go_To_3 != 1)
+      set @CurrentDestination = 3
+  if ((DI_Cant_Go_To_3 == 1) && (@CurrentDestination == 3))
+    if (DI_Cant_Go_To_2 != 1) {
+      set @CurrentDestination = 2
+    } else if (DI_Cant_Go_To_1 != 1) {
+      set @CurrentDestination = 1
+    } else if (DI_Cant_Go_To_4 != 1)
+      set @CurrentDestination = 4
+  if ((DI_Cant_Go_To_4 == 1) && (@CurrentDestination == 4))
+    if (DI_Cant_Go_To_3 != 1) {
+      set @CurrentDestination = 3
+    } else if (DI_Cant_Go_To_2 != 1) {
+      set @CurrentDestination = 2
+    } else if (DI_Cant_Go_To_1 != 1)
+      set @CurrentDestination = 1
+}
+if ((@WhereDoYouWantToGoToday == 2) && ((((DI_Cant_Go_To_1 == 1) || (DI_Cant_Go_To_2 == 1)) || (DI_Cant_Go_To_3 == 1)) || (DI_Cant_Go_To_4 == 1))) {
+  if ((DI_Cant_Go_To_1 == 1) && (@CurrentDestination == 1))
+    if (DI_Cant_Go_To_2 != 1) {
+      set @CurrentDestination = 2
+    } else if (DI_Cant_Go_To_3 != 1) {
+      set @CurrentDestination = 3
+    } else if (DI_Cant_Go_To_4 != 1)
+      set @CurrentDestination = 4
+  if ((DI_Cant_Go_To_2 == 1) && (@CurrentDestination == 2))
+    if (DI_Cant_Go_To_3 != 1) {
+      set @CurrentDestination = 3
+    } else if (DI_Cant_Go_To_4 != 1) {
+      set @CurrentDestination = 4
+    } else if (DI_Cant_Go_To_1 != 1)
+      set @CurrentDestination = 1
+  if ((DI_Cant_Go_To_3 == 1) && (@CurrentDestination == 3))
+    if (DI_Cant_Go_To_4 != 1) {
+      set @CurrentDestination = 4
+    } else if (DI_Cant_Go_To_1 != 1) {
+      set @CurrentDestination = 1
+    } else if (DI_Cant_Go_To_2 != 1)
+      set @CurrentDestination = 2
+  if ((DI_Cant_Go_To_4 == 1) && (@CurrentDestination == 4))
+    if (DI_Cant_Go_To_1 != 1) {
+      set @CurrentDestination = 1
+    } else if (DI_Cant_Go_To_2 != 1) {
+      set @CurrentDestination = 2
+    } else if (DI_Cant_Go_To_3 != 1)
+      set @CurrentDestination = 3
+}
+goto 111:1010
+
+#switch 111:1010
+extern playsound "ui/gen/ui_gen_ask.wav"
+if (@CurrentDestination == 1) {
+  extern cam_set cam_movespeed 200
+  extern cam_set cam_lagfactor 200
+  extern cam_from -3189 -2494 -3273
+  extern cam_to -3195 -2433 -3254
+}
+if (@CurrentDestination == 2) {
+  extern cam_set cam_movespeed 200
+  extern cam_set cam_lagfactor 200
+  extern cam_from -3029 -2319 -3247
+  extern cam_to -3062 -2265 -3238
+}
+if (@CurrentDestination == 3) {
+  extern cam_set cam_movespeed 200
+  extern cam_set cam_lagfactor 200
+  extern cam_from -2210 -2826 -3032
+  extern cam_to -2220 -2763 -3043
+}
+if (@CurrentDestination == 4) {
+  extern cam_set cam_movespeed 200
+  extern cam_set cam_lagfactor 200
+  extern cam_from -1780 -2299 -3533
+  extern cam_to -1716 -2300 -3540
+}
+set @Travel_YouAreHere = 0
+if ((@CurrentDestination == 1) && (Current_Planet == 1))
+  set @Travel_YouAreHere = 1
+if ((@CurrentDestination == 2) && (Current_Planet == 2))
+  set @Travel_YouAreHere = 1
+if ((@CurrentDestination == 3) && (Current_Planet == 6))
+  set @Travel_YouAreHere = 1
+if ((@CurrentDestination == 4) && (Current_Planet == 9))
+  set @Travel_YouAreHere = 1
+
+#switch 111:1015
+set @WhereDoYouWantToGoToday = 1
+goto 111:1005
+
+#switch 111:1020
+set @WhereDoYouWantToGoToday = 2
+goto 111:1005
+
+#switch 111:1025
+if (@Travel_YouAreHere) {
+  extern playsound "ui/gen/ui_gen_select_no.wav"
+  goto 0:0
+}
+if (@CurrentDestination == 1)
+  @ChoseADestination$="bricksb" 
+if (@CurrentDestination == 1)
+  set PLAY_BRICKSB_INTRO = 1
+if (@CurrentDestination == 1)
+  set BricksB_Elevator_Adjustment = 1
+if (@CurrentDestination == 2)
+  @ChoseADestination$="senderss fromrhoshuttle" 
+if ((@CurrentDestination == 3) && (Play_Slevant_Intro == 0))
+  @ChoseADestination$="hephpoor fromslevant" 
+if ((@CurrentDestination == 3) && (Play_Slevant_Intro == 1))
+  @ChoseADestination$="slevant cinematic" 
+if ((@CurrentDestination == 4) && (PRE_KRAPTON == 1)) {
+  @ChoseADestination$="kraptonbay cinematic" 
+  console "set storysave \"Not Limbus|Krapton is... Limbus Interruptus\""
+}
+if (((@CurrentDestination == 4) && (PRE_KRAPTON == 0)) && (CreviceLanding_CineIntro_Travel == 0)) {
+  @ChoseADestination$="crevicelanding cinematic" 
+  console "set storysave \"To Limbus|Expedition to Limbus\""
+}
+if (((@CurrentDestination == 4) && (PRE_KRAPTON == 0)) && (CreviceLanding_CineIntro_Travel == 1))
+  @ChoseADestination$="crevicelanding" 
+if (((ELEMENTOR_ACTIVE == 0) && (func_charinparty[grumpos] < 2)) && (@CurrentDestination == 3)) {
+  @ChoseADestination$="" 
+  set @GrumposNotInHephParty = 1
+}
+goto 111:1030
+
+#switch 111:1030
+set anox_interface_active = 0
+closewindow 111:1003
+if (@ChoseADestination$ == "crevicelanding cinematic")
+  set CreviceLanding_CineIntro_Travel = 1
+if (CURRENT_BANK == 53)
+  console "gl_fog .00004 .5 3 4"
+if (CURRENT_BANK == 83)
+  console "gl_fog .0003 .1 .3 .25"
+if (CURRENT_BANK == 93)
+  console "gl_fog .0001 1 1 2"
+if (CURRENT_BANK == 70)
+  console "gl_fog .0001 .4 .2 .2"
+extern cam_restore
+extern cam_anoxmariomode 0
+if (@GrumposNotInHephParty == 1) {
+  extern playsound "ui/gen/ui_gen_select_no.wav"
+  set @GrumposNotInHephParty = 0
+  goto 53:3501
+} else if (@ChoseADestination$ != "") {
+  if (PLAY_SLEVANT_OUTRO) {
+    unset ChoseADestinationSpecial$=@ChoseADestination$ 
+    extern playsound "ui/gen/ui_gen_select_yes.wav"
+    console "set storysave \"To Hephaestus|Welcome to Hephaestus!\""
+    console "map slevant cinematic"
+    goto 0:0
+  }
+  console "map %s", @ChoseADestination$
+  @ChoseADestination$="" 
+  extern playsound "ui/gen/ui_gen_select_yes.wav"
+} else
+  extern playsound "ui/gen/ui_gen_select_no.wav"
+goto 0:0

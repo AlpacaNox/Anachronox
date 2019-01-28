@@ -1,0 +1,1621 @@
+#window 11:100
+startswitch {
+  set anox_interface_active = 1
+  set elev_choice = 0
+  extern CreateAPE2DControl push button4 32 80 width=64 height=64 normal=/gameflow/elevator/button4b.tga bright=/gameflow/elevator/button4a.tga gamevar=elev_choice returnvalue=4 sequence=11:0114
+  extern CreateAPE2DControl push button3 32 144 width=64 height=64 normal=/gameflow/elevator/button3b.tga bright=/gameflow/elevator/button3a.tga gamevar=elev_choice returnvalue=3 sequence=11:0114
+  extern CreateAPE2DControl push button2 32 208 width=64 height=64 normal=/gameflow/elevator/button2b.tga bright=/gameflow/elevator/button2a.tga gamevar=elev_choice returnvalue=2 sequence=11:0114
+  extern CreateAPE2DControl push button1 32 272 width=64 height=64 normal=/gameflow/elevator/button1b.tga bright=/gameflow/elevator/button1a.tga gamevar=elev_choice returnvalue=1 sequence=11:0114
+  extern CreateAPE2DControl push buttonbye 32 336 width=64 height=64 normal=/gameflow/elevator/button_closeb.tga bright=/gameflow/elevator/button_closea.tga gamevar=elev_choice returnvalue=0 sequence=11:0114
+  extern Set2DCursor elevator/cursor1.png
+  goto 0:0
+}
+
+thinkswitch {
+  goto 0:0
+}
+
+finishswitch {
+  extern Set2DCursor default
+  set anox_interface_active = 0
+  extern RemoveAPE2DControl button4
+  extern RemoveAPE2DControl button3
+  extern RemoveAPE2DControl button2
+  extern RemoveAPE2DControl button1
+  extern RemoveAPE2DControl buttonbye
+  if ((STARTING_FLOOR == 4) && (elev_choice == 3))
+    goto 11:5043
+  if ((STARTING_FLOOR == 4) && (elev_choice == 2))
+    goto 11:5042
+  if ((STARTING_FLOOR == 4) && (elev_choice == 1))
+    goto 11:5041
+  if ((STARTING_FLOOR == 3) && (elev_choice == 4))
+    goto 11:5034
+  if ((STARTING_FLOOR == 3) && (elev_choice == 2))
+    goto 11:5032
+  if ((STARTING_FLOOR == 3) && (elev_choice == 1))
+    goto 11:5031
+  if ((STARTING_FLOOR == 2) && (elev_choice == 4))
+    goto 11:5024
+  if ((STARTING_FLOOR == 2) && (elev_choice == 3))
+    goto 11:5023
+  if ((STARTING_FLOOR == 2) && (elev_choice == 1))
+    goto 11:5021
+  if ((STARTING_FLOOR == 1) && (elev_choice == 4))
+    goto 11:5014
+  if ((STARTING_FLOOR == 1) && (elev_choice == 3))
+    goto 11:5013
+  if ((STARTING_FLOOR == 1) && (elev_choice == 2))
+    goto 11:5012
+  goto 0:0
+}
+
+style "NULL"
+xpos 32
+ypos 16
+width 96
+height 480
+background "elevator/buttons_cap1.tga" 
+image "elevator/buttons_cap2.tga" 0, 384
+
+#window 11:205
+title "Mr. Pongo"
+body "I'm completely lost and I'm gonna miss my shuttle!"
+cam left restore zip
+talk npc gest_e stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 11:210
+title "Mr. Pongo"
+body "Where the hell am I? You've totally confused me now!"
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 11:215
+title "Mr. Pongo"
+body "Wasn't I just here?"
+cam left restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 11:220
+title "Mr. Pongo"
+body "This doesn't look right."
+cam left restore zip
+talk npc gest_d stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 11:225
+title "Mr. Pongo"
+body "Did I come down this hall already?"
+cam left restore zip
+talk npc gest_b stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 11:305
+title "Zeevus"
+body "Come, smell flavor of Melt. Many moons it foam, ready now for blunt consumption. Very cheap."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Sure, I'll smack me some Melt if the price tastes right." 11:306
+choice "Keep your drugs, buzz." 11:306
+
+#window 11:306
+title "Zeevus"
+body "Insulting is that word to my people! Look you for trouble, human?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 11:310
+title "Zeevus"
+body "If no exchange, push along verily to a space other."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Just set me up, mac. I'm interested in scoring some Melt." 11:315
+choice "I don't want your crap, pap." 11:315
+
+#window 11:315
+title "Zeevus"
+body "Again with trouble? Our fury sacs fill with pep... wrath us not."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 11:320
+title "Zeevus"
+body "Fury sacs burning... action threatens!"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Will you relax? I just want some cheap Melt." 11:325
+choice "Blow it out your sac, mac." 11:325
+
+#window 11:330
+title "Zeevus"
+body "The cunning bird is overdue. Heavier grow my tree trunks from fatigue. Retreat to your burrow, human. Pep threatens."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 11:401
+title "Cpt. Philler"
+body "I'm just waiting for my next flight. Excuse me."
+cam left restore zip
+talk npc gest_g stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 11:504
+title "Nox Guard"
+body "What a beautiful day. I haven't felt this glad to be alive in years."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0506
+
+#window 11:506
+title "Nox Guard"
+body "Green skies... the smell of rocket fuel in my nostrils... skin crisping from jet exhaust... every day should be this wonderful."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set NoxHelmConvo = 1
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 11:508
+title "Nox Guard"
+body "Too bad I've still got a headache from that damn helmet."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set NoxHelmConvo = 2
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 11:510
+title "Nox Guard"
+body "Headquarters issued me a size-five helmet this morning. It was cutting off circulation, and I kept passing out. Luckily, the NoxGuard I relieved from duty was nice enough to give me this replacement."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0512
+
+#window 11:512
+title "Nox Guard"
+body "I've still got the size-five helmet in my storage pack if you want to see it. When I show the guys back at HQ, they're gonna split their pants."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Do you think I can have the helmet since you're not using it?" 11:514
+choice "Give me the helmet before I smack ya off this platform." 11:556
+
+#window 11:514
+title "Nox Guard"
+body "Sorry, partner... it's not mine to give. But I'll tell you what... they give away free sandwiches and goodies to people who are down on their luck at the Salvation Surplus on skid row."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "But I really need a helmet, officer. Have pity on a poor, unemployed loser." 11:516
+choice "Sandwiches? Funny, because I've got a meat hook sub with your name on it." 11:556
+
+#window 11:516
+title "Nox Guard"
+body "Hey, now.... I won't listen to any self-pity, buddy. You gotta change your outlook on life. Stay optimistic at all times."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0518
+
+#window 11:518
+title "Nox Guard"
+body "It could be much worse. Be thankful you're not living in poverty on a planet like Gennus, or lifting crates on Goria. You've got it good, mister."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0520
+
+#window 11:520
+title "Nox Guard"
+body "Life gets easier when you put things in perspective."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Life gets easier when you gimme that helmet." 11:522
+choice "You want perspective? How about the pavement?" 11:556
+
+#window 11:522
+title "Nox Guard"
+body "Persistent, aren't you? Look, that helmet isn't gonna solve your problems."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0524
+
+#window 11:524
+title "Nox Guard"
+body "Life is what you make it. You can either be happy or depressed."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "I choose to be happy." 11:526
+choice "I choose to be depressed." 11:528
+choice "I choose to kill you." 11:556
+
+#window 11:526
+title "Nox Guard"
+body "Good for you! You've gotta be the most enthusiastic person you know. That's my motto.."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "I couldn't agree more. Now can I have the helmet?" 11:530
+choice "I've got a motto too. You wanna hear it?" 11:546
+
+#window 11:528
+title "Nox Guard"
+body "Then you're going to be unhappy the rest of your life and there's nothing I can do about it."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Well, giving me the helmet sure would help." 11:530
+choice "Sure you can. Be a punching bag for my aggressions." 11:556
+
+#window 11:530
+title "Nox Guard"
+body "You're like a broken record."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0532
+
+#window 11:532
+title "Nox Guard"
+body "You want the helmet?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0534
+
+#window 11:534
+title "Nox Guard"
+body "You won't be happy until I give you the helmet?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0536
+
+#window 11:536
+title "Nox Guard"
+body "Fine."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0538
+
+#window 11:538
+title "Nox Guard"
+body "Here's the helmet."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern addnew_to_inventory "Nox Grumbleguard Helmet Size 5" 1
+}
+
+finishswitch {
+  set INV_HELMET = 1
+  extern is_quest_done "Get Stuff to Grumpos" @poo
+  if (@poo == 0)
+    extern add_quest "Get Stuff to Grumpos"
+  extern complete_quest "Clue To Helmet"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0540
+
+#window 11:540
+title "Nox Guard"
+body "Mission accomplished."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0542
+
+#window 11:542
+title "Nox Guard"
+body "Job well done."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0544
+
+#window 11:544
+title "Nox Guard"
+body "Now go away."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set NoxHelmConvo = 3
+  extern addnew_to_inventory "Nox Grumbleguard Helmet Size 5"
+  set timed_message = 20
+  got_object$="Nox Grumbleguard Helmet Size 5" 
+  gosub 1000:1
+  goto 0:0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 11:546
+title "Nox Guard"
+body "Sure, as long as it's not a motto about giving you the helmet."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0548
+
+#window 11:548
+title "Nox Guard"
+body "What's your motto?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Giving out helmets to those less fortunate is good." 11:550
+choice "A blow to a NoxGuard is a blow for freedom." 11:552
+
+#window 11:550
+title "Nox Guard"
+body "You are so obvious."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0530
+
+#window 11:552
+title "Nox Guard"
+body "Are you suggesting that I'm working for a corrupt regime, or are you threatening me?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "I'm suggesting you're working for a corrupt regime." 11:554
+choice "I'm threatening you." 11:556
+
+#window 11:554
+title "Nox Guard"
+body "Then be on your way. You're really starting to peeve me off, fella. I'm just trying to enjoy the day."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Me too. So gimme the helmet." 11:530
+choice "Well, I don't mean to peeve ya." 11:556
+
+#window 11:556
+title "Nox Guard"
+body "Is this how you get your kicks? Harassing NoxGuards? What's wrong with you?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "I'm an insane man. I'm gonna snap." 11:558
+choice "Just gimme the helmet." 11:564
+
+#window 11:558
+title "Nox Guard"
+body "You don't look very insane."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Trust me. I'm bonkers." 11:560
+choice "Give me the helmet and I'll prove it." 11:564
+
+#window 11:560
+title "Nox Guard"
+body "There's a history of mental illness in my family. My Aunt Melinda was crazy. So was my cousin, Randall. I've been around crazy people my whole life. Crazy, you ain't."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Would a crazy man do THIS?" 11:562
+choice "I'm crazy enough to shove my vistin pistol straight down your windpipe." 11:574
+
+#window 11:562
+title "Nox Guard"
+body "What? Cross his eyes and make a funny face? No. That's something someone pretending to be crazy would do. Why don't you go home, fella?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Why don't I radiate your face with hot vistin action instead?" 11:572
+choice "Gimme the helmet and I'll go home. Do we have a deal?" 11:564
+
+#window 11:564
+title "Nox Guard"
+body "No."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Whatta ya mean 'no'? Give it to me." 11:570
+choice "What if we make an exchange?" 11:566
+
+#window 11:566
+title "Nox Guard"
+body "Yeah. I'm just dying to own a ratty, turd-covered old coat."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Hey! This is very expensive Cordican leather." 11:568
+choice "Okay. Then if you gimme the helmet, I won't give you the coat." 11:570
+
+#window 11:568
+title "Nox Guard"
+body "Look, fella... this isn't gonna go your way. Go home now before my shift is over and a less tolerant NoxGuard replaces me."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "You're breaking my heart, officer. Please give me the helmet." 11:570
+choice "Gimme the helmet or I'm gonna pull out the mental torture." 11:574
+
+#window 11:570
+title "Nox Guard"
+body "Forget it. These things are expensive."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Your hospital bill's gonna be expensive if you don't gimme the helmet." 11:572
+choice "Do you want me to get on my knees and beg? Because I'll do it." 11:572
+
+#window 11:572
+title "Nox Guard"
+body "Not gonna happen. Go home."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "I'm gonna kill you." 11:574
+choice "But I'm homeless." 11:588
+
+#window 11:574
+title "Nox Guard"
+body "Sure you are."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Why don't you just gimme the helmet?" 11:530
+choice "Wanna see a picture of my sister?" 11:576
+
+#window 11:575
+title "Nox Guard"
+body "Sure I am."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Why don't you just gimme the helmet?" 11:530
+choice "Wanna see a picture of my sister?" 11:576
+
+#window 11:576
+title "Nox Guard"
+body "I'm happily married. I'm not interested in your sister."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "That's not what I heard." 11:578
+choice "Sure you are. She's really cute." 11:580
+
+#window 11:578
+title "Nox Guard"
+body "Why... what have you heard?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "I heard you're having problems with the missus." 11:582
+choice "I heard you've been making waves with my sister." 11:584
+
+#window 11:580
+title "Nox Guard"
+body "Who's really cute? My wife or my sister?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Your wife." 11:586
+choice "My sister." 11:588
+
+#window 11:582
+title "Nox Guard"
+body "Nonsense. My wife and I have never had a stronger relationship. You're just making things up now."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Am I? Then why do I know she's pregnant? With twins." 11:590
+choice "Yeah, I'm just making things up. Gimme the helmet and I'll leave." 11:530
+
+#window 11:584
+title "Nox Guard"
+body "I've been extremely faithful to my wife. You're just trying to get a rise outta me. Well, it's not going to work. Just go home."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "How about for a back massage? You look pretty knackered." 11:530
+choice "Gimme the helmet, or I'm gonna serrate your cheek meat." 11:588
+
+#window 11:586
+title "Nox Guard"
+body "You bet she is. She was Miss Bricks two years straight."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Yeah. Maybe ten years ago." 11:588
+choice "Gimme the helmet." 11:530
+
+#window 11:588
+title "Nox Guard"
+body "Look, buddy, go home. You're not getting the helmet from me, and that's all there is to it."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Gimme the helmet." 11:530
+choice "Then you're going to die today, and that's all there is to it." 11:575
+
+#window 11:590
+title "Nox Guard"
+body "Wait a minute... how did you know that?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "That's not all I know. Gimme the helmet, and I'll tell you something else." 11:592
+choice "Not only that... but she was in labor for thirteen hours." 11:594
+
+#window 11:592
+title "Nox Guard"
+body "What kind of something else...?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "It's something about your wife." 11:596
+choice "It's something about your partner." 11:602
+choice "It's something about the helmet." 11:608
+
+#window 11:594
+title "Nox Guard"
+body "Wrong. She was in labor for five hours."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0588
+
+#window 11:596
+title "Nox Guard"
+body "What do you mean? What else could you possibly know about my wife?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0598
+
+#window 11:598
+title "Nox Guard"
+body "Alright. You've piqued my interest. I'm going to give you the helmet. But if you're making this up, I swear to Klaz, I'm gonna barbarize your face."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0600
+
+#window 11:600
+title "Nox Guard"
+body "Okay... here's the helmet. What do you know about my wife?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "She has a third eye under her left armpit." 11:614
+choice "She's been with every man from here to the tenements." 11:614
+choice "Nothing. I'm just making stuff up." 11:614
+
+#window 11:602
+title "Nox Guard"
+body "What do you mean? What else could you possibly know about my partner?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0604
+
+#window 11:604
+title "Nox Guard"
+body "Alright. You've piqued my interest. I'm going to give you the helmet. But if you're making this up, I swear to Klaz, I'm gonna barbarize your face."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0606
+
+#window 11:606
+title "Nox Guard"
+body "Okay here's the helmet. What do you know about my partner?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "He has a third eye under his left armpit." 11:614
+choice "He's the father of the children. Not you." 11:614
+choice "Nothing. I'm just making stuff up." 11:614
+
+#window 11:608
+title "Nox Guard"
+body "I knew it! I knew you wanted the helmet for some secret reason."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0610
+
+#window 11:610
+title "Nox Guard"
+body "Alright. You've piqued my interest. I'm going to give you the helmet. But if you're making this up, I swear to Klaz, I'm gonna barbarize your face."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0612
+
+#window 11:612
+title "Nox Guard"
+body "Okay, here it is. What do you know about it?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0613
+
+#window 11:613
+title "Boots"
+body "Nothing. I'm just making stuff up."
+cam left restore zip
+talk player talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0614
+
+#window 11:614
+title "Nox Guard"
+if (@GotTheHelmet == 0)
+  body "That tears it."
+if (@GotTheHelmet > 0)
+  body "I've changed my mind. Gimme the helmet back."
+cam left restore zip
+talk player talk_a stay
+startswitch {
+  extern is_in_inventory "Nox Grumbleguard Helmet Size 5" @GotTheHelmet
+}
+
+finishswitch {
+  set INV_HELMET = 1
+  if (@GotTheHelmet > 0) {
+    extern remove_from_inventory "Nox Grumbleguard Helmet Size 5" @GotTheHelmet
+    extern is_quest_done "Get Stuff to Grumpos" @poo
+    if (@poo == 0)
+      extern add_quest "Get Stuff to Grumpos"
+    extern complete_quest "Clue To Helmet"
+  }
+  set Fought4Helmet = 1
+  console "battlestart 1 preemptive"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0616
+
+#window 11:615
+title "Nox Guard"
+body "I got a headache."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 53:3501
+title "Fatima"
+body "Um... if you're gonna trek all the way out to Hephaestus, wouldn't it make sense to take Grumpos with you?"
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 bootshandle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 playerchar0
+  extern AI_WaitAndFace @bootshandle -1 fatima_handle
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 0 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity bootshandle
+  extern AI_DestroyEntity @fatima_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 11:802
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "Nice ship. I remember my ol' purple bomber..."
+if (func_charinparty[grumpos] == 3)
+  body "Hmm. Their Amberson shaft needs lubing."
+if (func_charinparty[pal] == 3)
+  body "Wish I had a ship like that."
+if (func_charinparty[rho] == 3)
+  body "I thought my shuttle would park nicely here."
+if (func_charinparty[democratus] == 3)
+  body "We are a planet. Spacecraft land on us."
+if (func_charinparty[stiletto] == 3)
+  body "Hey, why isn't Rho's shuttle here?"
+if (func_charinparty[paco] == 3)
+  body "Hmm. Not Rho's shuttle."
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 11:905
+title "Transition Bot"
+body "Transition plate thirty-two is currently unaligned. Please keep this area clear in the event of a transition. "
+cam left to(transibot) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 transibot
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0906
+
+#window 11:906
+title "Transition Bot"
+body "The District of South Anachronox is not liable for injury or death resulting from plate transitions."
+cam left to(transibot) restore zip
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:0907
+
+#window 11:1305
+title "NoxGuard"
+body "Where do you think you're going, buster?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 11:1306
+
+#window 11:1306
+title "NoxGuard"
+body "You better get indoors and stay there until morning. Otherwise, you're gonna get your face beat."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 11:1310
+title "NoxGuard"
+body "I'm serious. Get indoors before you get nailed with a curfew violation."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 11:1401
+title "Welcome to the Bricks' Finest Taxi Service"
+body "We provide the safest solution to your transition problems with fast, efficient service and the latest in plate calculation technology. Choose your destination:"
+cam left to(taximeter) lift(40) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Rowdy's" 11:1410
+choice "Anachronox Tours" 11:1411
+choice "Upper Tenements" 11:1412
+choice "No thanks." 0:0
+
+#window 11:1415
+title "Welcome to the Bricks' Finest Taxi Service"
+body "Initial charge $2 x 1/13 mile charge: $0.10 waiting time (every 45 seconds): $0.10. \nEstimated route charge: $4 \nTOTAL: $6"
+cam left to(taximeter) lift(40) restore zip
+startswitch {
+  extern check_money @party_cash
+}
+
+finishswitch {
+  if (@party_cash < 6)
+    goto 11:1425		                       
+  goto 11:1420
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 11:1425
+title "Welcome to the Bricks' Finest Taxi Service"
+body "Insufficient funds. Get a job, you bum."
+cam left to(taximeter) lift(40) restore zip
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 11:2201
+title "%s", PlayerChar0$
+body "That's an Anachronox symbol."
+cam left from(PlayerChar0) to(11:2201) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern AI_WaitAndFace bootshandle -1 11:2201
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 11:8000
+body "ELEVATOR HOLE TACO!"
+
+#switch 11:1
+set CURRENT_PLANET = 1
+set CURRENT_BANK = 83
+extern applylevelconfiguration bricksb
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .6 1 1
+if (MYSTECH_ACTIVE == 0) {
+  extern AI_GrabEntity 11:0801 @travel_interface
+  extern EntKey @travel_interface "sequence" ""
+  extern AI_ReleaseEntity @travel_interface
+}
+if (TOURS_OPEN == 0)
+  extern loopambient ambi_bricksb_notours.s
+if ((TAXI_ACTIVE == 1) && (PRE_DETTA < 1)) {
+  extern SpawnEntity2 @taxicab_handle ob_taxi taximeter 11:1401
+  extern AI_SetXYZ @taxicab_handle -1091 815 1170
+  extern AI_ReleaseEntity @taxicab_handle
+  if (TAXI_ON_ROUTE == 0)
+    extern loopambient bricksb_taxi_ambi
+}
+if ((kept_mystech == 1) && (MYSTECH_ACTIVE == 1))
+  set dim_mystech_active = 1
+if ((Gag1 < 1) || (PRE_DETTA == 1))
+  set Gag1 = 1
+if (PRE_DETTA == 1)
+  set deanamo_paid = 1
+if ((Nox1 < 1) || (MYSTECH_ACTIVE == 1))
+  set Nox1 = 1
+if (((PLAY_BRICKSB_INTRO == 1) && (bricksb_seenarrival == 0)) && (BricksB_Elevator_Adjustment != 2)) {
+  set bricksb_seenarrival = 1
+  pathtarget corner2
+  target docktrigger
+  extern playscene bricksb_rhoshutarrive
+  set rho_is_docked_here = 1
+} else if (((PLAY_BRICKSB_INTRO == 1) && bricksb_seenarrival) && (BricksB_Elevator_Adjustment != 2)) {
+  pathtarget corner2
+  target docktrigger
+  set rho_is_docked_here = 1
+} else if (TAXI_ON_ROUTE == 0) {
+  pathtarget corner4
+  target docktrigger
+}
+if (TAXI_ON_ROUTE == 1) {
+  set TAXI_ON_ROUTE = 0
+  set TAXI_TO_BRICKSD = 0
+  set TAXI_TO_TENEMENTS = 0
+  set TAXI_TO_BRICKSB = 0
+  set TAXI_TO_TOURS = 0
+  extern playscene BRICKSB_TAXI_LANDING 0 11:1435
+}
+if (BricksB_Elevator_Adjustment == 1)
+  set BricksB_Elevator_Adjustment = 2
+gosub 11:0002                               
+
+#switch 11:2
+extern playlevelmusic mp3/bricks/bricks_normal_3_0.mp3
+BattleMusicOverride$="mp3/bricks/Bricks_combat_2_0.mp3" 
+if (PRE_DETTA == 0)
+  extern loopambient ambi_bricksb
+if (PRE_DETTA == 1) {
+  extern loopambient ambi_bricksb_detta
+  set met_deanamo_v = 0
+  set sold_mystech = 1
+  set marina_screwed2 = 0
+  set marina_screwed3 = 0
+}
+gosub 11:0050                                   
+if (AM_2_toursmap == 1)
+  goto 11:0010
+if (AM_2_platform == 1)
+  goto 11:0011
+if (briefcase_follow_mode == 1)
+  goto 11:0020
+goto 0:0
+
+#switch 11:10
+set AM_2_toursmap = 0
+extern playambient automap_bricksb_2_tours
+
+#switch 11:11
+set AM_2_platform = 0
+extern playambient automap_2_platform
+
+#switch 11:20
+if (briefcase_2_bricksb == 1) {
+  goto 11:0030
+} else
+  gosub 986:1
+extern stopmusicseg "SEG Bricks Scary 3.0.sgt"
+
+#switch 11:30
+set briefcase_2_bricksb = 0
+extern playambient briefcase_bricksb
+gosub 100:100
+
+#switch 11:101
+set STARTING_FLOOR = 1
+goto 11:0100
+
+#switch 11:102
+set STARTING_FLOOR = 2
+goto 11:0100
+
+#switch 11:103
+set STARTING_FLOOR = 3
+goto 11:0100
+
+#switch 11:104
+set STARTING_FLOOR = 4
+goto 11:0100
+
+#switch 11:114
+if (STARTING_FLOOR == elev_choice)
+  goto 0:0
+closewindow 11:0100
+goto 0:0
+
+#switch 11:5043
+extern chainscripts bricksb_elev_4a bricksb_elev_3b_down
+extern playscene bricksb_elev_4a
+goto 0:0
+
+#switch 11:5042
+extern chainscripts bricksb_elev_4a bricksb_elev_2b_down
+extern playscene bricksb_elev_4a
+goto 0:0
+
+#switch 11:5041
+extern chainscripts bricksb_elev_4a bricksb_elev_1b
+extern playscene bricksb_elev_4a
+goto 0:0
+
+#switch 11:5034
+extern chainscripts bricksb_elev_3a bricksb_elev_4b_slow
+extern playscene bricksb_elev_3a
+goto 0:0
+
+#switch 11:5032
+extern chainscripts bricksb_elev_3a bricksb_elev_2b_down
+extern playscene bricksb_elev_3a
+goto 0:0
+
+#switch 11:5031
+extern chainscripts bricksb_elev_3a bricksb_elev_1b
+extern playscene bricksb_elev_3a
+goto 0:0
+
+#switch 11:5024
+extern chainscripts bricksb_elev_2a bricksb_elev_4b_fast
+extern playscene bricksb_elev_2a
+goto 0:0
+
+#switch 11:5023
+extern chainscripts bricksb_elev_2a bricksb_elev_3b_up
+extern playscene bricksb_elev_2a
+goto 0:0
+
+#switch 11:5021
+extern chainscripts bricksb_elev_2a bricksb_elev_1b
+extern playscene bricksb_elev_2a
+goto 0:0
+
+#switch 11:5014
+extern chainscripts bricksb_elev_1a bricksb_elev_4b_fast
+extern playscene bricksb_elev_1a
+goto 0:0
+
+#switch 11:5013
+extern chainscripts bricksb_elev_1a bricksb_elev_3b_up
+extern playscene bricksb_elev_1a
+goto 0:0
+
+#switch 11:5012
+extern chainscripts bricksb_elev_1a bricksb_elev_2b_up
+extern playscene bricksb_elev_1a
+goto 0:0
+
+#switch 11:1104
+pathtarget corner4
+target docktrigger
+goto 11:1105
+
+#switch 11:1103
+pathtarget corner3
+target docktrigger
+goto 11:1105
+
+#switch 11:1102
+pathtarget corner2
+target docktrigger
+goto 11:1105
+
+#switch 11:1101
+pathtarget corner1
+target docktrigger
+goto 11:1105
+
+#switch 11:1105
+elev_dest$="Landing Platform" 
+set elev_bank = -2.000000
+gosub 1:8			                             
+goto 0:0
+
+#switch 11:201
+set Pongo1 = (Pongo1 + 1)
+if (Pongo1 > 4) {
+  set Pongo1 = 0
+  goto 11:0225
+}
+if (Pongo1 > 3)
+  goto 11:0220
+if (Pongo1 > 2)
+  goto 11:0215
+if (Pongo1 > 1)
+  goto 11:0210
+goto 11:0205                                 
+
+#switch 11:301
+if (RUB_RUNNER == 1)
+  goto 11:0302
+goto 11:0330
+
+#switch 11:302
+set Zeevus2 = (Zeevus2 + 1)
+if (Zeevus2 > 3)
+  goto 11:0325
+if (Zeevus2 > 2)
+  goto 11:0320
+if (Zeevus2 > 1)
+  goto 11:0310
+goto 11:0305                                 
+
+#switch 11:325
+set FoughtZeevus = 1
+set RUB_RUNNER = 2
+console "battlestart 0"
+goto 0:0
+
+#switch 11:501
+if (func_charinparty[boots] != 3)
+  goto 11:0615		                        
+if (NoxHelmConvo == 3)
+  goto 11:0614
+if ((MET_GRUMPOS > 0) && (NoxHelmConvo >= 2))
+  goto 11:0510
+if (NoxHelmConvo == 0)
+  goto 11:0504
+if (NoxHelmConvo == 1)
+  goto 11:0508
+if (NoxHelmConvo == 2)
+  goto 11:0508
+
+#switch 11:801
+if (PRE_LIMBUS < 1)
+  set DI_Cant_Go_To_4 = 1
+if (PRE_KRAPTON == 1)
+  set DI_Cant_Go_To_4 = 0
+if (rho_is_docked_here == 0)
+  goto 11:0802
+gosub 111:1000
+
+#switch 11:901
+if (@botStopsboots == 1)
+  goto 0:0
+set @botStopsboots = 1
+goto 11:0905
+
+#switch 11:907
+extern AI_SeekAndFace bootshandle dontgothere
+extern AI_SetCompletionCallback bootshandle 11:0908
+extern cam_set cam_freeze 1
+
+#switch 11:908
+set @botStopsboots = 0
+extern ANIM_MakeSmart bootshandle
+extern AI_ReleaseEntity bootshandle
+extern cam_anoxmariomode 0
+
+#switch 11:1231
+WS_STAND$="stiletto_skill_1" 
+ws_object$="loonydoor1" 
+ws_scenename$="worldskills/loony_bricksb_1" 
+gosub 4106:1
+goto 0:0
+
+#switch 11:1232
+set ws_standoverride = 1
+WS_STAND$="stiletto_skill_2" 
+ws_object$="loonydoor2" 
+ws_scenename$="worldskills/loony_bricksb_2" 
+gosub 4006:1
+goto 0:0
+
+#switch 11:1233
+WS_STAND$="democratus_skill_1" 
+ws_object$="democratusitem" 
+set ws_bank = 11
+set ws_entry = 1236
+gosub 4005:1
+goto 0:0
+
+#switch 11:1236
+set bricksb_tractor = 1
+extern addnew_to_inventory "TACO"
+got_object$="TACO" 
+set timed_message = 20
+gosub 1000:1
+goto 0:0
+
+#switch 11:1301
+set NoxCurfew1 = (NoxCurfew1 + 1)
+if (NoxCurfew1 > 1)
+  goto 11:1310
+goto 11:1305
+
+#switch 11:1410
+set TAXI_TO_BRICKSD = 1
+goto 11:1415
+
+#switch 11:1411
+set TAXI_TO_TOURS = 1
+goto 11:1415
+
+#switch 11:1412
+set TAXI_TO_TENEMENTS = 1
+goto 11:1415
+
+#switch 11:1420
+extern stopambient bricksb_taxi_ambi
+extern playscene bricksb_taxi_takeoff
+
+#switch 11:1430
+extern remove_money 6
+set TAXI_ON_ROUTE = 1
+if (TAXI_TO_BRICKSD == 1)
+  console "map bricksd"
+if (TAXI_TO_TOURS == 1)
+  console "map tours"
+if (TAXI_TO_TENEMENTS == 1)
+  console "map tenements"
+goto 0:0
+
+#switch 11:1435
+extern loopambient bricksb_taxi_ambi
+
+#switch 11:1001
+goto 0:0
+
+#switch 11:2101
+if (TOURS_OPEN == 1) {
+  if (@do_not_run_twice)
+    goto 0:0
+  if (grav_bricksb_2_tours == 1) {
+    console "map tours frombricksb"
+  } else {
+    set @do_not_run_twice = 1
+    set grav_bricksb_2_tours = 1
+    extern playscene bricksb_2_tours
+  }
+  goto 0:0
+}
+goto 11:0901
+
+#switch 11:3001
+if (bricksb_2_tours == 1)
+  goto 0:0
+goto 11:3002
+
+#switch 11:3002
+closewindow 100:100
+extern playscene briefcase_bricksb_gone
+
+#switch 11:6661
+if (briefcase_follow_mode == 1) {
+  gosub 100:253
+  if (@WGoAheadAndChange == 1)
+    console "map bricksc frombricksb"
+} else
+  console "map bricksc frombricksb"

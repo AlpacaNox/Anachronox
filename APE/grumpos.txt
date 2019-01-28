@@ -1,0 +1,1844 @@
+#window 14:105
+title "Boots"
+if (@grumposKNOCK == 0)
+  body "This must be where this Matavastros character lives."
+if (@grumposKNOCK == 1)
+  body "Doesn't seem like he's home."
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (@grumposKNOCK == 0)
+  choice "Knock." 14:107
+if (@grumposKNOCK == 1)
+  choice "Knock again." 14:107
+choice "Pick the lock." 14:109
+choice "Go away." 0:0
+
+#window 14:107
+title "Boots"
+if (@grumposKNOCK == 1)
+  body "Still no answer."
+if (@grumposKNOCK == 0)
+  body "No answer."
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  set @grumposKNOCK = 1
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 14:205
+title "%s", PlayerChar0$
+if ((@ww == 1) && (func_charinparty[boots] == 3))
+  body "This one just ain't gonna happen, folks. This lock's unpickable."
+if ((@ww == 2) && (func_charinparty[boots] == 3))
+  body "Nah, Ranieri lock."
+if ((@ww == 3) && (func_charinparty[boots] == 3))
+  body "Nope. Doesn't look promising."
+if ((@ww == 4) && (func_charinparty[boots] == 3))
+  body "I think I hear dogs in there."
+if ((@ww == 5) && (func_charinparty[boots] == 3))
+  body "Mmmm... not that one."
+if ((@ww == 6) && (func_charinparty[boots] == 3))
+  body "I don't like the looks of that one."
+if ((@ww == 7) && (func_charinparty[boots] == 3))
+  body "Just another door. Nah."
+if ((@ww == 8) && (func_charinparty[boots] == 3))
+  body "Don't know about that one."
+if ((@ww == 9) && (func_charinparty[boots] == 3))
+  body "Hmmmm...maybe not."
+if ((@ww == 10) && (func_charinparty[boots] == 3))
+  body "Eh. Maybe a different one."
+if (func_charinparty[grumpos] == 3)
+  body "It's a door."
+if (func_charinparty[pal] == 3)
+  body "Looks like a door to me."
+if (func_charinparty[rho] == 3)
+  body "A sturdy door."
+if (func_charinparty[democratus] == 3)
+  body "We detect a door."
+if (func_charinparty[stiletto] == 3)
+  body "Yeah, a door. So?"
+if (func_charinparty[paco] == 3)
+  body "La puerta."
+startswitch {
+  set @ww = func_drand[1,10]
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 14:305
+title "NoxGuard"
+body "What're you lookin' at? Ain't you ever seen a female NoxGuard before?"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 14:310
+title "NoxGuard"
+body "Size-five helmet? If you're making some joke about my chest, I'm gonna strip search your insides."
+cam left restore zip
+talk npc gest_a stay
+startswitch {
+  set GuardGal2 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 14:315
+title "NoxGuard"
+if (func_charinparty[boots] == 3)
+  body "Don't be so stupid as to talk to a NoxGuard again, punk. You look like a good kid."
+if (func_charinparty[grumpos] == 3)
+  body "Don't be so stupid as to talk to a NoxGuard again, old man. Not even the aged are safe from us."
+if (func_charinparty[pal] == 3)
+  body "Don't be so stupid as to talk to a NoxGuard again, little man. We torture you little beebots for fun."
+if (func_charinparty[rho] == 3)
+  body "Don't be so stupid as to talk to a NoxGuard again, ma'am. We like calling people with glasses 'four eyes'."
+if (func_charinparty[rho] == 3)
+  body "Don't be so stupid as to talk to a NoxGuard again, ma'am. We like calling people with glasses 'four eyes'."
+if (func_charinparty[democratus] == 3)
+  body "Don't be so stupid as to talk to a NoxGuard again, sir. We like kicking around, uh... planets."
+if (func_charinparty[stiletto] == 3)
+  body "Don't be so stupid as to talk to a NoxGuard again, ma'am. We like dressing in women's clothing."
+if (func_charinparty[paco] == 3)
+  body "Don't be so stupid as to dress up like Paco 'El Puno' again. We NoxGuards have a thing for him."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 50
+width 580
+
+#window 14:405
+title "NoxGuard"
+body "And the sink was completely obstructed by hair clogs."
+cam left to(guardguard1) restore zip
+startswitch {
+  extern AI_GrabEntity guardguard1 guardguard1_handle
+  extern AI_GrabEntity guardguard2 guardguard2_handle
+  extern ANIM_PlayAnim guardguard1_handle gest_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:0406
+
+#window 14:406
+title "NoxGuard"
+body "Did you see the dirty magazines they found under his bed?"
+cam left to(guardguard2) restore zip
+startswitch {
+  extern ANIM_PlayAnim guardguard2_handle gest_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:0407
+
+#window 14:407
+title "NoxGuard"
+body "Apartment 19 has been seized in accordance with a court-authorized warrant. All the property inside has been confiscated. Go away."
+cam left to(guardguard1) restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:0408
+
+#window 14:408
+title "NoxGuard"
+body "If you know the occupant, please report him and any accomplices to the DettaCorps Main Offices."
+cam left to(guardguard2) restore zip
+startswitch {
+  extern AI_WaitAndFace guardguard2_handle -1 PlayerChar0
+  extern ANIM_PlayAnim guardguard2_handle gest_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity guardguard1_handle
+  extern AI_ReleaseEntity guardguard2_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 14:410
+title "NoxGuard"
+body "Is there something you want?"
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:0411
+
+#window 14:411
+title "NoxGuard"
+body "Maybe he wants some death."
+cam left to(guardguard2) restore zip
+startswitch {
+  extern AI_GrabEntity guardguard2 guardguard2_handle
+  extern AI_WaitAndFace guardguard2_handle -1 PlayerChar0
+  extern ANIM_PlayAnim guardguard2_handle gest_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity guardguard2_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 14:505
+title "NoxGuard"
+body "And the sink was completely obstructed by hair clogs."
+cam left to(guardguard1) restore zip
+startswitch {
+  extern AI_GrabEntity guardguard1 guardguard1_handle
+  extern AI_GrabEntity guardguard2 guardguard2_handle
+  extern ANIM_PlayAnim guardguard1_handle gest_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:0506
+
+#window 14:506
+title "NoxGuard"
+body "Did you see the dirty magazines they found under his bed?"
+cam left to(guardguard2) restore zip
+startswitch {
+  extern ANIM_PlayAnim guardguard2_handle gest_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:0507
+
+#window 14:507
+title "NoxGuard"
+body "Apartment 19 has been seized in accordance with a court-authorized warrant. All the property inside has been confiscated. Go away."
+cam left to(guardguard1) restore zip
+startswitch {
+  extern AI_WaitAndFace guardguard1_handle -1 PlayerChar0
+  extern ANIM_PlayAnim guardguard1_handle gest_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:0508
+
+#window 14:508
+title "NoxGuard"
+body "If you know the occupant, please report him and any accomplices to the DettaCorps Main Offices."
+cam left to(guardguard2) restore zip
+talk npc gest_a stay
+finishswitch {
+  extern AI_ReleaseEntity guardguard1_handle
+  extern AI_ReleaseEntity guardguard2_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 14:510
+title "NoxGuard"
+body "Is there something you want?"
+cam left to(guardguard1) restore zip
+startswitch {
+  extern AI_GrabEntity guardguard1 guardguard1_handle
+  extern AI_WaitAndFace guardguard1_handle -1 PlayerChar0
+  extern ANIM_PlayAnim guardguard1_handle gest_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity guardguard2_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:0411
+
+#window 14:511
+title "NoxGuard"
+body "Maybe he wants some death."
+cam left restore zip
+talk npc gest_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 14:805
+title "Nox Guard"
+if (@SimonNoxGuard2 == 0)
+  body "There was a murder here. Beat it before there's another one."
+if (@SimonNoxGuard2 == 1)
+  body "What he said."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (@SimonNoxGuard2 == 0)
+    set @SimonNoxGuard1 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 14:905
+title "Nox Guard"
+if (@SimonNoxGuard1 == 0)
+  body "There was a murder here. Beat it before there's another one."
+if (@SimonNoxGuard1 == 1)
+  body "What he said."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  if (@SimonNoxGuard1 == 0)
+    set @SimonNoxGuard2 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 14:1005
+title "Grumpos"
+body "I don't wanna see your face again until you bring me a size-five NoxGuard helmet."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 14:1105
+title "Fatima"
+body "Looks like this LifeCursor's pretty fried. I think I can still link with it, though."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 bootshandle
+  extern AI_SpawnEntity fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace fatima_handle -1 playerchar0
+  extern AI_WaitAndFace bootshandle -1 fatima
+  extern ANIM_PlayAnim fatima_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:1106
+
+#window 14:1106
+title "Fatima"
+body "Just a second."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern ANIM_PlayAnim fatima_handle amb_a 1 1 0
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:1107
+
+#window 14:1107
+title "Fatima"
+body "Okay, yeah."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:1108
+
+#window 14:1108
+title "Fatima"
+body "I'm inside. But most of this data's heavily encrypted."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern ANIM_PlayAnim fatima_handle talk_a 0 1 0
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:1109
+
+#window 14:1109
+title "Fatima"
+body "Oh, wait. Here's something. Last message received."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern ANIM_PlayAnim fatima_handle amb_a 1 1 0
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:1110
+
+#window 14:1110
+title "Fatima"
+body "Triv, one of Kewp's buddies, sent her a warning that a deal she was planning wasn't kosher."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern ANIM_PlayAnim fatima_handle talk_a 0 1 0
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:1111
+
+#window 14:1111
+title "Fatima"
+body "Turns out the last anonymous deal for an unflawed Tetra crystal turned sour. The dealer was found in an alley minus his heart and his Tetra."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern ANIM_PlayAnim fatima_handle talk_a 0 1 0
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:1112
+
+#window 14:1112
+title "Fatima"
+body "Triv was advising Kewp to drop the deal and skip out of town before it was too late."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern ANIM_PlayAnim fatima_handle talk_a 0 1 0
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:1113
+
+#window 14:1113
+title "Fatima"
+body "That's all I can find. Sorry, hon."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern ANIM_PlayAnim fatima_handle amb_a 1 1 0
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+}
+
+finishswitch {
+  set TETRA_APART = 2
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity bootshandle
+  extern AI_DestroyEntity fatima_handle
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 14:1120
+title "Fatima"
+body "Ya know, fiddling around with a secure LifeCursor is a surefire way to unwittingly erase all the data. Let's chill out and get back to Detective Rukh with the info."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern AI_GrabEntity playerchar0 bootshandle
+  extern AI_SpawnEntity fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace fatima_handle -1 playerchar0
+  extern AI_WaitAndFace bootshandle -1 fatima
+  extern ANIM_PlayAnim fatima_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity bootshandle
+  extern AI_DestroyEntity fatima_handle
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 14:1805
+title "%s", PlayerChar0$
+body "I hear running water in there. Should I knock?"
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Yes." 14:1810
+choice "No." 0:0
+
+#window 14:1810
+title "Voice Behind Door"
+body "Hold on a second. I'm in the shower."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:1815
+
+#window 14:1815
+startswitch {
+  console "forcecursormode 1"
+  set @SimonLagerShowerTime = func_gametime
+}
+
+thinkswitch {
+  if (func_gametime > (@SimonLagerShowerTime + 2000))
+    closewindow 14:1815
+}
+
+finishswitch {
+  console "forcecursormode 0"
+  goto 14:1820
+}
+
+style "NULL"
+flags passive, TRUE
+
+#window 14:1820
+title "Voice Behind Door"
+body "Yeah, whatta you want?"
+cam left restore zip
+startswitch {
+  set TalkedToSimonLanger = 1
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "25 loonies to save your life." 14:1825
+choice "50 loonies to save your life." 14:1830
+choice "75 loonies to save your life." 14:1835
+choice "My mistake. Wrong door." 14:1840
+
+#window 14:1825
+title "Voice Behind Door"
+body "Tell me why first, then I'll slip it under the door."
+cam left restore zip
+startswitch {
+  set @SimonSuckerYou = 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Okay. Maria Black is on her way to kill you." 14:1845
+choice "No. I'm calling the shots here. Pay now." 14:1860
+
+#window 14:1830
+title "Voice Behind Door"
+body "I don't know, man. 50 loonies is a lot of cash. How do I know you're on the level? Tell me why first, then I'll slip it under the door."
+cam left restore zip
+startswitch {
+  set @SimonSuckerYou = 1
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Okay. Maria Black is on her way to kill you." 14:1870
+choice "No. I'm calling the shots here. Pay now." 14:1880
+
+#window 14:1835
+title "Voice Behind Door"
+body "Are you crazy? I don't have that kind of money just sitting around. Get outta here before I ring the NoxGuards."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 14:1840
+title "Voice Behind Door"
+body "Now my carpet's all wet, you jerk."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 14:1845
+title "Voice Behind Door"
+body "You mean right now? How did she find out where I live?"
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:1850
+
+#window 14:1850
+title "Voice Behind Door"
+body "Thanks for the heads-up"
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:1855
+
+#window 14:1855
+title "Voice Behind Door"
+body "Look down."
+cam left restore zip
+finishswitch {
+  set SimonKnowsAboutMaria = 1
+  set langer_gonna_die = 0
+  extern add_money 25
+  set TIMED_MESSAGE = 20
+  got_object$="25 loonies" 
+  goto 1000:1
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 14:1860
+title "Voice Behind Door"
+body "Fine, fine. Here. I slipped it under the door."
+cam left restore zip
+finishswitch {
+  extern add_money 25
+  set TIMED_MESSAGE = 20
+  got_object$="25 loonies" 
+  goto 1000:1
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:1865
+
+#window 14:1865
+title "Voice Behind Door"
+body "How are you going to save my life?"
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "By telling you that Maria Black is coming here to kill you." 14:1870
+choice "I'm just making stuff up. Thanks for the 25 loonies, sucker." 14:1885
+
+#window 14:1870
+title "Voice Behind Door"
+body "You mean right now? How did she find out where I live? "
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 14:1875
+
+#window 14:1875
+title "Voice Behind Door"
+if (@SimonSuckerYou == 0)
+  body "Thanks for the heads-up."
+if (@SimonSuckerYou == 1)
+  body "Thanks for the heads-up, sucker."
+cam left restore zip
+finishswitch {
+  set SimonKnowsAboutMaria = 1
+  set langer_gonna_die = 0
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 14:1880
+title "Voice Behind Door"
+body "Forget it. I'm not letting some punk scam me outta 50 loonies."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 14:1885
+title "Voice Behind Door"
+body "What? I'm calling the NoxGuards!"
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 14:1890
+title "%s", PlayerChar0$
+body "No answer."
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 14:2201
+startswitch {
+  set elev_choice = 0
+  set anox_interface_active = 1
+  extern CreateAPE2DControl push button4 32 80 width=64 height=64 normal=/gameflow/elevator/button4b.tga bright=/gameflow/elevator/button4a.tga gamevar=elev_choice returnvalue=4 sequence=14:2214
+  extern CreateAPE2DControl push button3 32 144 width=64 height=64 normal=/gameflow/elevator/button3b.tga bright=/gameflow/elevator/button3a.tga gamevar=elev_choice returnvalue=3 sequence=14:2214
+  extern CreateAPE2DControl push button2 32 208 width=64 height=64 normal=/gameflow/elevator/button2b.tga bright=/gameflow/elevator/button2a.tga gamevar=elev_choice returnvalue=2 sequence=14:2214
+  extern CreateAPE2DControl push button1 32 272 width=64 height=64 normal=/gameflow/elevator/button1b.tga bright=/gameflow/elevator/button1a.tga gamevar=elev_choice returnvalue=1 sequence=14:2214
+  extern CreateAPE2DControl push buttonbye 32 336 width=64 height=64 normal=/gameflow/elevator/button_closeb.tga bright=/gameflow/elevator/button_closea.tga gamevar=elev_choice returnvalue=0 sequence=14:2214
+  extern set2Dcursor elevator/cursor1.png
+  if (grumpos_currentfloor == 0)
+    set grumpos_currentfloor = 1
+  set @source_floor = grumpos_currentfloor
+  goto 0:0
+}
+
+thinkswitch {
+  goto 0:0
+}
+
+finishswitch {
+  set anox_interface_active = 0
+  extern set2dcursor default
+  extern RemoveAPE2DControl button4
+  extern RemoveAPE2DControl button3
+  extern RemoveAPE2DControl button2
+  extern RemoveAPE2DControl button1
+  extern RemoveAPE2DControl buttonbye
+  if (elev_choice == 4)
+    goto 14:2202
+  if (elev_choice == 3)
+    goto 14:2203
+  if (elev_choice == 2)
+    goto 14:2204
+  if (elev_choice == 1)
+    goto 14:2205
+  goto 0:0
+}
+
+style "NULL"
+xpos 32
+ypos 16
+width 96
+height 480
+background "elevator/buttons_cap1.tga" 
+image "elevator/buttons_cap2.tga" 0, 384
+
+#window 14:4202
+title "BUILDING DIRECTORY TEMP- NEED GRAPHIC"
+body "Grumpos...Grumpos...section C elevator...fourth floor...apartment 19."
+style "style_embrace"
+font "_anox10"
+
+#window 14:4203
+title "BUILDING DIRECTORY"
+body "Yep, Grumpos sure lives here."
+style "style_embrace"
+font "_anox10"
+
+#window 14:4204
+title "BUILDING DIRECTORY"
+body "A lot of people live here."
+style "style_embrace"
+font "_anox10"
+
+#window 14:3001
+title "Grumpos"
+body "Think you could slink into my home that easily, you little thief?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3005
+title "Boots"
+body "I'm not a thief."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3010
+title "Grumpos"
+body "Says he after breaking into my house..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3015
+title "Boots"
+body "No, I'm not a thief."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3020
+title "Boots"
+body "                        I'm looking for work."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3025
+title "Grumpos"
+if (KIDZ == 1)
+  body "Smart as..."
+if (KIDZ == 0)
+  body "Smart ass."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3035
+title "Boots"
+body "Naaahh! I heard you were hiring for a plunder job in the tunnels. I thought--"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3040
+title "Grumpos"
+body "Who told you that?!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3045
+title "Boots"
+body "Deanamo...?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3050
+title "Grumpos"
+body "Deanamo?!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3055
+title "Grumpos"
+body "             That pitiful excuse for a thief?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3060
+title "Grumpos"
+body "She ain't gettin' a penny outta me. Not one, you hear that?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3070
+title "Grumpos"
+body "I feel bad for the girl, but she wasn't hired to fail and I ain't payin' for pity."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3075
+title "Grumpos"
+body "Tell Deanamo she doesn't get paid until she makes good on what she was contracted for."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3080
+title "Boots"
+body "Well, you know, actually... I'm not here for Deanamo."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3090
+title "Boots"
+body "I'm here to finish her job."
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3095
+title "Grumpos"
+body "What did you say?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3105
+title "Boots"
+body "The tunnels,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3110
+title "Boots"
+body "                The MysTech,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3115
+title "Boots"
+body "                                  I'm your man."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3120
+title "Boots"
+body "I'm experienced, inexpensive, available."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3125
+title "Grumpos"
+body "And desperate from the look of it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3130
+title "Grumpos"
+body "No thanks."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3135
+title "Boots"
+body "C'mon Gramps, I'm up to snuff. Just gimme a chance."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3140
+title "Boots"
+body "You need an escort, I need a job. Whaddya say?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3145
+title "Boots"
+body "Is that a yes?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3150
+title "Boots"
+body "                          No?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3155
+title "Grumpos"
+body "I'm in the middle of something. Stop distracting me."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3160
+title "Boots"
+body "But you're not listening. If you need a man to plunder the tunnels for you... look no further."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3165
+title "Boots"
+body "Whoa."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3170
+title "Boots"
+body "Okay, who's obsessed?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3175
+title "Grumpos"
+body "Unlocking the hidden power of MysTech is my life's work. I'm closing in on a breakthrough, I can Feel it! But I need more Samples."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3180
+title "Boots"
+body "So what's the problem?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3185
+title "Grumpos"
+body "My last \"hero\" sallied forth and got her limbs ripped off."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3190
+title "Grumpos"
+body "How are you any better than her?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3195
+title "Boots"
+body "I'm a professional."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3200
+title "Grumpos"
+body "Prove it. Bring me the helmet of a NoxGuard."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3205
+title "Boots"
+body "I can do that. That's easy."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3210
+title "Grumpos"
+body "Size five."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3250
+title "Boots"
+body "Brother, I'll be back in ten minutes."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3255
+title "Grumpos"
+body "Splendid. Get out!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3300
+title "Boots"
+body "Alright, geezer..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3305
+title "Boots"
+body "Stop fondling the MysTech and crack a gander at the goods."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3325
+title "Boots"
+body "Am I hired or what?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3330
+title "Grumpos"
+body "Detta beefed up security since the Deanamo fiasco."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3335
+title "Grumpos"
+body "Getting into the tunnels might be trouble."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3340
+title "Boots"
+body "We'll deal."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3345
+title "Grumpos"
+body "Here..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3350
+title "Grumpos"
+body "         take this and plug it in your ear."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3355
+title "Grumpos"
+body "You'll understand every language from here to the Trager Anomaly."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3360
+title "Boots"
+body "Spiffy. Where'd you pull this baby from?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3365
+title "Grumpos"
+body "The NoxGuard helmet. Linguinators became standard issue two months ago."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3370
+title "Boots"
+body "Really? How'd they communicate with the aliens before that?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3375
+title "Grumpos"
+body "They beat 'em up."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3380
+title "Boots"
+body "Well... where the hell do we go now?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 14:3385
+title "Grumpos"
+body "Lead the way, hot pants."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 14:1
+console "loadape sendernet"
+set KnowLangerAddress = 1
+set CURRENT_PLANET = 1
+set CURRENT_BANK = 14
+extern applylevelconfiguration grumpos_first
+set grumpos_currentfloor = 1
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .6 1 1
+extern loopambient ambi_grumpos
+extern playlevelmusic mp3/bricks/bricks_normal_2_0.mp3
+if (DEMO_MODE_ENABLED)
+  console "ui_playscene grumpos_scene4"
+if (TETRA_APART == 0) {
+  extern AI_GrabEntity 14:1101 @sucreteSEX
+  extern EntKey @sucreteSEX "sequence" ""
+}
+if (langer_gonna_die == 1) {
+  extern AI_GetEdictNumber langerdoor langerdoor_handle
+  extern entkey langerdoor_handle "sequence" ""
+}
+goto 0:0
+
+#switch 14:101
+if (MET_DEANAMO > 0) {
+  if (OPENED_GRUMPOS_DOOR == 1) {
+    target grumposdoor
+    goto 0:0
+  }
+  goto 14:0105
+} else
+  goto 14:0201
+
+#switch 14:109
+set OPENED_GRUMPOS_DOOR = 1
+set MET_GRUMPOS = 1
+set Brazz1 = 1
+extern complete_quest "Find Matavastros"
+extern add_quest "Get Hired By Grumpos"
+extern chainscripts grumpos_scene1 grumpos_scene2 grumpos_scene3
+extern playscene grumpos_scene1
+goto 0:0
+
+#switch 14:110
+if (MET_DEANAMO > 0) {
+  if (OPENED_GRUMPOS_DOOR == 1) {
+    target grumposdoor
+    goto 0:0
+  }
+  if (anox_worldskill_active == 0) {
+    set timed_message = 31
+    gosub 1000:1
+    goto 0:0
+  }
+  set OPENED_GRUMPOS_DOOR = 1
+  set MET_GRUMPOS = 1
+  extern complete_quest "Find Matavastros"
+  extern add_quest "Get Hired By Grumpos"
+  extern playlevelmusic mp3/bricks/bricks_scary_1_0.mp3
+  extern chainscripts grumpos_scene1 grumpos_scene2 grumpos_scene3
+  extern playscene grumpos_scene1
+  goto 0:0
+} else {
+  set timed_message = 31
+  gosub 1000:1
+  goto 0:0
+}
+
+#switch 14:201
+goto 14:0205
+ws_stand$="unpickable_doors" 
+set ws_bank = 14
+set ws_entry = 205
+gosub 4001:1
+goto 0:0
+
+#switch 14:301
+set GuardGal1 = (GuardGal1 + 1)
+if (INV_LINGUINATOR > 0)
+  goto 14:0315
+if (GuardGal2 == 1)
+  goto 14:0305
+if (MET_GRUMPOS > 0)
+  goto 14:0310
+goto 14:0305                                 
+
+#switch 14:401
+set GuardGuard1 = (GuardGuard1 + 1)
+if (GuardGuard1 > 1)
+  goto 14:0410
+goto 14:0405                                 
+
+#switch 14:501
+set GuardGuard1 = (GuardGuard1 + 1)
+if (GuardGuard1 > 1)
+  goto 14:0510
+goto 14:0505                                 
+
+#switch 14:701
+goto 0:0
+
+#switch 14:801
+goto 14:0805
+
+#switch 14:901
+goto 14:0905
+
+#switch 5002:1
+extern is_in_inventory "Nox Grumbleguard Helmet Size 5" @gotcherhelm
+if (@gotcherhelm)
+  goto 14:4105			                                                    
+goto 14:1005
+
+#switch 14:1101
+if (TETRA_APART == 2)
+  goto 14:1120
+if (TETRA_APART == 1)
+  goto 14:1105
+goto 0:0
+
+#switch 14:1801
+if (KnowLangerAddress == 0)
+  goto 14:0201
+if (TalkedToSimonLanger == 1)
+  goto 14:1890
+goto 14:1805
+
+#switch 14:2001
+target bathdoor
+
+#switch 14:2003
+target beddoor
+
+#switch 14:2101
+target gbdoor
+
+#switch 14:2214
+if (elev_choice == grumpos_currentfloor) {
+  extern playsound ui/gen/ui_gen_unavailable.wav
+} else
+  closewindow 14:2201
+goto 0:0
+
+#switch 14:2202
+if (@source_floor == 1) {
+  extern chainscripts grumpos_elev_in_1 grumpos_elev_out_4
+  extern playscene grumpos_elev_in_1
+} else if (@source_floor == 2) {
+  extern chainscripts grumpos_elev_in_2 grumpos_elev_out_4
+  extern playscene grumpos_elev_in_2
+} else if (@source_floor == 3) {
+  extern chainscripts grumpos_elev_in_3 grumpos_elev_out_4
+  extern playscene grumpos_elev_in_3
+}
+set grumpos_currentfloor = 4
+goto 0:0
+
+#switch 14:2203
+if (@source_floor == 1) {
+  extern chainscripts grumpos_elev_in_1 grumpos_elev_out_3
+  extern playscene grumpos_elev_in_1
+}
+if (@source_floor == 2) {
+  extern chainscripts grumpos_elev_in_2 grumpos_elev_out_3
+  extern playscene grumpos_elev_in_2
+}
+if (@source_floor == 4) {
+  extern chainscripts grumpos_elev_in_4 grumpos_elev_out_3
+  extern playscene grumpos_elev_in_4
+}
+set grumpos_currentfloor = 3
+goto 0:0
+
+#switch 14:2204
+if (@source_floor == 1) {
+  extern chainscripts grumpos_elev_in_1 grumpos_elev_out_2
+  extern playscene grumpos_elev_in_1
+}
+if (@source_floor == 3) {
+  extern chainscripts grumpos_elev_in_3 grumpos_elev_out_2
+  extern playscene grumpos_elev_in_3
+}
+if (@source_floor == 4) {
+  extern chainscripts grumpos_elev_in_4 grumpos_elev_out_2
+  extern playscene grumpos_elev_in_4
+}
+set grumpos_currentfloor = 2
+goto 0:0
+
+#switch 14:2205
+if (@source_floor == 2) {
+  extern chainscripts grumpos_elev_in_2 grumpos_elev_out_1
+  extern playscene grumpos_elev_in_2
+}
+if (@source_floor == 3) {
+  extern chainscripts grumpos_elev_in_3 grumpos_elev_out_1
+  extern playscene grumpos_elev_in_3
+}
+if (@source_floor == 4) {
+  extern chainscripts grumpos_elev_in_4 grumpos_elev_out_1
+  extern playscene grumpos_elev_in_4
+}
+set grumpos_currentfloor = 1
+goto 0:0
+
+#switch 14:2301
+extern cam_anoxmariomode 1
+extern AI_GrabEntity PlayerChar0 bootshandle
+extern AI_SeekAndFace bootshandle card_path
+extern AI_SetCompletionCallback bootshandle 14:2305
+
+#switch 14:2305
+extern ANIM_PlayAnim bootshandle grab_m 0 1 0
+extern ANIM_MakeSmart bootshandle
+extern AI_ReleaseEntity bootshandle
+extern AI_GrabEntity museumcard @card_handle
+extern AI_DestroyEntity @card_handle
+extern cam_anoxmariomode 0
+set got_museum_card = 1
+extern addnew_to_inventory "MysTech Museum Member Card"
+set timed_message = 20
+got_object$="MysTech Museum Member Card" 
+gosub 1000:1
+goto 0:0
+
+#switch 14:4001
+extern playscene grumpos_ladder
+
+#switch 14:4101
+if (INV_HELMET && (GOT_GRUMPOS == 0)) {
+  goto 14:4105
+} else
+  goto 0:0
+
+#switch 14:4105
+set INV_HELMET = 0
+set GOT_GRUMPOS = 1
+extern remove_from_inventory "Nox Grumbleguard Helmet Size 5"
+extern add_money 150
+extern complete_quest "Find A Job"
+extern complete_quest "Get Stuff to Grumpos"
+set INV_LINGUINATOR = 1
+set FATIMA_TENEMENTS_HINT = 1
+set grumpos_currentfloor = 1
+extern addnew_to_inventory "Cordicom Linguinator"
+extern playscene grumpos_scene4
+
+#switch 14:4201
+if (Maria1 == 3)
+  set KnowLangerAddress = 1
+if (GOT_GRUMPOS)
+  goto 14:4204
+if (MET_GRUMPOS)
+  goto 14:4203
+if (MET_DEANAMO)
+  goto 14:4202
+goto 14:4204
+
+#switch 14:5001
+if (Grumpos_Apartment1_Open) {
+  target apartment1
+  goto 0:0
+}
+goto 14:5011
+
+#switch 14:5011
+WS_STAND$="boots_skill_1" 
+ws_object$="apartment1" 
+set LPdifficulty = 2
+set LPtime = 35
+set ws_bank = 14
+set ws_entry = 5021
+gosub 4001:1
+goto 0:0
+
+#switch 14:5021
+set Grumpos_Apartment1_Open = 1
+target apartment1
+
+#switch 14:5002
+if (Grumpos_Apartment11_Open) {
+  target apartment2
+  goto 0:0
+}
+goto 14:5012
+
+#switch 14:5012
+WS_STAND$="boots_skill_2" 
+ws_object$="apartment2" 
+set LPdifficulty = 2
+set LPtime = 35
+set ws_bank = 14
+set ws_entry = 5022
+gosub 4001:1
+goto 0:0
+
+#switch 14:5022
+set Grumpos_Apartment11_Open = 1
+target apartment2
+
+#switch 14:5003
+if (Grumpos_Apartment14_Open) {
+  target apartment3
+  goto 0:0
+}
+goto 14:5013
+
+#switch 14:5013
+WS_STAND$="boots_skill_3" 
+ws_object$="apartment3" 
+set LPdifficulty = 2
+set LPtime = 35
+set ws_bank = 14
+set ws_entry = 5023
+gosub 4001:1
+goto 0:0
+
+#switch 14:5023
+set Grumpos_Apartment14_Open = 1
+target apartment3
+
+#switch 66:666
+extern add_quest "Find A Job"
+extern add_quest "Find Matavastros"
+set met_deanamo = 1

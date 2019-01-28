@@ -1,0 +1,1528 @@
+#window 83:1000
+if (fuseplace)
+  xyprintfx 0, 140, 1, 0.800000011921, 0.800000011921, 0.800000011921, _standardshadow, "Press ESC to leave fusebox alone."
+if (fuseplace == 0)
+  xyprintfx 0, 140, 1, 0.800000011921, 0.800000011921, 0.800000011921, _standardshadow, "Place fuse in one of the sockets."
+startswitch {
+  set @lastMS = func_GameTime
+  set @currentMS = @lastMS
+  if (((power1 == 0) && (power2 == 0)) && (power3 == 0)) {
+    set power1 = 1
+    set fuseplace = 1
+  }
+  if (((pool1height == 0) && (pool2height == 0)) && (pool3height == 0)) {
+    set pool2height = 1
+    set pool3height = 1
+  }
+  extern set2dcursor nofuse0.pcx nofuse0.pcx nofuse1.pcx nofuse2.pcx nofuse3.pcx 20 12 12
+  console "pushbind"
+  console "bind ESCAPE \"invoke 83:1005\""
+  set f1x = (29 + 190)
+  set f1y = (71 + 150)
+  set f2x = (49 + 190)
+  set f2y = (34 + 150)
+  set f3x = (69 + 190)
+  set f3y = (71 + 150)
+  extern CreateAPE2DControl push fuse1 f1x f1y nodrawflag=TRUE width=30 height=26 sequence=83:1006 gamevar=fuseNum returnvalue=1 holdfocusflag=false
+  extern CreateAPE2DControl push fuse2 f2x f2y nodrawflag=TRUE width=30 height=26 sequence=83:1006 gamevar=fuseNum returnvalue=2 holdfocusflag=false
+  extern CreateAPE2DControl push fuse3 f3x f3y nodrawflag=TRUE width=30 height=26 sequence=83:1006 gamevar=fuseNum returnvalue=3 holdfocusflag=false
+  extern AI_GrabEntity playerchar0 hPlayer
+  goto 0:0
+}
+
+thinkswitch {
+  set @currentMS = func_GameTime
+  set @delta = (@currentMS - @lastMS)
+  if (@delta < 50)
+    goto 0:0
+  set @lastMS = @currentMS
+  set @delta = (@delta - 50)
+  set @lastMS = (@currentMS - @delta)
+  set frame1 = (frame1 + 1)
+  if (frame1 == 4)
+    set frame1 = 0
+  set frame2 = (frame2 + 1)
+  if (frame2 == 4)
+    set frame2 = 0
+  set frame3 = (frame3 + 1)
+  if (frame3 == 4)
+    set frame3 = 0
+  goto 0:0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity hPlayer
+  extern RemoveAPE2DControl fuse1
+  extern RemoveAPE2DControl fuse2
+  extern RemoveAPE2DControl fuse3
+  extern set2dcursor default
+  console "popbind"
+  console "bbox -10 -10 0 10 10 24"
+  goto 0:0
+}
+
+style "NULL"
+font "_standardshadow"
+flags passive2d, TRUE
+xpos 200
+ypos 160
+width 290
+background "ballotine/fuseback.tga" 
+if (pool1height >= 1)
+  image "ballotine/ballotine_slime$frame1$.tga" 131, 94
+if (pool1height == 2)
+  image "ballotine/ballotine_slime$frame1$.tga" 131, 70
+if (pool2height == 1)
+  image "ballotine/ballotine_slime$frame2$.tga" 179, 22
+if (pool3height == 1)
+  image "ballotine/ballotine_slime$frame3$.tga" 229, 72
+image "ballotine/nrgcorner.tga" 171, 78
+if (power1)
+  image "ballotine/nrgleft$frame1$.tga" 155, 78
+if (power1)
+  image "ballotine/nrgup$frame1$.tga" 171, 85
+if (power1)
+  image "ballotine/nrgup$frame1$.tga" 171, 101
+if (power2)
+  image "ballotine/nrgup$frame2$.tga" 187, 53
+if (power2)
+  image "ballotine/nrgup$frame2$.tga" 187, 69
+if (power2)
+  image "ballotine/nrgup$frame2$.tga" 187, 85
+if (power2)
+  image "ballotine/nrgup$frame2$.tga" 187, 101
+image "ballotine/nrgcorner.tga" 203, 78
+if (power3)
+  image "ballotine/nrgup$frame1$.tga" 203, 85
+if (power3)
+  image "ballotine/nrgup$frame1$.tga" 203, 101
+if (power3)
+  image "ballotine/nrgright$frame1$.tga" 211, 78
+if (fuseplace == 1)
+  image "ballotine/fuseon_0.tga" 29, 71
+if (fuseplace == 2)
+  image "ballotine/fuseon_0.tga" 49, 34
+if (fuseplace == 3)
+  image "ballotine/fuseon_0.tga" 69, 71
+
+#window 83:2000
+title "PAL-18"
+body "Man, how come the manual override is always in the worst place possible? Tick me off."
+startswitch {
+  extern AI_GrabEntity playerchar0 hPlayer
+  extern ANIM_PlayAnim hPlayer talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity hPlayer
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+nextwindow 83:2005
+
+#window 83:2005
+title "PAL-18"
+body "The EMERGENCY MANUAL CONTROLS."
+startswitch {
+  extern AI_GrabEntity playerchar0 hPlayer
+  extern ANIM_PlayAnim hPlayer talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity hPlayer
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+choice "Turn wheel to right?" 83:2006
+if (@paljoke == 0)
+  choice "Turn wheel to left?" 83:2010
+choice "I ain't turning nothin', bub." 0:0
+
+#window 83:2006
+title "PAL-18"
+body "Finally!"
+startswitch {
+  extern AI_GrabEntity playerchar0 hPlayer
+  extern ANIM_PlayAnim hPlayer talk_a 0 1 0
+  extern playlevelmusic "mp3/democratus/democMajestic.mp3"
+}
+
+finishswitch {
+  extern AI_ReleaseEntity hPlayer
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+nextwindow 83:2007
+
+#window 83:2010
+title "PAL-18"
+body "Holy NO! It's flooding the town with slime!"
+startswitch {
+  extern AI_GrabEntity playerchar0 hPlayer
+  extern playlevelmusic "mp3/bricks/bricks_minigame_1_0.mp3"
+  extern AI_GrabEntity playerchar0 hPlayer
+  extern ANIM_PlayAnim hPlayer talk_a 0 1 0
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+nextwindow 83:2011
+
+#window 83:2011
+title "PAL-18"
+body "Just kiddin'. It didn't do nothin'."
+startswitch {
+  set @paljoke = 1
+  extern playlevelmusic "mp3/democratus/DemocDungeonFinal.mp3"
+}
+
+finishswitch {
+  extern AI_ReleaseEntity hPlayer
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+nextwindow 83:2005
+
+#window 83:2310
+startswitch {
+  extern AI_GrabEntity PlayerChar0 playerchar0_handle
+  extern FlashScreenf 0 0 0 0 0
+  extern FlashScreenf 0 0 0 1 .5
+  set @PAL_is_moving = 1
+  set @PAL_TakePlace = 0
+  set @PALtransitionTime = (func_gametime + 550)
+}
+
+thinkswitch {
+  if (func_gametime >= @PALtransitionTime)
+    if (@PAL_TakePlace == 2) {
+      extern AI_ReleaseEntity playerchar0_handle
+      closewindow 83:2310
+    } else if (@PAL_TakePlace == 1) {
+      echo "||||| - - Fade In - - |||||"
+      extern FlashScreenf 0 0 0 1 0
+      extern FlashScreenf 0 0 0 0 .5
+      set @PAL_TakePlace = 2
+      set @PALtransitionTime = (func_gametime + 100)
+    } else if (@PAL_TakePlace == 0) {
+      extern AI_SetXYZ playerchar0_handle @pal_X @pal_Y @pal_Z
+      extern AI_SetYAW playerchar0_handle @pal_yaw
+      set @PAL_TakePlace = 1
+      set @PALtransitionTime = (func_gametime + 100)
+    } else
+      echo "***|*|*| Illegal Value in PAL fade Sequence\n"
+}
+
+finishswitch {
+  set @PAL_is_moving = 0
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 83:2560
+title "PAL-18"
+body "WHAT?! I can't go down there yet! There's too much radiation!"
+startswitch {
+  extern AI_GrabEntity playerchar0 hPlayer
+  extern ANIM_PlayAnim hPlayer talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity hPlayer
+}
+
+style "style_embrace"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+
+#window 83:3000
+title "PAL-18"
+if (pool3height)
+  body "No thanks. I prefer my unmelted state."
+if (pool3height == 0)
+  body "Whoa! I almost fell down there and busted my wheels! Gotta find a way down there with less of a fall."
+startswitch {
+  extern AI_GrabEntity playerchar0 hPlayer
+  extern ANIM_PlayAnim hPlayer talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity hPlayer
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+
+#window 83:6101
+title "PAL-18"
+body "Locked. There must be an autolock if there's radioactive goo that way."
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+
+#window 83:7101
+title "PAL-18"
+body "Locked. There must be an autolock if there's radioactive goo that way. Gotta drain it somewhere else if I wanna go there."
+startswitch {
+  extern AI_GrabEntity playerchar0 hPlayer
+}
+
+finishswitch {
+  extern AI_ReleaseEntity hPlayer
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+
+#window 83:9000
+title "PAL DIED!"
+body "Sorry, try again.\n"
+body "(Will be a cine and go to Game Over screen.)"
+startswitch {
+  extern playsound ../music/mp3/anoxlose.mp3
+}
+
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+
+#window 83:9020
+startswitch {
+  extern playsound battle/character_pal_com/character_pal_com_pain.wav
+  extern FlashScreenf 1 0 0 0 0
+  extern FlashScreenf 1 0 0 0.5 0.15
+  set @PainFlashTime = func_gametime
+  extern GetPlayerCurrentHP Pal @hpleft
+  if (@hpleft < 100)
+    extern SetPlayerCurrentHP Pal 1
+  if (@hpleft >= 100) {
+    set @hpleft = (@hpleft - 100)
+    extern SetPlayerCurrentHP Pal @hpleft
+  }
+  set @flashed = 0
+}
+
+thinkswitch {
+  if ((func_gametime > (@PainFlashTime + 150)) && (@flashed == 0)) {
+    set @flashed = 1
+    extern FlashScreenf 1 0 0 0.5 0
+    extern FlashScreenf 1 0 0 0 .15
+  }
+  if (func_gametime > (@PainFlashTime + 800))
+    closewindow 83:9020`
+}
+
+finishswitch {
+  set @Pal_Collision_Immunity = 0
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 83:1101
+if (drainmessage == 0)
+  xyprintfx 0, 140, 1, 0.800000011921, 0.800000011921, 0.800000011921, _standardshadow, "Press ESC to leave controls alone."
+if (drainmessage == 1)
+  xyprintfx 30, 140, 1, 0.800000011921, 0.800000011921, 0.800000011921, _standardshadow, "Pool 1 is empty."
+if (drainmessage == 2)
+  xyprintfx 30, 140, 1, 0.800000011921, 0.800000011921, 0.800000011921, _standardshadow, "Pool 2 is full."
+if (drainmessage == 3)
+  xyprintfx 30, 140, 1, 0.800000011921, 0.800000011921, 0.800000011921, _standardshadow, "Pool 2 is empty."
+if (drainmessage == 4)
+  xyprintfx 30, 140, 1, 0.800000011921, 0.800000011921, 0.800000011921, _standardshadow, "Pool 3 is empty."
+if (drainmessage == 5)
+  xyprintfx 30, 140, 1, 0.800000011921, 0.800000011921, 0.800000011921, _standardshadow, "Pool 3 is full."
+startswitch {
+  set @lastMS = func_GameTime
+  set @currentMS = @lastMS
+  if (((power1 == 0) && (power2 == 0)) && (power3 == 0)) {
+    set power1 = 1
+    set fuseplace = 1
+  }
+  if (((pool1height == 0) && (pool2height == 0)) && (pool3height == 0)) {
+    set pool2height = 1
+    set pool3height = 1
+  }
+  extern set2dcursor default
+  console "pushbind"
+  console "bind ESCAPE \"invoke 83:1105\""
+  if (drain_in_question == 1)
+    extern CreateAPE2DControl push leftbutt 222 162 width=32 height=16 normal=/gameflow/ballotine/drain_1to2.tga bright=/gameflow/ballotine/drain_1to2h.tga sequence=83:1106 holdfocusflag=false
+  if (drain_in_question == 1)
+    extern CreateAPE2DControl push rightbutt 273 162 width=32 height=16 normal=/gameflow/ballotine/drain_1to3.tga bright=/gameflow/ballotine/drain_1to3h.tga sequence=83:1107 holdfocusflag=false
+  if (drain_in_question == 2)
+    extern CreateAPE2DControl push leftbutt 222 162 width=32 height=16 normal=/gameflow/ballotine/drain_2to1.tga bright=/gameflow/ballotine/drain_2to1h.tga sequence=83:1106 holdfocusflag=false
+  if (drain_in_question == 2)
+    extern CreateAPE2DControl push rightbutt 273 162 width=32 height=16 normal=/gameflow/ballotine/drain_2to3.tga bright=/gameflow/ballotine/drain_2to3h.tga sequence=83:1107 holdfocusflag=false
+  if (drain_in_question == 3)
+    extern CreateAPE2DControl push leftbutt 222 162 width=32 height=16 normal=/gameflow/ballotine/drain_3to1.tga bright=/gameflow/ballotine/drain_3to1h.tga sequence=83:1106 holdfocusflag=false
+  if (drain_in_question == 3)
+    extern CreateAPE2DControl push rightbutt 273 162 width=32 height=16 normal=/gameflow/ballotine/drain_3to2.tga bright=/gameflow/ballotine/drain_3to2h.tga sequence=83:1107 holdfocusflag=false
+  extern AI_GrabEntity playerchar0 hPlayer
+  set wheelframe = 0
+  goto 0:0
+}
+
+thinkswitch {
+  set @currentMS = func_GameTime
+  set @delta = (@currentMS - @lastMS)
+  if (@delta < 50)
+    goto 0:0
+  set @lastMS = @currentMS
+  set @delta = (@delta - 50)
+  set @lastMS = (@currentMS - @delta)
+  set frame1 = (frame1 + 1)
+  if (frame1 == 4)
+    set frame1 = 0
+  set frame2 = (frame2 + 1)
+  if (frame2 == 4)
+    set frame2 = 0
+  set frame3 = (frame3 + 1)
+  if (frame3 == 4)
+    set frame3 = 0
+  if (drainmessagetime) {
+    set drainmessagetime = (drainmessagetime - 1)
+    if (drainmessagetime == 0)
+      set drainmessage = 0
+  }
+  if (animtime) {
+    set wheelframe = (wheelframe + animdir)
+    if (wheelframe > 2)
+      set wheelframe = 0
+    if (wheelframe < 0)
+      set wheelframe = 2
+    set animtime = (animtime - 1)
+    if (animtime == 0)
+      set wheelframe = 0
+  }
+  goto 0:0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity hPlayer
+  extern RemoveAPE2DControl leftbutt
+  extern RemoveAPE2DControl rightbutt
+  extern RemoveAPE2DControl
+  extern set2dcursor default
+  console "popbind"
+  console "bbox -10 -10 0 10 10 24"
+  goto 0:0
+}
+
+style "NULL"
+font "_standardshadow"
+flags passive2d, TRUE
+xpos 200
+ypos 160
+width 290
+background "ballotine/drain_back.tga" 
+if (pool1height >= 1)
+  image "ballotine/ballotine_slime$frame1$.tga" 140, 34
+if (pool1height == 2)
+  image "ballotine/ballotine_slime$frame1$.tga" 140, 57
+if (pool2height == 1)
+  image "ballotine/ballotine_slime$frame2$.tga" 181, 34
+if (pool3height == 1)
+  image "ballotine/ballotine_slime$frame3$.tga" 222, 34
+if (wheelframe == 0)
+  image "ballotine/ballotine_wheel0.tga" 32, 32
+if (wheelframe == 1)
+  image "ballotine/ballotine_wheel1.tga" 32, 32
+if (wheelframe == 2)
+  image "ballotine/ballotine_wheel2.tga" 32, 32
+if (drain_in_question == 1)
+  image "ballotine/ballo_num1.tga" 202, 74
+if (drain_in_question == 2)
+  image "ballotine/ballo_num2.tga" 202, 74
+if (drain_in_question == 3)
+  image "ballotine/ballo_num3.tga" 202, 74
+
+#window 83:6000
+body "PAL-18"
+if ((PALCount > 1) && (PALCount < 1000))
+  xyprintfx 40, 160, 0.800000011921, 1, 1, 1, palsmall, "THESAURUS ENGAGED."
+if ((PALCount > 10) && (PALCount < 1000))
+  xyprintfx 40, 188, 0.800000011921, 1, 1, 1, palsmall, "FEAR."
+if ((PALCount > 20) && (PALCount < 1000))
+  xyprintfx 40, 200, 0.800000011921, 1, 1, 1, palsmall, "ANXIETY."
+if ((PALCount > 30) && (PALCount < 1000))
+  xyprintfx 40, 212, 0.800000011921, 1, 1, 1, palsmall, "TERROR."
+if ((PALCount > 40) && (PALCount < 1000))
+  xyprintfx 40, 224, 0.800000011921, 1, 1, 1, palsmall, "FRIGHT."
+if ((PALCount > 50) && (PALCount < 1000))
+  xyprintfx 40, 236, 0.800000011921, 1, 1, 1, palsmall, "ALARM."
+if ((PALCount > 60) && (PALCount < 1000))
+  xyprintfx 40, 248, 0.800000011921, 1, 1, 1, palsmall, "DREAD."
+if ((PALCount > 70) && (PALCount < 1000))
+  xyprintfx 40, 260, 0.800000011921, 1, 1, 1, palsmall, "DISMAY."
+if ((PALCount > 80) && (PALCount < 1000))
+  xyprintfx 40, 272, 0.800000011921, 1, 1, 1, palsmall, "PANIC."
+if ((PALCount > 1000) && (PALCount < 2000))
+  xyprintfx 40, 176, 0.800000011921, 1, 1, 1, palsmall, "ERROR."
+if ((PALCount > 1010) && (PALCount < 2000))
+  xyprintfx 40, 188, 0.800000011921, 1, 1, 1, palsmall, "ERROR."
+if ((PALCount > 1020) && (PALCount < 2000))
+  xyprintfx 40, 200, 0.800000011921, 1, 1, 1, palsmall, "PANIC MODE INTERRUPT:"
+if ((PALCount > 1030) && (PALCount < 2000))
+  xyprintfx 40, 212, 0.800000011921, 1, 1, 1, palsmall, "RESET SECONDARY SUBSYSTEMS"
+if (PALCount > 2000)
+  xyprintfx 40, 140, 0.800000011921, 1, 1, 1, palsmall, "ASSIGNMENT."
+if (PALCount > 2010)
+  xyprintfx 40, 152, 0.800000011921, 1, 1, 1, palsmall, "LOCATE AND DISABLE CHEMICAL WASTE DISPOSAL SYSTEM."
+if (PALCount > 2040)
+  xyprintfx 40, 212, 0.800000011921, 1, 1, 1, palsmall, "LOCATION:"
+if (PALCount > 2050)
+  xyprintfx 40, 224, 0.800000011921, 1, 1, 1, palsmall, "BALLOTINE PROCESSING PLANT"
+if (PALCount > 2080)
+  xyprintfx 40, 256, 0.800000011921, 1, 1, 1, palsmall, "DANGER LEVEL:"
+if (PALCount > 2100)
+  xyprintfx 40, 268, 0.800000011921, 1, 1, 1, palsmall, "HIGH"
+if (PALCount > 2110)
+  xyprintfx 40, 280, 0.800000011921, 1, 1, 1, palsmall, "AVOID MUTANT VILLAGERS"
+if (PALCount > 2120)
+  xyprintfx 40, 292, 0.800000011921, 1, 1, 1, palsmall, "AVOID RADIOACTIVE STEAM"
+startswitch {
+  set plastMS = func_GameTime
+  set pcurrentMS = plastMS
+  set palsectics = 20
+  goto 0:0
+}
+
+thinkswitch {
+  set pcurrentMS = func_GameTime
+  set pdelta = (pcurrentMS - plastMS)
+  if (pdelta < TWENTY_FRAMES_A_SECOND)
+    goto 0:0
+  set plastMS = pcurrentMS
+  set PALCount = (PALCount + 1)
+  set palsectics = (palsectics - 1)
+  if (Palsectics == 0) {
+    set palTimer = (palTimer + 1)
+    set PALsectics = 20
+  }
+  if (((PALTimer == 10) || (palTimer == 65)) || (palTimer == 120))
+    closewindow 83:6000
+  goto 0:0
+}
+
+finishswitch {
+  goto 0:0
+}
+
+style "NULL"
+font "palbig"
+flags passive, TRUE
+xpos 0
+ypos 0
+width 640
+
+#window 83:9968
+title "PAL-18"
+body "Man, I think I got that cool thing outta there."
+style "style_demo"
+font "_anox10"
+background color1 = 440044d0 color2 = 220022d0 color3 = 080008d0 color4 = 220022d0
+xpos 30
+ypos 30
+width 580
+
+#switch 83:1
+set CURRENT_PLANET = 8
+set CURRENT_BANK = 83
+extern setmasterlevel 33
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .8 1 .8
+extern playlevelmusic "mp3/democratus/democDungeonFinal.mp3"
+if (((power1 == 0) && (power2 == 0)) && (power3 == 0)) {
+  set power1 = 1
+  set fuseplace = 1
+  pathtarget slimepit1c1
+  target slimepit1trig
+  pathtarget slimepit2c2
+  target slimepit2trig
+  pathtarget slimepit3c2
+  target slimepit3trig
+  set pool1height = 0
+  set pool2height = 1
+  set pool3height = 1
+}
+console "bbox -10 -10 0 10 10 24"
+extern cam_lift 16
+gosub 83:3
+goto 0:0
+
+#switch 83:2
+goto 0:0
+extern AI_GrabEntity mutant1 hMutant
+extern AI_AvoidEnts hMutant false
+extern AI_ReleaseEntity hMutant
+target mutant1
+extern AI_GrabEntity mutant2 hMutant
+extern AI_AvoidEnts hMutant false
+extern AI_ReleaseEntity hMutant
+target mutant2
+extern AI_GrabEntity mutant3 hMutant
+extern AI_AvoidEnts hMutant false
+extern AI_ReleaseEntity hMutant
+extern AI_GrabEntity mutant4 hMutant
+extern AI_AvoidEnts hMutant false
+extern AI_ReleaseEntity hMutant
+extern AI_GrabEntity mutant5 hMutant
+extern AI_AvoidEnts hMutant false
+extern AI_ReleaseEntity hMutant
+extern AI_GrabEntity mutant6 hMutant
+extern AI_AvoidEnts hMutant false
+extern AI_ReleaseEntity hMutant
+goto 0:0
+
+#switch 83:500
+console "bbox -10 -10 0 10 10 24"
+echo "PAL IS TRYING TO PLAY INTRO AGAIN!"
+if (@playedpalintro < 1) {
+  set @playedpalintro = 1
+  extern SetCollisionCallback monster_mutant character_pal 83:9010
+  extern playscene ballotine_factoryintro
+}
+goto 0:0
+
+#switch 83:600
+if (@palcamstate == 0)
+  goto 0:0
+console "RETURN TO THIRD PERSON"
+goto 0:0
+
+#switch 83:1005
+if (fuseplace == 0)
+  goto 0:0
+closewindow 83:1000
+goto 0:0
+
+#switch 83:1006
+if (fuseNum == fuseplace) {
+  if (fuseNum == 1) {
+    set power1 = 0
+    target fan1
+  } else if (fuseNum == 2) {
+    set power2 = 0
+    target fan2
+  } else if (fuseNum == 3) {
+    set power3 = 0
+    target fan3
+  }
+  set fusePlace = 0
+  extern set2dcursor fusecursor.tga 20 12 12
+} else if (fuseplace == 0) {
+  extern set2dcursor nofuse0.pcx nofuse0.pcx nofuse1.pcx nofuse2.pcx nofuse3.pcx 20 12 12
+  set fusePlace = fuseNum
+  if (fuseNum == 1) {
+    set power1 = 1
+    target fan1
+  } else if (fuseNum == 2) {
+    set power2 = 1
+    target fan2
+  } else if (fuseNum == 3) {
+    set power3 = 1
+    target fan3
+  }
+}
+goto 0:0
+
+#switch 83:2007
+extern complete_quest "Find Emergency Shutoff"
+extern complete_quest "Shutoff in Pool 3"
+extern add_quest "Shutoff Complete"
+set BALTOWNR_INTRO = 1
+console "map baltownr"
+goto 0:0
+
+#switch 83:2300
+if ((power1 != 1) && (pool1height != 0))
+  goto 83:2560                                             
+if (@PAL_is_moving)
+  goto 0:0
+if (@Ballotine_Vent1_FirstTime == 0) {
+  set @Ballotine_Vent1_FirstTime = 1
+  extern playscene ballotine_vent1.s
+  goto 0:0
+}
+set @pal_X = -841.000000
+set @pal_Y = 1345
+set @pal_Z = -26.000000
+set @pal_yaw = 180
+goto 83:2310
+
+#switch 83:2350
+if (@PAL_is_moving)
+  goto 0:0
+set @pal_X = 328
+set @pal_Y = 1343
+set @pal_Z = 152
+set @pal_yaw = 0
+goto 83:2310
+
+#switch 83:2400
+if ((power2 != 1) && (pool2height != 0))
+  goto 83:2560                                             
+if (@PAL_is_moving)
+  goto 0:0
+if (@Ballotine_Vent2_FirstTime == 0) {
+  set @Ballotine_Vent2_FirstTime = 1
+  extern playscene ballotine_vent2.s
+  goto 0:0
+}
+set @pal_X = 1263
+set @pal_Y = 3113
+set @pal_Z = -27.000000
+set @pal_yaw = 90
+goto 83:2310
+
+#switch 83:2450
+if (@PAL_is_moving)
+  goto 0:0
+set @pal_X = 1264
+set @pal_Y = 2091
+set @pal_Z = 152
+set @pal_yaw = 270
+goto 83:2310
+
+#switch 83:2500
+if ((power3 != 1) && (pool3height != 0))
+  goto 83:2560                                             
+if (@PAL_is_moving)
+  goto 0:0
+if (@Ballotine_Vent3_FirstTime == 0) {
+  set @Ballotine_Vent3_FirstTime = 1
+  extern playscene ballotine_vent3.s
+  goto 0:0
+}
+set @pal_X = 2898
+set @pal_Y = 1343
+set @pal_Z = 23
+set @pal_yaw = 0
+goto 83:2310
+
+#switch 83:2550
+if (@PAL_is_moving)
+  goto 0:0
+set @pal_X = 2186
+set @pal_Y = 1344
+set @pal_Z = 152
+set @pal_yaw = 180
+goto 83:2310
+
+#switch 83:4000
+set currentradiation = 0
+console "gl_fog .000075 .75 1 0"
+goto 0:0
+
+#switch 83:4010
+if ((pool1height == 0) || power1)
+  goto 0:0
+set currentradiation = 10
+console "gl_fog .0001 .3 1 .3"
+goto 0:0
+
+#switch 83:4020
+if ((pool1height == 0) || power1)
+  goto 0:0
+set currentradiation = 20
+console "gl_fog .0003 .3 1 .3"
+goto 0:0
+
+#switch 83:4030
+if ((pool1height == 0) || power1)
+  goto 0:0
+set currentradiation = 30
+console "gl_fog .0005 .3 1 .3"
+goto 0:0
+
+#switch 83:4040
+if ((pool1height == 0) || power1)
+  goto 0:0
+set currentradiation = 40
+console "gl_fog .0007 .3 1 .3"
+goto 0:0
+
+#switch 83:4050
+if ((pool1height == 0) || power1)
+  goto 0:0
+set currentradiation = 50
+console "gl_fog .0009 .3 1 .3"
+goto 0:0
+
+#switch 83:4060
+if ((pool1height == 0) || power1)
+  goto 0:0
+set currentradiation = 60
+console "gl_fog .0011 .3 1 .3"
+goto 0:0
+
+#switch 83:4070
+if ((pool1height == 0) || power1)
+  goto 0:0
+set currentradiation = 70
+console "gl_fog .0013 .3 1 .3"
+goto 0:0
+
+#switch 83:4080
+if ((pool1height == 0) || power1)
+  goto 0:0
+set currentradiation = 80
+console "gl_fog .0015 .3 1 .3"
+goto 0:0
+
+#switch 83:4090
+if ((pool1height == 0) || power1)
+  goto 0:0
+set currentradiation = 90
+console "gl_fog .0017 .3 1 .3"
+goto 0:0
+
+#switch 83:4100
+if ((pool1height == 0) || power1)
+  goto 0:0
+set currentradiation = 100
+console "gl_fog .0019 .3 1 .3"
+goto 0:0
+
+#switch 83:4110
+if ((pool2height == 0) || power2)
+  goto 0:0
+set currentradiation = 10
+console "gl_fog .0001 .3 1 .3"
+goto 0:0
+
+#switch 83:4120
+if ((pool2height == 0) || power2)
+  goto 0:0
+set currentradiation = 20
+console "gl_fog .0003 .3 1 .3"
+goto 0:0
+
+#switch 83:4130
+if ((pool2height == 0) || power2)
+  goto 0:0
+set currentradiation = 30
+console "gl_fog .0005 .3 1 .3"
+goto 0:0
+
+#switch 83:4140
+if ((pool2height == 0) || power2)
+  goto 0:0
+set currentradiation = 40
+console "gl_fog .0007 .3 1 .3"
+goto 0:0
+
+#switch 83:4150
+if ((pool2height == 0) || power2)
+  goto 0:0
+set currentradiation = 50
+console "gl_fog .0009 .3 1 .3"
+goto 0:0
+
+#switch 83:4160
+if ((pool2height == 0) || power2)
+  goto 0:0
+set currentradiation = 60
+console "gl_fog .0011 .3 1 .3"
+goto 0:0
+
+#switch 83:4170
+if ((pool2height == 0) || power2)
+  goto 0:0
+set currentradiation = 70
+console "gl_fog .0013 .3 1 .3"
+goto 0:0
+
+#switch 83:4180
+if ((pool2height == 0) || power2)
+  goto 0:0
+set currentradiation = 80
+console "gl_fog .0015 .3 1 .3"
+goto 0:0
+
+#switch 83:4190
+if ((pool2height == 0) || power2)
+  goto 0:0
+set currentradiation = 90
+console "gl_fog .0017 .3 1 .3"
+goto 0:0
+
+#switch 83:4200
+if ((pool2height == 0) || power2)
+  goto 0:0
+set currentradiation = 100
+console "gl_fog .0019 .3 1 .3"
+goto 0:0
+
+#switch 83:4210
+if ((pool3height == 0) || power3)
+  goto 0:0
+set currentradiation = 10
+console "gl_fog .0001 .3 1 .3"
+goto 0:0
+
+#switch 83:4220
+if ((pool3height == 0) || power3)
+  goto 0:0
+set currentradiation = 20
+console "gl_fog .0003 .3 1 .3"
+goto 0:0
+
+#switch 83:4230
+if ((pool3height == 0) || power3)
+  goto 0:0
+set currentradiation = 30
+console "gl_fog .0005 .3 1 .3"
+goto 0:0
+
+#switch 83:4240
+if ((pool3height == 0) || power3)
+  goto 0:0
+set currentradiation = 40
+console "gl_fog .0007 .3 1 .3"
+goto 0:0
+
+#switch 83:4250
+if ((pool3height == 0) || power3)
+  goto 0:0
+set currentradiation = 50
+console "gl_fog .0009 .3 1 .3"
+goto 0:0
+
+#switch 83:4260
+if ((pool3height == 0) || power3)
+  goto 0:0
+set currentradiation = 60
+console "gl_fog .0011 .3 1 .3"
+goto 0:0
+
+#switch 83:4270
+if ((pool3height == 0) || power3)
+  goto 0:0
+set currentradiation = 70
+console "gl_fog .0013 .3 1 .3"
+goto 0:0
+
+#switch 83:4280
+if ((pool3height == 0) || power3)
+  goto 0:0
+set currentradiation = 80
+console "gl_fog .0015 .3 1 .3"
+goto 0:0
+
+#switch 83:4290
+if ((pool3height == 0) || power3)
+  goto 0:0
+set currentradiation = 90
+console "gl_fog .0017 .3 1 .3"
+goto 0:0
+
+#switch 83:4300
+if ((pool3height == 0) || power3)
+  goto 0:0
+set currentradiation = 100
+console "gl_fog .0019 .3 1 .3"
+goto 0:0
+
+#switch 83:4310
+if (pool1height == 0)
+  goto 0:0
+set currentradiation = 10
+console "gl_fog .0001 .3 1 .3"
+goto 0:0
+
+#switch 83:4320
+if (pool1height == 0)
+  goto 0:0
+set currentradiation = 20
+console "gl_fog .0003 .3 1 .3"
+goto 0:0
+
+#switch 83:4330
+if (pool1height == 0)
+  goto 0:0
+set currentradiation = 30
+console "gl_fog .0005 .3 1 .3"
+goto 0:0
+
+#switch 83:4340
+if (pool1height == 0)
+  goto 0:0
+set currentradiation = 40
+console "gl_fog .0007 .3 1 .3"
+goto 0:0
+
+#switch 83:4350
+if (pool1height == 0)
+  goto 0:0
+set currentradiation = 50
+console "gl_fog .0009 .3 1 .3"
+goto 0:0
+
+#switch 83:4360
+if (pool1height == 0)
+  goto 0:0
+set currentradiation = 60
+console "gl_fog .0011 .3 1 .3"
+goto 0:0
+
+#switch 83:4370
+if (pool1height == 0)
+  goto 0:0
+set currentradiation = 70
+console "gl_fog .0013 .3 1 .3"
+goto 0:0
+
+#switch 83:4380
+if (pool1height == 0)
+  goto 0:0
+set currentradiation = 80
+console "gl_fog .0015 .3 1 .3"
+goto 0:0
+
+#switch 83:4390
+if (pool1height == 0)
+  goto 0:0
+set currentradiation = 90
+console "gl_fog .0017 .3 1 .3"
+goto 0:0
+
+#switch 83:4400
+if (pool1height == 0)
+  goto 0:0
+set currentradiation = 100
+console "gl_fog .0019 .3 1 .3"
+goto 0:0
+
+#switch 83:4410
+if (pool2height == 0)
+  goto 0:0
+set currentradiation = 10
+console "gl_fog .0001 .3 1 .3"
+goto 0:0
+
+#switch 83:4420
+if (pool2height == 0)
+  goto 0:0
+set currentradiation = 20
+console "gl_fog .0003 .3 1 .3"
+goto 0:0
+
+#switch 83:4430
+if (pool2height == 0)
+  goto 0:0
+set currentradiation = 30
+console "gl_fog .0005 .3 1 .3"
+goto 0:0
+
+#switch 83:4440
+if (pool2height == 0)
+  goto 0:0
+set currentradiation = 40
+console "gl_fog .0007 .3 1 .3"
+goto 0:0
+
+#switch 83:4450
+if (pool2height == 0)
+  goto 0:0
+set currentradiation = 50
+console "gl_fog .0009 .3 1 .3"
+goto 0:0
+
+#switch 83:4460
+if (pool2height == 0)
+  goto 0:0
+set currentradiation = 60
+console "gl_fog .0011 .3 1 .3"
+goto 0:0
+
+#switch 83:4470
+if (pool2height == 0)
+  goto 0:0
+set currentradiation = 70
+console "gl_fog .0013 .3 1 .3"
+goto 0:0
+
+#switch 83:4480
+if (pool2height == 0)
+  goto 0:0
+set currentradiation = 80
+console "gl_fog .0015 .3 1 .3"
+goto 0:0
+
+#switch 83:4490
+if (pool2height == 0)
+  goto 0:0
+set currentradiation = 90
+console "gl_fog .0017 .3 1 .3"
+goto 0:0
+
+#switch 83:4500
+if (pool2height == 0)
+  goto 0:0
+set currentradiation = 100
+console "gl_fog .0019 .3 1 .3"
+goto 0:0
+
+#switch 83:4510
+if (pool3height == 0)
+  goto 0:0
+set currentradiation = 10
+console "gl_fog .0001 .3 1 .3"
+goto 0:0
+
+#switch 83:4520
+if (pool3height == 0)
+  goto 0:0
+set currentradiation = 20
+console "gl_fog .0003 .3 1 .3"
+goto 0:0
+
+#switch 83:4530
+if (pool3height == 0)
+  goto 0:0
+set currentradiation = 30
+console "gl_fog .0005 .3 1 .3"
+goto 0:0
+
+#switch 83:4540
+if (pool3height == 0)
+  goto 0:0
+set currentradiation = 40
+console "gl_fog .0007 .3 1 .3"
+goto 0:0
+
+#switch 83:4550
+if (pool3height == 0)
+  goto 0:0
+set currentradiation = 50
+console "gl_fog .0009 .3 1 .3"
+goto 0:0
+
+#switch 83:4560
+if (pool3height == 0)
+  goto 0:0
+set currentradiation = 60
+console "gl_fog .0011 .3 1 .3"
+goto 0:0
+
+#switch 83:4570
+if (pool3height == 0)
+  goto 0:0
+set currentradiation = 70
+console "gl_fog .0013 .3 1 .3"
+goto 0:0
+
+#switch 83:4580
+if (pool3height == 0)
+  goto 0:0
+set currentradiation = 80
+console "gl_fog .0015 .3 1 .3"
+goto 0:0
+
+#switch 83:4590
+if (pool3height == 0)
+  goto 0:0
+set currentradiation = 90
+console "gl_fog .0017 .3 1 .3"
+goto 0:0
+
+#switch 83:4600
+if (pool3height == 0)
+  goto 0:0
+set currentradiation = 100
+console "gl_fog .0019 .3 1 .3"
+goto 0:0
+
+#switch 83:6100
+if (pool1height || pool2height)
+  goto 83:6101
+target slimepit1drain1
+goto 83:6102
+
+#switch 83:6200
+if (pool3height || pool2height)
+  goto 83:6101
+target slimepit2drain1
+goto 0:0
+
+#switch 83:6300
+if (pool2height || pool1height)
+  goto 83:6101
+target slimepit2drain2
+goto 0:0
+
+#switch 83:6400
+if (pool2height || pool3height)
+  goto 83:6101
+target slimepit3drain1
+goto 0:0
+
+#switch 83:7100
+if (pool2height && (power2 == 0))
+  goto 83:7101
+target updoor1to2
+goto 0:0
+
+#switch 83:7150
+if (pool2height && (power2 == 0))
+  goto 83:7101
+target updoor2to1
+goto 0:0
+
+#switch 83:7200
+if (pool1height && (power1 == 0))
+  goto 83:7101
+target updoor2to1
+goto 0:0
+
+#switch 83:7250
+if (pool1height && (power1 == 0))
+  goto 83:7101
+target updoor1to2
+goto 0:0
+
+#switch 83:7300
+if (pool3height && (power3 == 0))
+  goto 83:7101
+target updoor2to3
+goto 0:0
+
+#switch 83:7350
+if (pool3height && (power3 == 0))
+  goto 83:7101
+target updoor3to2
+goto 0:0
+
+#switch 83:7400
+if (pool2height && (power2 == 0))
+  goto 83:7101
+target updoor3to2
+goto 0:0
+
+#switch 83:7450
+if (pool2height && (power2 == 0))
+  goto 83:7101
+target updoor2to3
+goto 0:0
+
+#switch 83:7500
+if (pool1height && (power1 == 0))
+  goto 83:7101
+target updoor3to1
+goto 0:0
+
+#switch 83:7550
+if (pool1height && (power1 == 0))
+  goto 83:7101
+target updoor1to3
+goto 0:0
+
+#switch 83:7600
+if (pool3height && (power3 == 0))
+  goto 83:7101
+target updoor1to3
+goto 0:0
+
+#switch 83:7650
+if (pool3height && (power3 == 0))
+  goto 83:7101
+target updoor3to1
+goto 0:0
+
+#switch 83:8100
+if (pool1height == 0)
+  goto 0:0
+goto 83:4400
+
+#switch 83:8200
+if (pool1height != 2)
+  goto 0:0
+goto 83:4400
+
+#switch 83:8300
+if (pool2height == 0)
+  goto 0:0
+goto 83:4500
+
+#switch 83:8400
+if (pool3height == 0)
+  goto 0:0
+goto 83:4600
+
+#switch 83:9010
+if (@Pal_Collision_Immunity)
+  goto 0:0
+set @Pal_Collision_Immunity = 1
+goto 83:9020
+goto 0:0
+
+#switch 83:1100
+set drain_in_question = 1
+goto 83:1101
+
+#switch 83:1200
+set drain_in_question = 2
+goto 83:1101
+
+#switch 83:1300
+set drain_in_question = 3
+goto 83:1101
+
+#switch 83:1105
+if (animtime != 0)
+  goto 0:0
+closewindow 83:1101
+goto 0:0
+
+#switch 83:1106
+if (drain_in_question == 1) {
+  if (pool1height == 0) {
+    set drainmessage = 1
+    set drainmessagetime = 50
+    goto 0:0
+  } else if (pool2height) {
+    set drainmessage = 2
+    set drainmessagetime = 50
+    goto 0:0
+  }
+  set animdir = -1.000000
+  set animtime = 20
+  set pool1height = (pool1height - 1)
+  set pool2height = 1
+  pathtarget slimepit2c2
+  target slimepit2trig
+  if (pool1height == 1) {
+    pathtarget slimepit1c2
+  } else if (pool1height == 0)
+    pathtarget slimepit1c1
+  target slimepit1trig
+} else if (drain_in_question == 2) {
+  if (pool2height == 0) {
+    set drainmessage = 3
+    set drainmessagetime = 50
+    goto 0:0
+  }
+  set animdir = -1.000000
+  set animtime = 20
+  set pool1height = (pool1height + 1)
+  set pool2height = 0
+  pathtarget slimepit2c1
+  target slimepit2trig
+  if (pool1height == 1) {
+    pathtarget slimepit1c2
+  } else if (pool1height == 2)
+    pathtarget slimepit1c3
+  target slimepit1trig
+} else if (drain_in_question == 3) {
+  if (pool3height == 0) {
+    set drainmessage = 4
+    set drainmessagetime = 50
+    goto 0:0
+  }
+  set animdir = -1.000000
+  set animtime = 20
+  set pool1height = (pool1height + 1)
+  set pool3height = 0
+  pathtarget slimepit3c1
+  target slimepit3trig
+  if (pool1height == 1) {
+    pathtarget slimepit1c2
+  } else if (pool1height == 2)
+    pathtarget slimepit1c3
+  target slimepit1trig
+}
+goto 0:0
+
+#switch 83:1107
+if (drain_in_question == 1) {
+  if (pool1height == 0) {
+    set drainmessage = 1
+    set drainmessagetime = 50
+    goto 0:0
+  } else if (pool3height) {
+    set drainmessage = 5
+    set drainmessagetime = 50
+    goto 0:0
+  }
+  set animdir = 1
+  set animtime = 20
+  set pool1height = (pool1height - 1)
+  set pool3height = 1
+  pathtarget slimepit3c2
+  target slimepit3trig
+  if (pool1height == 1) {
+    pathtarget slimepit1c2
+  } else if (pool1height == 0)
+    pathtarget slimepit1c1
+  target slimepit1trig
+} else if (drain_in_question == 2) {
+  if (pool2height == 0) {
+    set drainmessage = 3
+    set drainmessagetime = 50
+    goto 0:0
+  }
+  set animdir = 1
+  set animtime = 20
+  set pool3height = 1
+  set pool2height = 0
+  pathtarget slimepit2c1
+  target slimepit2trig
+  pathtarget slimepit3c2
+  target slimepit3trig
+} else if (drain_in_question == 3) {
+  if (pool3height == 0) {
+    set drainmessage = 4
+    set drainmessagetime = 50
+    goto 0:0
+  } else if (pool2height) {
+    set drainmessage = 2
+    set drainmessagetime = 50
+    goto 0:0
+  }
+  set animdir = 1
+  set animtime = 20
+  set pool2height = 1
+  set pool3height = 0
+  pathtarget slimepit3c1
+  target slimepit3trig
+  pathtarget slimepit2c2
+  target slimepit2trig
+}
+
+#switch 83:6010
+set paltimer = 0
+set palcount = 0
+goto 83:6000
+
+#switch 83:6020
+set paltimer = 50
+set palcount = 1000
+goto 83:6000
+
+#switch 83:6030
+set paltimer = 100
+set palcount = 2000
+goto 83:6000
+
+#switch 83:9966
+if (@got_thoughtcell)
+  goto 83:9968
+ws_stand$="pal_skill_1" 
+ws_object$="ct1" 
+set ws_bank = 83
+set ws_entry = 9967
+extern assign E[0] -1 50 50 50 51 50 -1
+extern assign E[7] -1 40 40 60 40 40 -1
+extern assign E[14] -1 60 40 40 40 60 -1
+extern assign E[21] -1 40 30 40 40 40 -1
+extern assign E[28] -1 30 40 40 40 40 -1
+extern assign E[35] -1 40 40 30 40 60 -1
+extern assign E[42] -1 46 45 45 45 45 -1
+gosub 4003:1
+goto 0:0
+
+#switch 83:9967
+set @got_thoughtcell = 1
+extern addnew_to_inventory "Ballotine Thoughtcell"
+set timed_message = 20
+got_object$="Ballotine Thoughtcell" 
+gosub 1000:1
+goto 0:0
+
+#switch 83:9977
+if (@got_poisonclaw)
+  goto 83:9968
+ws_stand$="pal_skill_1b" 
+ws_object$="ct1b" 
+set ws_bank = 83
+set ws_entry = 9978
+extern assign E[0] -1 50 50 50 50 51 -1
+extern assign E[7] -1 40 40 60 40 40 -1
+extern assign E[14] -1 60 30 40 40 60 -1
+extern assign E[21] -1 40 40 40 40 40 -1
+extern assign E[28] -1 30 40 30 40 40 -1
+extern assign E[35] -1 40 40 30 40 60 -1
+extern assign E[42] -1 45 46 45 45 45 -1
+gosub 4003:1
+goto 0:0
+
+#switch 83:9978
+set @got_poisonclaw = 1
+extern addnew_to_inventory "Cordicorps Shockshot"
+set timed_message = 20
+got_object$="Cordicorps Shockshot" 
+gosub 1000:1
+goto 0:0
+
+#switch 83:9955
+if (@got_tears)
+  goto 83:9968
+ws_stand$="pal_skill_2" 
+ws_object$="ct2" 
+set ws_bank = 83
+set ws_entry = 9956
+extern assign E[0] -1 50 50 51 50 50 -1
+extern assign E[7] -1 60 30 40 60 40 -1
+extern assign E[14] -1 40 40 40 30 60 -1
+extern assign E[21] -1 40 60 60 40 40 -1
+extern assign E[28] -1 40 40 40 40 40 -1
+extern assign E[35] -1 30 30 40 40 60 -1
+extern assign E[42] -1 45 45 46 45 45 -1
+gosub 4003:1
+goto 0:0
+
+#switch 83:9956
+set @got_tears = 1
+extern addnew_to_inventory "TimeMinder Tear" 3
+set timed_message = 20
+got_object$="Three TimeMinder Tears" 
+gosub 1000:1
+goto 0:0

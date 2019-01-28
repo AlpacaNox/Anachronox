@@ -1,0 +1,183 @@
+#window 93:206
+title "Fatima"
+body "I'm shocked. Honestly."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 @bootshandle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 PlayerChar0
+  extern AI_WaitAndFace @bootshandle -1 fatima
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 93:0207
+
+#window 93:207
+title "Fatima"
+body "These people are in dire need of help no thanks to you. Are you really gonna turn your back on them?"
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern ANIM_PlayAnim fatima_handle talk_a 0 1 0
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 93:0208
+
+#window 93:208
+title "Fatima"
+body "Do the decent thing and get your butt back to town."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern ANIM_PlayAnim fatima_handle talk_a 0 1 0
+  extern playsound cine/fatima/Fatima_amb_flicker_e.wav
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity @bootshandle
+  extern AI_DestroyEntity @fatima_handle
+  set @fatimaSHOCK = 1
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 93:215
+title "Fatima"
+body "These people are in dire need of help no thanks to you. Do the decent thing and get your butt back to town."
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 @bootshandle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 PlayerChar0
+  extern AI_WaitAndFace @bootshandle -1 fatima
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity @bootshandle
+  extern AI_DestroyEntity @fatima_handle
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 93:210
+title "Fatima"
+body "Shouldn't you debrief with what's-his-face, the head honcho, and find out what this was all about?"
+cam left from(PlayerChar0) to(fatima) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 @bootshandle
+  extern AI_SpawnEntity @fatima_handle fatima_holo fatima 0:0 fatima_spawn
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern loopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_WaitAndFace @fatima_handle -1 PlayerChar0
+  extern AI_WaitAndFace @bootshandle -1 fatima
+  extern ANIM_PlayAnim @fatima_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern playsound cine/fatima/Fatima_amb_end_a.wav
+  extern stopsound battle/character_boots_com/boots_fat_screen_loop.wav
+  extern AI_ReleaseEntity @bootshandle
+  extern AI_DestroyEntity @fatima_handle
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 93:1201
+title "Boots"
+body "There she is folks."
+style "NULL"
+font "_anox10sub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 93:1
+set CURRENT_PLANET = 9
+set CURRENT_BANK = 93
+if (limbus_battle_started) {
+  extern applylevelconfiguration crevicelanding_second
+} else
+  extern applylevelconfiguration crevicelanding_first
+BattleMusicOverride$="mp3/limbus/darkservantbattle.mp3" 
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 1 .8
+if (play_probe_intro == 1) {
+  set play_probe_intro = 0
+  extern add_quest "Explore Limbus"
+  extern complete_quest "Go To Limbus"
+  extern playscene crevicelanding_scene84
+  set play_limbus_intro = 1
+} else
+  extern playlevelmusic mp3/limbus/limbuscrevice.mp3
+
+#switch 93:2
+extern playlevelmusic mp3/limbus/limbuscrevice.mp3
+goto 0:0
+
+#switch 93:101
+extern is_quest_done "Talk To Santa" @beforeDome
+if (@beforeDome == 1)
+  goto 93:0210
+if (limbus_gate_down && (limbus_saw_dome == 0))
+  goto 93:0205
+gosub 111:1000
+
+#switch 93:205
+if (@fatimaSHOCK == 1)
+  goto 93:0215
+goto 93:0206
+
+#switch 66:6666
+extern add_quest "Find Pillars"
+extern add_quest "Find Bridge"
+extern add_quest "Find Cliff"
+
+#switch 66:6667
+extern add_quest "Talk To Santa"

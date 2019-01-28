@@ -1,0 +1,135 @@
+#switch 20000:9100
+set play_cinehive2 = 1
+console "set storysave \"Hive Escape|Escaping the Hive\""
+extern playscene battle/monster_hivequeen/hive_monster_hivequeen_death
+extern playambient battle/monster_hivequeen/monster_hivequeen_ambi_death_left
+extern playambient battle/monster_hivequeen/monster_hivequeen_ambi_death_right
+console "gl_cleartoblack 0"
+
+#switch 20000:290
+console "gl_cleartoblack 1"
+if (func_charinparty[boots] == 3)
+  extern playscene battle/monster_hivequeen/hive_queen_intro_boots 0 20000:295
+if (func_charinparty[grumpos] == 3)
+  extern playscene battle/monster_hivequeen/hive_queen_intro_grumpos 0 20000:295
+if (func_charinparty[rho] == 3)
+  extern playscene battle/monster_hivequeen/hive_queen_intro_rho 0 20000:295
+goto 0:0
+
+#switch 20000:295
+extern BATTLE_EndIntro
+console "cylcam_yawbounds 270 180"
+goto 0:0
+
+#switch 20000:101
+goto 20000:102
+
+#switch 20000:201
+goto 20000:202
+
+#switch 20000:202
+echo "--------------------------------Used LEFT spire"
+set @leftCrystal = 100
+
+#switch 20000:102
+echo "--------------------------------Used RIGHT spire"
+set @rightCrystal = 100
+
+#switch 20000:100
+if (@rightCrystal != 0)
+  goto 0:0
+echo "--------------------------------player_use_right"
+extern playscene battle/monster_hivequeen/player_nrg_right 0 20000:300
+extern BATTLE_StopTime
+goto 20000:102
+
+#switch 20000:200
+if (@leftCrystal != 0)
+  goto 0:0
+echo "--------------------------------player_use_left"
+extern playscene battle/monster_hivequeen/player_nrg_left 0 20000:300
+extern BATTLE_StopTime
+goto 20000:202
+
+#switch 20000:300
+echo "--------------------------------player_use_finish"
+extern BATTLE_StartTime
+extern adjust_stat @useent add_nrg=100
+
+#switch 20000:110
+if ((@rightCrystal == 0) || (@rightCrystal == 1)) {
+  goto 0:0
+} else if (@rightCrystal == 2) {
+  echo "--------------------------------starting rejuv right script"
+  extern BATTLE_StopTime
+  extern playambient battle/monster_hivequeen/crystal_right_rejuv 0 20000:111 0 0 0 0 true true
+  extern BATTLE_FocusOnNode 290
+  set @rightCrystal = 1
+} else {
+  set @rightCrystal = (@rightCrystal - 1)
+  echo "--------------------------------rightCrystal = %d", @rightCrystal
+}
+
+#switch 20000:111
+echo "--------------------------------right_crystal_ready"
+set @rightCrystal = 0
+extern BATTLE_StartTime
+
+#switch 20000:210
+if ((@leftCrystal == 0) || (@leftCrystal == 1)) {
+  goto 0:0
+} else if (@leftCrystal == 2) {
+  echo "--------------------------------starting rejuv left script"
+  extern BATTLE_StopTime
+  extern playambient battle/monster_hivequeen/crystal_left_rejuv 0 20000:211 0 0 0 0 true true
+  extern BATTLE_FocusOnNode 291
+  set @leftCrystal = 1
+} else {
+  set @leftCrystal = (@leftCrystal - 1)
+  echo "--------------------------------leftCrystal = %d", @leftCrystal
+}
+
+#switch 20000:211
+echo "--------------------------------left_crystal_ready"
+set @leftCrystal = 0
+extern BATTLE_StartTime
+
+#switch 20000:1000
+set @fmocc = 0
+echo "party leave front middle"
+
+#switch 20000:1001
+set @fmocc = 1
+echo "party arrive front middle"
+
+#switch 20000:1010
+set @flocc = 0
+echo "party leave front left"
+
+#switch 20000:1011
+set @flocc = 1
+echo "party enter front left"
+
+#switch 20000:1020
+set @frocc = 0
+echo "party leave front right"
+
+#switch 20000:1021
+set @frocc = 1
+echo "party enter front right"
+
+#switch 20000:1030
+set @rlocc = 0
+echo "party leave rear left"
+
+#switch 20000:1031
+set @rlocc = 1
+echo "party enter rear left"
+
+#switch 20000:1040
+set @rrocc = 0
+echo "party leave rear right"
+
+#switch 20000:1041
+set @rrocc = 1
+echo "party enter rear right"

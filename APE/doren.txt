@@ -1,0 +1,1605 @@
+#window 85:105
+title "John"
+body "Welcome to Doren. You should be safe from the Waugees here, ma'am."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:110
+title "John"
+body "This was a small mining camp before Walton made it a military compound. We used to mine Dorenium."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0111
+
+#window 85:111
+title "John"
+body "You've never heard of Dorenium, huh? It's super-strong, ultra-durable, and oh-so pretty."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:115
+title "John"
+body "The Ring-dwellers were building a battle cruiser for the Emperor. Our Dorenium was gonna provide the rib structure and outer hull."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0116
+
+#window 85:116
+title "John"
+body "Blah blah blah. Boy, I'm just talking outta my butt, aren't I?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:120
+title "John"
+body "Say, you wanna hang out after my shift is over? I know a secret path that's beautiful in the moonlight."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:125
+title "John"
+body "Lemme know if you wanna go on that stroll later tonight. Mark's too paranoid to make good company."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:130
+title "John"
+body "Three more hours and my shift's over. Don't forget about our midnight stroll...."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:140
+title "John"
+body "You never took that walk with me last night..."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0141
+
+#window 85:141
+title "John"
+body "No, that's cool. I'm sure you were tired or something."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:145
+title "John"
+body "No, really... I'm okay."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0146
+
+#window 85:146
+title "John"
+body "I understand how it is."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0147
+
+#window 85:147
+title "John"
+body "I ain't crying under here or anything."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0148
+
+#window 85:148
+title "John"
+body "Tease."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:150
+title "John"
+body "\"Please\". I said, \"please\"."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:155
+title "John"
+body "Listen, I gotta get back to work here. Thanks for saving us."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:160
+title "John"
+body "You're a sweet lady... but I gotta get back to work."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:165
+title "John"
+body "You broke my heart. What more do you want from me?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0166
+
+#window 85:166
+title "John"
+body "I'm sorry. That outburst was sudden and unexpected."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern AI_GrabEntity john john_handle
+  extern AI_WaitAndFace john_handle -1 mark
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0167
+
+#window 85:167
+title "John"
+body "Forgive me."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern AI_GrabEntity john john_handle
+  extern AI_WaitAndFace john_handle -1 Playerchar0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity john_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:170
+title "John"
+body "Please... it would be better for both of us if you leave."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:205
+title "Mark"
+body "The Waugees have been terrorizing us for months."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0206
+
+#window 85:206
+title "Mark"
+body "Look! Over there!"
+cam left restore zip
+startswitch {
+  extern AI_GrabEntity mark mark_handle
+  extern AI_WaitAndFace mark_handle -1 scare_me
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0207
+
+#window 85:207
+title "Mark"
+body "What was that? Did you see that? It was a pair of eyes staring at us."
+cam far(64) from(2108 2273 -441) to(2068 2223 -443) near(30) fwd(40) speed(500) lift(62) lag(500) occlude(no) restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0208
+
+#window 85:208
+title "Mark"
+body "No! Over there!"
+cam far(64) from(2610 2291 -416) to(2673 2284 -422) near(30) fwd(40) speed(500) lift(62) lag(500) occlude(no) restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0209
+
+#window 85:209
+title "Mark"
+body "That bush was moving! Did you see it?!"
+cam far(64) from(2303 2259 -356) to(2255 2217 -357) near(30) fwd(40) speed(500) lift(62) lag(500) occlude(no) restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0210
+
+#window 85:210
+title "Mark"
+body "I can't get away from them!"
+cam far(64) from(2610 2291 -416) to(2673 2284 -422) near(30) fwd(40) speed(500) lift(62) lag(500) occlude(no) restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0211
+
+#window 85:211
+title "Mark"
+body "Look over there! There could be one hiding in those bushes."
+cam far(64) from(2611 2281 -358) to(2602 2243 -307) near(30) fwd(40) speed(500) lift(62) lag(500) occlude(no) restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0212
+
+#window 85:212
+title "Mark"
+body "Or maybe between those branches there."
+cam far(64) from(2246 2670 -398) to(2204 2719 -403) near(30) fwd(40) speed(500) lift(62) lag(500) occlude(no) restore zip
+startswitch {
+  extern AI_WaitAndFace mark_handle -1 scare_me_too
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0240
+
+#window 85:240
+title "Mark"
+body "They're everywhere."
+cam left restore zip
+startswitch {
+  extern AI_WaitAndFace mark_handle -1 PlayerChar0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity mark_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0213
+
+#window 85:213
+title "Mark"
+body "They've even learned my name. I hear them chanting it in the distance."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0214
+
+#window 85:214
+title "Mark"
+body "They're out for me. Please help."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0215
+
+#window 85:215
+title "Mark"
+body "I know they look harmless... but they KILL. They've already killed a dozen of us this month."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0216
+
+#window 85:216
+title "Mark"
+body "My brother was patrolling on his bike when they killed him. They found him and his bike wrapped around a tree with thick rope... both a charred mess."
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0217
+
+#window 85:217
+title "Mark"
+body "AARRGGGHHHHH!!!"
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0218
+
+#window 85:218
+title "Mark"
+body "See that?! They're taunting me!"
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:220
+title "Mark"
+body "Did you hear that?"
+cam left restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:230
+title "Mark"
+body "Thanks for killing all the Waugees."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0231
+
+#window 85:231
+title "Mark"
+body "Now I realize it wasn't the Waugees that have been stalking me. I think they're tree spirits."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:235
+title "Mark"
+body "Heartbreaker."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:305
+title "Tony"
+body "Aren't you cold wearing those little scraps of clothing? What you need is body armor. Too bad we don't have any spare suits for you."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:310
+title "Tony"
+body "Weird suits, huh? It's like this... we mine for Dorenium which only forms in the presence of red methane pockets deep underground. Due to lethal gas and intense tectonic pressure, only these environment suits allow us to survive the process."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0311
+
+#window 85:311
+title "Tony"
+body "It was Walton's idea to keep them on full time as protection against the Waugees. Too bad we can't tell each other apart now."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:315
+title "Tony"
+body "I've haven't taken this sucker off in a week. Thank god for our internal sani-suck units."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:335
+title "Tony"
+body "Thanks for ripping those fur balls a new one."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0336
+
+#window 85:336
+title "Tony"
+body "I was about to strip off this helmet for a breath of fresh air when Walton announced we're still in a state of emergency until we become self-sufficient."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0337
+
+#window 85:337
+title "Tony"
+body "Guess it'll be another few months before I can frolic naked in the sun. Thanks anyway though."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:350
+title "Tony"
+body "Sometimes, I wander off into the forest and rip my suit off. Let it all hang loose, you know?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0351
+
+#window 85:351
+title "Tony"
+body "I dance around wearing these special strap-on blade holders. It makes me feel like a free man."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0352
+
+#window 85:352
+title "Tony"
+body "You oughta try it sometime."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0353
+
+#window 85:405
+title "Gary"
+body "We're completely disorganized. Walton is trying to run a military operation with people who aren't soldiers."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:410
+title "Gary"
+body "Listen to us act like military men. It's ridiculous. We're not soldiers, we're miners. I wish we would stop pretending we're something we're not."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:415
+title "Gary"
+body "Walton was the bosser-man back when we were just hard-workin' miners. His military background became obvious once contact with the Ring-dwellers broke off."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0416
+
+#window 85:416
+title "Gary"
+body "He played everyone against their fears, convincing us our way of life would be destroyed once anarchy broke out. Now he's got himself a third-rate army."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:420
+title "Gary"
+body "Walton got himself kicked outta the military before he came to Doren. He doesn't talk about it much."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0421
+
+#window 85:421
+title "Gary"
+body "We joke around about what he must have done to get kicked out. Not in front of him though. That guy's got issues."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:425
+title "Gary"
+body "I just want these Waugees to go away so we can get back to doing what we do best: mine Dorenium."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:435
+title "Gary"
+body "I thought Walton was gonna disband the army once the Waugees were dead. Now he says we have to prepare for other invaders who want our Dorenium mines."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:436
+title "Gary"
+body "I gotta get outta this place."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:505
+title "Kenneth"
+body "Once I put this suit on, I became someone else. Someone strong. Confident. In control."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:510
+title "Kenneth"
+body "It's like a second skin. A place I can hide."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0511
+
+#window 85:511
+title "Kenneth"
+body "I'm not giving it back."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:525
+title "Kenneth"
+body "When I heard you killed all the Waugees... I panicked. I thought they were going to make me give the suit back. But Walton says we're still in a state of emergency. What a relief."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:530
+title "Kenneth"
+body "Thanks for listening to me. I'd show you my face, but... I can't talk to you without my mask. Sorry."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:605
+title "Frank"
+body "If we could just kill all the Waugees, we could go back to work. I like mining. It's fascinatingly boring."
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  extern AI_GrabEntity frank frank_handle
+  extern ANIM_PlayAnim frank_handle talk_a 1 0 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity frank_handle
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:610
+title "Frank"
+body "I thought killing all the Waugees would solve all our problems. Whoops."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:705
+title "Phil"
+body "I don't know whether to laugh or cry."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:710
+title "Phil"
+body "Man, she was so sweet."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:715
+title "Phil"
+body "Everything was great until those little furry bastards showed up. Why did they have to ruin a perfectly good thing?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:805
+title "Peter"
+body "Man, I can't believe they took out the AB-AB. This was our most dangerous piece of hardware and the Waugees took it out with a pair of logs. We suck."
+cam left restore zip
+talk npc talk_b stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0806
+
+#window 85:806
+title "Peter"
+body "Oh, excuse me."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:810
+title "Peter"
+body "You might want to get inside, ma'am. The Waugees could be in the bushes, their little knives ready to stab you."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:815
+title "Peter"
+body "I miss women."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:905
+title "Larry"
+body "I know Waugee Watch is a pretty serious duty, but I can't wait to get back to the barracks and finish this book I'm reading."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0906
+
+#window 85:906
+title "Larry"
+body "I'm on chapter six, and I'm pretty disappointed. It's not as good as the chapter before it."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:910
+title "Larry"
+body "Sshhh! Did you hear that?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0911
+
+#window 85:911
+title "Larry"
+body "You better clear the area, ma'am. You don't wanna be here when the Waugees come tumbling down."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:915
+title "Larry"
+body "You better clear the area, ma'am."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:920
+title "Larry"
+body "Thanks for killin' all them Waugees."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:0926
+
+#window 85:926
+title "Larry"
+body "Are you single?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:1005
+title "Walton"
+body "Good evening, ma'am. At ease. Can I get you anything?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1006
+
+#window 85:1006
+title "Walton"
+body "I'm General Walton, commander-in-chief of this army. You must be the mercenary-for-hire that came out of the forest. You must be quite an experienced fighter to be traveling the woods on your own, especially at night."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1007
+
+#window 85:1007
+title "Walton"
+body "I hope you're feeling fit for duty because I have a job for you and it pays handsomely."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1008
+
+#window 85:1008
+title "Walton"
+body "Six months ago, all communications with the boys in the big brass ring above the planet suddenly stopped. When we hadn't heard from them in over a month, I assumed the worse."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1009
+
+#window 85:1009
+title "Walton"
+body "Fearing anarchy, I did the only thing a responsible leader could do... I declared a state of emergency and mobilized us for war."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1010
+
+#window 85:1010
+title "Walton"
+body "That's when the Waugees came. They kill my men. They eat our food."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1011
+
+#window 85:1011
+title "Walton"
+body "Those little bastards won't leave until all the food in this vicinity has been depleted. My men won't survive the winter."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1012
+
+#window 85:1012
+title "Walton"
+body "That's where you come in."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1013
+
+#window 85:1013
+title "Walton"
+body "Your mission is to proceed to Joyous Fern Valley and pick up the Waugee path. Follow the river along Slippery Rock Canyon, taking out any Waugees you encounter along the way."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1014
+
+#window 85:1014
+title "Walton"
+body "Once you reach The Great Tree, penetrate the queen's den of bodyguards and terminate her command."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1015
+
+#window 85:1015
+title "Walton"
+body "We're counting on you to save our camp. It's worth 12 bars of solid Dorenium to us. That's an entire month's output from our mines."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1016
+
+#window 85:1016
+title "Walton"
+body "You won't be able to find the path in the moonlight, so you should grab some rest now and leave in the morning. Visit the quartermaster when you're ready to retire for the evening."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1017
+
+#window 85:1017
+title "Walton"
+body "Thank you. You're our savior."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern complete_quest "Doren Beats Me"
+  extern add_quest "Doren Go To Sleep"
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:1020
+title "Walton"
+body "I know there's dissension among the troops, but they judge me without understanding what I do. Their way of life has changed and they blame me. But it's the Waugees who are to blame."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1021
+
+#window 85:1021
+title "Walton"
+body "They must die."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1025
+
+#window 85:1025
+title "Walton"
+body "Anyway, I shouldn't keep you up. You've got a big day ahead of you."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1026
+
+#window 85:1026
+title "Walton"
+body "You can find Quartermaster Richard and the officer's barracks by following the path along the right. Goodnight."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:1035
+title "Walton"
+body "Everyone thought the destruction of the Waugees would mean we could kick our feet up and have a party. But the Waugees were the least of our worries."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1036
+
+#window 85:1036
+title "Walton"
+body "Without the organizational structure of the Ring-dwellers to guide us, there will be planet-wide anarchy. This is how dictators come to power. The strongest gang survives."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1037
+
+#window 85:1037
+title "Walton"
+body "If the Waugees can wreak so much havoc on us, what could a well-organized army do? We need time to prepare ourselves."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1038
+
+#window 85:1038
+title "Walton"
+body "Your work here is finished. Here are the 12 bars of Dorenium I promised. You earned every penny of it."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  extern AI_SpawnEntity julian_handle npc_dorensoldier julian 85:1501 julianspawn
+  extern complete_quest "Doren Report Back"
+  extern add_quest "Doren Leave Camp"
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1039
+
+#window 85:1039
+title "Julian"
+body "General Walton! Our scouts have reported a spacecraft in the vicinity. It landed just a mile from here."
+cam left to(julian) restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1040
+
+#window 85:1040
+title "Walton"
+body "Would you mind escorting Julian to the spacecraft? It might be word from the Ring-Dwellers."
+cam left to(walton) restore zip
+talk npc talk_a stay
+finishswitch {
+  if (Walton2 == 1) {
+    extern AI_FollowRigid julian_handle PlayerChar0 80
+    extern addnew_to_inventory "12 Bars of Dorenium"
+    set timed_message = 20
+    got_object$="12 Bars of Dorenium" 
+    gosub 1000:1
+    goto 0:0
+  }
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:1125
+title "Quartermaster Richard"
+body "You wanna sack out here, huh? Well, it won't be very private, or comfortable, but it's better than sleeping out in the forest."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1126
+
+#window 85:1126
+title "Quartermaster Richard"
+body "Your bunk is the second from the right."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  target barrack_door
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:1135
+title "Quartermaster Richard"
+body "I can't see a thing in this helmet."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:1201
+title "Stiletto"
+body "It's a novel called \"Blue Harvest\"."
+cam left lift(20) restore zip
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:1305
+title "Quartermaster Richard"
+body "Sorry, ma'am. If you wanna go into the officer's barracks, you'll have to talk to the commander."
+cam left from(PlayerChar0) to(richard) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 stilettohandle
+  extern AI_GrabEntity richard richard_handle
+  extern AI_WaitAndFace stilettohandle -1 richard
+  extern AI_WaitAndFace richard_handle -1 PlayerChar0
+  extern ANIM_PlayAnim richard_handle talk_a 0 1 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1311
+
+#window 85:1311
+title "Quartermaster Richard"
+body "Stay left along the path and you should find him on look-out duty atop the depot."
+cam left from(PlayerChar0) to(richard) restore zip
+startswitch {
+  extern ANIM_PlayAnim richard_handle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity stilettohandle
+  extern AI_ReleaseEntity richard_handle
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:1405
+title "Stiletto"
+if (ANOX_WAUGEES_DEAD == 0)
+  body "Looks like this is my bunk for the night."
+if (ANOX_WAUGEES_DEAD)
+  body "Most uncomfortable bed I've ever slept in. Well, almost."
+cam left from(PlayerChar0) to(85:1401) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 stilettohandle
+  extern AI_WaitAndFace stilettohandle -1 85:1401
+  extern ANIM_PlayAnim stilettohandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity stilettohandle
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (ANOX_WAUGEES_DEAD == 0)
+  choice "I better catch a few Z's before it gets too late." 85:1406
+if (ANOX_WAUGEES_DEAD == 0)
+  choice "I've got the rest of my life to sleep." 0:0
+
+#window 85:1407
+title "Stiletto"
+body "This weapon blows. I oughta rummage around for something better if I'm gonna take on those little suckers tomorrow."
+cam left from(PlayerChar0) to(85:1401) restore zip
+startswitch {
+  extern AI_GrabEntity PlayerChar0 stilettohandle
+  extern ANIM_PlayAnim stilettohandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity stilettohandle
+}
+
+style "style_embrace"
+font "_anox10"
+flags nograb, TRUE
+flags norelease, TRUE
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:1705
+title "Alan"
+body "Our suits aren't very effective against the spears and rocks the Waugees throw at us."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1706
+
+#window 85:1706
+title "Alan"
+body "The helmets make nice enough drums though."
+cam left restore zip
+talk npc talk_a stay
+finishswitch {
+  set @alan1 = 1
+}
+
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:1710
+title "Alan"
+body "Poor Aaron. He was telling me he felt like he could take on the whole Waugee tribe himself."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 85:1711
+
+#window 85:1711
+title "Alan"
+body "Then a rock hit 'em in the head."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 85:3000
+title "Stiletto"
+body "Cut it OUT!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 85:3005
+title "Klein"
+body "We better get you to safety, ma'am."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 85:3010
+title "Klein"
+body "It's not safe out here."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 85:3015
+title "Klein"
+body "Hey, Carl...."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 85:3020
+title "Klein"
+body "Get your ride and take her back to base."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 85:3025
+title "Klein"
+body "Move along...."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 85:3030
+title "Klein"
+body "You better report to the commander. I'm going back on patrol. Goodnight, ma'am."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 85:1
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .4 .7 1
+set CURRENT_PLANET = 8
+set CURRENT_BANK = 85
+extern applylevelconfiguration doren
+extern playlevelmusic mp3/democratus/democdungeonfinal.mp3
+if (start_stilettointro)
+  goto 85:2
+goto 0:0
+
+#switch 85:2
+set start_stilettointro = 0
+extern is_quest_done "Doren Beats Me" @questdone1
+if (@questdone1 == 0)
+  extern add_quest "Doren Beats Me"
+extern playscene doren_scene77a
+goto 0:0
+
+#switch 85:101
+set John1 = (John1 + 1)
+if (ANOX_WAUGEES_DEAD > 0)
+  goto 85:0135
+if (Walton1 > 0)
+  goto 85:0130
+if (John1 > 4)
+  goto 85:0125
+if (John1 > 3)
+  goto 85:0120
+if (John1 > 2)
+  goto 85:0115
+if (John1 > 1)
+  goto 85:0110
+goto 85:0105                                 
+
+#switch 85:135
+set John2 = (John2 + 1)
+if (John2 > 4)
+  goto 85:0160
+if (John2 > 3)
+  goto 85:0155
+if (John2 > 2)
+  goto 85:0150
+if (John2 > 1)
+  goto 85:0145
+goto 85:0140                                 
+
+#switch 85:201
+set Mark1 = (Mark1 + 1)
+if (ANOX_WAUGEES_DEAD > 0)
+  goto 85:0225
+if (Mark1 > 1)
+  goto 85:0220
+goto 85:0205                                 
+
+#switch 85:225
+set Mark2 = (Mark2 + 1)
+if (Mark2 > 1)
+  goto 85:0235
+goto 85:0230                                 
+
+#switch 85:301
+set Tony1 = (Tony1 + 1)
+if (ANOX_WAUGEES_DEAD > 0)
+  goto 85:0330
+if ((Tony1 > 3) && (Bladefan_BattleSkill_Given == 0))
+  goto 85:0350
+if (Tony1 > 2)
+  goto 85:0315
+if (Tony1 > 1)
+  goto 85:0310
+goto 85:0305                                 
+
+#switch 85:330
+set Tony2 = (Tony2 + 1)
+if (Tony2 > 1)
+  goto 85:0337
+goto 85:0335                                 
+
+#switch 85:353
+set Bladefan_BattleSkill_Given = 1
+extern addnew_to_inventory "BladeSleeves Merc Suit"
+set timed_message = 20
+got_object$="BladeSleeves Merc Suit" 
+gosub 1000:1
+goto 0:0
+
+#switch 85:401
+set Gary1 = (Gary1 + 1)
+if (ANOX_WAUGEES_DEAD > 0)
+  goto 85:0430
+if (Gary1 > 4)
+  goto 85:0425
+if (Gary1 > 3)
+  goto 85:0420
+if (Gary1 > 2)
+  goto 85:0415
+if (Gary1 > 1)
+  goto 85:0410
+goto 85:0405                                 
+
+#switch 85:430
+set Gary2 = (Gary2 + 1)
+if (Gary2 > 1)
+  goto 85:0436
+goto 85:0435                                 
+
+#switch 85:501
+set Kenneth1 = (Kenneth1 + 1)
+if (ANOX_WAUGEES_DEAD > 0)
+  goto 85:0520
+if (Kenneth1 > 1)
+  goto 85:0510
+goto 85:0505                                 
+
+#switch 85:520
+set Kenneth2 = (Kenneth2 + 1)
+if (Kenneth2 > 1)
+  goto 85:0530
+goto 85:0525                                 
+
+#switch 85:601
+if (ANOX_WAUGEES_DEAD > 0)
+  goto 85:0610
+goto 85:0605                                 
+
+#switch 85:701
+set Phil1 = (Phil1 + 1)
+if (Phil1 > 2)
+  goto 85:0715
+if (Phil1 > 1)
+  goto 85:0710
+goto 85:0705                                 
+
+#switch 85:801
+set Peter1 = (Peter1 + 1)
+if (Peter1 > 2)
+  goto 85:0815
+if (Peter1 > 1)
+  goto 85:0810
+goto 85:0805                                 
+
+#switch 85:901
+set Larry1 = (Larry1 + 1)
+if (ANOX_WAUGEES_DEAD > 0)
+  goto 85:0920
+if (Larry1 > 2)
+  goto 85:0915
+if (Larry1 > 1)
+  goto 85:0910
+goto 85:0905                                 
+
+#switch 85:1001
+set Walton1 = (Walton1 + 1)
+if (ANOX_WAUGEES_DEAD > 0)
+  goto 85:1030
+if (Walton1 > 2)
+  goto 85:1026
+if (Walton1 > 1)
+  goto 85:1020
+goto 85:1005                                 
+
+#switch 85:1030
+set Walton2 = (Walton2 + 1)
+if (Walton2 > 1)
+  goto 85:1040
+goto 85:1035                                 
+
+#switch 85:1101
+if (ANOX_WAUGEES_DEAD > 0)
+  goto 85:1135
+if (Walton1 > 0)
+  goto 85:1125
+if (Doren_barrack1 == 1)
+  goto 85:1310
+goto 85:1305                                 
+
+#switch 85:1301
+if (Walton1 > 0) {
+  target barrack_door
+  goto 0:0
+}
+goto 85:1305                                 
+
+#switch 85:1401
+extern is_in_inventory "Stargent Bladerangs" @goodweap
+extern is_equipped "Stargent Bladerangs" @equippedgoodweap
+if ((@goodweap == 0) && (@equippedgoodweap == 0))
+  goto 85:1407		                               
+if (start_flashback2)
+  goto 0:0
+goto 85:1405
+
+#switch 85:1406
+gosub 600:3                                    
+extern complete_quest "Doren Go To Sleep"
+extern add_quest "Kill the Waugees"
+set start_flashback2 = 1
+console "set storysave \"Stiletto's Dream|Stiletto's Dream\""
+console "map flashback"
+
+#switch 85:1701
+if (@alan1 == 1)
+  goto 85:1710
+goto 85:1705
+
+#switch 85:1601
+extern is_quest_done "Doren Leave Camp" @questdone2
+if (@questdone2 == 1) {
+  extern complete_quest "Doren Leave Camp"
+  set start_whiteintro = 1
+  extern add_npc_to_party boots
+  extern set_party_leader boots
+  extern remove_npc_from_party stiletto
+  console "set storysave \"White Caves|Enter the White Caves\""
+  console "map whitecaves-a fromwhitendon"
+}

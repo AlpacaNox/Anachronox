@@ -1,0 +1,443 @@
+#window 4005:8021
+if (ws_skill_level <= 1)
+  title "Democratus' Tractor"
+if (ws_skill_level > 1)
+  title "Democratus' Master Tractor"
+if (ws_skill_level <= 1)
+  body "The object of the game is to \"talk down\" any council member that begins to\n"
+if (ws_skill_level <= 1)
+  body "stand up in objection to using Democratus' tractor beam to pull an object\n"
+if (ws_skill_level <= 1)
+  body "towards the party. Each member will begin to rise at random times and\n"
+if (ws_skill_level <= 1)
+  body "you must move the 5th council member's head over the recently arisen\n"
+if (ws_skill_level <= 1)
+  body "council member's body and click on him. This will make the head\n"
+if (ws_skill_level <= 1)
+  body "\"talk down\" that council member's objection. Watch out, you will find\n"
+if (ws_skill_level <= 1)
+  body "that more than one council member will rise to the objection and you \n"
+if (ws_skill_level <= 1)
+  body "must click on every council member's body before they have time to\n"
+if (ws_skill_level <= 1)
+  body "object. If a council member has time to object, then a segment of the\n"
+if (ws_skill_level <= 1)
+  body "meter above the council members' heads will light up. When all segments\n"
+if (ws_skill_level <= 1)
+  body "of the meter have lit up, your proposal to use the Democratus tractor\n"
+if (ws_skill_level <= 1)
+  body "beam will have been voted down. \n"
+if (ws_skill_level > 1)
+  body "The difference between skill level one and two are the number of members\n"
+if (ws_skill_level > 1)
+  body "that will attempt to vote your proposal down and the speed at which \n"
+if (ws_skill_level > 1)
+  body "they do this. A handicap that you have for this skill level is the \n"
+if (ws_skill_level > 1)
+  body "now lit (under Master only) Recess button. If it gets to a point where\n"
+if (ws_skill_level > 1)
+  body "all members have arisen and you need a break, you can hit the recess button\n"
+if (ws_skill_level > 1)
+  body "which will force all members to sit back down and will give you a small \n"
+if (ws_skill_level > 1)
+  body "delay to rest until the next objection. Be frugal with this bonus feature!\n"
+if (ws_skill_level > 1)
+  body "You only can hit the recess button once each attempt, so make sure it counts!\n"
+finishswitch {
+  set DD_Pause = 0
+}
+
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+width 620
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 4005:8001
+startswitch {
+  set MouseButton = 0
+  set MouseTrap = 1
+  set DD_Mouse_Timer = 0
+  set Number_Active = 0
+  set Number_Parsed = 0
+  set DD_CouncilActiveCheckTime = (func_maptime + 3000)
+  set Motions_Passed = 0
+  set DD_Pause = 0
+  set DD_Kill_Main = 0
+  set Motions_Attempted = 0
+  set DD_Recess_Called = 0
+  set DD_YammerTime = func_maptime
+  if (ws_skill_level <= 1) {
+    set Max_Active = 1
+    set D_Skill = 1
+    set DD_MAX_MOTIONS = 36
+    set DD_MAX_ACT = 5
+    set DD_WAITTIME = 250
+    set DD_HANDDELAY = 2000
+    set DD_RAISEDELAY = 30
+    set DD_VOTEDELAY = 1000
+  }
+  if (ws_skill_level > 1) {
+    set Max_Active = 3
+    set D_Skill = 2
+    set DD_MAX_MOTIONS = 64
+    set DD_MAX_ACT = 8
+    set DD_WAITTIME = 325
+    set DD_HANDDELAY = 1250
+    set DD_RAISEDELAY = 20
+    set DD_VOTEDELAY = 750
+  }
+  extern set2dcursor Cursor1.tga Cursor2.tga Cursor3.tga 20
+  extern set2dcursor Cursor1.tga Cursor2.tga Cursor3.tga 20
+  gosub 4005:8005
+  gosub 4005:8007
+  extern pauselevelmusic
+  extern loopsound ../music/mp3/worldskill.mp3
+  set ws_doing_wskill = 1
+}
+
+thinkswitch {
+  gosub 4005:8015
+  extern get_world_skill_level tractor @tractorworldlevel
+  if ((@tractorworldlevel == 1) && (ws_skill_level == 2)) {
+    echo "*|*|*| Eat Shit and Die!!!!"
+    extern set2dcursor default
+    set timed_message = 99
+    timed_message$="You are not skilled enough to tractor this." 
+    gosub 1000:1
+    closewindow 4005:8001
+    set anox_worldskill_successful = 0
+    set ws_doing_wskill = 0
+  }
+  if ((ws_skill_level <= 1) && (Tractor_First_Time1 == 0)) {
+    set Tractor_First_Time1 = 1
+    extern set2dcursor default
+    set DD_Pause = 1
+    gosub 4005:8021	
+  } else if ((ws_skill_level >= 2) && (Tractor_First_Time2 == 0)) {
+    set Tractor_First_Time2 = 1
+    extern set2dcursor default
+    set DD_Pause = 1
+    gosub 4005:8021	
+  } else if (@tractorworldlevel >= ws_skill_level) {
+    if (DD_Pause == 0) {
+      gosub 4005:8006
+      gosub 4005:8008
+      gosub 4005:8012
+      gosub 4005:8014
+      gosub 4005:8009
+      gosub 4005:8013
+    }
+    set Temp_X = (64 + 256)
+    set Temp_Y = (112 + (256 - 64))
+    extern DrawPic @DD_PIC_TABLE$ 64 Temp_Y
+    extern DrawPic @DD_PIC_TABLE$ Temp_X Temp_Y
+    if (DD_Kill_Main == 1)
+      closewindow 4005:8001
+  }
+}
+
+finishswitch {
+  echo "*|*|*| Die and Eat Shit!!!!"
+  unset ws_time
+  unset ws_difficulty
+  extern stopsound ../music/mp3/worldskill.mp3
+  extern resumelevelmusic
+  set MouseButton = 0
+  set MouseButton = 0
+  set MouseTrap = 0
+  set ws_doing_wskill = 0
+  set DD_Kill_Main = 1
+  extern set2dcursor default
+}
+
+style "NULL"
+font "SUBSYM"
+flags passive2d, TRUE
+
+#switch 4005:8005
+extern RegisterPic @DD_PIC_BACKGRND$	/gameflow/DemocratusWS/Demowsbg.tga
+extern RegisterPic @DD_PIC_TABLE$		/gameflow/DemocratusWS/demowstable.tga
+extern RegisterPic @DD_PIC_C1$			Cursor1.tga
+extern RegisterPic @DD_PIC_C2$			Cursor2.tga
+extern RegisterPic @DD_PIC_C3$			Cursor3.tga
+extern RegisterPic @DD_PIC_1COUN1$		/gameflow/DemocratusWS/sit_c.tga
+extern RegisterPic @DD_PIC_2COUN2$		/gameflow/DemocratusWS/stand_c.tga
+extern RegisterPic @DD_PIC_3COUN3$		/gameflow/DemocratusWS/handup_c.tga
+extern RegisterPic @DD_PIC_METER$		/gameflow/DemocratusWS/Meter.tga
+extern RegisterPic @DD_PIC_GREEN$		/gameflow/DemocratusWS/meter-green.tga
+extern RegisterPic @DD_PIC_RED$			/gameflow/DemocratusWS/meter-red.tga
+extern RegisterPic @DD_PIC_LIT$			/gameflow/DemocratusWS/callrecesslit.tga
+extern RegisterPic @DD_PIC_DARK$		/gameflow/DemocratusWS/callrecessdark.tga
+extern RegisterPic @DD_PIC_BORDER$		/gameflow/DemocratusWS/border.tga
+extern RegisterPic @DD_PIC_BUTTON$		/gameflow/DemocratusWS/button_border.tga
+extern RegisterPic @DD_PIC_Q$			/gameflow/DemocratusWS/question-dark.tga
+extern RegisterPic @DD_PIC_LQ$			/gameflow/DemocratusWS/question-lit.tga
+extern RegisterPic @DD_PIC_X$			/gameflow/DemocratusWS/x-dark.tga
+extern RegisterPic @DD_PIC_LX$			/gameflow/DemocratusWS/x-lit.tga
+
+#switch 4005:8019
+closewindow 4005:8001
+
+#switch 4005:8020
+set ws_doing_wskill = 0
+goto 4005:8019
+
+#switch 4005:8013
+if ((Motions_Passed >= 11) || (Motions_Attempted >= DD_MAX_MOTIONS)) {
+  set Count = 0
+  set Hold_On = 0
+  while (Count < 7) {
+    if (D[$Count$] > 0)
+      set Hold_On = 1
+    set Count = (Count + 1)
+  }
+  if (Hold_On == 0) {
+    if ((Motions_Attempted >= DD_MAX_MOTIONS) && (Motions_Passed < 11)) {
+      set anox_worldskill_successful = 1
+    } else
+      set anox_worldskill_successful = 0
+    extern set2dcursor default
+    set DD_Pause = 1
+    gosub 4005:8020
+  }
+}
+
+#switch 4005:8016
+set X = (64 + 8)
+set Y = (112 + 7)
+if ((((MouseX > X) && (MouseX < (X + 24))) && (MouseY > Y)) && (MouseY < (Y + 24))) {
+  Temp_Pic$="%s" , @DD_PIC_LQ$
+} else
+  Temp_Pic$="%s" , @DD_PIC_Q$
+extern DrawPic Temp_Pic$ X Y
+set X = (X + 480)
+if ((((MouseX > X) && (MouseX < (X + 16))) && (MouseY > Y)) && (MouseY < (Y + 16))) {
+  Temp_Pic$="%s" , @DD_PIC_LX$
+} else
+  Temp_Pic$="%s" , @DD_PIC_X$
+extern DrawPic Temp_Pic$ X Y
+
+#switch 4005:8018
+set Temp = func_drand[1,3]
+if (Temp == 1) {
+  extern playsound ui/skill/tractor_arguedown1.wav
+} else if (Temp == 2) {
+  extern playsound ui/skill/tractor_arguedown2.wav
+} else
+  extern playsound ui/skill/tractor_arguedown3.wav
+echo "Playing %d argue sound.\n", Temp
+set Temp = 0
+
+#switch 4005:8006
+set MouseButton = func_mouseb
+set MouseX = (func_mousex + 16)
+set MouseY = (func_mousey + 16)
+if ((MouseButton > 0) && (DD_Mouse_Timer < func_maptime)) {
+  set DD_Mouse_Timer = (func_maptime + 150)
+  set Count = 0
+  while (Count < 7) {
+    set X = (64 + F[$Count$])
+    set Y = ((112 + G[$Count$]) + H[$Count$])
+    if (((((MouseX > (X - 6)) && (MouseX < (X + 38))) && (MouseY > (Y - 18))) && (MouseY < (Y + 38))) && ((D[$Count$] > 0) && (D[$Count$] <= 2))) {
+      set D[$Count$] = 4
+      gosub 4005:8018
+    }
+    set Count = (Count + 1)
+  }
+  set X = (64 + 224)
+  set Y = (112 + 236)
+  if (((((MouseX > X) && (MouseX < (X + 64))) && (MouseY > Y)) && (MouseY < (Y + 16))) && (DD_Recess_Called == 0)) {
+    set Count = 0
+    while (Count < 7) {
+      if (D[$Count$] > 0) {
+        set D[$Count$] = 4
+        set DD_Recess_Called = 1
+        set DD_CouncilActiveCheckTime = (func_maptime + 5000)
+        extern playsound ui/skill/tractor_recess.wav
+      }
+      set Count = (Count + 1)
+    }
+  }
+  set X = (64 + 8)
+  set Y = (112 + 7)
+  if ((((MouseX > X) && (MouseX < (X + 24))) && (MouseY > Y)) && (MouseY < (Y + 24))) {
+    echo "Set cursor back to default cursor\n"
+    extern set2dcursor default
+    set DD_Pause = 1
+    gosub 4005:8021
+  }
+  set X = (X + 480)
+  echo "MouseX = %d", MouseX
+  if ((((MouseX > X) && (MouseX < (X + 24))) && (MouseY > Y)) && (MouseY < (Y + 24))) {
+    echo "Quit Was Called"
+    extern set2dcursor default
+    closewindow 4005:8001
+  } else
+    extern set2dcursor Cursor1.tga Cursor2.tga Cursor3.tga 20
+} else if ((DD_Mouse_Timer < func_maptime) && (DD_Pause == 0)) {
+  echo "*|*|*| Set Cursor 1 --<--<--<--<--<--<--"
+  extern set2dcursor Cursor1.tga
+}
+gosub 4005:8016
+
+#switch 4005:8010
+if ((((Number_Active < Max_Active) && (DD_CouncilActiveCheckTime < func_maptime)) && (Motions_Attempted < DD_MAX_MOTIONS)) && (Motions_Passed < 11)) {
+  echo "!!!Entering choose function!!!\n"
+  set Temp = func_drand[1,7]
+  if (D[$Temp$] == 0) {
+    echo "Activated One Member!\n"
+    set D[$Temp$] = 1
+    set H[$Temp$] = 0
+    set E[$Temp$] = (func_maptime + 100)
+    set Number_Active = (Number_Active + 1)
+    set Motions_Attempted = (Motions_Attempted + 1)
+    if (DD_YammerTime < func_maptime) {
+      extern playsound ui/skill/tractor_standup.wav
+      set DD_YammerTime = (func_maptime + 1500)
+    }
+  }
+  if (Motions_Attempted > 0) {
+    set DD_CouncilActiveCheckTime = (func_maptime + (500 - (DD_WAITTIME * (Motions_Attempted / DD_MAX_MOTIONS))))
+  } else
+    set DD_CouncilActiveCheckTime = (func_maptime + 500)
+}
+if (Motions_Attempted > 0)
+  set Max_Active = ((Motions_Attempted / DD_MAX_MOTIONS) * DD_MAX_ACT)
+if (Max_Active <= 0)
+  set Max_Active = 1
+
+#switch 4005:8017
+if (Count == 0) {
+  extern playsound ui/skill/tractor_object1.wav
+} else if (Count == 1) {
+  extern playsound ui/skill/tractor_object2.wav
+} else if (Count == 2) {
+  extern playsound ui/skill/tractor_object3.wav
+} else if (Count == 3) {
+  extern playsound ui/skill/tractor_object4.wav
+} else if (Count == 4) {
+  extern playsound ui/skill/tractor_object5.wav
+} else if (Count == 5) {
+  extern playsound ui/skill/tractor_object6.wav
+} else if (Count == 6)
+  extern playsound ui/skill/tractor_object7.wav
+
+#switch 4005:8011
+if (D[$Count$] >= 1) {
+  if (D[$Count$] == 1) {
+    if (E[$Count$] < func_maptime)
+      if (H[$Count$] > -12.000000) {
+        set H[$Count$] = (H[$Count$] - 2)
+        set E[$Count$] = (func_maptime + DD_RAISEDELAY)
+      } else {
+        set D[$Count$] = 2
+        set E[$Count$] = (func_maptime + DD_HANDDELAY)
+      }
+  } else if (D[$Count$] == 2) {
+    if (E[$Count$] <= func_maptime) {
+      set E[$Count$] = (func_maptime + DD_VOTEDELAY)
+      set D[$Count$] = 3
+      gosub 4005:8017
+    }
+  } else if (D[$Count$] == 3) {
+    if (E[$Count$] <= func_maptime) {
+      set H[$Count$] = 0
+      set E[$Count$] = 0
+      set D[$Count$] = 0
+      set Motions_Passed = (Motions_Passed + 1)
+      set Number_Active = (Number_Active - 1)
+    }
+  } else if (D[$Count$] == 4)
+    if (H[$Count$] < 0) {
+      set H[$Count$] = (H[$Count$] + 2)
+      set E[$Count$] = (func_maptime + (DD_RAISEDELAY * 0.5))
+    } else {
+      set D[$Count$] = 0
+      set E[$Count$] = 0
+      set Number_Active = (Number_Active - 1)
+    }
+  set Number_Parsed = (Number_Parsed + 1)
+}
+
+#switch 4005:8009
+set Count = 0
+set Number_Parsed = 0
+while (Count < 7)
+  if (Number_Active == Number_Parsed) {
+    set Count = (7 + 1)
+  } else {
+    gosub 4005:8011	
+    set Count = (Count + 1)
+  }
+if (Number_Parsed == 0)
+  set Number_Active = 0
+gosub 4005:8010
+
+#switch 4005:8014
+set X = (64 + 224)
+set Y = (112 + 240)
+if ((DD_Recess_Called == 1) || (D_Skill < 2)) {
+  Temp_Pic$="%s" , @DD_PIC_DARK$
+} else
+  Temp_Pic$="%s" , @DD_PIC_LIT$
+extern DrawPic Temp_Pic$ X Y
+
+#switch 4005:8012
+set Count = 0
+set X = (64 + 128)
+set Y = 112
+extern DrawPic @DD_PIC_METER$ X Y
+set Y = (Y + 8)
+while (Count < Motions_Passed) {
+  if (Count == 0) {
+    set X = (X + 10)
+  } else
+    set X = (X + 20)
+  if (Count > 7) {
+    Temp_Pic$="%s" , @DD_PIC_RED$
+  } else
+    Temp_Pic$="%s" , @DD_PIC_GREEN$
+  if (Count < 12)
+    extern DrawPic Temp_Pic$ X Y
+  set Count = (Count + 1)
+}
+
+#switch 4005:8008
+set Count = 0
+while (Count < 7) {
+  if (D[$Count$] == 0) {
+    Temp_Pic$="%s" , @DD_PIC_1COUN1$
+  } else if (((D[$Count$] == 1) || (D[$Count$] == 2)) || (D[$Count$] == 4)) {
+    Temp_Pic$="%s" , @DD_PIC_2COUN2$
+  } else
+    Temp_Pic$="%s" , @DD_PIC_3COUN3$
+  set X = (64 + F[$Count$])
+  set Y = ((112 + G[$Count$]) + H[$Count$])
+  extern DrawPic Temp_Pic$ X Y
+  set Count = (Count + 1)
+}
+
+#switch 4005:8015
+extern DrawPic @DD_PIC_BORDER$ 0 0
+extern DrawPic @DD_PIC_BACKGRND$ 64 112
+set X = 64
+set Y = (112 - 1)
+extern DrawPic @DD_PIC_BUTTON$ X Y
+set X = (X + 480)
+extern DrawPic @DD_PIC_BUTTON$ X Y
+
+#switch 4005:8007
+set Count = 0
+while (Count < 7) {
+  set D[$Count$] = 0
+  set E[$Count$] = 0
+  set H[$Count$] = 0
+  set F[$Count$] = (50 + ((Count * 32) + 14))
+  set G[$Count$] = 164
+  if (Count > 3)
+    set F[$Count$] = (F[$Count$] + 160)
+  set Count = (Count + 1)
+}

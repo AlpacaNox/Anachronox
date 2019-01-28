@@ -1,0 +1,1258 @@
+#window 103:3
+startswitch {
+  set @NeedADelay = (func_gametime + 300)
+}
+
+thinkswitch {
+  if (func_gametime >= @NeedADelay)
+    closewindow 103:0003
+}
+
+finishswitch {
+  if (((PerComm_Party0_C1$ != "") && (PerComm_Party1_C1$ != "")) && (PerComm_Party2_C1$ != "")) {
+    extern operate_on_party 0
+    extern set_party_members 0 PerComm_Party0_C1$ PerComm_Party0_C2$ PerComm_Party0_C3$
+    extern move_party_to_point 0 -2795 -2781 2464
+    extern create_party 1 PerComm_Party1_C1$
+    extern move_party_to_point 1 -1651 -3547 2492
+    extern create_party 2 PerComm_Party2_C1$ PerComm_Party2_C2$ PerComm_Party2_C3$
+    extern move_party_to_point 2 3964 -3250 2040
+    gosub 103:0010
+  }
+}
+
+style "Null"
+flags passive, TRUE
+
+#window 103:10
+startswitch {
+  set @percomm_message_time = (func_gametime + 1000)
+}
+
+thinkswitch {
+  if (func_gametime >= @percomm_message_time)
+    closewindow 103:0010
+}
+
+finishswitch {
+  set timed_message = 99
+  timed_message$="Use SHIFT + TAB to PerComm Between Party Members" 
+  gosub 1000:1
+}
+
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 103:300
+title "%s", PlayerChar0$
+if ((func_charinparty[democratus] != 3) && (func_charinparty[paco] != 3))
+  body "We've got already got access."
+if (func_charinparty[democratus] == 3)
+  body "We already have access."
+if (func_charinparty[paco] == 3)
+  body "Already open."
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "good"
+xpos 30
+ypos 340
+width 580
+
+#window 103:2405
+startswitch {
+  set @currentEnteredDigit = 0
+  set @buttonPressed = 69
+  gosub 103:2410
+  gosub 103:2415
+}
+
+finishswitch {
+  goto 103:2420
+}
+
+style "NULL"
+font "good"
+flags passive2d, TRUE
+xpos 369
+ypos 17
+width 256
+background "basement/basesec_pad.tga" 
+if (n[1] != -1.000000)
+  image "basement/basesec_D_$n[1]$.pcx" 49, 36
+if (n[2] != -1.000000)
+  image "basement/basesec_D_$n[2]$.pcx" 81, 36
+if (n[3] != -1.000000)
+  image "basement/basesec_D_$n[3]$.pcx" 113, 36
+if (n[4] != -1.000000)
+  image "basement/basesec_D_$n[4]$.pcx" 145, 36
+if (n[5] != -1.000000)
+  image "basement/basesec_D_$n[5]$.pcx" 177, 36
+
+#window 103:3360
+title "%s", PlayerChar0$
+if ((func_charinparty[boots] == 3) || (func_charinparty[stiletto] == 3))
+  body "What a glorious drunk. Should we frisk him?"
+if (func_charinparty[grumpos] == 3)
+  body "Drunk as a skunk. Shall we root around his pockets?"
+if (func_charinparty[rho] == 3)
+  body "This one's the worse for liquor. Should we rummage through his pockets?"
+if (func_charinparty[democratus] == 3)
+  body "This gentleman appears intoxicated. Do we agree to conduct a search of his person?"
+if (func_charinparty[paco] == 3)
+  body "One drop too many. Search him?"
+talk player talk_a stay
+style "style_embrace"
+font "good"
+xpos 30
+ypos 340
+width 580
+choice "Yes." 103:3365
+choice "No." 0:0
+
+#window 103:3365
+title "%s", PlayerChar0$
+if (func_charinparty[democratus] != 3)
+  body "There's a scrap of paper in his pocket."
+if (func_charinparty[democratus] == 3)
+  body "There is a piece of folded paper in his pocket."
+talk player talk_a stay
+startswitch {
+  set @BasementCodeNumbersKnown = 1
+}
+
+style "style_embrace"
+font "good"
+xpos 30
+ypos 340
+width 580
+nextwindow 103:3366
+
+#window 103:3366
+title "%s", PlayerChar0$
+body "It says: \"TODAY'S FACE and 1 2 3 6 8 11 13 22\"."
+talk player talk_a stay
+startswitch {
+  extern is_quest_done "The Drunken Guard" @quest
+  if (@quest == 0)
+    extern add_quest "The Drunken Guard"
+}
+
+style "style_embrace"
+font "good"
+xpos 30
+ypos 340
+width 580
+
+#window 103:3405
+startswitch {
+  set @ThePainIsInProcess = 1
+  extern get_party_order @1stchar$ @2ndchar$ @3rdchar$
+  set @PainGooHurtTime = func_gametime
+}
+
+thinkswitch {
+  if (func_gametime > (@PainGooHurtTime + 1500)) {
+    if (@2ndchar$ != "")
+      set @CharacterToPain = func_drand[1,2]
+    if (@3rdchar$ != "")
+      set @CharacterToPain = func_drand[1,3]
+    if ((@2ndchar$ == "") && (@3rdchar$ == ""))
+      set @CharacterToPain = 1
+    if (@CharacterToPain == 1)
+      unset @CharacterToPain$=@1stchar$ 
+    if (@CharacterToPain == 2)
+      unset @CharacterToPain$=@2ndchar$ 
+    if (@CharacterToPain == 3)
+      unset @CharacterToPain$=@3rdchar$ 
+    extern GetPlayerCurrentHP @CharacterToPain$ @hpleft
+    if (@hpleft < 11)
+      extern SetPlayerCurrentHP @CharacterToPain$ 1
+    if (@hpleft >= 11) {
+      set @hpleft = (@hpleft - 10)
+      extern SetPlayerCurrentHP @CharacterToPain$ @hpleft
+    }
+    gosub 103:3407
+    set @PainGooHurtTime = func_gametime
+  }
+}
+
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 103:3407
+startswitch {
+  if (@CharacterToPain$ == "Boots")
+    extern playsound battle/character_boots_com/character_boots_com_pain.wav
+  if (@CharacterToPain$ == "Grumpos")
+    extern playsound battle/character_grumpos_com/character_grumpos_com_pain.wav
+  if (@CharacterToPain$ == "Rho")
+    extern playsound battle/character_rho_com/character_rho_com_pain.wav
+  if (@CharacterToPain$ == "Democratus")
+    extern playsound battle/character_democratus_com/dem_pain.wav
+  if (@CharacterToPain$ == "Stiletto")
+    extern playsound battle/character_rho_com/character_rho_com_pain.wav
+  if (@CharacterToPain$ == "Paco")
+    extern playsound battle/character_paco_com/character_paco_pain.wav
+  extern FlashScreenf 1 0 0 0 0
+  extern FlashScreenf 1 0 0 0.3 0.15
+  set @PainFlashTime = func_gametime
+}
+
+thinkswitch {
+  if (func_gametime > (@PainFlashTime + 150)) {
+    extern FlashScreenf 1 0 0 0.3 0
+    extern FlashScreenf 1 0 0 0 .15
+    closewindow 103:3407
+  }
+}
+
+style "null"
+flags passive, TRUE
+
+#window 103:3500
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+if (func_charinparty[pal] == 3)
+  title "PAL-18"
+if (func_charinparty[rho] == 3)
+  title "Rho Bowman"
+if (func_charinparty[democratus] == 3)
+  title "Democratus"
+if (func_charinparty[stiletto] == 3)
+  title "Stiletto"
+if (func_charinparty[paco] == 3)
+  title "Paco \"El Puño\" Estrella"
+if (func_charinparty[boots] == 3)
+  body "These wine kegs are packed with some freaky liquid."
+if (func_charinparty[grumpos] == 3)
+  body "These wine casks are bulging with some curious liquid."
+if (func_charinparty[pal] == 3)
+  body "These wine butts are oozing some fishy stuff."
+if (func_charinparty[rho] == 3)
+  body "These wine casks are leaking some puzzling fluid."
+if (func_charinparty[democratus] == 3)
+  body "These wine tubs are replete with an abnormal fluid."
+if (func_charinparty[stiletto] == 3)
+  body "These wine barrels are bursting with some freaky liquid."
+if (func_charinparty[paco] == 3)
+  body "The wine barrel has strange liquid."
+style "style_embrace"
+font "good"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 103:3501
+
+#window 103:3501
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+if (func_charinparty[pal] == 3)
+  title "PAL-18"
+if (func_charinparty[rho] == 3)
+  title "Rho Bowman"
+if (func_charinparty[democratus] == 3)
+  title "Democratus"
+if (func_charinparty[stiletto] == 3)
+  title "Stiletto"
+if (func_charinparty[paco] == 3)
+  title "Paco \"El Puño\" Estrella"
+if (func_charinparty[boots] == 3)
+  body "It ain't wine."
+if (func_charinparty[grumpos] == 3)
+  body "It ain't wine."
+if (func_charinparty[pal] == 3)
+  body "That ain't wine!"
+if (func_charinparty[rho] == 3)
+  body "It's not wine."
+if (func_charinparty[democratus] == 3)
+  body "Most assuredly not wine."
+if (func_charinparty[stiletto] == 3)
+  body "It ain't wine."
+if (func_charinparty[paco] == 3)
+  body "Not wine."
+style "style_embrace"
+font "good"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 103:3551
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+if (func_charinparty[pal] == 3)
+  title "PAL-18"
+if (func_charinparty[rho] == 3)
+  title "Rho Bowman"
+if (func_charinparty[democratus] == 3)
+  title "Democratus"
+if (func_charinparty[stiletto] == 3)
+  title "Stiletto"
+if (func_charinparty[paco] == 3)
+  title "Paco \"El Puño\" Estrella"
+if (func_charinparty[boots] == 3)
+  body "We better cool our heels in case any of the others need us."
+if (func_charinparty[grumpos] == 3)
+  body "Let's bide our time for a spell in case any of the others need us."
+if (func_charinparty[pal] == 3)
+  body "We better cool our jets in case any of the others need us."
+if (func_charinparty[rho] == 3)
+  body "Let's wait here for a bit in case any of the others need us."
+if (func_charinparty[democratus] == 3)
+  body "Let us wait here in case any of the others need us."
+if (func_charinparty[stiletto] == 3)
+  body "Let's kick back for a bit in case any of the others need us."
+if (func_charinparty[paco] == 3)
+  body "Wait. The others may need us."
+style "style_embrace"
+font "good"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 103:3916
+title "%s", PlayerChar0$
+body "I'd better wait 'till Mister Boots gets up there, in case he needs me to work the bridge again!"
+cam left restore zip
+talk player talk_a stay
+style "style_embrace"
+font "good"
+xpos 30
+ypos 30
+width 580
+
+#window 103:3917
+title "%s", PlayerChar0$
+body "Bet my butt pie this lift goes to the main security area."
+cam left to(playerchar0) restore zip
+talk player talk_a stay
+style "style_embrace"
+font "good"
+xpos 30
+ypos 30
+width 580
+nextwindow 103:3919
+
+#window 103:3919
+title "%s", PlayerChar0$
+body "Ah better zoom up there and help Mister Boots and Miss Stiletto."
+cam left to(playerchar0) restore zip
+talk player talk_a stay
+finishswitch {
+  target pal_lift
+}
+
+style "style_embrace"
+font "good"
+xpos 30
+ypos 30
+width 580
+nextwindow 103:3930
+
+#window 103:3980
+title "PAL-18"
+body "I ain't movin' the bridge if someone's uh-standin' on it!"
+startswitch {
+  extern AI_GrabEntity PlayerChar0 bootshandle
+  extern ANIM_PlayAnim bootshandle talk_a 0 1 0
+}
+
+finishswitch {
+  extern AI_ReleaseEntity bootshandle
+}
+
+style "style_embrace"
+font "good"
+xpos 30
+ypos 30
+width 580
+
+#window 103:4015
+title "%s", PlayerChar0$
+body "It says, \"Coho Torque Beef Plaza. The choice is clear.\""
+startswitch {
+  extern is_quest_done "The Ad Paper" @quest
+  if (@quest == 0)
+    extern add_quest "The Ad Paper"
+}
+
+style "style_embrace"
+font "good"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 103:5003
+title "%s", PlayerChar0$
+if (func_charinparty[stiletto] == 3)
+  body "This leads to Detta’s Fortress. Let’s climb the stairs and wait for the rest of the party to catch up."
+if (func_charinparty[grumpos] == 3)
+  body "This must lead to Detta’s Fortress. Why don’t we climb the stairs and wait for the rest of those bozos to catch up to us."
+if (func_charinparty[rho] == 3)
+  body "This leads to Detta’s Fortress. Let’s climb the stairs and wait for the rest of the party to catch up."
+if (func_charinparty[democratus] == 3)
+  body "We believe these stairs lead to Detta’s Fortress. Let us ascend and wait for the rest of the company to catch up to us."
+if (func_charinparty[paco] == 3)
+  body "Detta’s Fortress ahead. Climb the stairs and wait for the others."
+cam left to(playerchar0) restore zip
+talk player talk_a stay
+style "style_embrace"
+font "good"
+xpos 30
+ypos 30
+width 580
+nextwindow 103:5006
+
+#window 103:5006
+title "%s", PlayerChar0$
+if (func_charinparty[stiletto] == 3)
+  body "Make it happen, guys."
+if (func_charinparty[grumpos] == 3)
+  body "C’mon, let’s not shilly-shally."
+if (func_charinparty[rho] == 3)
+  body "Make sure to spit out your gum."
+if (func_charinparty[democratus] == 3)
+  body "Our administrative staff is now at full alert."
+if (func_charinparty[paco] == 3)
+  body "Show your strength."
+cam left to(playerchar0) restore zip
+talk player talk_a stay
+finishswitch {
+  set PerComm_Party2 = 0
+  if (((PerComm_Party0 == 0) && (PerComm_Party1 == 0)) && (PerComm_Party2 == 0))
+    goto 103:5040
+  goto 25:8000
+}
+
+style "style_embrace"
+font "good"
+xpos 30
+ypos 30
+width 580
+
+#window 103:5015
+title "%s", PlayerChar0$
+if (func_charinparty[boots] == 3)
+  body "We’re closing in on the main event, people. These stairs lead to Detta’s main compound."
+if (func_charinparty[grumpos] == 3)
+  body "Pull up your socks, kids. These stairs lead to Detta’s main compound."
+if (func_charinparty[rho] == 3)
+  body "These stairs lead to Detta’s main compound. Don’t let your guard down for a second."
+if (func_charinparty[democratus] == 3)
+  body "We believe these stairs lead to Detta’s main compound. We’re putting our administrative staff on full alert."
+if (func_charinparty[paco] == 3)
+  body "Main compound ahead."
+cam left to(playerchar0) restore zip
+talk player talk_a stay
+finishswitch {
+  set PerComm_Party0 = 0
+  if (((PerComm_Party0 == 0) && (PerComm_Party1 == 0)) && (PerComm_Party2 == 0))
+    goto 103:5040
+  goto 25:8000
+}
+
+style "style_embrace"
+font "good"
+xpos 30
+ypos 30
+width 580
+
+#window 103:5025
+title "%s", PlayerChar0$
+body "Locked."
+talk player talk_a stay
+style "style_embrace"
+font "good"
+xpos 30
+ypos 30
+width 580
+
+#window 103:5035
+title "%s", PlayerChar0$
+body "Locked."
+talk player talk_a stay
+style "style_embrace"
+font "good"
+xpos 30
+ypos 30
+width 580
+
+#window 103:5055
+title "Stiletto"
+body "The bridges are already extended."
+talk player talk_a stay
+style "style_embrace"
+font "good"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#switch 103:1
+set @CURRENT_BANK = 103
+extern playlevelmusic "mp3/Bricks/Bricks_normalug_2_0.mp3"
+BattleMusicOverride$="mp3/bricks/Bricks_combat_3_0.mp3" 
+set PerComm_Party0 = 1
+set PerComm_Party1 = 1
+set PerComm_Party2 = 1
+extern applylevelconfiguration fortress
+extern add_quest "Find A Way In"
+gosub 103:0003
+goto 0:0
+
+#switch 103:100
+if (@basement_term1_hacked == 1)
+  goto 103:3800
+WS_STAND$="basement_palnode1" 
+set ws_bank = 103
+set ws_entry = 101
+extern assign E[00] -1 50 50 50 50 51 -1
+extern assign E[07] -1 40 40 40 40 40 -1
+extern assign E[14] -1 40 40 30 60 40 -1
+extern assign E[21] -1 40 40 55 40 40 -1
+extern assign E[28] -1 55 30 40 40 40 -1
+extern assign E[35] -1 40 40 40 40 40 -1
+extern assign E[42] -1 45 45 46 45 45 -1
+set ws_counter_time = 40
+gosub 4003:1
+goto 0:0
+
+#switch 103:101
+set @basement_term1_hacked = 1
+goto 103:3800
+
+#switch 103:110
+if (@basement_term2_hacked == 1)
+  goto 103:3850
+WS_STAND$="basement_palnode2" 
+set ws_bank = 103
+set ws_entry = 111
+extern assign E[00] -1 50 50 50 51 50 -1
+extern assign E[07] -1 60 40 55 40 40 -1
+extern assign E[14] -1 30 40 30 40 55 -1
+extern assign E[21] -1 40 40 40 40 40 -1
+extern assign E[28] -1 40 30 40 60 40 -1
+extern assign E[35] -1 40 40 40 40 40 -1
+extern assign E[42] -1 45 46 45 45 45 -1
+set ws_counter_time = 40
+gosub 4003:1
+goto 0:0
+
+#switch 103:111
+set @basement_term2_hacked = 1
+goto 103:3850
+goto 0:0
+
+#switch 103:200
+if (@rage_console1_smashed == 1)
+  goto 0:0
+if (anox_worldskill_active == 0) {
+  set L[0] = 1
+  set W[0] = 22
+  goto 104:3800
+}
+WS_STAND$="paco1rage" 
+set ws_bank = 103
+set ws_entry = 201
+gosub 4007:1
+goto 0:0
+
+#switch 103:201
+set @rage_console1_smashed = 1
+if (@open_bridge1 == 0)
+  set @open_bridge1 = 1
+if (@open_bridge2 == 0)
+  set @open_bridge2 = 1
+if (@open_bridge3 == 0)
+  set @open_bridge3 = 1
+if (@open_bridge5 == 0)
+  set @open_bridge5 = 1
+if (@open_bridge6 == 0)
+  set @open_bridge6 = 1
+gosub 103:400                           
+extern AI_GetEdictNumber  paco_comp1_ob1 @ob1_1
+extern AI_GetEdictNumber  paco_comp1_ob2 @ob1_2
+extern AI_GetEdictNumber  paco_comp1_ob3 @ob1_3
+extern npsimple @ob1_1 basement/spark_burst
+extern npsimple @ob1_2 basement/panel_smoke
+extern npsimple @ob1_3 basement/spark_burst
+extern playsound cine/bricks_misc/arcstop.wav
+goto 0:0
+
+#switch 103:210
+if (@rage_console2_smashed == 1)
+  goto 0:0
+if (anox_worldskill_active == 0) {
+  set L[0] = 1
+  set W[0] = 22
+  goto 104:3800
+}
+WS_STAND$="paco2rage" 
+set ws_bank = 103
+set ws_entry = 211
+gosub 4007:1
+goto 0:0
+
+#switch 103:211
+set @rage_console1_smashed2 = 1
+if (@open_celldoor1 == 0)
+  set @open_celldoor1 = 1
+if (@open_celldoor2 == 0)
+  set @open_celldoor2 = 1
+if (@open_celldoor3 == 0)
+  set @open_celldoor3 = 1
+if (@open_celldoor5 == 0)
+  set @open_celldoor5 = 1
+if (@open_celldoor6 == 0)
+  set @open_celldoor6 = 1
+gosub 103:400                           
+extern AI_GetEdictNumber  paco_comp2_ob1 @ob2_1
+extern AI_GetEdictNumber  paco_comp2_ob2 @ob2_2
+extern AI_GetEdictNumber  paco_comp2_ob3 @ob2_3
+extern npsimple @ob2_1 basement/panel_smoke
+extern npsimple @ob2_2 basement/spark_burst
+extern npsimple @ob2_3 basement/spark_burst
+extern playsound cine/bricks_misc/arcstop.wav
+goto 0:0
+
+#switch 103:311
+extern assign R[1] 6 7 7 6 -1
+if (@open_bridge1 == 0)
+  set @open_bridge1 = 1
+if (@open_celldoor1 == 0)
+  set @open_celldoor1 = 1
+goto 103:2405
+
+#switch 103:301
+if ((@open_bridge1 == 2) && (@open_celldoor1 == 2))
+  goto 103:300
+WS_STAND$="rho_bridge1" 
+set ws_bank = 103
+set ws_entry = 400
+if (@open_bridge1 == 0)
+  set @open_bridge1 = 1
+if (@open_celldoor1 == 0)
+  set @open_celldoor1 = 1
+gosub 4004:1
+goto 0:0
+
+#switch 103:312
+extern assign R[1] 4 2 1 2 -1
+if (@open_bridge2 == 0)
+  set @open_bridge2 = 1
+if (@open_celldoor2 == 0)
+  set @open_celldoor2 = 1
+goto 103:2405
+
+#switch 103:302
+if ((@open_bridge2 == 2) && (@open_celldoor2 == 2))
+  goto 103:300
+WS_STAND$="rho_bridge2" 
+set ws_bank = 103
+set ws_entry = 400
+if (@open_bridge2 == 0)
+  set @open_bridge2 = 1
+if (@open_celldoor2 == 0)
+  set @open_celldoor2 = 1
+gosub 4004:1
+goto 0:0
+
+#switch 103:313
+extern assign R[1] 6 7 7 6 -1
+if (@open_bridge3 == 0)
+  set @open_bridge3 = 1
+if (@open_celldoor3 == 0)
+  set @open_celldoor3 = 1
+goto 103:2405
+
+#switch 103:303
+if ((@open_bridge3 == 2) && (@open_celldoor3 == 2))
+  goto 103:300
+WS_STAND$="rho_bridge3" 
+set ws_bank = 103
+set ws_entry = 400
+if (@open_bridge3 == 0)
+  set @open_bridge3 = 1
+if (@open_celldoor3 == 0)
+  set @open_celldoor3 = 1
+gosub 4004:1
+goto 0:0
+
+#switch 103:315
+extern assign R[1] 4 2 1 2 -1
+if (@open_bridge5 == 0)
+  set @open_bridge5 = 1
+if (@open_celldoor5 == 0)
+  set @open_celldoor5 = 1
+goto 103:2405
+
+#switch 103:305
+if ((@open_bridge5 == 2) && (@open_celldoor5 == 2))
+  goto 103:300
+WS_STAND$="rho_bridge6" 
+set ws_bank = 103
+set ws_entry = 400
+if (@open_bridge5 == 0)
+  set @open_bridge5 = 1
+if (@open_celldoor5 == 0)
+  set @open_celldoor5 = 1
+gosub 4004:1
+goto 0:0
+
+#switch 103:314
+extern assign R[1] 6 7 7 6 -1
+if (@open_bridge6 == 0)
+  set @open_bridge6 = 1
+if (@open_celldoor6 == 0)
+  set @open_celldoor6 = 1
+goto 103:2405
+
+#switch 103:304
+if ((@open_bridge6 == 2) && (@open_celldoor6 == 2))
+  goto 103:300
+WS_STAND$="rho_bridge5" 
+set ws_bank = 103
+set ws_entry = 400
+if (@open_bridge6 == 0)
+  set @open_bridge6 = 1
+if (@open_celldoor6 == 0)
+  set @open_celldoor6 = 1
+gosub 4004:1
+goto 0:0
+
+#switch 103:400
+if ((@open_celldoor1 > 0) && (@open_celldoor1 < 2)) {
+  target celldoor1
+  set @open_celldoor1 = 2
+}
+if ((@open_celldoor2 > 0) && (@open_celldoor2 < 2)) {
+  target celldoor2
+  set @open_celldoor2 = 2
+}
+if ((@open_celldoor3 > 0) && (@open_celldoor3 < 2)) {
+  target celldoor3
+  set @open_celldoor3 = 2
+}
+if ((@open_celldoor5 > 0) && (@open_celldoor5 < 2)) {
+  target celldoor5
+  set @open_celldoor5 = 2
+}
+if ((@open_celldoor6 > 0) && (@open_celldoor6 < 2)) {
+  target celldoor6
+  set @open_celldoor6 = 2
+}
+if ((@open_bridge1 > 0) && (@open_bridge1 < 2)) {
+  target bridge1
+  target bridgeaccess1
+  set @open_bridge1 = 2
+}
+if ((@open_bridge2 > 0) && (@open_bridge2 < 2)) {
+  target bridge2
+  target bridgeaccess2
+  set @open_bridge2 = 2
+}
+if ((@open_bridge3 > 0) && (@open_bridge3 < 2)) {
+  target bridge3
+  target bridgeaccess3
+  set @open_bridge3 = 2
+}
+if ((@open_bridge5 > 0) && (@open_bridge5 < 2)) {
+  target bridge5
+  target bridgeaccess5
+  set @open_bridge5 = 2
+}
+if ((@open_bridge6 > 0) && (@open_bridge6 < 2)) {
+  target bridge6
+  target bridgeaccess6
+  set @open_bridge6 = 2
+}
+if (((((@open_celldoor1 == 2) && (@open_celldoor2 == 2)) && (@open_celldoor3 == 2)) && (@open_celldoor5 == 2)) && (@open_celldoor6 == 2))
+  set @basement_cells_hacked = 1
+if (((((@open_bridge1 == 2) && (@open_bridge2 == 2)) && (@open_bridge3 == 2)) && (@open_bridge5 == 2)) && (@open_bridge6 == 2))
+  set @basement_bridges_hacked = 1
+
+#switch 103:2410
+set n[1] = -1.000000
+set n[2] = -1.000000
+set n[3] = -1.000000
+set n[4] = -1.000000
+set n[5] = -1.000000
+set t[1] = -1.000000
+set t[2] = -1.000000
+set t[3] = -1.000000
+set t[4] = -1.000000
+set t[5] = -1.000000
+goto 0:0
+
+#switch 103:2415
+extern CreateAPE2DControl push button1 484 128 width=32 height=32 normal=/gameflow/basement/basesec_K_1.tga gamevar=@buttonPressed returnvalue=1 sequence=103:2425
+extern CreateAPE2DControl push button2 517 128 width=32 height=32 normal=/gameflow/basement/basesec_K_2.tga gamevar=@buttonPressed returnvalue=2 sequence=103:2425
+extern CreateAPE2DControl push button3 550 128 width=32 height=32 normal=/gameflow/basement/basesec_K_3.tga gamevar=@buttonPressed returnvalue=3 sequence=103:2425
+extern CreateAPE2DControl push button4 484 161 width=32 height=32 normal=/gameflow/basement/basesec_K_4.tga gamevar=@buttonPressed returnvalue=4 sequence=103:2425
+extern CreateAPE2DControl push button5 517 161 width=32 height=32 normal=/gameflow/basement/basesec_K_5.tga gamevar=@buttonPressed returnvalue=5 sequence=103:2425
+extern CreateAPE2DControl push button6 550 161 width=32 height=32 normal=/gameflow/basement/basesec_K_6.tga gamevar=@buttonPressed returnvalue=6 sequence=103:2425
+extern CreateAPE2DControl push button7 484 194 width=32 height=32 normal=/gameflow/basement/basesec_K_7.tga gamevar=@buttonPressed returnvalue=7 sequence=103:2425
+extern CreateAPE2DControl push button8 517 194 width=32 height=32 normal=/gameflow/basement/basesec_K_8.tga gamevar=@buttonPressed returnvalue=8 sequence=103:2425
+extern CreateAPE2DControl push button9 550 194 width=32 height=32 normal=/gameflow/basement/basesec_K_9.tga gamevar=@buttonPressed returnvalue=9 sequence=103:2425
+extern CreateAPE2DControl push button11 484 227 width=32 height=32 normal=/gameflow/basement/basesec_K_b.tga gamevar=@buttonPressed returnvalue=11 sequence=103:2425
+extern CreateAPE2DControl push button10 517 227 width=32 height=32 normal=/gameflow/basement/basesec_K_0.tga gamevar=@buttonPressed returnvalue=0 sequence=103:2425
+extern CreateAPE2DControl push button12 550 227 width=32 height=32 normal=/gameflow/basement/basesec_K_r.tga gamevar=@buttonPressed returnvalue=12 sequence=103:2425
+extern CreateAPE2DControl push buttonx 384 244 width=16 height=16 normal=/gameflow/basement/basesec_X.tga gamevar=@buttonXXX returnvalue=69 sequence=103:2430
+goto 0:0
+
+#switch 103:2420
+extern RemoveAPE2DControl button1
+extern RemoveAPE2DControl button2
+extern RemoveAPE2DControl button3
+extern RemoveAPE2DControl button4
+extern RemoveAPE2DControl button5
+extern RemoveAPE2DControl button6
+extern RemoveAPE2DControl button7
+extern RemoveAPE2DControl button8
+extern RemoveAPE2DControl button9
+extern RemoveAPE2DControl button10
+extern RemoveAPE2DControl button11
+extern RemoveAPE2DControl button12
+extern RemoveAPE2DControl buttonx
+goto 0:0
+
+#switch 103:2425
+if (@buttonPressed < 10) {
+  set @currentEnteredDigit = (@currentEnteredDigit + 1)
+  if (@currentEnteredDigit > 5) {
+    set @currentEnteredDigit = 5
+    goto 0:0
+  }
+  set t[$@currentEnteredDigit$] = @buttonPressed
+  set n[1] = n[2]
+  set n[2] = n[3]
+  set n[3] = n[4]
+  set n[4] = n[5]
+  set n[5] = @buttonPressed
+  extern playsound "ui/gen/button5.wav"
+}
+if (@buttonPressed == 11) {
+  if (@currentEnteredDigit == 0)
+    goto 0:0
+  set t[$@currentEnteredDigit$] = -1.000000
+  set n[5] = n[4]
+  set n[4] = n[3]
+  set n[3] = n[2]
+  set n[2] = n[1]
+  set n[1] = -1.000000
+  set @currentEnteredDigit = (@currentEnteredDigit - 1)
+  extern playsound "ui/gen/button5.wav"
+}
+if (@buttonPressed == 12)
+  if (((((t[1] == R[1]) && (t[2] == R[2])) && (t[3] == R[3])) && (t[4] == R[4])) && (t[5] == R[5])) {
+    extern playsound "ui/gen/ui_gen_success.wav"
+    closewindow 103:2405
+    goto 103:400
+  } else {
+    set n[1] = -1.000000
+    set n[2] = -1.000000
+    set n[3] = -1.000000
+    set n[4] = -1.000000
+    set n[5] = -1.000000
+    set t[1] = -1.000000
+    set t[2] = -1.000000
+    set t[3] = -1.000000
+    set t[4] = -1.000000
+    set t[5] = -1.000000
+    set @currentEnteredDigit = 0
+    extern playsound ui/gen/ui_gen_failure.wav
+  }
+
+#switch 103:2430
+extern playsound "ui/gen/ui_gen_backout.wav"
+if (@open_celldoor1 == 1)
+  set @open_celldoor1 = 0
+if (@open_celldoor2 == 1)
+  set @open_celldoor2 = 0
+if (@open_celldoor3 == 1)
+  set @open_celldoor3 = 0
+if (@open_celldoor5 == 1)
+  set @open_celldoor5 = 0
+if (@open_celldoor6 == 1)
+  set @open_celldoor6 = 0
+if (@open_bridge1 == 1)
+  set @open_bridge1 = 0
+if (@open_bridge2 == 1)
+  set @open_bridge2 = 0
+if (@open_bridge3 == 1)
+  set @open_bridge3 = 0
+if (@open_bridge5 == 1)
+  set @open_bridge5 = 0
+if (@open_bridge6 == 1)
+  set @open_bridge6 = 0
+closewindow 103:2405
+
+#switch 103:600
+set keynote_answer = 2556
+set keynote_type = 1
+keynote$="/gameflow/fortress/keynote1.txt" 
+gosub 1:10
+
+#switch 103:620
+set keynote_answer = 6135
+set keynote_type = 1
+keynote$="/gameflow/fortress/keynote2.txt" 
+gosub 1:10
+
+#switch 103:3000
+extern is_quest_done "Decipher The Codes" @quest
+if (@quest == 0)
+  extern add_quest "Decipher The Codes"
+set W[0] = 10
+set L[0] = 1
+goto 104:3800
+
+#switch 103:3100
+extern is_quest_done "Decipher The Codes" @quest
+if (@quest == 0)
+  extern add_quest "Decipher The Codes"
+if (@AllYourBase1 == 0)
+  set @AllYourBase1 = 2
+set W[0] = 4
+set L[0] = 1
+goto 104:3800
+
+#switch 103:3200
+extern is_quest_done "Decipher The Codes" @quest
+if (@quest == 0)
+  extern add_quest "Decipher The Codes"
+if (@AllYourBase2 == 0)
+  set @AllYourBase2 = 2
+set W[0] = 6
+set L[0] = 1
+goto 104:3800
+
+#switch 103:3300
+extern is_quest_done "Decipher The Codes" @quest
+if (@quest == 0)
+  extern add_quest "Decipher The Codes"
+if (@AllYourBase3 == 0)
+  set @AllYourBase3 = 2
+set W[0] = 8
+set L[0] = 1
+goto 104:3800
+
+#switch 103:3350
+set keynote_answer = 2556
+set keynote_type = 1
+keynote$="/gameflow/fortress/keynote3.txt" 
+gosub 1:10
+
+#switch 103:3355
+set keynote_answer = 6135
+set keynote_type = 1
+keynote$="/gameflow/fortress/keynote3.txt" 
+gosub 1:10
+
+#switch 103:3356
+set ws_standoverride = 1
+ws_object$="t52" 
+set ws_bank = 103
+set ws_entry = 3357
+gosub 4105:1
+goto 0:0
+
+#switch 103:3357
+extern addnew_to_inventory "Firestorm Harmonic"
+set timed_message = 20
+got_object$="Firestorm Harmonic" 
+gosub 1000:1
+goto 0:0
+
+#switch 103:3400
+if (@ThePainIsInProcess != 1)
+  goto 103:3405
+
+#switch 103:3406
+if (@CharacterToPain$ == "Boots")
+  set @CharID = 5001
+if (@CharacterToPain$ == "Grumpos")
+  set @CharID = 5003
+if (@CharacterToPain$ == "Rho")
+  set @CharID = 5004
+if (@CharacterToPain$ == "Democratus")
+  set @CharID = 5005
+if (@CharacterToPain$ == "Stiletto")
+  set @CharID = 5006
+if (@CharacterToPain$ == "Paco")
+  set @CharID = 5007
+
+#switch 103:3450
+if (@ThePainIsInProcess == 1) {
+  set @ThePainIsInProcess = 0
+  closewindow 103:3405
+}
+
+#switch 103:3550
+if (Basement_PAL_Done == 1) {
+  target party2_fortdoor
+} else
+  goto 103:3551
+
+#switch 103:3600
+if (Basement_party1_pickdoor1 == 1) {
+  target party1_pickdoor1
+  goto 0:0
+}
+WS_STAND$="path_picklock1" 
+set ws_bank = 103
+set ws_entry = 3601
+set ws_difficulty = 4
+set ws_countertime = 40
+gosub 4001:1
+goto 0:0
+
+#switch 103:3601
+set Basement_party1_pickdoor1 = 1
+target party1_pickdoor1
+
+#switch 103:3650
+if (Basement_party1_throwlooniedoor1 == 1) {
+  target party1_throwlooniedoor1
+  goto 0:0
+}
+WS_STAND$="path_loonie1" 
+set ws_bank = 103
+set ws_entry = 3651
+set WS_difficulty = 1
+set WS_countertime = 10
+gosub 4006:1
+goto 0:0
+
+#switch 103:3651
+set Basement_party1_throwlooniedoor1 = 1
+target party1_throwlooniedoor1
+
+#switch 103:3700
+set @party1_on_bridge = 0
+
+#switch 103:3710
+set @party1_on_bridge = 1
+
+#switch 103:3800
+if (@basement_term1_hacked == 1) {
+  set M[2] = 1
+  set L[0] = 1
+  set M[18] = 16
+  set M[20] = 18
+  goto 104:3800
+} else {
+  set @CantLogin = 1
+  set M[2] = 1
+  set L[0] = 1
+  goto 104:3800
+}
+
+#switch 103:3850
+if (@basement_term2_hacked == 1) {
+  set M[2] = 1
+  set L[0] = 1
+  set M[16] = 14
+  goto 104:3800
+} else {
+  set @CantLogin = 1
+  set M[2] = 1
+  set L[0] = 1
+  goto 104:3800
+}
+
+#switch 103:3900
+target bigbridge1
+target bigbridge2
+goto 0:0
+
+#switch 103:3901
+if (@basement_garbagepit == 1) {
+  extern playsound maps/mac/mac_multipleneon_c.wav
+  goto 0:0
+}
+target swing
+set @basement_garbagepit = 1
+extern playsound maps/mac/mac_computerbeeps_h.wav
+goto 0:0
+
+#switch 103:3915
+if (@Basement_Fortress_Open == 0)
+  goto 0:0
+if ((@Basement_party0_at_dest == 0) && (@Pal_waiting_for_boots == 1))
+  goto 0:0
+set @Pal_waiting_for_boots = 1
+if (@Basement_party0_at_dest == 0)
+  goto 103:3916                                     
+if (@Basement_party1_at_dest == 1)
+  goto 0:0
+set @Basement_party1_at_dest = 1
+goto 103:3917
+
+#switch 103:3930
+set PerComm_Party1 = 0
+if (@Basement_party12_at_dest == 1)
+  goto 0:0
+set @Basement_party12_at_dest = 1
+if (((PerComm_Party0 == 0) && (PerComm_Party1 == 0)) && (PerComm_Party2 == 0))
+  goto 103:5040
+goto 25:8000
+goto 0:0
+
+#switch 103:3970
+if (@basement_garbage_hacked == 1) {
+  extern playsound maps/mac/mac_multipleneon_c.wav
+  goto 0:0
+}
+WS_STAND$="basement_palnode3971" 
+set ws_bank = 103
+set ws_entry = 3973
+extern assign E[00] -1 50 50 50 50 51 -1
+extern assign E[07] -1 40 40 40 40 40 -1
+extern assign E[14] -1 40 40 55 40 55 -1
+extern assign E[21] -1 40 40 40 40 40 -1
+extern assign E[28] -1 55 30 40 40 40 -1
+extern assign E[35] -1 40 40 40 40 40 -1
+extern assign E[42] -1 45 45 46 45 45 -1
+set ws_counter_time = 40
+gosub 4003:1
+goto 0:0
+
+#switch 103:3971
+if (@basement_garbage_hacked == 1)
+  goto 103:3972
+extern playsound maps/mac/mac_door_stop_04.wav
+goto 0:0
+
+#switch 103:3972
+target pal_comp_3970
+goto 0:0
+
+#switch 103:3973
+set @basement_garbage_hacked = 1
+goto 103:3972
+
+#switch 103:4000
+extern AI_GrabEntity PlayerChar0 playerchar0_handle
+extern AI_SeekAndFace playerchar0_handle beef_note beef_note
+extern AI_SetCompletionCallback playerchar0_handle 103:4005
+
+#switch 103:4005
+extern ANIM_PlayAnim playerchar0_handle grab_l 0 1 0
+extern ANIM_SetCallback playerchar0_handle 103:4010
+
+#switch 103:4010
+extern AI_ReleaseEntity playerchar0_handle
+extern AI_GrabEntity beef_note beef_note_handle
+extern AI_DestroyEntity beef_note_handle
+goto 103:4015
+
+#switch 103:5000
+if (@Basement_party2_at_dest == 1)
+  goto 0:0
+set @Basement_party2_at_dest = 1
+goto 103:5003
+
+#switch 103:5010
+if (@Basement_party0_at_dest == 1)
+  goto 0:0
+set @Basement_party0_at_dest = 1
+goto 103:5015
+
+#switch 103:5020
+if (@Basement_Fortress_Open == 0)
+  goto 103:5025
+target party1_fortdoor
+
+#switch 103:5030
+if (@Basement_Fortress_Open == 0)
+  goto 103:5035
+target party2_fortdoor
+
+#switch 103:5040
+console "map fortress1"
+
+#switch 103:5050
+if (@basement_bridges_hacked == 1)
+  goto 103:5055		
+WS_STAND$="loonie_path2" 
+set ws_bank = 103
+set ws_entry = 5052
+set WS_difficulty = 1
+set WS_countertime = 10
+gosub 4006:1
+goto 0:0
+
+#switch 103:5052
+if (@open_bridge1 == 0)
+  set @open_bridge1 = 1
+if (@open_bridge2 == 0)
+  set @open_bridge2 = 1
+if (@open_bridge3 == 0)
+  set @open_bridge3 = 1
+if (@open_bridge5 == 0)
+  set @open_bridge5 = 1
+if (@open_bridge6 == 0)
+  set @open_bridge6 = 1
+gosub 103:400                           
+
+#switch 103:3385
+console "battlestart 1"
+
+#switch 103:3388
+console "battlestart 2"
+
+#switch 103:3386
+console "battlestart 3"
+
+#switch 103:3387
+console "battlestart 4"
+
+#switch 103:3940
+console "battlestart 6"
+
+#switch 103:3941
+console "battlestart 7"
+
+#switch 103:3560
+console "battlestart 8"
+
+#switch 103:3561
+console "battlestart 9"
+
+#switch 103:3562
+console "battlestart 10"
+
+#switch 103:3563
+console "battlestart 11"
+
+#switch 103:3564
+console "battlestart 12"
+
+#switch 103:3565
+console "battlestart 13"
+
+#switch 103:3567
+console "battlestart 15"

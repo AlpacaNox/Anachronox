@@ -1,0 +1,536 @@
+#window 110:10
+startswitch {
+  set @LameAssCodeDelayTime = func_gametime
+  extern add_npc_to_party rho
+  console "savegame 0"
+}
+
+thinkswitch {
+  if (func_gametime >= (@LameAssCodeDelayTime + 300))
+    closewindow 110:0010
+}
+
+finishswitch {
+  set @LameAssCodeDelayTime = 0
+  gosub 110:0011
+}
+
+style "NULL"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 110:1001
+title "Boots"
+body "This what you're looking for?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1005
+title "Rowdy"
+body "There's one last thing we have to do before this story can draw to a close."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1010
+title "Rowdy"
+body "We must destroy the Keystone. Only residual cross-dimensional energy from the Echo Gate can melt it down."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1015
+title "Boots"
+body "Okay. So where's the Echo Gate?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1020
+title "Boots"
+body "I shoulda known. The fountain."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1025
+title "Rowdy"
+body "It's currently in its closed state."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1030
+title "Rowdy"
+body "We're going to make sure it stays that way."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1035
+title "Rowdy"
+body "Someone must take the Keystone, walk across the catwalk, and drop it into the fountain."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1040
+title "Boots"
+body "How about Grumpos. You found it. You throw it in."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1045
+title "Grumpos"
+body "I ain't touching that thing."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1050
+title "Dr. Rho Bowman"
+body "Coward."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1055
+title "Stiletto"
+body "Wuss."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1060
+title "Grumpos"
+body "Gimme that."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1065
+title "Rowdy"
+body "I've been waiting sixty years for this. Don't mess up."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1070
+title "Dr. Rho Bowman"
+body "And don't look down!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1075
+title "Dr. Rho Bowman"
+body "I get all his MysTech if he falls in."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1080
+title "Grumpos"
+body "Well, here goes."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1085
+title "Rowdy"
+body "No..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1090
+title "Boots"
+body "What are you doing-? "
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1095
+title "Grumpos"
+body "What must be done."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1110
+title "Fatima"
+body "You're crazy!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1112
+title "Fatima"
+body "I can't believe you're going after those things."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1122
+title "Fatima"
+body "I'm serious, Boots. I can't you let you do this."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1125
+title "Boots"
+body "Weren't you the one telling me to get off my butt just a few weeks ago?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1130
+title "Fatima"
+body "There's a difference between getting a job and throwing away your life."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1135
+title "Boots"
+body "I've never felt this strongly about anything. I have to do this."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1140
+title "Fatima"
+body "What makes you think you can save the universe when you couldn't even save me?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1145
+title "Boots"
+body "I'm sorry."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1150
+title "Boots"
+body "No... I'm sorry."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1165
+title "Rowdy"
+body "You all set?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1170
+title "Boots"
+body "Don't worry. I'll make things good."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1175
+title "Boots"
+body "Ready to hit the road, partner?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1180
+title "PAL-18"
+body "You betcha, Mister Boots."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1185
+title "PAL-18"
+body "Sly."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1190
+title "Dr. Rho Bowman"
+body "We all decided we wanna be there when you get yourself killed."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1195
+title "Boots"
+body "Then let's do it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1200
+title "Boots"
+body "Let's get some breakfast."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 110:1210
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "outro/boots_title.tga" 200, 336
+
+#window 110:1215
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "outro/pal_title.tga" 264, 336
+
+#window 110:1220
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "outro/rho_title.tga" 200, 336
+
+#window 110:1225
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "outro/democ_title.tga" 200, 336
+
+#window 110:1230
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "outro/stiletto_title.tga" 200, 336
+
+#window 110:1235
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "outro/paco_title.tga" 200, 336
+
+#window 110:1240
+style "NULL"
+font "_newsub"
+flags passive, TRUE
+flags noscroll, TRUE
+xpos 0
+ypos 0
+width 580
+image "outro/fatima_title.tga" 200, 336
+
+#switch 110:1
+set ape_no_autosave = 1
+extern clamppartyleveltominimum 34
+extern SetPlayerCurrentHP boots 9999
+extern SetPlayerCurrentHP pal 9999
+extern SetPlayerCurrentHP rho 9999
+extern SetPlayerCurrentHP democratus 9999
+extern SetPlayerCurrentHP stiletto 9999
+extern SetPlayerCurrentHP paco 9999
+extern SetPlayerCurrentNRG boots 999
+extern SetPlayerCurrentNRG pal 999
+extern SetPlayerCurrentNRG rho 999
+extern SetPlayerCurrentNRG democratus 999
+extern SetPlayerCurrentNRG stiletto 999
+extern SetPlayerCurrentNRG paco 999
+extern applylevelconfiguration cineend
+extern loopambient ambi_cineend_fountain.s
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor .7 1 1
+set CURRENT_BANK = 110
+set CURRENT_PLANET = 1
+if (PLAY_FINAL_BOSS)
+  goto 110:0010                                                          
+extern pauselevelmusic
+goto 0:0
+
+#switch 110:2
+BattleMusicOverride$="mp3/finalscene/finalbattle.mp3" 
+extern playscene cineend_scene94 0 110:3
+goto 0:0
+
+#switch 110:3
+extern BATTLE_EndIntro
+
+#switch 110:11
+console "battlestart"
+goto 0:0

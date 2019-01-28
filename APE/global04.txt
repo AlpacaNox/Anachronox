@@ -1,0 +1,1135 @@
+#switch 900:0
+MapLoadDestination$="Strange Area" 
+MapLoadInfo0$="No information." 
+MapLoadInfo1$="No information yet." 
+MapLoadInfo2$="No information, sorry." 
+MapLoadInfo3$="No information, really." 
+MapLoadInfo4$="Still no information." 
+MapLoadImage$="/gameflow/maptrans/mt_unknown.tga" 
+MapSaveDesc$="" 
+goto 0:0
+
+#switch 900:4
+MapLoadDestination$="So begins our tale..." 
+MapLoadInfo0$="A tale of sorrow" 
+MapLoadInfo1$="A tale of woe" 
+MapLoadInfo2$="Now that we've warned ya" 
+MapLoadInfo3$="Here we go..." 
+MapLoadInfo4$="A N A C H R O N O X" 
+MapLoadImage$="/gameflow/maptrans/mt_unknown.tga" 
+MapSaveDesc$="" 
+goto 0:0
+
+#switch 900:5
+MapLoadDestination$="Bricks:\nRowdy's Bar" 
+MapLoadInfo0$="Home of Sly Boots, Detective" 
+MapLoadInfo1$="Specials on Stouthouse Ale" 
+MapLoadInfo2$="Free blood-sopping Rags\nto first ten customers\neach morning" 
+MapLoadInfo3$="Time Minder available\nfor the safety conscious" 
+MapLoadInfo4$="Relatively clean dance floor" 
+MapLoadImage$="/gameflow/maptrans/mt_rowdys.tga" 
+MapSaveDesc$="Rowdy's" 
+goto 0:0
+
+#switch 900:6
+MapLoadDestination$="Bricks:\nZordo's Gun Palace" 
+MapLoadInfo0$="We've got guns!" 
+MapLoadInfo1$="Love them guns!" 
+MapLoadInfo2$="GUUUUUUUNS!  Guns!" 
+MapLoadInfo3$="Guns.  We have 'em." 
+MapLoadInfo4$="Your trusty local armory" 
+MapLoadImage$="/gameflow/maptrans/mt_zordos.tga" 
+MapSaveDesc$="Zordo's" 
+goto 0:0
+
+#switch 900:7
+MapLoadDestination$="Bricks:\nLower Alien\nSewage Tunnels" 
+MapLoadInfo0$=" " 
+MapLoadInfo1$=" " 
+MapLoadInfo2$=" " 
+MapLoadInfo3$=" " 
+MapLoadInfo4$=" " 
+MapSaveDesc$="Sewagic Rapids" 
+goto 0:0
+
+#switch 900:8
+MapLoadDestination$="Bricks:\nJunkyard Area" 
+MapLoadInfo0$="Visit Ghalla's Creature Repair\nand Ferriplasty" 
+MapLoadInfo1$="Visit Geraka-Ya's Fruitstand!" 
+MapLoadInfo2$="Enjoy the lovely smells\nwafting up the gravpath" 
+MapLoadInfo3$="The Friendly Neighbor\nof Anachronox Tours" 
+MapLoadInfo4$="Bugs are not poisonous" 
+MapLoadImage$="/gameflow/maptrans/mt_bricksc2.tga" 
+MapSaveDesc$="Junkyard Area" 
+goto 0:0
+
+#switch 900:9
+MapLoadDestination$="Bricks:\nFountain Spiral" 
+MapLoadInfo0$="Home to MysTech Museum\nand Zordo's Gun Palace" 
+MapLoadInfo1$="Come on down to Rowdy's\nand drink a spell" 
+MapLoadInfo2$="Access to Gravway 16" 
+MapLoadInfo3$="Whackmaster Jack's Temple of\nBeating: right by the spiral!" 
+MapLoadInfo4$="Visit the amazing energy fountain" 
+MapLoadImage$="/gameflow/maptrans/mt_bricksd.tga" 
+MapSaveDesc$="Fountain Area" 
+goto 0:0
+
+#switch 900:10
+MapLoadDestination$="Bricks:\nCasinox Area" 
+MapLoadInfo0$="Come on in and play the slots\nat Casinox!" 
+MapLoadInfo1$="A Good Stop on the Way\nto the Landing Platform" 
+MapLoadInfo2$="Just a short walk\nfrom the Fountain Spiral" 
+MapLoadInfo3$="A brief elevator ride\nup from Ghalla's" 
+MapLoadInfo4$="Visit amazing arcades\n(reserved for VIP members)" 
+MapLoadImage$="/gameflow/maptrans/mt_bricksc.tga" 
+MapSaveDesc$="Casinox Area" 
+goto 0:0
+
+#switch 900:11
+MapLoadDestination$="Bricks:\nPlatform Area" 
+MapLoadInfo0$="Your Private Gateway\nto Sender Station" 
+MapLoadInfo1$="Avoid the constant ticket fees\nat Anachronox Tours" 
+MapLoadInfo2$="Four levels\nfor your traveling pleasure" 
+MapLoadInfo3$="See the Sender Spikes in action" 
+MapLoadInfo4$="Nice place for a picnic" 
+MapLoadImage$="/gameflow/maptrans/mt_bricksb.tga" 
+MapSaveDesc$="Platform Area" 
+goto 0:0
+
+#switch 900:12
+MapLoadDestination$="Bricks: \nWhackmaster Jack's\nTemple of Beating" 
+MapLoadInfo0$="Where the Elite Meet to Beat" 
+MapLoadInfo1$="Learn to Beat like a Brebulan" 
+MapLoadInfo2$="Beginner's Boxing Ring" 
+MapLoadInfo3$="Learn specialized skills!" 
+MapLoadInfo4$="2-for-1 Beat lessons this week!" 
+MapLoadImage$="/gameflow/maptrans/mt_whacks.tga" 
+MapSaveDesc$="Whackmaster's" 
+goto 0:0
+
+#switch 900:13
+MapLoadDestination$="Bricks:\nJunkyard" 
+MapLoadInfo0$="Inhabited by strange ruffians" 
+MapLoadInfo1$="Beware of sharp rusty metal" 
+MapLoadInfo2$="Your place for toxic dumping" 
+MapLoadInfo3$="Do not feed the rats or insects" 
+MapLoadInfo4$="Just piles and piles of garbage!" 
+MapLoadImage$="/gameflow/maptrans/mt_hovel.tga" 
+MapSaveDesc$="Junkyard" 
+goto 0:0
+
+#switch 900:14
+MapLoadDestination$="Bricks:\nTenement Building 5" 
+MapLoadInfo0$="Deluxe prefab apartments" 
+MapLoadInfo1$="Penthouse roof-access\napartments available" 
+MapLoadInfo2$="Four floors of amazing apartments\nper section" 
+MapLoadInfo3$="Try Section C: it's a humdinger!" 
+MapLoadInfo4$="Free Nox Grumbleguard\nSecurity Provided" 
+MapLoadImage$="/gameflow/maptrans/mt_grumpos.tga" 
+MapSaveDesc$="Building 5" 
+goto 0:0
+
+#switch 900:15
+MapLoadDestination$="Bricks:\nFrank's Flophouse" 
+MapLoadInfo0$="Get a room. Sleep some.\nOr don't. I don't care." 
+MapLoadInfo1$="Cut rates\nfor the physically impaired" 
+MapLoadInfo2$="Over six rooms!" 
+MapLoadInfo3$="Low-cost sleeping arrangements\nfor the indigent" 
+MapLoadInfo4$="New safety rails installed--\nno more painful plummets!" 
+MapLoadImage$="/gameflow/maptrans/mt_franks.tga" 
+MapSaveDesc$="Frank's" 
+goto 0:0
+
+#switch 900:16
+MapLoadDestination$="Bricks:\nTenements Area" 
+MapLoadInfo0$="Sleep awhile\nat Frank's Flophouse" 
+MapLoadInfo1$="Get a place in Tenement Buildings\n1 through 9" 
+MapLoadInfo2$="Come to the Tenements Theater" 
+MapLoadInfo3$="Ride the giant, pretty-safe elevator" 
+MapLoadInfo4$="Watch your purse" 
+MapLoadImage$="/gameflow/maptrans/mt_tenements.tga" 
+MapSaveDesc$="Tenements" 
+goto 0:0
+
+#switch 900:17
+MapLoadDestination$="Bricks:\nMysTech Museum" 
+MapLoadInfo0$="Check out the amazing artifacts \nof an alien race!" 
+MapLoadInfo1$="Hear theories on the origin\nof MysTech" 
+MapLoadInfo2$="Buy your own MysTech art piece!" 
+MapLoadInfo3$="Check out our MysTech-themed\nbathrooms!" 
+MapLoadInfo4$="Ask the Curator anything--\nhe's freakin' smart!" 
+MapLoadImage$="/gameflow/maptrans/mt_mmuseum.tga" 
+MapSaveDesc$="MysTech Museum" 
+goto 0:0
+
+#switch 900:18
+MapLoadDestination$="Bricks:\nAnachronox Tours Area" 
+MapLoadInfo0$="Take the ramp up\nto Anachronox Tours" 
+MapLoadInfo1$="Watch the traffic on Gravway 10" 
+MapLoadInfo2$="Only 10 murders this month--\na new low!" 
+MapLoadInfo3$="Eat at Joe's" 
+MapLoadInfo4$="Ramps by RampMasters" 
+MapLoadImage$="/gameflow/maptrans/mt_tours.tga" 
+MapSaveDesc$="Tours Area" 
+goto 0:0
+
+#switch 900:19
+MapLoadDestination$="Bricks:\nAnachronox Tours" 
+MapLoadInfo0$="Take a shuttle\nto Sender Station" 
+MapLoadInfo1$="Free SenderNet access" 
+MapLoadInfo2$="Buy a ticket\nfrom our handy kiosk" 
+MapLoadInfo3$="Peruse galactic flight schedules\non our pretty blue monitors" 
+MapLoadInfo4$="Get out while the getting's good\nat Anachronox Tours" 
+MapLoadImage$="/gameflow/maptrans/mt_tours2.tga" 
+MapSaveDesc$="Tours" 
+goto 0:0
+
+#switch 900:20
+MapLoadDestination$="Bricks:\nUpper Alien Tunnels" 
+MapLoadInfo0$="Strange alien tunnels ahead" 
+MapLoadInfo1$="Weird alien tunnels ahead" 
+MapLoadInfo2$="Odd alien tunnels ahead" 
+MapLoadInfo3$="Bizarre alien tunnels ahead" 
+MapLoadInfo4$="Spooky alien tunnels ahead" 
+MapLoadImage$="/gameflow/maptrans/mt_mystech1.tga" 
+MapSaveDesc$="MysTech Tunnels" 
+goto 0:0
+
+#switch 900:22
+MapLoadDestination$="Bricks:\nCasinox" 
+MapLoadInfo0$="Our slot machines are looser\nthan a goose!" 
+MapLoadInfo1$="Enjoy the Jazz Stylings of\nBricelano and his Killer Keyboard" 
+MapLoadInfo2$="Play Flipp 'Em!" 
+MapLoadInfo3$="Everyone loves\nDead-Eye Slammer Jammer!" 
+MapLoadInfo4$="Visit amazing arcades\n(reserved for VIP members)" 
+MapSaveDesc$="Casinox" 
+goto 0:0
+
+#switch 900:21
+MapLoadDestination$="Bricks:\nLower Alien Tunnels" 
+MapLoadInfo0$="More strange alien tunnels ahead" 
+MapLoadInfo1$="More weird alien tunnels ahead" 
+MapLoadInfo2$="More odd alien tunnels ahead" 
+MapLoadInfo3$="More bizarre alien tunnels ahead" 
+MapLoadInfo4$="More spooky alien tunnels ahead" 
+MapLoadImage$="/gameflow/maptrans/mt_mystech2.tga" 
+MapSaveDesc$="Lower Tunnels" 
+goto 0:0
+
+#switch 900:23
+MapLoadDestination$="Bricks:\nUpper Alien\nSewage Tunnels" 
+MapLoadInfo0$=" " 
+MapLoadInfo1$=" " 
+MapLoadInfo2$=" " 
+MapLoadInfo3$=" " 
+MapLoadInfo4$=" " 
+MapSaveDesc$="Sewagic Rapids" 
+goto 0:0
+
+#switch 900:24
+MapLoadDestination$="North Anachronox:\nDetta's Fortress" 
+MapLoadInfo0$="Home of Vendelin Detta" 
+MapLoadInfo1$="High-ranking member of Cosa Astra" 
+MapLoadInfo2$="Hope you're packin'" 
+MapLoadInfo3$="Here comes trouble" 
+MapLoadInfo4$="Detta loves MysTech" 
+MapSaveDesc$="Fortress" 
+goto 0:0
+
+#switch 900:25
+MapLoadDestination$="North Anachronox:\nOneGate" 
+MapLoadInfo0$="Access to Anachronox Tours" 
+MapLoadInfo1$="Ritzy Stop of North Anachronox" 
+MapLoadInfo2$="See high-dollar homes,\nAnachronox style!" 
+MapLoadInfo3$="Check out OneGate's special\nImpervo-Gates" 
+MapLoadInfo4$="Enjoy the fine cobblestone made\nfor the discriminating foot" 
+MapLoadImage$="/gameflow/maptrans/mt_onegate.tga" 
+MapSaveDesc$="OneGate" 
+goto 0:0
+
+#switch 900:26
+MapLoadDestination$="Hephaestus:\nSluice Gate Control" 
+MapLoadInfo0$="Entering Dangerous Area" 
+MapLoadInfo1$="Please Wear Safety Equipment" 
+MapLoadInfo2$="Authorized Personnel Only" 
+MapLoadInfo3$="Think Smart     Think Safe" 
+MapLoadInfo4$="Warning:\nLava Core Under Pressure" 
+MapLoadImage$="/gameflow/maptrans/mt_hephlava.tga" 
+MapSaveDesc$="Sluice Gate" 
+goto 0:0
+
+#switch 900:38
+MapLoadDestination$=" " 
+MapLoadInfo0$=" " 
+MapLoadInfo1$=" " 
+MapLoadInfo2$=" " 
+MapLoadInfo3$=" " 
+MapLoadInfo4$=" " 
+goto 0:0
+
+#switch 900:39
+MapLoadDestination$=" " 
+MapLoadInfo0$=" " 
+MapLoadInfo1$=" " 
+MapLoadInfo2$=" " 
+MapLoadInfo3$=" " 
+MapLoadInfo4$=" " 
+goto 0:0
+
+#switch 900:40
+MapLoadDestination$="Sender Station:\nCommons Area" 
+MapLoadInfo0$="Popular with Familiar\nGalactic Businesses" 
+MapLoadInfo1$="Home to Sender Economics and Trading" 
+MapLoadInfo2$="Visit Vend-O-Mart\nfor your shopping needs" 
+MapLoadInfo3$="Sleep for less at Sendormitory" 
+MapLoadInfo4$="Have a drink\nat The Lounge of Commerce" 
+MapLoadImage$="/gameflow/maptrans/mt_scommons.tga" 
+MapSaveDesc$="Commons Area" 
+goto 0:0
+
+#switch 900:41
+MapLoadDestination$="Sender Station:\nVend-O-Mart" 
+MapLoadInfo0$="For the discerning shopper" 
+MapLoadInfo1$="Personal purchasing\nwithout annoying salespeople" 
+MapLoadInfo2$="New items weekly" 
+MapLoadInfo3$="Official Cordicom Products Dealer" 
+MapLoadInfo4$="Everything from Batteries\nto Health products" 
+MapLoadImage$="/gameflow/maptrans/mt_vendomart.tga" 
+MapSaveDesc$="Vend-O-Mart" 
+goto 0:0
+
+#switch 900:42
+MapLoadDestination$="Sender Station:\nPenthouse Suites" 
+MapLoadInfo0$="We do not exist" 
+MapLoadInfo1$="We do not exist" 
+MapLoadInfo2$="We do not exist" 
+MapLoadInfo3$="We do not exist" 
+MapLoadInfo4$="We do not exist" 
+MapSaveDesc$="Pooposity" 
+goto 0:0
+
+#switch 900:43
+MapLoadDestination$="Sender Station:\nThe Orange Navel" 
+MapLoadInfo0$="Meet sweetness at our bar" 
+MapLoadInfo1$="Rooms for the boom!" 
+MapLoadInfo2$="No floaters, please" 
+MapLoadInfo3$="Keep yourself protected" 
+MapLoadInfo4$="Our ladies, gents,\nand creatures will satisfy" 
+MapLoadImage$="/gameflow/maptrans/mt_orange.tga" 
+MapSaveDesc$="Orange Navel" 
+goto 0:0
+
+#switch 900:44
+MapLoadDestination$="Sender Station:\nTubby's Grease Shack" 
+MapLoadInfo0$="Booze up before you get down!" 
+MapLoadInfo1$="Try our new Angioplasty Special" 
+MapLoadInfo2$="Fried Lard: half off" 
+MapLoadInfo3$="All major brands\nof ingestible liquids" 
+MapLoadInfo4$="Shelves and shelves\nof super stuff" 
+MapLoadImage$="/gameflow/maptrans/mt_tubbys.tga" 
+MapSaveDesc$="Tubby's" 
+goto 0:0
+
+#switch 900:45
+MapLoadDestination$="Sender Station:\nSlutopia" 
+MapLoadInfo0$="Drop in a loonie\nand get an eyeful!" 
+MapLoadInfo1$="Our ladies pout\nand preen like Cordican Cobblecats!" 
+MapLoadInfo2$="Hot! Hot ladies! Hot lights!\nHot Pink!" 
+MapLoadInfo3$="Beauty is in the eye\nof the beholder...if he's got dough." 
+MapLoadInfo4$="Free breakfast" 
+MapLoadImage$="/gameflow/maptrans/mt_slutopia.tga" 
+MapSaveDesc$="Slutopia" 
+goto 0:0
+
+#switch 900:50
+MapLoadDestination$="Sender Station:\nSendormitory" 
+MapLoadInfo0$="Not a lot of room,\nbut a lot of rooms!" 
+MapLoadInfo1$="Sleep in efficient style" 
+MapLoadInfo2$="4800 new sleepslabs!" 
+MapLoadInfo3$="Personal alarm clocks" 
+MapLoadInfo4$="Circadian rhythm\nNaplights available" 
+MapLoadImage$="/gameflow/maptrans/mt_sendormitory.tga" 
+MapSaveDesc$="Sendormitory" 
+goto 0:0
+
+#switch 900:51
+MapLoadDestination$="Sender Station:\nThe Lounge of Commerce" 
+MapLoadInfo0$="Drink and talk business\nin a cozy atmosphere" 
+MapLoadInfo1$="Meet up with your friends" 
+MapLoadInfo2$="How about another drink?" 
+MapLoadInfo3$="Tell all your problems\nto Mulafey, the owner" 
+MapLoadInfo4$="Play a game of Zong" 
+MapLoadImage$="/gameflow/maptrans/mt_slounge.tga" 
+MapSaveDesc$="Lounge" 
+goto 0:0
+
+#switch 900:52
+MapLoadDestination$="Sender Station:\nTheoretical Science Museum" 
+MapLoadInfo0$="On display:\nInertial Dampening Exhibit" 
+MapLoadInfo1$="On display:\nPhotachyon Transceiver" 
+MapLoadInfo2$="On display:\nTachyon Decay Detector" 
+MapLoadInfo3$="On display:\nThe Tantasil Disaster" 
+MapLoadInfo4$="Coming soon:\nMysTech Mysteries" 
+MapLoadImage$="/gameflow/maptrans/mt_museum.tga" 
+MapSaveDesc$="Science Museum" 
+goto 0:0
+
+#switch 900:53
+MapLoadDestination$="Sender Station Station" 
+MapLoadInfo0$="Gateway to the Galaxy" 
+MapLoadInfo1$="New low fares to Cordica" 
+MapLoadInfo2$="Sender Station One\nis the only one" 
+MapLoadInfo3$="Featuring Orion Starlines\nand Cordicab Shuttles" 
+MapLoadInfo4$="Passage to all\npopular destinations" 
+MapLoadImage$="/gameflow/maptrans/mt_senderss.tga" 
+MapSaveDesc$="Sender Station" 
+goto 0:0
+
+#switch 900:54
+MapLoadDestination$="Shuttle to Sunder" 
+MapLoadInfo0$=" " 
+MapLoadInfo1$=" " 
+MapLoadInfo2$=" " 
+MapLoadInfo3$=" " 
+MapLoadInfo4$=" " 
+MapLoadImage$="/gameflow/maptrans/mt_braintrain.tga" 
+MapSaveDesc$="Brain Train" 
+goto 0:0
+
+#switch 900:55
+MapLoadDestination$="Sender Station:\nUpper Routubes" 
+MapLoadInfo0$="Routing tubes for electrical\nwiring and heating ducts" 
+MapLoadInfo1$="Routing tubes for electrical\nheating and wiring ducts" 
+MapLoadInfo2$="Routing tubes for electrical\nwiring and heating ducts" 
+MapLoadInfo3$="Pathway to Pumping Station" 
+MapLoadInfo4$="Employees Only" 
+MapLoadImage$="/gameflow/maptrans/mt_routubes1.tga" 
+MapSaveDesc$="Upper Routubes" 
+goto 0:0
+
+#switch 900:56
+MapLoadDestination$="Sender Station:\nSender Station Underworks" 
+MapLoadInfo0$="?" 
+MapLoadInfo1$="? ?" 
+MapLoadInfo2$="? ? ?" 
+MapLoadInfo3$="? ? ? ?" 
+MapLoadInfo4$="? ? ? ? ?" 
+MapLoadImage$="/gameflow/maptrans/mt_mugpath.tga" 
+MapSaveDesc$="Underworks" 
+goto 0:0
+
+#switch 900:57
+MapLoadDestination$="Sender Station:\nRed Light District" 
+MapLoadInfo0$="Home to alternative pleasures" 
+MapLoadInfo1$="If you've got one,\nget it rubbed here" 
+MapLoadInfo2$="Check out Cold Sweat\nSex Machine for funky fun" 
+MapLoadInfo3$="Tubby's got something for YOU!" 
+MapLoadInfo4$="The Orange Navel:\nroom for the boom" 
+MapLoadImage$="/gameflow/maptrans/mt_redlight.tga" 
+MapSaveDesc$="Red Light" 
+goto 0:0
+
+#switch 900:58
+MapLoadDestination$="Sender Station:\nCold Sweat Sex Machine" 
+MapLoadInfo0$="Funky fun for one and all" 
+MapLoadInfo1$="Exotic dancing" 
+MapLoadInfo2$="Popular in-house band\nDrunken Monkey" 
+MapLoadInfo3$="Take a load off, slick" 
+MapLoadInfo4$="Slide me some dermis" 
+MapLoadImage$="/gameflow/maptrans/mt_sexmach.tga" 
+MapSaveDesc$="Sex Machine" 
+goto 0:0
+
+#switch 900:59
+MapLoadDestination$="Sunder:\nCallosum Starport" 
+MapLoadInfo0$="Where science arrives daily" 
+MapLoadInfo1$="Free sandwiches\nfor Quantum Physicists" 
+MapLoadInfo2$="Quick shuttle access to Callosum!" 
+MapLoadInfo3$="Discount labs available" 
+MapLoadInfo4$="No unstable isotopes please" 
+MapLoadImage$="/gameflow/maptrans/mt_starport.tga" 
+MapSaveDesc$="Starport" 
+goto 0:0
+
+#switch 900:60
+MapLoadDestination$="Sunder:\nRainbow Sanctuary" 
+MapLoadInfo0$="When you've just got to have a lab" 
+MapLoadInfo1$="Most tunnels completely safe!" 
+MapLoadInfo2$="Lab payments must be made in cash" 
+MapLoadInfo3$="Shared secretary provided" 
+MapLoadInfo4$="No sulfur experiments--they stink" 
+MapLoadImage$="/gameflow/maptrans/mt_labbuilding.tga" 
+MapSaveDesc$="Rainbow Sanc." 
+goto 0:0
+
+#switch 900:61
+MapLoadDestination$="Sunder:\nSanctuary Area" 
+MapLoadInfo0$="Beautiful vista" 
+MapLoadInfo1$="Patch o' grass" 
+MapLoadInfo2$="Discount Lab Building\nwith Rainbow on it!" 
+MapLoadInfo3$="We have a tree" 
+MapLoadInfo4$="Repairs scheduled for next year" 
+MapLoadImage$="/gameflow/maptrans/mt_sunstrip.tga" 
+MapSaveDesc$="Sanctuary Area" 
+goto 0:0
+
+#switch 900:62
+MapLoadDestination$="Sunder:\nExplosion" 
+MapLoadInfo0$="We are not a map" 
+MapLoadInfo1$="We are not a map" 
+MapLoadInfo2$="We are not a map" 
+MapLoadInfo3$="We are not a map" 
+MapLoadInfo4$="We are not a map" 
+MapSaveDesc$="NoMappo" 
+goto 0:0
+
+#switch 900:63
+MapLoadDestination$="Democratus:\nVotowne" 
+MapLoadInfo0$="Seat of democracy" 
+MapLoadInfo1$="Everyone has a voice" 
+MapLoadInfo2$="Everyone has a vote" 
+MapLoadInfo3$="The Council leads in fairness" 
+MapLoadInfo4$="Ask two friends to help you decide" 
+MapLoadImage$="/gameflow/maptrans/mt_votowne.tga" 
+MapSaveDesc$="Votowne" 
+goto 0:0
+
+#switch 900:64
+MapLoadDestination$="Democratus:\nCouncil Chamber Area" 
+MapLoadInfo0$="The High Council:\nfair and true" 
+MapLoadInfo1$="The High Council cares\nabout Democratus" 
+MapLoadInfo2$="Everyone shall decide\neveryone's destiny" 
+MapLoadInfo3$="The High Council serves the people" 
+MapLoadInfo4$="Outworlders not encouraged\nto visit" 
+MapLoadImage$="/gameflow/maptrans/mt_chamber.tga" 
+MapSaveDesc$="Chamber Area" 
+goto 0:0
+
+#switch 900:65
+MapLoadDestination$="Democratus:\nThe Republic Inn" 
+MapLoadInfo0$="Why decide...\nwhen there's only one place to stay?" 
+MapLoadInfo1$="Voted number one inn\nin this section of the Ring" 
+MapLoadInfo2$="Beautiful gray and blue decor" 
+MapLoadInfo3$="Guests of the High Council\nstay here" 
+MapLoadInfo4$="Outworlders not encouraged\nto stay" 
+MapLoadImage$="/gameflow/maptrans/mt_republic.tga" 
+MapSaveDesc$="Republic Inn" 
+goto 0:0
+
+#switch 900:66
+MapLoadDestination$="Democratus:\nWarship Bay" 
+MapLoadInfo0$="Access Forbidden" 
+MapLoadInfo1$="Go away" 
+MapLoadInfo2$="Do not enter" 
+MapLoadInfo3$="Warning: Robode guards" 
+MapLoadInfo4$="Outworlders encouraged\nto visit" 
+MapLoadImage$="/gameflow/maptrans/mt_warshipbay.tga" 
+MapSaveDesc$="Warship Bay" 
+goto 0:0
+
+#switch 900:67
+MapLoadDestination$="Verilent Hive Bay" 
+MapLoadInfo0$="No information" 
+MapLoadInfo1$="No information" 
+MapLoadInfo2$="No information" 
+MapLoadInfo3$="No information" 
+MapLoadInfo4$="No information" 
+MapLoadImage$="/gameflow/maptrans/mt_hivebay.tga" 
+MapSaveDesc$="Hive Bay" 
+goto 0:0
+
+#switch 900:68
+MapLoadDestination$="Verilent Hive" 
+MapLoadInfo0$="Hive of Cyberinsects" 
+MapLoadInfo1$="Land ship." 
+MapLoadInfo2$="Take off on foot." 
+MapLoadInfo3$="Deactivate missiles." 
+MapLoadInfo4$="Somehow." 
+MapLoadImage$="/gameflow/maptrans/mt_hive.tga" 
+MapSaveDesc$="Verilent Hive" 
+goto 0:0
+
+#switch 900:70
+MapLoadDestination$="Hephaestus:\nPlatform Area" 
+MapLoadInfo0$="Landing Platform for supply\nand tourist ships" 
+MapLoadInfo1$="Shuttles arrive daily" 
+MapLoadInfo2$="Hurry to the Entertainment\nDistrict" 
+MapLoadInfo3$="Please excuse the smokestacks" 
+MapLoadInfo4$="Don't leave without a Nine Enigmas\nt-shirt!" 
+MapLoadImage$="/gameflow/maptrans/mt_hephpoor.tga" 
+MapSaveDesc$="Platform Area" 
+goto 0:0
+
+#switch 900:71
+MapLoadDestination$="Hephaestus:\nEntertainment District" 
+MapLoadInfo0$="Visit our fine shops" 
+MapLoadInfo1$="Enjoy a stay at Le Sommeil" 
+MapLoadInfo2$="Take the kids to\nthe Ascetic Arcade" 
+MapLoadInfo3$="Ride the Coaster of Penitence" 
+MapLoadInfo4$="Just a short walk\nfrom Mysterium Tower" 
+MapLoadImage$="/gameflow/maptrans/mt_hephaestus.tga" 
+MapSaveDesc$="Myst. Mecca" 
+goto 0:0
+
+#switch 900:72
+MapLoadDestination$="Hephaestus:\nTower of the\nGrand Mysterium" 
+MapLoadInfo0$="Library access is forbidden" 
+MapLoadInfo1$="Do not disturb praying monks" 
+MapLoadInfo2$="Enigma Chambers Forbidden" 
+MapLoadInfo3$="Visitors must be escorted" 
+MapLoadInfo4$="This means you" 
+MapLoadImage$="/gameflow/maptrans/mt_hephtower1.tga" 
+MapSaveDesc$="Lower Tower" 
+goto 0:0
+
+#switch 900:73
+MapLoadDestination$="Hephaestus:\nMysterium Levant" 
+MapLoadInfo0$="Warning:\nDangerous Lava" 
+MapLoadInfo1$="Warning:\nDangerous Creatures" 
+MapLoadInfo2$="Warning:\nDangerous Machinery" 
+MapLoadInfo3$="Warning:\nHeat Suit Recommended" 
+MapLoadInfo4$="Authorized Personnel\nor Criminals Only" 
+MapLoadImage$="/gameflow/maptrans/mt_levant1.tga" 
+MapSaveDesc$="Levant Entrance" 
+goto 0:0
+
+#switch 900:74
+MapLoadDestination$="Hephaestus:\nLower Levant" 
+MapLoadInfo0$="Entrance to\nLavatic Pump Area" 
+MapLoadInfo1$="Beware of Lava Creatures" 
+MapLoadInfo2$="Heat Suit Mandatory" 
+MapLoadInfo3$="Authorized Personnel Only" 
+MapLoadInfo4$="You have been warned" 
+MapLoadImage$="/gameflow/maptrans/mt_levant2.tga" 
+MapSaveDesc$="Lower Levant" 
+goto 0:0
+
+#switch 900:75
+MapLoadDestination$="Hephaestus:\nLavatic Pump Area" 
+MapLoadInfo0$="Core of MysTech retrieval" 
+MapLoadInfo1$="Source of MysTech" 
+MapLoadInfo2$="Lots of MysTech down there" 
+MapLoadInfo3$="Pumpin' that MysTech" 
+MapLoadInfo4$="Oh heck!  MysTech!" 
+MapLoadImage$="/gameflow/maptrans/mt_levant.tga" 
+MapSaveDesc$="Lavatic Pump" 
+goto 0:0
+
+#switch 900:76
+MapLoadDestination$="Hephaestus:\nUpper Tower" 
+MapLoadInfo0$="No visitors allowed" 
+MapLoadInfo1$="Stay out" 
+MapLoadInfo2$="Do Not Enter" 
+MapLoadInfo3$="Only High Monks may Enter" 
+MapLoadInfo4$="Go away" 
+MapLoadImage$="/gameflow/maptrans/mt_hephtower2.tga" 
+MapSaveDesc$="Upper Tower" 
+goto 0:0
+
+#switch 900:77
+MapLoadDestination$="Hephaestus:\nPiping Ducts" 
+MapLoadInfo0$="Warning:\nNoxious Gasses" 
+MapLoadInfo1$="Call Technician If Filters Clogged" 
+MapLoadInfo2$="Follow Duct Maps" 
+MapLoadInfo3$="Wear Safety Boots" 
+MapLoadInfo4$="Think Before You Drink" 
+MapLoadImage$="/gameflow/maptrans/mt_hephpipes.tga" 
+MapSaveDesc$="Piping Ducts" 
+goto 0:0
+
+#switch 900:78
+MapLoadDestination$="Hephaestus:\nMYSFAC" 
+MapLoadInfo0$="Where MysTech and Lava\npart ways" 
+MapLoadInfo1$="Over 2,000 MysTech Pieces\nper Week" 
+MapLoadInfo2$="Help us beat our 12-day\nsafety record" 
+MapLoadInfo3$="Wear your safety suit" 
+MapLoadInfo4$="MysFac:\nThe Galaxy's Source of MysTech" 
+MapLoadImage$="/gameflow/maptrans/mt_hephfactory.tga" 
+MapSaveDesc$="MYSFAC" 
+goto 0:0
+
+#switch 900:79
+MapLoadDestination$="Taking Shuttle\nto Hephaestus" 
+MapLoadInfo0$="Home to Mysteria Monastery" 
+MapLoadInfo1$="MysTech first found\non Hephaestus" 
+MapLoadInfo2$="Hephaestus is covered\nwith volcanoes" 
+MapLoadInfo3$="Visit...\nThe Entertainment District" 
+MapLoadInfo4$="Take home your own piece\nof MysTech" 
+MapLoadImage$="/gameflow/maptrans/mt_slevant.tga" 
+MapSaveDesc$="Hephaestus" 
+goto 0:0
+
+#switch 900:80
+MapLoadDestination$="Krapton Villain Ship" 
+MapLoadInfo0$="You are prisoner\non a villain ship" 
+MapLoadInfo1$="Have your superhero\nor mortal card ready" 
+MapLoadInfo2$="Megalomaniacs report\nto level 2" 
+MapLoadInfo3$="Convicts welcome\nto the Early Parole Button" 
+MapLoadInfo4$="Rictus book signing next week" 
+MapLoadImage$="/gameflow/maptrans/mt_krapton.tga" 
+MapSaveDesc$="KSC Grimacer" 
+goto 0:0
+
+#switch 900:81
+MapLoadDestination$="Villain Ship: Brig" 
+MapLoadInfo0$="You are STILL Prisoners" 
+MapLoadInfo1$="Attempt No Escape" 
+MapLoadInfo2$="Do Not Press Anything..." 
+MapLoadInfo3$="Like, for instance...\nthe Emergency Parole Button" 
+MapLoadInfo4$="Mwah ha ha ha!" 
+MapLoadImage$="/gameflow/maptrans/mt_kraptonjail.tga" 
+MapSaveDesc$="Villain Brig" 
+goto 0:0
+
+#switch 900:82
+MapLoadDestination$="Democratus:\nTown of Ballotine" 
+MapLoadInfo0$="On the Banks of the Ballotine" 
+MapLoadInfo1$="Find a job\nat the Processing Plant" 
+MapLoadInfo2$="Home to Popular businesses" 
+MapLoadInfo3$="Like the Processing Plant" 
+MapLoadInfo4$="Meet our Mascot, Chemico!" 
+MapLoadImage$="/gameflow/maptrans/mt_baltownr.tga" 
+MapSaveDesc$="Ballotine" 
+goto 0:0
+
+#switch 900:83
+MapLoadDestination$="Democratus:\nBallotine Processing Plant" 
+MapLoadInfo0$="Avoid mutants" 
+MapLoadInfo1$="Avoid radioactive waste" 
+MapLoadInfo2$="Avoid radioactive gas" 
+MapLoadInfo3$="The Ballotine Plant:\nYour Friend For Chemicals" 
+MapLoadInfo4$="By the Ballotine River" 
+MapLoadImage$="/gameflow/maptrans/mt_ballotine.tga" 
+MapSaveDesc$="Ballotine Plant" 
+goto 0:0
+
+#switch 900:84
+MapLoadDestination$="Democratus:\nTown of Ballotine" 
+MapLoadInfo0$="On the Banks of the Ballotine" 
+MapLoadInfo1$="Find a job\nat the Processing Plant" 
+MapLoadInfo2$="Home to Popular businesses" 
+MapLoadInfo3$="Like the Processing Plant" 
+MapLoadInfo4$="Meet our Mascot, Chemico!" 
+MapLoadImage$="/gameflow/maptrans/mt_baltown.tga" 
+MapSaveDesc$="Ballotine" 
+goto 0:0
+
+#switch 900:85
+MapLoadDestination$="Democratus:\nDoren Base" 
+MapLoadInfo0$="No information" 
+MapLoadInfo1$="No information yet" 
+MapLoadInfo2$="No information, sorry." 
+MapLoadInfo3$="No information, really." 
+MapLoadInfo4$="Still no information" 
+MapLoadImage$="/gameflow/maptrans/mt_doren.tga" 
+MapSaveDesc$="Doren Base" 
+goto 0:0
+
+#switch 900:86
+MapLoadDestination$="Democratus:\nWaugees Forest" 
+MapLoadInfo0$="Beware the Waugees" 
+MapLoadInfo1$="Beware the Waugee Knives" 
+MapLoadInfo2$="Beware the Waugee Huts" 
+MapLoadInfo3$="Beware the Waugee bridges" 
+MapLoadInfo4$="Beware the Waugee cuteness" 
+MapLoadImage$="/gameflow/maptrans/mt_waukees.tga" 
+MapSaveDesc$="Waugees Forest" 
+goto 0:0
+
+#switch 900:87
+MapLoadDestination$="Democratus:\nTown of Whitendon" 
+MapLoadInfo0$="No information" 
+MapLoadInfo1$="No information yet" 
+MapLoadInfo2$="No information, sorry." 
+MapLoadInfo3$="No information, really." 
+MapLoadInfo4$="Still no information" 
+MapLoadImage$="/gameflow/maptrans/mt_whitendon.tga" 
+MapSaveDesc$="Whitendon" 
+goto 0:0
+
+#switch 900:88
+MapLoadDestination$="Whitendon:\nWhitecaves Entrance" 
+MapLoadInfo0$="Lair of the Beast" 
+MapLoadInfo1$="Say your prayers" 
+MapLoadInfo2$="Join the lost people" 
+MapLoadInfo3$="Make your peace" 
+MapLoadInfo4$="Shake some salt on yourself" 
+MapLoadImage$="/gameflow/maptrans/mt_whitecaves-a.tga" 
+MapSaveDesc$="WhiteCaves" 
+goto 0:0
+
+#switch 900:89
+MapLoadDestination$="Democratus:\nTown of Tensil" 
+MapLoadInfo0$="Ancient Town of Noble People" 
+MapLoadInfo1$="Home to Temple of Wonders" 
+MapLoadInfo2$="Fine Fruit Available" 
+MapLoadInfo3$="Safe and Friendly Town" 
+MapLoadInfo4$="Strangers Welcome" 
+MapLoadImage$="/gameflow/maptrans/mt_tensil.tga" 
+MapSaveDesc$="Tensil" 
+goto 0:0
+
+#switch 900:90
+MapLoadDestination$="Democratus:\nAncient Tensil Temple" 
+MapLoadInfo0$="Read all glyphs" 
+MapLoadInfo1$="Do not offend Gorr" 
+MapLoadInfo2$="Watch your step" 
+MapLoadInfo3$="Notify your kin" 
+MapLoadInfo4$="Wear indentification" 
+MapLoadImage$="/gameflow/maptrans/mt_temple.tga" 
+MapSaveDesc$="Tensil Temple" 
+goto 0:0
+
+#switch 900:91
+MapLoadDestination$="Democratus:\nCommiteon Compound" 
+MapLoadInfo0$="No information" 
+MapLoadInfo1$="No information yet" 
+MapLoadInfo2$="No information, sorry." 
+MapLoadInfo3$="No information, really." 
+MapLoadInfo4$="Still no information" 
+MapLoadImage$="/gameflow/maptrans/mt_commiteon.tga" 
+MapSaveDesc$="Commiteon" 
+goto 0:0
+
+#switch 900:92
+MapLoadDestination$="Limbus:\nCity of Sesostris" 
+MapLoadInfo0$="Mysterious city" 
+MapLoadInfo1$="Home of the Vigil" 
+MapLoadInfo2$="Life in the dark canyon" 
+MapLoadInfo3$="Unknown inhabitants" 
+MapLoadInfo4$="What secrets are inside?" 
+MapLoadImage$="/gameflow/maptrans/mt_limbus.tga" 
+MapSaveDesc$="Sesostris" 
+goto 0:0
+
+#switch 900:93
+MapLoadDestination$="Wilds of Limbus" 
+MapLoadInfo0$="Beware rough terrain" 
+MapLoadInfo1$="Do not enter crevice" 
+MapLoadInfo2$="Do not visit Sesostris" 
+MapLoadInfo3$="Get your butt home" 
+MapLoadInfo4$="Strangers unwelcome" 
+MapLoadImage$="/gameflow/maptrans/mt_crevicelanding.tga" 
+MapSaveDesc$="Wilds of Limbus" 
+goto 0:0
+
+#switch 900:94
+MapLoadDestination$="Limbus:\nSagentane Crevice" 
+MapLoadInfo0$="Danger:\nviolent creatures" 
+MapLoadInfo1$="Danger:\nCarnivores" 
+MapLoadInfo2$="Danger:\nferrivores" 
+MapLoadInfo3$="Danger:\nhorrible beasts" 
+MapLoadInfo4$="Danger:\ntoe-hurting pebbles" 
+MapLoadImage$="/gameflow/maptrans/mt_crevice.tga" 
+MapSaveDesc$="Crevice" 
+goto 0:0
+
+#switch 900:95
+MapLoadDestination$="Limbus:\nPillars of Sesostris" 
+MapLoadInfo0$="Protector of Sesostris" 
+MapLoadInfo1$="Weapon against Invaders" 
+MapLoadInfo2$="Guardian of the Eye" 
+MapLoadInfo3$="The Eternal Vigil" 
+MapLoadInfo4$="Great mountain view" 
+MapLoadImage$="/gameflow/maptrans/mt_pillars.tga" 
+MapSaveDesc$="Pillars" 
+goto 0:0
+
+#switch 900:96
+MapLoadDestination$="Sender Station:\nLower Routubes" 
+MapLoadInfo0$="Routing tubes for electrical wiring\nand heating ducts" 
+MapLoadInfo1$="Routing tubes for electrical heating\nand wiring ducts" 
+MapLoadInfo2$="Routing tubes for electrical wiring\nand heating ducts" 
+MapLoadInfo3$="Location of Pumping Station" 
+MapLoadInfo4$="Employees Only" 
+MapLoadImage$="/gameflow/maptrans/mt_routubes2.tga" 
+MapSaveDesc$="Lower Routubes" 
+goto 0:0
+
+#switch 900:97
+MapLoadDestination$="Democratus:\nCommiteon Base" 
+MapLoadInfo0$="Warning:\nDefense Systems Activated" 
+MapLoadInfo1$="Hovermines Deployed" 
+MapLoadInfo2$="Main Garage Doors Secured" 
+MapLoadInfo3$="Turret Behavior Unpredictable" 
+MapLoadInfo4$="Armory Weapons Deactivated" 
+MapLoadImage$="/gameflow/maptrans/mt_commbase.tga" 
+MapSaveDesc$="Abandoned Base" 
+goto 0:0
+
+#switch 900:98
+MapLoadDestination$="Sender Station:\nScience Museum" 
+MapLoadInfo0$="Do Not Enter" 
+MapLoadInfo1$="Maintenance Personnel Only" 
+MapLoadInfo2$="Danger:\nCommunications Lasers" 
+MapLoadInfo3$="Danger:\nSentry Robots" 
+MapLoadInfo4$="We mean it: BUG OFF." 
+MapLoadImage$="/gameflow/maptrans/mt_museumnight.tga" 
+MapSaveDesc$="Science Museum" 
+goto 0:0
+
+#switch 900:99
+MapLoadDestination$="Sender Station:\nCommons Area" 
+MapLoadInfo0$="Nighttime strolling discouraged" 
+MapLoadInfo1$="Please keep to your rooms or party suites" 
+MapLoadInfo2$="PAX Security On Patrol" 
+MapLoadInfo3$="Tomorrow is another business day" 
+MapLoadInfo4$="Station maintenance crews at work" 
+MapLoadImage$="/gameflow/maptrans/mt_scommonnight.tga" 
+MapSaveDesc$="Commons Area" 
+goto 0:0
+
+#switch 900:102
+MapLoadDestination$="Detta's Fortress:\nGrounds" 
+MapLoadInfo0$="Private Property" 
+MapLoadInfo1$="Very Private" 
+MapLoadInfo2$="Beware of Guards" 
+MapLoadInfo3$="Beware of Goons" 
+MapLoadInfo4$="Beware of both guards and goons" 
+MapLoadImage$="/gameflow/maptrans/mt_fortressgrounds.tga" 
+MapSaveDesc$="Grounds" 
+goto 0:0
+
+#switch 900:103
+MapLoadDestination$="Detta's Fortress:\nBasement" 
+MapLoadInfo0$="Guards on patrol" 
+MapLoadInfo1$="Security Systems On" 
+MapLoadInfo2$="PlasmaFloors active" 
+MapLoadInfo3$="Guests have private rooms" 
+MapLoadInfo4$="Very private" 
+MapLoadImage$="/gameflow/maptrans/mt_basement.tga" 
+MapSaveDesc$="Basement" 
+goto 0:0
+
+#switch 900:104
+MapLoadDestination$="Detta's Fortress:\nGround Level" 
+MapLoadInfo0$="Mansion renovations in progress" 
+MapLoadInfo1$="Watch your step" 
+MapLoadInfo2$="Unless you're an intruder" 
+MapLoadInfo3$="Then die, die, die" 
+MapLoadInfo4$="We mean it" 
+MapLoadImage$="/gameflow/maptrans/mt_fortress1.tga" 
+MapSaveDesc$="Fortress" 
+goto 0:0
+
+#switch 900:105
+MapLoadDestination$="Detta's Fortress:\nUpper Level" 
+MapLoadInfo0$="Be careful of equipment" 
+MapLoadInfo1$="Do not spill MA Fluid" 
+MapLoadInfo2$="Do not touch equipment" 
+MapLoadInfo3$="Do not look at equipment" 
+MapLoadInfo4$="In general ... do not" 
+MapLoadImage$="/gameflow/maptrans/mt_fortress2.tga" 
+MapSaveDesc$="Upper Fortress" 
+goto 0:0
+
+#switch 900:106
+MapLoadDestination$="Commiteon:\nDessicati Canyon" 
+MapLoadInfo0$="No information" 
+MapLoadInfo1$="No information" 
+MapLoadInfo2$="No information" 
+MapLoadInfo3$="No information" 
+MapLoadInfo4$="No information" 
+MapLoadImage$="/gameflow/maptrans/mt_comhills.tga" 
+MapSaveDesc$="Canyon" 
+goto 0:0
+
+#switch 900:107
+MapLoadDestination$="Whitendon:\nWhite Caves" 
+MapLoadInfo0$="Lair of the Unknown Beast" 
+MapLoadInfo1$="So many have died" 
+MapLoadInfo2$="So many more will die" 
+MapLoadInfo3$="Beware of inhabitants" 
+MapLoadInfo4$="Careful of stepping on bones" 
+MapLoadImage$="/gameflow/maptrans/mt_whitecaves-b.tga" 
+MapSaveDesc$="WhiteCaves" 
+goto 0:0
+
+#switch 900:108
+MapLoadDestination$="OneGate: Station" 
+MapLoadInfo0$="Welcome to your travel experience" 
+MapLoadInfo1$="Ride to Sender Station in fine style" 
+MapLoadInfo2$="Talk with other fine people" 
+MapLoadInfo3$="Unless you are not from OneGate" 
+MapLoadInfo4$="Then go back to your hole" 
+MapLoadImage$="/gameflow/maptrans/mt_onegatestn.tga" 
+MapSaveDesc$="Canyon" 
+goto 0:0
+
+#switch 900:109
+MapLoadDestination$="Sesostris: Dome" 
+MapLoadInfo0$="Ancient secrets within" 
+MapLoadInfo1$="Ancient secrets within" 
+MapLoadInfo2$="Ancient secrets within" 
+MapLoadInfo3$="Ancient secrets within" 
+MapLoadInfo4$="Ancient secrets within" 
+MapLoadImage$="/gameflow/maptrans/mt_limbus.tga" 
+MapSaveDesc$="Dome" 
+goto 0:0
+
+#switch 900:110
+MapLoadDestination$="THE ECHO GATE" 
+MapLoadInfo0$="Gate to all beyond" 
+MapLoadInfo1$="Gate to all beyond" 
+MapLoadInfo2$="Gate to all beyond" 
+MapLoadInfo3$="Gate to all beyond" 
+MapLoadInfo4$="(It's the Fountain, BTW.)" 
+MapSaveDesc$="Echo Gate" 
+MapLoadImage$="/gameflow/maptrans/mt_unknown.tga" 
+goto 0:0
+
+#switch 900:111
+MapLoadDestination$="ONE MOMENT" 
+MapLoadInfo0$="Hello." 
+MapLoadInfo1$="Here comes the menu!" 
+MapLoadInfo2$="Here it is!" 
+MapLoadInfo3$="Um, menu?" 
+MapLoadInfo4$="Ah, here it is." 
+MapLoadImage$="/gameflow/maptrans/mt_unknown.tga" 
+MapSaveDesc$="DO NOT SAVE HERE" 
+goto 0:0
+
+#switch 900:112
+MapLoadDestination$="Hephaestus:\nMoon Burger!" 
+MapLoadInfo0$="Try out our MegaMoon Combo!" 
+MapLoadInfo1$="Check out our LardLite Menu!" 
+MapLoadInfo2$="How about a Chili Con Comet?" 
+MapLoadInfo3$="Try a Supernova Sundae!" 
+MapLoadInfo4$="Do you want fries with that?" 
+MapLoadImage$="/gameflow/maptrans/mt_mburger.tga" 
+MapSaveDesc$="Moon Burger" 
+goto 0:0
+
+#switch 900:113
+MapLoadDestination$="Villain Ship:\nMain Section" 
+MapLoadInfo0$="Beware: El Pintos" 
+MapLoadInfo1$="Beware: DevilSlugs" 
+MapLoadInfo2$="Beware: Orange Roughies" 
+MapLoadInfo3$="Beware: The Insanito Brigade" 
+MapLoadInfo4$="Beware: Krapotron BrutalBots" 
+MapLoadImage$="/gameflow/maptrans/mt_kraptonmaze.tga" 
+MapSaveDesc$="Villain Ship" 
+goto 0:0
+
+#switch 900:114
+MapLoadDestination$="Waugees Forest:\nThe Great Tree" 
+MapLoadInfo0$="Home of the Waugees" 
+MapLoadInfo1$="Fear the Waugees" 
+MapLoadInfo2$="Hide from the Waugees" 
+MapLoadInfo3$="Run from the Waugees" 
+MapLoadInfo4$="Or don't" 
+MapLoadImage$="/gameflow/maptrans/mt_greattree.tga" 
+MapSaveDesc$="Great Tree" 
+goto 0:0
+
+#switch 900:120
+MapLoadDestination$="Drifting in space" 
+MapLoadInfo0$="Try not to go crazy" 
+MapSaveDesc$="Drifting" 
+goto 0:0
+
+#switch 900:121
+MapLoadDestination$="Attacking the Hive" 
+MapLoadInfo0$="Go get 'em!" 
+MapSaveDesc$="Hive Attack" 
+goto 0:0
+
+#switch 900:122
+MapLoadDestination$="Fleeing the Hive" 
+MapLoadInfo0$="The Queen is dead!" 
+MapSaveDesc$="Hive Return" 
+goto 0:0
+
+#switch 900:123
+goto 900:93
+
+#switch 900:124
+MapLoadDestination$="Dreams of the Past" 
+MapLoadInfo0$="Dreams of poison..." 
+MapSaveDesc$="Flashback" 
+goto 0:0
+
+#switch 900:125
+goto 900:77
+
+#switch 900:126
+MapLoadDestination$="Villain Ship:\n Bay" 
+MapLoadInfo0$="You are Prisoners" 
+MapLoadInfo1$="Attempt No Escape" 
+MapLoadInfo2$="Offer No Resistance" 
+MapLoadInfo3$="Or you will die" 
+MapLoadInfo4$="Mwah ha ha ha!" 
+MapLoadImage$="/gameflow/maptrans/mt_kraptonbay.tga" 
+MapSaveDesc$="Villain Bay" 
+goto 0:0
+
+#switch 900:127
+MapLoadDestination$="Villain Ship: Brig" 
+MapLoadInfo0$="You are STILL Prisoners" 
+MapLoadInfo1$="Attempt No Escape" 
+MapLoadInfo2$="Do Not Press Anything..." 
+MapLoadInfo3$="Like, for instance...\nthe Emergency Parole Button" 
+MapLoadInfo4$="Mwah ha ha ha!" 
+MapLoadImage$="/gameflow/maptrans/mt_kraptonjail.tga" 
+MapSaveDesc$="Villain Brig" 
+goto 0:0
+
+#switch 900:128
+MapLoadDestination$="Sunder:\nService Tunnels" 
+MapLoadInfo0$="No Admittance" 
+MapLoadInfo1$="Maintenance Crews Only" 
+MapLoadInfo2$="Check with Shift Supervisors" 
+MapLoadInfo3$="Do No Enter" 
+MapLoadInfo4$="Under Risk of Fine" 
+MapLoadImage$="/gameflow/maptrans/mt_servicetunnel.tga" 
+MapSaveDesc$="Tunnels" 
+goto 0:0
+
+#switch 900:129
+MapLoadDestination$="Sewagic Rapids" 
+MapLoadInfo0$="Danger: Rapid Current" 
+MapLoadInfo1$="Beware of blasting supplies" 
+MapLoadInfo2$="No Unauthorized personnel" 
+MapLoadInfo3$="This means you" 
+MapLoadInfo4$="Yes, you" 
+MapLoadImage$="/gameflow/maptrans/mt_sewagic1a.tga" 
+MapSaveDesc$="Rapids" 
+goto 0:0
+
+#switch 900:130
+MapLoadDestination$="Space Fun!" 
+MapLoadInfo0$="Enjoy this lovely cinematic" 
+MapSaveDesc$="Sphere3" 
+goto 0:0
+
+#switch 900:132
+MapLoadDestination$="Whitendon:\nWhitecaves Entrance" 
+MapLoadInfo0$="Lair of the Beast" 
+MapLoadInfo1$="Say your prayers" 
+MapLoadInfo2$="Join the lost people" 
+MapLoadInfo3$="Make your peace" 
+MapLoadInfo4$="Shake some salt on yourself" 
+MapLoadImage$="/gameflow/maptrans/mt_whitecaves-a.tga" 
+MapSaveDesc$="WhiteCaves" 
+goto 0:0
+
+#switch 900:140
+MapLoadDestination$="Planet Joey" 
+MapLoadInfo0$="For all your battle scripting needs" 
+MapLoadInfo1$="And whatever other junk you wanna test" 
+MapLoadInfo2$="It should have loaded by now...." 
+MapLoadInfo3$="Damn your computer is slow." 
+MapLoadInfo4$="Myeeeeeeeaaaahhhhhh" 
+MapLoadImage$="/gameflow/maptrans/mt_joey.png" 
+MapSaveDesc$="Joey" 
+goto 0:0
+
+#switch 900:216
+MapLoadDestination$="Flyin' the Brain Train" 
+MapLoadInfo0$="On the Brain Train..." 
+MapSaveDesc$="BrainTrain" 
+goto 0:0
+
+#switch 999:999
+extern add_npc_to_party Grumpos
+goto 0:0

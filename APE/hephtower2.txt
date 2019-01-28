@@ -1,0 +1,1332 @@
+#window 76:101
+title "Brother Bibb"
+body "The First of the Nine Enigmas: Where did MysTech come from?"
+cam left lift(40) restore zip
+talk npc amb_b stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:201
+title "Sister Avela"
+body "The Second of the Nine Enigmas: Who made MysTech?"
+cam left lift(40) restore zip
+talk npc amb_b stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 76:0202
+
+#window 76:202
+title "Sister Avela"
+body "I believe they are gifts from the Gods. They give mortals the opportunity to commune with the heavens. With MysTech, we are all popes. The power of the Gods is now available to all us of."
+cam left lift(40) restore zip
+talk npc amb_b stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 76:0203
+
+#window 76:203
+title "Sister Avela"
+body "We are all equally blessed."
+cam left lift(40) restore zip
+talk npc amb_b stay
+finishswitch {
+  if (func_charinparty[grumpos] == 3)
+    goto 76:0205
+  extern cam_restore
+}
+
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:205
+title "Sister Avela"
+body "Do I know you...?"
+cam left lift(40) restore zip
+talk npc amb_b stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:301
+title "Brother Poroto"
+body "The Third of the Nine Enigmas: Why did they make MysTech?"
+cam left lift(40) restore zip
+talk npc amb_b stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:401
+title "Brother Minaret"
+body "The Fourth of the Nine Enigmas: Where did the Senders come from?"
+cam left lift(40) restore zip
+talk npc amb_b stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:501
+title "Brother Suruyo"
+body "Guilty."
+cam left restore zip
+talk_ex PlayerChar0 suruyo amb_a talk_a stay stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:601
+title "Sister Cañiña"
+body "The Fifth of the Nine Enigmas: Who made the Senders?"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:701
+title "Sister Peldu"
+body ". . . ."
+cam left lift(40) restore zip
+talk npc amb_b stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:801
+title "Sister Cuico"
+body ". . . ."
+cam left restore zip
+talk npc amb_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:901
+title "Brother Plasta"
+body "The Sixth of the Nine Enigmas: Why did they make the Senders?"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:1101
+title "Sister Amada"
+body "The Seventh of the Nine Enigmas: Is there a god?"
+cam left lift(40) restore zip
+talk npc amb_b stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:1201
+title "Brother Sliss"
+body "Guilty."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:1301
+title "Sister Boñiga"
+body ". . . ."
+cam left lift(40) restore zip
+talk npc amb_b stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:1401
+title "Brother Periqin"
+body ". . . ."
+cam left lift(40) restore zip
+talk npc amb_b stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:1501
+title "Brother Uninano"
+body "Guilty."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:1601
+title "Brother Casgado"
+body "The Eighth of the Nine Enigmas: Is there life after death?"
+cam left lift(40) restore zip
+talk npc amb_b stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:1701
+title "Sister Sora"
+body ". . . ."
+cam left restore zip
+talk npc amb_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:1801
+title "Sister Merle"
+body ". . . ."
+cam left lift(40) restore zip
+talk npc amb_b stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:1901
+title "Sister Su"
+body ". . . ."
+cam left lift(40) restore zip
+talk npc amb_b stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:2001
+title "Sister Misao"
+body ". . . ."
+cam left lift(40) restore zip
+talk npc amb_b stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:2101
+title "Brother Porco"
+body "The Ninth of the Nine Enigmas: What is the reason the universe exists?"
+cam left lift(40) restore zip
+talk npc amb_b stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:2201
+title "Brother Dilandau"
+body "Guilty."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:2301
+title "Brother Iggy"
+body "Guilty."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:2401
+title "Sister Carajo"
+body ". . . ."
+cam left lift(40) restore zip
+talk npc amb_b stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:2501
+title "Brother Dwapmen"
+body "Welcome to the Tower of the Nine Enigmas."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 76:2502
+
+#window 76:2502
+title "Brother Dwapmen"
+body "The Nine Enigmas are the cornerstone or our brotherhood's beliefs."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 76:2503
+
+#window 76:2503
+title "Brother Dwapmen"
+body "Unlike most orders, our faith is not based on fixed doctrines, but on questions. Nine of them, to be exact."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 76:2504
+
+#window 76:2504
+title "Brother Dwapmen"
+body "Let the mystery begin."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:2601
+title "Holy Drone 343"
+body "Are you new? I will tell you the rules:"
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 76:2602
+
+#window 76:2602
+title "Holy Drone 343"
+body "Do not bring food into the chambers."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 76:2603
+
+#window 76:2603
+title "Holy Drone 343"
+body "Nor water."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 76:2604
+
+#window 76:2604
+title "Holy Drone 343"
+body "Nor ingredients that might produce food or water."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 76:2605
+
+#window 76:2605
+title "Holy Drone 343"
+body "Do not disturb the praying monks."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+nextwindow 76:2606
+
+#window 76:2606
+title "Holy Drone 343"
+body "And most importantly, no photography of any kind."
+cam left restore zip
+talk npc talk_a stay
+style "style_hephaestus"
+font "_anox10"
+background color1 = 442200d0 color2 = 221100d0 color3 = 080400d0 color4 = 221100d0
+xpos 30
+ypos 30
+width 580
+image "graphics/underline_heph.pcx" 16, 31, 548, 32
+
+#window 76:1001
+title "Grand Mysterium"
+body "You come not seeking praise."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1005
+title "Grand Mysterium"
+body "You come with questions."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1010
+title "Grand Mysterium"
+body "Why shouldn't I send you home empty-handed?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1015
+title "Boots"
+body "Because I've solved one of the Nine Enigmas, and it's a doozy."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1020
+title "Boots"
+body "Where does MysTech come from?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1025
+title "Boots"
+body "It comes from the universe after our own. Bam."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1030
+title "Grand Mysterium"
+body "You drew this conclusion on your own?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1035
+title "Boots"
+body "We've also discovered that something's trying to erase our universe."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1040
+title "Boots"
+body "So if you've got the lowdown, share the love before it's too late."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1045
+title "Dr. Rho Bowman"
+body "So what did he say?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1050
+title "Grumpos"
+body "Was he impressed?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1055
+title "Boots"
+body "I'm gettin' to that part."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1060
+title "Boots"
+body "He put three cards on the table and said--"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1065
+title "Grand Mysterium"
+body "The card in the center is our universe."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1070
+title "Grand Mysterium"
+body "Know then that there are two godlike forces beyond our galaxy,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1075
+title "Grand Mysterium"
+body "beyond even the end of our time..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1080
+title "Grand Mysterium"
+body "from the universe that will exist after our own is dead and gone."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1085
+title "Grand Mysterium"
+body "These two forces are warring, and their battle has spilled over into our universe."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1090
+title "Grand Mysterium"
+body "One of these forces we shall call \"Chaos\"."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1095
+title "Grand Mysterium"
+body "The other we shall call \"Order\"."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1100
+title "Dr. Rho Bowman"
+body "Hold it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1105
+title "Dr. Rho Bowman"
+body "We're going up against gods?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1110
+title "PAL-18"
+body "I want a second opinion."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1115
+title "Boots"
+body "That ain't the half of it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1120
+title "Grand Mysterium"
+body "Some time ago, Order trapped Chaos in our universe."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1125
+title "Grumpos"
+body "That was nice of 'em."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1130
+title "Grand Mysterium"
+body "Chaos has been trying to escape ever since."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1135
+title "Grand Mysterium"
+body "Their goal is to reach the universe before our own."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1140
+title "Grand Mysterium"
+body "Once there, they will attempt to destroy us..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1145
+title "Grand Mysterium"
+body "for if our universe never exists, neither will any universe after it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1150
+title "Grand Mysterium"
+body "In essence, this would destroy Order forever."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1155
+title "Grand Mysterium"
+body "Chaos is unconcerned with us."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1160
+title "Grand Mysterium"
+body "We are merely in the crossfire."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1165
+title "Boots"
+body "So... we're screwed?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1170
+title "Grand Mysterium"
+body "No. There is still hope."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1175
+title "Grand Mysterium"
+body "The only way into the previous universe is through a cosmic gate hidden somewhere in our galaxy."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1180
+title "Grand Mysterium"
+body "A key is necessary to open this gate."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1185
+title "Grand Mysterium"
+body "This key must be found and destroyed to prevent Chaos from escaping."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1190
+title "Boots"
+body "Well, what the hell are we supposed to do about it?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1195
+title "Boots"
+body "Six losers against an army of chaos?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1200
+title "Boots"
+body "Why doesn't Order send some reinforcements or something?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1205
+title "Grand Mysterium"
+body "They have..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1210
+title "Grand Mysterium"
+body "                in the form of MysTech."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1215
+title "Grand Mysterium"
+body "Order scattered MysTech across our galaxy in the event that Chaos tried to escape."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1220
+title "Grand Mysterium"
+body "It is the only weapon effective against them,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1225
+title "Grand Mysterium"
+body "so only individuals proficient in the full powers of MysTech can save us."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1230
+title "Boots"
+body "You're looking at him."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1235
+title "Boots"
+body "We've got the chops for the job."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1240
+title "Boots"
+body "What's the next step?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1245
+title "Grand Mysterium"
+body "If you choose to represent the forces of Order,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1250
+title "Grand Mysterium"
+body "then you must travel to the far-off planet of Limbus."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1255
+title "Grumpos"
+body "Limbus? The planet of death?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1260
+title "Grumpos"
+body "What's on Limbus?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1265
+title "Grand Mysterium"
+body "Answers."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1270
+title "Grand Mysterium"
+body "This is a delicate time, and you have joined the game woefully late."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1275
+title "Grand Mysterium"
+body "The only thing in the way of Chaos and the destruction of all we know and see is Sly Boots, Master of Time and Space!"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1280
+title "Boots"
+body "Okay, okay... I made up the last bit, but the rest is true."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1285
+title "Boots"
+body "He also told me his real name and other stuff."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1290
+title "PAL-18"
+body "What's his real name?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1295
+title "Boots"
+body "I can't pronounce it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1300
+title "Stiletto"
+body "Lemme get this straight."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1305
+title "Stiletto"
+body "We gotta stop Chaos from finding a key that unlocks a cosmic gate."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1310
+title "Dr. Rho Bowman"
+body "I don't buy it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1315
+title "Dr. Rho Bowman"
+body "The story is full of holes."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1320
+title "Dr. Rho Bowman"
+body "If matter being injected into our universe destroyed Sunder,"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1325
+title "Dr. Rho Bowman"
+body "wouldn't that mean Chaos has already escaped?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1330
+title "Boots"
+body "Hey, do I look like I know?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1335
+title "Boots"
+body "If he says the answers are on Limbus, that's where I'm going. "
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1340
+title "Boots"
+body "You can stay or go."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 76:1345
+title "Dr. Rho Bowman"
+body "Then we're gonna need more MysTech."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 76:1
+set CURRENT_PLANET = 6
+set CURRENT_BANK = 76
+gosub 500:1                                  
+extern light_setambientdir 10 -15 0
+extern light_setambientcolor 1 .4 .4
+if (PLAY_SCENE66 == 1) {
+  extern set_party_leader boots
+  if (func_charinparty[grumpos] == 2) {
+    extern remove_npc_from_party grumpos
+    set GRUMPOS_IN_PARTY = 0
+  }
+  if (func_charinparty[pal] == 2) {
+    extern remove_npc_from_party pal
+    set PAL_IN_PARTY = 0
+  }
+  if (func_charinparty[rho] == 2) {
+    extern remove_npc_from_party rho
+    set RHO_IN_PARTY = 0
+  }
+  if (func_charinparty[democratus] == 2) {
+    extern remove_npc_from_party democratus
+    set DEMOCRATUS_IN_PARTY = 0
+  }
+  if (func_charinparty[stiletto] == 2) {
+    extern remove_npc_from_party stiletto
+    set STILETTO_IN_PARTY = 0
+  }
+  set PLAY_SCENE66 = 0
+  set play_probe_intro = 1
+  extern add_quest "Go To Limbus"
+  extern chainscripts hephtower2_scene66_2 hephtower2_scene66_3
+  extern playscene hephtower2_scene66_2
+} else
+  extern playlevelmusic mp3/hephaestus/hephtower.mp3
+gosub 76:0002
+goto 0:0
+
+#switch 76:2
+extern AI_SpawnEntity @ob_clip_handle_1 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_1 2160 -1234 835
+extern AI_SpawnEntity @ob_clip_handle_2 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_2 2320 -1234 835
+extern AI_SpawnEntity @ob_clip_handle_3 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_3 3345 -209 956
+extern AI_SpawnEntity @ob_clip_handle_4 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_4 3345 -49 956
+extern AI_SpawnEntity @ob_clip_handle_5 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_5 2320 977 1084
+extern AI_SpawnEntity @ob_clip_handle_6 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_6 2160 977 1084
+extern AI_SpawnEntity @ob_clip_handle_7 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_7 1135 -49 1207
+extern AI_SpawnEntity @ob_clip_handle_8 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_8 1135 -209 1207
+extern AI_SpawnEntity @ob_clip_handle_9 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_9 2160 -1233 1332
+extern AI_SpawnEntity @ob_clip_handle_10 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_10 2320 -1233 1332
+extern AI_SpawnEntity @ob_clip_handle_11 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_11 3347 -208 1464
+extern AI_SpawnEntity @ob_clip_handle_12 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_12 3347 -48 1464
+extern AI_SpawnEntity @ob_clip_handle_13 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_13 2320 977 1594
+extern AI_SpawnEntity @ob_clip_handle_14 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_14 2160 977 1594
+gosub 76:0003
+
+#switch 76:3
+extern AI_SpawnEntity @ob_clip_handle_15 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_15 1136 -49 1722
+extern AI_SpawnEntity @ob_clip_handle_16 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_16 1136 -209 1722
+extern AI_SpawnEntity @ob_clip_handle_17 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_17 2160 -1233 1847
+extern AI_SpawnEntity @ob_clip_handle_18 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_18 2320 -1233 1847

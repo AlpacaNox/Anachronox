@@ -1,0 +1,519 @@
+#window 7777:2
+title "TraderBot %s", trader_name$
+if (@party_cash < 500)
+  body "You poor soul. How may I help you?"
+if ((@party_cash >= 500) && (@party_cash < 1000))
+  body "Hello, friend. What can I do you for?"
+if ((@party_cash >= 1000) && @we_are_male)
+  body "Hello, sir. May I be of assistance?"
+if ((@party_cash >= 1000) && (@we_are_male == 0))
+  body "Hello, ma'am. May I be of assistance?"
+startswitch {
+  extern is_in_inventory "Ipangi Crystal" @quantity1
+  extern is_in_inventory "Vestrina Cube" @quantity2
+  extern is_in_inventory "Bolongo" @quantity3
+  extern is_in_inventory "Shumfoofa Shell" @quantity4
+  extern is_in_inventory "Vial of Vunivella" @quantity5
+  set @have_some_wares = ((((@quantity1 + @quantity2) + @quantity3) + @quantity4) + @quantity5)
+  extern is_in_inventory "Lifeflower Petal" @quantity_petal
+  extern is_in_inventory "Silver Leaf" @quantity_leaf
+  extern is_in_inventory "Red Ziffinberry" @quantity_berry
+  extern is_in_inventory "Twin-Scaled Underplate" @quantity_plate
+  set @have_rare_items = (((@quantity_petal + @quantity_leaf) + @quantity_berry) + @quantity_plate)
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (@party_cash < 500)
+  choice "I can do deliveries." 7777:6
+if ("trader_delivery_for$" == "trader_name$")
+  choice "I have a delivery for you." 7777:11
+if (@party_cash >= 100)
+  choice "I'd like to see your wares." 7777:7
+if (@have_some_wares)
+  choice "I'd like to sell my wares." 7777:8
+if (@have_rare_items)
+  choice "I'd like to sell my rare items." 7777:10
+choice "Never mind." 0:0
+
+#window 7777:6
+title "TraderBot %s", trader_name$
+if (@which == 0)
+  body "Looks like your hands are full."
+if (@which == 1)
+  body "I need you to take something to TraderBot Vince."
+if (@which == 2)
+  body "I need you to take something to TraderBot Sandie."
+if (@which == 3)
+  body "I need you to take something to TraderBot Norm."
+if (@which == 4)
+  body "I need you to take something to TraderBot Rollo."
+if (@which == 5)
+  body "I need you to take something to TraderBot Llama Lou."
+startswitch {
+  if (trader_delivery_for$ == "") {
+    if (@last_suggestion) {
+      set @which = @last_suggestion
+    } else {
+      set @which = trader_number
+      while (@which == trader_number)
+        set @which = func_drand[1,5]
+      set @last_suggestion = @which
+    }
+  } else
+    set @which = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (@which != 0)
+  choice "Okay." 7777:12
+choice "Sorry." 7777:2
+
+#window 7777:12
+title "TraderBot %s", trader_name$
+if (@which == 1)
+  body "Get this package to Vince. "
+if (@which == 2)
+  body "Get this package to Sandie. "
+if (@which == 3)
+  body "Get this package to Norm. "
+if (@which == 4)
+  body "Get this package to Rollo. "
+if (@which == 5)
+  body "Get this package to Llama Lou. "
+if (@package_desc == 1)
+  body "And whatever you do... DON'T SHAKE IT."
+if (@package_desc == 2)
+  body "Don't worry if it leaks a bit."
+if (@package_desc == 3)
+  body "Ignore the little whimpers."
+if (@package_desc == 4)
+  body "Make sure it doesn't get wet."
+if (@package_desc == 5)
+  body "Keep it right side up, for your own sake."
+if (@package_desc == 6)
+  body "Don't peek inside. Unless you got a gas mask."
+if (@package_desc == 7)
+  body "You aren't allergic to much, are ya?"
+if (@package_desc == 8)
+  body "I wouldn't touch it with my bare hands a lot."
+if (@package_desc == 9)
+  body "That occasional keening sound is normal."
+if (@package_desc == 10)
+  body "Keep it away from Bilifigans. They'll eat you alive for it."
+startswitch {
+  if (@which == 1) {
+    extern addnew_to_inventory "Package for Vince"
+  } else if (@which == 2) {
+    extern addnew_to_inventory "Package for Sandie"
+  } else if (@which == 3) {
+    extern addnew_to_inventory "Package for Norm"
+  } else if (@which == 4) {
+    extern addnew_to_inventory "Package for Rollo"
+  } else if (@which == 5)
+    extern addnew_to_inventory "Package for Llama Lou"
+  if (@which == 1) {
+    trader_delivery_for$="Vince" 
+  } else if (@which == 2) {
+    trader_delivery_for$="Sandie" 
+  } else if (@which == 3) {
+    trader_delivery_for$="Norm" 
+  } else if (@which == 4) {
+    trader_delivery_for$="Rollo" 
+  } else if (@which == 5)
+    trader_delivery_for$="Llama Lou" 
+  set @package_desc = func_drand[1,10]
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 7777:2
+
+#window 7777:11
+title "TraderBot %s", trader_name$
+body "Thanks a lot. Here's a little something for your trouble. "
+body "\n\n(Earned: $%d)", @earnings
+startswitch {
+  set @earnings = ((trader_number * 2) + func_drand[1,5])
+  extern add_money @earnings
+  if (trader_number == 1) {
+    extern remove_from_inventory "Package for Vince"
+  } else if (trader_number == 2) {
+    extern remove_from_inventory "Package for Sandie"
+  } else if (trader_number == 3) {
+    extern remove_from_inventory "Package for Norm"
+  } else if (trader_number == 4) {
+    extern remove_from_inventory "Package for Rollo"
+  } else if (trader_number == 5)
+    extern remove_from_inventory "Package for Llama Lou"
+  trader_delivery_for$="" 
+  set @last_suggestion = 0
+  set @which = 0
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 7777:2
+
+#window 7777:7
+title "BUY WARES"
+xyprintfx 30, 240, 1, 1, 1, 1, _anox10, "ITEM"
+xyprintfx 30, 260, 1, 1, 1, 1, _anox10, "Ipangi Crystal"
+xyprintfx 30, 280, 1, 1, 1, 1, _anox10, "Vestrina Cube"
+xyprintfx 30, 300, 1, 1, 1, 1, _anox10, "Bolongo"
+xyprintfx 30, 320, 1, 1, 1, 1, _anox10, "Shumfoofa Shell"
+xyprintfx 30, 340, 1, 1, 1, 1, _anox10, "Vial of Vunivella"
+xyprintfx 300, 240, 1, 1, 1, 1, _anox10, "PRICE"
+xyprintfx 300, 260, 1, 1, 1, 1, _anox10, "%d", item1_price
+xyprintfx 300, 280, 1, 1, 1, 1, _anox10, "%d", item2_price
+xyprintfx 300, 300, 1, 1, 1, 1, _anox10, "%d", item3_price
+xyprintfx 300, 320, 1, 1, 1, 1, _anox10, "%d", item4_price
+xyprintfx 300, 340, 1, 1, 1, 1, _anox10, "%d", item5_price
+xyprintfx 360, 240, 1, 1, 1, 1, _anox10, "OWNED"
+xyprintfx 360, 260, 1, 1, 1, 1, _anox10, "%d", @quantity1
+xyprintfx 360, 280, 1, 1, 1, 1, _anox10, "%d", @quantity2
+xyprintfx 360, 300, 1, 1, 1, 1, _anox10, "%d", @quantity3
+xyprintfx 360, 320, 1, 1, 1, 1, _anox10, "%d", @quantity4
+xyprintfx 360, 340, 1, 1, 1, 1, _anox10, "%d", @quantity5
+xyprintfx 440, 340, 1, 1, 1, 1, _anox10, "YOUR FUNDS"
+xyprintfx 440, 360, 1, 1, 1, 1, _anox10, "%d", @party_cash
+startswitch {
+  extern check_money @party_cash
+  set item1_price = 20
+  set item2_price = 30
+  set item3_price = 40
+  set item4_price = 50
+  set item5_price = 100
+  if (trader_number == 1) {
+    set item1_price = (0.800000011921 * item1_price)
+    set item2_price = (1.10000002384 * item2_price)
+    set item3_price = (0.600000023842 * item3_price)
+    set item4_price = (2 * item4_price)
+    set item5_price = item5_price
+  } else if (trader_number == 2) {
+    set item1_price = (1.20000004768 * item1_price)
+    set item2_price = item2_price
+    set item3_price = (1.10000002384 * item3_price)
+    set item4_price = (0.699999988079 * item4_price)
+    set item5_price = (1.5 * item5_price)
+  } else if (trader_number == 3) {
+    set item1_price = (0.600000023842 * item1_price)
+    set item2_price = (2 * item2_price)
+    set item3_price = item3_price
+    set item4_price = (0.899999976158 * item4_price)
+    set item5_price = (1.29999995232 * item5_price)
+  } else if (trader_number == 4) {
+    set item1_price = (1.29999995232 * item1_price)
+    set item2_price = (0.699999988079 * item2_price)
+    set item3_price = (1.10000002384 * item3_price)
+    set item4_price = item4_price
+    set item5_price = (0.899999976158 * item5_price)
+  } else if (trader_number == 5) {
+    set item1_price = item1_price
+    set item2_price = (0.899999976158 * item2_price)
+    set item3_price = (1.29999995232 * item3_price)
+    set item4_price = (1.60000002384 * item4_price)
+    set item5_price = (0.600000023842 * item5_price)
+  }
+  extern is_in_inventory "Ipangi Crystal" @quantity1
+  extern is_in_inventory "Vestrina Cube" @quantity2
+  extern is_in_inventory "Bolongo" @quantity3
+  extern is_in_inventory "Shumfoofa Shell" @quantity4
+  extern is_in_inventory "Vial of Vunivella" @quantity5
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (@party_cash >= item1_price)
+  choice "Buy Ipangi Crystal" 7777:13
+if (@party_cash >= item2_price)
+  choice "Buy Vestrina Cube" 7777:14
+if (@party_cash >= item3_price)
+  choice "Buy Bolongo" 7777:15
+if (@party_cash >= item4_price)
+  choice "Buy Shumfoofa Shell" 7777:16
+if (@party_cash >= item5_price)
+  choice "Buy Vial of Vunivella" 7777:17
+choice "Done buying" 7777:2
+
+#window 7777:8
+title "SELL WARES"
+xyprintfx 30, 240, 1, 1, 1, 1, _anox10, "ITEM"
+xyprintfx 30, 260, 1, 1, 1, 1, _anox10, "Ipangi Crystal"
+xyprintfx 30, 280, 1, 1, 1, 1, _anox10, "Vestrina Cube"
+xyprintfx 30, 300, 1, 1, 1, 1, _anox10, "Bolongo"
+xyprintfx 30, 320, 1, 1, 1, 1, _anox10, "Shumfoofa Shell"
+xyprintfx 30, 340, 1, 1, 1, 1, _anox10, "Vial of Vunivella"
+xyprintfx 300, 240, 1, 1, 1, 1, _anox10, "OFFER"
+xyprintfx 300, 260, 1, 1, 1, 1, _anox10, "%d", item1_price
+xyprintfx 300, 280, 1, 1, 1, 1, _anox10, "%d", item2_price
+xyprintfx 300, 300, 1, 1, 1, 1, _anox10, "%d", item3_price
+xyprintfx 300, 320, 1, 1, 1, 1, _anox10, "%d", item4_price
+xyprintfx 300, 340, 1, 1, 1, 1, _anox10, "%d", item5_price
+xyprintfx 360, 240, 1, 1, 1, 1, _anox10, "OWNED"
+xyprintfx 360, 260, 1, 1, 1, 1, _anox10, "%d", @quantity1
+xyprintfx 360, 280, 1, 1, 1, 1, _anox10, "%d", @quantity2
+xyprintfx 360, 300, 1, 1, 1, 1, _anox10, "%d", @quantity3
+xyprintfx 360, 320, 1, 1, 1, 1, _anox10, "%d", @quantity4
+xyprintfx 360, 340, 1, 1, 1, 1, _anox10, "%d", @quantity5
+xyprintfx 440, 340, 1, 1, 1, 1, _anox10, "YOUR FUNDS"
+xyprintfx 440, 360, 1, 1, 1, 1, _anox10, "%d", @party_cash
+startswitch {
+  extern check_money @party_cash
+  set item1_price = 20
+  set item2_price = 30
+  set item3_price = 40
+  set item4_price = 50
+  set item5_price = 100
+  if (trader_number == 1) {
+    set item1_price = (0.699999988079 * item1_price)
+    set item2_price = (1 * item2_price)
+    set item3_price = (0.5 * item3_price)
+    set item4_price = (1.79999995232 * item4_price)
+    set item5_price = (0.899999976158 * item5_price)
+  } else if (trader_number == 2) {
+    set item1_price = (1.10000002384 * item1_price)
+    set item2_price = (0.899999976158 * item2_price)
+    set item3_price = (1 * item3_price)
+    set item4_price = (0.600000023842 * item4_price)
+    set item5_price = (1.39999997616 * item5_price)
+  } else if (trader_number == 3) {
+    set item1_price = (0.40000000596 * item1_price)
+    set item2_price = (1.79999995232 * item2_price)
+    set item3_price = (0.899999976158 * item3_price)
+    set item4_price = (0.800000011921 * item4_price)
+    set item5_price = (1.20000004768 * item5_price)
+  } else if (trader_number == 4) {
+    set item1_price = (1.20000004768 * item1_price)
+    set item2_price = (0.600000023842 * item2_price)
+    set item3_price = (1 * item3_price)
+    set item4_price = (0.899999976158 * item4_price)
+    set item5_price = (0.800000011921 * item5_price)
+  } else if (trader_number == 5) {
+    set item1_price = (0.899999976158 * item1_price)
+    set item2_price = (0.800000011921 * item2_price)
+    set item3_price = (1.10000002384 * item3_price)
+    set item4_price = (1.39999997616 * item4_price)
+    set item5_price = (0.5 * item5_price)
+  }
+  extern is_in_inventory "Ipangi Crystal" @quantity1
+  extern is_in_inventory "Vestrina Cube" @quantity2
+  extern is_in_inventory "Bolongo" @quantity3
+  extern is_in_inventory "Shumfoofa Shell" @quantity4
+  extern is_in_inventory "Vial of Vunivella" @quantity5
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (@quantity1)
+  choice "Sell Ipangi Crystal" 7777:18
+if (@quantity2)
+  choice "Sell Vestrina Cube" 7777:19
+if (@quantity3)
+  choice "Sell Bolongo" 7777:20
+if (@quantity4)
+  choice "Sell Shumfoofa Shell" 7777:21
+if (@quantity5)
+  choice "Sell Vial of Vunivella" 7777:22
+choice "Done selling" 7777:2
+
+#window 7777:9
+title "TraderBot %s", trader_name$
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 7777:10
+title "SELL RARE ITEMS"
+xyprintfx 30, 240, 1, 1, 1, 1, _anox10, "ITEM"
+if (@quantity_petal)
+  xyprintfx 30, 260, 1, 1, 1, 1, _anox10, "Lifeflower Petal"
+if (@quantity_leaf)
+  xyprintfx 30, 280, 1, 1, 1, 1, _anox10, "Silver Leaf"
+if (@quantity_berry)
+  xyprintfx 30, 300, 1, 1, 1, 1, _anox10, "Red Ziffinberry"
+if (@quantity_plate)
+  xyprintfx 30, 320, 1, 1, 1, 1, _anox10, "Twin-Scaled Plate"
+xyprintfx 300, 240, 1, 1, 1, 1, _anox10, "OFFER"
+if (@quantity_petal)
+  xyprintfx 300, 260, 1, 1, 1, 1, _anox10, "%d", item1_price
+if (@quantity_leaf)
+  xyprintfx 300, 280, 1, 1, 1, 1, _anox10, "%d", item2_price
+if (@quantity_berry)
+  xyprintfx 300, 300, 1, 1, 1, 1, _anox10, "%d", item3_price
+if (@quantity_plate)
+  xyprintfx 300, 320, 1, 1, 1, 1, _anox10, "%d", item4_price
+xyprintfx 360, 240, 1, 1, 1, 1, _anox10, "OWNED"
+if (@quantity_petal)
+  xyprintfx 360, 260, 1, 1, 1, 1, _anox10, "%d", @quantity_petal
+if (@quantity_leaf)
+  xyprintfx 360, 280, 1, 1, 1, 1, _anox10, "%d", @quantity_leaf
+if (@quantity_berry)
+  xyprintfx 360, 300, 1, 1, 1, 1, _anox10, "%d", @quantity_berry
+if (@quantity_plate)
+  xyprintfx 360, 320, 1, 1, 1, 1, _anox10, "%d", @quantity_plate
+xyprintfx 440, 340, 1, 1, 1, 1, _anox10, "YOUR FUNDS"
+xyprintfx 440, 360, 1, 1, 1, 1, _anox10, "%d", @party_cash
+startswitch {
+  extern check_money @party_cash
+  extern is_in_inventory "Lifeflower Petal" @quantity_petal
+  extern is_in_inventory "Silver Leaf" @quantity_leaf
+  extern is_in_inventory "Red Ziffinberry" @quantity_berry
+  extern is_in_inventory "Twin-Scaled Underplate" @quantity_plate
+  set item1_price = 25
+  set item2_price = 200
+  set item3_price = 50
+  set item4_price = 5000
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+height 420
+image "sendernet/underline.pcx" 16, 31, 548, 32
+if (@quantity_petal)
+  choice "Sell Lifeflower Petal" 7777:23
+if (@quantity_leaf)
+  choice "Sell Silver Leaf" 7777:24
+if (@quantity_berry)
+  choice "Sell Red Ziffinberry" 7777:25
+if (@quantity_plate)
+  choice "Sell Twin-Scaled Underplate" 7777:26
+choice "Done selling" 7777:2
+
+#switch 7777:1
+extern check_money @party_cash
+if (trader_name$ == "Vince") {
+  set trader_number = 1
+} else if (trader_name$ == "Sandie") {
+  set trader_number = 2
+} else if (trader_name$ == "Norm") {
+  set trader_number = 3
+} else if (trader_name$ == "Rollo") {
+  set trader_number = 4
+} else if (trader_name$ == "Llama Lou")
+  set trader_number = 5
+set @we_are_male = 1
+if ((func_charinparty[rho] == 3) || (func_charinparty[stiletto] == 3))
+  set @we_are_male = 0
+goto 7777:2
+
+#switch 7777:13
+extern remove_money item1_price
+extern addnew_to_inventory "Ipangi Crystal"
+goto 7777:7
+
+#switch 7777:14
+extern remove_money item2_price
+extern addnew_to_inventory "Vestrina Cube"
+goto 7777:7
+
+#switch 7777:15
+extern remove_money item3_price
+extern addnew_to_inventory "Bolongo"
+goto 7777:7
+
+#switch 7777:16
+extern remove_money item4_price
+extern addnew_to_inventory "Shumfoofa Shell"
+goto 7777:7
+
+#switch 7777:17
+extern remove_money item5_price
+extern addnew_to_inventory "Vial of Vunivella"
+goto 7777:7
+
+#switch 7777:18
+extern add_money item1_price
+extern remove_from_inventory "Ipangi Crystal"
+goto 7777:8
+
+#switch 7777:19
+extern add_money item2_price
+extern remove_from_inventory "Vestrina Cube"
+goto 7777:8
+
+#switch 7777:20
+extern add_money item3_price
+extern remove_from_inventory "Bolongo"
+goto 7777:8
+
+#switch 7777:21
+extern add_money item4_price
+extern remove_from_inventory "Shumfoofa Shell"
+goto 7777:8
+
+#switch 7777:22
+extern add_money item5_price
+extern remove_from_inventory "Vial of Vunivella"
+goto 7777:8
+
+#switch 7777:23
+extern add_money item1_price
+extern remove_from_inventory "Lifeflower Petal"
+goto 7777:10
+
+#switch 7777:24
+extern add_money item2_price
+extern remove_from_inventory "Silver Leaf"
+goto 7777:10
+
+#switch 7777:25
+extern add_money item3_price
+extern remove_from_inventory "Red Ziffinberry"
+goto 7777:10
+
+#switch 7777:26
+extern add_money item4_price
+extern remove_from_inventory "Twin-Scaled Underplate"
+goto 7777:10
+
+#switch 7777:1001
+trader_name$="Vince" 
+goto 7777:1
+
+#switch 7777:1002
+trader_name$="Sandie" 
+goto 7777:1
+
+#switch 7777:1003
+trader_name$="Norm" 
+goto 7777:1
+
+#switch 7777:1004
+trader_name$="Rollo" 
+goto 7777:1
+
+#switch 7777:1005
+trader_name$="Llama Lou" 
+goto 7777:1

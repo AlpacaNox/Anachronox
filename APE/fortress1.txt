@@ -1,0 +1,462 @@
+#window 104:10
+startswitch {
+  set @percomm_message_time = (func_gametime + 1000)
+}
+
+thinkswitch {
+  if (func_gametime >= @percomm_message_time)
+    closewindow 104:0010
+}
+
+finishswitch {
+  set timed_message = 99
+  timed_message$="Use SHIFT + TAB to PerComm Between Party Members" 
+  gosub 1000:1
+}
+
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 104:3032
+title "Detta Terminal"
+body "WARNING\n\n"
+body "Security Breached!"
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 104:4200
+if (func_charinparty[boots] == 3)
+  title "Boots"
+if (func_charinparty[grumpos] == 3)
+  title "Grumpos"
+if (func_charinparty[pal] == 3)
+  title "PAL-18"
+if (func_charinparty[rho] == 3)
+  title "Rho Bowman"
+if (func_charinparty[democratus] == 3)
+  title "Democratus"
+if (func_charinparty[stiletto] == 3)
+  title "Stiletto"
+if (func_charinparty[paco] == 3)
+  title "Paco \"El Puño\" Estrella"
+if (func_charinparty[boots] == 3)
+  body "Well, lookie here. A cart."
+if (func_charinparty[grumpos] == 3)
+  body "Ho-hum. It's a cart."
+if (func_charinparty[pal] == 3)
+  body "Ooo! It's a cart!"
+if (func_charinparty[rho] == 3)
+  body "It's a cart."
+if (func_charinparty[democratus] == 3)
+  body "Our sensors indicate it's a cart."
+if (func_charinparty[stiletto] == 3)
+  body "Wouldn't you know it? A cart."
+if (func_charinparty[paco] == 3)
+  body "A cart."
+style "style_embrace"
+font "_anox10"
+flags noscroll, TRUE
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 104:9501
+startswitch {
+  set DettaAirlock = 1
+  set @AVarStart_time = func_gametime
+}
+
+thinkswitch {
+  if (DettaAirlock == 1) {
+    set @AVarT = (func_gametime - @AVarStart_time)
+    if (@AVarT > 12000) {
+      set DettaAirlock = 0
+      closewindow 104:9501
+    }
+  } else
+    closewindow 104:9501
+}
+
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 104:9551
+startswitch {
+  set @ALockStart_time = func_gametime
+}
+
+thinkswitch {
+  if (DettaAirlock == 1) {
+    set @ALockT = (func_gametime - @ALockStart_time)
+    if (@ALockT > 4000) {
+      target hidden1a
+      target hidden1b
+      set DettaAirlock = 0
+      closewindow 104:9551
+    }
+  } else
+    closewindow 104:9551
+}
+
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 104:9601
+startswitch {
+  set DettaAirlock = 2
+  set @AVar2Start_time = func_gametime
+}
+
+thinkswitch {
+  if (DettaAirlock == 2) {
+    set @AVar2T = (func_gametime - @AVar2Start_time)
+    if (@AVar2T > 12000) {
+      set DettaAirlock = 0
+      closewindow 104:9601
+    }
+  } else
+    closewindow 104:9601
+}
+
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 104:9651
+startswitch {
+  set @ALockStart_time = func_gametime
+}
+
+thinkswitch {
+  if (DettaAirlock == 2) {
+    set @ALockT = (func_gametime - @ALockStart_time)
+    if (@ALockT > 4000) {
+      target hidden1a
+      target hidden1b
+      set DettaAirlock = 0
+      closewindow 104:9651
+    }
+  } else
+    closewindow 104:9651
+}
+
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 104:9701
+startswitch {
+  set DettaAirlock = 3
+  set @AVar2Start_time = func_gametime
+}
+
+thinkswitch {
+  if (DettaAirlock == 3) {
+    set @AVar2T = (func_gametime - @AVar2Start_time)
+    if (@AVar2T > 12000) {
+      set DettaAirlock = 0
+      closewindow 104:9701
+    }
+  } else
+    closewindow 104:9701
+}
+
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 104:9751
+startswitch {
+  set @ALockStart_time = func_gametime
+}
+
+thinkswitch {
+  if (DettaAirlock == 3) {
+    set @ALockT = (func_gametime - @ALockStart_time)
+    if (@ALockT > 4000) {
+      target hidden2a
+      target hidden2b
+      set DettaAirlock = 0
+      closewindow 104:9751
+    }
+  } else
+    closewindow 104:9751
+}
+
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 104:9801
+startswitch {
+  set DettaAirlock = 4
+  set @AVar2Start_time = func_gametime
+}
+
+thinkswitch {
+  if (DettaAirlock == 4) {
+    set @AVar2T = (func_gametime - @AVar2Start_time)
+    if (@AVar2T > 12000) {
+      set DettaAirlock = 0
+      closewindow 104:9801
+    }
+  } else
+    closewindow 104:9801
+}
+
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 104:9851
+startswitch {
+  set @ALockStart_time = func_gametime
+}
+
+thinkswitch {
+  if (DettaAirlock == 4) {
+    set @ALockT = (func_gametime - @ALockStart_time)
+    if (@ALockT > 4000) {
+      target hidden2a
+      target hidden2b
+      set DettaAirlock = 0
+      closewindow 104:9851
+    }
+  } else
+    closewindow 104:9851
+}
+
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#switch 104:1
+set CURRENT_PLANET = 1
+set CURRENT_BANK = 104
+extern playlevelmusic mp3/fortress/fortress.mp3
+BattleMusicOverride$="mp3/bricks/Bricks_combat_3_0.mp3" 
+extern setmasterlevel 46
+set PerComm_Party0 = 1
+set PerComm_Party1 = 1
+set PerComm_Party2 = 1
+if (((PerComm_Party0_C1$ != "") && (PerComm_Party1_C1$ != "")) && (PerComm_Party2_C1$ != "")) {
+  extern operate_on_party 0
+  extern set_party_members 0 PerComm_Party0_C1$ PerComm_Party0_C2$ PerComm_Party0_C3$
+  extern move_party_to_point 0 -2032 3136 -623
+  extern create_party 1 PerComm_Party1_C1$
+  extern move_party_to_point 1 -1108 -891 -86
+  extern create_party 2 PerComm_Party2_C1$ PerComm_Party2_C2$ PerComm_Party2_C3$
+  extern move_party_to_point 2 431 3125 -407
+  gosub 104:0010
+}
+extern loopambient ambi_fortress1.s
+extern AI_SpawnEntity @ob_clip_handle_1 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_1 -543 -568 -360
+extern AI_SpawnEntity @ob_clip_handle_2 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_2 -543 -600 -360
+extern AI_SpawnEntity @ob_clip_handle_3 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_3 -543 -632 -360
+extern AI_SpawnEntity @ob_clip_handle_4 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_4 -543 -664 -360
+extern AI_SpawnEntity @ob_clip_handle_5 ob_invisiclick
+extern AI_SetXYZ @ob_clip_handle_5 -596 -660 -295
+goto 0:0
+
+#switch 104:2400
+set keynote_answer = 6135
+set keynote_type = 1
+set keynote_callback_bank = 104
+set keynote_callback_entry = 2405
+keynote$="/gameflow/detta/keynote.txt" 
+gosub 1:10
+
+#switch 104:2405
+extern is_quest_done "Fortress Keynote" @quest
+if (@quest == 0)
+  extern add_quest "Fortress Keynote"
+set @ReadKeynote = 1
+
+#switch 104:2500
+WS_STAND$="fluidroom_pacosmash" 
+ws_object$="fluidroom_pacosmashdoor" 
+gosub 4007:1
+goto 0:0
+
+#switch 104:3000
+set M[2] = 1
+set L[0] = 2
+set M[6] = 28
+goto 104:3800
+
+#switch 104:3010
+set M[2] = 1
+set L[0] = 2
+set M[8] = 54
+goto 104:3800
+
+#switch 104:3020
+set M[2] = 1
+set L[0] = 2
+set M[4] = 32
+set M[16] = 34
+goto 104:3800
+
+#switch 104:3030
+if (@fort1_security1_hacked == 0) {
+  set @CantLogin = 1
+  set M[2] = 1
+  set L[0] = 2
+  goto 104:3800
+}
+if (@fort1_security1_hacked == 1) {
+  set M[2] = 1
+  set L[0] = 2
+  set M[4] = 40
+  set M[16] = 42
+  goto 104:3800
+}
+
+#switch 104:3031
+set @Fortress_Security_Low = 1
+extern playscene fortress1_door1_open.s 0 104:3032 null null 0 0 true false
+
+#switch 104:3040
+if (@Fortress_Security_Medium == 1)
+  target fort1_paldoor1
+
+#switch 104:3050
+if (@Fort1_ElevatorGoinDown == 1)
+  goto 0:0
+if (@Fort_Pal_Hacked_Elevator == 0) {
+  set M[2] = 1
+  set L[0] = 2
+  set M[04] = 46
+  set M[16] = 50
+  goto 104:3800
+}
+if (@Fort_Pal_Hacked_Elevator == 1) {
+  set M[2] = 1
+  set L[0] = 2
+  set M[04] = 48
+  set M[16] = 50
+  goto 104:3800
+}
+
+#switch 104:3060
+set M[2] = 1
+set L[0] = 2
+set M[16] = 58
+goto 104:3800
+
+#switch 104:3070
+if (@Fortress_Security_Low == 1)
+  target party1_security1
+
+#switch 104:3080
+if (@Fortress_Security_Low == 1)
+  target party2_security1
+
+#switch 104:3100
+set M[2] = 1
+set L[0] = 2
+set M[12] = 62
+set M[16] = 86
+goto 104:3800
+
+#switch 104:4000
+if (@fort1_security1_hacked == 1)
+  goto 104:4001
+WS_STAND$="fort1_pal1skill" 
+set ws_bank = 104
+set ws_entry = 4001
+extern assign E[00] -1 50 50 51 50 50 -1
+extern assign E[07] -1 40 40 40 40 40 -1
+extern assign E[14] -1 40 40 30 40 55 -1
+extern assign E[21] -1 40 40 40 40 40 -1
+extern assign E[28] -1 40 40 40 55 40 -1
+extern assign E[35] -1 40 30 40 40 40 -1
+extern assign E[42] -1 46 45 45 45 45 -1
+set ws_counter_time = 40
+gosub 4003:1
+goto 0:0
+
+#switch 104:4001
+set @fort1_security1_hacked = 1
+extern playsound maps/mac/mac_computerbeeps_e.wav
+goto 104:3030
+
+#switch 104:4010
+if (@Fort1_ElevatorGoinDown == 1)
+  goto 0:0
+if (@Fort_Pal_Hacked_Elevator == 1)
+  goto 104:3050
+WS_STAND$="fort1_pal2skill" 
+set ws_bank = 104
+set ws_entry = 4011
+extern assign E[00] -1 50 50 50 51 50 -1
+extern assign E[07] -1 40 40 40 40 40 -1
+extern assign E[14] -1 30 30 40 40 55 -1
+extern assign E[21] -1 40 40 40 40 40 -1
+extern assign E[28] -1 30 40 40 55 40 -1
+extern assign E[35] -1 40 40 55 40 40 -1
+extern assign E[42] -1 45 46 45 45 45 -1
+set ws_counter_time = 40
+gosub 4003:1
+goto 0:0
+
+#switch 104:4011
+set @Fort_Pal_Hacked_Elevator = 1
+goto 104:3050
+
+#switch 104:4210
+goto 104:4230
+
+#switch 104:4220
+goto 104:4230
+
+#switch 104:4230
+if (@Fort1_CartCineActivated == 1)
+  goto 0:0
+set @Fort1_CartCineActivated = 1
+extern playscene fortress1_carts_moving.s  0 0:0 null null 0 0 true false
+
+#switch 104:4300
+goto 104:4320
+
+#switch 104:4310
+goto 104:4320
+
+#switch 104:4320
+if (@Fort1_PodsActivated == 0)
+  goto 0:0
+if (@Fort1_PodCineActivated == 1)
+  goto 0:0
+set @Fort1_PodCineActivated = 1
+extern complete_quest "PAL DettaTerm Info"
+extern complete_quest "Fortress Keynote"
+extern playscene fortress1_pods_moving.s  0 0:0 null null 0 0 true false
+
+#switch 104:6900
+set @lastMS = func_GameTime
+set @time = 0
+
+#switch 104:6901
+set @curMS = func_GameTime
+set @time = ((@curMS - @lastMS) / 1000)

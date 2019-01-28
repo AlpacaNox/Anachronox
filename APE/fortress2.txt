@@ -1,0 +1,1081 @@
+#window 105:10
+startswitch {
+  set @percomm_message_time = (func_gametime + 1000)
+}
+
+thinkswitch {
+  if (func_gametime >= @percomm_message_time)
+    closewindow 105:0010
+}
+
+finishswitch {
+  set timed_message = 99
+  timed_message$="Use SHIFT + TAB to PerComm Between Party Members" 
+  gosub 1000:1
+}
+
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 105:4105
+startswitch {
+  extern AI_GrabEntity PlayerChar0 playerchar0_handle
+  extern AI_WaitAndFace  playerchar0_handle -1 trigger1
+  extern cam_to -3341 614 -420
+  extern cam_from -3341 671 -449
+  extern cam_zip
+  console "fov 150"
+  console "fov 80 1000 sinusoidal"
+  set @palcamtotime = (func_gametime + 1000)
+}
+
+thinkswitch {
+  if (func_gametime >= @palcamtotime)
+    closewindow 105:4105
+}
+
+finishswitch {
+  unset @palcamtotime
+  extern cam_restore
+  console "fov 90"
+  gosub 105:4110
+}
+
+style "null"
+flags passive, TRUE
+xpos 0
+ypos 0
+
+#window 105:4110
+title "PAL-18"
+body "That’s a pretty mean lookin’ door, man. I oughta wait for the others before seeing what’s on the other side."
+talk player talk_a stay
+startswitch {
+  extern cam_anoxmariomode 1
+  extern cam_from PlayerChar0
+  extern cam_to -3341 614 -420
+  extern AI_WaitAndFace  playerchar0_handle -1 trigger1
+}
+
+finishswitch {
+  extern cam_anoxmariomode 0
+  extern AI_ReleaseEntity playerchar0_handle
+  extern add_quest "Head To The Workshop"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 105:4115
+
+#window 105:4115
+title "PAL-18"
+body "My little circuits are doin’ the tingle-tingle."
+talk player talk_a stay
+finishswitch {
+  extern cam_anoxmariomode 0
+  extern AI_ReleaseEntity playerchar0_handle
+  extern add_quest "Head To The Workshop"
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 105:4205
+title "%s", playerchar0$
+if ((func_charinparty[boots] == 3) && (KIDZ == 0))
+  body "That fat bastard’s cloning himself an army. We better chill out and wait for the others before making another move."
+if ((func_charinparty[boots] == 3) && (KIDZ == 1))
+  body "That rat's cloning himself an army. We better chill out and wait for the others before making another move."
+if (func_charinparty[grumpos] == 3)
+  body "Looks like Mr. Big’s cloning an army for himself. We should rest our feet and wait for the others before moving on."
+if (func_charinparty[pal] == 3)
+  body "Detta’s baking himself an army of clones. We oughta wait for the others before we roll out."
+if (func_charinparty[rho] == 3)
+  body "Detta’s cloning an army. Let’s wait for the others and debrief before we continue any further."
+if (func_charinparty[democratus] == 3)
+  body "It would appear that Vendelin Detta is cloning an army for his personal use. We suggest remaining here until the rest of the party arrives."
+if ((func_charinparty[stiletto] == 3) && (KIDZ == 0))
+  body "That rat bastard’s cloning himself an army. Let’s wait for the others before making another move."
+if ((func_charinparty[stiletto] == 3) && (KIDZ == 1))
+  body "That rat's cloning himself an army. Let’s wait for the others before making another move."
+if (func_charinparty[paco] == 3)
+  body "Detta making a clone army, like Doom Maestro in issue twenty. We wait for the others."
+talk player talk_a stay
+startswitch {
+  extern cam_from -3337 766 -105
+  extern cam_to -3335 714 -143
+  extern cam_zip
+}
+
+finishswitch {
+  extern cam_restore
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 105:4220
+title "Boots"
+body "Are we ready?"
+talk_ex boots pal talk_a amb_a stay stay
+startswitch {
+  extern cam_from -3337 766 -105
+  extern cam_to -3335 714 -143
+  extern cam_zip
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Let's do it." 105:4225
+choice "Not quite yet." 0:0
+
+#window 105:4225
+title "Boots"
+body "Alright, kids. Team huddle."
+talk_ex boots pal talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 105:4230
+
+#window 105:4230
+title "Boots"
+body "Guess this cloning business puts a little wrinkle in our search for the Keystone."
+talk_ex boots pal talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 105:4235
+
+#window 105:4235
+title "Boots"
+body "I don’t think anyone in this room will feel right unless we stop Detta from producing any more of those soldiers."
+talk_ex boots pal talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 105:4240
+
+#window 105:4240
+title "Boots"
+body "I mean, what good’s saving the universe if Detta’s just gonna turn around and take it over?"
+talk_ex boots pal talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 105:4245
+
+#window 105:4245
+title "Boots"
+body "So I propose we split off again. This time into two groups:"
+talk_ex boots pal talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 105:4250
+
+#window 105:4250
+title "Boots"
+body "Stiletto and I will look for the Keystone. The rest of you should double back and find a way to destroy that production line."
+talk_ex boots pal talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 105:4255
+
+#window 105:4255
+title "Boots"
+body "Make sense? Then hurry."
+talk_ex boots pal talk_a amb_a stay stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 105:4260
+
+#window 105:4260
+title "Boots"
+body "And don’t wait for us."
+talk_ex boots pal talk_a amb_a stay stay
+finishswitch {
+  extern cam_restore
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 105:4010
+
+#window 105:4305
+title "K'Conrad Khk"
+if (func_charinparty[boots] == 3)
+  body "Your timing could not have been more perfect, Detective. Thank you so very much."
+if (func_charinparty[grumpos] == 3)
+  body "Impeccable timing, Mister Matavastros. I can only express my deepest gratitude."
+if (func_charinparty[pal] == 3)
+  body "What a strange, strange turn of events. Unless I'm very much mistaken, you are PAL-18, the Personal Android Lackey of Sylvester Bucelli, a.k.a. \"Sly\" Boots."
+if (func_charinparty[rho] == 3)
+  body "What a strange turn of events. I never would have expected the disgraced Rho Bowman to come to my rescue. A pleasure to meet you, Doctor."
+if (func_charinparty[democratus] == 3)
+  body "What a strange turn of events. I never would have expected the entire planet of Democratus to come to my rescue. What a pleasure to meet the High Council."
+if (func_charinparty[stiletto] == 3)
+  body "What a strange turn of events. I never would have expected Stiletto Anyway, the latest and greatest incarnation of Ms. Serenata Iniwa, to come to my rescue."
+if (func_charinparty[paco] == 3)
+  body "What a strange turn of events. I never would have expected the legendary Paco Estrella to come to my rescue. It saddens me to see that rumors of your flight loss are true. "
+cam left restore zip
+talk npc talk_a stay
+startswitch {
+  set Fortress2_KhkConvo = 1
+}
+
+finishswitch {
+  extern AI_GrabEntity khk khk_handle
+  extern entkey khk_handle "default_anim" "amb_a"
+  extern AI_ReleaseEntity khk_handle
+}
+
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 105:4310
+
+#window 105:4310
+title "K'Conrad Khk"
+if (func_charinparty[boots] == 3)
+  body "I'm grateful you found it within your heart to forgive me for my earlier trespass against you."
+if (func_charinparty[grumpos] == 3)
+  body "I'm grateful you found it within your heart to forgive me for my earlier trespass against you."
+if (func_charinparty[pal] == 3)
+  body "I'm delighted to see the rumors of your nascent self-awareness were not exaggerated. I'm even happier that you're not holding my prior trespass against your owner against me."
+if (func_charinparty[rho] == 3)
+  body "I'm grateful that my previous trespass against your comrades didn't color your sense of decency."
+if (func_charinparty[democratus] == 3)
+  body "I'm grateful that my previous trespass against your comrades didn't color the Council's sense of decency."
+if (func_charinparty[stiletto] == 3)
+  body "I'm grateful that my previous trespass against your ex-partner didn't color your sense of decency."
+if (func_charinparty[paco] == 3)
+  body "I'm also grateful that my earlier trespass against your current sidekicks didn't color your sense of decency."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 105:4315
+
+#window 105:4315
+title "K'Conrad Khk"
+if (func_charinparty[boots] == 3)
+  body "You will be happy to know that in a grand turn of karmic justice, the devious Vendelin Detta recently betrayed me… just as I betrayed you."
+if (func_charinparty[grumpos] == 3)
+  body "You will be happy to know that in a grand turn of karmic justice, the devious Vendelin Detta recently betrayed me… just as I betrayed you."
+if (func_charinparty[pal] == 3)
+  body "In a grand turn of karmic justice, the devious Vendelin Detta recently betrayed me just as I betrayed Master Boots."
+if (func_charinparty[rho] == 3)
+  body "In a grand turn of karmic justice, the devious Vendelin Detta recently betrayed me just as I betrayed Mister Matavastros and the good detective."
+if (func_charinparty[democratus] == 3)
+  body "In a grand turn of karmic justice, the devious Vendelin Detta recently betrayed me just as I betrayed Mister Matavastros and the good detective."
+if (func_charinparty[stiletto] == 3)
+  body "In a grand turn of karmic justice, the devious Vendelin Detta recently betrayed me just as I betrayed Mister Matavastros and the good detective."
+if (func_charinparty[paco] == 3)
+  body "In a grand turn of karmic justice, the devious Vendelin Detta recently betrayed me just as I betrayed Mister Matavastros and the good detective."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 105:4320
+
+#window 105:4320
+title "K'Conrad Khk"
+if (func_charinparty[boots] == 3)
+  body "This morning, I overheard my former employer relate a rather tasteless anecdote about a floater, a prostitute, and a bag of tea. He was, of course, unaware of my presence."
+if (func_charinparty[grumpos] == 3)
+  body "This morning, I overheard my former employer relate a rather tasteless anecdote about a floater, a prostitute, and a bag of tea. He was, of course, unaware of my presence."
+if (func_charinparty[pal] == 3)
+  body "This morning, I overheard my former employer relate a rather tasteless anecdote about a floater, a prostitute, and a bag of tea. He was, of course, unaware of my presence."
+if (func_charinparty[rho] == 3)
+  body "This morning, I overheard my former employer relate a rather tasteless anecdote about a floater, a prostitute, and a bag of tea. He was, of course, unaware of my presence."
+if (func_charinparty[democratus] == 3)
+  body "This morning, I overheard my former employer relate a rather tasteless anecdote about a floater, a prostitute, and a bag of tea. He was, of course, unaware of my presence."
+if (func_charinparty[stiletto] == 3)
+  body "This morning, I overheard my former employer relate a rather tasteless anecdote about a floater, a prostitute, and a bag of tea. He was, of course, unaware of my presence."
+if (func_charinparty[paco] == 3)
+  body "This morning, I overheard my former employer relate a rather tasteless anecdote about a floater, a prostitute, and a bag of tea. He was, of course, unaware of my presence."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 105:4325
+
+#window 105:4325
+title "K'Conrad Khk"
+if (func_charinparty[boots] == 3)
+  body "At that moment, I realized his concern for the rights of floaters was a carefully cultivated deception. This fact, coupled with his insane plans for galactic domination, supported my decision to terminate my employment here."
+if (func_charinparty[grumpos] == 3)
+  body "At that moment, I realized his concern for the rights of floaters was a carefully cultivated deception. This fact, coupled with his insane plans for galactic domination, supported my decision to terminate my employment here."
+if (func_charinparty[pal] == 3)
+  body "At that moment, I realized his concern for the rights of floaters was a carefully cultivated deception. This fact, coupled with his insane plans for galactic domination, supported my decision to terminate my employment here."
+if (func_charinparty[rho] == 3)
+  body "At that moment, I realized his concern for the rights of floaters was a carefully cultivated deception. This fact, coupled with his insane plans for galactic domination, supported my decision to terminate my employment here."
+if (func_charinparty[democratus] == 3)
+  body "At that moment, I realized his concern for the rights of floaters was a carefully cultivated deception. This fact, coupled with his insane plans for galactic domination, supported my decision to terminate my employment here."
+if (func_charinparty[stiletto] == 3)
+  body "At that moment, I realized his concern for the rights of floaters was a carefully cultivated deception. This fact, coupled with his insane plans for galactic domination, supported my decision to terminate my employment here."
+if (func_charinparty[paco] == 3)
+  body "At that moment, I realized his concern for the rights of floaters was a carefully cultivated deception. This fact, coupled with his insane plans for galactic domination, supported my decision to terminate my employment here."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 105:4330
+
+#window 105:4330
+title "K'Conrad Khk"
+if (func_charinparty[boots] == 3)
+  body "In fact, I was helping myself to quite a nice severance package when Detta's simple-simons caught me red-handed. Perhaps I could interest you in some of my new acquisitions."
+if (func_charinparty[grumpos] == 3)
+  body "In fact, I was helping myself to quite a nice severance package when Detta's simple-simons caught me red-handed. Perhaps I could interest you in some of my new acquisitions."
+if (func_charinparty[pal] == 3)
+  body "In fact, I was helping myself to quite a nice severance package when Detta's simple-simons caught me red-handed. Perhaps I could interest you in some of my new acquisitions..."
+if (func_charinparty[rho] == 3)
+  body "In fact, I was helping myself to quite a nice severance package when Detta's simple-simons caught me red-handed. Perhaps I could interest you in some of my new acquisitions."
+if (func_charinparty[democratus] == 3)
+  body "In fact, I was helping myself to quite a nice severance package when Detta's simple-simons caught me red-handed. Perhaps I could interest you in some of my new acquisitions."
+if (func_charinparty[stiletto] == 3)
+  body "In fact, I was helping myself to quite a nice severance package when Detta's simple-simons caught me red-handed. Perhaps I could interest you in some of my new acquisitions."
+if (func_charinparty[paco] == 3)
+  body "In fact, I was helping myself to quite a nice severance package when Detta's simple-simons caught me red-handed. Perhaps I could interest you in some of my new acquisitions."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+nextwindow 105:4350
+
+#window 105:4336
+title "K'Conrad Khk"
+if (func_charinparty[boots] == 3)
+  body "Good luck, Detective. You will give the strongman a big shot on the chin for me, won't you?"
+if (func_charinparty[grumpos] == 3)
+  body "Good luck, Mister Matavastros. You will give the strongman a big whack on the chin for me, won't you?"
+if (func_charinparty[pal] == 3)
+  body "Good luck, Mister Ayteen. You will give the strongman a big zap on the chin for me, won't you?"
+if (func_charinparty[rho] == 3)
+  body "Good luck, Doctor. You will give the strongman a big shot on the chin for me, won't you?"
+if (func_charinparty[democratus] == 3)
+  body "Good luck, Council. You will give the strongman a big shot on the chin for me, won't you?"
+if (func_charinparty[stiletto] == 3)
+  body "Good luck, Ms. Anyway. You will give the strongman a big knife in the chin for me, won't you?"
+if (func_charinparty[paco] == 3)
+  body "Good luck, Mister \"El Puño\". You will give the strongman a big knock on the chin for me, won't you?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 105:4337
+title "K'Conrad Khk"
+body "Good luck."
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+
+#window 105:4340
+title "K'Conrad Khk"
+body "Would you like to peruse my acquisitions a little more while I plan the rest of my escape?"
+cam left restore zip
+talk npc talk_a stay
+style "style_embrace"
+font "_anox10"
+xpos 30
+ypos 30
+width 580
+image "sendernet/underline.pcx" 16, 31, 548, 32
+choice "Yes." 105:4350
+choice "No." 0:0
+
+#window 105:5501
+title "Detta"
+body "Welcome."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5505
+title "Detta"
+body "Hello, loser."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5510
+title "Detta"
+body "You missed our dinner date. I'll deal with you in a moment."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5515
+title "Detta"
+body "Sera! Don't you look radiant? I was afraid I'd left scars."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5520
+title "Detta"
+body "I'm glad you're dressing like the tramp I always knew you were inside."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5525
+title "Detta"
+body "Where's the secretary?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5530
+title "Detta"
+body "Cute. I can see why you wanted to keep her around."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5535
+title "Detta"
+body "She worth the price?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5540
+title "Boots"
+body "Every penny."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5545
+title "Fatima"
+body "What are you talking about?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5550
+title "Detta"
+body "You like my new digs?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5555
+title "Detta"
+body "I heard you trashed your ride, and sold the agency."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5560
+title "Detta"
+body "Hard times, Sylvester?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5565
+title "Boots"
+body "Something like that."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5570
+title "Detta"
+body "Not fun, is it? Living on the cheap."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5575
+title "Detta"
+body "How much money you need?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5580
+title "Boots"
+body "As much as I can get."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5585
+title "Detta"
+body "I think we can work something out. But understand one thing:"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5590
+title "Detta"
+body "This confirms in ink what I've known for years, Sylvester..."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5595
+title "Detta"
+body "I own you."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5600
+title "Detta"
+body "That's right, sweetie. I'm your benefactor."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5605
+title "Detta"
+body "You owe your digitization... your existence to me."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5610
+title "Boots"
+body "She doesn't care, Detta. We're here for the stone."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5615
+title "Detta"
+body "I'm not giving it to you."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5620
+title "Stiletto"
+body "Then we're taking it."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5625
+title "Detta"
+body "You're welcome to try."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5630
+title "Detta"
+body "It's a revolution, Sylvester."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5635
+title "Detta"
+body "Anyone can go from a nobody to a somebody with the right slag of MysTech."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5640
+title "Detta"
+body "This isn't about our little street feud anymore. It's about our future."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5645
+title "Boots"
+body "Future, huh?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5650
+title "Boots"
+body "You wanna know the difference between you and the you five minutes ago?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5655
+title "Boots"
+body "The you five minutes ago had five minutes to live."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5660
+title "Detta"
+body "Huh?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5665
+title "Boots"
+body "Feel better?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5670
+title "Stiletto"
+body "Do you?"
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5675
+title "Fatima"
+body "You did the right thing. Grab the stone and let's have a party."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#window 105:5680
+title "Fatima"
+body "You just saved the universe, kiddo."
+style "NULL"
+font "_newsub"
+flags noscroll, TRUE
+flags subtitle, TRUE
+xpos 40
+ypos 360
+width 580
+
+#switch 105:1
+extern playlevelmusic mp3/fortress/fortress.mp3
+BattleMusicOverride$="mp3/bricks/bricks_combat_3_0.mp3" 
+extern setmasterlevel 47
+if (((PerComm_Party0_C1$ != "") && (PerComm_Party1_C1$ != "")) && (PerComm_Party2_C1$ != "")) {
+  extern operate_on_party 0
+  extern set_party_members 0 PerComm_Party0_C1$ PerComm_Party0_C2$ PerComm_Party0_C3$
+  extern move_party_to_point 0 540 -689 -383
+  extern create_party 1 PerComm_Party1_C1$
+  extern move_party_to_point 1 -1602 -1127 -535
+  extern create_party 2 PerComm_Party2_C1$ PerComm_Party2_C2$ PerComm_Party2_C3$
+  extern move_party_to_point 2 1231 2171 -199
+  gosub 105:0010
+}
+goto 0:0
+
+#switch 105:2500
+set M[2] = 1
+set L[0] = 2
+set M[16] = 74
+goto 104:3800
+
+#switch 105:2600
+set M[2] = 1
+set L[0] = 2
+set M[14] = 84
+goto 104:3800
+
+#switch 105:3000
+set M[2] = 1
+set L[0] = 2
+set M[04] = 88
+set M[14] = 68
+set M[16] = 70
+goto 104:3800
+
+#switch 104:3010
+set @Fort1_PlatesActivated = 1
+set M[2] = 1
+set L[0] = 2
+set M[8] = 54
+goto 104:3800
+
+#switch 105:3500
+set @Fort1_PodsActivated = 1
+set M[2] = 1
+set L[0] = 2
+set M[12] = 62
+set M[16] = 86
+goto 104:3800
+
+#switch 105:3600
+target ante_gate
+
+#switch 105:3700
+if (@HugeDoorIsOpen == 0)
+  goto 0:0
+if (func_charinparty[boots] >= 2)
+  set @Fortress_Party1InWorkshop = 0
+if (func_charinparty[stiletto] >= 2)
+  set @Fortress_Party2InWorkshop = 0
+if (func_charinparty[pal] >= 2)
+  set @Fortress_Party3InWorkshop = 0
+
+#switch 105:3800
+set M[2] = 1
+set L[0] = 2
+set M[4] = 80
+goto 104:3800
+
+#switch 105:4000
+if (@FortressEndSequenceBegun == 1)
+  goto 0:0
+if (func_charinparty[boots] >= 2)
+  set @Fortress_Party1InWorkshop = 1
+if (func_charinparty[stiletto] >= 2)
+  set @Fortress_Party2InWorkshop = 1
+if (func_charinparty[pal] >= 2)
+  set @Fortress_Party3InWorkshop = 1
+
+#switch 105:4010
+set @FortressEndSequenceBegun = 1
+echo ">>> EVERYONE IS IN, DO COOL STUFF <<<"
+extern activate_party 2
+if (func_charinparty[stiletto] == 2)
+  extern remove_npc_from_party stiletto
+if (func_charinparty[stiletto] == 3) {
+  extern get_party_order @one$ @two$ @three$
+  if (@two$ == "Grumpos")
+    extern set_party_leader grumpos
+  if (@two$ == "Rho")
+    extern set_party_leader rho
+  if (@two$ == "Democratus")
+    extern set_party_leader democratus
+  if (@two$ == "Paco")
+    extern set_party_leader paco
+  extern remove_npc_from_party stiletto
+  extern get_party_order @one$ @two$ @three$
+}
+goto 105:4011
+goto 0:0
+
+#switch 105:4011
+extern activate_party 0
+extern set_party_leader boots
+extern get_party_order @one$ @two$ @three$
+if (@two$ == "Grumpos")
+  extern remove_npc_from_party grumpos
+if (@two$ == "Rho")
+  extern remove_npc_from_party rho
+if (@two$ == "Democratus")
+  extern remove_npc_from_party democratus
+if (@two$ == "Paco")
+  extern remove_npc_from_party paco
+if (@three$ == "Grumpos")
+  extern remove_npc_from_party grumpos
+if (@three$ == "Rho")
+  extern remove_npc_from_party rho
+if (@three$ == "Democratus")
+  extern remove_npc_from_party democratus
+if (@three$ == "Paco")
+  extern remove_npc_from_party paco
+extern add_npc_to_party stiletto
+goto 105:4090
+goto 0:0
+
+#switch 105:4050
+if (@FortressEndSequenceBegun == 1)
+  goto 0:0
+if (func_charinparty[boots] >= 2)
+  set @Fortress_Party1InWorkshop = 1
+if (func_charinparty[stiletto] >= 2)
+  set @Fortress_Party2InWorkshop = 1
+if (func_charinparty[pal] >= 2)
+  set @Fortress_Party3InWorkshop = 1
+if ((func_charinparty[pal] == 3) && (@PalSawDoor == 0))
+  gosub 105:4100
+
+#switch 105:4090
+set Play_Final_Boss = 1
+extern playscene fortress2_detta_intro 0 105:4095 null null 0 0 false false
+
+#switch 105:4095
+console "battlestart 99"
+
+#switch 105:4100
+set @PalSawDoor = 1
+if (((@Fortress_Party1InWorkshop == 1) && (@Fortress_Party2InWorkshop == 1)) && (@Fortress_Party3InWorkshop == 1))
+  goto 0:0
+goto 105:4105
+
+#switch 105:4200
+if (((@Fortress_Party1InWorkshop == 1) && (@Fortress_Party2InWorkshop == 1)) && (@Fortress_Party3InWorkshop == 1))
+  goto 105:4220
+goto 105:4205                                
+goto 0:0
+
+#switch 105:4300
+if (Fortress2_KhkConvo == 1)
+  goto 105:4340
+goto 105:4305
+goto 0:0
+
+#switch 105:4335
+if (Fort2_Khk_StoreConvo == 1)
+  goto 105:4337
+set Fort2_Khk_StoreConvo = 1
+goto 105:4336
+
+#switch 105:4350
+extern shop_create "K'Conrad Khk"
+extern shop_set_active "K'Conrad Khk"
+extern shop_add_object "HealGrease Plus" 100
+extern shop_add_object "HealGrease Complete" 100
+extern shop_add_object "TimeMinder Tear" 100
+extern shop_add_object "Bag o' Glodents" 100
+extern shop_add_object "Glodent Colony" 100
+extern shop_add_object "Blood Filter Fascia" 100
+extern shop_add_object "Fire Retardant Roundlet" 100
+extern shop_add_object "FreezeMeNot Loop" 100
+extern shop_add_object "Speedsure Circlet" 100
+extern shop_add_object "TurboAlert Wristpincher" 100
+extern shop_slogan ""
+extern shop_start 105:4335
+goto 0:0
+
+#switch 105:4375
+goto 105:4300
+goto 0:0
+
+#switch 105:9801
+target whirl1
+
+#switch 105:9851
+target whirl2
+
+#switch 105:9901
+extern assign E[0] -1 50 51 50 50 50 -1
+extern assign E[7] -1 40 40 40 60 40 -1
+extern assign E[14] -1 60 40 40 40 40 -1
+extern assign E[21] -1 40 40 30 40 40 -1
+extern assign E[28] -1 30 40 40 40 40 -1
+extern assign E[35] -1 40 40 30 40 60 -1
+extern assign E[42] -1 46 45 45 45 45 -1
+WS_STAND$="airlock1_path" 
+ws_object$="whirl1" 
+gosub 4003:1
+goto 0:0
