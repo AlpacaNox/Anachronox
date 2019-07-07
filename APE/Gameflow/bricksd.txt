@@ -1396,7 +1396,7 @@ image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 9:1305
 title "Welcome to the MysTech Museum"
-body "Public Museum Hours (Fri-Sun 8:30 – 5:00) \nThe museum is open to contributors 22 hours a day. \n \nWould you like to enter the MysTech Museum?"
+body "Public Museum Hours (Fri-Sun 8:30 Â– 5:00) \nThe museum is open to contributors 22 hours a day. \n \nWould you like to enter the MysTech Museum?"
 style "style_embrace"
 font "_anox10"
 xpos 30
@@ -1418,7 +1418,7 @@ image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 9:1315
 title "Welcome to the MysTech Museum"
-body "Public Museum Hours (7 days a week 8:30 – 5:00) \nThe museum is open to contributors 22 hours a day."
+body "Public Museum Hours (7 days a week 8:30 Â– 5:00) \nThe museum is open to contributors 22 hours a day."
 style "style_embrace"
 font "_anox10"
 xpos 30
@@ -1694,7 +1694,7 @@ image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 9:1815
 title "Feefor Wilcox"
-body "When it became clear the original population wasn't coming back, people moved right in… mostly fugitives on the run."
+body "When it became clear the original population wasn't coming back, people moved right inÂ… mostly fugitives on the run."
 cam left restore zip
 talk npc gest_g stay
 style "style_embrace"
