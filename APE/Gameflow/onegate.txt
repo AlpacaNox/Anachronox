@@ -101,7 +101,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 25:610
-title "Spituña Todd"
+title "SpituÃ±a Todd"
 body "Mistah Detta, ain't expectin' you. Scramoo."
 cam left restore zip
 talk npc talk_a stay
