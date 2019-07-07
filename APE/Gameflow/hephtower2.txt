@@ -111,7 +111,7 @@ width 580
 image "graphics/underline_heph.pcx" 16, 31, 548, 32
 
 #window 76:601
-title "Sister Cañiña"
+title "Sister CaÃ±iÃ±a"
 body "The Fifth of the Nine Enigmas: Who made the Senders?"
 cam left restore zip
 talk npc talk_a stay
@@ -189,7 +189,7 @@ width 580
 image "graphics/underline_heph.pcx" 16, 31, 548, 32
 
 #window 76:1301
-title "Sister Boñiga"
+title "Sister BoÃ±iga"
 body ". . . ."
 cam left lift(40) restore zip
 talk npc amb_b stay
