@@ -251,17 +251,17 @@ title "Grumpos"
 if (ws_yammer_fail$ != "")
   body "%s", ws_yammer_fail$
 if ((ws_yammer_fail$ == "") && (@GrumposFailureSpeach == 1))
-  body "Excuse me... can’t breathe... got a recurring case of graveyard cough..."
+  body "Excuse me... canâ€™t breathe... got a recurring case of graveyard cough..."
 if ((ws_yammer_fail$ == "") && (@GrumposFailureSpeach == 2))
-  body "Excuse me... can’t breathe... must be my bronchitis actin’ up..."
+  body "Excuse me... canâ€™t breathe... must be my bronchitis actinâ€™ up..."
 if ((ws_yammer_fail$ == "") && (@GrumposFailureSpeach == 3))
-  body "Excuse me... can’t breathe... my farmer’s lung is kickin’ up some trouble..."
+  body "Excuse me... canâ€™t breathe... my farmerâ€™s lung is kickinâ€™ up some trouble..."
 if ((ws_yammer_fail$ == "") && (@GrumposFailureSpeach == 4))
-  body "Excuse me... can’t breathe... must be something lodged in my windpipe..."
+  body "Excuse me... canâ€™t breathe... must be something lodged in my windpipe..."
 if ((ws_yammer_fail$ == "") && (@GrumposFailureSpeach == 5))
-  body "Excuse me... can’t breathe... my chest is feelin’ a bit constricted..."
+  body "Excuse me... canâ€™t breathe... my chest is feelinâ€™ a bit constricted..."
 if ((ws_yammer_fail$ == "") && (@GrumposFailureSpeach == 6))
-  body "Excuse me... can’t breathe... I’m gettin’ all croupy all of a sudden..."
+  body "Excuse me... canâ€™t breathe... Iâ€™m gettinâ€™ all croupy all of a sudden..."
 cam left restore zip
 talk player talk_a stay
 startswitch {
@@ -285,15 +285,15 @@ title "%s", ws_yammeredname$
 if (ws_yammer_fail_retort$ != "")
   body "%s", ws_yammer_fail_retort$
 if ((ws_yammer_fail_retort$ == "") && (@VictimFailureSpeach == 1))
-  body "Let’s wrap this up, old-timer. Don’t waste my time if you’re just gonna stutter."
+  body "Letâ€™s wrap this up, old-timer. Donâ€™t waste my time if youâ€™re just gonna stutter."
 if ((ws_yammer_fail_retort$ == "") && (@VictimFailureSpeach == 2))
   body "Are we done here, sir? Shove off, you incoherent coot."
 if ((ws_yammer_fail_retort$ == "") && (@VictimFailureSpeach == 3))
-  body "You’re fading out, old man. Buzz off until you’ve got something to say."
+  body "Youâ€™re fading out, old man. Buzz off until youâ€™ve got something to say."
 if ((ws_yammer_fail_retort$ == "") && (@VictimFailureSpeach == 4))
   body "Spit it out or take a hike before you expire, grandpa."
 if ((ws_yammer_fail_retort$ == "") && (@VictimFailureSpeach == 5))
-  body "Beat it if you’re just gonna stand there saying nothing."
+  body "Beat it if youâ€™re just gonna stand there saying nothing."
 startswitch {
   set @VictimFailureSpeach = func_drand[1,5]
 }
