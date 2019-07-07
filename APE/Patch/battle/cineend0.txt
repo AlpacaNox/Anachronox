@@ -1,0 +1,310 @@
+#switch 20000:1
+set @boots_available = 0
+set @rho_available = 0
+set @stiletto_available = 0
+set @democratus_available = 1
+set @paco_available = 1
+set @pal_available = 1
+set @uid_makeimmune = 505
+gosub 20000:5
+set @uid_makeimmune = 506
+gosub 20000:5
+set @uid_makeimmune = 507
+gosub 20000:5
+set @uid_makeimmune = 508
+gosub 20000:5
+set @uid_makeimmune = 509
+gosub 20000:5
+set @uid_makeimmune = 510
+gosub 20000:5
+set @uid_makeimmune = 0
+set @next_attackall_time = (func_gametime + 200000)
+set @players_left = 6
+
+#switch 20000:5
+extern BATTLE_AffectNodeOccupant @uid_makeimmune "prot_statuseffects=100"
+
+#switch 20000:505
+echo ">>> 505 dies\n"
+set @respawn_505 = (func_gametime + (20000 + (func_frand * 10000)))
+
+#switch 20000:506
+echo ">>> 506 dies\n"
+set @respawn_506 = (func_gametime + (20000 + (func_frand * 10000)))
+
+#switch 20000:507
+echo ">>> 507 dies\n"
+set @respawn_507 = (func_gametime + (20000 + (func_frand * 10000)))
+
+#switch 20000:508
+echo ">>> 508 dies\n"
+set @respawn_508 = (func_gametime + (20000 + (func_frand * 10000)))
+
+#switch 20000:509
+echo ">>> 509 dies\n"
+set @respawn_509 = (func_gametime + (20000 + (func_frand * 10000)))
+
+#switch 20000:510
+echo ">>> 510 dies\n"
+set @respawn_510 = (func_gametime + (20000 + (func_frand * 10000)))
+
+#switch 20000:5000
+set @randval = random
+if (random < 33) {
+  if (@paco_available) {
+    @next_free_char$="paco" 
+    set @paco_available = 0
+  } else if (@democratus_available) {
+    @next_free_char$="democratus" 
+    set @democratus_available = 0
+  } else if (@pal_available) {
+    @next_free_char$="pal" 
+    set @pal_available = 0
+  } else
+    @next_free_char$="" 
+} else if (random < 66) {
+  if (@pal_available) {
+    @next_free_char$="pal" 
+    set @pal_available = 0
+  } else if (@paco_available) {
+    @next_free_char$="paco" 
+    set @paco_available = 0
+  } else if (@democratus_available) {
+    @next_free_char$="democratus" 
+    set @democratus_available = 0
+  } else
+    @next_free_char$="" 
+} else if (@democratus_available) {
+  @next_free_char$="democratus" 
+  set @democratus_available = 0
+} else if (@pal_available) {
+  @next_free_char$="pal" 
+  set @pal_available = 0
+} else if (@paco_available) {
+  @next_free_char$="paco" 
+  set @paco_available = 0
+} else
+  @next_free_char$="" 
+if (@next_free_char$ == "") {
+  echo ">>> No more free characters\n"
+} else
+  echo ">>> Found free character %s\n", @next_free_char$
+
+#switch 20000:1000
+gosub 20000:5000 
+set @players_left = (@players_left - 1)
+if (@players_left == 0)
+  goto 0:0
+if (@next_free_char$ != "") {
+  extern BATTLE_SwapPlayers @swap_out_char$ @next_free_char$
+  extern BATTLE_StopTime
+} else
+  extern BATTLE_SwapPlayers @swap_out_char$ NULL
+@swap_script$="battle/bob/monster_bob_lock_%s" , @swap_out_char$
+extern playscene @swap_script$ 0 20000:1999
+
+#switch 20000:1999
+extern BATTLE_StartTime
+
+#switch 20000:2000
+echo ">>> repelling player on %s node %i to node %i\n", @repel_color$, @repel_srcnode, @repel_dstnode
+@repel_script$="battle/bob/monster_bob_block_%s" , @repel_color$
+extern BATTLE_StopTime
+extern playscene @repel_script$ 0 20000:2999
+
+#switch 20000:2999
+extern BATTLE_SwapOccupants @repel_srcnode @repel_dstnode
+extern BATTLE_StartTime
+
+#switch 20000:1505
+extern BATTLE_GetTurnCharName @player_on_505$
+echo ">>> %s enters node 505\n", @player_on_505$
+if (@player_on_505$ == "Rho") {
+  @swap_out_char$="rho" 
+  extern BATTLE_DetachNode 498 505
+  set @respawn_505 = 0
+  goto 20000:1000
+} else {
+  set @repel_srcnode = 505
+  set @repel_dstnode = 498
+  @repel_color$="green" 
+  set @respawn_505 = (func_gametime - 1)
+  goto 20000:2000
+}
+
+#switch 20000:1506
+extern BATTLE_GetTurnCharName @player_on_506$
+echo ">>> %s enters node 506\n", @player_on_506$
+if (@player_on_506$ == "Boots") {
+  @swap_out_char$="boots" 
+  extern BATTLE_DetachNode 500 506
+  set @respawn_506 = 0
+  goto 20000:1000
+} else {
+  set @repel_srcnode = 506
+  set @repel_dstnode = 500
+  @repel_color$="cyan" 
+  set @respawn_506 = (func_gametime - 1)
+  goto 20000:2000
+}
+
+#switch 20000:1507
+extern BATTLE_GetTurnCharName @player_on_507$
+echo ">>> %s enters node 507\n", @player_on_507$
+if (@player_on_507$ == "Stiletto") {
+  @swap_out_char$="stiletto" 
+  extern BATTLE_DetachNode 501 507
+  set @respawn_507 = 0
+  goto 20000:1000
+} else {
+  set @repel_srcnode = 507
+  set @repel_dstnode = 501
+  @repel_color$="blue" 
+  set @respawn_507 = (func_gametime - 1)
+  goto 20000:2000
+}
+
+#switch 20000:1508
+extern BATTLE_GetTurnCharName @player_on_508$
+echo ">>> %s enters node 508\n", @player_on_508$
+if (@player_on_508$ == "Democratus") {
+  @swap_out_char$="democratus" 
+  extern BATTLE_DetachNode 502 508
+  set @respawn_508 = 0
+  goto 20000:1000
+} else {
+  set @repel_srcnode = 508
+  set @repel_dstnode = 502
+  @repel_color$="purple" 
+  set @respawn_508 = (func_gametime - 1)
+  goto 20000:2000
+}
+
+#switch 20000:1509
+extern BATTLE_GetTurnCharName @player_on_509$
+echo ">>> %s enters node 509\n", @player_on_509$
+if (@player_on_509$ == "Paco") {
+  @swap_out_char$="paco" 
+  extern BATTLE_DetachNode 503 509
+  set @respawn_509 = 0
+  goto 20000:1000
+} else {
+  set @repel_srcnode = 509
+  set @repel_dstnode = 503
+  @repel_color$="red" 
+  set @respawn_509 = (func_gametime - 1)
+  goto 20000:2000
+}
+
+#switch 20000:1510
+extern BATTLE_GetTurnCharName @player_on_510$
+echo ">>> %s enters node 510\n", @player_on_510$
+if (@player_on_510$ == "PAL") {
+  @swap_out_char$="pal" 
+  extern BATTLE_DetachNode 504 510
+  set @respawn_510 = 0
+  goto 20000:1000
+} else {
+  set @repel_srcnode = 510
+  set @repel_dstnode = 504
+  @repel_color$="yellow" 
+  set @respawn_510 = (func_gametime - 1)
+  goto 20000:2000
+}
+
+#switch 20000:100
+if (@players_left == 0) {
+  echo ">>> END OF GAME"
+  extern BATTLE_EndBattle
+  extern add_npc_to_party boots
+  extern remove_npc_from_party paco 1
+  extern remove_npc_from_party rho 1
+  extern remove_npc_from_party pal 1
+  extern remove_npc_from_party stiletto 1
+  extern remove_npc_from_party democratus 1
+  extern ai_findentity @temphandle paco
+  extern ai_destroyentity @temphandle
+  extern ai_findentity @temphandle rho
+  extern ai_destroyentity @temphandle
+  extern ai_findentity @temphandle pal
+  extern ai_destroyentity @temphandle
+  extern ai_findentity @temphandle stiletto
+  extern ai_destroyentity @temphandle
+  extern ai_findentity @temphandle democratus
+  extern ai_destroyentity @temphandle
+  extern chainscripts cineend_scene95 cineend_scene95_2
+  extern playscene cineend_scene95 0 999:9264
+  goto 0:0
+}
+if (@respawn_505 && (@respawn_505 < func_gametime)) {
+  extern BATTLE_GetAttachedNodeUID 505 @test
+  if (@test <= 0) {
+    set @respawn_505 = 0
+    extern BATTLE_SpawnMonster Poison monster1 battle/bob/monster_bob_spawn_green
+    set @uid_makeimmune = 505
+  }
+} else if (@respawn_506 && (@respawn_506 < func_gametime)) {
+  extern BATTLE_GetAttachedNodeUID 506 @test
+  if (@test <= 0) {
+    set @respawn_506 = 0
+    extern BATTLE_SpawnMonster Freeze monster2 battle/bob/monster_bob_spawn_cyan
+    set @uid_makeimmune = 506
+  }
+} else if (@respawn_507 && (@respawn_507 < func_gametime)) {
+  extern BATTLE_GetAttachedNodeUID 507 @test
+  if (@test <= 0) {
+    set @respawn_507 = 0
+    extern BATTLE_SpawnMonster Slow monster3 battle/bob/monster_bob_spawn_blue
+    set @uid_makeimmune = 507
+  }
+} else if (@respawn_508 && (@respawn_508 < func_gametime)) {
+  extern BATTLE_GetAttachedNodeUID 508 @test
+  if (@test <= 0) {
+    set @respawn_508 = 0
+    extern BATTLE_SpawnMonster Winky monster4 battle/bob/monster_bob_spawn_purple
+    set @uid_makeimmune = 508
+  }
+} else if (@respawn_509 && (@respawn_509 < func_gametime)) {
+  extern BATTLE_GetAttachedNodeUID 509 @test
+  if (@test <= 0) {
+    set @respawn_509 = 0
+    extern BATTLE_SpawnMonster Burn monster5 battle/bob/monster_bob_spawn_red
+    set @uid_makeimmune = 509
+  }
+} else if (@respawn_510 && (@respawn_510 < func_gametime)) {
+  extern BATTLE_GetAttachedNodeUID 510 @test
+  if (@test <= 0) {
+    set @respawn_510 = 0
+    extern BATTLE_SpawnMonster Nuts monster6 battle/bob/monster_bob_spawn_yellow
+    set @uid_makeimmune = 510
+  }
+} else if (func_gametime > @next_attackall_time) {
+  set @next_attackall_time = (func_gametime + 200000)
+  extern BATTLE_StopTime
+  extern playscene battle/bob/monster_bob_atakall 0 20000:199
+}
+
+#switch 20000:199
+if (anox_game_difficulty == 3) {
+  extern BATTLE_AffectNodeOccupant 498 "hp=1500"
+  extern BATTLE_AffectNodeOccupant 500 "hp=1500"
+  extern BATTLE_AffectNodeOccupant 501 "hp=1500"
+  extern BATTLE_AffectNodeOccupant 502 "hp=1500"
+  extern BATTLE_AffectNodeOccupant 503 "hp=1500"
+  extern BATTLE_AffectNodeOccupant 504 "hp=1500"
+} else if (anox_game_difficulty == 1) {
+  extern BATTLE_AffectNodeOccupant 498 "hp=500"
+  extern BATTLE_AffectNodeOccupant 500 "hp=500"
+  extern BATTLE_AffectNodeOccupant 501 "hp=500"
+  extern BATTLE_AffectNodeOccupant 502 "hp=500"
+  extern BATTLE_AffectNodeOccupant 503 "hp=500"
+  extern BATTLE_AffectNodeOccupant 504 "hp=500"
+} else {
+  extern BATTLE_AffectNodeOccupant 498 "hp=1000"
+  extern BATTLE_AffectNodeOccupant 500 "hp=1000"
+  extern BATTLE_AffectNodeOccupant 501 "hp=1000"
+  extern BATTLE_AffectNodeOccupant 502 "hp=1000"
+  extern BATTLE_AffectNodeOccupant 503 "hp=1000"
+  extern BATTLE_AffectNodeOccupant 504 "hp=1000"
+}
+extern BATTLE_StartTime
