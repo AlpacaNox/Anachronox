@@ -1,0 +1,245 @@
+#switch 20000:100
+echo "----------------------------------------\nGOING TO THE NEXT NODE\n\n"
+if (@detta_stage == 0) {
+  gosub 20000:500
+} else if (@detta_stage == 1) {
+  gosub 20000:501
+} else if (@detta_stage == 2) {
+  gosub 20000:502
+} else
+  echo "no good"
+
+#switch 20000:500
+set @detta_healed = 0
+set @detta_nextnode = 498
+set @detta_stage = (@detta_stage + 1)
+extern BATTLE_StopTime
+extern playscene fortress2_detta_pedestal1_death 0 20000:599
+
+#switch 20000:501
+set @detta_healed = 0
+set @detta_nextnode = 497
+set @detta_stage = (@detta_stage + 1)
+extern BATTLE_StopTime
+extern playscene fortress2_detta_pedestal2_death 0 20000:599
+
+#switch 20000:502
+set @detta_healed = 0
+set @detta_nextnode = 499
+set @detta_stage = (@detta_stage + 1)
+extern BATTLE_StopTime
+extern playscene fortress2_detta_pedestal3_death 0 20000:599
+
+#switch 20000:503
+
+#switch 20000:599
+extern BATTLE_StartTime
+
+#switch 20000:900
+extern BATTLE_GetHitPoints monster5 @detta_max_hp
+
+#switch 20000:901
+extern ui_playscene fortress2_detta_fight2_death
+
+#switch 20000:1000
+extern BATTLE_GetHitPoints monster5 @detta_hp
+extern BATTLE_GetAttachedNodeUID 510 @detta_curnode
+if ((@detta_healed == 1) && (@detta_attacking == 0))
+  if ((@detta_hp < (@detta_max_hp * 0.75)) && (@detta_stage == 0)) {
+    gosub 20000:100
+  } else if ((@detta_hp < (@detta_max_hp * 0.5)) && (@detta_stage == 1)) {
+    gosub 20000:100
+  } else if ((@detta_hp < (@detta_max_hp * 0.25)) && (@detta_stage == 2))
+    gosub 20000:100
+
+#switch 20000:666
+extern playscene fortress2_detta_fight2_death
+
+#switch 20000:699
+extern BATTLE_StartTime
+set @detta_attacking = 0
+
+#switch 20000:700
+set @detta_attacking = 1
+extern GetPlayerCurrentHP boots @player1_hp
+extern GetPlayerCurrentHP stiletto @player2_hp
+echo "=======>>>>>>> GETHITPOINTS returned for Boots(%i) and for Stiletto (%i)", @player1_hp, @player2_hp
+if ((@player1_hp == 0) && (@player2_hp == 0)) {
+  goto 0:0
+} else if (@player1_hp == 0)
+  goto 20000:710
+extern playscene battle/monster_detta/m1fx_burn_detta-02 0 20000:699 monster5 playerchar0
+extern BATTLE_StopTime
+
+#switch 20000:701
+set @detta_healed = 1
+if (anox_game_difficulty == 3) {
+  extern BATTLE_AffectNodeOccupant 488 "hp=750"
+} else if (anox_game_difficulty == 1) {
+  extern BATTLE_AffectNodeOccupant 488 "hp=250"
+} else
+  extern BATTLE_AffectNodeOccupant 488 "hp=500"
+
+#switch 20000:710
+set @detta_attacking = 1
+extern GetPlayerCurrentHP boots @player1_hp
+extern GetPlayerCurrentHP stiletto @player2_hp
+echo "=======>>>>>>> GETHITPOINTS returned for Boots (%i) and for Stiletto (%i)", @player1_hp, @player2_hp
+if ((@player1_hp == 0) && (@player2_hp == 0)) {
+  goto 0:0
+} else if (@player2_hp == 0)
+  goto 20000:700
+extern playscene battle/monster_detta/m1fx_nuts_detta-02 0 20000:699 monster5 playerchar1
+extern BATTLE_StopTime
+
+#switch 20000:711
+set @detta_healed = 1
+if (anox_game_difficulty == 3) {
+  extern BATTLE_AffectNodeOccupant 489 "hp=750"
+} else if (anox_game_difficulty == 1) {
+  extern BATTLE_AffectNodeOccupant 489 "hp=250"
+} else
+  extern BATTLE_AffectNodeOccupant 489 "hp=500"
+extern BATTLE_StartTime
+
+#switch 20000:720
+set @detta_attacking = 1
+extern GetPlayerCurrentHP boots @player1_hp
+extern GetPlayerCurrentHP stiletto @player2_hp
+if ((@player1_hp == 0) && (@player2_hp == 0)) {
+  goto 0:0
+} else if (@player1_hp == 0)
+  goto 20000:730
+extern playscene battle/monster_detta/m1fx_burn_detta-03 0 20000:699 monster5 playerchar0
+extern BATTLE_StopTime
+
+#switch 20000:721
+set @detta_healed = 1
+if (anox_game_difficulty == 3) {
+  extern BATTLE_AffectNodeOccupant 488 "hp=1500"
+} else if (anox_game_difficulty == 1) {
+  extern BATTLE_AffectNodeOccupant 488 "hp=500"
+} else
+  extern BATTLE_AffectNodeOccupant 488 "hp=1000"
+
+#switch 20000:730
+set @detta_attacking = 1
+extern GetPlayerCurrentHP boots @player1_hp
+extern GetPlayerCurrentHP stiletto @player2_hp
+if ((@player1_hp == 0) && (@player2_hp == 0)) {
+  goto 0:0
+} else if (@player2_hp == 0)
+  goto 20000:720
+extern playscene battle/monster_detta/m1fx_nuts_detta-03 0 20000:699 monster5 playerchar1
+extern BATTLE_StopTime
+
+#switch 20000:731
+set @detta_healed = 1
+if (anox_game_difficulty == 3) {
+  extern BATTLE_AffectNodeOccupant 489 "hp=1500"
+} else if (anox_game_difficulty == 1) {
+  extern BATTLE_AffectNodeOccupant 489 "hp=500"
+} else
+  extern BATTLE_AffectNodeOccupant 489 "hp=1000"
+
+#switch 20000:740
+set @detta_attacking = 1
+extern GetPlayerCurrentHP boots @player1_hp
+extern GetPlayerCurrentHP stiletto @player2_hp
+if ((@player1_hp == 0) && (@player2_hp == 0)) {
+  goto 0:0
+} else if (@player1_hp == 0)
+  goto 20000:750
+extern playscene battle/monster_detta/m1fx_bane_detta-04 0 20000:699 monster5 playerchar0
+extern BATTLE_StopTime
+
+#switch 20000:741
+set @detta_healed = 1
+if (anox_game_difficulty == 3) {
+  extern BATTLE_AffectNodeOccupant 488 "hp=2500"
+  extern BATTLE_AffectNodeOccupant 489 "hp=2000"
+} else if (anox_game_difficulty == 1) {
+  extern BATTLE_AffectNodeOccupant 488 "hp=1500"
+  extern BATTLE_AffectNodeOccupant 489 "hp=1000"
+} else {
+  extern BATTLE_AffectNodeOccupant 488 "hp=2000"
+  extern BATTLE_AffectNodeOccupant 489 "hp=1500"
+}
+
+#switch 20000:750
+set @detta_attacking = 1
+extern GetPlayerCurrentHP boots @player1_hp
+extern GetPlayerCurrentHP stiletto @player2_hp
+if ((@player2_hp == 0) && (@player1_hp == 0)) {
+  goto 0:0
+} else if (@player2_hp == 0)
+  goto 20000:740
+extern playscene battle/monster_detta/m1fx_psyslave_detta-04 0 20000:699 monster5 playerchar1
+extern BATTLE_StopTime
+
+#switch 20000:751
+set @detta_healed = 1
+if (anox_game_difficulty == 3) {
+  extern BATTLE_AffectNodeOccupant 489 "hp=2500"
+  extern BATTLE_AffectNodeOccupant 488 "hp=2000"
+} else if (anox_game_difficulty == 1) {
+  extern BATTLE_AffectNodeOccupant 489 "hp=1500"
+  extern BATTLE_AffectNodeOccupant 488 "hp=1000"
+} else {
+  extern BATTLE_AffectNodeOccupant 489 "hp=2000"
+  extern BATTLE_AffectNodeOccupant 488 "hp=1500"
+}
+
+#switch 20000:760
+set @detta_attacking = 1
+extern GetPlayerCurrentHP boots @player1_hp
+extern GetPlayerCurrentHP stiletto @player2_hp
+if ((@player1_hp == 0) && (@player2_hp == 0)) {
+  goto 0:0
+} else if (@player1_hp == 0)
+  goto 20000:770
+extern playscene battle/monster_detta/m1fx_hecatomb_detta_boots-01 0 20000:699 monster5 playerchar0
+extern BATTLE_StopTime
+
+#switch 20000:761
+set @detta_healed = 1
+if (anox_game_difficulty == 3) {
+  extern BATTLE_AffectNodeOccupant 488 "hp=2500"
+  extern BATTLE_AffectNodeOccupant 489 "hp=2000"
+} else if (anox_game_difficulty == 1) {
+  extern BATTLE_AffectNodeOccupant 488 "hp=1500"
+  extern BATTLE_AffectNodeOccupant 489 "hp=1000"
+} else {
+  extern BATTLE_AffectNodeOccupant 488 "hp=2000"
+  extern BATTLE_AffectNodeOccupant 489 "hp=1500"
+}
+
+#switch 20000:770
+set @detta_attacking = 1
+extern GetPlayerCurrentHP boots @player1_hp
+extern GetPlayerCurrentHP stiletto @player2_hp
+if ((@player2_hp == 0) && (@player1_hp == 0)) {
+  goto 0:0
+} else if (@player2_hp == 0)
+  goto 20000:760
+extern playscene battle/monster_detta/m1fx_hecatomb_detta_stiletto-01 0 20000:699 monster5 playerchar1
+extern BATTLE_StopTime
+
+#switch 20000:771
+set @detta_healed = 1
+if (anox_game_difficulty == 3) {
+  extern BATTLE_AffectNodeOccupant 489 "hp=2500"
+  extern BATTLE_AffectNodeOccupant 488 "hp=2000"
+} else if (anox_game_difficulty == 1) {
+  extern BATTLE_AffectNodeOccupant 489 "hp=1500"
+  extern BATTLE_AffectNodeOccupant 488 "hp=1000"
+} else {
+  extern BATTLE_AffectNodeOccupant 489 "hp=2000"
+  extern BATTLE_AffectNodeOccupant 488 "hp=1500"
+}
+
+#switch 20000:780
+set @detta_healed = 1
+extern BATTLE_GetHitPoints monster5 @detta_hp
+extern BATTLE_GetAttachedNodeUID 510 @detta_curnode
+set @detta_heal_amount = ((4 - @detta_stage) * 90000)
