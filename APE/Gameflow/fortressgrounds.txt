@@ -50,11 +50,11 @@ ypos 0
 #window 102:1005
 title "%s", PlayerChar0$
 if (func_charinparty[boots] == 3)
-  body "Looks like this is it, girlies. Let’s join the party and wait for the others inside."
+  body "Looks like this is it, girlies. Letâ€™s join the party and wait for the others inside."
 if (func_charinparty[grumpos] == 3)
-  body "Here we are, kids. Let’s get our butts inside and wait for the others."
+  body "Here we are, kids. Letâ€™s get our butts inside and wait for the others."
 if (func_charinparty[rho] == 3)
-  body "Here’s the entrance, folks. We better duck inside and wait for the others."
+  body "Hereâ€™s the entrance, folks. We better duck inside and wait for the others."
 if (func_charinparty[democratus] == 3)
   body "We appear to have found the entrance. Perhaps we should wait for the others inside."
 if (func_charinparty[paco] == 3)
@@ -94,11 +94,11 @@ width 580
 #window 102:1055
 title "%s", PlayerChar0$
 if (func_charinparty[stiletto] == 3)
-  body "Let’s tiptoe into the basement and meet with the rest of the crew."
+  body "Letâ€™s tiptoe into the basement and meet with the rest of the crew."
 if (func_charinparty[grumpos] == 3)
-  body "This winds down to the basement. Let’s skip downstairs and meet up with the others."
+  body "This winds down to the basement. Letâ€™s skip downstairs and meet up with the others."
 if (func_charinparty[rho] == 3)
-  body "Let’s move downstairs into the basement. We’ll meet with the others."
+  body "Letâ€™s move downstairs into the basement. Weâ€™ll meet with the others."
 if (func_charinparty[democratus] == 3)
   body "This appears to lead into the basement. Let us rendezvous with the others inside."
 if (func_charinparty[paco] == 3)
