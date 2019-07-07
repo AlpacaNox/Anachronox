@@ -1548,7 +1548,7 @@ ypos 30
 width 580
 
 #window 84:2102
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "Hmmm... I could RageMight this weak machine."
 cam left restore zip
 talk npc talk_a stay
