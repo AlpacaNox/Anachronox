@@ -1,0 +1,66 @@
+#switch 20000:101
+if (func_charinparty[boots] == 3) {
+  extern playscene limbus_scene86c_boots 0 20000:102
+} else if (func_charinparty[pal] == 3) {
+  extern playscene limbus_scene86c_pal 0 20000:102
+} else if (func_charinparty[stiletto] == 3) {
+  extern playscene limbus_scene86c_stiletto 0 20000:102
+} else if (func_charinparty[rho] == 3) {
+  extern playscene limbus_scene86c_rho 0 20000:102
+} else if (func_charinparty[democratus] == 3) {
+  extern playscene limbus_scene86c_democratus 0 20000:102
+} else if (func_charinparty[paco] == 3)
+  extern playscene limbus_scene86c_paco 0 20000:102
+
+#switch 20000:102
+extern BATTLE_EndIntro
+
+#switch 20000:100
+set @kor_deaths = 0
+if (BG_ALIENS_LEFT < 3)
+  set BG_ALIENS_LEFT = 3
+if (BG_ALIENS_LEFT > 9)
+  set BG_ALIENS_LEFT = 9
+if (BG_ALIENS_LEFT == 3) {
+  extern applylevelconfiguration cliff_first
+} else if (BG_ALIENS_LEFT < 7) {
+  extern applylevelconfiguration cliff_second
+} else
+  extern applylevelconfiguration cliff_third
+extern BATTLE_SetNumBosses BG_ALIENS_LEFT
+set limbus_enemies_fought = BG_ALIENS_LEFT
+set BG_ALIENS_LEFT = (BG_ALIENS_LEFT - 3)
+
+#switch 20000:200
+set @kor_deaths = (@kor_deaths + 1)
+echo "******************* kor_deaths=%i", @kor_deaths
+
+#switch 20000:1000
+if (@kor_deaths == 3) {
+  echo "******************* kor_deaths=%i", @kor_deaths
+  echo "******************* kor_spawn=%i", @kor_spawn
+  if (@kor_spawn == 0) {
+    set BG_ALIENS_LEFT = (BG_ALIENS_LEFT - 1)
+    if (BG_ALIENS_LEFT >= 0) {
+      extern BATTLE_SpawnMonster "Korethorian Sergeant" 214 limbus_kor1_spawn
+      set @kor_spawn = 1
+    } else
+      set @kor_spawn = -1.000000
+  } else if (@kor_spawn == 1) {
+    set BG_ALIENS_LEFT = (BG_ALIENS_LEFT - 1)
+    if (BG_ALIENS_LEFT >= 0) {
+      extern BATTLE_SpawnMonster "Korethorian Knight" 210 limbus_kor3_spawn
+      set @kor_spawn = 2
+    } else
+      set @kor_spawn = -1.000000
+  } else if (@kor_spawn == 2) {
+    set BG_ALIENS_LEFT = (BG_ALIENS_LEFT - 1)
+    if (BG_ALIENS_LEFT >= 0)
+      extern BATTLE_SpawnMonster "Korethorian Knight" 213 limbus_kor2_spawn
+    set @kor_spawn = -1.000000
+  } else if (@kor_spawn == -1.000000) {
+    set @kor_deaths = 0
+    set @kor_spawn = 0
+  } else
+    echo "SHITSHITSHITSHITSHITSHITSHITSHITSHITSHITSHITSHITSHITSHITSHITSHIT"
+}

@@ -1,0 +1,18 @@
+#switch 20000:1
+extern setmusicdir "Music/Bricks"
+extern loadmusicseg "SEG Bricks Combat 2.0.sgt"
+extern playmusicseg "SEG Bricks Combat 2.0.sgt" 999
+extern cam_define_var_set "playerwalk" FOR players WHILE moving WHERE owner=!s to=!s yaw=0 pitch=-45 fardist=256 neardist=128 movespeed=200 lagfactor=200 noidle=1 occlude=0 lift=64 moverestore=1
+extern cam_define_var_set "playerwalk2" FOR players WHILE moving WHERE owner=!t zip=1 to=!s pitch=-40 yaw=0 fardist=150 neardist=10 movespeed=400 lagfactor=400 noidle=1 occlude=1 lift=0 fwddist=0 moverestore=1
+extern cam_define_var_set "playerchoice" FOR players WHILE choosing WHERE from=!s to=!t yaw=0 pitch=-60 fardist=170 neardist=64 movespeed=200 lagfactor=200 noidle=1 occlude=0 lift=16 moverestore=1
+extern cam_define_var_set "playerturnstart" FOR players WHILE turnstart WHERE owner=!s yaw=0 pitch=-60 fardist=100 neardist=32 movespeed=100 lagfactor=100 noidle=1 occlude=0 lift=64 zip=1 fwddist=0 moverestore=1
+extern cam_define_var_set "monsterwalk" FOR monsters WHILE moving WHERE owner=!s to=!s yaw=0 pitch=-30 fardist=250 neardist=100 movespeed=200 lagfactor=200 noidle=1 occlude=0 lift=64 moverestore=1
+extern cam_define_var_set "monsterturnstart" FOR monsters WHILE turnstart WHERE owner=!s to=!s yaw=180 pitch=-45 fardist=200 neardist=50 movespeed=300 lagfactor=300 noidle=1 occlude=0 lift=64 moverestore=1
+goto 0:0
+
+#switch 20000:100
+extern BATTLE_EndIntro
+
+#switch 20000:2
+extern loopscene r20wait
+goto 0:0

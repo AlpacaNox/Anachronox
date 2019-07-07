@@ -1,0 +1,16 @@
+#switch 20000:101
+if (func_charinparty[boots] == 3) {
+  extern playscene crevice_scene86b_2_boots 0 20000:102
+} else if (func_charinparty[pal] == 3) {
+  extern playscene crevice_scene86b_2_pal 0 20000:102
+} else if (func_charinparty[stiletto] == 3) {
+  extern playscene crevice_scene86b_2_stiletto 0 20000:102
+} else if (func_charinparty[rho] == 3) {
+  extern playscene crevice_scene86b_2_rho 0 20000:102
+} else if (func_charinparty[democratus] == 3) {
+  extern playscene crevice_scene86b_2_democratus 0 20000:102
+} else if (func_charinparty[paco] == 3)
+  extern playscene crevice_scene86b_2_paco 0 20000:102
+
+#switch 20000:102
+extern BATTLE_EndIntro

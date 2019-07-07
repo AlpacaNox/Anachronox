@@ -1,0 +1,309 @@
+#switch 20000:50
+extern playscene "battle/monster_queen_waugee/greattree_boss_outro" 0 20000:200
+
+#switch 20000:580
+goto 0:0
+set @count = 0
+echo "-----------------------------------------\n"
+while (@count < 3) {
+  set @Temp = Z[$@count$]
+  echo "TSpot %d Translates to %d\n", @count, @Temp
+  set @count = (@count + 1)
+}
+echo "-----------------------------------------\n"
+set @count = 0
+while (@count < 3) {
+  echo "-----------------------------------------\n"
+  set @Temp = S[$@count$]
+  echo "Spot %d is assigned UID:%d and", @count, @Temp
+  set @TempNode = A[$@Temp$]
+  echo "has a GN:%d\n", @TempNode
+  if (C[$@count$] == 0) {
+    echo "This entity is on the RIGHT.\n"
+  } else
+    echo "This entity is on the LEFT.\n"
+  set @TempArr = D[$@Temp$]
+  echo "This spot's arrived flag is %d\n", @TempArr
+  set @count = (@count + 1)
+}
+
+#switch 20000:570
+gosub 20000:500
+extern BATTLE_GetAttachedNodeUID @my_id @CurrentNode
+set @TempNodePoint = A[$@my_id$]
+set @Temp = Z[$@TempNodePoint$]
+set @Temp = R[$@TempNodePoint$]
+if (Z[$@TempNodePoint$] == @CurrentNode)
+  set D[$@my_id$] = 1
+
+#switch 20000:180
+set @Temp_NodeUID = 180
+gosub 20000:530
+
+#switch 20000:181
+set @Temp_NodeUID = 181
+gosub 20000:530
+
+#switch 20000:182
+set @Temp_NodeUID = 182
+gosub 20000:530
+
+#switch 20000:183
+set @Temp_NodeUID = 183
+gosub 20000:530
+
+#switch 20000:184
+set @Temp_NodeUID = 184
+gosub 20000:530
+
+#switch 20000:190
+set @Temp_NodeUID = 190
+gosub 20000:530
+
+#switch 20000:191
+set @Temp_NodeUID = 191
+gosub 20000:530
+
+#switch 20000:192
+set @Temp_NodeUID = 192
+gosub 20000:530
+
+#switch 20000:530
+set @count = 0
+extern BATTLE_GetAttachedNodeUID @Temp_NodeUID @Temp_UID
+if (@Temp_UID < 0) {
+  echo "!!!!!!!WARNING @TEMP_UID IS -1 !!!!!!!!!!!!!!"
+} else
+  set @Temp_GN = A[$@Temp_UID$]
+if (@Temp_GN < 0) {
+  echo "!!!!!!!WARNING @TEMP_GN IS -1 !!!!!!!!!!!!!!"
+} else
+  set R[$@Temp_GN$] = 0
+while (@count < 3) {
+  if (S[$@count$] == @Temp_UID) {
+    set S[$@count$] = 0
+    set @GT_WAUKEEOKTOSPAWN = 0
+    set @count = 666
+  }
+  set @count = (@count + 1)
+}
+if (@GT_WAUKEEOKTOSPAWN == 1) {
+  set @count = 0
+  while (@count < 3) {
+    set @Temp = S[$@count$]
+    set @count = (@count + 1)
+  }
+}
+set A[$@Temp_UID$] = -1.000000
+set D[$@Temp_UID$] = 0
+set B[$@Temp_UID$] = 0
+set C[$@Temp_UID$] = -1.000000
+
+#switch 20000:540
+set @count = 0
+set @NumPeeps = 0
+while (@count < 3) {
+  if (S[$@count$] > 0)
+    set @NumPeeps = (@NumPeeps + 1)
+  set @count = (@count + 1)
+}
+
+#switch 20000:560
+set @NextCount = 0
+set @OpenSide = 0
+while (@NextCount < 3) {
+  set @TempUIDSide = S[$@NextCount$]
+  if ((C[$@TempUID$] == C[$@TempUIDSide$]) && (@TempUIDSide != S[$@Count$]))
+    set @OpenSide = (@OpenSide + 1)
+  set @NextCount = (@NextCount + 1)
+}
+
+#switch 20000:550
+set @NextCount = 0
+while (@NextCount < 3) {
+  if (R[$@NextCount$] == @TempUID) {
+    set R[$@NextCount$] = 0
+    set D[$@TempUID$] = 0
+  }
+  set @NextCount = (@NextCount + 1)
+}
+
+#switch 20000:520
+gosub 20000:540
+set @count = 0
+while (@count < 3) {
+  set @number = 0
+  set @TempUID = S[$@count$]
+  if (@TempUID > 0)
+    while (@number < 3) {
+      if (((A[$@TempUID$] > 0) && (@number == 0)) && (R[$@number$] == 0)) {
+        gosub 20000:560
+        if (@OpenSide > 0) {
+          gosub 20000:550
+          set A[$@TempUID$] = 0
+          set R[$@number$] = @TempUID
+        }
+      } else if ((((A[$@TempUID$] < 0) && (@number == 0)) && (R[$@number$] == 0)) && (@NumPeeps <= 1)) {
+        set A[$@TempUID$] = 0
+        set R[$@number$] = @TempUID
+      } else if ((((C[$@TempUID$] == 1) && (@number == 1)) && (R[$@number$] == 0)) && (A[$@TempUID$] == -1.000000)) {
+        set R[$@number$] = @TempUID
+        set A[$@TempUID$] = 1
+      } else if ((((C[$@TempUID$] == 0) && (@number == 2)) && (R[$@number$] == 0)) && (A[$@TempUID$] == -1.000000)) {
+        set R[$@number$] = @TempUID
+        set A[$@TempUID$] = 2
+      }
+      set @number = (@number + 1)
+    }
+  set @count = (@count + 1)
+}
+
+#switch 20000:510
+set @my_id = @TempTest_UID
+set A[$@my_id$] = -1.000000
+set B[$@my_id$] = 1
+set C[$@my_id$] = GT_LASTSIDESPAWN
+set D[$@my_id$] = 0
+set @count = 0
+while (@count < 3) {
+  if (S[$@count$] == 0) {
+    set S[$@count$] = @my_id
+    set @count = 4
+  }
+  set @count = (@count + 1)
+}
+set @GT_WAUKEEOKTOSPAWN = 0
+gosub 20000:520
+
+#switch 20000:40
+if (GT_LASTSIDESPAWN) {
+  extern BATTLE_GetAttachedNodeUID 192 @Temp_UID
+  if (@Temp_UID <= 0) {
+    extern BATTLE_SpawnMonster "WaugeeMinion" "192" "battle/monster_queen_waugee/greattree_boss_hut1_to_192" @TempTest_UID
+    if (@TempTest_UID < 0) {
+      set @GT_WAUKEESPAWNTIME = (func_battletime + 3000)
+    } else {
+      set GT_LASTSIDESPAWN = 0
+      gosub 20000:510
+    }
+  } else
+    set @GT_WAUKEESPAWNTIME = (func_battletime + 3000)
+} else {
+  extern BATTLE_GetAttachedNodeUID 191 @Temp_UID
+  if (@Temp_UID <= 0) {
+    extern BATTLE_SpawnMonster "WaugeeMinion" "191" "battle/monster_queen_waugee/greattree_boss_hut2_to_191" @TempTest_UID
+    if (@TempTest_UID < 0) {
+      set @GT_WAUKEESPAWNTIME = (func_battletime + 3000)
+    } else {
+      set GT_LASTSIDESPAWN = 1
+      gosub 20000:510
+    }
+  } else
+    set @GT_WAUKEESPAWNTIME = (func_battletime + 3000)
+}
+
+#switch 20000:500
+extern BATTLE_GetTurnEntUID @my_id
+if (@my_id < 0) {
+  echo "****************************************"
+  echo "**************INVALID ID****************"
+  echo "****************************************"
+}
+
+#switch 20000:501
+gosub 20000:500
+
+#switch 20000:30
+gosub 20000:530
+
+#switch 20000:200
+set GT_BATTLESTART = 0
+set GT_LASTSIDESPAWN = 0
+
+#switch 20000:25
+set GT_BATTLESTART = 1
+extern BATTLE_EndIntro
+
+#switch 20000:10
+set GT_BATTLESTART = 0
+set Z[$0$] = 184
+set Z[$1$] = 182
+set Z[$2$] = 183
+set GT_LASTSIDESPAWN = 0
+set @count = 0
+while (@count < 3) {
+  set S[$@count$] = 0
+  set R[$@count$] = 0
+  set @count = (@count + 1)
+}
+set @count = 0
+while (@count < 2000) {
+  set B[$@count$] = 0
+  set A[$@count$] = -1.000000
+  set D[$@count$] = 0
+  set C[$@count$] = -1.000000
+  set @count = (@count + 1)
+}
+set @GT_WAUKEEOKTOSPAWN = 0
+extern playscene "battle/monster_queen_waugee/greattree_boss_intro" 0 20000:25
+
+#switch 20000:590
+set @count = 0
+extern BATTLE_AffectNodeOccupant 199 "hp=500;nevermiss=1"
+extern BATTLE_GetAttachedNodeUID 184 @Temp_UID
+while (@count < 3) {
+  set @Temp_UID = S[$@count$]
+  set @Temp_GN = A[$@Temp_UID$]
+  if (@Temp_GN == 0) {
+    set @TempNodeUID = Z[@Temp_GN]
+    extern BATTLE_RemoveFromBattle @Temp_UID
+    set A[$@Temp_UID$] = -1.000000
+    set R[$@Temp_GN$] = 0
+    set D[$@Temp_UID$] = 0
+    set S[$@count$] = 0
+    set B[$@Temp_UID$] = 0
+    set C[$@Temp_UID$] = -1.000000
+    set @count = 666
+  }
+  set @count = (@count + 1)
+}
+extern BATTLE_StartTime
+
+#switch 20000:600
+set @Count = 0
+while (@Count < 3) {
+  set @Temp_UID = S[$@Count$]
+  set @ArrivedUID = D[$@Temp_UID$]
+  extern BATTLE_GetAttachedNodeUID @Temp_UID @CurrentNode
+  set @TempNodePoint = A[$@Temp_UID$]
+  if ((Z[$@TempNodePoint$] == @CurrentNode) && (@ArrivedUID == 0))
+    set D[$@Temp_UID$] = 1
+  set @Count = (@Count + 1)
+}
+
+#switch 20000:20
+if (GT_BATTLESTART == 1) {
+  gosub 20000:540
+  if (((@NumPeeps < 3) && (@GT_WAUKEESPAWNTIME < func_battletime)) && (@GT_WAUKEEOKTOSPAWN == 0)) {
+    set @GT_WAUKEEOKTOSPAWN = 1
+    gosub 20000:40
+    set @GT_WAUKEESPAWNTIME = (func_battletime + 3000)
+  }
+  if (@NumPeeps >= 3) {
+    set @counter = 0
+    set @NumArrived = 0
+    while (@counter < 3) {
+      set @Temp_UID = S[$@counter$]
+      if (D[$@Temp_UID$] == 1)
+        set @NumArrived = (@NumArrived + 1)
+      if (A[$@Temp_UID$] == -1.000000)
+        gosub 20000:520
+      set @counter = (@counter + 1)
+    }
+    if (@NumArrived >= 3) {
+      extern BATTLE_StopTime
+      extern playscene "battle/monster_queen_waugee/greattree_boss_tripleatak" 0 20000:590
+    } else
+      gosub 20000:600
+  }
+}

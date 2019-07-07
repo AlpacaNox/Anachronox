@@ -1,0 +1,8 @@
+#switch 20000:10
+extern playscene cinedem_scene1 0 20000:11
+
+#switch 20000:11
+extern playscene cinedem_scene2 0 20000:12
+
+#switch 20000:12
+extern BATTLE_EndIntro

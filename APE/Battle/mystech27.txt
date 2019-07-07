@@ -1,0 +1,131 @@
+#switch 10000:1
+while (1) {
+  set @sentinel_currentUID_index = (@sentinel_currentUID_index + 1)
+  if (@sentinel_currentUID_index == 6)
+    set @sentinel_currentUID_index = 0
+  set @sentinel_currentNode = W[$@sentinel_currentUID_index$]
+  if (V[$@sentinel_currentUID_index$] == 0) {
+    if (Y[$@sentinel_currentUID_index$] <= 2)
+      goto 0:0
+  } else {
+    extern BATTLE_IsNodeOccupied @sentinel_currentNode @occupied
+    if (@occupied)
+      goto 0:0
+  }
+}
+
+#switch 20000:1
+set @sentinel_currentUID_index = 0
+extern assign W[0] 110 109 105 107 106 108
+extern assign X[0] 4 5 3 1 2 6
+extern assign Y[0] 0 0 0 0 0 0
+set @sentinel_currentNode = W[0]
+
+#switch 20000:101
+extern BATTLE_GetTurnCharName @charname$
+@scriptName$="reljmp_%s" , @charname$
+extern playscene @scriptName$ 0 20000:102 NULL NULL g_MonsterIndex g_TargetIndex TRUE
+
+#switch 20000:102
+extern BATTLE_EndTurn
+
+#switch 20000:200
+extern BATTLE_IsNodeOccupied @sentinel_currentNode @occupied
+if (@occupied) {
+  echo "--->Node occupied, no damage"
+  goto 0:0
+}
+set @targetnum = X[$@sentinel_currentUID_index$]
+set Y[$@sentinel_currentUID_index$] = (Y[$@sentinel_currentUID_index$] + 1)
+set @status = Y[$@sentinel_currentUID_index$]
+@targetname$="stompkill%i_%i" , @targetnum, @status
+echo "---> Node damaged, %s", @targetname$
+target @targetname$
+if (Y[$@sentinel_currentUID_index$] == 3) {
+  set @detach_switch = (5000 + @sentinel_currentNode)
+  echo "============Damaged to death, detaching with sequence 20000:%d", @detach_switch
+  goto 20000:$@detach_switch$
+}
+
+#switch 20000:9200
+extern AI_FindEntity @sentinelhandle 21:444
+extern entkey @sentinelhandle default_anim atakamb_a
+extern playscene battle/monster_sentinel/mystech2_sentinel_intro 0 20000:9201
+
+#switch 20000:9201
+extern BATTLE_EndIntro
+
+#switch 20000:9100
+extern playscene battle/monster_sentinel/mystech2_sentinel_death 0 20000:9101
+
+#switch 20000:9101
+extern AI_GrabEntity playerchar0 @player_ent
+extern AI_SetXYZ @player_ent 113 -1311 -2
+extern AI_ReleaseEntity @player_ent
+set @player_ent = 0
+
+#switch 20000:310
+set V[0] = 1
+
+#switch 20000:309
+set V[1] = 1
+
+#switch 20000:305
+set V[2] = 1
+
+#switch 20000:307
+set V[3] = 1
+
+#switch 20000:306
+set V[4] = 1
+
+#switch 20000:308
+set V[5] = 1
+
+#switch 20000:410
+set V[0] = 0
+
+#switch 20000:409
+set V[1] = 0
+
+#switch 20000:405
+set V[2] = 0
+
+#switch 20000:407
+set V[3] = 0
+
+#switch 20000:406
+set V[4] = 0
+
+#switch 20000:408
+set V[5] = 0
+
+#switch 20000:5110
+echo "================= 5110"
+extern BATTLE_DetachNode 109 110
+extern BATTLE_DetachNode 105 110
+
+#switch 20000:5109
+echo "================= 5109"
+extern BATTLE_DetachNode 108 109
+extern BATTLE_DetachNode 110 109
+
+#switch 20000:5108
+echo "================= 5108"
+extern BATTLE_DetachNode 109 108
+extern BATTLE_DetachNode 107 108
+
+#switch 20000:5107
+echo "================= 5107"
+extern BATTLE_DetachNode 108 107
+extern BATTLE_DetachNode 106 107
+
+#switch 20000:5106
+echo "================= 5106"
+extern BATTLE_DetachNode 107 106
+extern BATTLE_DetachNode 105 106
+
+#switch 20000:5105
+echo "================= 5105"
+extern BATTLE_DetachNode 110 105
+extern BATTLE_DetachNode 106 105

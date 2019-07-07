@@ -1,0 +1,34 @@
+#switch 20000:3710
+extern playscene battle/intro/intro_hive16 0 20000:3715
+goto 0:0
+
+#switch 20000:3715
+extern BATTLE_EndIntro
+goto 0:0
+
+#switch 20000:3740
+echo "*!*!*!*!*!!*!*Did the small guy just die?*!*!*!*!*!!*!*"
+set @Battle16SmallGuyDie = (@Battle16SmallGuyDie + 1)
+goto 0:0
+
+#switch 20000:3750
+echo "*!*!*!*!*!!*!*Medium Guy Die Got Called.*!*!*!*!*!!*!*"
+if (@Battle16SmallGuyDie >= 2)
+  set @Battle16MidGuyDie = (@Battle16MidGuyDie + 1)
+if (@Battle16SmallGuyDie < 2)
+  extern BATTLE_SpawnMonster "Hive Fighter" "monster2" battle/intro/hive16_mon2
+goto 0:0
+
+#switch 20000:3755
+echo "*!*!*!*!*!!*!*Large Guy Die Got Called.*!*!*!*!*!!*!*"
+if (@Battle16MidGuyDie < 2)
+  extern BATTLE_SpawnMonster "Larger Hive Fighter" "monster4" battle/intro/hive16_mon4
+goto 0:0
+
+#switch 20000:3760
+echo "*!*!*!*!*!!*!*Medium Guy Die Got Called.*!*!*!*!*!!*!*"
+if (@Battle16SmallGuyDie >= 2)
+  set @Battle16MidGuyDie = (@Battle16MidGuyDie + 1)
+if (@Battle16SmallGuyDie < 2)
+  extern BATTLE_SpawnMonster "Hive Fighter" "monster5" battle/intro/hive16_mon5
+goto 0:0

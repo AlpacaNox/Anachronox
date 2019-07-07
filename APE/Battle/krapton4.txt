@@ -1,0 +1,81 @@
+#switch 20000:1
+
+#switch 20000:2
+
+#switch 20000:3
+
+#switch 20000:100
+echo "############## GTNW changes states from %i", @GTNWstate
+set @GTNWtimeout = (func_battletime + 5000)
+set @GTNWstate = (@GTNWstate + 1)
+if (@GTNWstate > 5)
+  set @GTNWstate = 1
+
+#switch 20000:110
+if (@rictus_minion_type != @GTNWstate) {
+  echo "############## @rictus_minon_type(%i) != @GTNWstate(%i)", @rictus_minion_type, @GTNWstate
+  goto 0:0
+}
+if (@GTNWtimeout < func_battletime) {
+  echo "############## @GTNWtimeout(%i) < func_battletime(i)", @GTNWtimeout, func_battletime
+  goto 0:0
+}
+echo "############## Removing minions!"
+extern BATTLE_GetAttachedNodeUID 160 @leftmonster_uid
+extern BATTLE_GetAttachedNodeUID 159 @rightmonster_uid
+extern playscene battle/monster_rictus/krapton_rictus_remove_minions 0 20000:111
+extern BATTLE_StopTime
+
+#switch 20000:111
+extern BATTLE_RemoveFromBattle @leftmonster_uid
+extern BATTLE_RemoveFromBattle @rightmonster_uid
+echo "##############Minions removed, @leftmonsteruid(%i), @rightmonsteruid(%i)", @leftmonster_uid, @rightmonster_uid
+extern BATTLE_StartTime
+
+#switch 20000:300
+extern playscene battle/monster_rictus/krapton_rictus_intro 0 20000:301
+
+#switch 20000:301
+extern BATTLE_EndIntro
+console "cylcam_yawbounds 270 180"
+
+#switch 20000:500
+set @GTNWstate = 5
+extern loopambient battle/monster_rictus/krapton_rictus_ambi
+extern playscene battle/monster_rictus/krapton_rictus_stage2 0 20000:510
+extern BATTLE_StopTime
+
+#switch 20000:510
+extern BATTLE_StartTime
+console "bedvoladj x -320"
+extern BATTLE_PositionNode 144 -2576 -528 32
+extern BATTLE_PositionNode 142 -2576 -16  32
+extern BATTLE_PositionNode 143 -2576 -272 32
+extern BATTLE_AttachNode 160 144
+extern BATTLE_AttachNode 160 143
+extern BATTLE_AttachNode 154 144
+extern BATTLE_AttachNode 154 143
+extern BATTLE_AttachNode 154 142
+extern BATTLE_AttachNode 159 143
+extern BATTLE_AttachNode 159 142
+extern BATTLE_AttachNode 144 160
+extern BATTLE_AttachNode 144 154
+extern BATTLE_AttachNode 143 160
+extern BATTLE_AttachNode 143 154
+extern BATTLE_AttachNode 143 159
+extern BATTLE_AttachNode 142 154
+extern BATTLE_AttachNode 142 159
+extern BATTLE_AttachNode 142 227
+extern BATTLE_AttachNode 144 216
+extern BATTLE_AttachNode 143 227
+extern BATTLE_AttachNode 143 216
+
+#switch 20000:700
+set @rictus_minions = (@rictus_minions - 1)
+echo "/\\/\\0N573R |)E47|-|"
+
+#switch 20000:1000
+extern playscene battle/monster_rictus/krapton_rictus_outro 0 20000:1001
+
+#switch 20000:1001
+goto 80:0101			                                                   

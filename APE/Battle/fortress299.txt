@@ -1,0 +1,87 @@
+#switch 20000:100
+extern playscene fortress2_detta_fight1_death 0 20000:101
+
+#switch 20000:101
+console "battlestart 98"
+
+#switch 20000:800
+extern BATTLE_GetHitPoints monster2 @leg_hp
+if (@leg_hp >= 3996) {
+  set @Detta_Left_Leg_Damaged = 0
+  echo "$$$$$$$$$$$$$$$ @Detta_Left_Leg_Damaged = 0 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+}
+if (@leg_hp < 3996) {
+  echo "$$$$$$$$$$$$$$$$ @Detta_Left_Leg_Damaged = 1 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$4"
+  set @Detta_Left_Leg_Damaged = 1
+}
+if (@leg_hp < 1000) {
+  @filename$="jake/dettabrokestage3" 
+} else if (@leg_hp < 2000) {
+  @filename$="jake/dettabrokestage2" 
+} else if (@leg_hp < 3000) {
+  @filename$="jake/dettabrokestage1" 
+} else
+  @filename$="" 
+extern BATTLE_GetHandleFromUID 490 @suit_ent
+extern NPKill @suit_ent 81
+if (@filename$ != "") {
+  echo "Starting particles\n"
+  extern NP @suit_ent 81 0 #978 0 @filename$
+}
+
+#switch 20000:801
+extern BATTLE_GetHitPoints monster3 @leg_hp
+if (@leg_hp >= 3996) {
+  set @Detta_Right_Leg_Damaged = 0
+  echo "$$$$$$$$$$$$$$$ @Detta_Right_Leg_Damaged = 0 $$$$$$$$$$$$$$$$$$$$$$$"
+}
+if (@leg_hp < 3996) {
+  echo "$$$$$$$$$$$$$$$ @Detta_Right_Leg_Damaged = 1 $$$$$$$$$$$$$$$$$$$$$$$$$$"
+  set @Detta_Right_Leg_Damaged = 1
+}
+if (@leg_hp < 1000) {
+  @filename$="jake/dettabrokestage3" 
+} else if (@leg_hp < 2000) {
+  @filename$="jake/dettabrokestage2" 
+} else if (@leg_hp < 3000) {
+  @filename$="jake/dettabrokestage1" 
+} else
+  @filename$="" 
+extern BATTLE_GetHandleFromUID 490 @suit_ent
+extern NPKill @suit_ent 80
+if (@filename$ != "")
+  extern NP @suit_ent 80 0 #764 0 @filename$
+
+#switch 20000:810
+set @Detta_left_Leg_Damaged = 0
+set @detta_leftleg_dead = 1
+echo "<<---------------- @detta_leftleg_dead = 1 ---------------->>"
+extern BATTLE_GetHandleFromUID 490 @suit_ent
+extern NPKill @suit_ent 81
+extern NP @suit_ent 81 0 #978 0 jake/dettabrokestage4
+
+#switch 20000:811
+set @Detta_Right_Leg_Damaged = 0
+set @detta_rightleg_dead = 1
+echo "<<---------------- @detta_rightleg_dead = 1 ---------------->>"
+extern BATTLE_GetHandleFromUID 490 @suit_ent
+extern NPKill @suit_ent 80
+extern NP @suit_ent 80 0 #764 0 jake/dettabrokestage4
+
+#switch 20000:2000
+echo "==========Detta ALL attack-------------------->>>>>>>"
+extern playscene battle/monster_dettasuit/monster_dettamech_atakall
+extern BATTLE_StopTime
+
+#switch 20000:2001
+if (anox_game_difficulty == 3) {
+  extern BATTLE_AffectNodeOccupant 484 "hp=400"
+  extern BATTLE_AffectNodeOccupant 485 "hp=400"
+} else if (anox_game_difficulty == 1) {
+  extern BATTLE_AffectNodeOccupant 484 "hp=1200"
+  extern BATTLE_AffectNodeOccupant 485 "hp=1200"
+} else {
+  extern BATTLE_AffectNodeOccupant 484 "hp=800"
+  extern BATTLE_AffectNodeOccupant 485 "hp=800"
+}
+extern BATTLE_StartTime

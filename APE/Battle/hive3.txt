@@ -1,0 +1,16 @@
+#switch 20000:2460
+extern playscene battle/intro/intro_hive03 0 20000:2465
+goto 0:0
+
+#switch 20000:2465
+extern BATTLE_EndIntro
+goto 0:0
+
+#switch 20000:2470
+extern playscene battle/intro/hive03_usebridge 0 20000:2475
+extern BATTLE_StopTime
+goto 0:0
+
+#switch 20000:2475
+extern BATTLE_StartTime
+goto 0:0

@@ -1,0 +1,9 @@
+#switch 20000:6000
+extern BATTLE_StopTime
+extern BATTLE_EndIntro
+
+#switch 20000:6010
+set @GotShot_Player = (@GotShot_Player + 1)
+
+#switch 20000:6020
+set @GotShot_Target = (@GotShot_Target + 1)

@@ -1,0 +1,5 @@
+#switch 20000:1
+extern playscene bricksd_fight1_intro 0 20000:2 NULL NULL NULL NULL
+
+#switch 20000:2
+extern BATTLE_EndIntro

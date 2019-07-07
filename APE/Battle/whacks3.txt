@@ -1,0 +1,9 @@
+#switch 20000:4000
+extern BATTLE_StopTime
+extern BATTLE_EndIntro
+
+#switch 20000:4010
+set @GotShot_Target = (@GotShot_Target + 1)
+
+#switch 20000:4020
+set @Whacks_Action = (@Whacks_Action + 1)

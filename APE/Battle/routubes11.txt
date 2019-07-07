@@ -1,0 +1,24 @@
+#switch 20000:1000
+extern AI_GrabEntity PlayerChar0 PlayerChar0_handle
+extern cam_anoxmariomode 1
+extern cam_from playerchar0
+extern cam_to monster2
+extern AI_FindEntity monster1_handle monster1
+extern AI_FindEntity monster2_handle monster2
+extern AI_FindEntity monster3_handle monster3
+extern AI_FindEntity monster4_handle monster4
+extern ANIM_PlayAnim monster1_handle gest_a 0 1 0
+extern ANIM_PlayAnim monster2_handle gest_a 0 1 0
+extern ANIM_PlayAnim monster3_handle gest_a 0 1 0
+extern ANIM_PlayAnim monster4_handle gest_a 0 1 0
+extern ANIM_SetCallback monster4_handle 20000:1005
+
+#switch 20000:1005
+extern AI_ReleaseEntity PlayerChar0_handle
+extern cam_anoxmariomode 0
+extern cam_restore
+goto 20000:1010
+
+#switch 20000:1010
+extern BATTLE_EndIntro
+goto 0:0

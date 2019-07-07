@@ -1,0 +1,4 @@
+#switch 20000:98
+extern SetPlayerCurrentBouge boots 100
+
+#switch 20000:99

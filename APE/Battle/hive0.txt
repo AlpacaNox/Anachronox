@@ -1,0 +1,7 @@
+#switch 20000:1010
+extern playscene battle/intro/intro_hive00 0 20000:1015
+goto 0:0
+
+#switch 20000:1015
+extern BATTLE_EndIntro
+goto 0:0
