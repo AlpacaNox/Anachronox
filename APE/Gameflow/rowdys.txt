@@ -1,5 +1,5 @@
 #window 5:105
-title "Dim José"
+title "Dim JosÃ©"
 body "Man-oh-man, Sly... I gambled away all my money at Casinox again. All I've got left is this slag of MysTech I found. Whatd'ya think, should I sell this junk or what?"
 cam left restore zip
 talk npc amb_i stay
@@ -13,7 +13,7 @@ choice "It's just a glorified paperweight. Sell it." 5:120
 choice "Hold on to it, man. It could be worth something one day." 5:125
 
 #window 5:110
-title "Dim José"
+title "Dim JosÃ©"
 body "Hey, gettin' thrown outta your office window in front of everyone like that must have been pretty humiliatin'."
 cam left restore zip
 talk npc amb_i stay
@@ -25,7 +25,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 5:115
-title "Dim José"
+title "Dim JosÃ©"
 body "You hear what happened to Brazz? He decided to excavate the MysTech Tunnels after all and never came back."
 cam left restore zip
 talk npc amb_i stay
@@ -42,7 +42,7 @@ image "sendernet/underline.pcx" 16, 31, 548, 32
 nextwindow 5:0116
 
 #window 5:116
-title "Dim José"
+title "Dim JosÃ©"
 body "Let's drink a toast."
 cam left restore zip
 talk npc amb_i stay
@@ -54,7 +54,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 5:120
-title "Dim José"
+title "Dim JosÃ©"
 body "Yeah. What am I thinking? Thanks for the advice, man."
 cam left restore zip
 talk npc amb_i stay
@@ -70,7 +70,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 5:125
-title "Dim José"
+title "Dim JosÃ©"
 body "Yeah. What am I thinking? Thanks for the advice, man."
 cam left restore zip
 talk npc amb_i stay
@@ -86,7 +86,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 5:130
-title "Dim José"
+title "Dim JosÃ©"
 body "You don't wanna talk to me when I'm this drunk."
 cam left restore zip
 talk npc amb_i stay
@@ -98,7 +98,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 5:135
-title "Dim José"
+title "Dim JosÃ©"
 body "Hey, Boots... I thought your daddy left you years ago."
 cam left restore zip
 talk npc amb_i stay
@@ -123,7 +123,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 5:140
-title "Dim José"
+title "Dim JosÃ©"
 body "How long did it take you to grow that thing?"
 cam left restore zip
 talk npc amb_i stay
@@ -139,7 +139,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 5:145
-title "Dim José"
+title "Dim JosÃ©"
 body "Hey, PAL. Don't take any guff from Boots. You hear me? He's just a bum."
 cam left restore zip
 talk npc amb_i stay
@@ -171,7 +171,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 5:150
-title "Dim José"
+title "Dim JosÃ©"
 body "I'm too drunk to deal with you right now."
 cam left restore zip
 talk npc amb_i stay
@@ -183,7 +183,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 5:155
-title "Dim José"
+title "Dim JosÃ©"
 body "Sera?"
 cam left restore zip
 talk npc amb_i stay
@@ -196,7 +196,7 @@ image "sendernet/underline.pcx" 16, 31, 548, 32
 nextwindow 5:0156
 
 #window 5:156
-title "Dim José"
+title "Dim JosÃ©"
 body "What happened? I mean, you look great!"
 cam left restore zip
 talk npc amb_i stay
@@ -208,7 +208,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 5:160
-title "Dim José"
+title "Dim JosÃ©"
 body "The Fist is hanging out with BOOTS. Now I have seen everything!"
 cam left restore zip
 talk npc amb_i stay
@@ -220,7 +220,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 5:165
-title "Dim José"
+title "Dim JosÃ©"
 if (kept_mystech == 1)
   body "Man, am I glad I kept that MysTech. It really turned my life around."
 if (sold_mystech == 1)
@@ -236,7 +236,7 @@ image "sendernet/underline.pcx" 16, 31, 548, 32
 nextwindow 5:0166
 
 #window 5:166
-title "Dim José"
+title "Dim JosÃ©"
 if (kept_mystech == 1)
   body "I got a new job. A new wife. Hell, a new pair of kids."
 if (sold_mystech == 1)
@@ -252,7 +252,7 @@ image "sendernet/underline.pcx" 16, 31, 548, 32
 nextwindow 5:0167
 
 #window 5:167
-title "Dim José"
+title "Dim JosÃ©"
 if (kept_mystech == 1)
   body "You're a real gent, Sly. Thanks a million."
 if (sold_mystech == 1)
@@ -271,7 +271,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 5:170
-title "Dim José"
+title "Dim JosÃ©"
 if (kept_mystech == 1)
   body "I love you."
 if (sold_mystech == 1)
@@ -286,7 +286,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 5:175
-title "Dim José"
+title "Dim JosÃ©"
 body "Hey, I sold that MysTech like you told me to. Now I can pay this month's rent."
 cam left restore zip
 talk npc amb_i stay
@@ -299,7 +299,7 @@ image "sendernet/underline.pcx" 16, 31, 548, 32
 nextwindow 5:0176
 
 #window 5:176
-title "Dim José"
+title "Dim JosÃ©"
 body "I was afraid I'd have to sleep on your office couch. But then where would you sleep?"
 cam left restore zip
 talk npc amb_i stay
@@ -2712,7 +2712,7 @@ if (func_charinparty[democratus] == 3)
 if (func_charinparty[stiletto] == 3)
   title "Stiletto"
 if (func_charinparty[paco] == 3)
-  title "Paco \"El Puño\" Estrella"
+  title "Paco \"El PuÃ±o\" Estrella"
 if (func_charinparty[boots] == 3)
   body "Man, I gotta clean up sometime."
 if (func_charinparty[pal] == 3)
@@ -2758,7 +2758,7 @@ if (func_charinparty[democratus] == 3)
 if (func_charinparty[stiletto] == 3)
   title "Stiletto"
 if (func_charinparty[paco] == 3)
-  title "Paco \"El Puño\" Estrella"
+  title "Paco \"El PuÃ±o\" Estrella"
 if (func_charinparty[boots] == 3)
   body "My old intercom. Heh. Don't need it now that you're in my LifeCursor, Fatima."
 if (func_charinparty[pal] == 3)
@@ -2883,7 +2883,7 @@ if (func_charinparty[democratus] == 3)
 if (func_charinparty[stiletto] == 3)
   title "Stiletto"
 if (func_charinparty[paco] == 3)
-  title "Paco \"El Puño\" Estrella"
+  title "Paco \"El PuÃ±o\" Estrella"
 if (func_charinparty[boots] == 3)
   body "Heh, my old broadband scanner from when I lived on Cordica. Let's see... nothing interesting on the NoxGuard band. A NoxGuard patrolling the landing platform who got issued the wrong size helmet. Riveting."
 if (func_charinparty[pal] == 3)
@@ -3147,7 +3147,7 @@ image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 5:3032
 title "Travis Kelli"
-body "Hey, Boots.  I’m glad you brought PAL-18 outta retirement. I think it’s a cool statement for a grown man to be carrying on with a toy robot."
+body "Hey, Boots.  IÂ’m glad you brought PAL-18 outta retirement. I think itÂ’s a cool statement for a grown man to be carrying on with a toy robot."
 cam left restore zip
 talk npc gest_g stay
 style "style_embrace"
@@ -3159,7 +3159,7 @@ image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 5:3033
 title "Travis Kelli"
-body "The girl in green with the backpack and sneakers is really cute.  You two aren’t... you know, are you?"
+body "The girl in green with the backpack and sneakers is really cute.  You two arenÂ’t... you know, are you?"
 cam left restore zip
 talk npc gest_g stay
 style "style_embrace"
@@ -3183,7 +3183,7 @@ image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 5:3035
 title "Travis Kelli"
-body "Hey, Boots.  I see you’re running with Sera again. Fatima can’t be too happy about that, huh?"
+body "Hey, Boots.  I see youÂ’re running with Sera again. Fatima canÂ’t be too happy about that, huh?"
 cam left restore zip
 talk npc gest_g stay
 style "style_embrace"
