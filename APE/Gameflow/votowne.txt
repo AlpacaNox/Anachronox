@@ -1833,7 +1833,7 @@ if (func_charinparty[democratus] == 3)
 if (func_charinparty[stiletto] == 3)
   title "Stiletto"
 if (func_charinparty[paco] == 3)
-  title "Paco \"El Puño\" Estrella"
+  title "Paco \"El PuÃ±o\" Estrella"
 body "You Lie! In Votowne.bsp there was Life, a fair chance..."
 cam left restore zip
 talk npc gest_g stay
@@ -1929,7 +1929,7 @@ if (func_charinparty[democratus] == 3)
 if (func_charinparty[stiletto] == 3)
   title "Stiletto"
 if (func_charinparty[paco] == 3)
-  title "Paco \"El Puño\" Estrella"
+  title "Paco \"El PuÃ±o\" Estrella"
 body "Two hundred year old pigeons?"
 cam left restore zip
 talk npc gest_g stay
@@ -1970,7 +1970,7 @@ if (func_charinparty[democratus] == 3)
 if (func_charinparty[stiletto] == 3)
   title "Stiletto"
 if (func_charinparty[paco] == 3)
-  title "Paco \"El Puño\" Estrella"
+  title "Paco \"El PuÃ±o\" Estrella"
 body "Hey, do what you want, buddy. I'm the one with the cheat codes."
 cam left restore zip
 talk npc gest_g stay
@@ -2025,7 +2025,7 @@ if (func_charinparty[democratus] == 3)
 if (func_charinparty[stiletto] == 3)
   title "Stiletto"
 if (func_charinparty[paco] == 3)
-  title "Paco \"El Puño\" Estrella"
+  title "Paco \"El PuÃ±o\" Estrella"
 body "So... what, about two hundred?"
 cam left restore zip
 talk npc gest_g stay
@@ -2066,7 +2066,7 @@ if (func_charinparty[democratus] == 3)
 if (func_charinparty[stiletto] == 3)
   title "Stiletto"
 if (func_charinparty[paco] == 3)
-  title "Paco \"El Puño\" Estrella"
+  title "Paco \"El PuÃ±o\" Estrella"
 if (func_charinparty[boots] == 3)
   body "Wow. Y'know, I ain't too bright, but at least I got about 700..."
 if (func_charinparty[grumpos] == 3)
