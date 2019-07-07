@@ -1817,7 +1817,7 @@ if (func_charinparty[democratus] == 3)
 if (func_charinparty[stiletto] == 3)
   title "Stiletto"
 if (func_charinparty[paco] == 3)
-  title "Paco \"El Puño\" Estrella"
+  title "Paco \"El PuÃ±o\" Estrella"
 body "Someone better stay behind before the party gets too big."
 cam left from(PlayerChar0) restore zip
 talk npc amb_a stay
@@ -4646,7 +4646,7 @@ if (func_charinparty[rho] < 2)
 if (func_charinparty[stiletto] < 2)
   choice "Stiletto." 51:1332
 if (func_charinparty[paco] < 2)
-  choice "Paco \"El Puño\" Estrella" 51:1333
+  choice "Paco \"El PuÃ±o\" Estrella" 51:1333
 
 #window 51:1340
 title "Democratus"
@@ -5792,7 +5792,7 @@ nextwindow 51:1711
 
 #window 51:1711
 title "Grumpos"
-body "I'll come outta retirement for one last mission. I can meet ya at Detta's Fortress as soon as you're ready to kick off this soirée or I can come with you now."
+body "I'll come outta retirement for one last mission. I can meet ya at Detta's Fortress as soon as you're ready to kick off this soirÃ©e or I can come with you now."
 cam left restore zip
 talk npc talk_a stay
 style "style_embrace"
@@ -6765,9 +6765,9 @@ if ((RUB_RUNNER != 2) && (PUNCH_JUDY != 3))
 if (PAXDET_MEET == 0)
   body "But then we hit OneGate. PAX Guards were swarming everywhere. Our boys were dropping like flies. We woefully unprepared. If only we'd had more warning... "
 if ((PAXDET_MEET == 1) && (PAX_POKESNAP < 2))
-  body "But then we hit OneGate. We were prepared for PAX, but not for the sheer number of guards waiting for us. We sustained heavy losses before we ever got close to Detta's gates. If only we'd had some advance reconnaissance… "
+  body "But then we hit OneGate. We were prepared for PAX, but not for the sheer number of guards waiting for us. We sustained heavy losses before we ever got close to Detta's gates. If only we'd had some advance reconnaissanceÂ… "
 if ((PAXDET_MEET == 1) && ((PAX_POKESNAP < 4) && (PAX_POKESNAP > 1)))
-  body "But then we hit OneGate. Although we were prepared for PAX, there were more than your reconnaissance suggested. We sustained heavy losses before we ever got close to Detta's gates. If only we'd had better advance recon… "
+  body "But then we hit OneGate. Although we were prepared for PAX, there were more than your reconnaissance suggested. We sustained heavy losses before we ever got close to Detta's gates. If only we'd had better advance reconÂ… "
 if ((PAXDET_MEET == 1) && (PAX_POKESNAP > 3))
   body "And then we hit OneGate. Thanks to your recon work, we were prepared for the PAX troops and sustained acceptable losses as we approached Detta's gates. "
 cam left restore zip
@@ -6789,7 +6789,7 @@ if ((GET_MITOTIC < 2) && ((CASE_MUSEUM > 2) && (CASE_MUSEUM < 6)))
 if ((GET_MITOTIC < 2) && (CASE_MUSEUM > 5))
   body "Detta's gate was a bloodbath. There was a legion of souped-up NoxGuards holding down the fort, turning it into a knockdown, drag-out fight. We had half a chance in the beginning with all the MysTech we nabbed from the museum, but at the end of the day, their numbers won out. Only a dozen of us escaped, all heavily wounded...."
 if (GET_MITOTIC == 2)
-  body "Detta's gate was the clincher.  There was a legion of souped-up NoxGuards holding down the fort. I guess that mitotic accelerator you pinched was just one part of Detta's investment in an effort to clone an elite personal army of NoxGuards…"
+  body "Detta's gate was the clincher.  There was a legion of souped-up NoxGuards holding down the fort. I guess that mitotic accelerator you pinched was just one part of Detta's investment in an effort to clone an elite personal army of NoxGuardsÂ…"
 if ((GET_MITOTIC == 2) && (CASE_MUSEUM < 3))
   body "There were more than enough of them to wipe us out thanks to our lack of MysTech firepower. If only our museum raid had succeeded...."
 if ((GET_MITOTIC == 2) && ((CASE_MUSEUM > 2) && (CASE_MUSEUM < 6)))
@@ -6875,7 +6875,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 51:1501
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "I can help you."
 cam left restore zip
 talk npc talk_a stay
@@ -6905,7 +6905,7 @@ if (func_charinparty[democratus] == 3)
   choice "I'm afraid there are no positions currently available in the party." 0:0
 
 #window 51:1510
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "I can help you."
 cam left restore zip
 talk npc talk_a stay
@@ -6967,7 +6967,7 @@ if ((@rowdySecret == 1) && (func_charinparty[democratus] == 3))
   choice "I'm afraid there are no positions currently available in the party." 0:0
 
 #window 51:1515
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "Okay."
 cam left restore zip
 talk npc talk_a stay
@@ -6991,7 +6991,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 51:1516
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "But I want to learn better weapon."
 cam left restore zip
 talk npc talk_a stay
@@ -7012,7 +7012,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 51:1520
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "I will be there."
 cam left restore zip
 talk npc talk_a stay
