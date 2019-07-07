@@ -271,7 +271,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 95:145
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "I am here."
 cam right to(paco) restore zip
 talk npc talk_a stay
@@ -561,7 +561,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 5007:1
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 if (limbus_battle_started == 0)
   body "Rage On."
 if (limbus_battle_started == 1)
