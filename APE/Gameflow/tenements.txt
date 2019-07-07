@@ -110,7 +110,7 @@ if (func_charinparty[democratus] == 3)
 if (func_charinparty[stiletto] == 3)
   body "Don't be so stupid as to talk to a NoxGuard again, ma'am. We like dressing in women's clothing."
 if (func_charinparty[paco] == 3)
-  body "Don't be so stupid as to dress up like Paco 'El Puño' again. We NoxGuards have a thing for him."
+  body "Don't be so stupid as to dress up like Paco 'El PuÃ±o' again. We NoxGuards have a thing for him."
 cam left restore zip
 talk npc gest_a stay
 style "style_embrace"
