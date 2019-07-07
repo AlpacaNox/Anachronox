@@ -120,7 +120,7 @@ width 384
 height 256
 
 #window 4007:8096
-title "Paco \"El Puño\" Estrella's RageMight"
+title "Paco \"El PuÃ±o\" Estrella's RageMight"
 body "Help Paco focus and build his rage by trying to steer the fist onto the fist symbol on Paco's chest. "
 body "As the rage builds, it will be harder and harder to control."
 body "\n\n"
@@ -144,7 +144,7 @@ ypos 40
 width 580
 
 #window 4007:8097
-title "Paco \"El Puño\" Estrella's Master RageMight"
+title "Paco \"El PuÃ±o\" Estrella's Master RageMight"
 body "Help Paco focus and build his rage by trying to steer the fist onto the fist symbol on Paco's chest. "
 body "As the rage builds, it will be harder and harder to control."
 body "\n\n"
