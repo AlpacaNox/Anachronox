@@ -196,7 +196,7 @@ nextwindow 70:0255
 
 #window 70:255
 title "Mrs. Invisiblus"
-body "Look, dear, who is here. It's \"El Puño\". Do you remember Paco Estrella?"
+body "Look, dear, who is here. It's \"El PuÃ±o\". Do you remember Paco Estrella?"
 cam left from(198 -970 524) to(207 -1033 526) restore zip
 startswitch {
   extern ANIM_PlayAnim mrs_handle talk_a 0 1 0
@@ -845,7 +845,7 @@ width 580
 image "graphics/underline_heph.pcx" 16, 31, 548, 32
 
 #window 70:1201
-title "Hector Doofeño"
+title "Hector DoofeÃ±o"
 body "Where's the magic?"
 cam left restore zip
 talk npc gest_g stay
@@ -859,7 +859,7 @@ image "graphics/underline_heph.pcx" 16, 31, 548, 32
 nextwindow 70:1205
 
 #window 70:1205
-title "Hector Doofeño"
+title "Hector DoofeÃ±o"
 body "This sucks major wampum."
 cam left restore zip
 talk npc gest_f stay
