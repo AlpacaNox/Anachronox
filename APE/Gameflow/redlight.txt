@@ -542,7 +542,7 @@ if (func_charinparty[grumpos] == 3)
 if (func_charinparty[pal] == 3)
   body "Don't think you can get away with this fashion vacuum because you're a beebot. Strike one, kiddo."
 if (func_charinparty[rho] == 3)
-  body "Love the hair, love the glasses—but the coat gives you more caboose than you probably have. Deep-six it, pronto."
+  body "Love the hair, love the glassesÂ—but the coat gives you more caboose than you probably have. Deep-six it, pronto."
 if (func_charinparty[democratus] == 3)
   body "I love what you've done... I absolutely love it. Fashion snobs will declare it goes against the Brebulan New Wave, but I think it's quite more than just fashion. It's art."
 if (func_charinparty[stiletto] == 3)
@@ -1189,7 +1189,7 @@ if (second$ == "Democratus")
 if (second$ == "Stiletto")
   title "Stiletto"
 if (second$ == "Paco")
-  title "Paco \"El Puño\" Estrella"
+  title "Paco \"El PuÃ±o\" Estrella"
 if (second$ == "Grumpos")
   body "Did I ever tell you about my war wound? I won't be much use in there, son. We'll both wait for you out here."
 if (second$ == "PAL")
@@ -2191,7 +2191,7 @@ image "graphics/underline_red.pcx" 16, 31, 548, 32
 nextwindow 57:6556
 
 #window 57:6556
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "No."
 cam left from(57:6501) to(PlayerChar0) restore zip
 talk npc amb_a stay
