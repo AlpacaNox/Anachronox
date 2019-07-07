@@ -460,7 +460,7 @@ image "graphics/underline_demo.pcx" 16, 31, 548, 32
 
 #window 65:315
 title "Dward"
-body "Meanwhile, I can't find Merle Joid, the assistant to one of the High Councilmen. He promised me an interview about Councilman Halpert's position on Proposition 4, the pousse-café initiative."
+body "Meanwhile, I can't find Merle Joid, the assistant to one of the High Councilmen. He promised me an interview about Councilman Halpert's position on Proposition 4, the pousse-cafÃ© initiative."
 cam left lift(50) restore zip
 talk npc sit_d stay
 finishswitch {
@@ -492,7 +492,7 @@ nextwindow 65:0317
 
 #window 65:317
 title "Dward"
-body "And to top it off, I don't think any of these colors is pousse-café."
+body "And to top it off, I don't think any of these colors is pousse-cafÃ©."
 cam left lift(50) restore zip
 talk npc sit_d stay
 style "style_demo"
