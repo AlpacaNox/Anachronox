@@ -50,7 +50,7 @@ ypos 0
 
 #window 105:4110
 title "PAL-18"
-body "That’s a pretty mean lookin’ door, man. I oughta wait for the others before seeing what’s on the other side."
+body "Thatâ€™s a pretty mean lookinâ€™ door, man. I oughta wait for the others before seeing whatâ€™s on the other side."
 talk player talk_a stay
 startswitch {
   extern cam_anoxmariomode 1
@@ -75,7 +75,7 @@ nextwindow 105:4115
 
 #window 105:4115
 title "PAL-18"
-body "My little circuits are doin’ the tingle-tingle."
+body "My little circuits are doinâ€™ the tingle-tingle."
 talk player talk_a stay
 finishswitch {
   extern cam_anoxmariomode 0
@@ -93,21 +93,21 @@ image "sendernet/underline.pcx" 16, 31, 548, 32
 #window 105:4205
 title "%s", playerchar0$
 if ((func_charinparty[boots] == 3) && (KIDZ == 0))
-  body "That fat bastard’s cloning himself an army. We better chill out and wait for the others before making another move."
+  body "That fat bastardâ€™s cloning himself an army. We better chill out and wait for the others before making another move."
 if ((func_charinparty[boots] == 3) && (KIDZ == 1))
   body "That rat's cloning himself an army. We better chill out and wait for the others before making another move."
 if (func_charinparty[grumpos] == 3)
-  body "Looks like Mr. Big’s cloning an army for himself. We should rest our feet and wait for the others before moving on."
+  body "Looks like Mr. Bigâ€™s cloning an army for himself. We should rest our feet and wait for the others before moving on."
 if (func_charinparty[pal] == 3)
-  body "Detta’s baking himself an army of clones. We oughta wait for the others before we roll out."
+  body "Dettaâ€™s baking himself an army of clones. We oughta wait for the others before we roll out."
 if (func_charinparty[rho] == 3)
-  body "Detta’s cloning an army. Let’s wait for the others and debrief before we continue any further."
+  body "Dettaâ€™s cloning an army. Letâ€™s wait for the others and debrief before we continue any further."
 if (func_charinparty[democratus] == 3)
   body "It would appear that Vendelin Detta is cloning an army for his personal use. We suggest remaining here until the rest of the party arrives."
 if ((func_charinparty[stiletto] == 3) && (KIDZ == 0))
-  body "That rat bastard’s cloning himself an army. Let’s wait for the others before making another move."
+  body "That rat bastardâ€™s cloning himself an army. Letâ€™s wait for the others before making another move."
 if ((func_charinparty[stiletto] == 3) && (KIDZ == 1))
-  body "That rat's cloning himself an army. Let’s wait for the others before making another move."
+  body "That rat's cloning himself an army. Letâ€™s wait for the others before making another move."
 if (func_charinparty[paco] == 3)
   body "Detta making a clone army, like Doom Maestro in issue twenty. We wait for the others."
 talk player talk_a stay
@@ -173,7 +173,7 @@ nextwindow 105:4235
 
 #window 105:4235
 title "Boots"
-body "I don’t think anyone in this room will feel right unless we stop Detta from producing any more of those soldiers."
+body "I donâ€™t think anyone in this room will feel right unless we stop Detta from producing any more of those soldiers."
 talk_ex boots pal talk_a amb_a stay stay
 style "style_embrace"
 font "_anox10"
@@ -185,7 +185,7 @@ nextwindow 105:4240
 
 #window 105:4240
 title "Boots"
-body "I mean, what good’s saving the universe if Detta’s just gonna turn around and take it over?"
+body "I mean, what goodâ€™s saving the universe if Dettaâ€™s just gonna turn around and take it over?"
 talk_ex boots pal talk_a amb_a stay stay
 style "style_embrace"
 font "_anox10"
@@ -233,7 +233,7 @@ nextwindow 105:4260
 
 #window 105:4260
 title "Boots"
-body "And don’t wait for us."
+body "And donâ€™t wait for us."
 talk_ex boots pal talk_a amb_a stay stay
 finishswitch {
   extern cam_restore
@@ -312,9 +312,9 @@ nextwindow 105:4315
 #window 105:4315
 title "K'Conrad Khk"
 if (func_charinparty[boots] == 3)
-  body "You will be happy to know that in a grand turn of karmic justice, the devious Vendelin Detta recently betrayed me… just as I betrayed you."
+  body "You will be happy to know that in a grand turn of karmic justice, the devious Vendelin Detta recently betrayed meâ€¦ just as I betrayed you."
 if (func_charinparty[grumpos] == 3)
-  body "You will be happy to know that in a grand turn of karmic justice, the devious Vendelin Detta recently betrayed me… just as I betrayed you."
+  body "You will be happy to know that in a grand turn of karmic justice, the devious Vendelin Detta recently betrayed meâ€¦ just as I betrayed you."
 if (func_charinparty[pal] == 3)
   body "In a grand turn of karmic justice, the devious Vendelin Detta recently betrayed me just as I betrayed Master Boots."
 if (func_charinparty[rho] == 3)
@@ -428,7 +428,7 @@ if (func_charinparty[democratus] == 3)
 if (func_charinparty[stiletto] == 3)
   body "Good luck, Ms. Anyway. You will give the strongman a big knife in the chin for me, won't you?"
 if (func_charinparty[paco] == 3)
-  body "Good luck, Mister \"El Puño\". You will give the strongman a big knock on the chin for me, won't you?"
+  body "Good luck, Mister \"El PuÃ±o\". You will give the strongman a big knock on the chin for me, won't you?"
 cam left restore zip
 talk npc talk_a stay
 style "style_embrace"
