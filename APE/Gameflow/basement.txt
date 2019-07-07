@@ -235,7 +235,7 @@ if (func_charinparty[democratus] == 3)
 if (func_charinparty[stiletto] == 3)
   title "Stiletto"
 if (func_charinparty[paco] == 3)
-  title "Paco \"El Puño\" Estrella"
+  title "Paco \"El PuÃ±o\" Estrella"
 if (func_charinparty[boots] == 3)
   body "These wine kegs are packed with some freaky liquid."
 if (func_charinparty[grumpos] == 3)
@@ -272,7 +272,7 @@ if (func_charinparty[democratus] == 3)
 if (func_charinparty[stiletto] == 3)
   title "Stiletto"
 if (func_charinparty[paco] == 3)
-  title "Paco \"El Puño\" Estrella"
+  title "Paco \"El PuÃ±o\" Estrella"
 if (func_charinparty[boots] == 3)
   body "It ain't wine."
 if (func_charinparty[grumpos] == 3)
@@ -309,7 +309,7 @@ if (func_charinparty[democratus] == 3)
 if (func_charinparty[stiletto] == 3)
   title "Stiletto"
 if (func_charinparty[paco] == 3)
-  title "Paco \"El Puño\" Estrella"
+  title "Paco \"El PuÃ±o\" Estrella"
 if (func_charinparty[boots] == 3)
   body "We better cool our heels in case any of the others need us."
 if (func_charinparty[grumpos] == 3)
@@ -407,15 +407,15 @@ image "sendernet/underline.pcx" 16, 31, 548, 32
 #window 103:5003
 title "%s", PlayerChar0$
 if (func_charinparty[stiletto] == 3)
-  body "This leads to Detta’s Fortress. Let’s climb the stairs and wait for the rest of the party to catch up."
+  body "This leads to DettaÂ’s Fortress. LetÂ’s climb the stairs and wait for the rest of the party to catch up."
 if (func_charinparty[grumpos] == 3)
-  body "This must lead to Detta’s Fortress. Why don’t we climb the stairs and wait for the rest of those bozos to catch up to us."
+  body "This must lead to DettaÂ’s Fortress. Why donÂ’t we climb the stairs and wait for the rest of those bozos to catch up to us."
 if (func_charinparty[rho] == 3)
-  body "This leads to Detta’s Fortress. Let’s climb the stairs and wait for the rest of the party to catch up."
+  body "This leads to DettaÂ’s Fortress. LetÂ’s climb the stairs and wait for the rest of the party to catch up."
 if (func_charinparty[democratus] == 3)
-  body "We believe these stairs lead to Detta’s Fortress. Let us ascend and wait for the rest of the company to catch up to us."
+  body "We believe these stairs lead to DettaÂ’s Fortress. Let us ascend and wait for the rest of the company to catch up to us."
 if (func_charinparty[paco] == 3)
-  body "Detta’s Fortress ahead. Climb the stairs and wait for the others."
+  body "DettaÂ’s Fortress ahead. Climb the stairs and wait for the others."
 cam left to(playerchar0) restore zip
 talk player talk_a stay
 style "style_embrace"
@@ -430,7 +430,7 @@ title "%s", PlayerChar0$
 if (func_charinparty[stiletto] == 3)
   body "Make it happen, guys."
 if (func_charinparty[grumpos] == 3)
-  body "C’mon, let’s not shilly-shally."
+  body "CÂ’mon, letÂ’s not shilly-shally."
 if (func_charinparty[rho] == 3)
   body "Make sure to spit out your gum."
 if (func_charinparty[democratus] == 3)
@@ -455,13 +455,13 @@ width 580
 #window 103:5015
 title "%s", PlayerChar0$
 if (func_charinparty[boots] == 3)
-  body "We’re closing in on the main event, people. These stairs lead to Detta’s main compound."
+  body "WeÂ’re closing in on the main event, people. These stairs lead to DettaÂ’s main compound."
 if (func_charinparty[grumpos] == 3)
-  body "Pull up your socks, kids. These stairs lead to Detta’s main compound."
+  body "Pull up your socks, kids. These stairs lead to DettaÂ’s main compound."
 if (func_charinparty[rho] == 3)
-  body "These stairs lead to Detta’s main compound. Don’t let your guard down for a second."
+  body "These stairs lead to DettaÂ’s main compound. DonÂ’t let your guard down for a second."
 if (func_charinparty[democratus] == 3)
-  body "We believe these stairs lead to Detta’s main compound. We’re putting our administrative staff on full alert."
+  body "We believe these stairs lead to DettaÂ’s main compound. WeÂ’re putting our administrative staff on full alert."
 if (func_charinparty[paco] == 3)
   body "Main compound ahead."
 cam left to(playerchar0) restore zip
