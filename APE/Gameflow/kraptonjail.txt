@@ -376,7 +376,7 @@ if (Hush3 < 1)
 if (Hush3 == 1)
   choice "Why are you guarding the Emergency Parole Button?" 81:335
 if ((KRAP_PAD1 == 1) && (Hush5 < 1))
-  choice "Do you know the security code for El Puño's prison cell?" 81:320
+  choice "Do you know the security code for El PuÃ±o's prison cell?" 81:320
 if (Hush4 < 1)
   choice "I'm gonna go bang my head on a wall over there. See ya." 81:325
 if (Hush4 > 0)
@@ -2264,7 +2264,7 @@ width 580
 nextwindow 81:1131
 
 #window 81:1131
-body "Lemme guess… you've got good slags of MysTech?"
+body "Lemme guessÂ… you've got good slags of MysTech?"
 cam left lift(40) restore zip
 talk npc amb_c stay
 startswitch {
@@ -2952,7 +2952,7 @@ width 580
 nextwindow 81:2106
 
 #window 81:2106
-body "How about you drop the hero act already. You’ve gotten us into enough trouble."
+body "How about you drop the hero act already. YouÂ’ve gotten us into enough trouble."
 cam left restore zip
 talk npc talk_a stay
 startswitch {
@@ -2969,7 +2969,7 @@ background color1 = ffffffff color2 = ffffffff color3 = ffffffff color4 = ffffff
 width 580
 
 #window 81:2110
-body "Beat it, Sly. I’ll let you know when I’ve figured out a way outta this dump."
+body "Beat it, Sly. IÂ’ll let you know when IÂ’ve figured out a way outta this dump."
 cam left restore zip
 talk npc talk_a stay
 startswitch {
