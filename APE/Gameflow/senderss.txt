@@ -456,7 +456,7 @@ image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 53:901
 title "01110000 01100001 01100011 01101111"
-body "My \"El Puño\" action figure has RageMight punch action."
+body "My \"El PuÃ±o\" action figure has RageMight punch action."
 cam left lift(30) restore zip
 talk npc amb_b stay
 style "style_embrace"
@@ -4138,7 +4138,7 @@ image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 53:6330
 title "Detective Rukh"
-body "Lemme get this straight: there's a link between clusters of Tetra and something ducky like \"transtemporal particle acceleration\"… and this could be used to generate some kinda signal?"
+body "Lemme get this straight: there's a link between clusters of Tetra and something ducky like \"transtemporal particle acceleration\"Â… and this could be used to generate some kinda signal?"
 cam left restore zip
 talk npc amb_a stay
 style "style_embrace"
@@ -4189,7 +4189,7 @@ nextwindow 53:6362
 
 #window 53:6362
 title "Detective Rukh"
-body "Listen, I dropped in on my favorite gear master while I was in the neighborhood. He had a prime piece of slim jim you're gonna love… the Galendan Lockpick."
+body "Listen, I dropped in on my favorite gear master while I was in the neighborhood. He had a prime piece of slim jim you're gonna loveÂ… the Galendan Lockpick."
 cam left restore zip
 talk npc amb_a stay
 style "style_embrace"
