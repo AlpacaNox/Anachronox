@@ -1,0 +1,299 @@
+#switch 20000:3010
+extern BATTLE_StopTime
+
+#switch 20000:1200
+extern playscene battle/monster_sagenkra/crevice_sagenkra_intro 0 20000:1201
+
+#switch 20000:1201
+extern BATTLE_EndIntro
+
+#switch 20000:1100
+console "set storysave \"To Sesostris|The Underground City of Sesostris\""
+extern playscene battle/monster_sagenkra/crevice_sagenkra_outro
+
+#switch 20000:200
+extern BATTLE_GetAttachedNodeUID @uid_red @uid_pos_red
+extern BATTLE_GetAttachedNodeUID @uid_cyan @uid_pos_cyan
+extern BATTLE_GetAttachedNodeUID @uid_magenta @uid_pos_magenta
+extern BATTLE_GetAttachedNodeUID @uid_green @uid_pos_green
+extern BATTLE_GetAttachedNodeUID @uid_blue @uid_pos_blue
+extern BATTLE_GetAttachedNodeUID @uid_yellow @uid_pos_yellow
+
+#switch 20000:1
+console "cylcam_yawbounds 60 70"
+extern BATTLE_GetUIDFromKey targetname monster1 @uid_red
+extern BATTLE_GetUIDFromKey targetname monster2 @uid_cyan
+extern BATTLE_GetUIDFromKey targetname monster3 @uid_magenta
+extern BATTLE_GetUIDFromKey targetname monster4 @uid_green
+extern BATTLE_GetUIDFromKey targetname monster5 @uid_blue
+extern BATTLE_GetUIDFromKey targetname monster6 @uid_yellow
+gosub 20000:200
+set A[$@uid_red$] = 1
+set A[$@uid_cyan$] = 0
+set A[$@uid_magenta$] = 1
+set A[$@uid_green$] = 0
+set A[$@uid_blue$] = 1
+set A[$@uid_yellow$] = 0
+@script_swap_red$="battle/monster_sagenkra/sagenkra_swap_red" 
+@script_swap_cyan$="battle/monster_sagenkra/sagenkra_swap_cyan" 
+@script_swap_magenta$="battle/monster_sagenkra/sagenkra_swap_magenta" 
+@script_swap_green$="battle/monster_sagenkra/sagenkra_swap_green" 
+@script_swap_blue$="battle/monster_sagenkra/sagenkra_swap_blue" 
+@script_swap_yellow$="battle/monster_sagenkra/sagenkra_swap_yellow" 
+extern BATTLE_AffectNodeOccupant 70 "invulnerable=1"
+extern BATTLE_AffectNodeOccupant 75 "invulnerable=1"
+extern BATTLE_AffectNodeOccupant 77 "invulnerable=1"
+extern GetPlayerCurrentHP playerchar0$ @occupied_72
+extern GetPlayerCurrentHP playerchar1$ @occupied_73
+extern GetPlayerCurrentHP playerchar2$ @occupied_74
+echo ">>>>>>>Player0(%i), Player1(%i), Player2(%i)", @occupied_72, @occupied_73, @occupied_74
+
+#switch 20000:300
+extern BATTLE_GetHitPoints 94:9001 B[$@uid_red$]
+extern BATTLE_GetHitPoints 94:9004 B[$@uid_green$]
+extern BATTLE_GetHitPoints 94:9005 B[$@uid_blue$]
+extern BATTLE_GetHitPoints 94:9002 B[$@uid_cyan$]
+extern BATTLE_GetHitPoints 94:9003 B[$@uid_magenta$]
+extern BATTLE_GetHitPoints 94:9006 B[$@uid_yellow$]
+
+#switch 20000:100
+extern GetPlayerCurrentHP playerchar0$ @occupied_72
+extern GetPlayerCurrentHP playerchar1$ @occupied_73
+extern GetPlayerCurrentHP playerchar2$ @occupied_74
+echo ">>>>>>>Player0(%i), Player1(%i), Player2(%i)", @occupied_72, @occupied_73, @occupied_74
+set @sagenkra_noall = (@sagenkra_noall - 100)
+if (@sagenkra_noall < 0)
+  set @sagenkra_noall = 0
+gosub 20000:300 
+gosub 20000:200
+if ((A[$@uid_red$] == 1) && (B[$@uid_cyan$] > 0))
+  if (B[$@uid_red$] < (B[$@uid_cyan$] * 0.5))
+    set @red_swap = 1
+if ((A[$@uid_green$] == 1) && (B[$@uid_magenta$] > 0))
+  if (B[$@uid_green$] < (B[$@uid_magenta$] * 0.5))
+    set @green_swap = 1
+if ((A[$@uid_blue$] == 1) && (B[$@uid_yellow$] > 0))
+  if (B[$@uid_blue$] < (B[$@uid_yellow$] * 0.5))
+    set @blue_swap = 1
+if ((A[$@uid_cyan$] == 1) && (B[$@uid_red$] > 0))
+  if (B[$@uid_cyan$] < (B[$@uid_red$] * 0.5))
+    set @cyan_swap = 1
+if ((A[$@uid_magenta$] == 1) && (B[$@uid_green$] > 0))
+  if (B[$@uid_magenta$] < (B[$@uid_green$] * 0.5))
+    set @magenta_swap = 1
+if ((A[$@uid_yellow$] == 1) && (B[$@uid_blue$] > 0))
+  if (B[$@uid_yellow$] < (B[$@uid_blue$] * 0.5))
+    set @yellow_swap = 1
+
+#switch 20000:6000
+if (@swap_rc == 1) {
+  extern BATTLE_SwapOccupants @uid_pos_red @uid_pos_cyan
+  set @swap_rc = 0
+  if (A[$@uid_red$] == 1) {
+    set A[$@uid_red$] = 0
+    set A[$@uid_cyan$] = 1
+  } else {
+    set A[$@uid_red$] = 1
+    set A[$@uid_cyan$] = 0
+  }
+}
+if (@swap_mg == 1) {
+  extern BATTLE_SwapOccupants @uid_pos_magenta @uid_pos_green
+  set @swap_mg = 0
+  if (A[$@uid_magenta$] == 1) {
+    set A[$@uid_magenta$] = 0
+    set A[$@uid_green$] = 1
+  } else {
+    set A[$@uid_magenta$] = 1
+    set A[$@uid_green$] = 0
+  }
+}
+if (@swap_by == 1) {
+  extern BATTLE_SwapOccupants @uid_pos_blue @uid_pos_yellow
+  set @swap_by = 0
+  if (A[$@uid_blue$] == 1) {
+    set A[$@uid_blue$] = 0
+    set A[$@uid_yellow$] = 1
+  } else {
+    set A[$@uid_blue$] = 1
+    set A[$@uid_yellow$] = 0
+  }
+}
+extern BATTLE_AffectNodeOccupant 70 "invulnerable=1"
+extern BATTLE_AffectNodeOccupant 75 "invulnerable=1"
+extern BATTLE_AffectNodeOccupant 77 "invulnerable=1"
+extern BATTLE_UnaffectNodeOccupant 69 "invulnerable"
+extern BATTLE_UnaffectNodeOccupant 71 "invulnerable"
+extern BATTLE_UnaffectNodeOccupant 76 "invulnerable"
+extern BATTLE_StartTime
+set @swapping = 0
+
+#switch 20000:5000
+if (@swapping == 0) {
+  extern BATTLE_StopTime
+  extern playscene @swap_script$ 0 20000:6000 NULL NULL
+  set @swapping = 1
+} else
+  extern playambient @swap_script$
+set @sagenkra_noall = 0
+
+#switch 20000:3001
+gosub 20000:300
+if (A[$@uid_red$] == 1) {
+  if (B[$@uid_cyan$] > 0) {
+    set @swap_uid_pos_front = @uid_pos_red
+    set @swap_uid_pos_back = @uid_pos_cyan
+    set @swap_uid_front = @uid_red
+    set @swap_uid_back = @uid_cyan
+    unset @swap_script$=@script_swap_red$ 
+    set @swap_rc = 1
+    goto 20000:5000
+  }
+} else if (A[$@uid_cyan$] == 1)
+  if (B[$@uid_red$] > 0) {
+    set @swap_uid_pos_front = @uid_pos_cyan
+    set @swap_uid_pos_back = @uid_pos_red
+    set @swap_uid_front = @uid_cyan
+    set @swap_uid_back = @uid_red
+    unset @swap_script$=@script_swap_cyan$ 
+    set @swap_rc = 1
+    goto 20000:5000
+  }
+
+#switch 20000:3002
+gosub 20000:300
+if (A[$@uid_magenta$] == 1) {
+  if (B[$@uid_green$] > 0) {
+    set @swap_uid_pos_front = @uid_pos_magenta
+    set @swap_uid_pos_back = @uid_pos_green
+    set @swap_uid_front = @uid_magenta
+    set @swap_uid_back = @uid_green
+    unset @swap_script$=@script_swap_magenta$ 
+    set @swap_mg = 1
+    goto 20000:5000
+  }
+} else if (A[$@uid_green$] == 1)
+  if (B[$@uid_magenta$] > 0) {
+    set @swap_uid_pos_front = @uid_pos_green
+    set @swap_uid_pos_back = @uid_pos_magenta
+    set @swap_uid_front = @uid_green
+    set @swap_uid_back = @uid_magenta
+    unset @swap_script$=@script_swap_green$ 
+    set @swap_mg = 1
+    goto 20000:5000
+  }
+
+#switch 20000:3003
+gosub 20000:300
+if (A[$@uid_blue$] == 1) {
+  if (B[$@uid_yellow$] > 0) {
+    set @swap_uid_pos_front = @uid_pos_blue
+    set @swap_uid_pos_back = @uid_pos_yellow
+    set @swap_uid_front = @uid_blue
+    set @swap_uid_back = @uid_yellow
+    unset @swap_script$=@script_swap_blue$ 
+    set @swap_by = 1
+    goto 20000:5000
+  }
+} else if (A[$@uid_yellow$] == 1)
+  if (B[$@uid_blue$] > 0) {
+    set @swap_uid_pos_front = @uid_pos_yellow
+    set @swap_uid_pos_back = @uid_pos_blue
+    set @swap_uid_front = @uid_yellow
+    set @swap_uid_back = @uid_blue
+    unset @swap_script$=@script_swap_yellow$ 
+    set @swap_by = 1
+    goto 20000:5000
+  }
+
+#switch 20000:4001
+extern BATTLE_ResetTimer @uid_red
+extern BATTLE_ResetTimer @uid_green
+extern BATTLE_ResetTimer @uid_blue
+set @sagenkra_noall = (func_battletime + 1000)
+goto 0:0
+
+#switch 20000:4002
+extern BATTLE_ResetTimer @uid_cyan
+extern BATTLE_ResetTimer @uid_yellow
+extern BATTLE_ResetTimer @uid_magenta
+set @sagenkra_noall = (func_battletime + 1000)
+goto 0:0
+
+#switch 20000:7000
+extern playscene battle/monster_sagenkra/sagenkra_blue_atak1_none
+extern BATTLE_StopTime
+
+#switch 20000:7001
+extern BATTLE_AffectNodeOccupant 72 "hp=1000"
+extern BATTLE_AffectNodeOccupant 73 "hp=1000"
+extern BATTLE_AffectNodeOccupant 74 "hp=1000"
+extern BATTLE_StartTime
+
+#switch 20000:7010
+extern playscene battle/monster_sagenkra/sagenkra_cyan_atak1_none
+extern BATTLE_StopTime
+
+#switch 20000:7011
+extern BATTLE_AffectNodeOccupant 72 "hp=1000"
+extern BATTLE_AffectNodeOccupant 73 "hp=1000"
+extern BATTLE_AffectNodeOccupant 74 "hp=1000"
+extern BATTLE_StartTime
+
+#switch 20000:7020
+extern playscene battle/monster_sagenkra/sagenkra_green_atak1_none
+extern BATTLE_StopTime
+
+#switch 20000:7021
+extern BATTLE_AffectNodeOccupant 72 "hp=1000"
+extern BATTLE_AffectNodeOccupant 73 "hp=1000"
+extern BATTLE_AffectNodeOccupant 74 "hp=1000"
+extern BATTLE_StartTime
+
+#switch 20000:7030
+extern playscene battle/monster_sagenkra/sagenkra_magenta_atak1_none
+extern BATTLE_StopTime
+
+#switch 20000:7031
+extern BATTLE_AffectNodeOccupant 72 "hp=1000"
+extern BATTLE_AffectNodeOccupant 73 "hp=1000"
+extern BATTLE_AffectNodeOccupant 74 "hp=1000"
+extern BATTLE_StartTime
+
+#switch 20000:7040
+extern playscene battle/monster_sagenkra/sagenkra_red_atak1_none
+extern BATTLE_StopTime
+
+#switch 20000:7041
+extern BATTLE_AffectNodeOccupant 72 "hp=1000"
+extern BATTLE_AffectNodeOccupant 73 "hp=1000"
+extern BATTLE_AffectNodeOccupant 74 "hp=1000"
+extern BATTLE_StartTime
+
+#switch 20000:7050
+extern playscene battle/monster_sagenkra/sagenkra_yellow_atak1_none
+extern BATTLE_StopTime
+
+#switch 20000:7051
+extern BATTLE_AffectNodeOccupant 72 "hp=1000"
+extern BATTLE_AffectNodeOccupant 73 "hp=1000"
+extern BATTLE_AffectNodeOccupant 74 "hp=1000"
+extern BATTLE_StartTime
+
+#switch 20000:7060
+extern playscene battle/monster_sagenkra/sagenkra_rgb_multi_none
+extern BATTLE_StopTime
+
+#switch 20000:7061
+extern BATTLE_AffectNodeOccupant 73 "hp=1500;psyslave=100"
+gosub 20000:4001
+extern BATTLE_StartTime
+
+#switch 20000:7070
+extern playscene battle/monster_sagenkra/sagenkra_cym_multi_none
+extern BATTLE_StopTime
+
+#switch 20000:7071
+extern BATTLE_AffectNodeOccupant 73 "hp=1500;psyslave=100"
+gosub 20000:4002
+extern BATTLE_StartTime
