@@ -1903,7 +1903,7 @@ nextwindow 19:5017
 
 #window 19:5017
 title "Grumpos"
-body "Can you deny it? Can you look me in the face and say \"peanuts and monkey farts\" as my sister was keen on saying. This was back before the sudden appearance of a goiter on her—"
+body "Can you deny it? Can you look me in the face and say \"peanuts and monkey farts\" as my sister was keen on saying. This was back before the sudden appearance of a goiter on herÂ—"
 cam left restore zip
 talk_ex npc PlayerChar0 amb_a talk_a stay stay
 style "style_embrace"
@@ -2639,7 +2639,7 @@ ws_yammer3$="You gotta be business-wise. You gotta have gut smarts. One look at 
 ws_yammer4$="This ain't a place to live, breath or make money. Venture capital? Buddy, try murder-death capital. And the boozers at OneGate are the worst of the lot. They'll sell you your wishes, one by one, at the foot of your dreams, until all of your hard-earned cash is in their pockets. They are the new pharaohs and they're hiding out on Anachronox. OneGate is their newest den of iniquity." 
 ws_yammer5$="I don't remember if you're old enough to remember the Cordican Dynasty Wars back in aught-nine... some of the gents in charge of the pyramid malls fled Cordica before they could be brought to trial. And just where do you think they went? That's right, scumbo. They came to the one place anyone can hide without fear of being found... Anachronox." 
 ws_yammer6$="You think OneGate was always the bright, shining, money beacon that it is now? Once it was just as dingy, gray, and soul shattering as The Bricks. I'm sure I don't have to tell you that if you got enough money, you can turn a trot tray into a ham palace. And that's just what they did... built on the blood of the haggler mummies collecting dust in their bargainer tombs." 
-ws_yammer7$="Can you deny it? Can you look me in the face and say \"peanuts and monkey farts\" as my sister was keen on saying. This was back before the sudden appearance of a goiter on her—" 
+ws_yammer7$="Can you deny it? Can you look me in the face and say \"peanuts and monkey farts\" as my sister was keen on saying. This was back before the sudden appearance of a goiter on herÂ—" 
 ws_yammeredname$="Prochnow" 
 ws_yammer_response$="Ticket prices suddenly look very reasonable." 
 gosub 4002:1
