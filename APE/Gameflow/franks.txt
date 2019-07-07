@@ -1023,7 +1023,7 @@ nextwindow 15:0942
 
 #window 15:942
 title "Dax"
-body "When I threw away my medal of honor, I thought I’d forget..."
+body "When I threw away my medal of honor, I thought IÂ’d forget..."
 cam left restore zip
 style "style_embrace"
 font "_anox10"
@@ -2101,7 +2101,7 @@ nextwindow 15:2512
 
 #window 15:2512
 title "PAX Guard"
-body "And he'll continue to push the “AnachroPAX” campaign?"
+body "And he'll continue to push the Â“AnachroPAXÂ” campaign?"
 cam left from(1095 -132 -636) to(1154 -154 -636) restore zip
 startswitch {
   extern AI_GrabEntity frank_pax @frankPax_handle
