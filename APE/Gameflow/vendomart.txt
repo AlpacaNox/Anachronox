@@ -582,7 +582,7 @@ width 580
 
 #window 41:1302
 title "Pay2Pray Bot"
-body "The relics of 3,600 different religions are housed here within our bank vault secure, bullet-proof, PrayPod ™."
+body "The relics of 3,600 different religions are housed here within our bank vault secure, bullet-proof, PrayPod Â™."
 cam left restore zip
 talk npc talk_a stay
 startswitch {
