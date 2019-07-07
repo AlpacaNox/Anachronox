@@ -640,7 +640,7 @@ ypos 30
 width 580
 
 #window 108:5579
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "Ah... a Bloodstone."
 cam left from(PlayerChar0) to(pacogem4) lift(20) restore zip
 startswitch {
@@ -657,7 +657,7 @@ width 580
 nextwindow 108:5580
 
 #window 108:5580
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "This rough ore can make a form of Kraptonite..."
 cam left from(PlayerChar0) to(pacogem4) lift(20) restore zip
 startswitch {
@@ -672,7 +672,7 @@ width 580
 nextwindow 108:5581
 
 #window 108:5581
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "...but first I must irradiate it somewhere."
 cam left from(PlayerChar0) to(pacogem4) lift(20) restore zip
 startswitch {
