@@ -429,7 +429,7 @@ if (func_charinparty[democratus] == 2)
 if (func_charinparty[stiletto] == 2)
   choice "Stiletto Anyway is always ready for a good fight." 92:240
 if (func_charinparty[paco] == 2)
-  choice "You can trust Paco \"El Puño\" Estrella to save the day." 92:245
+  choice "You can trust Paco \"El PuÃ±o\" Estrella to save the day." 92:245
 
 #window 92:220
 title "Boots"
@@ -531,7 +531,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 92:245
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "I am here."
 cam right to(paco) restore zip
 talk npc talk_a stay
@@ -4060,7 +4060,7 @@ ypos 30
 width 580
 
 #window 92:5579
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "Ah... a Crimson Stone."
 cam to(pacogem3) from(PlayerChar0) lift(20) restore zip
 startswitch {
@@ -4077,7 +4077,7 @@ width 580
 nextwindow 92:5580
 
 #window 92:5580
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "This rough ore can make a form of Kraptonite..."
 cam to(pacogem3) from(PlayerChar0) lift(20) restore zip
 startswitch {
@@ -4092,7 +4092,7 @@ width 580
 nextwindow 92:5581
 
 #window 92:5581
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "...but first I must irradiate it somewhere."
 cam to(pacogem3) from(PlayerChar0) lift(20) restore zip
 startswitch {
@@ -4214,7 +4214,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 5007:1
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "Rage On."
 cam left restore zip
 talk npc talk_a stay
