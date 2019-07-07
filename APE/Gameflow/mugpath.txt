@@ -23,7 +23,7 @@ width 580
 
 #window 56:105
 title "Happy MugMug"
-body "MugMug dropped El Puño toy down there."
+body "MugMug dropped El PuÃ±o toy down there."
 cam left lift(20) restore zip
 talk npc talk_a stay
 style "style_embrace"
@@ -95,7 +95,7 @@ nextwindow 56:121
 
 #window 56:121
 title "Very Sad MugMug"
-body "El Puño toy."
+body "El PuÃ±o toy."
 cam left lift(20) restore zip
 talk npc talk_a stay
 style "style_embrace"
@@ -320,7 +320,7 @@ nextwindow 56:0316
 
 #window 56:316
 title "GORIAN GRILLED BIPIDRI WITH BLOOD SAUCE"
-body "(4 Servings) \n2 cups of zizinti wood chips \n2 tablespoons red vinegar seeds \n½ cup peppered goat mustard \n2 teaspoons fresh red lime juice \n1 tablespoon dried blood root \n4 hell radishes, finely diced \n2 cups Gorian red wine, 1 cup bipidri blood \nFreshly ground earth pepper \nFury sac oil, for the grill \nOne 4-pound bipidri fillet, skin on \nEarth salt"
+body "(4 Servings) \n2 cups of zizinti wood chips \n2 tablespoons red vinegar seeds \nÂ½ cup peppered goat mustard \n2 teaspoons fresh red lime juice \n1 tablespoon dried blood root \n4 hell radishes, finely diced \n2 cups Gorian red wine, 1 cup bipidri blood \nFreshly ground earth pepper \nFury sac oil, for the grill \nOne 4-pound bipidri fillet, skin on \nEarth salt"
 cam left restore zip
 style "style_embrace"
 font "_anox10"
@@ -421,13 +421,13 @@ if (PRE_LIMBUS || PRE_DETTA) {
 #switch 56:100
 if (got_taco_12 == 1)
   goto 56:101
-extern is_in_inventory "El Puño Toy" @havetoy
+extern is_in_inventory "El PuÃ±o Toy" @havetoy
 if (@havetoy)
   goto 56:110		               
 goto 56:105					                   
 
 #switch 56:117
-extern remove_from_inventory "El Puño Toy"
+extern remove_from_inventory "El PuÃ±o Toy"
 extern addnew_to_inventory "TACO"
 set got_taco_12 = 1
 set timed_message = 20
@@ -521,8 +521,8 @@ goto 0:0
 
 #switch 56:8001
 set got_mugmug_toy = 1
-extern addnew_to_inventory "El Puño Toy"
+extern addnew_to_inventory "El PuÃ±o Toy"
 set timed_message = 20
-got_object$="El Puño Toy" 
+got_object$="El PuÃ±o Toy" 
 gosub 1000:1
 goto 0:0
