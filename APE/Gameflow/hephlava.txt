@@ -636,7 +636,7 @@ ypos 140
 width 580
 
 #window 26:5579
-title "El Puño"
+title "El PuÃ±o"
 body "Ah, a Redstone, the rough ore used to make Kraptonite. If there were somewhere I could irradiate this..."
 style "style_hephaestus"
 font "_anox10"
