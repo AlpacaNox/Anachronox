@@ -168,7 +168,7 @@ width 100
 height 100
 
 #window 97:6000
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "Door will not open. Must find other way."
 cam left restore zip
 style "null"
@@ -178,7 +178,7 @@ ypos 340
 width 580
 
 #window 97:6050
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "Mmmmmm..."
 cam left restore zip
 style "style_embrace"
@@ -190,7 +190,7 @@ image "sendernet/underline.pcx" 16, 31, 548, 32
 nextwindow 97:6051
 
 #window 97:6051
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "Switch for door must be somewhere else."
 cam left restore zip
 style "style_embrace"
@@ -201,7 +201,7 @@ width 580
 image "sendernet/underline.pcx" 16, 31, 548, 32
 
 #window 97:7000
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "This control the security elevator to basement. Map show two intruders."
 xyprintfx 210, 381, @intruder_alpha, 0.800000011921, 0.600000023842, 0.600000023842, _anox10, "."
 xyprintfx 339, 356, @intruder_alpha, 0.800000011921, 0.600000023842, 0.600000023842, _anox10, "."
@@ -252,7 +252,7 @@ xpos 0
 ypos 0
 
 #window 97:5200
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "I'm Paco. And you?"
 style "NULL"
 font "_newsub"
@@ -263,7 +263,7 @@ ypos 360
 width 580
 
 #window 97:5205
-title "Paco \"El Puño\" Estrella"
+title "Paco \"El PuÃ±o\" Estrella"
 body "Mmm...."
 style "NULL"
 font "_newsub"
